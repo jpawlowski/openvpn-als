@@ -1,0 +1,47 @@
+<%@ page import="com.adito.install.forms.InstallationSummaryForm" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+
+
+<div id="wizardSummary">
+	<bean:define id="tunnelSummaryForm" name="tunnelSummaryForm" type="com.adito.tunnels.wizards.forms.TunnelSummaryForm"/>
+	<table border="0" cellspacing="0" border="0">
+		<tr class="formBlock">
+			<td class="label" colspan="2">
+				<bean:message key="tunnelWizard.tunnelSummary.resource" bundle="tunnels"/>
+			</td>
+		</tr>
+		<tr class="formLabel">			
+			<td class="label">
+				<bean:message key="tunnelWizard.tunnelSummary.resource.name" bundle="tunnels"/>
+			</td>
+			<td class="value">
+				<bean:write name="tunnelSummaryForm" property="resourceName"/>
+			</td>
+		</tr>
+		<tr class="formBlock">
+			<td class="label" colspan="2">
+				<bean:message key="tunnelWizard.tunnelSummary.selectedPolicies" bundle="tunnels"/>
+			</td>
+		</tr>
+		<tr class="formLabel">		
+			<logic:empty name="tunnelSummaryForm" property="selectedPolicies">
+				<td class="value" colspan="2">
+					<bean:message key="tunnelWizard.tunnelSummary.selectedPolicies.none" bundle="tunnels"/>
+				</td>
+			</logic:empty>
+			<logic:notEmpty name="tunnelSummaryForm" property="selectedPolicies">
+				<td class="label">
+					<bean:message key="tunnelWizard.tunnelSummary.selectedPolicies.names" bundle="tunnels"/>
+				</td>
+				<td class="value">
+					<logic:iterate name="tunnelSummaryForm" property="selectedPolicies" id="tunnel">
+						<bean:write name="tunnel"/><br/>
+					</logic:iterate>
+				</td>
+			</logic:notEmpty>
+		</tr>
+	</table>
+</div>

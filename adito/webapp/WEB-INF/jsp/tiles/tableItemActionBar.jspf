@@ -1,0 +1,134 @@
+
+<jsp:directive.page import="com.adito.core.CoreServlet"/>
+<jsp:directive.page import="com.adito.navigation.NavigationManager"/>
+<jsp:directive.page import="com.adito.table.TableItemActionMenuTree"/>
+<jsp:directive.page import="java.util.Iterator"/>
+<jsp:directive.page import="com.adito.core.MenuItem"/>
+<jsp:directive.page import="com.adito.security.SessionInfo"/>
+<jsp:directive.page import="com.adito.core.AvailableMenuItem"/>
+<jsp:directive.page import="java.util.List"/>
+<jsp:directive.page import="com.adito.table.TableItemAction"/>
+<jsp:directive.page import="java.util.ArrayList"/>
+<jsp:directive.page import="com.adito.table.AvailableTableItemAction"/>
+<jsp:directive.page import="com.adito.boot.Util"/><%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+
+<tiles:useAttribute name="pager" scope="request" classname="com.adito.table.Pager"/> 
+<tiles:useAttribute name="rowIndex" scope="request" classname="java.lang.Integer"/> 
+<tiles:useAttribute name="policyLaunching" scope="request" classname="java.lang.String"/> 
+<tiles:useAttribute ignore="true" id="actionsTableId" name="actionsTableId" scope="request" classname="java.lang.String"/> 
+<tiles:useAttribute ignore="true" id="displayBlanks" name="displayBlanks" scope="request" classname="java.lang.String"/> 
+<bean:define id="themePath"><core:themePath/></bean:define>
+<div class="tableItemActionBar">
+<% 
+	actionsTableId = actionsTableId == null ? pager.getModel().getId() : actionsTableId;
+	TableItemActionMenuTree tree = (TableItemActionMenuTree)
+		NavigationManager.getMenuTree(TableItemActionMenuTree.MENU_TABLE_ITEM_ACTION_MENU_TREE);
+	MenuItem parent = tree.getMenuItem(actionsTableId);
+	if(parent == null) {
+%>
+	Error. No table item action parent for <%= actionsTableId %>
+<% 	} else { 
+		List available = tree.rebuildMenus(parent, request);
+		List important = new ArrayList();
+		List unimportant = new ArrayList();
+		for(Iterator i = available.iterator(); i.hasNext(); ) {
+			AvailableTableItemAction ami = (AvailableTableItemAction)i.next();			
+			ami.init(pager, rowIndex.intValue());
+			TableItemAction def = (TableItemAction)ami.getMenuItem();
+			if(def.isImportant()) {
+				important.add(ami);
+			}
+			else {
+				unimportant.add(ami);
+			}	
+		}		
+		for(Iterator i = important.iterator(); i.hasNext(); ) {
+			AvailableTableItemAction ami = (AvailableTableItemAction)i.next();
+			String descriptionKey = "tableItemAction." + actionsTableId + "." + ami.getMenuItem().getId() + ".description";
+			TableItemAction def = (TableItemAction)ami.getMenuItem();
+%>
+			<span class="importantAction">
+<%
+			if(ami.isEnabled()) {
+				String contentLocation = ami.getToolTipContentLocation();
+				String width = String.valueOf(ami.getToolTipWidth());
+				if(contentLocation.equals("")) {
+%>			
+				<input:toolTip width="<%= width %>" additionalAttributeName="<%= ami.getAdditionalAttributeName() %>" additionalAttributeValue="<%= ami.getAdditionalAttributeValue() %>" href='<%= ami.getPath() %>' key='<%= descriptionKey %>' bundle='<%= ami.getMenuItem().getMessageResourcesKey() %>' styleId='<%= "action_" + ami.getMenuItem().getId() %>' onclick='<%= ami.getOnClick() %>'>
+					 <img alt="" src="<%= themePath  + "/images/actions/" + ami.getMenuItem().getId() + ".gif" %>"/>
+				</input:toolTip>
+<%
+				} else { %>
+				<input:toolTip width="<%=width %>" additionalAttributeName="<%= ami.getAdditionalAttributeName() %>" contentLocation="<%= contentLocation %>" additionalAttributeValue="<%= ami.getAdditionalAttributeValue() %>" href='<%= ami.getPath() %>' styleId='<%= "action_" + ami.getMenuItem().getId() %>' onclick='<%= ami.getOnClick() %>'>
+					 <img alt="" src="<%= themePath  + "/images/actions/" + ami.getMenuItem().getId() + ".gif" %>"/>
+				</input:toolTip>
+<%				}
+			} else { 
+				if(displayBlanks == null || "true".equals(displayBlanks)) { %>					
+					<img class="blankAction" alt="" src="<%= themePath  + "/images/actions/blank.gif" %>"/>
+<%				}
+			} %>			
+			</span>
+<%
+		}
+%>
+		<logic:equal name="policyLaunching" value="true">								
+			<tiles:insert flush="false" page="/WEB-INF/jsp/tiles/policyLaunch.jspf">		
+				<tiles:put name="pager" beanName="pager"/>
+				<tiles:put name="rowIndex" beanName="rowIndex"/>
+			</tiles:insert>		
+		</logic:equal>
+<%
+		List newUnimportant = new ArrayList();
+		for(Iterator i = unimportant.iterator(); i.hasNext(); ) {
+			AvailableTableItemAction ami = (AvailableTableItemAction)i.next();
+			if(ami.isEnabled()) {
+				newUnimportant.add(ami);
+			}
+		}
+		if(newUnimportant.size() > 0) { 
+			String popupScript = "togglePopupBelowLeft(document.getElementById('unimportantActions_" + pager.getModel().getId() + "_" + rowIndex + "'), document.getElementById('unimportantActionsTrigger_" + pager.getModel().getId() + "_" + rowIndex + "')); event.cancelBubble = true;"; %>
+			<span class="unimportantActionsTrigger" id="<%= "unimportantActionsTrigger_" + pager.getModel().getId() + "_" + rowIndex  %>">
+				<a onclick="<%= popupScript %>" href="javascript: void(0);"><bean:message key="tableItemActionBar.more" bundle="navigation"/></a>
+			</span>
+			<div class="unimportantActions" style="display: none;" id="<%= "unimportantActions_" + pager.getModel().getId() + "_" + rowIndex %>">
+			   <div class="unimportantActionsInner">
+					<div class="text">
+					<bean:message key="<%= "tableItemActionBar.additionalActions" %>" bundle="navigation" /> <img border="0" href="<%= "javascript:"+ popupScript %>" src="<%= themePath + "/images/close-reverse.gif" %>"/>
+					</div>
+<%
+			for(Iterator i = newUnimportant.iterator(); i.hasNext(); ) {
+				AvailableTableItemAction ami = (AvailableTableItemAction)i.next();
+				String nameKey = "tableItemAction." + actionsTableId + "." + ami.getMenuItem().getId() + ".name";
+				String descriptionKey = "tableItemAction." + actionsTableId + "." + ami.getMenuItem().getId() + ".description";
+				TableItemAction def = (TableItemAction)ami.getMenuItem();
+%>
+				<div class="unimportantAction">
+					<input:toolTip additionalAttributeName="<%= ami.getAdditionalAttributeName() %>" 
+								   additionalAttributeValue="<%= ami.getAdditionalAttributeValue() %>" 
+								   href='<%= ami.getPath() %>' 
+								   key='<%= descriptionKey %>' 
+								   bundle='<%= ami.getMenuItem().getMessageResourcesKey() %>' 
+								   styleId='<%= "action_" + ami.getMenuItem().getId() %>' 
+								   onclick='<%= ( ami.getOnClick().equals("") ? "" : ( ami.getOnClick() + ";" ) ) + "hidePopup(document.getElementById('unimportantActions_" + pager.getModel().getId() + "_" +  rowIndex + "'));" %>'
+								   target='<%= ami.getMenuItem().getTarget() == null ? "_self" : ami.getMenuItem().getTarget() %>'>
+						<img alt="" src="<%= themePath  + "/images/actions/" + ami.getMenuItem().getId() + ".gif" %>"/>
+						<bean:message key="<%= nameKey %>" bundle="<%= ami.getMenuItem().getMessageResourcesKey() %>"/>
+					</input:toolTip>
+				</div>
+<%
+			}		
+%>			
+				</div>
+			</div>
+<%
+	  	}
+	}
+%>
+</div>

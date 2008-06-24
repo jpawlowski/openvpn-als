@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="adito-build" default="run">
+	
+	<property name="adito.home" value="adito"/>
+	
+	<!-- Display some help -->
+	<target name="help" description="Displays some help.">
+		<echo>
+You must have run the 'install' target at least once which compiles
+all source starts Adito's installation wizard.
+			
+Available targets :-
+			
+console            Starts the Adito server in the foreground 
+                   displaying all output to the console.
+start              Starts  the Adito in the background.
+stop               Stops the running Adito. Note, this currently 
+                   does not work on all platforms.
+install            Run the Adito installation wizard. The server 
+                   must not be running.
+install-service    Install Adito as a service. 
+uninstall-service  Uninstall Adito service. 
+			
+		</echo>
+	</target>
+
+	<!-- Remove all compiled files -->
+	<target name="clean" description="Removes compiled files">
+		<ant dir="${adito.home}" target="clean"/>
+		<ant dir="adito-commons-vfs" target="clean"/>
+		<ant dir="adito-community-activedirectory" target="clean"/>
+		<ant dir="adito-community-applications" target="clean"/>
+		<ant dir="adito-community-network-places" target="clean"/>
+		<ant dir="adito-community-tunnels" target="clean"/>
+		<ant dir="adito-community-unix" target="clean"/>
+		<ant dir="adito-community-web-forwards" target="clean"/>
+		<ant dir="maverick-crypto" target="clean"/>
+		<ant dir="maverick-multiplex" target="clean"/>
+		<ant dir="maverick-ssl" target="clean"/>
+		<ant dir="maverick-util" target="clean"/>
+	</target>
+
+	<target name="run" description="Starts the Adito server in the foreground display all output to the console. NOTE, this is deprecated, use the 'console' target instead.">
+		<ant dir="${adito.home}" target="run"/>
+	</target>
+	
+	<!-- Run the Adito server as a console application -->
+	<target name="console" description="Starts the Adito server in the foreground display all output to the console">
+		<ant dir="${adito.home}" target="console"/>
+	</target>
+	
+	<!-- Start the Adito server -->	
+	<target name="start" description="Starts the Adito in the background">
+		<ant dir="${adito.home}" target="start"/>
+	</target>
+	
+	<!-- Stops a the running Adito server -->	
+	<target name="stop" description="Stops the running Adito. Note, this currently does not work on all platforms.">
+		<ant dir="${adito.home}" target="stop"/>
+	</target>
+
+	<!-- Run the installation wizard -->
+	<target name="install" description="Run the Adito installation wizard. The server must not be running.">
+		<ant dir="${adito.home}" target="install"/>
+	</target>
+
+	<!-- Install as a service -->
+	<target name="install-service" description="Install Adito as a service.">
+		<ant dir="${adito.home}" target="install-service"/>
+	</target>
+
+	<!-- Uninstall service -->
+	<target name="uninstall-service" description="Uninstall Adito service.">
+		<ant dir="${adito.home}" target="uninstall-service"/>
+	</target>
+
+
+	<!-- Compile everything -->
+	<target name="compile">
+		<ant dir="${adito.home}" target="deploy-community-extensions"/>
+	</target>
+
+
+</project>

@@ -1,0 +1,104 @@
+/*
+
+   WARNING - Please Do not change these styles lightly. They affect a *lot*.
+   It may be more approriate for you to overide your individual page styles
+   in pageStyles.css and wizardStyles.ss
+
+*/
+
+/* Tabs */
+
+.tabPanel {
+	display: block;
+	visibility: visible;
+	padding: 0;
+	margin: 0;
+}
+
+.tabPanelHidden {
+	display: none;
+	visibility: collapse;
+	padding: 0;
+	margin: 0;
+}
+
+.tabSet {
+	display: block;
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+}
+
+.tabContent {
+  	background-color: #e6e6e6;
+  	clear: both;
+}
+
+.tabHeadings {
+	float:left;
+	padding: 0px 0px 0px 20px;
+	margin: 0px 0px 0px 0px;
+}
+
+.tabHeadings ul, .tabHeadings ul li {
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+
+.tabHeadings ul li{
+	display: block;
+	margin: 0 4px 0px 0px;
+	padding: 0;
+	float: left;
+	text-align: center;
+}
+
+.tabHeadings a:link, .tabHeadings a:visited {
+	display: block;
+	clear: none;
+	float: left;
+  	background-color: #aaaaaa;
+	color: #666;
+	font-weight: normal;
+	text-decoration: none;
+	padding-top: 2px;
+	padding-left: 6px;
+	padding-right: 6px;
+	padding-bottom: 2px;
+}
+
+.tabHeadings a:link.currentTab, .tabHeadings a:visited.currentTab {
+	background-color: #e6e6e6;
+	color: #000;
+}
+
+.tabHeadings a:hover {
+	color: #f8f09a;
+	text-decoration: underline;
+}
+
+/* Tabbed Form */
+
+div.tabbedForm .dialog_form_table {
+	table-layout: fixed;
+	width: 100%;
+}
+
+div.tabbedForm .tabContent {
+	padding: 4px 16px 8px 16px;
+}
+
+div.tabbedForm .button_bar {
+	text-align: left;
+	margin-top: 8px;
+}
+
+div.tabbedForm .formTextArea td.label {
+	vertical-align: top;
+}
+
+div.tabbedForm .formTextArea textarea {
+	width: 100%;
+	height: 14em;
+}

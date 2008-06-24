@@ -1,0 +1,16 @@
+<jsp:directive.page import="com.adito.properties.forms.AbstractPropertiesForm"/>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+	
+<div id="page_properties">
+	<bean:define id="form" name="form" type="com.adito.properties.forms.AbstractPropertiesForm"></bean:define>
+	<bean:define id="actionMapping" name="actionMapping" type="org.apache.struts.action.ActionMapping"></bean:define>
+	<core:form action="<%= String.valueOf(((AbstractPropertiesForm)form).getUpdateAction()) %>" autocomplete="OFF">		              			
+		<tiles:insert page="/WEB-INF/jsp/content/properties/propertyFormContent.jspf"
+			flush="false">
+			<tiles:put name="form" beanName="form"/>
+			<tiles:put name="actionMapping" beanName="actionMapping"/>
+		</tiles:insert>
+	</core:form>
+</div>

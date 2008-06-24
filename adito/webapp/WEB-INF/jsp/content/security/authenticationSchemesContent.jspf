@@ -1,0 +1,27 @@
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="/server/taglibs/security" prefix="security" %>
+<%@ taglib uri="/server/taglibs/table" prefix="table" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/navigation" prefix="navigation" %>
+<%@ page import="com.adito.policyframework.Permission" %>
+<%@ page import="com.adito.policyframework.PolicyConstants" %>
+
+<div id="page_authenticationSchemes">
+	<core:form onsubmit="setActionTarget('filter')" method="post" action="/showAuthenticationSchemes.do" focus="filterText">
+		<html:hidden property="actionTarget" />
+		<html:hidden property="selectedResource" />		
+		<div class="dialog_content">
+			<tiles:insert flush="false" page="/WEB-INF/jsp/tiles/filter.jspf"/>		
+		</div>				
+		<tiles:insert flush="false" page="/WEB-INF/jsp/tiles/resourceList.jspf">		
+			<tiles:put name="pager" beanName="authenticationSchemesForm" beanProperty="pager"/>
+			<tiles:put name="messageResourcesKey" value="security"/>
+			<tiles:put name="resourcePrefix" value="authenticationSchemes"/>
+			<tiles:put name="policyLaunching" value="false"/>
+		</tiles:insert>	
+	</core:form>
+</div>

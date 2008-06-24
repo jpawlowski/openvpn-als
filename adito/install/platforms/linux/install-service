@@ -1,0 +1,499 @@
+#!/bin/bash
+#
+# This script will attempt to install Adito as a Linux 
+# service. The method of doing this differs between distributions
+# so an attempt is made to guess the O/S
+
+# Display user
+usage() {
+   echo "usage: $0 [-o <os>] [-j <java-home>] [-n|-u] [-c <wrapper-conf>]"
+}
+
+set_wrapper_property() {
+  CONFFILE="${WRAPPER_CONF:-$ADITO_HOME/conf/wrapper.conf}"
+  NAME="$1"
+  shift
+  VAL="$*"
+  FOUND=n
+	while read line 
+	do
+	    case "${line}" in
+    	  "${NAME}="*) echo "${NAME}=${VAL}"
+                       FOUND=y ;;
+	    	    *) echo "${line}" ;;
+	    esac
+	done < "${CONFFILE}" > /tmp/wrapper.conf
+	if [ "${FOUND}" = n ]
+        then echo "${NAME}=${VAL}" >> /tmp/wrapper.conf
+        fi
+	cat /tmp/wrapper.conf > "${CONFFILE}" 2>/dev/null 
+	rm -f /tmp/wrapper.conf
+}
+
+help() {
+   usage 
+   echo 
+   echo "Option"
+   echo "   -o <os>             Force operating system. Can currently"
+   echo "                       either be redhat,slackware,smoothwall,"
+   echo "                       suse,debian,conary."
+   echo "   -n                  Install the service NOT to start at boot."
+   echo "   -a <arch>           Force architecture. Can currently" 
+   echo "                       either be x86 or x86-64"
+   echo "   -u                  Uninstall service."
+   echo "   -c <wrapper-conf>   Location of wrapper configuration."   
+   echo "   -j <java-home>      Location of java runtime."   
+   echo "   -h                  Show this help."
+}
+
+install_slackware_service() {
+   RC_INSTALLED=n
+   if [ -f /etc/rc.d/rc.adito ]
+   then line=$(grep "exec ${ADITO_HOME}/install/platforms/linux/adito" /etc/rc.d/rc.adito)
+        if [ -n "${line}" ]
+        then RC_INSTALLED=y
+        fi
+   fi
+   if [ "${RC_INSTALLED}" = "n" ]
+   then echo "#!/bin/bash
+#
+# Init file for Adito daemon
+#
+
+if [ -f /etc/adito/service.conf ]
+then source /etc/adito/service.conf
+fi
+
+export WRAPPER_CONF=\"${ADITO_HOME}/conf/wrapper.conf\"
+exec ${ADITO_HOME}/install/platforms/linux/adito \$*" > /etc/rc.d/rc.adito
+   fi
+   chmod a+rx /etc/rc.d/rc.adito
+   set_wrapper_property "wrapper.java.command" "${JAVA_HOME}/bin/java"
+   set_wrapper_property "wrapper.working.dir" ${ADITO_HOME}
+   set_wrapper_property "wrapper.java.library.path.1" ${ADITO_HOME}/install/platforms/linux/${OS_ARCH}
+
+   if [ -f /etc/rc.d/rc.local ]
+   then grep -v "\# Added by Adito install-service" /etc/rc.d/rc.local > /tmp/rc.local.tmp 
+   else echo "#!/bin/bash" > /etc/rc.d/rc.local.tmp
+   fi
+   echo "if [ -x /etc/rc.d/rc.adito ]     # Added by Adito install-service" >> /tmp/rc.local.tmp
+   echo "then sh /etc/rc.d/rc.adito start # Added by Adito install-service" >> /tmp/rc.local.tmp
+   echo "fi                                     # Added by Adito install-service" >> /tmp/rc.local.tmp
+   mv /tmp/rc.local.tmp /etc/rc.d/rc.local   
+   if [ "${START_ON_BOOT}" = y ] 
+   then chmod a+rx /etc/rc.d/rc.local
+   else chmod a-rx /etc/rc.d/rc.local
+   fi
+}
+
+uninstall_slackware_service() {
+    if [ -f /etc/rc.d/rc.local ] 
+    then grep -v "\# Added by Adito install-service" /etc/rc.d/rc.local > /tmp/rc.local.tmp 
+         mv /tmp/rc.local.tmp /etc/rc.d/rc.local
+    fi
+    rm -f /etc/rc.d/rc.adito
+}
+
+install_suse_service() { 
+    echo "#!/bin/bash 
+# 
+### BEGIN INIT INFO 
+# Provides: Adito daemon 
+# Required-Start: $syslog $remote_fs $network 
+# X-UnitedLinux-Should-Start: $named $syslog $time 
+# Required-Stop: $syslog $remote_fs $network 
+# X-UnitedLinux-Should-Stop: $named $syslog 
+# Default-Start: 3 5 
+# Default-Stop: 0 1 2 6 
+# Short-Description: Adito 
+# Description: Start Adito to activate client's VPN access 
+#  
+# pidfile: /var/lock/subsys/adito.pid 
+# processname: wrapper 
+### END INIT INFO 
+ 
+export WRAPPER_CONF=\"${ADITO_HOME}/conf/wrapper.conf\"
+exec ${ADITO_HOME}/install/platforms/linux/adito \$*" > /etc/init.d/adito 
+    chmod a+rx /etc/init.d/adito 
+    if [ "${START_ON_BOOT}" = y ]  
+    then if ! chkconfig -a adito 
+         then echo "Failed to install service." >&2 
+              exit 1 
+         fi 
+    else if ! chkconfig -d adito 
+         then echo "Failed to uninstall service." >&2 
+              exit 1 
+         fi 
+    fi  
+    set_wrapper_property "wrapper.java.command" "${JAVA_HOME}/bin/java"
+    set_wrapper_property "wrapper.working.dir" ${ADITO_HOME} 
+    set_wrapper_property "wrapper.java.library.path.1" ${ADITO_HOME}/install/platforms/linux/${OS_ARCH} 
+    echo "Service installed" 
+} 
+ 
+uninstall_suse_service() { 
+    if ! chkconfig -d adito 
+    then echo "Failed to uninstall service." >&2 
+         exit 1 
+    fi 
+    rm -f /etc/init.d/adito 
+    echo "Service uninstalled" 
+} 
+
+
+install_debian_service() { 
+    mkdir -p /var/lock/subsys
+    echo "#!/bin/bash 
+# 
+ 
+export WRAPPER_CONF=\"${ADITO_HOME}/conf/wrapper.conf\"
+exec ${ADITO_HOME}/install/platforms/linux/adito \$*" > /etc/init.d/adito 
+    chmod a+rx /etc/init.d/adito 
+    if [ "${START_ON_BOOT}" = y ]  
+    then if ! update-rc.d adito defaults
+         then echo "Failed to install service." >&2 
+              exit 1 
+         fi 
+    else if ! update-rc.d -f adito remove
+         then echo "Failed to uninstall service." >&2 
+              exit 1 
+         fi 
+    fi  
+    set_wrapper_property "wrapper.java.command" "${JAVA_HOME}/bin/java"
+    set_wrapper_property "wrapper.working.dir" ${ADITO_HOME} 
+    set_wrapper_property "wrapper.java.library.path.1" ${ADITO_HOME}/install/platforms/linux/${OS_ARCH} 
+    echo "Service installed" 
+} 
+ 
+uninstall_debian_service() { 
+    if ! update-rc.d -f adito remove
+    then echo "Failed to uninstall service." >&2 
+         exit 1 
+    fi 
+    rm -f /etc/init.d/adito 
+    echo "Service uninstalled" 
+} 
+
+install_gentoo_service() { 
+    mkdir -p /var/lock/subsys
+    echo "#!/sbin/runscript
+# Copyright 2008 3SP
+# Distributed under the terms of the GNU General Public License v2
+
+export WRAPPER_CONF=\"${ADITO_HOME}/conf/wrapper.conf\"
+
+depend() {
+	need net
+	after net
+}
+
+checkconfig() {
+	return 0
+}
+
+start() {
+	exec ${ADITO_HOME}/install/platforms/linux/adito start
+}
+
+stop() {
+	exec ${ADITO_HOME}/install/platforms/linux/adito stop
+}" > /etc/init.d/adito 
+    chmod a+rx /etc/init.d/adito 
+    if [ "${START_ON_BOOT}" = y ]  
+    then if ! rc-update add adito default
+         then echo "Failed to install service." >&2 
+              exit 1 
+         fi 
+    else if ! rc-update del adito remove
+         then echo "Failed to uninstall service." >&2 
+              exit 1 
+         fi 
+    fi  
+    set_wrapper_property "wrapper.java.command" "${JAVA_HOME}/bin/java"
+    set_wrapper_property "wrapper.working.dir" ${ADITO_HOME} 
+    set_wrapper_property "wrapper.java.library.path.1" ${ADITO_HOME}/install/platforms/linux/${OS_ARCH} 
+    echo "Service installed" 
+} 
+ 
+uninstall_gentoo_service() { 
+    if ! rc-update del adito default
+    then echo "Failed to uninstall service." >&2 
+         exit 1 
+    fi 
+    rm -f /etc/init.d/adito 
+    echo "Service uninstalled" 
+} 
+ 
+install_smoothwall_service() {
+# Hack to make Install4J scripts works
+   ln -sf /bin/grep /bin/egrep
+   mkdir -p /var/lock/subsys
+   echo "#!/bin/bash
+#
+# Init file for Adito daemon
+#
+
+export WRAPPER_CONF=\"${ADITO_HOME}/conf/wrapper.conf\"
+exec ${ADITO_HOME}/install/platforms/linux/adito \$*" > /etc/rc.d/rc.adito
+   set_wrapper_property "wrapper.java.command" "${JAVA_HOME}/bin/java"
+   set_wrapper_property "wrapper.working.dir" ${ADITO_HOME}
+   set_wrapper_property "wrapper.java.library.path.1" ${ADITO_HOME}/install/platforms/linux/${OS_ARCH}
+   
+   if [ -f /etc/rc.d/rc.sysinit ]
+   then grep -v "\# Added by Adito install-service" /etc/rc.d/rc.sysinit > /tmp/rc.sysinit.tmp 
+   else echo "#!/bin/bash" > /etc/rc.d/rc.sysinit.tmp
+   fi
+   echo "if [ -x /etc/rc.d/rc.adito ]     # Added by Adito install-service" >> /tmp/rc.sysinit.tmp
+   echo "then sh /etc/rc.d/rc.adito start # Added by Adito install-service" >> /tmp/rc.sysinit.tmp
+   echo "fi                                     # Added by Adito install-service" >> /tmp/rc.sysinit.tmp
+   mv /tmp/rc.sysinit.tmp /etc/rc.d/rc.sysinit
+   chmod a+rx /etc/rc.d/rc.sysinit
+   
+   if [ "${START_ON_BOOT}" = y ] 
+   then chmod a+rx /etc/rc.d/rc.adito
+   else chmod a-rx /etc/rc.d/rc.adito
+   fi
+}
+
+uninstall_smoothwall_service() {
+    if [ -f /etc/rc.d/rc.sysinit ] 
+    then grep -v "\# Added by Adito install-service" /etc/rc.d/rc.sysinit > /tmp/rc.sysinit.tmp 
+         mv /tmp/rc.sysinit.tmp /etc/rc.d/rc.sysinit
+    fi
+    rm -f /etc/rc.d/rc.adito
+}
+
+install_rh_service() {
+   echo "#!/bin/bash
+#
+# Init file for Adito daemon
+#
+# chkconfig: 345 56 26
+# description: Adito daemon
+#
+# pidfile: /var/lock/subsys/adito.pid
+# processname: wrapper
+
+export WRAPPER_CONF=\"${ADITO_HOME}/conf/wrapper.conf\"
+exec ${ADITO_HOME}/install/platforms/linux/adito \$*" > /etc/rc.d/init.d/adito
+    chmod a+rx /etc/rc.d/init.d/adito
+    if [ "${START_ON_BOOT}" = y ] 
+    then if ! chkconfig --add adito --levels 345
+         then echo "Failed to install service." >&2
+              exit 1
+         fi
+    else if ! chkconfig --del adito
+         then echo "Failed to uninstall service." >&2
+              exit 1
+         fi
+    fi   
+    set_wrapper_property "wrapper.java.command" "${JAVA_HOME}/bin/java"
+	set_wrapper_property "wrapper.working.dir" ${ADITO_HOME}
+	set_wrapper_property "wrapper.java.library.path.1" ${ADITO_HOME}/install/platforms/linux/${OS_ARCH}
+    echo "Service installed"
+}
+
+uninstall_rh_service() {
+    if ! chkconfig --del adito
+    then echo "Failed to uninstall service." >&2
+         exit 1
+    fi
+    rm -f /etc/rc.d/init.d/adito
+    echo "Service uninstalled"
+}
+
+install_conary_service() {
+   echo "#!/bin/bash
+#
+# Init file for Adito daemon
+#
+# chkconfig: 345 56 26
+# description: Adito daemon
+#
+# pidfile: /var/lock/subsys/adito.pid
+# processname: wrapper
+
+export WRAPPER_CONF=\"${ADITO_HOME}/conf/wrapper.conf\"
+exec ${ADITO_HOME}/install/platforms/linux/adito \$*" > /etc/rc.d/init.d/adito
+    chmod a+rx /etc/rc.d/init.d/adito
+    if [ "${START_ON_BOOT}" = y ] 
+    then if ! chkconfig --add adito --levels 345
+         then echo "Failed to install service." >&2
+              exit 1
+         fi
+    else if ! chkconfig --del adito
+         then echo "Failed to uninstall service." >&2
+              exit 1
+         fi
+    fi   
+    set_wrapper_property "wrapper.java.command" "${JAVA_HOME}/bin/java"
+	set_wrapper_property "wrapper.working.dir" ${ADITO_HOME}
+	set_wrapper_property "wrapper.java.library.path.1" ${ADITO_HOME}/install/platforms/linux/${OS_ARCH}
+    echo "Service installed"
+}
+
+uninstall_conary_service() {
+    if ! chkconfig --del adito
+    then echo "Failed to uninstall service." >&2
+         exit 1
+    fi
+    rm -f /etc/rc.d/init.d/adito
+    echo "Service uninstalled"
+}
+
+# Determine the installed location of Adito
+export DIR=$(dirname ${0})
+ADITO_HOME=$(cd ${DIR}; cd ../../.. ; pwd)
+
+# Initialise other variables
+OS=
+START_ON_BOOT=y
+UNINSTALL=n
+
+# Determine the O/S
+
+if [ -f /etc/SuSE-release ]
+then OS=suse
+elif [ -f /etc/redhat-release ]
+then OS=redhat
+elif [ -f /etc/slackware-version ]
+then OS=slackware
+elif [ -f /usr/local/bin/smoothiedeath ]
+then OS=smoothwall
+elif [ -f /etc/debian_version ] 
+then OS=debian
+elif [ -d /etc/conary ] 
+then OS=conary
+elif [ -f /etc/gentoo-release ]
+then OS=gentoo
+fi
+
+# Determine the architecture
+
+OS_ARCH=`uname -p | tr [:upper:] [:lower:] | tr -d [:blank:]`
+if [ "$OS_ARCH" = "unknown" ]
+then OS_ARCH=`uname -m | tr [:upper:] [:lower:] | tr -d [:blank:]`
+fi
+case "$OS_ARCH" in
+    "amd"*"64"* | 'ia64' | 'x86_64')
+        OS_ARCH="x86-64"
+        ;;
+    'athlon' | 'ia32' | 'i386' | 'i486' | 'i586' | 'i686')
+        OS_ARCH="x86"
+        ;;
+    'ip27')    
+        OS_ARCH="mips"
+        ;;
+    'power' | 'powerpc' | 'power_pc' | 'ppc64')
+        OS_ARCH="ppc"
+        ;;
+    'pa_risc' | 'pa-risc')
+        OS_ARCH="parisc"
+        ;;
+    'sun4u' | 'sparcv9')
+        OS_ARCH="sparc"
+        ;;
+    '9000/800')
+        OS_ARCH="parisc"
+        ;;
+esac  
+   
+# Parse the command line
+while [ $# -gt 0 ]
+do
+   case "$1" in
+       "-j") JAVA_HOME="$2" ; shift ;;
+       "-o") OS="$2" l shift ; ;;
+       "-a") OS_ARCH="$2" l shift ; ;;
+       "-u") UNINSTALL="y" ;;
+       "-n") START_ON_BOOT="n" ;;
+       "-c") WRAPPER_CONF="$2" ; shift ;;
+       "-h") help
+             exit 0 ;;
+          *) help 
+             exit 1 ;;
+   esac
+   shift
+done
+
+if [ "${UNINSTALL}" = "n" ]
+then echo "Detecting Java"
+     if [ -n "${JAVA_HOME}" ]
+     then if [ ! -d "${JAVA_HOME}" -o ! -f "${JAVA_HOME}/bin/java" ]
+          then echo "   JAVA_HOME points to a missing or invalid Java runtime,"
+               echo "   please set JAVA_HOME environment variable or provide"
+               echo "   -j <java-home> argument."
+	           echo
+	           echo "Service installation failed."
+               exit 1
+          fi
+     else echo "    JAVA_HOME has not been set. Please set JAVA_HOME environment"
+          echo "    variable or provide -j <java-home> argument."
+          echo
+          echo "Service installation failed."
+          exit 1
+     fi
+     echo "     Using ${JAVA_HOME}"
+fi
+
+
+echo "Detected OS ${OS} (${OS_ARCH})"
+
+# Make sure architecture is supported
+
+case "$OS_ARCH" in
+    'x86-64' | 'x86') : ;; #ok
+                   *) echo
+                      echo "The detected architecture (${OS_ARCH} is not currently supported"
+                      echo "by the service installation scripts."
+                      echo
+                      echo "Service installation failed." 
+                      exit 1 ;;
+esac  
+
+#
+case "${OS}" in
+      suse) if [ "${UNINSTALL}" = y ]
+            then uninstall_suse_service
+            else install_suse_service 
+            fi ;; 
+    redhat) if [ "${UNINSTALL}" = y ]
+            then uninstall_rh_service
+            else install_rh_service 
+            fi ;; 
+ slackware) if [ "${UNINSTALL}" = y ]
+            then uninstall_slackware_service
+            else install_slackware_service 
+            fi ;;
+    debian) if [ "${UNINSTALL}" = y ]
+            then uninstall_debian_service
+            else install_debian_service 
+            fi ;;  
+smoothwall) if [ "${UNINSTALL}" = y ]
+            then uninstall_smoothwall_service
+            else install_smoothwall_service 
+            fi ;; 
+    conary) if [ "${UNINSTALL}" = y ]
+            then uninstall_conary_service
+            else install_conary_service 
+            fi ;; 
+    gentoo) if [ "${UNINSTALL}" = y ]
+            then uninstall_gentoo_service
+            else install_gentoo_service 
+            fi ;; 
+         *) echo "OS could not be detected and no valid one specified as an argument." >&2
+            help ;;
+esac
+
+
+
+# Clear out the temporary directory
+if [ -f "${WRAPPER_CONF}" ]
+then temp=$(grep "=--temp=" "${WRAPPER_CONF}"|awk -F= '{ print $3 }')
+     if [ -z "${temp}" ]
+     then temp="${ADITO_HOME}/tmp"
+     fi
+     if [ -d "${temp}" ]
+     then rm -fr "${temp}/*"
+     fi
+fi

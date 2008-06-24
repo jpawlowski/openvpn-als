@@ -1,0 +1,93 @@
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/tabs" prefix="tabs" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+
+<div id="page_authenticationScheme" class="tabbedForm">
+	<bean:define id="form" name="authenticationSchemeForm" type="com.adito.security.forms.AuthenticationSchemeForm"/>
+	<core:form method="post" action="<%= form.getEditing() ? "/editAuthenticationScheme.do" : "/createAuthenticationScheme.do" %>">	
+		<html:hidden property="referer"/>
+		<html:hidden property="actionTarget"/>
+		<html:hidden property="_charset_"/>			
+		<html:hidden property="selectedTab"/>		
+		<bean:define id="authenticationSchemeForm" name="authenticationSchemeForm" type="com.adito.security.forms.AuthenticationSchemeForm"></bean:define>
+		<tabs:tabSet name="authenticationSchemeForm" bundle="security" resourcePrefix="editAuthenticationScheme.tab">
+			<tabs:tabHeadings/>
+			<tabs:tab tabName="details">
+				<table class="dialog_form_table">
+					<tbody>
+						<tr class="formText">
+							<td class="label">
+								<div class="required">
+									<bean:message key="editAuthenticationScheme.resourceName" bundle="security"/>
+								</div>
+							</td>
+							<td class="value">	
+			                	<html:text disabled="<%= authenticationSchemeForm.isAssignOnly() %>" tabindex="1" property="resourceName"/>		                            
+							</td>
+						</tr>
+						<tr class="formTextArea">
+							<td class="label">
+								<div class="required">
+									<bean:message key="editAuthenticationScheme.resourceDescription" bundle="security"/>
+								</div>
+							</td>
+							<td class="value">		                          
+								<html:textarea disabled="<%= authenticationSchemeForm.isAssignOnly() %>" tabindex="2" property="resourceDescription"/>
+							</td>
+						</tr> 
+					</tbody>
+				</table>		
+			</tabs:tab>		
+			<tabs:tab tabName="modules">	
+				<input:multiSelectListBox 
+					disabled="<%= authenticationSchemeForm.isAssignOnly() || authenticationSchemeForm.isSystem() %>" 
+					tabindex="1" 
+					sourceTitleKey="editAuthenticationScheme.availableModules.title" 
+					targetTitleKey="editAuthenticationScheme.selectedModules.title" 
+					allowReordering="true"
+					upKey="editAuthenticationScheme.moveUp" 
+					downKey="editAuthenticationScheme.moveDown" 
+					addKey="editAuthenticationScheme.addModule" 
+					removeKey="editAuthenticationScheme.removeModule" 
+					rows="15"
+					bundle="security" 
+					styleClass="multiSelect" 
+					modelName="authenticationSchemeForm" 
+					modelProperty="moduleModel" 
+					name="authenticationSchemeForm" 
+					property="selectedModules"/>	
+			</tabs:tab>				
+			<tabs:tab tabName="policies">
+				<input:multiSelectPoliciesListBox 
+					tabindex="1" 
+					sourceTitleKey="policySelection.availablePolicies.title" 
+					targetTitleKey="policySelection.selectedPolicies.title" 
+					addKey="policySelection.addPolicy" 
+					removeKey="policySelection.removePolicy" 
+					configureKey="policySelection.configurePolicies" 
+					configureOnClick="window.location = '/configurePolicies.do?referer=/editAuthenticationScheme.do'" 
+					bundle="policyframework" 
+					styleClass="multiSelect" 
+					modelName="authenticationSchemeForm" 
+					modelProperty="policyModel" 
+					name="authenticationSchemeForm" 
+					property="selectedPolicies"
+					showPersonalPoliciesKey="policySelection.showPersonalPolicies.title"
+					showPersonalPolicies="<%= authenticationSchemeForm.isShowPersonalPolicies() %>" />
+			</tabs:tab>				
+		</tabs:tabSet>												
+		<div class="button_bar">
+			<div class="formButton">
+				<html:submit styleClass="save" onclick="setActionTarget('commit'); return true"><bean:message key="editAuthenticationScheme.commit" bundle="security"/></html:submit>
+			</div>
+			<div class="formButton">
+				<html:submit styleClass="cancel" onclick="setActionTarget('cancel'); return true"><bean:message key="editAuthenticationScheme.cancel" bundle="security"/></html:submit>
+			</div>
+		</div>
+	</core:form>
+</div>
+

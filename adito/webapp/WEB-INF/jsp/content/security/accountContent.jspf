@@ -1,0 +1,163 @@
+
+<jsp:directive.page import="com.adito.properties.attributes.AttributeDefinition"/>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="/server/taglibs/security" prefix="security" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/table" prefix="table" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+<%@ taglib uri="/server/taglibs/tabs" prefix="tabs" %>
+<%@ taglib uri="http://ajaxtags.org/tags/ajax" prefix="ajax" %> 
+
+<bean:define id="userAccountForm" name="userAccountForm" type="com.adito.security.forms.UserAccountForm"/>
+
+<div id="page_account" class="tabbedForm">
+	<core:form focus="<%= userAccountForm.getEditing() ? "fullname" : "username" %>" action="<%= userAccountForm.getEditing() ? "/editAccount.do" : "/createAccount.do" %>">		
+		<html:hidden property="actionTarget" />
+		<html:hidden property="_charset_"/>		
+		<html:hidden property="referer"/>		
+		<html:hidden property="selectedTab"/>		
+		<tabs:tabSet name="userAccountForm" bundle="security" resourcePrefix="createAccount.tab">
+			<tabs:tabHeadings/>
+			<tabs:tab tabName="details">
+				<table class="dialog_form_table">
+					<tbody>
+						<tr class="formPassword">
+							<td class="label">
+								<div class="required">
+									<bean:message key="createAccount.username" bundle="security" /> 
+								</div>
+							</td>
+							<td class="value">
+								<logic:equal value="true" name="userAccountForm" property="editing">
+									<html:text disabled="true" property="username" />
+									<html:hidden property="username" />
+								</logic:equal> 
+								<logic:equal value="false" name="userAccountForm" property="editing">
+									<html:text disabled="false" property="username"/>
+								</logic:equal>
+							</td>
+						</tr>
+						
+						<tr class="formText">
+							<td class="label">
+								<div class="required">
+									<bean:message key="createAccount.fullname" bundle="security" />
+								</div>
+							</td>
+							<security:databaseWriteEnabledTest databaseWriteEnabled="true">
+								<td class="value">
+									<html:text disabled="false" property="fullname" size="30"/>
+								</td>
+							</security:databaseWriteEnabledTest>
+							<security:databaseWriteEnabledTest databaseWriteEnabled="false">
+								<td class="value">
+									<html:text disabled="true" property="fullname" size="30"/>
+								</td>
+							</security:databaseWriteEnabledTest>
+						</tr>
+						<tr class="formText">
+							<td class="label"><bean:message
+								key="createAccount.email" bundle="security" /></td>
+							<security:databaseWriteEnabledTest databaseWriteEnabled="true">		
+								<td class="value"><html:text disabled="false" property="email" size="30" /></td>
+							</security:databaseWriteEnabledTest>	
+							<security:databaseWriteEnabledTest databaseWriteEnabled="false">		
+								<td class="value"><html:text disabled="true" property="email" size="30" /></td>
+							</security:databaseWriteEnabledTest>					
+						</tr>
+						<tr>
+							<security:checkUserDatabaseSupport requiresAccountCreation="true"
+								requiresPasswordChange="false">
+								<logic:equal value="true" name="userAccountForm" property="editing">
+									<td class="formCell">
+										<bean:message key="createAccount.setPassword" bundle="security" />&nbsp;
+									</td>
+									<td class="formCell"><html:checkbox property="setPassword" value="true" />
+									</td>
+								</logic:equal>
+							</security:checkUserDatabaseSupport>
+						</tr>
+						<tr class="formCheckbox">
+							<td class="label">
+								<bean:message key="createAccount.enabled" bundle="security" />
+							</td>
+							<td class="value"><html:checkbox property="enabled" value="true" />&nbsp;</td>
+						</tr>
+						<tr class="formMultiEntry">
+							<td colspan="2">		
+								<security:databaseWriteEnabledTest databaseWriteEnabled="true">											
+									<input:multiEntryListBox 
+									tabindex="2" 
+									entryTitleKey="createAccount.roleEntry.title" 
+		                  			indicator="roleThrobber"
+									targetTitleKey="createAccount.roles.title" 
+									addKey="createAccount.addRole" 
+									removeKey="createAccount.removeRole" 
+									bundle="security" 
+									styleClass="multiEntry" 
+									entryName="role"
+									entryStyleClass="form-autocomplete"
+									name="userAccountForm" 
+									property="selectedRoles"/>
+								</security:databaseWriteEnabledTest>	
+								<security:databaseWriteEnabledTest databaseWriteEnabled="false">
+									<input:multiEntryListBox 
+									disabled="true"
+									tabindex="2" 
+									entryTitleKey="createAccount.roleEntry.title" 
+									targetTitleKey="createAccount.roles.title" 
+		                  			indicator="roleThrobber"
+									addKey="createAccount.addRole" 
+									removeKey="createAccount.removeRole" 
+									bundle="security" 
+									styleClass="multiEntry" 
+									entryName="role"
+									entryStyleClass="form-autocomplete"
+									name="userAccountForm" 
+									property="selectedRoles"/>
+								</security:databaseWriteEnabledTest>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</tabs:tab>
+			<logic:iterate indexId="categoryIdx" name="userAccountForm" property="categoryIds" id="category" type="java.lang.String">							
+				<tabs:tab tabName="<%= category %>">
+					<table class="dialog_form_table">
+						<tbody>							
+							<logic:iterate id="attributeValueItem" name="userAccountForm" property="attributeValueItems"
+										type="com.adito.properties.attributes.AttributeValueItem" indexId="idx">								
+								<logic:equal name="attributeValueItem" property="categoryId" value="<%= category %>">									
+									<tiles:insert page="/WEB-INF/jsp/content/properties/attributeValue.jspf" flush="false">
+										<tiles:put name="rowIdx" value="<%= idx %>"/>
+										<tiles:put name="items" beanName="userAccountForm" beanProperty="attributeValueItems"/>
+									</tiles:insert>			
+								</logic:equal>
+							</logic:iterate>
+						</tbody>
+					</table>		
+				</tabs:tab>
+			</logic:iterate>
+		</tabs:tabSet>
+		<div class="button_bar">
+			<div class="formButton">
+				<input class="save" type="submit" onClick="return setActionTarget('commit');"
+					value="<bean:message key='createAccount.commit' bundle='security'/>" />
+			</div>
+			<div class="formButton">
+				&nbsp;<input class="cancel" type="submit" onclick="return setActionTarget('cancel');" value="<bean:message key='createAccount.cancel' bundle='security' />" />
+			</div>
+		</div>
+	</core:form>                   
+	<ajax:autocomplete source="entryValue_selectedRoles"
+	                   target="entryValue_selectedRoles"
+	                   baseUrl="${contextPath}/ajaxListRoles.do"
+	                   className="autocomplete"
+				   	   parser="new ResponseXmlParser()"
+	                   parameters="role={entryValue_selectedRoles}"
+	                   indicator="roleThrobber"
+	                   minimumCharacters="1"/>
+</div>

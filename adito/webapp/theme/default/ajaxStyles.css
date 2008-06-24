@@ -1,0 +1,39 @@
+/*
+
+   WARNING - Please Do not change these styles lightly. They affect a *lot*.
+   It may be more approriate for you to overide your individual page styles
+   in pageStyles.css and wizardStyles.ss
+
+*/
+
+/* Autocomplete */
+
+.autocomplete {
+  position: absolute;
+  color: #000000;
+  background-color: #feffc3;
+  border: 1px solid #dcdcdc;
+  overflow: hidden;
+  z-index: 99999;
+}
+
+.autocomplete ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  overflow: auto;
+}
+
+.autocomplete li {
+  display: block;
+  white-space: nowrap;
+  cursor: pointer;
+  margin: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.autocomplete li.selected {
+  color: white;
+  background-color: #3d649e;
+}

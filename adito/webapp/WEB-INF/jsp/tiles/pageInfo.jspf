@@ -1,0 +1,33 @@
+<%@ page import="com.adito.security.Constants" %>
+<%@ page import="com.adito.core.BundleActionMessage" %>
+<%@ page import="org.apache.struts.Globals" %>
+<%@ page import="org.apache.struts.action.ActionMessage" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+
+<tiles:useAttribute name="resourceBundle" classname="java.lang.String"/>
+<tiles:useAttribute name="resourcePrefix" classname="java.lang.String"/>
+<tiles:useAttribute name="infoImage" classname="java.lang.String"/>
+<tiles:useAttribute name="info" classname="java.lang.String"/>
+
+<logic:notEmpty name="info">
+	<input:frame styleId="component_pageInfo">
+	    <table>
+	      <tr>
+	        <td valign="top">
+		      <img class="infoImage" align="left" src="<core:themePath/>/images/info/<%= infoImage %>" />
+		    </td>
+		    <td>
+		      <h1>
+			    <bean:message key="<%= resourcePrefix + ".subtitle" %>" bundle="<%= resourceBundle %>" />
+		      </h1>
+		      <bean:message key="<%= resourcePrefix + ".description" %>" bundle="<%= resourceBundle %>" />
+		    </td>
+		  </tr>
+		</table>
+	</input:frame>
+</logic:notEmpty>

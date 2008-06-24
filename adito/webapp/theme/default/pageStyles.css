@@ -1,0 +1,1313 @@
+/*
+
+   This is the correct place for customising styles for all pages. 
+
+*/ /* General styles */
+#noResources {
+	padding: 8px;
+	text-align: left;
+}
+
+/* About */
+div#page_about {
+	
+}
+
+div#page_about .titled_dialog_content {
+	margin-top: 24px;
+}
+
+div#page_about .titled_dialog_content td {
+	text-align: center;
+	padding-top: 8px;
+	margin-top: 24px;
+}
+
+div#page_about .titled_dialog_content td img {
+	border-style: none;
+}
+
+/* Properties page */
+div#page_properties {
+	margin-left: auto;
+	max-width: 64em;
+	margin-right: auto;
+	text-align: left;
+}
+
+div#page_properties #subCategories td {
+	padding: 4px 8px 4px 8px;
+}
+
+div#page_properties #subCategories td.link {
+	width: 20%;
+	text-align: center;
+}
+
+div#page_properties #subCategories td.link img {
+	border: 0;
+}
+
+div#page_properties #subCategories td.link a,div #page_properties #subCategories td.link a:visited,div #page_properties #subCategories td.link a:link,div #page_properties #subCategories td.link a:hover {
+	width: 20%;
+	font-weight: bold;
+	border: 0px;
+	text-align: center;
+}
+
+div#page_properties #subCategories td.link a:hover {
+	text-decoration: underline;
+}
+
+div#page_properties #subCategories td.description {
+	text-align: left;
+	width: 80%;
+}
+
+div#page_properties .button_bar {
+	text-align: left;
+	margin-top: 8px;
+}
+
+div#page_properties #propertyItems {	
+	padding: 4px;
+}
+
+div#page_properties #propertyItems table {
+	table-layout: fixed;
+	overflow: hidden;
+}
+
+div#page_properties #propertyItems td.label {
+	padding-left: 12px;
+	width: 30%;
+}
+
+div#page_properties #propertyItems td.value {
+	width: 70%;
+}
+
+/* Profiles */
+div#page_profiles {
+	
+}
+
+div#page_profiles #personal {
+	padding-top: 8px;
+}
+
+div#page_profiles #pager_personalProfiles .resource_table thead tr, div#page_profiles #pager_personalProfiles .resource_table tfoot tr {
+	background-color: gray;
+}
+
+/* Property profile */
+div#page_propertyProfile {
+	margin: 0 auto;
+	text-align: left;
+	width: 38em;
+}
+
+div#page_propertyProfile .dialog_form_table td.label {
+	width: 25%;
+}
+
+div#page_propertyProfile .dialog_form_table td.value {
+	width: 75%;
+}
+
+div#page_propertyProfile .tabPanel .tabContent {
+	min-height: 18em;
+}
+
+/* Generic Error Page */
+
+div#page_error {
+	margin: 6em auto;
+	text-align: left;
+	width: 36em;
+}
+
+div#page_error td.icon {
+	padding: 8px;
+}
+
+div#page_error .dialog_form_table tfoot td {
+	padding: 8px;
+}
+
+div#page_error .exceptionText {
+	overflow: scroll; 
+	width: 100% ; 
+	height: 14em; 
+	background-color: white; 
+	border: 1px solid black;
+}
+
+/* License agreement */
+div#page_licenseAgreement {
+	margin: 6em auto;
+	text-align: left;
+	width: 44em;
+}
+
+div#page_licenseAgreement td.icon {
+	padding: 8px;
+}
+
+div#page_licenseAgreement td.text {
+	padding: 1em;
+	margin: 1em;
+}
+
+div#page_licenseAgreement #licenseAgreement {
+	font-size: 10pt;
+	width: 460px;
+	height: 280px;
+	overflow: auto;
+	text-align: left;
+	border-width: 1px;
+	border-color: #000000;
+	border-style: solid;
+	margin: 0 auto;
+	padding: 4px;
+	background: #ffffff;
+	color: #000000;
+}
+
+/* Session download history. */
+div#page_redirect_temp_downloads {
+	margin: 6em auto;
+	text-align: left;
+	width: 33em;
+}
+
+div#page_redirect_temp_downloads td.text {
+	padding: 1em;
+	margin: 1em;
+}
+
+/* General Confirm Page */
+div#page_confirm {
+	margin: 6em auto;
+	text-align: left;
+	width: 40em;
+	max-width: 40em;
+}
+
+div#page_confirm td.icon {
+	padding: 8px;
+}
+
+div#page_confirm td.text {
+	padding-top: 0.5em;
+}
+
+div#page_confirm .exceptionText {
+	padding-top: 0.5em;
+	text-align: left;
+}
+
+div#page_confirm .exceptionMessage {
+	text-align: left;
+}
+
+div#page_confirm .titled_dialog_content td.exceptionMessage {
+	padding: 0.5em 0 0.5em 0;
+	text-align: left;
+}
+
+div#page_confirm .traceMessage {
+	text-align: left;
+	font-size: 0.9em;
+}
+
+div#page_confirm .traceMessage pre {
+	height: 10em;
+	overflow: scroll;
+	background-color: #ededed;
+	font-size: 1em;
+	margin: 0;
+	padding: 0;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #dcdcdc;
+	float: left; /* not sure this is needed anymore */
+	
+}
+
+/* File Download Confirm Page */
+div#page_fileDownload {
+	margin: 6em auto;
+	text-align: left;
+	width: 36em;
+}
+
+div#page_fileDownload .titled_dialog_content td.exceptionMessage {
+	padding: 0;
+}
+
+div#page_fileDownload .titled_dialog_content td.traceMessage {
+	max-width: 34em;
+}
+
+div#page_fileDownload .downloadWarning {
+	color: #cc0000;
+	font-weight: bold;
+}
+
+/* Property items */
+#propertyItems tr a,#propertyItems tr a:visited,#propertyItems tr a:link,#propertyItems tr a:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+}
+
+/* Styles for other individual page components */
+div#page_favorites {
+	
+}
+
+div#page_favorites .resource_table td {
+	
+}
+
+div#page_favorites .resource_table td.name {
+	white-space: nowrap;
+	overflow: hidden;
+	text-align: left;
+}
+
+div#page_favorites .resource_table td.resourceClass {
+	text-align: left;
+	width: 10em;
+	max-width: 10em;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+div#page_favorites .resource_table td.subType {
+	text-align: left;
+	width: 8em;
+	max-width: 8em;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+div#page_favorites .resource_table td.actions {
+	text-align: left;
+	width: 120px;
+	max-width: 120px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+/* Authentication */
+
+#siteName {
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.2em;
+	margin-bottom: 1.5em;
+}	
+
+#welcomeMessage {
+	margin-top: 3em;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50em;
+}
+
+#welcomeMessage td.label {
+	vertical-align: top;
+	text-align: center;
+}
+
+#welcomeMessage td.justify {
+	vertical-align: top;
+	text-align: justify;
+}
+
+#welcomeMessage td.center {
+	vertical-align: top;
+	text-align: center;
+}
+#welcomeMessage img {
+	
+	text-align: center;
+}
+
+div#page_login_user_password {
+	width: 24em;
+	max-width: 36em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div#page_login_user_password inner {
+	width: 24em;
+}
+
+div#page_login_user_password input.username,div #page_login_user_password input.password {
+	width: 100%;
+}
+
+div#page_login_personal_questions {
+	width: 28em;
+	max-width: 36em;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+div#page_login_http {
+	width: 28em;
+	max-width: 36em;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+div#page_select_auth_scheme {
+	width: 28em;
+	max-width: 36em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div#page_change_password {
+	width: 28em;
+	max-width: 32em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div#page_change_password .dialog_form_table{
+	width: 95%;
+}
+
+div#page_set_personal_answers {
+	width: 28em;
+	max-width: 32em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Select property profile */
+div#page_select_property_profile {
+	width: 28em;
+	max-width: 36em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div#page_select_property_profile td.label {
+	width: 25%;
+}
+
+div#page_select_property_profile td.value {
+	width: 75%;
+}
+
+div#page_select_property_profile tr.formCombo select {
+	width: 100%;
+}
+
+div#page_select_property_profile tr.formCheckbox td {
+	text-align: center;
+}
+
+/* Extension Store */
+#page_configureExtensions .tabPanel .tabContent {
+}
+
+#page_configureExtensions .filtered_resources {
+	background-color: white;
+}
+
+div#page_configureExtensions #notConnected {
+	margin-bottom: 1em;
+}
+
+div#page_extensionStoreContent {
+}
+
+div#page_extensionStoreContent td.name {
+	overflow: hidden;
+	text-align: left;
+	white-space: nowrap;
+}
+
+div#page_extensionStoreContent td.status {
+	width: 30px;
+}
+
+div#page_extensionStoreContent td.actions {
+	width: 100px;
+}
+
+/* Shutdown */
+div#page_shutdown {
+	width: 28em;
+	max-width: 32em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div#page_shutdown .dialog_form_table {
+	margin: 4px;
+}
+
+div#page_shutdown .dialog_form_table td.label {
+	width: 25%;
+}
+
+div#page_shutdown .dialog_form_table td.value {
+	width: 75%;
+}
+
+div#page_shutdown .dialog_form_table tr.formBlock td {
+	text-align: center;
+}
+
+div#page_shutdown .dialog_form_table tr.formBlock input {
+	text-align: right;
+	padding-left: 8px;
+	width: 4em;
+}
+
+div#page_shutdown .formRadio .label {
+	text-align: right;
+}
+
+div#page_shutdown .formRadio .value {
+	text-align: left;
+	padding-left: 8px;
+}
+
+/* Accounts Content */
+div#page_accounts {
+	
+}
+
+div#page_accounts .dialog_content_table .filter {
+	text-align: left;
+}
+
+div#page_accounts .dialog_content_table .view {
+	width: 26em;
+}
+
+div#page_accounts td.status {
+	width: 7em;
+	max-width: 7em;
+}
+
+div#page_accounts td.account {
+	min-width: 10em;
+	white-space: nowrap;
+}
+
+div#page_accounts td.type {
+	
+}
+
+div#page_accounts td.action {
+	width: 100px;
+	max-width: 100px;
+}
+
+/* Account Content */
+div#page_account {
+	width: 38em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div#page_account .tabContent {
+	min-height: 22em;
+}
+
+div#page_account .dialog_form_table {
+	width: 100%;
+}
+
+div#page_account .dialog_form_table td.label {
+	width: 35%;
+}
+
+div#page_account .dialog_form_table tr.formMultiEntry select {
+	height: 10em;
+}
+
+div#page_account .dialog_form_table td.value {
+	width: 65%;
+}
+
+div#page_account tr.formMultiEntry,div #page_account tr.formMultiEntry td {
+	vertical-align: top;
+}
+
+div#page_account .confidential {
+	font-style: italic;
+}
+
+/* IP Restrictions */
+div#page_ip_restrictions {
+	
+}
+
+div#page_ip_restrictions td.address {
+	
+}
+
+div#page_ip_restrictions td.type {
+	width: 5em;
+	max-width: 5em;
+}
+
+div#page_ip_restrictions td.actions {
+	width: 92px;
+	max-width: 92px;
+}
+
+div#page_ip_restriction .dialog_form_table {
+	margin: 4px 8px 4px 8px;
+}
+
+div#page_ip_restriction {
+	width: 38em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div#page_ip_restriction tr.formBlock td.value {
+	padding-left: 5em;
+}
+
+/* Policy */
+
+
+div#page_policies .component_resourceList {
+	padding-top: 12px;	
+}
+
+div#page_policies .dialog_content_table .filter {
+	text-align: left;
+}
+
+div#page_policies .dialog_content_table .view {
+	width: 26em;
+}
+
+div#page_policies td.actions {
+	width: 100px;
+	max-width: 100px;
+}
+
+div#page_policy {
+	margin: 0 auto;
+	text-align: left;
+	width: 38em;
+}
+
+div#page_policy .dialog_form_table .formTextArea textarea {
+	height: 19em;
+}
+
+div#page_policy .dialog_form_table td.label {
+	width: 25%;
+}
+
+div#page_policy .dialog_form_table td.value {
+	width: 75%;
+}
+
+div#page_policy .tabPanel .tabContent {
+	min-height: 23em;
+}
+
+/* Access Rights List */
+
+div#page_accessRightsList .component_resourceList {
+	padding-top: 12px;	
+}
+
+div#page_accessRightsList thead td {
+	text-align: left;
+}
+
+div#page_accessRightsList td.name {	
+}
+
+div#page_accessRightsList td.permissionClass {
+	width: 6em;
+	max-width: 6em;
+}
+
+div#page_accessRightsList td.policies {
+	width: 15em;
+	max-width: 15em;
+}
+
+div#page_accessRightsList td.onwardDelegatable {
+	width: 5em;
+	max-width: 5em;
+}
+
+div#page_accessRightsList td.actions {
+	width: 100px;
+	max-width: 100px;
+}
+
+div#page_accessRightsList #permitting {
+	margin-top: 12px;
+}
+
+div#page_accessRightsList #permitting .resource_table thead tr {
+	background-color: gray;
+	color: white;
+	font-weight: bold;
+}
+
+div#page_accessRightsList #permitting .resource_table tfoot tr {
+	background-color: gray;
+	color: white;
+	font-weight: bold;
+}
+
+/* Access Rights */
+
+div#page_accessRights {
+	margin: 0 auto;
+	text-align: left;
+	width: 97%;
+}
+
+div#page_accessRights .tabPanel .tabContent {
+	min-height: 20em;
+	height: 21em;
+}
+
+div#page_accessRights table {
+	width: 100%;
+	table-layout: fixed;
+}
+
+div#page_accessRights #availablePermissions {
+	width: 100%;
+}
+
+div#page_accessRights #selectedPermissions {
+	width: 100%;
+}
+
+div#page_accessRights .label {
+	width: 30%;
+}
+
+div#page_accessRights .value {
+	width: 50%;
+}
+
+div#page_accessRights .action {
+	text-align: center;
+	width: 20%;
+}
+
+div#page_accessRights .formSelect {
+	vertical-align: top;
+}
+
+div#page_accessRights .formSelect .action input {
+	width: 80%;
+}
+
+/* Roles */
+div#page_roles {
+	
+}
+
+div#page_roles td.role {
+	
+}
+
+div#page_roles td.actions {
+	width: 70px;
+	max-width: 70px;
+}
+
+/* Role */
+
+div#page_role {
+	width: 36em;
+	max-width: 36em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div#page_role .accounts {
+	padding-bottom: 1em;
+}
+
+/* Status */
+
+div#page_status .filtered_resources {
+	background-color: white;
+}
+
+/* System information */
+
+#page_status .tabPanel .tabContent {
+}
+
+/* User sessions */
+
+
+#page_userSessions {
+}
+
+#page_userSessions td.user {
+	overflow: hidden;
+	text-align: left;
+	white-space: nowrap;
+}
+
+#page_userSessions td.actions {
+	width: 100px;
+}
+
+/* System Info */
+
+#page_systemInfo {
+}
+
+/* Message Queue */
+div#page_messageQueue .resource_table {
+	margin-bottom: 16px;
+}
+
+div#page_messageQueue .resource_table td.id {
+	width: 8%;
+	text-align: center;
+}
+
+div#page_messageQueue .resource_table td.sink {
+	width: 10%;
+	text-align: center;
+}
+
+div#page_messageQueue .resource_table td.subject {
+	width: 28%;
+	text-align: center;
+}
+
+div#page_messageQueue .resource_table td.recipients {
+	width: 19%;
+	text-align: center;
+}
+
+div#page_messageQueue .resource_table td.urgent {
+	width: 10%;
+	text-align: center;
+}
+
+div#page_messageQueue .resource_table td.attempts {
+	width: 10%;
+	text-align: center;
+}
+
+div#page_messageQueue .resource_table td.lastAttempts {
+	width: 15%;
+	text-align: center;
+}
+
+div#page_messageQueue .resource_table tbody td.id {
+	text-align: right;
+}
+
+div#page_messageQueue #messageSinks {
+	margin-bottom: 16px;
+}
+
+div#page_messageQueue #messageSinks table {
+	table-layout: fixed;
+}
+
+div#page_messageQueue #messageSinks td.action {
+	text-align: left;
+	width: 20%;
+}
+
+div#page_messageQueue #messageSinks td.action input {
+	width: 80%;
+}
+
+div#page_messageQueue #messageSinks td.description {
+	text-align: left;
+	width: 80%;
+}
+
+div#page_messageQueue .resource_table tbody td.subject {
+	text-align: left;
+}
+
+/* Send Message */
+div#page_sendMessage {
+	margin: 0 auto;
+	text-align: left;
+	width: 39em;
+}
+
+div#page_sendMessage .tabContent {
+	min-height: 24em;
+}
+
+div#page_sendMessage .dialog_form_table td.label {
+	width: 25%;
+}
+
+div#page_sendMessage .dialog_form_table td.value {
+	width: 75%;
+}
+
+/* Replacements */
+div#page_replacements {
+	
+}
+
+div#page_replacements .dialog_content {
+	width: 100%;
+	margin-bottom: 16px;
+}
+
+div#page_replacements table.resource_table {
+	margin-bottom: 8px;
+	padding: 2px 2px 2px 2px;
+	width: 100%;
+	table-layout: fixed;
+	overflow: hidden;
+}
+
+div#page_replacements table.site_table {
+	margin-bottom: 4px;
+	padding: 1px 1px 1px 1px;
+	width: 100%;
+	table-layout: fixed;
+}
+
+div#page_replacements .site_table tbody td.siteEntry {
+	text-align: left;
+	width: 80%;
+	overflow: hidden;
+}
+
+div#page_replacements .site_table tbody td.siteAction {
+	text-align: left;
+	width: 15px;
+	max-width: 15px;
+}
+
+div#page_replacements .resource_table td {
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+div#page_replacements .resource_table tr {
+	vertical-align: middle;
+}
+
+div#page_replacements .resource_table tbody td.replaceTitle {
+	text-align: left;
+	background-color: #3d649e;
+	width: 6em;
+	max-width: 6em;
+	color: white;
+}
+
+div#page_replacements .resource_table tbody td.markTitle {
+	text-align: left;
+	background-color: #3d649e;
+	width: 50px;
+	max-width: 50px;
+	color: white;
+}
+
+div#page_replacements .resource_table tbody td.mimeTitle {
+	text-align: left;
+	background-color: #3d649e;
+	width: 14em;
+	max-width: 14em;
+	color: white;
+}
+
+div#page_replacements .resource_table tbody td.siteTitle {
+	text-align: left;
+	background-color: #3d649e;
+	width: 55%;
+	color: white;
+}
+
+/* Replacement */
+div#page_replacement {
+	width: 40em;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	table-layout: fixed;
+}
+
+div#page_replacement .formText input {
+	width: 100%;
+}
+
+div#page_replacement .dialog_form_table td.label {
+	width: 25%;
+}
+
+div#page_replacement .dialog_form_table td.value {
+	width: 75%;
+}
+
+/* Key Store */
+div#page_keyStore {
+	
+}
+
+div#page_keyStore .dialog_content_table .filter {
+	text-align: left;
+}
+
+div#page_keyStore .dialog_content_table .view {
+	width: 26em;
+}
+
+div#page_keyStore .filtered_resources td.alias {
+	overflow: hidden;
+	text-align: left;
+	white-space: nowrap;
+}
+
+div#page_keyStore .filtered_resources td.type {
+	width: 10em;
+	max-width: 10em;
+}
+
+div#page_keyStore .filtered_resources td.actions {
+	width: 80px;
+	max-width: 60px;
+}
+
+.keyStorePageOptionItem a, .keyStorePageOptionItem a:visited, .keyStorePageOptionItem a:link, .keyStorePageOptionItem a:hover {
+	text-decoration: none;
+	color: black;
+	display: block;
+	font-weight: normal;
+	width: 100%;
+	background-color: #f4f4f4;
+	color: #000000;
+	margin: 0;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.keyStorePageOptionItem a:hover {
+	background-color: #3d649e;
+	color: #ffffff;
+}
+
+/* Key Store Information */
+
+div#page_keyStoreInformation h3 {
+	text-align: left;
+	font-size: 1.2em;	
+	margin: 0.4em 0 0 0.4em;
+}
+
+div#page_keyStoreInformation .label {
+	width: 10em;
+}
+div#page_keyStoreInformation .value {
+}
+
+/* VPN Client */
+div#page_launchAgent, div.page_launchViaAgentApplet {
+	width: 260px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.page_launchViaAgentApplet .noJava {
+	margin: 8px;
+}
+
+/* Authentication schemes */
+
+div#page_authenticationSchemes .component_resourceList {
+	padding-top: 12px;	
+}
+
+div#page_authenticationSchemes td.enabled {
+	text-align: center;
+	width: 6em;
+}
+
+div#page_authenticationSchemes td.priority {
+	text-align: center;
+	width: 6em;
+}
+
+div#page_authenticationSchemes td.actions {
+	width: 150px;
+	max-width: 150px;
+}
+
+/* Authentication scheme */
+div#page_authenticationScheme {
+	margin: 0 auto;
+	text-align: left;
+	width: 42em;
+}
+
+div#page_authenticationScheme .dialog_form_table td.label {
+	width: 25%;
+}
+
+div#page_authenticationScheme .dialog_form_table td.value {
+	width: 75%;
+}
+
+div#page_authenticationScheme .tabPanel .tabContent {
+	height: 22em;
+}
+
+div#page_authenticationScheme #tab_panel_policies select {
+	height: 18em;
+}
+
+/* Attribute Definitions */
+div#page_attributeDefinitions {
+	margin: 0 auto;
+	text-align: left;
+}
+
+div#page_attributeDefinitions .dialog_content {
+	width: 100%;
+}
+
+div#page_attributeDefinitions .resource_table td {
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+div#page_attributeDefinitions td.name {
+	width: 75%;
+}
+
+div#page_attributeDefinitions td.tableMessage {
+	overflow: visible;
+	white-space: normal;
+}
+
+div#page_attributeDefinitions td.actions {
+	width: 25%;
+}
+
+/* User Attribute Definition */
+div#page_attributeDefinition {
+	margin: 0 auto;
+	text-align: left;
+	width: 45em;
+}
+
+div#page_attributeDefinition .dialog_form_table td.label {
+	width: 25%;
+}
+
+div#page_attributeDefinition .dialog_form_table tr.formTextArea textarea {
+	width: 75%;
+	height: 8em;
+}
+
+div#page_attributeDefinition .dialog_form_table td.value {
+	width: 75%;
+}
+
+/* User Attributes */
+div#page_attributes {
+	margin: 0 auto;
+	text-align: left;
+	width: 38em;
+}
+
+div#page_attributes .dialog_form_table td.label {
+	width: 25%;
+}
+
+div#page_attributes .dialog_form_table td.value {
+	width: 75%;
+}
+
+/* Private key passphrase */
+div#page_update_private_key_passphrase {
+	width: 28em;
+	max-width: 32em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#page_update_private_key_passphrase .label {
+	width: 30%;
+}
+
+#page_update_private_key_passphrase .formPassword input {
+	width: 100%;
+}
+
+page_update_private_key_passphrase .value {
+	width: 70%;
+}
+
+#page_update_private_key_passphrase .formCheckbox .label {
+	padding-top: 6px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+#page_update_private_key_passphrase .formCheckbox input {
+	padding-top: 6px;
+	vertical-align: middle;
+}
+
+div#page_prompt_for_private_key_passphrase {
+	width: 28em;
+	max-width: 32em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Prompt for session password */
+div#page_prompt_for_session_password {
+	width: 28em;
+	max-width: 32em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Prompt for new key password */
+div#page_prompt_for_new_key_password {
+	width: 28em;
+	max-width: 32em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Upload */
+
+div#page_upload {
+	margin: 0 auto;
+	text-align: left;
+	width: 36em;
+}
+
+/* Redirect */
+
+div#page_redirect {
+	margin-top: 4em;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: left;
+	width: 36em;
+}
+
+div#page_redirect img {
+	text-align: left;
+	vertical-align: middle;
+}
+
+div#page_redirect .dialog_content {
+	margin: 8px;
+	padding: 8px;
+}
+
+/* Resource Information */
+
+div#page_resourceInformation h3 {
+	text-align: left;
+	font-size: 1.2em;	
+	margin: 0.4em 0 0 0.4em;
+}
+
+div#page_resourceInformation .label {
+	width: 10em;
+}
+div#page_resourceInformation .value {	
+}
+
+div#page_resourceInformation .attachedPolicies {
+	margin-top: 0.7em;
+	margin-left: 1em;
+}
+
+div#page_resourceInformation .policies {
+	margin-top: 0.4rm;
+	border-left: 1px solid #dddddd;
+	padding-left: 0.6em;
+	vertical-align: top;
+}
+
+div#page_resourceInformation .details {
+	border-top: 1px solid #dddddd;
+}
+
+
+/* Account Information */
+
+div#page_accountInformation h3 {
+	text-align: left;
+	font-size: 1.2em;	
+	margin: 0.4em 0 0 0.4em;
+}
+
+div#page_accountInformation .label {
+	width: 10em;
+}
+div#page_accountInformation .value {
+}
+
+/* Role Information */
+
+div#page_roleInformation h3 {
+	text-align: left;
+	font-size: 1.2em;	
+	margin: 0.4em 0 0 0.4em;
+}
+
+div#page_roleInformation .label {
+	width: 10em;
+}
+div#page_roleInformation .value {
+}
+
+/* Install shutdown */
+
+/* VPN Client */
+
+div#page_installShutdown {
+	width: 16em;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	vertical-align: middle;
+}
+
+div#page_installShutdown .dialog_content {
+	vertical-align: center;
+	height: 4em;
+}
+
+div#page_installShutdown .dialog_content #shutdownMessage {
+	vertical-align: middle;
+	height: 100%;
+	padding: 1em;
+}

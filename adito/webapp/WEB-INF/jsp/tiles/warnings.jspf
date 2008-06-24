@@ -1,0 +1,22 @@
+<%@ page import="com.adito.security.Constants" %>
+<%@ page import="com.adito.core.BundleActionMessage" %>
+<%@page import="org.apache.struts.action.ActionMessage"%>
+<jsp:directive.page import="com.adito.core.CoreUtil"/>
+<jsp:directive.page import="com.adito.security.SessionInfo"/>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+
+<tiles:useAttribute ignore="true" name="resourceBundle" classname="java.lang.String"/>
+<tiles:useAttribute ignore="true" name="displayGlobalWarnings" classname="java.lang.String"/>
+    
+<logic:notEmpty scope="request" name="<%= Constants.REQ_ATTR_WARNINGS %>">	
+	<%@ include file="/WEB-INF/jsp/tiles/warningsBlock.jspf" %>
+</logic:notEmpty>
+<logic:empty scope="request" name="<%= Constants.REQ_ATTR_WARNINGS %>">	
+	<logic:equal name="displayGlobalWarnings" value="true">
+		<logic:notEmpty name="<%= Constants.SESSION_GLOBAL_WARNINGS %>">	
+			<%@ include file="/WEB-INF/jsp/tiles/warningsBlock.jspf" %>
+		</logic:notEmpty>
+	</logic:equal>
+</logic:empty>

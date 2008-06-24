@@ -1,0 +1,15 @@
+<providers>
+    <default-provider class-name="org.apache.commons.vfs.provider.url.UrlFileProvider">
+    </default-provider>
+    <provider class-name="org.apache.commons.vfs.provider.local.DefaultLocalFileProvider">
+        <scheme name="file"/>
+    </provider>
+     <provider class-name="org.apache.commons.vfs.provider.ftp.FtpFileProvider">
+        <scheme name="ftp"/>
+        <if-available class-name="org.apache.commons.net.ftp.FTPFile"/>
+    </provider>
+    <provider class-name="org.apache.commons.vfs.provider.smb.SmbFileProvider">
+        <scheme name="smb"/>
+        <if-available class-name="jcifs.smb.SmbFile"/>
+    </provider>
+</providers>

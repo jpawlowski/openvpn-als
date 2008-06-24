@@ -1,0 +1,71 @@
+Adito - README
+=====================
+
+  An SSL-based VPN server supporting Microsoft Windows and Linux.
+
+  Version 0.1.12
+  -----------------
+  http://localhost/
+
+    Copyright (C) 2002-2005 3SP Ltd 
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License version 2,
+    as published by the Free Software Foundation.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+  Requirements:
+	- Microsoft Windows XP, 2000, 2003 or later
+	- or Red Hat Linux 8.0 or later (other Linux distros not officially supported)
+	- 150 MB free hard disk space
+	- Java 1.5 JRE (installed automatically upon setup)
+
+  Summary:
+    Adito is a fully featured SSL VPN solution that supports a large proportion of 
+    the features touted by mainstream vendors today.  
+
+    Features of Adito:
+	- No limitations on number of simultaneous users
+	- Convenient remote access through Windows Explorer to shares using Microsoft WebFolders
+	- Supports Microsoft Outlook Web Access
+	- Web-based Microsoft Windows filesystem browser
+	- Access your desktop remotely
+	- Access intranet resources remotely using web forwarding.
+	- Integrates with your Microsoft Windows Active Directory account database
+	- Built-in database for user authentication
+	- Configure multiple profiles for access depending on your location
+	- Accessible using zero-footprint VPN client
+	- Connect using any SSL-enabled browser
+	- Supports access through HTTP proxy
+
+  Product Page:
+    The products website is located at http://localhost/
+
+  Download:
+    You can get the newest version at http://sourceforge.net/projects/adito/.
+
+  Credits:
+    Please see the Documentation.txt/.html file.
+
+  Installation:
+    Please see the webapp/doc/SSL_Explorer_Reference_Guide.pdf file.
+
+  ChangeLog:
+    Please see the CHANGES file
+
+  Documentation:
+    Please see the http://localhost/products/adito/documentation/Adito_Administrators_Guide.pdf
+
+  Support:
+    See commercial support options under http://localhost/showAdito.do
+
+    Enjoy the software!
+        The 3SP Team

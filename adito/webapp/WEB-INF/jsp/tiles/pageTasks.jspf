@@ -1,0 +1,19 @@
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+
+<logic:notEmpty name="pageTasks">	
+	<input:frame titleKey="messages.pageTasks" bundle="navigation" styleClass="component_messageBox" panelId="pageTasks">
+		<div class="messages">
+			<logic:iterate id="rootMenuItem" name="pageTasks" type="com.adito.core.AvailableMenuItem">			
+				<div class="text">
+					<input:toolTip target="<%= rootMenuItem.getMenuItem().getTarget() %>" key="<%= "pageTask." + rootMenuItem.getMenuItem().getId() + ".description"  %>"
+									  bundle="<%= rootMenuItem.getMenuItem().getMessageResourcesKey() %>"
+									  href="<%= rootMenuItem.getPath() %>">
+						<bean:message key="<%= "pageTask." + rootMenuItem.getMenuItem().getId() + ".title"  %>" bundle="<%= rootMenuItem.getMenuItem().getMessageResourcesKey() %>"/>
+					</input:toolTip>
+				</div>
+			</logic:iterate>
+		</div>
+	</input:frame>	
+</logic:notEmpty>

@@ -1,0 +1,48 @@
+<%@ page import="com.adito.install.forms.InstallationSummaryForm" %>
+<%@ page import="com.adito.keystore.wizards.forms.KeyStoreImportTypeForm" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+
+<div id="wizardSummary">
+	<table border="0" cellspacing="0" border="0">
+		<tr class="formBlock">
+			<td class="label" colspan="2">
+				<bean:message key="keyStoreImportWizard.keyStoreImportSummary.import" bundle="keystore"/>
+			</td>
+		</tr>
+		<tr class="formLabel">
+			<td class="label">
+				<bean:message key="keyStoreImportWizard.keyStoreImportSummary.import.type" bundle="keystore"/>
+			</td>
+			<td class="label">
+				<bean:define id="importType" name="keyStoreImportSummaryForm" property="importType" type="com.adito.keystore.wizards.AbstractKeyStoreImportType"/>
+				<bean:message key="<%= "keyStoreImportType." + importType.getName() + ".summary" %>" bundle="<%= importType.getBundle() %>"/>
+			</td>
+		</tr>
+		<logic:notEmpty name="keyStoreImportSummaryForm" property="alias">
+			<tr class="formLabel">
+				<td class="label">
+					<bean:message key="keyStoreImportWizard.keyStoreImportSummary.alias" bundle="keystore"/>
+				</td>
+				<td class="value">
+					<bean:write name="keyStoreImportSummaryForm" property="alias"/>
+				</td>
+			</tr>
+		</logic:notEmpty>
+		<tr class="formBlock">
+			<td class="label" colspan="2">
+				<bean:message key="keyStoreImportWizard.keyStoreImportSummary.file" bundle="keystore"/>
+			</td>
+		</tr>
+		<tr class="formLabel">			
+			<td class="label">
+				<bean:message key="keyStoreImportWizard.keyStoreImportSummary.file.filename" bundle="keystore"/>
+			</td>
+			<td class="value">
+				<bean:write name="keyStoreImportSummaryForm" property="filename"/>
+			</td>
+		</tr>
+	</table>
+</div>

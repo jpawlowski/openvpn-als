@@ -1,0 +1,333 @@
+<%@ page import="com.adito.security.Constants"%>
+<jsp:directive.page import="com.adito.security.SessionInfo"/>
+<jsp:directive.page import="com.adito.security.LogonControllerFactory"/>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="/server/taglibs/navigation" prefix="navigation"%>
+<%@ taglib uri="/server/taglibs/security" prefix="security"%>
+<%@ taglib uri="/server/taglibs/core" prefix="core"%>
+<%@ taglib uri="/server/taglibs/input" prefix="input"%>
+<%@ taglib uri="/server/taglibs/tabs" prefix="tabs"%>
+<%@ taglib uri="/server/taglibs/webforwards" prefix="webforwards"%>
+
+<div id="page_webForward" class="tabbedForm">
+		<html:hidden property="referer" />
+		<html:hidden property="actionTarget" />
+		<html:hidden property="_charset_" />
+		<html:hidden property="editing" />
+		<html:hidden property="resourceId" />
+		<html:hidden property="selectedTab" />
+		<bean:define id="webForwardForm" name="webForwardForm" type="com.adito.webforwards.forms.WebForwardForm"></bean:define>
+		<tabs:tabSet name="webForwardForm" bundle="webForwards" resourcePrefix="editWebForward.tab">
+			<tabs:tabHeadings />
+			<tabs:tab tabName="details">
+				<table class="dialog_form_table" >
+					<tbody>
+						<tr class="formText">
+							<td class="label">
+								<div class="required">
+									<bean:message key="editWebForward.shortName.label" bundle="webForwards" />
+								</div>
+							</td>
+							<td class="value">
+								<html:text tabindex="1" disabled="<%= webForwardForm.isAssignOnly() %>" property="resourceName"/>
+							</td>
+						</tr>
+						<tr class="formTextArea">
+							<td class="label">
+								<div class="required">
+									<bean:message key="editWebForward.description.label" bundle="webForwards" />
+								</div>
+							</td>
+							<td class="value">
+								<html:textarea styleClass="fullWidth" tabindex="2" disabled="<%= webForwardForm.isAssignOnly() %>" property="resourceDescription" />
+							</td>
+						</tr>
+						<tr class="formCheckbox">
+							<td class="label">
+								<bean:message key="editResource.addToFavorites" bundle="policyframework" />
+							</td>
+							<td class="value">
+								<html:checkbox tabindex="3" property="favorite" disabled="<%= webForwardForm.isAssignOnly() %>"/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</tabs:tab>
+			<tabs:tab tabName="attributes">
+				<table class="dialog_form_table">
+
+					<webforwards:showTunneledSite>
+						<tr class="formTextArea">
+							<td class="label">
+								<div class="required">
+									<bean:message key="webForward.lable.destination.url" bundle="webForwards" />
+								</div>
+							</td>
+							<td class="value">
+								<html:text styleId="destinationURL" styleClass="threeQuartersWidth" tabindex="1" disabled="<%= webForwardForm.isAssignOnly() %>" property="destinationURL" />
+								<input:variables inputId="destinationURL"  includeRequest="true" disabled="<%= webForwardForm.isAssignOnly() %>"/>
+							</td>
+						</tr>
+					</webforwards:showTunneledSite>
+
+					<webforwards:showreplacementProxy>
+						<tr class="formTextArea">
+							<td class="label">
+								<div class="required">
+									<bean:message key="webForward.lable.destination.url" bundle="webForwards" />
+								</div>
+							</td>
+							<td class="value">
+								<html:text styleClass="threeQuartersWidth" styleId="destinationURL" disabled="<%= webForwardForm.isAssignOnly() %>" property="destinationURL" />
+								<input:variables   includeRequest="true" inputId="destinationURL"/>
+							</td>
+						</tr>
+						<tr class="formEditableList">
+							<td class="label">
+								<bean:message key="webForward.lable.encoding" bundle="webForwards" />
+							</td>
+							<td class="value">
+								<html:select property="encoding" disabled="<%= webForwardForm.isAssignOnly() %>">
+									<html:optionsCollection value="value" label="label" property="encodeingTypeList"/>
+								</html:select>
+							</td>
+						</tr>
+						<tr class="formMultiEntry">
+							<td class="label">
+								<bean:message key="webForward.lable.restrictToHosts" bundle="webForwards" />
+							</td>
+							<td class="value">
+								<input:multiEntryListBox addKey="webForward.lable.restrictToHosts.add" removeKey="webForward.lable.restrictToHosts.remove" entryTitleKey="webForward.lable.restrictToHosts.host" targetTitleKey="webForward.lable.restrictToHosts.allowed"
+									name="webForwardForm" styleClass="multiEntry" entrySize="16" property="restrictToHosts" bundle="webForwards"  disabled="<%= webForwardForm.isAssignOnly() %>"/>
+							</td>
+						</tr>
+					</webforwards:showreplacementProxy>
+
+
+					<webforwards:showReverseProxy>
+						<tr class="formTextArea">
+							<td class="label">
+								<div class="required">
+									<bean:message key="webForward.lable.destination.url" bundle="webForwards" />
+								</div>
+							</td>
+							<td class="value">
+								<html:text styleClass="threeQuartersWidth" styleId="destinationURL" disabled="<%= webForwardForm.isAssignOnly() %>" tabindex="2" disabled="false" property="destinationURL" />
+								<input:variables   includeRequest="true" inputId="destinationURL"/>
+							</td>
+						</tr>
+						
+						<logic:equal name="webForwardForm" property="pathBased" value="true">
+							<tr class="formMultiEntry">
+								<td class="label">
+									<bean:message key="webForward.lable.paths" bundle="webForwards" />
+								</td>
+								<td class="value">
+									<input:multiEntryListBox disabled="<%= webForwardForm.isAssignOnly() %>" entryTitleKey="webForward.pathEntry.title" targetTitleKey="webForward.paths.title" addKey="webForward.addPath" removeKey="webForward.removePath" name="webForwardForm" styleClass="multiEntry" entryName="path" entrySize="16"
+										bundle="webForwards" property="paths" tabindex="2"/>
+								</td>
+							</tr>
+						</logic:equal>
+						
+						<logic:equal name="webForwardForm" property="hostBased" value="true">
+							<tr class="formCheckbox">
+								<td class="label">
+									<bean:message key="webForward.lable.active.dns" bundle="webForwards" />
+								</td>
+								<td class="value">
+									<html:checkbox name="webForwardForm" property="activeDNS" disabled="<%= webForwardForm.isAssignOnly() %>" onclick="setActionTarget('toggleActiveDns'); document.forms[0].submit(); return false" />
+								</td>
+							</tr>
+							<tr class="formTextArea">
+								<td class="label">
+									<bean:message key="webForward.lable.host.header" bundle="webForwards" />
+								</td>
+								<td class="value">
+									<html:text tabindex="2" disabled="<%= webForwardForm.isAssignOnly() || webForwardForm.isActiveDNS() %>" property="hostHeader" />
+								</td>
+							</tr>
+						</logic:equal>
+							
+						<tr class="formEditableList">
+							<td class="label">
+								<bean:message key="webForward.lable.encoding" bundle="webForwards" />
+							</td>
+							<td class="value">
+								<html:select property="encoding" disabled="<%= webForwardForm.isAssignOnly() %>">
+									<html:optionsCollection value="value" label="label" property="encodeingTypeList" />
+								</html:select>
+							</td>
+						</tr>						
+					</webforwards:showReverseProxy>
+				</table>
+			</tabs:tab>
+			<tabs:tab tabName="authentication">
+				<table class="dialog_form_table">
+					<webforwards:showTunneledSite>
+						<tr class="formTextArea">
+							<td class="label">
+							</td>
+						</tr>
+					</webforwards:showTunneledSite>
+
+					<webforwards:showreplacementProxy>
+						<tr class="formText">
+							<td class="label">
+								<bean:message key="webForward.label.authenticationType" bundle="webForwards" />
+							</td>
+							<td class="value">
+								<html:select name="webForwardForm" property="authenticationType" onchange="setActionTarget('changeAuthenticationType'); document.forms[0].submit(); return false" disabled="<%= webForwardForm.isAssignOnly() %>">
+									<html:option key="webForward.label.authentication.none" value="none" bundle="webForwards"/>
+									<html:option key="webForward.label.authentication.form" value="form" bundle="webForwards"/>
+									<html:option key="webForward.label.authentication.http" value="http" bundle="webForwards"/>
+								</html:select>
+							</td>
+						</tr>	
+						
+						<logic:equal name="webForwardForm" property="authenticationType" value="form">
+							<tr class="formEditableList">
+								<td class="label">
+									<bean:message key="webForward.label.formType" bundle="webForwards" />
+								</td>
+								<td class="value">
+									<html:select disabled="<%= webForwardForm.isAssignOnly() %>" property="formType">
+										<html:optionsCollection value="value" label="label" property="formTypeList" />
+									</html:select>
+								</td>
+							</tr>
+							<tr class="formMultiEntry">
+								<td class="label">
+									<bean:message key="webForward.label.formParameters" bundle="webForwards" />
+								</td>
+								<td class="value">
+									<input:multiEntryListBox disabled="<%= webForwardForm.isAssignOnly() %>" entryTitleKey="webForward.formParameterEntry.title" targetTitleKey="webForward.formParameters.title" addKey="webForward.addFormParameter" removeKey="webForward.removeFormParameter" name="webForwardForm"
+										styleClass="multiEntry" entryName="formParameter" entrySize="16" bundle="webForwards" property="formParameters" tabindex="2" showReplacementVariables="true" />
+								</td>
+							</tr>
+						</logic:equal>
+
+						<logic:equal name="webForwardForm" property="authenticationType" value="http">
+							<tr class="formEditableList">
+								<td class="label">
+									<bean:message key="webForward.lable.preferred.scheme" bundle="webForwards" />
+								</td>
+								<td class="value">
+									<html:select property="preferredAuthenticationScheme" disabled="<%= webForwardForm.isAssignOnly() %>">
+										<html:optionsCollection value="value" label="label" property="preferredAuthenticationSchemeList" />
+									</html:select>
+								</td>
+							</tr>
+							<tr class="formTextArea">
+								<td class="label">
+									<bean:message key="webForward.lable.authentication.username" bundle="webForwards" />
+								</td>
+								<td class="value">
+									<html:text disabled="<%= webForwardForm.isAssignOnly() %>" styleId="authenticationUsername" property="authenticationUsername" />
+									<input:variables inputId="authenticationUsername"/>
+								</td>
+							</tr>
+							<tr class="formTextArea">
+								<td class="label">
+									<bean:message key="webForward.lable.authentication.password" bundle="webForwards" />
+								</td>
+								<td class="value">
+									<input:password disabled="<%= webForwardForm.isAssignOnly() %>" styleId="authenticationPassword" autocomplete="false" property="authenticationPassword" />
+									<input:variables inputId="authenticationPassword"/>
+								</td>
+							</tr>
+						</logic:equal>
+					</webforwards:showreplacementProxy>
+
+					<webforwards:showReverseProxy>
+						<tr class="formText">
+							<td class="label">
+								<bean:message key="webForward.label.authenticationType" bundle="webForwards" />
+							</td>
+							<td class="value">
+								<html:select name="webForwardForm" property="authenticationType" onchange="setActionTarget('changeAuthenticationType'); document.forms[0].submit(); return false" disabled="<%= webForwardForm.isAssignOnly() %>">
+									<html:option key="webForward.label.authentication.none" value="none" bundle="webForwards"/>
+									<html:option key="webForward.label.authentication.form" value="form" bundle="webForwards"/>
+									<html:option key="webForward.label.authentication.http" value="http" bundle="webForwards"/>
+								</html:select>
+							</td>
+						</tr>	
+						
+						<logic:equal name="webForwardForm" property="authenticationType" value="form">
+							<tr class="formEditableList">
+								<td class="label">
+									<bean:message key="webForward.label.formType" bundle="webForwards" />
+								</td>
+								<td class="value">
+									<html:select disabled="<%= webForwardForm.isAssignOnly() %>" property="formType">
+										<html:optionsCollection value="value" label="label" property="formTypeList" />
+									</html:select>
+								</td>
+							</tr>
+							<tr class="formMultiEntry">
+								<td class="label">
+									<bean:message key="webForward.label.formParameters" bundle="webForwards" />
+								</td>
+								<td class="value">
+									<input:multiEntryListBox disabled="<%= webForwardForm.isAssignOnly() %>" entryTitleKey="webForward.formParameterEntry.title" targetTitleKey="webForward.formParameters.title" addKey="webForward.addFormParameter" removeKey="webForward.removeFormParameter" name="webForwardForm"
+										styleClass="multiEntry" entryName="formParameter" entrySize="16" bundle="webForwards" property="formParameters" tabindex="2" showReplacementVariables="true" />
+								</td>
+							</tr>
+						</logic:equal>
+
+						<logic:equal name="webForwardForm" property="authenticationType" value="http">
+							<tr class="formEditableList">
+								<td class="label">
+									<bean:message key="webForward.lable.preferred.scheme" bundle="webForwards" />
+								</td>
+								<td class="value">
+									<html:select property="preferredAuthenticationScheme" disabled="<%= webForwardForm.isAssignOnly() %>">
+										<html:optionsCollection value="value" label="label" property="preferredAuthenticationSchemeList" />
+									</html:select>
+								</td>
+							</tr>
+							<tr class="formTextArea">
+								<td class="label">
+									<bean:message key="webForward.lable.authentication.username" bundle="webForwards" />
+								</td>
+								<td class="value">
+									<html:text disabled="<%= webForwardForm.isAssignOnly() %>" styleId="authenticationUsername" property="authenticationUsername" />
+									<input:variables inputId="authenticationUsername"/>
+								</td>
+							</tr>
+							<tr class="formTextArea">
+								<td class="label">
+									<bean:message key="webForward.lable.authentication.password" bundle="webForwards" />
+								</td>
+								<td class="value">
+									<input:password disabled="<%= webForwardForm.isAssignOnly() %>" styleId="authenticationPassword" autocomplete="false" property="authenticationPassword" />
+									<input:variables inputId="authenticationPassword"/>
+								</td>
+							</tr>
+						</logic:equal>
+					</webforwards:showReverseProxy>
+				</table>
+			</tabs:tab>
+			<tabs:tab tabName="policies">
+				<input:multiSelectPoliciesListBox tabindex="3" sourceTitleKey="policySelection.availablePolicies.title" targetTitleKey="policySelection.selectedPolicies.title" addKey="policySelection.addPolicy" removeKey="policySelection.removePolicy" allowReordering="true"
+					upKey="policySelection.moveUp" downKey="policySelection.moveDown" configureKey="policySelection.configurePolicies" configureOnClick="window.location = '/configurePolicies.do?referer=/editWebForward.do'" 
+					bundle="policyframework" styleClass="multiSelect" modelName="webForwardForm" modelProperty="policyModel" name="webForwardForm" property="selectedPolicies"
+					showPersonalPoliciesKey="policySelection.showPersonalPolicies.title" showPersonalPolicies="<%= webForwardForm.isShowPersonalPolicies() %>" />
+			</tabs:tab>
+		</tabs:tabSet>
+		<div class="button_bar">
+			<div class="formButton">
+				<html:submit styleClass="save" onclick="setActionTarget('commit'); return true">
+					<bean:message key="editWebForward.commit" bundle="webForwards" />
+				</html:submit>
+			</div>
+			<logic:notEmpty name="webForwardForm" property="referer">
+				<div class="formButton">
+					<html:submit styleClass="cancel" onclick="setActionTarget('cancel'); return true">
+						<bean:message key="editWebForward.cancel" bundle="webForwards" />
+					</html:submit>
+				</div>
+			</logic:notEmpty>
+		</div>
+</div>

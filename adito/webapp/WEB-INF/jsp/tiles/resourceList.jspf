@@ -1,0 +1,144 @@
+
+<jsp:directive.page import="com.adito.core.CoreUtil"/>
+<jsp:directive.page import="com.adito.boot.Util"/><%-- 
+
+Resource List - Generic resource list with pager rendering and dynamic
+item actions.
+
+This tile is used to render collections of ResourceItem objects
+supplied by Pager. It will also display messages when a Pagers filter
+returns no matches or the underlying model contains no items.
+
+Two columns are displayed, Name and Actions. Actions are retrieved
+from registered Table Item Actions.
+
+It requires 3 attributes
+
+Attribute             Description                                Type
+---------             -----------                                ----
+pager                 Pager object to retrieve data from         com.adito.table.Pager
+
+messageResourcesKey   Bundle (or message resources key) that     java.lang.String
+                      contains all of the message resources
+                      required for this tile.
+                      
+resourcePrefix        Prefix to use for the keys of all of the   java.lang.String
+                      message resources required for this tile.
+                      This tile requires the following 
+                      messages :-
+                     
+                      [resourcePrefix].noMatch  for when there is no filter match
+                      [resourcePrefix].noItems  for when the list contains no items
+                      
+policyLaunching	      Display the policy launching actions. A    java.lang.String
+                      value of 'true' will display.        
+                      
+subForm               Add the subForm parameter for tabbed       java.lang.String
+                      tables (header, nav. and page size)
+                      value of 'true' will display.        
+
+--%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+<%@ taglib uri="/server/taglibs/table" prefix="table" %>
+
+<tiles:useAttribute name="pager" scope="request" classname="com.adito.table.Pager"/> 
+<tiles:useAttribute name="messageResourcesKey" scope="request" classname="java.lang.String"/> 
+<tiles:useAttribute name="resourcePrefix" scope="request" classname="java.lang.String"/> 
+<tiles:useAttribute name="policyLaunching" scope="request" classname="java.lang.String"/> 
+<tiles:useAttribute ignore="true" name="subForm" scope="request" classname="java.lang.String"/>
+
+<div class="component_resourceList">
+	<table class="resource_table">								
+	    <thead>
+	       	<tr>
+				<td class="name">
+					<logic:empty name="subForm">
+						<table:columnHeader page="" pagerName="pager" columnIndex="0" styleClass="columnHeader">
+							<bean:message key="resourceList.name" bundle="policyframework"/>
+						</table:columnHeader>
+					</logic:empty>
+					<logic:notEmpty name="subForm">
+						<table:columnHeader subForm="<%= subForm %>" page="" pagerName="pager" columnIndex="0" styleClass="columnHeader">
+							<bean:message key="resourceList.name" bundle="policyframework"/>
+						</table:columnHeader>
+					</logic:notEmpty>
+				</td>
+				<td class="actions">
+					<bean:message key="resourceList.actions" bundle="policyframework"/>
+				</td>
+			</tr>
+		</thead>
+	    <tbody>
+			<logic:equal name="pager" property="model.empty" value="true">											
+				<tr class="lowlight">
+			  		<td class="tableMessage" colspan="2">		   
+					  	<bean:message key="<%= resourcePrefix + ".noItems" %>" bundle="<%= messageResourcesKey %>"/>
+					</td>
+				</tr>
+			</logic:equal>
+			<logic:equal name="pager" property="model.empty" value="false">											
+				<logic:equal name="pager" property="empty" value="true">											
+					<tr class="lowlight">
+				  		<td class="tableMessage" colspan="2">		   
+						  	<bean:message key="<%= resourcePrefix + ".noMatch" %>" bundle="<%= messageResourcesKey %>"/>
+						</td>
+					</tr>
+				</logic:equal>
+				<logic:equal name="pager" property="empty" value="false">											
+			    	<% 	boolean highlight = false; %>
+					<logic:iterate id="resourceItem" name="pager" property="pageItems"
+			                 				type="com.adito.policyframework.ResourceItem" indexId="i">
+	      				<tr 
+	      					onmouseover="<%= "this.className = 'selected';" %>"
+	      					onmouseout="<%= "this.className = '" + ( highlight ? "highlight" : "lowlight" ) + "';" %>" class="<%= highlight ? "highlight" : "lowlight" %>">           
+							<td class="name">
+								<a onclick="<%= resourceItem.getOnClick(-1, request) %>" href="<%= resourceItem.getLink(-1, CoreUtil.getRealRequestURI(request), request) %>">
+									<img border="0" align="absmiddle" src="<%= resourceItem.getSmallIconPath(request) %>"/>
+								</a>
+								<input:toolTip width="400" borderWidth="0" padding="0" onclick="<%= resourceItem.getOnClick(-1, request) %>" 
+									contentLocation="<%= "/resourceInformation.do?resourceId=" + resourceItem.getResource().getResourceId() + "&resourceType=" + resourceItem.getResource().getResourceType().getResourceTypeId() %>" 
+									value="<%= resourceItem.getResource().getResourceDescription() %>" href="<%= resourceItem.getLink(-1, CoreUtil.getRealRequestURI(request), request) %>">
+									<bean:write name="resourceItem" property="resource.resourceDisplayName"/>
+								</input:toolTip>
+							</td>
+							<td class="actions">								
+								<tiles:insert flush="false" page="/WEB-INF/jsp/tiles/tableItemActionBar.jspf">		
+									<tiles:put name="pager" beanName="pager"/>
+									<tiles:put name="rowIndex" beanName="i"/>
+									<tiles:put name="policyLaunching" beanName="policyLaunching"/>
+								</tiles:insert>		
+							</td>
+						</tr>
+						<%	highlight = !highlight; %>
+					</logic:iterate>
+				</logic:equal>
+			</logic:equal>
+		</tbody>
+		<tfoot>			
+			<tr>
+				<td colspan="2">
+					<logic:empty name="subForm">
+						<div class="pager_navigation">
+							<table:navigation pagerName="pager" selectedStyleClass="pagerSelected" styleClass="pagerEnabled" disabledStyleClass="pagerDisabled"/>
+						</div>
+						<div class="pager_pages">
+							<table:pageSize pagerName="pager" styleClass="pagerEnabled"/>
+						</div>
+					</logic:empty>
+					<logic:notEmpty name="subForm">
+						<div class="pager_navigation">
+							<table:navigation subForm="<%= subForm %>" pagerName="pager" selectedStyleClass="pagerSelected" styleClass="pagerEnabled" disabledStyleClass="pagerDisabled"/>
+						</div>
+						<div class="pager_pages">
+							<table:pageSize subForm="<%= subForm %>" pagerName="pager" styleClass="pagerEnabled"/>
+						</div>
+					</logic:notEmpty>
+				</td>
+			</tr>
+		</tfoot>
+	</table>   
+</div>

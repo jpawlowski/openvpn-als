@@ -1,0 +1,32 @@
+# This file contains a list of database upgrades
+# that have completed correctly.
+0_1_99-propertyDatabase.sql
+0_2_5-propertyDatabase.sql
+0_2_7-propertyDatabase.sql
+0_2_9-propertyDatabase.sql
+0_2_12-propertyDatabase.sql
+0_2_13-propertyDatabase.sql
+0_1_99-userDatabase.sql
+0_2_9-userDatabase.sql
+0_1_99-systemDatabase.sql
+0_2_0-systemDatabase.sql
+0_2_4-systemDatabase.sql
+0_2_6-systemDatabase.sql
+0_2_7-systemDatabase.sql
+0_2_9-systemDatabase.sql
+1_0_0_RC9-systemDatabase.sql
+0_1_99-policyDatabase.sql
+0_2_4-policyDatabase.sql
+0_2_9-policyDatabase.sql
+0_2_14-policyDatabase.sql
+1_0_0_RC5-policyDatabase.sql
+1_0_0_RC12-policyDatabase.sql
+0_2_9-tunnelsDatabase.sql
+0_2_9-applicationShortcutsDatabase.sql
+1_0_5-applicationShortcutsDatabase.sql
+0_2_9-networkPlacesDatabase.sql
+1_0_7-networkPlacesDatabase.sql
+0_2_9-webForwardsDatabase.sql
+1_0_2-webForwardsDatabase.sql
+1_0_6-webForwardsDatabase.sql
+1_0_10-webForwardsDatabase.sql

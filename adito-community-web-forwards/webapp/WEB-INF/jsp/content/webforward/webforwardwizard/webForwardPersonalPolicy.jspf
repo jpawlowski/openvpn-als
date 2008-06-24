@@ -1,0 +1,17 @@
+<jsp:directive.page import="com.adito.webforwards.WebForwardPlugin"/><%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %> 
+
+<bean:define id="webForwardPersonalPolicyForm" name="webForwardPersonalPolicyForm" type="com.adito.webforwards.webforwardwizard.forms.WebForwardPersonalPolicyForm"></bean:define>
+<table>
+	<tr>
+		<td>
+			<image src="<core:themePath/>/images/dialog/warning.gif" />
+		</td>
+		<td>
+			<bean:message key="webForwardWizard.webForwardPersonalPolicy.personalPolicy"
+			  	arg0="<%=webForwardPersonalPolicyForm.getPersonalPolicyName() %>" 
+			  	bundle="<%= WebForwardPlugin.MESSAGE_RESOURCES_KEY %>"/>
+		</td>	
+	</tr>
+</table>

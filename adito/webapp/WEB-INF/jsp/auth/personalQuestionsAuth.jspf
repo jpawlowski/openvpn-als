@@ -1,0 +1,74 @@
+<%@ page import="com.adito.security.PersonalQuestionsAuthenticationModule" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+
+<bean:define id="authSession" name="authSession" type="com.adito.security.AuthenticationScheme"/>
+
+<logic:equal name="logonForm" property="usernameRequired" value="false">
+	<bean:define id="focusId" value="password" toScope="page" />
+</logic:equal>
+<logic:equal name="logonForm" property="usernameRequired" value="true">
+	<bean:define id="focusId" value="username" toScope="page" />
+</logic:equal> 
+<div id="page_login_personal_questions">
+	<core:form styleClass="dialog_form" autocomplete="OFF" method="post" action="/logon.do" focus="answer">
+		<div class="dialog_content">
+			<logic:equal name="logonForm" property="usernameRequired" value="false">
+				<html:hidden name="logonForm" property="username" />
+			</logic:equal>
+			<table class="dialog_form_table" id="centered">
+				<tbody>
+					<tr class="formPassword">
+						<td class="value">
+							<%= ((PersonalQuestionsAuthenticationModule)authSession.currentAuthenticationModule()).getCurrentQuestion() %>
+						</td>
+					</tr>
+					<core:checkPropertyEquals regExp="false" propertyName="security.maskPersonalAnswers" propertyValue="true">
+						<tr class="formPassword">
+							<td class="value">
+	              				<input autocomplete="off" type="password" size="20" name="answer"/>
+							</td>
+						</tr>
+	              	</core:checkPropertyEquals>
+	              	<core:checkPropertyNotEquals regExp="false" propertyName="security.maskPersonalAnswers" propertyValue="true">
+	              		<tr class="formPassword">
+							<td class="value">
+								<input type="text" size="20" name="answer"/>
+							</td>
+						</tr>
+	              	</core:checkPropertyNotEquals>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="2">							
+							<div class="button_bar">
+								<div class="formButton">
+									<html:submit styleClass="ok"><bean:message key="login.login" bundle="security"/></html:submit>
+								</div>
+								<logic:equal name="logonForm" property="sessionLocked" value="false">
+									<div class="formButton">	
+										<html:button property="cancel" styleClass="cancel" 
+											onclick="javascript: window.location = '/showLogon.do?reset=true' ; return false">
+											<bean:message key="login.cancel" bundle="security"/>
+										</html:button>
+									</div>
+								</logic:equal>
+								<logic:equal name="logonForm" property="sessionLocked" value="true">
+									<div class="formButton">										
+										<html:button property="cancel" styleClass="cancel" 
+											onclick="javascript: window.location = '/logoff.do' ; return false">
+											<bean:message key="login.cancel" bundle="security"/>
+										</html:button>
+									</div>
+								</logic:equal>
+							</div>
+						</td>						                        
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</core:form> 
+</div>

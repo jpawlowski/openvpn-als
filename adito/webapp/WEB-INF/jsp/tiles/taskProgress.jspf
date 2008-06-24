@@ -1,0 +1,51 @@
+<jsp:directive.page import="java.text.DateFormat"/>
+<jsp:directive.page import="java.text.SimpleDateFormat"/>
+<jsp:directive.page import="com.adito.tasks.TaskProgressBar"/>
+<jsp:directive.page import="java.util.Iterator"/>
+
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+<div id="component_taskProgress">
+	<bean:define id="task" name="taskProgressForm" property="task" type="com.adito.tasks.Task"/>
+	<div id="progressBarContainer" id="<%= "taskProgress_" + task.getName() %>">
+		<table id="progressBarTable">
+			<logic:iterate indexId="i" id="bar" name="task" property="progressBars" type="com.adito.tasks.TaskProgressBar">
+			<%
+			 	int total = bar.getMaxValue() - bar.getMinValue();
+			 	int cells = (int)( ( (float)( bar.getValue() - bar.getMinValue() ) / (float)total ) * 50f );
+			 %>
+	 			<tr class="progressBarNote">
+		 			<td colspan="50" id="<%= "progress_note_" +bar.getId() %>">
+				 		<logic:notEmpty name="bar" property="note">
+		 					<bean:message bundle="<%= bar.getNote().getBundle() %>" key="<%= bar.getNote().getKey() %>" arg0="<%= bar.getNote().getArg0() %>" arg1="<%= bar.getNote().getArg1() %>" arg2="<%= bar.getNote().getArg0() %>" arg3="<%= bar.getNote().getArg0() %>"/>
+			 			</logic:notEmpty>
+		 			</td>
+		 		</tr>
+			 	<tr class="progressBar">
+			 		<%
+			 		for(int j = 0 ; j < 50 ; j++) {
+			 		%>
+			 		<td class="progressCellOff" id="<%= "progress_" + bar.getId() + "_" + j %>">
+			 			&nbsp;
+			 		</td>
+			 		<%
+			 		}
+			 		%>
+			 	</tr>
+			 	<tr>
+			 		<td colspan="50"  class="progressBarPercentage" id="<%= "progress_percentage_" + bar.getId() %>">
+			 			<%= ( cells * 2 ) + "%" %>
+			 		</td>
+			 	</tr>
+			 </logic:iterate>
+		 </table>
+	 </div>
+</div>
+
+<script type="text/javascript">
+updateTask(<%= String.valueOf(task.getId()) %>);
+</script>

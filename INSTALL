@@ -1,0 +1,134 @@
+****************************************
+* Building and installing Adito server *
+****************************************
+
+General instructions
+--------------------
+
+Linux
+-----
+
+* Install (Sun) Java Development Kit (JDK) version 1.5 or greater (http://java.sun.com/j2se/1.5.0/download.jsp)
+* Install Apache Ant 1.6.0 or higher (http://ant.apache.org)
+* Unpack the source code archive: "tar -zxf adito-0.9.0.tar.gz"
+* Make sure that JAVA_HOME points to a valid JRE/JDK: export JAVA_HOME=/path/to/your/jdk.
+* Check that the actual javac executable is for the correct Java version. 
+* Enter the adito directory
+* Switch to root user (e.g. with sudo -s or su). This is required if you wan't Adito to run on port 1024 or less. For example the default HTTPS port is 443, so you probably want this.
+* Issue "ant install". Note that you must run the 'install' target of the default build file at least once. This compiles everything and launches the install wizard. You may re-run this at any time.* Navigate to http://localhost:28080 with your browser and go through the install wizard. Ant will exit when the wizard is complete or is cancelled. You may abort the wizard at any time using your INTR key (usually CTRL+C).
+* Proceed to "Compiling Adito Agent". Otherwise all functionality related to the Agent is broken.
+
+If you wish to install Adito as a service, do the following:
+
+* Enter the adito directory (e.g. /opt/adito-0.9.0)
+* Switch to root user (e.g. with sudo -s or su). This is mandatory or you won't have write access to system directories.
+* Issue "ant install-service"
+
+You can then start or stop Adito with /etc/init.d/adito start|stop on most Linux systems.
+
+In most cases the above instructions should work. If you have trouble building adito, you can try the following:
+
+* Make sure that ANT_HOME is set and that you're using the correct ant executable.
+* Try Java development kit 1.5 instead of 1.6. I had trouble building Adito on Sun's JDK 1.6.
+* If you have installed a Java Runtime Environment (JRE) rather than the Java Development Kit (JDK) you will not be able to execute the ant scripts as the Java compiler will not be available. Either download the JDK or locate tools.jar in the adito/lib folder and copy to your JRE's lib folder.
+
+
+Building on Debian/Ubuntu
+-------------------------
+
+If you have installed Java from Debian/Ubuntu packages various Java versions are installed to /usr/lib/jvm:
+
+ user@server:~$ ls -l /usr/lib/jvm/
+ total 12
+ drwxr-xr-x  7 root root 4096 2008-04-19 10:51 java-1.5.0-gcj-4.2-1.5.0.0
+ lrwxrwxrwx  1 root root   23 2008-03-26 13:43 java-1.5.0-sun -> java-1.5.0-sun-1.5.0.15
+ drwxr-xr-x 10 root root 4096 2008-03-26 13:43 java-1.5.0-sun-1.5.0.15
+ lrwxrwxrwx  1 root root   19 2008-04-18 11:20 java-6-sun -> java-6-sun-1.6.0.06
+ drwxr-xr-x  8 root root 4096 2008-04-18 11:20 java-6-sun-1.6.0.06
+ lrwxrwxrwx  1 root root   26 2008-04-19 10:51 java-gcj -> java-1.5.0-gcj-4.2-1.5.0.0
+
+In this case (on Ubuntu 8.04) we would do a
+
+ user@server:~$ export JAVA_HOME=/usr/lib/jvm/java-1.5.0-sun
+ 
+Make sure that you use the generic names like java-6-sun or java-1.5.0-sun instead of the more specific build names. Otherwise the varibale will be invalid when a new version of the Java package becomes available.
+
+Debian and Ubuntu use the alternatives system to manage multiple program versions. You can verify that you're using the correct javac and ant binaries like this:
+
+ user@server:~$ which javac
+ /usr/bin/javac
+ user@server:~$ ls -l /usr/bin/javac 
+ lrwxrwxrwx 1 root root 23 2008-03-26 13:47 /usr/bin/javac -> /etc/alternatives/javac
+ user@server:~$ ls -l /etc/alternatives/javac 
+ lrwxrwxrwx 1 root root 37 2008-05-17 19:47 /etc/alternatives/javac -> /usr/lib/jvm/java-1.5.0-sun/bin/javac
+
+You change the links (alternatives) manually with ln -s but in most cases it's better and easier to use galternatives-program for the job. You can install it with aptitude install galternatives.
+
+Building on Windows
+-------------------
+
+* Install (Sun) Java Development Kit (JDK) version 1.5 or greater (http://java.sun.com/j2se/1.5.0/download.jsp)
+* Install Apache Ant 1.6.0 or higher (http://ant.apache.org)
+* Unzip the adito zip file.
+* Make sure that JAVA_HOME points to a valid JRE/JDK: export JAVA_HOME=/path/to/your/jdk.
+* Check that the actual javac executable is for the correct Java version. 
+* Enter the adito directory
+* Issue "ant install". Note that you must run the 'install' target of the default build file at least once. This compiles everything and launches the install wizard. You may re-run this at any time.
+* Navigate to http://localhost:28080 with your browser and go through the install wizard. Ant will exit when the wizard is complete or is cancelled. You may abort the wizard at any time using your INTR key (usually CTRL+C).
+* Proceed to "Compiling Adito Agent". Otherwise all functionality related to the Agent is broken.
+
+
+*****************************
+* Compiling the Adito Agent *
+*****************************
+    				
+Because the agent is designed to work with any version of Java and the agent launcher must be a signed applet, there are additional requirements before you can build your own versions of the VPN client. Note that with Adito compiling your own Agent is currently mandatory.
+
+Configuring your certificate
+----------------------------
+
+1. Change directory to 'certificate' found in the directory where this document exists. For example, if running on a Unix like platform and you have extracted version 0.9.0 of Adito into /opt, you would use:
+  
+ $ cd /opt/adito-0.9.0/certificate
+ 
+ and in Windows: 
+
+ c:\>cd adito-0.9.0\certificate
+
+2. Generate your private key. This assumes the JDK's keytool is somewhere on your path. See keytool documentation for more options.  Note the following should be entered as one line:
+
+ $ keytool -genkey -alias agent -keystore agent-keystore.p12 -keypass mysecret -storetype PKCS12 -dname "cn=joeb" -storepass mysecret
+              
+   Note 1: If you change any of these options ensure the "certificate.properties" file is also changed to reflect this.
+   
+   Note 2: The 'keypass' and 'storepass' must be identical for the ant build to work.
+                         
+That should be enough to allow you to build and test. Your browser and Java runtime will most likely complain a lot about the certificate being invalid. You can either export the public key from the keystore and install it on all client machines or generate a certificate signing request and get your private key signed by a certification authority. See keytool documentation for information on this.
+
+
+Compiling and deploying
+-----------------------
+
+1. Ensure your Java and Ant is set up correctly and Adito has been installed as described earlier in this document.
+
+2. Change directory to 'adito' found in the directory where this document exists. For example, if running on a Unix like platform and you have extracted version 0.9.0 of Adito into /opt, you would use:
+   
+ $ cd /opt/adito-0.9.0/adito
+ $ ant install-agent
+ 
+ in Windows:
+
+ c:\>cd adito-0.9.0\adito
+ c:\adito-0.9.0\adito>ant install-agent
+     
+This will build the agent source, create the libraries and copy them to the appropriate place in the Adito web application ready for use. If Adito is running you may have to restart it.
+     
+If you wish to build the agent but not install it, you would use something like:
+
+ $ cd /opt/adito-0.9.0/adito-agent
+ $ ant build
+ 
+ in windows
+ 
+ c:\>cd adito-0.9.0\adito-agent
+ c:\adito-0.9.0\adito>ant build

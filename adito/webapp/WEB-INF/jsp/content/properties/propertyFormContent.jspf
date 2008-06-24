@@ -1,0 +1,125 @@
+<%@ page import="com.adito.boot.PropertyDefinitionCategory" %>
+<%@ page import="java.util.Iterator" %>
+<%@ page import="com.sun.syndication.feed.rss.Category" %>
+<jsp:directive.page import="com.adito.core.CoreUtil"/>
+<jsp:directive.page import="com.adito.boot.Util"/>
+<jsp:directive.page import="com.adito.properties.forms.PropertiesForm"/>
+<jsp:directive.page import="com.adito.properties.forms.AbstractPropertiesForm"/>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/tabs" prefix="tabs" %>
+<%@ taglib uri="/server/taglibs/navigation" prefix="navigation" %>
+		       
+<tiles:useAttribute name="form" classname="com.adito.properties.forms.AbstractPropertiesForm"/> 
+<tiles:useAttribute name="actionMapping" classname="org.apache.struts.action.ActionMapping"/> 
+
+<html:hidden property="selectedCategory"/>
+<html:hidden property="newSelectedCategory"/>
+<html:hidden property="parentCategory" /> 
+<html:hidden property="actionTarget" />	
+<html:hidden property="forwardTo" />		
+<logic:notEmpty name="form" property="subCategories">   
+	<div class="titled_dialog_content">
+		<table>
+			<thead>
+				<tr>
+					<td>                         
+						<bean:message key="properties.categories.title" bundle="properties" />
+					</td>
+				</tr>                          
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<div id="subCategories"> 
+							<table width="100%" border="0" cellpadding="0" cellspacing="0">
+								<logic:iterate id="subCategory" name="form" property="subCategories" type="com.adito.boot.PropertyDefinitionCategory">
+										<% 	String key = "category." + subCategory.getId() + ".name";
+											String descriptionKey = "category." + subCategory.getId() + ".description";
+										%>
+									<tr>
+										<td class="link">
+											<a href="<%= "?actionTarget=displayCategory&newSelectedCategory=" + subCategory.getId() %>">
+												<div class="image">
+													<img src='<core:themePath/>/images/<%= subCategory.getImagePath() %>'/>
+												</div>
+												<div class="text">
+													<bean:message key='<%= key %>' bundle='<%= subCategory.getBundle() %>'/>
+												</div>
+											</a>
+										</td>
+										<td class="description">
+											<bean:message key='<%= descriptionKey %>' bundle='<%= subCategory.getBundle() %>'/>
+										</td>
+									</tr>
+								</logic:iterate>										
+							</table>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</logic:notEmpty>			
+
+<logic:notEmpty name="form" property="propertyItems"> 			
+	<% boolean disabled = !form.getEnabled(); %>				
+	<div class="tabSet">         
+		<div class="tabHeadings">
+		    <ul>			    
+				<logic:iterate id="category" name="form" property="categoryDefinitions" type="com.adito.boot.PropertyDefinitionCategory">
+					<% 	boolean selected = form.getSelectedCategory() == category.getId() ; 
+						String key = "category." + category.getId() + ".name"; %>
+					<li class="<%= selected  ? "selectedTab" : "hiddenTab" %>">
+						<a <%= selected ? "class=\"currentTab\"" : "" %> href="javascript: setCategory('<%= String.valueOf(category.getId()) %>')"><bean:message key='<%= key %>' bundle='<%= category.getBundle() %>'/></a>									
+					</li>
+				</logic:iterate>				
+		    </ul>
+		</div>
+		<div class="tabPanel">	
+			<div class="tabContent">	
+				<div id="propertyItems">
+					<tiles:insert page="/WEB-INF/jsp/content/properties/propertyContent.jspf" flush="false">
+						<tiles:put name="form" beanName="form"/>
+						<tiles:put name="actionMapping" beanName="actionMapping"/>
+					</tiles:insert>
+				</div>
+			</div>
+		</div>
+	</div>
+					
+	<div class="button_bar">
+		<div class="formButton">
+			<input class="save" <%= disabled ? "disabled" : "" %> type="submit"
+				onclick="setActionTarget('commit');"
+				value="<bean:message key='properties.save' bundle='properties'/>" />
+		</div>
+		<div class="formButton">
+			<input class="reset" <%= disabled ? "disabled" : "" %> type="submit"
+				onclick="setActionTarget('reset');"
+				value="<bean:message key='properties.reset' bundle='properties'/>" />
+		</div>
+		<div class="formButton">
+			<input class="cancel" type="submit"
+				onclick="setActionTarget('cancel');"
+				value="<bean:message key='properties.cancel' bundle='properties'/>" />
+		</div>
+	</div>
+</logic:notEmpty>
+
+<navigation:menuNotAvailable>
+	<logic:notEmpty name="form" property="subCategories">   
+		<logic:empty name="form" property="propertyItems"> 
+			<div class="button_bar">			
+				<div class="formButton">
+					<input class="done" type="submit"
+						onclick="setActionTarget('configureProfiles');"
+						value="<bean:message key='properties.done' bundle='properties'/>" />
+				</div>
+			</div>
+		</logic:empty>
+	</logic:notEmpty>
+</navigation:menuNotAvailable>

@@ -1,0 +1,117 @@
+<%-- 
+
+Resources View - Generic view of a list of resources including a 
+filter, icon / list view options, and a paged table of resources.
+
+This tile is used to render collections of ResourceItem objects
+supplied by Pager. It will also display messages when a Pagers filter
+returns no matches or the underlying model contains no items.
+
+Two columns are displayed, Name and Actions. Actions are retrieved
+from registered Table Item Actions.
+
+It requires 3 attributes
+
+Attribute             Description                                Type
+---------             -----------                                ----
+pager                 Pager object to retrieve data from         com.adito.table.Pager
+
+messageResourcesKey   Bundle (or message resources key) that     java.lang.String
+                      contains all of the message resources
+                      required for this tile.
+                      
+resourcePrefix        Prefix to use for the keys of all of the   java.lang.String
+                      message resources required for this tile.
+                      This tile requires the following 
+                      messages :-
+                     
+                      [resourcePrefix].noMatch  for when there is no filter match
+                      [resourcePrefix].noItems  for when the list contains no items
+                      
+selectedView		  The name of the selected view from         java.lang.String
+                      AbstractResourcesForm.ICONS_VIEW or
+                      AbstractResourcesForm.LIST_VIEW
+                      
+policyLaunching	      Display the policy launching actions. A    java.lang.String
+                      value of 'true' will display.                     
+
+--%>
+
+<%@ page import="com.adito.security.Constants"%>
+<%@ page import="com.adito.policyframework.PolicyConstants"%>
+<%@ page import="com.adito.navigation.AbstractFavoriteItem" %>
+<%@ page import="com.adito.policyframework.Permission" %>
+<jsp:directive.page import="com.adito.policyframework.forms.AbstractResourcesForm"/>
+<jsp:directive.page import="com.adito.boot.Util"/>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="/server/taglibs/input" prefix="input"%>
+<%@ taglib uri="/server/taglibs/core" prefix="core"%>
+<%@ taglib uri="/server/taglibs/navigation" prefix="navigation"%>
+<%@ taglib uri="/server/taglibs/table" prefix="table"%>
+<%@ taglib uri="/server/taglibs/security" prefix="security"%>
+
+<tiles:useAttribute name="pager" scope="request" classname="com.adito.table.Pager"/> 
+<tiles:useAttribute name="messageResourcesKey" scope="request" classname="java.lang.String"/> 
+<tiles:useAttribute name="resourcePrefix" scope="request" classname="java.lang.String"/> 
+<tiles:useAttribute name="actionLink" scope="request" classname="java.lang.String"/> 
+<tiles:useAttribute name="selectedView" scope="request" classname="java.lang.String"/> 
+<tiles:useAttribute ignore="true" name="policyLaunching" scope="request" classname="java.lang.String"/> 
+<tiles:useAttribute ignore="true" name="subForm" scope="request" classname="java.lang.String"/>
+
+<div id="<%= "pager_" + pager.getModel().getId() %>" class="filtered_resources">							
+	<logic:equal name="selectedView" value="<%= AbstractResourcesForm.LIST_VIEW %>">		
+		<tiles:insert flush="false" page="/WEB-INF/jsp/tiles/resourceList.jspf">		
+			<tiles:put name="pager" beanName="pager"/>
+			<tiles:put name="messageResourcesKey" beanName="messageResourcesKey"/>
+			<tiles:put name="resourcePrefix" beanName="resourcePrefix"/>
+			<tiles:put name="policyLaunching" beanName="policyLaunching"/>
+			<tiles:put name="subForm" beanName="subForm"/>
+		</tiles:insert>		
+	</logic:equal>
+	<logic:equal name="selectedView" value="<%= AbstractResourcesForm.ICONS_VIEW %>">
+		<div class="icons">
+			<ul>
+				<logic:iterate name="pager" property="pageItems" id="resourceItem" type="com.adito.policyframework.ResourceItem" indexId="i">
+					<li>
+						<div class="icon" onclick="new Effect.Highlight(this);">
+							<div class="image">
+								<input:toolTip onclick="<%= resourceItem.getOnClick(-1, request) %>" href="<%= resourceItem.getLink(-1, request) %>" width="400" borderWidth="0" padding="0" onclick="<%= resourceItem.getOnClick(-1, request) %>" href="<%= resourceItem.getLink(-1, request) %>" contentLocation="<%= "/resourceInformation.do?resourceId=" + resourceItem.getResource().getResourceId() + "&resourceType=" + resourceItem.getResource().getResourceType().getResourceTypeId() %>"  value="<%= resourceItem.getResource().getResourceDescription() %>">
+									<img border="0" align="absmiddle" src="<%= resourceItem.getLargeIconPath(request) %>"/>
+								</input:toolTip>
+							</div>
+							<div class="text">
+								<input:toolTip width="400" borderWidth="0" padding="0" onclick="<%= resourceItem.getOnClick(-1, request) %>" href="<%= resourceItem.getLink(-1, request) %>" contentLocation="<%= "/resourceInformation.do?resourceId=" + resourceItem.getResource().getResourceId() + "&resourceType=" + resourceItem.getResource().getResourceType().getResourceTypeId() %>"  value="<%= resourceItem.getResource().getResourceDescription() %>">
+									<bean:write name="resourceItem" property="resource.resourceDisplayName" />
+								</input:toolTip>
+							</div>
+							<div class="other">
+								<% String ai = resourceItem.getLargeIconAdditionalIcon(request);
+								if(!ai.equals("")) { %>
+								<img src="<%= resourceItem.getLargeIconAdditionalIcon(request) %>"/>
+								<% } %>
+							</div>
+						</div>								
+					</li>
+				</logic:iterate>						
+			</ul>
+		</div>
+		<div class="pager_navigation">
+			<table:navigation pagerName="pager" styleClass="pagerEnabled" selectedStyleClass="pagerSelected" disabledStyleClass="pagerDisabled"/>
+		</div>
+		<div class="pager_pages">
+			<table:pageSize pagerName="pager" styleClass="pagerEnabled"/>
+		</div>
+	</logic:equal>
+</div>
+<%
+String exec = request.getParameter("exec");
+exec = exec == null ? (String)request.getAttribute("exec") : exec;
+if(exec != null) {
+%>
+	<script language="JavaScript"><%= exec %></script>
+<%
+}
+%>

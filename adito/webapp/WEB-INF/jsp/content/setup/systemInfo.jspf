@@ -1,0 +1,106 @@
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+
+<div id="page_systemInfo">
+	<core:form subFormName="systemInfoForm" autocomplete="OFF" method="post" action="/systemInfo.do"> 
+		<html:hidden property="referer"/>
+		<html:hidden property="actionTarget"/>
+		<table class="dialog_form_table">
+			<tbody>
+				<tr class="formLabel">
+					<td class="label">
+				  		<bean:message key="status.freeMemory" bundle="setup" />: 
+					</td>
+					<td class="value">
+				  		<bean:write name="systemInfoForm" property="freeMemoryK"/>K
+					</td>
+					<td class="label">
+				  		<bean:message key="status.server.port" bundle="setup" />:
+					</td>
+					<td class="value">
+				  		<bean:write name="systemInfoForm" property="serverPort"/>
+					</td>
+				</tr>
+				<tr class="formLabel">
+					<td class="label">
+				  		<bean:message key="status.usedMemory" bundle="setup" />:
+					</td>
+					<td class="value">
+				  		<bean:write name="systemInfoForm" property="usedMemoryK"/>K
+					</td>
+					<td class="label">
+				  		<bean:message key="status.active.threads" bundle="setup" />:
+					</td>
+					<td class="value">
+				  		<bean:write name="systemInfoForm" property="activeThreads"/>
+					</td>
+				</tr>
+				<tr class="formLabel">
+					<td class="label">
+				  		<bean:message key="status.totalMemory" bundle="setup" />:
+					</td>
+					<td class="value">
+				  		<bean:write name="systemInfoForm" property="totalMemoryK"/>K
+					</td>
+					<td class="label">
+				  		<bean:message key="status.cpu.count" bundle="setup" />:
+					</td>
+					<td class="value">
+				  		<bean:write name="systemInfoForm" property="CPUCount"/>
+					</td>
+				</tr>
+				<tr class="formLabel">
+					<td class="label">
+				  		<bean:message key="status.os.arch" bundle="setup" />:
+					</td>
+					<td class="value">
+				  		<bean:write name="systemInfoForm" property="OSArch"/>
+					</td>
+					<td class="label">
+				  		<bean:message key="status.os.name" bundle="setup" />:
+					</td>
+					<td class="value">
+				  		<bean:write name="systemInfoForm" property="OSName"/>
+					</td>					
+				</tr>
+				<tr class="formLabel">
+
+					<td class="label">
+				  		<bean:message key="status.java.version" bundle="setup" />:
+					</td>
+					<td class="value">
+				  		<bean:write name="systemInfoForm" property="javaVersion"/>
+					</td>
+					<td class="label">
+				  		<bean:message key="status.os.version" bundle="setup" />:
+					</td>
+					<td class="value">
+				  		<bean:write name="systemInfoForm" property="OSVersion"/>
+					</td>					
+				</tr>
+				<% boolean newline = true; %>
+				<logic:iterate id="provider" name="systemInfoForm" property="systemInformationProviders" type="com.adito.setup.SystemInformationProvider">
+					<% if(newline) { 
+					    out.println("<tr class=\"formLabel\">");
+					   } 
+					%>
+						<td class="label">
+						   <bean:message key="<%= provider.getName()  + ".name"%>" bundle="<%= provider.getBundle() %>"/>:
+						</td>
+						<td class="value">
+						   <bean:write name="provider" property="value"/>
+						</td>
+					<% if(!newline) { 
+					    out.println("</tr>");
+					   } 
+					%>
+					<% newline = !newline; %>
+				</logic:iterate>
+
+			</tbody>
+		</table>	
+	</core:form>
+</div>

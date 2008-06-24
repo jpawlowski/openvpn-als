@@ -1,0 +1,104 @@
+<%@ page import="com.adito.navigation.forms.ConfirmForm" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+<%@ taglib uri="/server/taglibs/navigation" prefix="navigation" %>
+<%@ taglib uri="/server/taglibs/security" prefix="security" %>
+
+<div id="page_confirm"> 
+	<div id="confirm_dialog" class="titled_dialog_content">
+		<bean:define id="confirmForm" name="confirmForm"/>
+		<div>
+			<table class="titled_dialog_table">
+				<thead>
+					<tr>
+						<td colspan="2">                         
+							<div onmousedown="registerDrag(event, 'confirm_dialog');">
+								<bean:write name="confirmForm" property="subtitle" />
+							</div>
+						</td>
+					</tr>                          
+				</thead>
+				<tbody>
+					<tr>
+						<td class="icon">
+							<bean:define id="themePath"><core:themePath/></bean:define>
+							<img src="<%= themePath + "/images//dialog/" + ((ConfirmForm)confirmForm).getType() + ".gif" %>"/>
+						</td>
+						<td align="<bean:write name='confirmForm' property='align'/>">
+							<table>
+								<tbody>
+									<%-- When this is an exception message we need to restriction the width --%>
+									<logic:notEmpty name="confirmForm" property="exceptionMessage">       									
+										<tr>
+											<td class="exceptionText">
+												<logic:iterate name="confirmForm" property="messages" id="message">
+													<input:restrict width="65">
+														<bean:write filter="false" name="message"/>
+													</input:restrict>
+												</logic:iterate>
+											</td>
+										</tr>       
+										<logic:notEqual name="confirmForm" property="exceptionMessage" value="">       
+											<tr>
+												<td class="exceptionMessage">
+													<input:restrict width="65">
+														<bean:write name="confirmForm" property="exceptionMessage"/>
+													</input:restrict>
+												</td> 
+											</tr>      
+										</logic:notEqual>
+									</logic:notEmpty>      
+									
+									<%-- Not an exception message the formatting should be controlled by our message resources
+									     so width should not be an issue --%>
+									<logic:empty name="confirmForm" property="exceptionMessage">       		
+										<tr>
+											<td class="text">
+												<logic:iterate name="confirmForm" property="messages" id="message">
+													<bean:write filter="false" name="message"/><br/>
+												</logic:iterate>
+											</td>
+										</tr>       
+									</logic:empty>
+									
+									<%--  Show a trace if available --%>	
+									<logic:notEmpty name="confirmForm" property="traceMessage">       
+										<logic:notEqual name="confirmForm" property="traceMessage" value="">       
+											<tr>
+												<td class="traceMessage">
+													<pre><bean:write name="confirmForm" property="traceMessage"/></pre>
+												</td> 
+											</tr>      
+										</logic:notEqual>
+									</logic:notEmpty>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="2">            
+							<logic:iterate id="option" type="com.adito.navigation.Option" name="confirmForm" property="options">	
+								<logic:notEmpty name="option" property="forward">                  
+									<input class="<%= option.getStyleId() %>" onclick="self.location = '<bean:write name='option' property='forward'/>' ; return false" type="button" value="<bean:write name='option' property='label'/>"/>
+								</logic:notEmpty>
+								<logic:empty name="option" property="forward">                  
+									<security:checkAuthenticated requiresAuthentication="true">
+										<input class="<%= option.getStyleId() %>" onclick="javascript: if(history.length >= 1) {history.back();} else {window.close();} ; return false" type="button" value="<bean:write name='option' property='label'/>"/>
+									</security:checkAuthenticated>
+									<security:checkAuthenticated requiresAuthentication="false">
+										<input class="<%= option.getStyleId() %>" onclick="javascript: window.close(); return false" type="button" value="<bean:write name='option' property='label'/>"/>
+									</security:checkAuthenticated>
+								</logic:empty>
+							</logic:iterate>	
+						</td>
+					</tr>                  
+				</tfoot>
+			</table>
+		</div>
+	</div>
+</div>

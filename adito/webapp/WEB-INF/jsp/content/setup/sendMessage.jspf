@@ -1,0 +1,137 @@
+
+<jsp:directive.page import="java.util.Iterator"/>
+<jsp:directive.page import="com.adito.core.CoreServlet"/>
+<jsp:directive.page import="com.adito.notification.MessageSink"/>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/tabs" prefix="tabs" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+<%@ taglib uri="http://ajaxtags.org/tags/ajax" prefix="ajax" %> 
+
+<bean:define id="messageForm" name="messageForm" type="com.adito.setup.forms.MessageForm"></bean:define>
+<div id="page_sendMessage" class="tabbedForm">
+	<core:form method="post" action="/sendMessage.do" focus="subject">	
+		<html:hidden property="referer"/>
+		<html:hidden property="actionTarget"/>
+		<html:hidden property="_charset_"/>		
+		<tabs:tabSet name="messageForm" bundle="setup" resourcePrefix="sendMessage.tab">
+			<tabs:tabHeadings/>
+			<tabs:tab tabName="message">
+				<table class="dialog_form_table">
+					<tbody>
+						<tr class="formText">
+							<td class="label">
+								<div class="required">
+									<bean:message key="sendMessage.subject" bundle="setup"/>
+								</div>
+							</td>
+							<td class="value">	
+			                	<html:text tabindex="1" property="subject" size="32" maxlength="80"/>
+							</td>
+						</tr>
+						<tr class="formCombo">
+							<td class="label">
+								<div class="required">
+									<bean:message key="sendMessage.sink" bundle="setup"/>
+								</div>
+							</td>
+							<td class="value">	
+			                	<html:select property="selectedSink">
+        							<html:option value="^"><bean:message key="sendMessage.first" bundle="setup"/></html:option>
+        							<html:option value="*"><bean:message key="sendMessage.all" bundle="setup"/></html:option>
+        							<% for(Iterator i = CoreServlet.getServlet().getNotifier().getEnabledSinks().iterator(); i.hasNext(); ) {
+        									MessageSink sink = (MessageSink)i.next();
+        							 %>
+        							<html:option value="<%= sink.getName() %>"><bean:message key="<%= sink.getShortNameKey() %>" bundle="<%= sink.getBundle() %>"/></html:option>
+        							<% } %>
+			                	</html:select>
+							</td>
+						</tr>
+						<tr class="formTextArea">
+							<td class="label">
+								<bean:message key="sendMessage.urgent" bundle="setup"/>
+							</td>
+							<td class="value">		                          
+								<html:checkbox tabindex="2" property="urgent"/>
+							</td>
+						</tr> 		
+						<tr class="formTextArea">
+							<td class="value" colspan="2">
+                				<html:textarea tabindex="3" property="content"/>
+							</td>
+						</tr> 			
+					</tbody>
+				</table>
+			</tabs:tab>			
+			<tabs:tab tabName="recipients">
+				<input:multiSelectPoliciesListBox 
+					tabindex="1" 
+					sourceTitleKey="sendMessage.availablePolicies.title" 
+					targetTitleKey="sendMessage.selectedPolicies.title" 
+					addKey="sendMessage.addPolicy" 
+					removeKey="sendMessage.removePolicy" 
+					bundle="setup" 
+					styleClass="multiSelect" 
+					modelName="messageForm" 
+					modelProperty="selectedPolicySelectionModel" 
+					name="messageForm" 
+					property="selectedPolicies"
+					showPersonalPoliciesKey="sendMessage.showPersonalPolicies.title"
+					showPersonalPolicies="<%= messageForm.isShowPersonalPolicies() %>"/>
+				<input:multiEntryListBox 
+					indicator="accountIndicator"
+					tabindex="1" 
+					entryTitleKey="sendMessage.accountEntry.title" 
+					targetTitleKey="sendMessage.accounts.title" 
+					addKey="sendMessage.addPrincipal" 
+					removeKey="sendMessage.removePrincipal" 
+					bundle="setup" 
+					styleClass="multiEntry" 
+					entryStyleClass="form-autocomplete"
+					entryName="account"
+					name="messageForm" 
+					property="selectedAccounts"/>							
+				<input:multiEntryListBox 
+					indicator="roleIndicator"
+					tabindex="2" 
+					entryTitleKey="sendMessage.roleEntry.title" 
+					targetTitleKey="sendMessage.roles.title" 
+					addKey="sendMessage.addPrincipal" 
+					removeKey="sendMessage.removePrincipal" 
+					bundle="setup" 
+					styleClass="multiEntry" 
+					entryName="role"
+					entryStyleClass="form-autocomplete"
+					name="messageForm" 
+					property="selectedRoles"/>
+				<ajax:autocomplete source="entryValue_selectedAccounts"
+				                   target="entryValue_selectedAccounts"
+				                   baseUrl="${contextPath}/ajaxListAccounts.do"
+				                   parser="new ResponseXmlParser()"
+				                   className="autocomplete"
+								   indicator="accountIndicator"
+				                   parameters="account={entryValue_selectedAccounts}"
+				                   minimumCharacters="1"/>                   
+				<ajax:autocomplete source="entryValue_selectedRoles"
+				                   target="entryValue_selectedRoles"
+				                   baseUrl="${contextPath}/ajaxListRoles.do"
+				                   parser="new ResponseXmlParser()"
+				                   className="autocomplete"
+								   indicator="roleIndicator"
+				                   parameters="role={entryValue_selectedRoles}"
+				                   minimumCharacters="1"/>
+			</tabs:tab>
+		</tabs:tabSet>		
+		<div class="button_bar">
+			<div class="formButton">
+				<html:submit styleClass="save" onclick="setActionTarget('commit'); return true"><bean:message key="sendMessage.commit" bundle="setup"/></html:submit>
+			</div>
+			<div class="formButton">
+				<html:submit styleClass="cancel" onclick="setActionTarget('cancel'); return true"><bean:message key="sendMessage.cancel" bundle="setup"/></html:submit>
+			</div>
+		</div>
+	</core:form>	
+</div>

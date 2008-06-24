@@ -1,0 +1,13 @@
+
+<jsp:directive.page import="com.adito.core.CoreScript"/><%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<!-- Page header -->
+<head>
+	<title>
+		<bean:message key="fileDownload.title" bundle="navigation" />
+	</title>
+	
+	<link type="text/css" rel="stylesheet" href='<core:themePath/>/style.jsp'/>		
+    <meta http-equiv="refresh" content="2; URL=<bean:write name='fileDownloadForm' property='link'/>">
+	<core:pageScripts position="<%= String.valueOf(CoreScript.PAGE_HEADER) %>"/>	
+</head>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="samplesForm" type="com.adito.sample.forms.SamplesForm"></form-bean>
+		<form-bean name="sampleForm" type="com.adito.sample.forms.SampleForm"></form-bean>
+
+		<form-bean name="sampleDefaultDetailsForm" type="com.adito.sample.samplewizard.forms.SampleDefaultDetailsForm"></form-bean>
+		<form-bean name="sampleDetailsForm" type="com.adito.sample.samplewizard.forms.SampleDetailsForm"></form-bean>
+		<form-bean name="samplePolicySelectionForm" type="com.adito.sample.samplewizard.forms.SamplePolicySelectionForm"></form-bean>
+		<form-bean name="sampleSummaryForm" type="com.adito.sample.samplewizard.forms.SampleSummaryForm"></form-bean>
+		<form-bean name="sampleFinishForm" type="com.adito.sample.samplewizard.forms.SampleFinishForm"></form-bean>
+
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+	
+		<action path="/showSamples" type="com.adito.sample.actions.ShowSamplesAction" name="samplesForm"
+			parameter="actionTarget" scope="session">
+			<forward name="display" path=".site.Samples" />
+			<forward name="edit" path="/editSample.do" />
+			<forward name="confirmRemove" path="/removeSample.do" />
+			<forward name="refresh" path="/showSamples.do" redirect="true" />
+		</action>
+
+		<action path="/showUserSamples" type="com.adito.sample.actions.ShowSamplesAction" name="samplesForm"
+			parameter="actionTarget" scope="session">
+			<forward name="display" path=".site.UserSamples" />
+			<forward name="refresh" path="/showUserSamples.do" redirect="true" />
+		</action>
+
+		<!--  Note that the confirm form should already be in the struts config.-->
+		<action path="/removeSample" name="confirmForm"
+			parameter="question,true,sample,removeSample,yes=/showSamples.do?actionTarget=remove,no=/showSamples.do" scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<action path="/editSample" name="sampleForm" scope="session" validate="true" parameter="actionTarget"
+			input=".site.EditSample" type="com.adito.sample.actions.EditSampleAction">
+			<forward name="display" path=".site.EditSample" />
+		</action>
+
+
+		<!--  SAMPLE resource Wizard -->
+		<action path="/sampleDefaultDetails" name="sampleDefaultDetailsForm" scope="session"
+			type="com.adito.sample.samplewizard.actions.SampleDefaultDetailsAction" parameter="actionTarget" validate="true"
+			input=".site.SampleWizardPage">
+			<forward name="finish" path="/sampleFinish.do" redirect="true" />
+			<forward name="display" path=".site.SampleWizardPage" />
+			<forward name="next" path="/sampleDetails.do" redirect="true" />
+		</action>
+		<action path="/sampleDetails" name="sampleDetailsForm" scope="session"
+			type="com.adito.sample.samplewizard.actions.SampleDetailsAction" parameter="actionTarget" validate="true"
+			input=".site.SampleWizardPage">
+			<forward name="finish" path="/sampleFinish.do" redirect="true" />
+			<forward name="display" path=".site.SampleWizardPage" />
+			<forward name="previous" path="/sampleDefaultDetails.do" redirect="true" />
+			<forward name="next" path="/samplePolicySelection.do" redirect="true" />
+		</action>
+		<action path="/samplePolicySelection" name="samplePolicySelectionForm" scope="session"
+			type="com.adito.sample.samplewizard.actions.SamplePolicySelectionAction" parameter="actionTarget" validate="true"
+			input=".site.SampleWizardPage">
+			<forward name="display" path=".site.SampleWizardPage" />
+			<forward name="previous" path="/sampleDetails.do" redirect="true" />
+			<forward name="next" path="/sampleSummary.do" redirect="true" />
+		</action>
+		<action path="/sampleSummary" name="sampleSummaryForm" scope="session"
+			type="com.adito.sample.samplewizard.actions.SampleSummaryAction" parameter="actionTarget" validate="true"
+			input=".site.SampleWizardPage">
+			<forward name="display" path=".site.SampleWizardPage" />
+			<forward name="previous" path="/samplePolicySelection.do" redirect="true" />
+		</action>
+		<action path="/sampleFinish" name="sampleFinishForm" scope="session"
+			type="com.adito.sample.samplewizard.actions.SampleFinishAction" parameter="actionTarget" validate="true"
+			input=".site.SampleWizardPage">
+			<forward name="display" path=".site.SampleWizardPage" />
+			<forward name="rerun" path="/sampleDetails.do" redirect="true" />
+		</action>
+
+	</action-mappings>
+	<!-- ================================ Message Definitions -->
+
+	<message-resources parameter="com.adito.sample.ApplicationResources" key="sample" />
+
+</struts-config>

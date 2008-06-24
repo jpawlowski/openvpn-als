@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="examples"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/maverick-crypto"/>
+	<classpathentry kind="lib" path="lib/commons-logging.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/maverick-ssl"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/maverick-util"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

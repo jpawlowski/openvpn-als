@@ -1,0 +1,63 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:directive.page import="com.adito.core.CoreUtil"/>
+<jsp:directive.page import="com.adito.properties.Property"/>
+<jsp:directive.page import="com.adito.properties.impl.systemconfig.SystemConfigKey"/>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+
+<tiles:useAttribute name="resourceBundle" classname="java.lang.String"/>
+<tiles:useAttribute name="resourcePrefix" classname="java.lang.String"/>
+<tiles:useAttribute name="infoImage" classname="java.lang.String"/>
+
+<!-- If you change this file don't forget to change the one in Brandless Logon as well -->
+
+<div id="login_page_info">
+<input:frame styleId="component_pageInfo">
+	<table align="center">
+		<tr align="center">
+			<td valign="top">
+	        <% String welcomeLogo = Property.getProperty(new SystemConfigKey("loginPage.welcomeLogo"));
+	           if(welcomeLogo.equals("default")) {
+	           	   welcomeLogo = CoreUtil.getThemePath(session) + "/images/info/" + infoImage;
+	       	%>
+	       		<img class="infoImage" src="<%= welcomeLogo %>" />
+			</td>
+	       	<% 
+	           } 
+	           else {
+	           		welcomeLogo = "/icons/" + welcomeLogo;
+	       	%>
+				<img class="customLoginInfoImage" src="<%= welcomeLogo %>" />
+			</td>
+		</tr>
+		<tr align="center">
+	       	<% }%>
+			<td>
+				<h1>					
+					<bean:message key="<%= resourcePrefix + ".subtitle" %>" bundle="<%= resourceBundle %>" />	
+				</h1>
+				<core:checkPropertyEquals regExp="false" propertyValue="" propertyName="loginPage.welcomeTitle">	
+					<bean:message key="<%= resourcePrefix + ".description" %>" bundle="<%= resourceBundle %>" />
+				</core:checkPropertyEquals>					
+				<core:checkPropertyNotEquals regExp="false" propertyValue="" propertyName="loginPage.welcomeTitle">		
+					<core:getProperty propertyName="loginPage.welcomeTitle"/>
+				</core:checkPropertyNotEquals>				
+			</td>
+		</tr>
+	</table>	
+	<script language="javascript1.1" type="text/javascript">
+	<!--
+		if (!document.cookie) {
+			document.writeln("<span class='smallText'><p align='center' class='warningText'><bean:message key='login.cookieWarning' bundle='security'/></p></span>");
+			document.writeln("<br/>");
+		}		 
+	// -->
+	</script>	
+	<core:checkPropertyNotEquals regExp="false" propertyValue="" propertyName="loginPage.siteName">	
+		<div id="siteName">
+			<core:getProperty propertyName="loginPage.siteName"/>
+		</div>	
+	</core:checkPropertyNotEquals>
+</input:frame>
+</div>

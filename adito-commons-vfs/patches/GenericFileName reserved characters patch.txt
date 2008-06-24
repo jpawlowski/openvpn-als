@@ -1,0 +1,34 @@
+### Eclipse Workspace Patch 1.0
+#P adito-commons-vfs
+Index: src/java/org/apache/commons/vfs/provider/GenericFileName.java
+===================================================================
+RCS file: /cvsroot/adito-commons-vfs/src/java/org/apache/commons/vfs/provider/GenericFileName.java,v
+retrieving revision 1.4
+diff -u -r1.4 GenericFileName.java
+--- src/java/org/apache/commons/vfs/provider/GenericFileName.java	8 Feb 2007 16:48:02 -0000	1.4
++++ src/java/org/apache/commons/vfs/provider/GenericFileName.java	12 Feb 2007 14:02:56 -0000
+@@ -33,8 +33,8 @@
+     private final int defaultPort;
+     private final String password;
+     private final int port;
+-    private static final char[] USERNAME_RESERVED = {':', '@', '/'};
+-    private static final char[] PASSWORD_RESERVED = {'@', '/'};
++    private static final char[] RESERVED = {':', '@', '/', '?', '[', ']', '#'};
++    //private static final char[] PASSWORD_RESERVED = {'@', '/'};
+ 
+     protected GenericFileName(final String scheme,
+                               final String hostName,
+@@ -137,11 +137,11 @@
+     {
+         if (userName != null && userName.length() != 0)
+         {
+-            UriParser.appendEncoded(buffer, userName, USERNAME_RESERVED);
++            UriParser.appendEncoded(buffer, userName, RESERVED);
+             if (password != null && password.length() != 0)
+             {
+                 buffer.append(':');
+-                UriParser.appendEncoded(buffer, password, PASSWORD_RESERVED);
++                UriParser.appendEncoded(buffer, password, RESERVED);
+             }
+             buffer.append('@');
+         }

@@ -1,0 +1,6 @@
+2005-11-xx comons-vfs 1.0
+this is the first release
+
+Notice: Some tests may fail unless you've followed the necessary setup
+  as described here: http://jakarta.apache.org/commons/vfs/testserver.html
+  This is ok; the jar will still be fine.

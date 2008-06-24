@@ -1,0 +1,19 @@
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+
+<tiles:useAttribute name="actionOnclick" scope="request" classname="java.lang.String" ignore="true"/> 
+<tiles:useAttribute name="actionPath" scope="request" classname="java.lang.String"/> 
+<tiles:useAttribute name="nameKey" scope="request" classname="java.lang.String"/> 
+<tiles:useAttribute name="descriptionKey" scope="request" classname="java.lang.String"/> 
+<tiles:useAttribute name="bundle" scope="request" classname="java.lang.String"/> 
+<tiles:useAttribute name="actionName" scope="request" classname="java.lang.String"/> 
+<bean:define id="themeActionLink">/WEB-INF/<core:themePath/>/actionLink.jspf</bean:define>
+<tiles:insert flush="false"  beanName="themeActionLink">
+	<tiles:put name="actionOnclick" beanName="actionOnclick"/>
+	<tiles:put name="actionPath" beanName="actionPath"/>
+	<tiles:put name="nameKey" beanName="nameKey"/>
+	<tiles:put name="descriptionKey" beanName="descriptionKey"/>
+	<tiles:put name="bundle" beanName="bundle"/>
+	<tiles:put name="actionName" beanName="actionName"/>
+</tiles:insert>

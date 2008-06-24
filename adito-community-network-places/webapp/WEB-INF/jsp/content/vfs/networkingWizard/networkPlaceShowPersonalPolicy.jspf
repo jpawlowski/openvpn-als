@@ -1,0 +1,25 @@
+
+<jsp:directive.page import="com.adito.networkplaces.NetworkPlacePlugin"/><%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %> 
+
+<bean:define id="networkPlacePersonalPolicyForm" name="networkPlacePersonalPolicyForm" type="com.adito.networkplaces.wizards.forms.NetworkPlacePersonalPolicyForm"></bean:define>
+
+<table>
+	<tr>
+		<td>
+			<image src="<core:themePath/>/images/dialog/warning.gif" />
+		</td>
+		<td>
+			<bean:message key="networkPlaceWizard.networkPlacePersonalPolicy.personalPolicy"
+			  	arg0="<%=networkPlacePersonalPolicyForm.getPersonalPolicyName() %>" 
+			  	bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>"/>
+		</td>	
+	</tr>
+</table>
+
+
+
+
+
+	

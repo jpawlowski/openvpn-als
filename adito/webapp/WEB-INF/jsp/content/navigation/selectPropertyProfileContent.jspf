@@ -1,0 +1,53 @@
+<%@ page import="com.adito.core.forms.CoreForm" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+
+<div id="page_select_property_profile">
+	<core:form styleClass="dialog_form" method="post" action="/selectPropertyProfile.do">
+		<html:hidden property="_charset_"/> 
+		<html:hidden property="referer"/>
+		<div class="dialog_content">
+			<table class="dialog_form_table" align="center" cellpadding="0" cellspacing="0" border="0">
+				<tbody>
+					<tr class="formCombo">
+						<td class="label">
+							<bean:message key="selectPropertyProfile.profile.label" bundle="navigation" /> 
+						</td>
+						<td class="value">
+							<html:select property="selectedPropertyProfile">
+								<html:optionsCollection value="resourceId" label="label" property="propertyProfiles" />
+							</html:select>
+						</td>
+					</tr>
+					<tr class="formCheckbox">
+						<td colspan="2" class="value">
+							<bean:message key="selectPropertyProfile.profile.makeDefault" bundle="navigation" /> 
+							<html:checkbox property="makeDefault"/>
+						</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="2">							
+							<div class="button_bar">
+								<div class="formButton">	
+									<input class="ok" type="submit" value="<bean:message key='selectPropertyProfile.select.label' bundle='navigation'/>"/>
+								</div>		
+								<div class="formButton">
+									<logic:notEmpty name="profileSelectionForm" property="referer">
+										<input class="cancel" onclick="<%= "self.location = '" + ((CoreForm)request.getAttribute("profileSelectionForm")).getReferer() + "'" %>" type="button" value="<bean:message key='selectAuthenticationScheme.cancel' bundle='security'/>"/>
+									</logic:notEmpty>							
+									<logic:empty name="profileSelectionForm" property="referer">
+										<input class="cancel" onclick="self.location = '/logoff.do'" type="button" value="<bean:message key='selectAuthenticationScheme.cancel' bundle='security'/>"/>
+									</logic:empty>	
+								</div>
+							</div>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>			
+	</core:form>
+</div>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+
+		<!-- Application shortcuts -->
+		<form-bean name="applicationShortcutsForm"
+			type="com.adito.applications.forms.ApplicationShortcutsForm">
+		</form-bean>
+		<form-bean name="applicationShortcutForm"
+			type="com.adito.applications.forms.ApplicationShortcutForm">
+		</form-bean>				
+
+		<!--  Application shortcut wizard -->		
+
+		<form-bean name="applicationShortcutDetailsForm" type="com.adito.applications.wizards.forms.ApplicationShortcutWizardDetailsForm"></form-bean>
+		<form-bean name="applicationShortcutApplicationForm" type="com.adito.applications.wizards.forms.ApplicationShortcutWizardApplicationForm"></form-bean>
+		<form-bean name="applicationShortcutAdditionalDetailsForm" type="com.adito.applications.wizards.forms.ApplicationShortcutWizardAdditionalDetailsForm"></form-bean>
+		<form-bean name="applicationShortcutPolicySelectionForm" type="com.adito.applications.wizards.forms.ApplicationShortcutWizardPolicySelectionForm"></form-bean>
+		<form-bean name="applicationShortcutPersonalPolicyForm" type="com.adito.applications.wizards.forms.ApplicationShortcutWizardPersonalPolicyForm"></form-bean>
+		<form-bean name="applicationShortcutSummaryForm" type="com.adito.applications.wizards.forms.ApplicationShortcutWizardSummaryForm"></form-bean>
+		<form-bean name="applicationShortcutFinishForm" type="com.adito.applications.wizards.forms.ApplicationShortcutWizardFinishForm"></form-bean>
+		
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+
+		<action path="/launchApplication"
+			type="com.adito.applications.actions.LaunchApplicationAction" />
+
+		<action path="/getHTMLApplication"
+			type="com.adito.applications.actions.GetHTMLApplicationAction" />
+						
+
+		<!--  Application shortcuts -->
+
+		<action path="/showApplicationShortcuts"
+			type="com.adito.applications.actions.ShowApplicationShortcutsDispatchAction"
+			name="applicationShortcutsForm" parameter="actionTarget"
+			scope="session">
+			<forward name="display" path=".site.ApplicationShortcuts" />
+			<forward name="edit" path="/editApplicationShortcut.do" />
+			<forward name="clone" path="/editApplicationShortcut.do" />
+			<forward name="refresh" path="/showApplicationShortcuts.do"
+				redirect="true" />
+			<forward name="confirmRemove"
+				path="/confirmRemoveApplicationShortcut.do" />
+		</action>
+
+		<action path="/showUserApplicationShortcuts"
+			type="com.adito.applications.actions.ShowApplicationShortcutsDispatchAction"
+			name="applicationShortcutsForm" parameter="actionTarget"
+			scope="session">
+			<forward name="display"
+				path=".site.UserApplicationShortcuts" />
+			<forward name="edit" path="/editUserApplicationShortcut.do" />
+			<forward name="confirmRemove"
+				path="/confirmRemoveUserApplicationShortcut.do" />
+			<forward name="refresh"
+				path="/showUserApplicationShortcuts.do" redirect="true" />
+		</action>
+
+		<action path="/confirmRemoveApplicationShortcut"
+			name="confirmForm"
+			parameter="question,true,applications,removeApplicationShortcut,yes=/showApplicationShortcuts.do?actionTarget=remove,no=/showApplicationShortcuts.do?actionTarget=unspecified"
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+		
+		<action path="/confirmRemoveUserApplicationShortcut"
+			name="confirmForm"
+			parameter="question,true,applications,removeApplicationShortcut,yes=/showUserApplicationShortcuts.do?actionTarget=remove,no=/showUserApplicationShortcuts.do?actionTarget=unspecified"
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<action path="/editUserApplicationShortcut"
+			name="applicationShortcutForm" scope="session" validate="true"
+			parameter="actionTarget" input=".site.UserEditApplicationShortcut"
+			type="com.adito.applications.actions.EditApplicationShortcutDispatchAction">
+			<forward name="display"
+				path=".site.UserEditApplicationShortcut" />
+			<forward name="done"
+				path="/showUserApplicationShortcuts.do" />
+		</action>	
+		
+		<action path="/editApplicationShortcut"
+			name="applicationShortcutForm" scope="session" validate="true"
+			parameter="actionTarget" input=".site.EditApplicationShortcut"
+			type="com.adito.applications.actions.EditApplicationShortcutDispatchAction">
+			<forward name="display"
+				path=".site.EditApplicationShortcut" />
+			<forward name="done"
+				path="/showApplicationShortcuts.do" />
+		</action>	
+
+		<!--  Application shortcut wizard -->		
+		
+		<action path="/applicationShortcutApplication" name="applicationShortcutApplicationForm" scope="session" type="com.adito.applications.wizards.actions.ApplicationShortcutWizardApplicationAction" parameter="actionTarget" validate="true" input=".site.ApplicationShortcutWizardPage">
+			<forward name="finish" path="/applicationShortcutFinish.do" redirect="true" />
+			<forward name="display" path=".site.ApplicationShortcutWizardPage" />
+			<forward name="next" path="/applicationShortcutDetails.do" redirect="true" />
+		</action>
+		<action path="/applicationShortcutDetails" name="applicationShortcutDetailsForm" scope="session" type="com.adito.applications.wizards.actions.ApplicationShortcutWizardDetailsAction" parameter="actionTarget" validate="true" input=".site.ApplicationShortcutWizardPage">
+			<forward name="display" path=".site.ApplicationShortcutWizardPage" />
+			<forward name="next" path="/applicationShortcutAdditionalDetails.do" redirect="true" />
+			<forward name="previous" path="/applicationShortcutApplication.do" redirect="true" />
+		</action>
+		<action path="/applicationShortcutAdditionalDetails" name="applicationShortcutAdditionalDetailsForm" scope="session" type="com.adito.applications.wizards.actions.ApplicationShortcutWizardAdditionalDetailsAction" parameter="actionTarget" validate="true" input=".site.ApplicationShortcutWizardPage">
+			<forward name="display" path=".site.ApplicationShortcutWizardPage" />
+			<forward name="previous" path="/applicationShortcutDetails.do" redirect="true" />
+			<forward name="next" path="/applicationShortcutPolicySelection.do" redirect="true" />
+			<forward name="nextPersonal" path="/applicationShortcutPersonalPolicy.do" redirect="true"/>
+		</action>
+		<action path="/applicationShortcutPolicySelection" name="applicationShortcutPolicySelectionForm" scope="session" type="com.adito.applications.wizards.actions.ApplicationShortcutWizardPolicySelectionAction" parameter="actionTarget" validate="true" input=".site.ApplicationShortcutWizardPage">
+			<forward name="display" path=".site.ApplicationShortcutWizardPage" />
+			<forward name="previous" path="/applicationShortcutAdditionalDetails.do" redirect="true" />
+			<forward name="next" path="/applicationShortcutSummary.do" redirect="true" />
+		</action>
+		<action path="/applicationShortcutPersonalPolicy" name="applicationShortcutPersonalPolicyForm" scope="session" type="com.adito.applications.wizards.actions.ApplicationShortcutWizardPersonalPolicyAction" parameter="actionTarget" validate="true" input=".site.ApplicationShortcutWizardPage">				
+			<forward name="display" path=".site.ApplicationShortcutWizardPage" />
+			<forward name="previous" path="/applicationShortcutAdditionalDetails.do" redirect="true" />
+			<forward name="next" path="/applicationShortcutSummary.do" redirect="true" />
+		</action>
+		<action path="/applicationShortcutSummary" name="applicationShortcutSummaryForm" scope="session" type="com.adito.applications.wizards.actions.ApplicationShortcutWizardSummaryAction" parameter="actionTarget" validate="true" input=".site.ApplicationShortcutWizardPage">
+			<forward name="display" path=".site.ApplicationShortcutWizardPage" />
+			<forward name="previous" path="/applicationShortcutPolicySelection.do" redirect="true" />
+			<forward name="previousPersonal" path="/applicationShortcutPersonalPolicy.do" redirect="true" />
+		</action>
+		<action path="/applicationShortcutFinish" name="applicationShortcutFinishForm" scope="session" type="com.adito.applications.wizards.actions.ApplicationShortcutWizardFinishAction" parameter="actionTarget" validate="true" input=".site.ApplicationShortcutWizardPage">
+			<forward name="display" path=".site.ApplicationShortcutWizardPage" />
+			<forward name="rerun" path="/applicationShortcutDetails.do" redirect="true" />
+		</action>
+
+	</action-mappings>
+	<!-- ================================ Message Definitions -->
+	<message-resources parameter="com.adito.applications.ApplicationResources" key="applications" />
+
+</struts-config>

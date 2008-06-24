@@ -1,0 +1,19 @@
+<%@ taglib uri="/server/taglibs/input" prefix="input" %> 
+		
+<input:multiSelectListBox 
+	disabled="false"
+	tabindex="1" 
+	sourceTitleKey="editAuthenticationScheme.availableModules.title" 
+	targetTitleKey="editAuthenticationScheme.selectedModules.title" 
+	allowReordering="true"
+	upKey="editAuthenticationScheme.moveUp" 
+	downKey="editAuthenticationScheme.moveDown" 
+	addKey="editAuthenticationScheme.addModule" 
+	removeKey="editAuthenticationScheme.removeModule" 
+	bundle="security" 
+	styleClass="multiSelect" 
+	modelName="athenticationSchemeSelectionForm" 
+	modelProperty="moduleModel" 
+	name="athenticationSchemeSelectionForm" 
+	property="selectedModules"/>	
+	

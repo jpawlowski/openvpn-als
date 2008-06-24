@@ -1,0 +1,212 @@
+<%@ page import="com.adito.security.Constants"%>
+<jsp:directive.page import="com.adito.vfs.VFSProvider"/>
+<jsp:directive.page import="com.adito.properties.attributes.AttributeDefinition"/>
+<jsp:directive.page import="com.adito.security.SessionInfo"/>
+<jsp:directive.page import="com.adito.security.LogonControllerFactory"/>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="/server/taglibs/core" prefix="core"%>
+<%@ taglib uri="/server/taglibs/navigation" prefix="navigation"%>
+<%@ taglib uri="/server/taglibs/security" prefix="security"%>
+<%@ taglib uri="/server/taglibs/input" prefix="input"%>
+<%@ taglib uri="/server/taglibs/tabs" prefix="tabs"%>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ page import="java.util.Iterator" %>
+
+<bean:define id="networkPlaceForm" name="networkPlaceForm" type="com.adito.networkplaces.forms.NetworkPlaceForm"></bean:define>
+<div id="page_networkPlace" class="tabbedForm">
+		<html:hidden property="referer" />
+		<html:hidden property="actionTarget" />
+		<html:hidden property="_charset_" />
+		<html:hidden property="editing" />
+		<html:hidden property="resourceId" />
+		<html:hidden property="selectedTab" />
+		<tabs:tabSet name="networkPlaceForm" bundle="networkPlaces" resourcePrefix="createNetworkPlace.tab">
+			<tabs:tabHeadings />
+			<tabs:tab tabName="details">
+				<table class="dialog_form_table">
+					<tbody>
+						<tr class="formText">
+							<td class="label">
+								<div class="required">
+									<bean:message key="createNetworkPlace.shortName.label" bundle="networkPlaces" />
+								</div>
+							</td>
+							<td class="value">
+								<html:text tabindex="1" disabled="<%= networkPlaceForm.isAssignOnly() %>" property="resourceName"/>
+							</td>
+						</tr>
+						<tr class="formTextArea">
+							<td class="label">
+								<div class="required">
+									<bean:message key="createNetworkPlace.description.label" bundle="networkPlaces" />
+								</div>
+							</td>
+							<td class="value">
+								<html:textarea tabindex="2" disabled="<%= networkPlaceForm.isAssignOnly() %>" property="resourceDescription" cols="25" rows="5" />
+							</td>
+						</tr>
+						<tr class="formCheckbox">
+							<td class="label">
+								<bean:message key="editResource.addToFavorites" bundle="policyframework" />
+							</td>
+							<td class="value">
+								<html:checkbox tabindex="3" disabled="<%= networkPlaceForm.isAssignOnly() %>" property="favorite"/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</tabs:tab>
+			<tabs:tab tabName="other">
+				<table class="dialog_form_table">
+					<tbody>
+						<tr class="formText">
+							<td class="label">
+								<bean:message key="createNetworkPlace.scheme.label" bundle="networkPlaces" />
+							</td>
+							<td class="value">
+								<input:toolTip width="400" 
+									key="<%= "vfs.provider." + networkPlaceForm.getProvider().getScheme() + ".description" %>" bundle="<%= networkPlaceForm.getProvider().getBundle() %>">  
+									<bean:message key="<%= "vfs.provider." + networkPlaceForm.getProvider().getScheme() + ".name" %>" bundle="<%= networkPlaceForm.getProvider().getBundle() %>"/>
+								</input:toolTip>
+							</td>
+						</tr>
+						<logic:notEqual name="networkPlaceForm" property="provider.hostRequirement" value="<%= String.valueOf(VFSProvider.ELEMENT_NOT_APPLICABLE) %>">
+							<tr class="formText">
+								<td class="label">
+									<div <% if (networkPlaceForm.getProvider().getHostRequirement() == VFSProvider.ELEMENT_REQUIRED) { %>class="required"<% } %>>
+										<bean:message key="createNetworkPlace.host.label" bundle="networkPlaces" />
+									</div>
+								</td>
+								<td class="value">
+									<html:text disabled="<%= networkPlaceForm.isAssignOnly() %>" styleId="host" styleClass="threeQuartersWidth" property="host"/>								
+									<input:variables disabled="<%= networkPlaceForm.isAssignOnly() %>" inputId="host"/>
+								</td>
+							</tr>
+						</logic:notEqual>
+						<logic:notEqual name="networkPlaceForm" property="provider.portRequirement" value="<%= String.valueOf(VFSProvider.ELEMENT_NOT_APPLICABLE) %>">
+							<tr>
+								<td class="label">
+									<div <% if (networkPlaceForm.getProvider().getPortRequirement() == VFSProvider.ELEMENT_REQUIRED) { %>class="required"<% } %>>
+										<bean:message key="createNetworkPlace.port.label" bundle="networkPlaces" />
+									</div>
+								</td>
+								<td class="value">
+									<html:text styleId="port" styleClass="" property="port"/>
+								</td>
+							</tr>
+						</logic:notEqual>
+						<logic:notEqual name="networkPlaceForm" property="provider.pathRequirement" value="<%= String.valueOf(VFSProvider.ELEMENT_NOT_APPLICABLE) %>">
+							<tr>
+								<td class="label">
+									<div <% if (networkPlaceForm.getProvider().getPathRequirement() == VFSProvider.ELEMENT_REQUIRED) { %>class="required"<% } %>>
+										<bean:message key="createNetworkPlace.path.label" bundle="networkPlaces" />
+									</div>
+								</td>
+								<td class="value">
+									<html:text styleId="path"  styleClass="threeQuartersWidth"  property="path"/>								
+									<input:variables inputId="path"/>
+								</td>
+							</tr>
+						</logic:notEqual>
+						<logic:notEqual name="networkPlaceForm" property="provider.userInfoRequirement" value="<%= String.valueOf(VFSProvider.ELEMENT_NOT_APPLICABLE) %>">
+							<tr class="formText">
+								<td class="label">
+									<div <% if (networkPlaceForm.getProvider().getUserInfoRequirement() == VFSProvider.ELEMENT_REQUIRED) { %>class="required"<% } %>>
+										<bean:message key="createNetworkPlace.username.label" bundle="networkPlaces" />
+									</div>
+								</td>
+								<td class="value">
+									<html:text styleId="username" styleClass="" property="username"/>								
+									<input:variables inputId="username"/>
+								</td>
+							</tr>
+							<tr class="formText">
+								<td class="label">
+									<div>
+										<bean:message key="createNetworkPlace.password.label" bundle="networkPlaces" />
+									</div>
+								</td>
+								<td class="value">
+									<html:password styleId="password" styleClass="" property="password"/>								
+									<input:variables inputId="password"/>
+								</td>
+							</tr>
+						</logic:notEqual>
+						<logic:notEqual name="networkPlaceForm" property="provider.hiddenFilesSupported" value="false">
+							<tr class="formText">
+								<td class="label">
+									<bean:message key="createNetworkPlace.showHidden.label" bundle="networkPlaces" />
+								</td>
+								<td class="value">
+									<html:checkbox name="networkPlaceForm" disabled="<%= networkPlaceForm.isAssignOnly() %>" property="showHidden" />
+								</td>
+							</tr>
+						</logic:notEqual>
+						<tr class="formText">
+							<td class="label">
+								<bean:message key="createNetworkPlace.readOnly.label" bundle="networkPlaces" />
+							</td>
+							<td class="value">
+								<html:checkbox name="networkPlaceForm" disabled="<%= networkPlaceForm.isAssignOnly() %>" property="networkPlaceReadOnly" />
+							</td>
+						</tr>
+						<tr class="formText">
+							<td class="label">
+								<bean:message key="createNetworkPlace.allowRecursive.label" bundle="networkPlaces" />
+							</td>
+							<td class="value">
+								<html:checkbox name="networkPlaceForm" disabled="<%= networkPlaceForm.isAssignOnly() %>" property="allowRecursive" />
+							</td>
+						</tr>
+						<tr class="formText">
+							<td class="label">
+								<bean:message key="createNetworkPlace.noDelete.label" bundle="networkPlaces" />
+							</td>
+							<td class="value">
+								<html:checkbox name="networkPlaceForm" disabled="<%= networkPlaceForm.isAssignOnly() %>" property="noDelete" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</tabs:tab>
+			<tabs:tab tabName="policies">
+				<input:multiSelectPoliciesListBox tabindex="3" sourceTitleKey="policySelection.availablePolicies.title" targetTitleKey="policySelection.selectedPolicies.title" addKey="policySelection.addPolicy" removeKey="policySelection.removePolicy"
+					allowReordering="true"  upKey="policySelection.moveUp" downKey="policySelection.moveDown" bundle="policyframework" styleClass="multiSelect" modelName="networkPlaceForm" modelProperty="policyModel" 
+					configureKey="policySelection.configurePolicies" configureOnClick="window.location = '/configurePolicies.do?referer=/editNetworkPlace.do';" name="networkPlaceForm" property="selectedPolicies" 
+					showPersonalPoliciesKey="policySelection.showPersonalPolicies.title" showPersonalPolicies="<%= networkPlaceForm.isShowPersonalPolicies() %>" />
+			</tabs:tab>
+			<logic:iterate indexId="categoryIdx" name="networkPlaceForm" property="categoryIds" id="category" type="java.lang.String">							
+				<tabs:tab tabName="<%= category %>">
+					<table class="dialog_form_table">
+						<tbody>							
+							<logic:iterate id="attributeValueItem" name="networkPlaceForm" property="attributeValueItems"
+										type="com.adito.properties.attributes.AttributeValueItem" indexId="idx">								
+								<logic:equal name="attributeValueItem" property="categoryId" value="<%= category %>">									
+									<tiles:insert page="/WEB-INF/jsp/content/properties/attributeValue.jspf" flush="false">
+										<tiles:put name="rowIdx" value="<%= idx %>"/>
+										<tiles:put name="items" beanName="networkPlaceForm" beanProperty="attributeValueItems"/>
+									</tiles:insert>			
+								</logic:equal>
+							</logic:iterate>
+						</tbody>
+					</table>		
+				</tabs:tab>
+			</logic:iterate>
+		</tabs:tabSet>
+		<div class="button_bar">
+			<div class="formButton">
+				<html:submit styleClass="save" onclick="setActionTarget('commit');">
+					<bean:message key="createNetworkPlace.commit" bundle="networkPlaces" />
+				</html:submit>
+			</div>
+			<logic:notEmpty name="networkPlaceForm" property="referer">
+				<div class="formButton">
+					<html:submit styleClass="cancel" onclick="setActionTarget('cancel');">
+						<bean:message key="createNetworkPlace.cancel" bundle="networkPlaces" />
+					</html:submit>
+				</div>
+			</logic:notEmpty>
+		</div>
+</div>

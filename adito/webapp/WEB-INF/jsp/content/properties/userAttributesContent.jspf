@@ -1,0 +1,135 @@
+<%@ page import="com.adito.properties.attributes.AttributeDefinition" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/tabs" prefix="tabs" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+
+<div id="page_attributes" class="tabbedForm">
+	<core:form action="/userAttributes.do">	
+		<html:hidden property="actionTarget" />
+		<html:hidden property="_charset_"/>		
+		<html:hidden property="referer"/>			
+		<html:hidden property="selectedTab"/>	
+		<tabs:tabSet name="userAttributesForm" bundle="security" resourcePrefix="createAccount.tab">
+			<tabs:tabHeadings/>			
+			<logic:iterate indexId="categoryIdx" name="userAttributesForm" property="categoryIds" id="category" type="java.lang.String">							
+				<tabs:tab tabName="<%= category %>">
+					<table class="dialog_form_table">
+						<tbody>							
+							<logic:iterate id="userAttributeValueItems" name="userAttributesForm" property="userAttributeValueItems"
+										type="com.adito.properties.attributes.AttributeValueItem">
+								<logic:equal name="userAttributeValueItems" property="categoryId" value="<%= category %>">
+									<!--  <%= userAttributeValueItems.getDefinition().getName() %> -->
+									<% boolean disabled = userAttributeValueItems.getDefinition().getVisibility() != AttributeDefinition.USER_OVERRIDABLE_ATTRIBUTE && userAttributeValueItems.getDefinition().getVisibility() != AttributeDefinition.USER_CONFIDENTIAL_ATTRIBUTE  ; %>
+									<%-- String --%>
+									<logic:equal name="userAttributeValueItems" property="definition.type" value="<%= String.valueOf(AttributeDefinition.TYPE_STRING) %>">										
+										<tr class="formText">
+											<td class="label">
+											    <tiles:insert page="/WEB-INF/jsp/content/properties/propertyLabel.jspf"
+													flush="false">
+													<tiles:put name="propertyItem" beanName="userAttributeValueItems"/>
+												</tiles:insert>
+											</td>
+											<td class="value">
+												<html:text size="<%= String.valueOf(userAttributeValueItems.getColumns()) %>" disabled="<%= disabled %>" indexed="true" name="userAttributeValueItems" property="value"/>
+											</td>
+										</tr>
+									</logic:equal>
+									<%-- Integer --%>
+									<logic:equal name="userAttributeValueItems" property="definition.type" value="<%= String.valueOf(AttributeDefinition.TYPE_INTEGER) %>">
+										<tr class="formPassword">
+											<td class="label">
+											    <tiles:insert page="/WEB-INF/jsp/content/properties/propertyLabel.jspf"
+													flush="false">
+													<tiles:put name="propertyItem" beanName="userAttributeValueItems"/>
+												</tiles:insert>
+											</td>
+											<td class="value">
+												<html:text size="<%= String.valueOf(userAttributeValueItems.getColumns()) %>" disabled="<%= disabled %>" indexed="true" name="userAttributeValueItems" property="value"/>
+											</td>
+										</tr>
+									</logic:equal>
+									<%-- Boolean --%>
+									<logic:equal name="userAttributeValueItems" property="definition.type" value="<%= String.valueOf(AttributeDefinition.TYPE_BOOLEAN) %>">
+										<tr class="formPassword">
+											<td class="label">
+											    <tiles:insert page="/WEB-INF/jsp/content/properties/propertyLabel.jspf"
+													flush="false">
+													<tiles:put name="propertyItem" beanName="userAttributeValueItems"/>
+												</tiles:insert>
+											</td>
+											<td class="value">
+												<html:checkbox disabled="<%= disabled %>" indexed="true" name="userAttributeValueItems" property="selected"/>
+											</td>
+										</tr>
+									</logic:equal>
+									<%-- List --%>
+									<logic:equal name="userAttributeValueItems" property="definition.type" value="<%= String.valueOf(AttributeDefinition.TYPE_LIST) %>">
+										<tr class="formList">
+											<td class="label">
+											    <tiles:insert page="/WEB-INF/jsp/content/properties/propertyLabel.jspf"
+													flush="false">
+													<tiles:put name="propertyItem" beanName="userAttributeValueItems"/>
+												</tiles:insert>
+											</td>
+											<td class="value">
+												<html:select disabled="<%= disabled %>" indexed="true" name="userAttributeValueItems" property="value">
+													<html:optionsCollection name="userAttributeValueItems" property="listItems" />
+												</html:select>
+											</td>
+										</tr>					
+									</logic:equal>
+									<%-- Password --%>
+									<logic:equal name="userAttributeValueItems" property="definition.type" value="<%= String.valueOf(AttributeDefinition.TYPE_PASSWORD) %>">
+										<tr class="formPassword">
+											<td class="label">
+											    <tiles:insert page="/WEB-INF/jsp/content/properties/propertyLabel.jspf"
+													flush="false">
+													<tiles:put name="propertyItem" beanName="userAttributeValueItems"/>
+												</tiles:insert>
+											</td>
+											<td class="value">
+												<input:password disabled="<%= disabled %>" autocomplete="false" indexed="true" size="<%= String.valueOf(userAttributeValueItems.getColumns()) %>" name="userAttributeValueItems" property="value"/>
+											</td>
+										</tr>
+									</logic:equal>
+									<%-- Text Area --%>
+									<logic:equal name="userAttributeValueItems" property="definition.type" value="<%= String.valueOf(AttributeDefinition.TYPE_TEXT_AREA) %>">
+										<tr class="formTextArea">
+											<td class="label">
+											    <tiles:insert page="/WEB-INF/jsp/content/properties/propertyLabel.jspf"
+													flush="false">
+													<tiles:put name="propertyItem" beanName="userAttributeValueItems"/>
+												</tiles:insert>
+											</td>
+											<td class="value">
+												<html:textarea disabled="<%= disabled %>" 
+													indexed="true" name="userAttributeValueItems" property="value"
+													cols="<%= String.valueOf(userAttributeValueItems.getColumns()) %>"
+													rows="<%= String.valueOf(userAttributeValueItems.getRows()) %>" />
+											</td>
+										</tr>
+									</logic:equal>		
+								</logic:equal>			
+							</logic:iterate>
+						</tbody>
+					</table>		
+				</tabs:tab>
+			</logic:iterate>
+		</tabs:tabSet>		
+		<div class="button_bar">
+			<div class="formButton">
+				<input class="save" type="submit" onClick="return setActionTarget('commit');"
+					value="<bean:message key='createAccount.commit' bundle='security'/>" />
+			</div>
+			<logic:notEmpty name="userAttributesForm" property="referer">
+				<div class="formButton">
+					&nbsp;<input class="cancel" type="button" onclick="javascript: self.location = '<bean:write name="userAttributesForm" property="referer"/>'" value="<bean:message key='createAccount.cancel' bundle='security' />" />
+				</div>
+			</logic:notEmpty>
+		</div>
+	</core:form>                   
+</div>

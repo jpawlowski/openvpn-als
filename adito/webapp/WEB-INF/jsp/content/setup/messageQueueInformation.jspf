@@ -1,0 +1,110 @@
+
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+
+<div id="page_messageQueueInformation">
+	<bean:define id="messageItem" name="messageQueueInformationForm" property="message" type="com.adito.notification.Notifier.MessageWrapper"/>
+	<core:form method="post" action="/messageQueueInformation.do">	
+			<html:hidden property="referer"/>
+			<html:hidden property="actionTarget"/>
+			<html:hidden property="_charset_"/>		
+			<div>	
+				<h3><bean:message key="resourceInformation.resource" bundle="policyframework"/></h3>
+				<div class="common">	
+					<table class="dialog_form_table" id="form">
+						<tbody>
+							<tr class="formText">
+								<td class="label">
+									<bean:message key="messageQueue.messages.subject" bundle="setup"/>							
+								</td>
+								<td class="value">	
+		                			<bean:write name="messageItem" property="message.subject"/>
+								</td>
+							</tr>
+							<tr class="formText">
+								<td class="label">
+									<bean:message key="messageQueue.messages.content" bundle="setup"/>							
+								</td>
+								<td class="value">	
+		                			<bean:write name="messageItem" property="message.content"/>
+								</td>
+							</tr>
+							<tr class="formText">
+								<td class="label">
+									<bean:message key="messageQueue.messages.urgent" bundle="setup"/>							
+								</td>
+								<td class="value">	
+									<logic:equal name="messageItem" property="message.urgent" value="true">
+										<bean:message key="messageQueue.messages.urgent.yes" bundle="setup"/>
+									</logic:equal>
+									<logic:equal name="messageItem" property="message.urgent" value="false">
+										<bean:message key="messageQueue.messages.urgent.no" bundle="setup"/>
+									</logic:equal>
+								</td>
+							</tr>
+							<tr class="formText">
+								<td class="label">
+									<bean:message key="messageQueue.messages.attempts" bundle="setup"/>							
+								</td>
+								<td class="value">	
+		                			<bean:write name="messageItem" property="attempt" format="0"/>
+								</td>
+							</tr>
+							<tr class="formText">
+								<td class="label">
+									<bean:message key="messageQueue.messages.lastAttempt" bundle="setup"/>							
+								</td>
+								<td class="value">	
+		                			<bean:write name="messageItem" property="formattedTime"/>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>			
+			<hr/>		
+			<div class="details">
+				<h3><bean:message key="resourceInformation.details" bundle="policyframework"/></h3>		
+				<div class="common">	
+					<table class="dialog_form_table" id="form">
+						<tbody>		
+							<logic:notEmpty name="messageItem" property="userRecipients">
+									<tr class="formText">
+										<td class="label">
+											<bean:message key="messageQueue.messages.user.recipients" bundle="setup"/>							
+										</td>
+										<td class="value">	
+				                			<bean:write name="messageItem" property="userRecipients"/>
+										</td>
+									</tr>
+							</logic:notEmpty>
+							<logic:notEmpty name="messageItem" property="roleRecipients">
+									<tr class="formText">
+										<td class="label">
+											<bean:message key="messageQueue.messages.role.recipients" bundle="setup"/>							
+										</td>
+										<td class="value">	
+				                			<bean:write name="messageItem" property="roleRecipients"/>
+										</td>
+									</tr>
+							</logic:notEmpty>
+							<logic:notEmpty name="messageItem" property="policyRecipients">
+									<tr class="formText">
+										<td class="label">
+											<bean:message key="messageQueue.messages.policy.recipients" bundle="setup"/>							
+										</td>
+										<td class="value">	
+				                			<bean:write name="messageItem" property="policyRecipients"/>
+										</td>
+									</tr>
+							</logic:notEmpty>
+						</tbody>
+					</table>
+				</div>
+			</div>
+	</core:form>
+</div>

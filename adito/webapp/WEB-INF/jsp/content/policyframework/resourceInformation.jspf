@@ -1,0 +1,96 @@
+
+<jsp:directive.page import="java.text.DateFormat"/>
+<jsp:directive.page import="java.text.SimpleDateFormat"/><%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+
+<div id="page_resourceInformation">
+	<bean:define id="resource" name="resourceInformationForm" property="resource" type="com.adito.policyframework.Resource"/>
+	<bean:define id="resourceInformationForm" name="resourceInformationForm" type="com.adito.policyframework.forms.ResourceInformationForm"/>
+	<core:form method="post" action="/resourceInformation.do">	
+			<html:hidden property="referer"/>
+			<html:hidden property="actionTarget"/>
+			<html:hidden property="_charset_"/>		
+			<div>	
+				<table>
+					<tr>
+						<td class="resourceDetails">
+							<h3><bean:message key="resourceInformation.resource" bundle="policyframework"/></h3>
+							<div class="common">	
+								<table class="dialog_form_table" id="form">
+									<tbody>
+										<tr class="formText">
+											<td class="label">
+												<bean:message key="resourceInformation.resourceType" bundle="policyframework"/>							
+											</td>
+											<td class="value">	
+						                		<bean:message key="<%= "resourceType." + resource.getResourceType().getResourceTypeId() + ".title" %>" bundle="<%= resource.getResourceType().getBundle() %>"/>
+											</td>
+										</tr>
+										<tr class="formText">
+											<td class="label">
+												<bean:message key="resourceInformation.resourceName" bundle="policyframework"/>							
+											</td>
+											<td class="value">	
+						                		<bean:write name="resourceInformationForm" property="resource.resourceDisplayName"/>
+											</td>
+										</tr>
+										<tr class="formText">
+											<td class="label">
+												<bean:message key="resourceInformation.resourceDescription" bundle="policyframework"/>							
+											</td>
+											<td class="value">	
+						                		<bean:write name="resourceInformationForm" property="resource.resourceDescription"/>
+											</td>
+										</tr>
+										<tr class="formText">
+											<td class="label">
+												<bean:message key="resourceInformation.dateCreated" bundle="policyframework"/>							
+											</td>
+											<td class="value">	
+												<%
+													DateFormat sdf = SimpleDateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);
+												%>
+												<%= sdf.format(resource.getDateCreated().getTime()) %>
+											</td>
+										</tr>
+										<tr class="formText">
+											<td class="label">
+												<bean:message key="resourceInformation.dateAmended" bundle="policyframework"/>							
+											</td>
+											<td class="value">	
+												<%= sdf.format(resource.getDateAmended().getTime()) %>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</td>
+						<logic:notEmpty name="resourceInformationForm" property="policies">
+							<td class="policies">	
+								<h3><bean:message key="resourceInformation.policies" bundle="policyframework"/></h3>
+								<div class="attachedPolicies">
+									<logic:iterate name="resourceInformationForm" property="policies" length="8" id="policy">
+										<bean:write name="policy" property="resourceName"/><br/>
+									</logic:iterate>
+									<logic:greaterThan name="resourceInformationForm" property="policyCount" value="2">
+										<br/><bean:message key="resourceInformation.more" bundle="policyframework" arg0="<%= String.valueOf(resourceInformationForm.getPolicyCount()) %>"/>
+									</logic:greaterThan>
+								</div>
+							</td>
+						</logic:notEmpty>
+					</tr>
+				</table>
+			</div>							
+			<div class="details">
+				<h3><bean:message key="resourceInformation.details" bundle="policyframework"/></h3>				
+				<tiles:insert ignore="true" flush="false" page="<%= "/WEB-INF/jsp/content/resources/info_" + resource.getResourceType().getResourceTypeId() + ".jspf" %>">		
+					<tiles:put name="resource" beanName="resource"/>
+				</tiles:insert>		
+			</div>
+	</core:form>
+</div>
+

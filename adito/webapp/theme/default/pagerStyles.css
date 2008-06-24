@@ -1,0 +1,124 @@
+/*
+
+   WARNING - Please Do not change these styles lightly. They affect a *lot*.
+   It may be more approriate for you to overide your individual page styles
+   in pageStyles.css and wizardStyles.ss
+
+*/
+
+/* Column header in tables */
+
+a.columnHeader {
+    text-decoration : none;
+}
+
+a.columnHeader:link{
+}
+
+a.columnHeader:visited{
+}
+
+a.columnHeader:hover{
+    text-decoration : underline;
+}
+
+/* Table navigation (next, previous, start, end, page) */
+
+.pager_navigation { 
+	width: 75%;
+	text-align: left;
+	float: left;
+}
+
+.pager_navigation ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	white-space: nowrap;
+}
+
+.pager_navigation li {  
+	text-align: center;
+	float: left;
+	display:table-cell;      /* ignored by IE */
+	vertical-align: middle;
+}
+	
+.pager_navigation a div {
+	margin-left: 4px;
+	height: 100%;
+	width: 20px;
+	cursor: pointer;
+}
+
+.pager_navigation a div span {
+	display: none;
+}
+
+.pager_navigation a div.firstPage {
+	height: 16px;
+	width: 16px;
+	background-image: url(images/actions/first.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.pager_navigation a div.previousPage {
+	height: 16px;
+	width: 16px;
+	background-image: url(images/actions/rewind.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.pager_navigation a div.nextPage {
+	height: 16px;
+	width: 16px;
+	background-image: url(images/actions/ffwd.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.pager_navigation a div.lastPage {
+	height: 16px;
+	width: 16px;
+	background-image: url(images/actions/last.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.pager_pages { 
+	width: 25%;
+	float: right;
+	text-align: right;
+}
+	
+.pager_pages a div {
+	vertical-align: middle;
+	margin-left: 6px;
+}
+
+.pager_pages ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	white-space: nowrap;
+	float: right;
+}
+
+.pager_pages li {
+	float: left;
+	display: inline;
+}
+
+a.pagerEnabled, a.pagerEnabled:link, a.pagerEnabled:visited {
+}
+
+a.pagerEnabled:hover, a.pagerSelected:hover {
+    text-decoration : underline;
+}
+
+a.pagerSelected div {
+	background-color: white;
+	color: #3d649e;
+}

@@ -1,0 +1,58 @@
+<%@ page import="com.adito.boot.PropertyDefinition" %>
+<%@ page import="com.adito.security.Constants" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+
+<div id="help_index">
+	<p>
+		<bean:message key="help.description" bundle="navigation"/>
+	</p>
+	<div id="documentation">
+		<logic:iterate id="rootMenuItem" name="helpForm" property="menu" type="com.adito.core.AvailableMenuItem">
+				<logic:notEmpty name="rootMenuItem" property="path">
+					<div class="item">
+						<a target="<%= rootMenuItem.getMenuItem().getTarget() %>" class="deselected" href='<bean:write name="rootMenuItem" property="path"/>'><bean:message key="<%= "menuItem." + rootMenuItem.getMenuItem().getId() + ".title"  %>" bundle="<%= rootMenuItem.getMenuItem().getMessageResourcesKey() %>"/>	</a>
+					</div>
+				</logic:notEmpty>
+				<logic:empty name="rootMenuItem" property="path">
+					<div class="group">
+						<bean:message key="<%= "menuItem." + rootMenuItem.getMenuItem().getId() + ".title"  %>" bundle="<%= rootMenuItem.getMenuItem().getMessageResourcesKey() %>"/>
+					</div>
+				</logic:empty>
+			<logic:notEqual name="rootMenuItem" property="empty"  value="true">
+				<logic:iterate id="level1MenuItem" name="rootMenuItem" type="com.adito.core.AvailableMenuItem">					
+						<logic:notEmpty name="level1MenuItem" property="path">
+							<div class="item">
+								<a target="<%= level1MenuItem.getMenuItem().getTarget() %>" class="deselected" href='<bean:write name="level1MenuItem" property="path"/>'><bean:message key="<%= "menuItem." + level1MenuItem.getMenuItem().getId() + ".title"  %>" bundle="<%= level1MenuItem.getMenuItem().getMessageResourcesKey() %>"/>	</a> 
+								<br>
+								<bean:message key="<%= "menuItem." + level1MenuItem.getMenuItem().getId() + ".description"  %>" bundle="<%= level1MenuItem.getMenuItem().getMessageResourcesKey() %>"/>
+								<br><br>
+							</div>
+						</logic:notEmpty>
+						<logic:empty name="level1MenuItem" property="path">
+							<div class="group">
+								<bean:message key="<%= "menuItem." + level1MenuItem.getMenuItem().getId() + ".title"  %>" bundle="<%= level1MenuItem.getMenuItem().getMessageResourcesKey() %>"/>
+							</div>
+						</logic:empty>
+					<logic:notEqual name="level1MenuItem" property="empty" value="true">	
+						<logic:iterate id="level2MenuItem" name="level1MenuItem" type="com.adito.core.AvailableMenuItem">					
+								<logic:notEmpty name="level2MenuItem" property="path">
+									<div class="item">
+										<a target="<%= level2MenuItem.getMenuItem().getTarget() %>" class="deselected" href='<bean:write name="level2MenuItem" property="path"/>'><bean:message key="<%= "menuItem." + level2MenuItem.getMenuItem().getId() + ".title"  %>" bundle="<%= level2MenuItem.getMenuItem().getMessageResourcesKey() %>"/>	</a>
+										- <bean:message key="<%= "menuItem." + level2MenuItem.getMenuItem().getId() + ".description"  %>" bundle="<%= level2MenuItem.getMenuItem().getMessageResourcesKey() %>"/>
+									</div>
+								</logic:notEmpty>
+								<logic:empty name="level2MenuItem" property="path">
+									<div class="group">
+										<bean:message key="<%= "menuItem." + level2MenuItem.getMenuItem().getId() + ".title"  %>" bundle="<%= level2MenuItem.getMenuItem().getMessageResourcesKey() %>"/> - 
+										- <bean:message key="<%= "menuItem." + level2MenuItem.getMenuItem().getId() + ".description"  %>" bundle="<%= level2MenuItem.getMenuItem().getMessageResourcesKey() %>"/>
+										
+									</div>
+								</logic:empty>		
+						</logic:iterate>	
+					</logic:notEqual>
+				</logic:iterate>
+			</logic:notEqual>
+		</logic:iterate>
+	</div>
+</div>

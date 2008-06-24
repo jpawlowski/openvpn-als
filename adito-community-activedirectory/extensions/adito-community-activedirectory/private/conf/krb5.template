@@ -1,0 +1,47 @@
+# For a full explaination of the available settings
+# http://www.daemon-systems.org/man/krb5.conf.5.html
+
+[libdefaults]
+default_realm = ${DOMAIN}
+default_checksum = rsa-md5
+# Maximum time to wait for a reply from the kdc, default is 30 seconds.
+kdc_timeout = ${KDC_TIMEOUT}
+# The max number of times to try to contact each KDC
+max_retries = ${KDC_MAX_RETRIES}
+
+# yourdomaincontroller is the name of the domain controller / active directory server acting as the KDC in your windows network
+[realms]
+${DOMAIN} = {
+${HOST_REALMS}
+}
+
+[domain_realm]
+${DOMAIN_REALMS}
+
+[logging]
+default = CONSOLE
+kdc_rotate = {
+# How often to rotate kdc.log. Logs will get rotated no more often than the period, and less often if the KDC is not used frequently.
+period = 1d
+# how many versions of kdc.log to keep around (kdc.log.0, kdc.log.1, ...)
+versions = 10
+}
+
+[appdefaults]
+gkadmin = {
+help_url = http://localhost:8888/ab2/coll.384.2/SEAM
+}
+kinit = {
+renewable = true
+forwardable= true
+}
+rlogin = {
+forwardable= true
+}
+rsh = {
+forwardable= true
+}
+telnet = {
+autologin = true
+forwardable= true
+}

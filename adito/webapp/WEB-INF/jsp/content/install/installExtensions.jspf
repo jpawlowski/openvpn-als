@@ -1,0 +1,38 @@
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+
+<table border="0" cellspacing="0" border="0">	
+	<logic:empty name="installExtensionsForm" property="connectionException">		
+		<logic:empty name="installExtensionsForm" property="installable">		
+			<tr class="formBlock">
+				<td class="label">
+					<bean:message key="installation.installExtensions.noExtensionsToInstall" bundle="install"/> 
+				</td>
+			</tr>
+		</logic:empty>
+		<logic:notEmpty name="installExtensionsForm" property="installable">		
+			<logic:iterate name="installExtensionsForm" property="installable" id="installable" type="com.adito.extensions.ExtensionBundleItem">
+				<tr class="formBlock">
+					<td class="value">
+						<html:checkbox name="installable" property="selected" value="true" indexed="true"/>
+					</td>
+					<td class="label">
+						<bean:write name="installable" property="bundle.name"/>
+					</td>
+					<td class="label">
+						<bean:write name="installable" property="bundle.license"/>
+					</td>
+				</tr>
+			</logic:iterate>
+		</logic:notEmpty>
+	</logic:empty>
+	<logic:notEmpty name="installExtensionsForm" property="connectionException">		
+		<tr class="formBlock">
+			<td class="label">
+				<bean:message key="installation.installExtensions.connectionException" bundle="install"/> 
+			</td>
+		</tr>
+	</logic:notEmpty>
+</table>

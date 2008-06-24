@@ -1,0 +1,28 @@
+
+<jsp:directive.page import="com.adito.core.DefaultPanel"/><%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/tabs" prefix="tabs" %>
+
+<%@page import="java.util.Iterator"%>
+<%@page import="com.adito.core.PanelManager"%>
+<%@page import="com.adito.core.Panel"%>
+
+<div id="page_status">	
+	<tabs:tabSet name="statusForm" bundle="security" resourcePrefix="status.tab">
+		<tabs:tabHeadings/>
+		<% 
+		for(Iterator i = PanelManager.getInstance().getPanels(Panel.STATUS_TAB, request, response, DefaultPanel.MAIN_LAYOUT).iterator(); i.hasNext(); ) { 
+			Panel p = (Panel)i.next(); 
+		%>
+		<tabs:tab tabName="<%= p.getId() %>">
+			<tiles:insert flush="false" page="<%= p.getTileIncludePath(pageContext) %>"><tiles:put name="actionLink" beanName="actionLink"/>
+			</tiles:insert>
+		</tabs:tab>
+		<%	
+		} 
+		%>
+	</tabs:tabSet>
+</div>

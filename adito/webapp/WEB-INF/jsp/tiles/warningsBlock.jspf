@@ -1,0 +1,58 @@
+<%@ page import="com.adito.security.Constants"%>
+<%@ page import="com.adito.core.BundleActionMessage"%>
+<jsp:directive.page import="com.adito.boot.Util"/>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="/server/taglibs/core" prefix="core"%>
+<%@ taglib uri="/server/taglibs/input" prefix="input"%>
+
+<tiles:useAttribute ignore="true" name="resourceBundle"
+	classname="java.lang.String" />
+<script type="text/javascript">
+	var visibleGlobalWarnings = 0;
+</script> 
+<bean:define id="themePath"><core:themePath/></bean:define>
+<input:frame titleKey="messages.warnings" bundle="navigation"
+	styleClass="component_messageBox" panelId="warnings">
+	<logic:notEmpty scope="request" name="<%=Constants.REQ_ATTR_WARNINGS%>">
+		<core:messages name="<%=Constants.REQ_ATTR_WARNINGS%>"
+			bundle="<%=resourceBundle%>" id="msg">
+			<div class="text">
+				<bean:write filter="false" name="msg" />
+			</div>
+			<script type="text/javascript">
+				visibleGlobalWarnings++;
+			</script> 
+		</core:messages>
+	</logic:notEmpty>
+	<logic:equal name="displayGlobalWarnings" value="true">
+		<logic:notEmpty name="<%=Constants.SESSION_GLOBAL_WARNINGS%>">
+			<logic:iterate type="com.adito.core.GlobalWarning"
+				id="globalWarning" name="<%=Constants.SESSION_GLOBAL_WARNINGS%>">
+				<% 
+				BundleActionMessage bam = globalWarning.getMessage();
+				String elementId = "warningContainer_" + bam.getKey().replace('.','_');
+				%>
+				<div id="<%= elementId %>">
+					<div class="text">
+						<bean:message key="<%=bam.getKey()%>"
+							bundle="<%=bam.getBundle()%>" arg0="<%=bam.getArg0()%>"
+							arg1="<%=bam.getArg1()%>" arg2="<%=bam.getArg2()%>"
+							arg3="<%=bam.getArg3()%>" />
+					</div>
+					<div class="dismiss">
+						<img alt="" src="<%= themePath + "/images/dismiss.gif"%>" />
+						<a href="<%="javascript: dismissGlobalWarning('" + bam.getKey() + "','" + elementId + "')"%>">
+							<bean:message key="globalWarning.dismiss" bundle="navigation"/>
+						</a>
+						<img alt="" src="<%= themePath + "/images/dismiss.gif"%>" />
+					</div>
+					<script type="text/javascript">
+						visibleGlobalWarnings++;
+					</script> 
+				</div>
+			</logic:iterate>
+		</logic:notEmpty>
+	</logic:equal>
+</input:frame>

@@ -1,0 +1,121 @@
+<%@ page import="com.adito.boot.Util" %>
+<jsp:directive.page import="com.adito.extensions.ExtensionBundle.ExtensionBundleStatus"/>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/table" prefix="table"%>
+<%@ taglib uri="/server/taglibs/tabs" prefix="tabs"%>
+<%@ taglib uri="/server/taglibs/navigation" prefix="navigation"%>
+<%@ taglib uri="/server/taglibs/security" prefix="security"%>
+
+<tiles:useAttribute name="extensionForm" scope="request" classname="com.adito.extensions.forms.DefaultExtensionsForm"/> 
+
+<div id="page_extensionStoreContent">     
+	<core:form subFormName="<%= extensionForm.getSubFormName() %>"  autocomplete="OFF" method="post" action="/showExtensionStore.do">   
+		<html:hidden property="referer"/>
+		<html:hidden property="actionTarget"/>
+		<html:hidden property="subForm" value="<%= extensionForm.getSubFormName() %>" />
+		<html:hidden property="pager.startRow"/>
+		<html:hidden property="pager.sortName"/>
+		<html:hidden property="pager.sortReverse"/>
+		<html:hidden property="pager.pageSize"/>		
+		
+		<div class="dialog_content">				
+			<%@ include file="/WEB-INF/jsp/tiles/filter.jspf" %>	
+		</div>
+
+		<div class="filtered_resources">
+			<table class="resource_table">
+				<thead>
+					<tr>
+						<td class="status">
+							<table:columnHeader subForm="<%= extensionForm.getSubFormName() %>" pagerName="extensionForm" pagerProperty="pager" columnIndex="0" styleClass="columnHeader">
+								#
+							</table:columnHeader>
+						</td>
+						<td class="name">
+							<table:columnHeader subForm="<%= extensionForm.getSubFormName() %>" pagerName="extensionForm" pagerProperty="pager" columnIndex="1" styleClass="columnHeader">
+								<bean:message key="extensionStore.extension" bundle="extensions"/>
+							</table:columnHeader>
+						</td>
+						<td class="actions">
+							<bean:message key="extensionStore.actions" bundle="extensions" />
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+			<logic:equal name="extensionForm" property="pager.model.empty" value="true">											
+				<tr class="lowlight">
+			  		<td class="tableMessage" colspan="3">		   
+						<bean:message key="extensionStore.noItems" bundle="extensions" />
+					</td>
+				</tr>
+			</logic:equal>
+			<logic:equal name="extensionForm" property="pager.model.empty" value="false">											
+				<logic:equal name="extensionForm" property="pager.empty" value="true">											
+					<tr class="lowlight">
+				  		<td class="tableMessage" colspan="3">		   
+							<bean:message key="extensionStore.noMatch" bundle="extensions" />
+						</td>
+					</tr>
+				</logic:equal>
+				<logic:equal name="extensionForm" property="pager.empty" value="false">											
+			    	<% boolean highlight= true; %>	
+					<logic:iterate name="extensionForm" indexId="idx" property="pager.pageItems" id="element" type="com.adito.extensions.ExtensionBundleItem">
+						<tr onmouseover="<%= "this.className = 'selected';" %>"
+		     				onmouseout="<%= "this.className = '" + ( highlight ? "highlight" : "lowlight" ) + "';" %>" class="<%= highlight ? "highlight" : "lowlight" %>">           
+							<td class="status">
+								<img border="0" align="absmiddle" src="<%= element.getSmallIconPath(request) %>"/>
+							</td>
+							<td class="name">
+								<logic:equal name="element" property="bundle.devExtension" value="true">
+									<span style="color: red;"><b>DEV</b></span>
+								</logic:equal>
+								<logic:notEmpty name="element" property="bundle.productURL">
+									<input:toolTip width="400" href="#" onclick="<%= "window.open('" + Util.escapeForJavascriptString(element.getBundle().getProductURL()) + "');" %>" 
+													   contentLocation="<%= "/extensionBundleInformation.do?bundleId=" + element.getBundle().getId() %>">
+										<bean:write name="element" property="bundle.name"/>
+									</input:toolTip>
+								</logic:notEmpty>
+								<logic:empty name="element" property="bundle.productURL">
+									<input:toolTip width="400" href="#" 
+												   contentLocation="<%= "/extensionBundleInformation.do?bundleId=" + element.getBundle().getId() %>">
+										<bean:write name="element" property="bundle.name"/>
+									</input:toolTip>
+								</logic:empty>
+							</td>
+							<td class="actions">																					
+								<tiles:insert flush="false" page="/WEB-INF/jsp/tiles/tableItemActionBar.jspf">		
+									<tiles:put name="pager" beanName="extensionForm" beanProperty="pager"/>
+									<tiles:put name="rowIndex" beanName="idx"/>
+									<tiles:put name="policyLaunching" value="false"/>
+									<tiles:put name="actionsTableId" value="extensionStore"/>
+									<tiles:put name="displayBlanks" value="false"/>
+								</tiles:insert>		
+							</td>
+						</tr>
+					<% highlight = !highlight; %>
+					</logic:iterate>
+				</logic:equal>
+			</logic:equal>
+			</tbody>
+				<tfoot>			
+					<tr>
+						<td colspan="3">
+							<div class="pager_navigation">
+								<table:navigation selectedStyleClass="pagerSelected" pagerName="extensionForm" pagerProperty="pager" styleClass="pagerEnabled" disabledStyleClass="pagerDisabled"/>
+							</div>
+							<div class="pager_pages">
+								<table:pageSize pagerName="extensionForm" pagerProperty="pager" styleClass="pagerEnabled"/>
+							</div.
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</core:form>
+</div>
+			

@@ -1,0 +1,48 @@
+<%@ page import="com.adito.install.forms.InstallationSummaryForm" %>
+<jsp:directive.page import="com.adito.networkplaces.NetworkPlacePlugin"/>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+
+
+<div id="wizardSummary">
+	<bean:define id="networkPlaceSummaryForm" name="networkPlaceSummaryForm" type="com.adito.networkplaces.wizards.forms.NetworkPlaceSummaryForm"/>
+	<table border="0" cellspacing="0" border="0">
+		<tr class="formBlock">
+			<td class="label" colspan="2">
+				<bean:message key="networkPlaceWizard.networkPlaceSummary.resource" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>"/>
+			</td>
+		</tr>
+		<tr class="formLabel">			
+			<td class="label">
+				<bean:message key="networkPlaceWizard.networkPlaceSummary.resource.name" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>"/>
+			</td>
+			<td class="value">
+				<bean:write name="networkPlaceSummaryForm" property="resourceName"/>
+			</td>
+		</tr>
+		<tr class="formBlock">
+			<td class="label" colspan="2">
+				<bean:message key="networkPlaceWizard.networkPlaceSummary.selectedPolicies" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>"/>
+			</td>
+		</tr>
+		<tr class="formLabel">		
+			<logic:empty name="networkPlaceSummaryForm" property="selectedPolicies">
+				<td class="value" colspan="2">
+					<bean:message key="networkPlaceWizard.networkPlaceSummary.selectedPolicies.none" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>"/>
+				</td>
+			</logic:empty>
+			<logic:notEmpty name="networkPlaceSummaryForm" property="selectedPolicies">
+				<td class="label">
+					<bean:message key="networkPlaceWizard.networkPlaceSummary.selectedPolicies.names" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>"/>
+				</td>
+				<td class="value">
+					<logic:iterate name="networkPlaceSummaryForm" property="selectedPolicies" id="networkPlace">
+						<bean:write name="networkPlace"/><br/>
+					</logic:iterate>
+				</td>
+			</logic:notEmpty>
+		</tr>
+	</table>
+</div>

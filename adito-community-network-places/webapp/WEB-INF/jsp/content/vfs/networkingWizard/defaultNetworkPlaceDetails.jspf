@@ -1,0 +1,34 @@
+
+<jsp:directive.page import="com.adito.networkplaces.NetworkPlacePlugin"/><%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %> 
+ 
+<table class="resourceDetails">
+	<tr class="formText">
+		<td class="label">
+			<div class="required">
+				<bean:message key="defaultNetworkPlaceWizard.defaultNetworkPlaceDetails.resourceName" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>"/>
+			</div>
+		</td>
+		<td class="value">
+	    	    <html:text property="resourceName"/>
+		</td>
+	</tr>
+	<tr class="formTextArea">
+		<td class="label">
+			<div class="required">
+				<bean:message key="defaultNetworkPlaceWizard.defaultNetworkPlaceDetails.resourceDescription" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>"/>
+			</div>
+		</td>
+		<td class="value">		
+    	    <html:textarea property="resourceDescription"/>
+		</td>
+	</tr>
+	<tr class="formCheckbox">
+		<td class="label">
+			<bean:message key="createResource.addToFavorites" bundle="policyframework" />
+		</td>
+		<td class="value">
+			<html:checkbox property="favorite" />
+		</td>
+	</tr>
+</table>

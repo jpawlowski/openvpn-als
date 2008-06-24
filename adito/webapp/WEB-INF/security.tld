@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE taglib
+  PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
+  "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+
+<taglib>
+
+  <tlibversion>1.0</tlibversion>
+  <jspversion>1.1</jspversion>
+  <shortname>Adito Security Tag Library</shortname>
+
+  <uri>/server/taglibs/security</uri>
+
+  <info>
+    This tag library contains security tags for the 3SP Adito project.
+  </info>
+
+
+  <tag>
+    <name>vpnClientLink</name>
+    <tagclass>com.adito.security.tags.VPNClientLinkTag</tagclass>
+    <bodycontent>JSP</bodycontent>
+    <info>
+      Encode a link with the correct client port number that will send an instruction
+      to the users Adito VPN client when invoked.
+    </info>
+
+    <attribute>
+      <name>action</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+
+    <attribute>
+      <name>linkname</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+
+    <attribute>
+      <name>style</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+
+  <tag>
+    <name>agentAvailability</name>
+    <tagclass>com.adito.security.tags.AgentAvailabilityTag</tagclass>
+    <bodycontent>JSP</bodycontent>
+    <info>
+      Process the body if a VPN session is active and the requiresClient is true. If requiresClient
+      is false the body is processed if no VPN session is active.
+    </info>
+
+    <attribute>
+      <name>requiresClient</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+
+  </tag>
+
+  <tag>
+    <name>checkAuthenticated</name>
+    <tagclass>com.adito.security.tags.CheckAuthenticatedTag</tagclass>
+    <bodycontent>JSP</bodycontent>
+    <info>
+      Process the body if the user is authenticated (or not)
+    </info>
+
+    <attribute>
+      <name>requiresAuthentication</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+
+    <attribute>
+      <name>requiresAdministrator</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+
+  <tag>
+    <name>databaseWriteEnabledTest</name>
+    <tagclass>com.adito.security.tags.DatabaseWriteEnabledTag</tagclass>
+    <bodycontent>JSP</bodycontent>
+    <info>
+      Process the body if the user database is writeable
+    </info>
+    
+    <attribute>
+      <name>databaseWriteEnabled</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  
+  <tag>
+    <name>checkUserDatabaseSupport</name>
+    <tagclass>com.adito.security.tags.CheckUserDatabaseSupportTag</tagclass>
+    <bodycontent>JSP</bodycontent>
+    <info>
+      Process the body if the user database supports password changing
+    </info>
+    
+    <attribute>
+      <name>requiresPasswordChange</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+
+    <attribute>
+      <name>requiresAccountCreation</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>permission</name>
+    <tagclass>com.adito.security.tags.PermissionTag</tagclass>
+    <bodycontent>JSP</bodycontent>
+    <info>
+      Process the body if user has permissions
+    </info>
+
+    <attribute>
+      <name>required</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+
+    <attribute>
+      <name>resourceType</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+
+    <attribute>
+      <name>permissionList</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+
+    <attribute>
+      <name>all</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  
+  <tag>
+    <name>checkManageResource</name>
+    <tagclass>com.adito.security.tags.CheckManageResourceTag</tagclass>
+    <bodycontent>JSP</bodycontent>
+    <info>
+      Process the body if user has permission to do something with a manageable resource
+    </info>
+
+    <attribute>
+      <name>required</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+
+    <attribute>
+      <name>permission</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+
+    <attribute>
+      <name>permissions</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+
+    <attribute>
+      <name>resource</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+
+    <attribute>
+      <name>name</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+    </attribute>
+
+    <attribute>
+      <name>property</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+    </attribute>
+
+    <attribute>
+      <name>scope</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+</taglib>

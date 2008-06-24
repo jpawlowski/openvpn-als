@@ -1,0 +1,8 @@
+v0.9.0 (18.5.2008):
+
+* Due to trademark issues all references to SSL-Explorer have been replaced with references to Adito. This includes Java variable names.
+* Most references to 3sp - with the exception of copyright notices - have been removed.
+* User-interface icons, which 3sp had licensed from a third party have been replaced with freely distributable Tango icons and icons derived from them.
+* Adito Agent Java1 compilation has been disabled in $ADITO_HOME/adito-agent/build.xml. Otherwise the building the Adito Agent would fail.
+* Fixed permission problems in $ADITO_HOME/adito/install/platforms. The necessary files were not executable and thus starting Adito would fail.
+* Removed supportOptions.html.

@@ -1,0 +1,52 @@
+<%@ page import="com.adito.security.Constants" %>
+<%@ page import="com.adito.policyframework.PolicyConstants" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/table" prefix="table" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+<%@ page import="com.adito.policyframework.Permission" %>
+<%@ taglib uri="/server/taglibs/security" prefix="security"%>
+
+<bean:define id="policiesForm" name="policiesForm" type="com.adito.policyframework.forms.PoliciesForm"/>
+<div id="page_policies">
+	<tiles:useAttribute name="actionLink" scope="request" classname="java.lang.String"/> 
+	<tiles:useAttribute name="updateAction" scope="request" classname="java.lang.String"/> 
+	<div id="table">	
+		<core:form onsubmit="setActionTarget('filter')" method="post" action="<%= updateAction %>" focus="filterText">
+			<html:hidden property="actionTarget" />
+			<html:hidden property="selectedResource" />		
+		<div class="dialog_content">
+			<div id="view">			
+			<table class="dialog_content_table">
+				<tbody>
+					<tr>
+						<td class="filter">
+							<div class="filterCriteria">		
+								<html:text styleClass="filterText" property="filterText"/>	
+								<html:submit styleClass="search" onclick="setFormActionTarget('filter',this.form); return true"><bean:message key="filter.find" bundle="navigation"/></html:submit>
+								<html:submit styleClass="reset" onclick="this.form.filterText.value = ''; setFormActionTarget('filter',this.form); return true"><bean:message key="filter.reset" bundle="navigation"/></html:submit>                 
+							</div>
+						</td>
+						<td class="view" align="right">
+							<bean:message key="policies.showPersonalPolicies" bundle="policyframework"/>
+							&nbsp;
+							<input type="checkbox" <%= policiesForm.isShowPersonalPolicies() ? "checked" : "" %> onclick="setFormActionTarget('toogleShowPersonalPolicies',this.form); this.form.submit();" id="showPersonalPolicies" onclick="setFormActionTarget('toogleShowPersonalPolicies',this.form); this.form.submit();" styleClass="formCheckbox"/>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+		</div>			
+			<tiles:insert flush="false" page="/WEB-INF/jsp/tiles/resourceList.jspf">		
+				<tiles:put name="pager" beanName="policiesForm" beanProperty="pager"/>
+				<tiles:put name="messageResourcesKey" value="policyframework"/>
+				<tiles:put name="resourcePrefix" value="policies"/>
+				<tiles:put name="policyLaunching" value="false"/>
+			</tiles:insert>	
+		</core:form>
+	</div>
+</div>	
+	

@@ -1,0 +1,108 @@
+<definitions>
+	<definition type="7" name="client.heartbeat.interval" typeMeta="s"
+		category="10" defaultValue="30000" visibility="1" sortOrder="10"
+		messageResourcesKey="properties" 
+		validation="com.adito.input.validators.TimeCounterValidator(minValue=0,maxValue=3600)"/>
+	<definition type="7" name="client.shutdown.wait" typeMeta="s"
+		category="10" defaultValue="3000" visibility="1" sortOrder="20"
+		messageResourcesKey="properties" 
+		validation="com.adito.input.validators.TimeCounterValidator(minValue=1,maxValue=60)"/>
+	<definition type="7"
+		name="client.registration.synchronization.timeout" typeMeta="s"
+		category="10" defaultValue="60000" visibility="1" sortOrder="30"
+		messageResourcesKey="properties" 
+		validation="com.adito.input.validators.TimeCounterValidator(minValue=10,maxValue=7200)"/>
+	<definition type="2" name="client.autoStart" typeMeta=""
+		category="10" defaultValue="false" visibility="1" sortOrder="40"
+		validation="" messageResourcesKey="properties" />
+	<definition type="0" name="client.browserCommand" typeMeta=""
+		category="10" defaultValue="" visibility="1" sortOrder="50"
+		validation="" messageResourcesKey="properties" />
+	<definition type="7" name="client.webforward.inactivity"
+		typeMeta="s" category="10" defaultValue="300000" visibility="1"
+		sortOrder="60" messageResourcesKey="properties" 
+		validation="com.adito.input.validators.TimeCounterValidator(minValue=0,maxValue=3600)"/>
+	<definition type="7" name="client.tunnel.inactivity" typeMeta="s"
+		category="10" defaultValue="600000" visibility="1" sortOrder="65"
+		messageResourcesKey="properties" 
+		validation="com.adito.input.validators.TimeCounterValidator(minValue=0,maxValue=604800)"/>
+	<definition type="2" name="client.debug" typeMeta="" category="10"
+		defaultValue="false" visibility="1" sortOrder="70" validation=""
+		messageResourcesKey="properties" />
+	<definition type="2" name="client.displayInformationPopups"
+		typeMeta="" category="10" defaultValue="true" visibility="1"
+		sortOrder="82" validation="" messageResourcesKey="properties" />
+	<definition type="2" name="client.cleanOnExit"
+		typeMeta="" category="10" defaultValue="false" visibility="1"
+		sortOrder="80" validation="" messageResourcesKey="properties" />
+	<definition type="0" name="client.cacheDirectory"
+		typeMeta="" category="10" defaultValue=".adito" visibility="1"
+		sortOrder="84" validation="" messageResourcesKey="properties" />
+	<definition type="2" name="client.remoteTunnelsRequireConfirmation"
+		typeMeta="" category="10" defaultValue="false" visibility="1"
+		sortOrder="84" validation="" messageResourcesKey="properties" />
+	<definition type="0" name="client.localhostAddress"
+		typeMeta="" category="10" defaultValue="127.0.0.1" visibility="1"
+		sortOrder="120" validation="" messageResourcesKey="properties" />
+	
+	<definition type="3" name="client.agent.type"
+		typeMeta="auto,awt,swt" category="10"
+		defaultValue="auto" visibility="1" sortOrder="130" validation=""
+		messageResourcesKey="properties" />
+		
+	<definition type="3" name="clientProxy.type"
+		typeMeta="none,browser,http,https" category="15"
+		defaultValue="browser" visibility="1" sortOrder="10" validation=""
+		messageResourcesKey="properties" />
+	<definition type="0" name="clientProxy.hostname" typeMeta=""
+		category="15" defaultValue="" visibility="1" sortOrder="20"
+		validation="" messageResourcesKey="properties" />
+	<definition type="1" name="clientProxy.port" typeMeta=""
+		category="15" defaultValue="3128" visibility="1" sortOrder="30"
+		validation="com.adito.input.validators.IntegerValidator"
+		messageResourcesKey="properties" />
+	<definition type="0" name="clientProxy.username" typeMeta=""
+		category="15" defaultValue="" visibility="1" sortOrder="40"
+		validation="" messageResourcesKey="properties" />
+	<definition type="4" name="clientProxy.password" typeMeta=""
+		category="15" defaultValue="" visibility="1" sortOrder="50"
+		validation="" messageResourcesKey="properties" />
+	<definition type="0" name="clientProxy.ntlmDomain" typeMeta=""
+		category="15" defaultValue="" visibility="1" sortOrder="55"
+		validation="" messageResourcesKey="properties" />
+	<definition type="3" name="clientProxy.preferredAuthentication"
+		typeMeta="AUTO,BASIC,NTLM" category="15" defaultValue="AUTO"
+		visibility="1" sortOrder="60" validation=""
+		messageResourcesKey="properties" />
+		
+	<!-- UI -->
+	<definition type="2" name="ui.toolTips" typeMeta="" category="30"
+		defaultValue="true" visibility="1" sortOrder="10" validation=""
+		messageResourcesKey="properties" />
+	<definition type="0" name="ui.theme" typeMeta="" category="30"
+		defaultValue="/theme/default" visibility="1" sortOrder="40"
+		validation="com.adito.input.validators.ThemeValidator" messageResourcesKey="properties" />
+	<definition type="2" name="ui.specialEffects" typeMeta=""
+		category="30" defaultValue="true" visibility="1" sortOrder="40"
+		validation="" messageResourcesKey="properties" />
+	<definition type="3" name="ui.defaultUserConsoleViewType"
+		typeMeta="list,icons" category="30" defaultValue="icons"
+		sortOrder="90" validation="" messageResourcesKey="properties" />
+	<definition type="3" name="ui.dateFormat"
+		typeMeta="dd/MM/yy,dd/MM/yyyy,MM/dd/yy,MM/dd/yyyy,dd-MMM-yyyy,dd-MMM-yy,MMM-dd-yyyy,MMM-dd-yy" category="30" defaultValue="dd/MM/yyyy"
+		sortOrder="95" validation="" messageResourcesKey="properties" />
+	<definition type="3" name="ui.timeFormat"
+		typeMeta="h:m.s aa,H:m.s,hh:mm.ss aa,HH:mm.ss,HH:mm:ss" category="30" defaultValue="HH:mm.ss"
+		sortOrder="95" validation="" messageResourcesKey="properties" />
+	
+	<!-- Session -->
+	<definition type="1" name="webServer.sessionInactivityTimeout"
+		typeMeta="" category="70" defaultValue="15" visibility="1"
+		sortOrder="50"
+		validation="com.adito.input.validators.IntegerValidator(replacementVariables=true)"
+		messageResourcesKey="properties" />
+	<definition type="2" name="webServer.compression" typeMeta=""
+		category="70" defaultValue="true" visibility="1" sortOrder="120"
+		validation="" messageResourcesKey="properties" />
+</definitions>
+

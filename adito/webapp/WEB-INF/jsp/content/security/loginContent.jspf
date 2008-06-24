@@ -1,0 +1,70 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.adito.security.Constants" %>
+<%@ page import="com.adito.security.AuthenticationScheme" %>
+<jsp:directive.page import="com.adito.core.CoreUtil"/>
+<jsp:directive.page import="com.adito.properties.Property"/>
+<jsp:directive.page import="com.adito.properties.impl.systemconfig.SystemConfigKey"/>
+<jsp:directive.page import="org.apache.struts.taglib.TagUtils"/>
+<%@page import="com.adito.boot.Util"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+
+
+<div id="page_login">
+	<%@ include file="/WEB-INF/jsp/content/security/loginPageInfo.jspf" %>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">	
+		<tr>
+			<td align="center" >
+			
+				<tiles:insert page="<%= ((AuthenticationScheme)session.getAttribute(Constants.AUTH_SESSION)).currentAuthenticationModule().getInclude() %>" flush="false">                  
+				  	<tiles:put name="sessionLockUser" beanName="sessionObj" beanProperty="attribute(sessionLocked)"/>
+				  	<tiles:put name="authSession" beanName="sessionObj" beanProperty="attribute(authSession)"/>
+				</tiles:insert>
+			</td>
+		</tr>
+		<logic:notEqual name="logonForm" property="sessionLocked" value="true"> 
+			<logic:notEqual name="logonForm" property="hasMoreAuthenticationSchemes" value="false"> 		        		
+			 	<logic:equal name="authSession" property="currentModuleIndex" value="0">
+			 		<bean:define id="logonForm" name="logonForm" type="com.adito.security.forms.LogonForm"/>
+					<tr>
+						<td height="8"/>
+					</tr>
+					<tr>
+						<td align="center" >
+							 <table width="100%" border="0">
+							 	<tr>
+							 		<td align="center" class="smallText">
+							             <bean:message key="login.selectAuthenticationScheme" bundle="security" arg0="<%= logonForm.getUsername() == null ? "" : Util.urlEncode(logonForm.getUsername()) %>" />            
+							        </td>
+							    </tr>
+							  </table>
+						</td>
+					</tr>
+				</logic:equal>
+			</logic:notEqual>
+		</logic:notEqual>
+	</table>
+	<logic:notEqual name="logonForm" property="sessionLocked" value="true"> 
+		<core:checkPropertyNotEquals regExp="false" propertyValue="none" propertyName="loginPage.welcomeMessageType">
+			<div id="welcomeMessage">
+				<table class="dialog_form_table">
+						<core:checkPropertyNotEquals regExp="false" propertyValue="noicon" propertyName="loginPage.welcomeMessageType">
+							<tr class="formBlock"> 
+								<td class="label">
+									<img src="<%= CoreUtil.getThemePath(session) + "/images/dialog/" + Property.getProperty(new SystemConfigKey("loginPage.welcomeMessageType")) + ".gif" %>"/>
+								</td>
+							</tr>
+						</core:checkPropertyNotEquals>
+						<tr class="formBlock">
+							<td class="<%= Property.getProperty(new SystemConfigKey("loginPage.welcomeMessageAlign")) %>">     
+								<%= TagUtils.getInstance().filter(Property.getProperty(new SystemConfigKey("loginPage.welcomeMessage"))) %>
+							</td>
+						</tr>
+				</table>
+
+			</div>
+		</core:checkPropertyNotEquals>
+	</logic:notEqual>
+</div>

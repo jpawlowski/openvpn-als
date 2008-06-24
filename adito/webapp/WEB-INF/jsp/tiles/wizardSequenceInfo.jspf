@@ -1,0 +1,56 @@
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Iterator" %>
+<%@ page import="com.adito.properties.PropertyProfile" %>
+<%@ page import="com.adito.security.Constants" %>
+<%@ page import="com.adito.core.AvailableMenuItem" %>
+<%@ page import="com.adito.wizard.AbstractWizardSequence" %>
+<%@ page import="com.adito.wizard.WizardStep" %>
+<%@ page import="com.adito.policyframework.Resource" %>
+<%@ page import="com.adito.core.CoreServlet" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.text.DateFormat" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/navigation" prefix="navigation" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+<% AbstractWizardSequence seq = (AbstractWizardSequence)session.getAttribute(Constants.WIZARD_SEQUENCE); 
+%>
+<bean:define id="title">
+	<bean:message key="<%= seq.getResourcePrefix() + ".heading" %>" bundle="<%= seq.getResourceBundle() %>"/>
+</bean:define>
+<input:frame title="<%= title %>" styleClass="component_messageBox" panelId="wizardSequenceInfo">
+	<navigation:inWizard finish="false">
+		<div id="wizardInfo">
+		<% 
+		    int sel = seq == null || seq.getCurrentPageForm() == null ? 0 : seq.getCurrentPageForm().getStepIndex();
+		    if(sel != 0) {
+	    %>
+			<div class="group">			
+				<bean:message key="<%= seq.getResourcePrefix() + ".subtitle" %>" bundle="<%= seq.getResourceBundle() %>"/>
+			</div>
+			<% 	int idx = 0;
+				for(Iterator i = seq.getSteps().iterator(); i.hasNext(); ) {
+					idx++;
+					WizardStep step = (WizardStep)i.next();
+					boolean selected = idx == sel;
+			%>
+					<div class="item">
+						<% if(step.getAvailable()) { %>
+							<a class="<%= selected ? "selected" : "deselected" %>" href="<%= "javascript: gotoStep(" + ( idx - 1 ) + ");" %>"><%= idx + ". " %><bean:message key="<%= seq.getResourcePrefix() + ".step." + idx %>" bundle="<%= seq.getResourceBundle() %>"/></a>
+						<% } else { %>
+							<span class="disabled"><%= idx + ". " %><bean:message key="<%= seq.getResourcePrefix() + ".step." + idx %>" bundle="<%= seq.getResourceBundle() %>"/></span>
+						<% } %>
+					</div>
+		<%
+				} 
+		}
+		%>
+			<div class="information">						
+				<bean:message key="navigation.cancelWizard.description" bundle="navigation"/>					
+			</div>			
+		</div>
+	</navigation:inWizard>	
+	<%@ include file="/WEB-INF/jsp/tiles/footerInfo.jspf" %>
+</input:frame>

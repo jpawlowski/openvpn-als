@@ -1,0 +1,122 @@
+<%@ page import="com.adito.security.Constants" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/navigation" prefix="navigation" %>
+<%@ taglib uri="/server/taglibs/security" prefix="security" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+<%@ taglib uri="/server/taglibs/tabs" prefix="tabs" %>
+
+<div id="page_propertyProfile" class="tabbedForm">
+	<bean:define id="targetUpdateAction" name="propertyProfileForm" property="updateAction"/>
+	<html:form action="<%= String.valueOf(targetUpdateAction) %>">
+		<html:hidden property="referer"/>
+		<html:hidden property="actionTarget"/>
+		<html:hidden property="_charset_"/>				
+		<html:hidden property="editing"/>
+		<html:hidden property="propertyScope"/>
+		<html:hidden property="resourceId"/>
+		<bean:define id="propertyProfileForm" name="propertyProfileForm" type="com.adito.properties.forms.PropertyProfileForm"></bean:define>
+		<tabs:tabSet name="propertyProfileForm" bundle="properties" resourcePrefix="createPropertyProfile.tab">
+			<tabs:tabHeadings/>
+			<tabs:tab tabName="details">
+				<table class="dialog_form_table" id="form">
+					<tbody>
+						<tr class="formText">
+							<td class="label">
+								<div class="required">
+									<bean:message key="createPropertyProfile.shortName.label" bundle="properties"/>
+								</div>
+							</td>
+							<td class="value">
+								<logic:equal name="propertyProfileForm" property="resourceName" value="Default">			
+									<html:hidden property="resourceName"/>
+									<html:text tabindex="1" disabled="true" property="resourceName"/>		                            
+								</logic:equal>
+								<logic:notEqual name="propertyProfileForm" property="resourceName" value="Default">			
+				                	<html:text tabindex="1" disabled="<%= propertyProfileForm.isAssignOnly() %>" property="resourceName"/>		                            
+								</logic:notEqual>
+							</td>
+						</tr>
+						<tr class="formTextArea">
+							<td class="label">
+								<div class="required">
+									<bean:message key="createPropertyProfile.description.label" bundle="properties"/>
+								</div>
+							</td>
+							<td class="value">		                          
+								<html:textarea tabindex="2" disabled="<%= propertyProfileForm.isAssignOnly() %>" property="resourceDescription" cols="25" rows="5"/>
+							</td>
+						</tr>                           
+						<logic:notEqual value="true" name="propertyProfileForm" property="editing">		                      	
+							<tr class="formCombo">
+								<td class="label">
+									<bean:message key="createPropertyProfile.baseOn.label" bundle="properties"/>
+								</td>
+								<td class="value">		                          
+									<html:select name="propertyProfileForm" disabled="<%= propertyProfileForm.isAssignOnly() %>" property="selectedPropertyProfile">
+										<html:optionsCollection name="propertyProfileForm" value="resourceId" label="label" property="propertyProfiles" />
+									</html:select>
+								</td>
+							</tr>	
+						</logic:notEqual> 
+					</tbody>
+				</table>
+			</tabs:tab>					
+			<logic:notEqual name="propertyProfileForm" property="propertyScope" value="<%= Constants.SCOPE_PERSONAL %>" > 
+				<tabs:tab tabName="policies">				
+					<logic:equal name="propertyProfileForm" property="resourceName" value="Default">			
+						<input:multiSelectPoliciesListBox 
+							tabindex="3" 
+							disabled="<%= propertyProfileForm.isAssignOnly() %>"
+							sourceTitleKey="policySelection.availablePolicies.title" 
+							targetTitleKey="policySelection.selectedPolicies.title" 
+							addKey="policySelection.addPolicy" 
+							rows="13"
+							removeKey="policySelection.removePolicy" 
+							configureKey="policySelection.configurePolicies" 
+							configureOnClick="window.location = '/configurePolicies.do?referer=/editPropertyProfile.do'" 
+							bundle="policyframework" 
+							styleClass="multiSelect" 
+							modelName="propertyProfileForm" 
+							modelProperty="policyModel" 
+							name="propertyProfileForm" 
+							property="selectedPolicies"
+							showPersonalPoliciesKey="policySelection.showPersonalPolicies.title"
+							showPersonalPolicies="<%= propertyProfileForm.isShowPersonalPolicies() %>" />
+					</logic:equal>
+					<logic:notEqual name="propertyProfileForm" property="resourceName" value="Default">			
+						<input:multiSelectPoliciesListBox 
+							tabindex="3" 
+							sourceTitleKey="policySelection.availablePolicies.title" 
+							targetTitleKey="policySelection.selectedPolicies.title" 
+							addKey="policySelection.addPolicy" 
+							removeKey="policySelection.removePolicy" 
+							rows="13"
+							configureKey="policySelection.configurePolicies" 
+							configureOnClick="window.location = '/configurePolicies.do?referer=/editPropertyProfile.do'" 
+							bundle="policyframework" 
+							styleClass="multiSelect" 
+							modelName="propertyProfileForm" 
+							modelProperty="policyModel" 
+							name="propertyProfileForm" 
+							property="selectedPolicies"
+							showPersonalPoliciesKey="policySelection.showPersonalPolicies.title"
+							showPersonalPolicies="<%= propertyProfileForm.isShowPersonalPolicies() %>" />
+					</logic:notEqual>
+				</tabs:tab>		
+			</logic:notEqual>		
+		</tabs:tabSet>	
+		<div class="button_bar">
+			<div class="formButton">
+				<html:submit styleClass="save" onclick="setActionTarget('commit'); return true"><bean:message key="createPropertyProfile.commit" bundle="properties"/></html:submit>
+			</div>
+			<logic:notEmpty name="propertyProfileForm" property="referer">
+				<div class="formButton">
+					<html:submit styleClass="cancel" onclick="setActionTarget('cancel'); return true"><bean:message key="createPropertyProfile.cancel" bundle="properties"/></html:submit>
+				</div>
+			</logic:notEmpty>
+		</div>	
+	</html:form>
+</div>

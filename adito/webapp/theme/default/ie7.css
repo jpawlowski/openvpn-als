@@ -1,0 +1,43 @@
+/* IE7 Specific styles that overide all others */
+
+/* Adjust font slightly */
+
+body { 
+    font-size: small;
+}
+
+/* Keep the footer at the bottom of the page */
+
+/* Allows words to be broken up in icons view */
+
+.icons .icon {
+	word-wrap: break-word;
+}
+
+/* Extend the navigation menu component to get rid of the white space problem when scrolling */
+
+#component_navmenu  {
+	padding-bottom: 128em;
+	margin-bottom: 128em;
+}
+
+/* Style checkboxes */
+
+input[type=checkbox] {
+	background : transparent;
+	border: 1px solid transparent;
+}
+
+input[type=radio] {
+	background : transparent;
+	border: 1px solid transparent;
+}
+
+.httpFolder {
+	behavior: url(#default#httpFolder);
+}
+
+div#page_attributeDefinition .dialog_form_table tr.formTextArea textarea {
+	overflow-x: hidden;
+	overflow-y: auto;
+}

@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="adito-community-network-places" default="dist">
+	
+	<property file="build.properties"/>
+	<property file="${user.home}/.3sp.build.properties"/>
+
+	<!-- Standard build locations -->
+	<property name="build.dir" value="build"/>
+	<property name="build.lib" value="lib"/>
+	<property name="build.output" value="${build.dir}/classes"/>
+	<property name="build.output.instrumented" value="${build.dir}/instrumented"/>
+	<property name="build.output.test" value="${build.dir}/test"/>
+	<property name="build.extension" value="${build.dir}/extension"/>
+	<property name="build.release" value="${build.dir}/release"/>
+	<property name="build.dist" value="${build.dir}/dist"/>
+	<property name="build.docs" value="${build.dir}/docs"/>
+	<property name="build.src" value="src"/>
+	<property name="build.test.src" value="test/src"/>
+	<property name="build.webapp" value="webapp"/>
+	
+	<!-- Reports -->
+	<!-- build.reports is overridden when running the suite of tests -->
+	<property name="build.reports" value="${basedir}/${build.dir}/reports"/>
+	<property name="build.reports.junit" value="junit"/>
+	<property name="build.reports.junit.xml" value="${build.reports.junit}/xml"/>
+	<property name="build.reports.junit.html" value="${build.reports.junit}/html"/>
+	<property name="build.reports.emma" value="emma"/>
+	<property name="build.reports.emma.coverage" value="${build.reports.emma}/coverage"/>
+	<property name="build.reports.emma.html" value="${build.reports.emma}/html"/>
+	<property name="build.reports.findbugs" value="findbugs"/>
+	<property name="build.reports.findbugs.xml" value="${build.reports.findbugs}/xml"/>
+	<property name="build.reports.findbugs.html" value="${build.reports.findbugs}/html"/>
+	<property name="build.reports.cpd" value="cpd"/>
+	<property name="build.reports.cpd.xml" value="${build.reports.cpd}/xml"/>
+	<property name="build.reports.cpd.html" value="${build.reports.cpd}/html"/>
+	<property name="build.reports.pmd" value="pmd"/>
+	<property name="build.reports.pmd.xml" value="${build.reports.pmd}/xml"/>
+	<property name="build.reports.pmd.html" value="${build.reports.pmd}/html"/>
+
+	<!-- Dependencies -->
+	<property name="build-tools.home" value="${basedir}/../build-tools"/>
+	<property name="unit-testing.home" value="${build-tools.home}/unit-testing"/>
+	<property name="adito.home" value="${basedir}/../adito"/>
+	<property name="adito.lib" value="${adito.home}/lib"/>
+	<property name="adito.webapp" value="${adito.home}/webapp"/>
+	<property name="adito.webapp.lib" value="${adito.webapp}/WEB-INF/lib"/>
+	<property name="adito.boot.classes" value="${adito.home}/build/boot"/>
+	<property name="adito.server.classes" value="${adito.home}/build/server"/>
+	<property name="adito.webapp.classes" value="${adito.home}/build/webapp"/>
+	<property name="adito.test.classes" value="${adito.home}/build/test"/>
+	<property name="maverick-crypto.home" value="${basedir}/../maverick-crypto"/>
+	<property name="maverick-crypto.classes" value="${maverick-crypto.home}/build/classes"/>
+	<property name="maverick-multiplex.home" value="${basedir}/../maverick-multiplex"/>
+	<property name="maverick-multiplex.classes" value="${maverick-multiplex.home}/build/classes"/>
+	<property name="maverick-ssl.home" value="${basedir}/../maverick-ssl"/>
+	<property name="maverick-ssl.classes" value="${maverick-ssl.home}/build/classes"/>
+	<property name="maverick-util.home" value="${basedir}/../maverick-util"/>
+	<property name="maverick-util.classes" value="${maverick-util.home}/build/classes"/>
+		
+	<!-- Other -->
+	<property name="build.debug" value="on"/>
+	
+	<!-- emma code coverage task definition -->
+	<taskdef name="emma" classname="com.vladium.emma.emmaTask">
+		<classpath location="${unit-testing.home}/emma/emma.jar"/>
+		<classpath location="${unit-testing.home}/emma/emma_ant.jar"/>
+	</taskdef>
+
+	<!-- Copy and paste detector task definition -->
+	<taskdef name="cpd" classname="net.sourceforge.pmd.cpd.CPDTask">
+		<classpath location="${unit-testing.home}/pmd/pmd-4.0rc1.jar"/>
+	</taskdef>
+	
+	<!-- FindBugs code quality task definition -->
+	<taskdef name="findbugs" classname="edu.umd.cs.findbugs.anttask.FindBugsTask">
+		<classpath location="${unit-testing.home}/findbugs/findbugs-ant.jar"/>
+	</taskdef>
+	
+	<!-- PMD code quaility task definition -->
+	<taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask">
+		<classpath location="${unit-testing.home}/pmd/pmd-4.0rc1.jar"/>
+	</taskdef>
+
+	<path id="build.classpath">
+		<pathelement path="${adito.boot.classes}"/>
+		<pathelement path="${adito.server.classes}"/>
+		<pathelement path="${adito.webapp.classes}"/>
+		<pathelement path="${adito.test.classes}"/>
+		<pathelement path="${maverick-crypto.classes}"/>
+		<pathelement path="${maverick-multiplex.classes}"/>
+		<pathelement path="${maverick-ssl.classes}"/>
+		<pathelement path="${maverick-util.classes}"/>
+
+		<fileset dir="${adito.home}/lib" includes="*.jar"/>
+		<fileset dir="${adito.webapp.lib}" includes="**/*.jar"/>
+		<fileset dir="${adito.webapp.classes}" includes="**/*.jar"/>
+	</path>
+	
+	<path id="test.classpath">
+		<path refid="build.classpath"/>
+		<pathelement path="${build.output}"/>
+		<pathelement path="${adito.test.classes}"/>
+		<pathelement path="${adito.webapp}"/>
+		<pathelement path="${build.webapp}"/>
+		
+		<fileset dir="${build-tools.home}" includes="**/*.jar"/>
+	</path>
+
+	<target name="compile" description="Compile the extension" depends="compile-dependencies">
+		<mkdir dir="${build.output}"/>
+		<echo>Compiling with debug ${build.debug}</echo>
+		<javac srcdir="${build.src}" destdir="${build.output}" debug="${build.debug}" source="1.5" target="1.5" includeantruntime="false" includes="**/*.java">
+			<classpath refid="build.classpath"/>
+		</javac>
+		<echo>Copying required properties file</echo>
+		<copy todir="${build.output}">
+			<fileset dir="${build.src}">
+				<include name="**/*.xml"/>
+				<include name="**/*.properties"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="compile-dependencies">
+		<ant inheritall="false" dir="${adito.home}" target="compile"/>
+		<ant inheritall="false" dir="${maverick-crypto.home}" target="compile"/>
+		<ant inheritall="false" dir="${maverick-multiplex.home}" target="compile"/>
+		<ant inheritall="false" dir="${maverick-ssl.home}" target="compile"/>
+		<ant inheritall="false" dir="${maverick-util.home}" target="compile"/>
+	</target>
+			
+	<target name="release" description="Create the extension archive" depends="clean,dist">
+		<mkdir dir="${build.extension}/private"/>
+		
+		<echo>Copying extension files</echo>
+		<copy todir="${build.extension}">
+			<fileset dir="extensions/${ant.project.name}">
+				<include name="**/*"/>
+				<exclude name="**/CVS/**/*"/>
+			</fileset>
+			<fileset dir="${basedir}">
+				<include name="webapp/**/*"/>
+				<exclude name="**/CVS/**/*"/>
+			</fileset>
+		</copy>
+		<copy file="${build.dist}/${ant.project.name}.jar" tofile="${build.extension}/private/${ant.project.name}.jar"/>
+		
+		<echo>Creating the archive</echo>
+		<mkdir dir="${build.release}"/>
+		<zip destfile="${build.release}/${ant.project.name}.zip">
+			<zipfileset dir="${build.extension}" prefix="${ant.project.name}" includes="**/*"/>
+		</zip>
+
+		<echo>Generating checksums</echo>
+		<checksum>
+			<fileset dir="${build.release}" includes="*.zip"/>
+		</checksum>
+	</target>
+
+	<target name="dist" description="Build the library jar files" depends="compile">
+		<mkdir dir="${build.dist}"/>
+		<jar jarfile="${build.dist}/${ant.project.name}.jar">
+			<fileset dir="${build.output}" includes="**/*"/>
+		</jar>
+	</target>
+	
+	<target name="clean-dist" depends="clean,dist"/>
+
+	<target name="clean" description="Clean up all built files">
+		<delete dir="${build.dir}" includes="*.*" failonerror="false"/>
+		<delete dir="${build.output}"/>
+		<delete dir="${build.output.instrumented}"/>
+		<delete dir="${build.output.test}"/>
+		<delete dir="${build.docs}"/>
+		<delete dir="${build.dist}"/>
+		<delete dir="${build.release}"/>
+		<delete dir="${build.extension}"/>
+		<antcall target="clean-reports"/>
+	</target>
+
+	<target name="javadoc" description="Create API documentation">
+		<mkdir dir="${build.docs}/api"/>
+		<javadoc sourcepath="src" defaultexcludes="yes" destdir="${build.docs}/api" author="true" version="true" use="true" windowtitle="${ant.project.name}" notree="true">
+			<doctitle>
+				<![CDATA[<h1>Adito Community Network Places</h1>
+				<br>
+				<p>This extension adds the 'Network Places' feature to
+				Adito. Network places allow an administrator to
+				create shortcuts to paths within the Adito VFS
+				system.</p>]]>
+			</doctitle>
+			<bottom>
+				<![CDATA[<i>Copyright &#169; 2003-2007 3SP LTD. All Rights Reserved.</i>]]>
+			</bottom>
+			<packageset dir="src" defaultexcludes="yes">
+				<include name="com/adito/**"/>
+			</packageset>
+		</javadoc>
+	</target>
+	
+	<target name="test" description="Run the various tests for this extension" depends="clean">
+		<mkdir dir="${build.reports}"/>
+		<antcall target="test-junit"/>
+		<antcall target="test-findbugs"/>
+		<antcall target="test-cpd"/>
+		<antcall target="test-pmd"/>
+		<antcall target="test-report"/>
+		<fail if="junit.test.failure" unless="run.all.tests" message="One or more JUnit tests failed, please consult the report for more information"/>
+	</target>
+
+	<target name="test-junit" description="Run the JUnit tests for this extension" depends="compile-test">
+		<mkdir dir="${build.reports}/${build.reports.junit.xml}"/>
+		
+		<junit fork="yes" printsummary="yes" failureproperty="junit.test.failure" dir="${adito.home}">
+			<classpath>
+				<pathelement path="${build.output.test}"/>				
+				<pathelement path="${build.output.instrumented}"/>	
+			</classpath>
+			<classpath refid="test.classpath"/>
+
+			<jvmarg value="-Demma.coverage.out.file=${build.reports}/${build.reports.emma.coverage}/${ant.project.name}-coverage.emma"/>
+            <jvmarg value="-Demma.coverage.out.merge=true"/>
+			
+			<formatter type="xml"/>
+			<batchtest todir="${build.reports}/${build.reports.junit.xml}">
+				<fileset dir="${build.output.test}">
+					<include name="**/*Test*.class"/>
+					<exclude name="**/*Abstract*.class"/>
+					<exclude name="**/*$*.class"/>
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+	
+	<target name="compile-test" description="Compile the tests" depends="compile-test-dependencies">
+		<antcall target="compile">
+			<param name="build.debug" value="on"/>
+		</antcall>
+		<antcall target="compile-emma"/>
+		
+		<mkdir dir="${build.output.test}"/>
+		<javac destdir="${build.output.test}" srcdir="${build.test.src}" debug="true" includeantruntime="false" includes="**/*.java">
+			<classpath refid="test.classpath"/>
+		</javac>
+		<copy todir="${build.output.test}">
+			<fileset dir="${build.test.src}">
+				<include name="**/*.properties"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="compile-test-dependencies" description="Compile the test dependencies for this project">
+		<ant inheritall="false" dir="${adito.home}" target="compile-test"/>
+	</target>
+	
+	<target name="compile-emma" description="Instrument the classes to provide emma code coverage">
+		<mkdir dir="${build.output.instrumented}"/>
+		<mkdir dir="${build.reports}/${build.reports.emma.coverage}"/>
+        <emma>
+            <instr instrpath="${build.output}"
+                mode="copy"
+                outdir="${build.output.instrumented}"
+                metadatafile="${build.reports}/${build.reports.emma.coverage}/${ant.project.name}-metadata.emma"
+                merge="true">
+            </instr>
+        </emma>
+	</target>
+	
+	<target name="test-emma" description="Test the code coverage against the JUnit tests" depends="test-junit"/>
+
+	<target name="test-findbugs" description="Test the extension against FindBugs">
+		<mkdir dir="${build.reports}/${build.reports.findbugs.xml}"/>
+
+		<findbugs projectname="${ant.project.name}" 
+				  home="${unit-testing.home}/findbugs"
+	              output="xml:withMessages"
+            	  outputFile="${build.reports}/${build.reports.findbugs.xml}/${ant.project.name}-findbugs-report.xml"
+			  	  reportLevel="low">
+			<sourcePath path="${build.src}"/>
+	      	<class location="${build.output}"/>
+			<auxclasspath refid="test.classpath"/>
+	    </findbugs>
+	</target>
+
+	<target name="test-cpd" description="Test the extension against the Copy and Paste Detector">
+		<mkdir dir="${build.reports}/${build.reports.cpd.xml}"/>
+		
+    	<cpd minimumTokenCount="50" outputFile="${build.reports}/${build.reports.cpd.xml}/${ant.project.name}-cpd-report.txt">
+        	<fileset dir="${build.src}" includes="**/*.java"/>
+    	</cpd>
+	</target>
+
+	<target name="test-pmd" description="Test the extension against the PMD rules">
+		<mkdir dir="${build.reports}/${build.reports.pmd.xml}"/>
+
+		<pmd shortFilenames="true" targetjdk="1.5" rulesetfiles="${unit-testing.home}/pmd/pmd-report-all.xml">
+			<fileset dir="${build.src}" includes="**/*.java"/>
+			<formatter type="xml" toFile="${build.reports}/${build.reports.pmd.xml}/${ant.project.name}-pmd-report.xml"/>
+		</pmd>
+	</target>
+
+	<target name="test-report" description="Generate the HTML reports">
+		<antcall target="test-junit-report"/>
+		<antcall target="test-emma-report"/>	
+		<antcall target="test-findbugs-report"/>
+		<!-- antcall target="test-cpd-report"/ -->	
+		<antcall target="test-pmd-report"/>	
+		<antcall target="test-report-cleanup"/>	
+	</target>
+
+	<target name="test-junit-report" description="Generate the JUnit HTML report" unless="run.all.tests">
+		<mkdir dir="${build.reports}/${build.reports.junit.html}"/>
+		<junitreport todir="${build.reports}/${build.reports.junit}">
+			<fileset dir="${build.reports}/${build.reports.junit.xml}" includes="TEST-*.xml"/>
+			<report format="frames" todir="${build.reports}/${build.reports.junit.html}"/>
+		</junitreport>
+	</target>
+	
+    <target name="test-emma-report" description="Creates a code coverage report using emma stats gathered whilst running junit tests" unless="run.all.tests">
+    	<mkdir dir="${build.reports}/${build.reports.emma.html}"/>
+    	<emma>
+            <report sourcepath="${build.src}" sort="+block,+name,+method,+class" metrics="method:70,block:80,line:80,class:100">
+                <fileset dir="${build.reports}/${build.reports.emma.coverage}" includes="${ant.project.name}-*.emma"/>
+                <html outfile="${build.reports}/${build.reports.emma.html}/${ant.project.name}-coverage.html" depth="method" columns="name,class,method,block,line"/>
+            </report>
+        </emma>
+    </target>
+
+	<target name="test-findbugs-report" description="Generate the FindBugs HTML report">
+		<mkdir dir="${build.reports}/${build.reports.findbugs.html}"/>
+		<xslt in="${build.reports}/${build.reports.findbugs.xml}/${ant.project.name}-findbugs-report.xml" style="${unit-testing.home}/findbugs/fancy.xsl" out="${build.reports}/${build.reports.findbugs.html}/${ant.project.name}-findbugs-report.html"/>
+    </target>
+
+	<target name="test-cpd-report" description="Generate the Copy and Paste detector HTML report">
+		<mkdir dir="${build.reports}/${build.reports.cpd.html}"/>
+		<xslt in="${build.reports}/${build.reports.cpd.xml}/${ant.project.name}-cpd-report.txt" style="${unit-testing.home}/pmd/cpdhtml.xslt" out="${build.reports}/${build.reports.cpd.html}/${ant.project.name}-cpd-report.html"/>
+    </target>
+
+	<target name="test-pmd-report" description="Generate the PMD HTML report">
+		<mkdir dir="${build.reports}/${build.reports.pmd.html}"/>
+		<xslt in="${build.reports}/${build.reports.pmd.xml}/${ant.project.name}-pmd-report.xml" style="${unit-testing.home}/pmd/wz-pmd-report.xslt" out="${build.reports}/${build.reports.pmd.html}/${ant.project.name}-pmd-report.html"/>
+    </target>
+
+    <target name="test-report-cleanup" description="Removes all the generated report meta-data, leaving behind the useful reports" unless="run.all.tests">
+		<delete dir="${build.reports}/${build.reports.junit}" includes="*.*"/>
+		<delete dir="${build.reports}/${build.reports.junit.xml}"/>
+		<delete dir="${build.reports}/${build.reports.emma.coverage}"/>
+		<delete dir="${build.reports}/${build.reports.findbugs.xml}"/>
+		<delete dir="${build.reports}/${build.reports.pmd.xml}"/>
+		
+		<copy todir="${build.reports}/${build.reports.junit}">
+			<fileset dir="${build.reports}/${build.reports.junit.html}" includes="**/*"/>
+		</copy>
+		<copy todir="${build.reports}/${build.reports.emma}">
+			<fileset dir="${build.reports}/${build.reports.emma.html}" includes="**/*"/>
+		</copy>
+		<copy todir="${build.reports}/${build.reports.findbugs}">
+			<fileset dir="${build.reports}/${build.reports.findbugs.html}" includes="**/*"/>
+		</copy>
+		<copy todir="${build.reports}/${build.reports.pmd}">
+			<fileset dir="${build.reports}/${build.reports.pmd.html}" includes="**/*"/>
+		</copy>
+
+		<delete dir="${build.reports}/${build.reports.junit.html}"/>
+		<delete dir="${build.reports}/${build.reports.emma.html}"/>
+		<delete dir="${build.reports}/${build.reports.findbugs.html}"/>            
+		<delete dir="${build.reports}/${build.reports.pmd.html}"/>            
+    </target>
+	
+	<target name="clean-reports" unless="run.all.tests">
+		<delete dir="${build.reports}"/>
+	</target>
+
+</project>	

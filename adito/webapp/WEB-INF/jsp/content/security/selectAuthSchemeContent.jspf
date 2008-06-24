@@ -1,0 +1,60 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page import="com.adito.security.Constants"%>
+<%@ page import="com.adito.security.AuthenticationScheme"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+
+
+<!--  Display warning if cookies are not enabled // -->
+<script language="javascript1.1" type="text/javascript">
+<!--
+if (!document.cookie) {
+	document.writeln("<span class='smallText'><p align='center' class='warningText'><bean:message key='login.cookieWarning' bundle='security'/></p></span>");
+	document.writeln("<br/>");
+}	
+	
+function checkForEnter(event) {
+	if (event.keyCode == 13)
+  		document.forms[0].submit();
+}
+// -->
+</script>
+<!--  Capture enter key on select element and submit form -->
+
+<%@ include file="/WEB-INF/jsp/content/security/loginPageInfo.jspf" %>
+<div id="page_select_auth_scheme">         			
+	<core:form styleClass="dialog_form" method="post" action="/showLogon.do" focus="selectedAuthenticationScheme">
+		<html:hidden property="username"/>
+		<div class="dialog_content">
+			<table class="dialog_form_table" align="center" cellpadding="0" cellspacing="0" border="0">
+				<tbody>
+					<tr>
+						<td class="label">
+							<bean:message key="selectAuthenticationScheme.authenticationScheme" bundle="security" /> 
+						</td>
+						<td class="value">
+							<html:select onkeyup="checkForEnter(event)" styleId="authSchemeSelections" name="schemeSelectionForm" property="selectedAuthenticationScheme">
+								<html:optionsCollection name="schemeSelectionForm" property="authenticationSchemes" />
+							</html:select>
+						</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="2">							
+							<div class="button_bar">
+								<div class="formButton">	
+									<input class="ok" type="submit" value="<bean:message key='selectAuthenticationScheme.submit' bundle='security'/>"/>
+								</div>		
+								<div class="formButton">	
+									<input class="cancel" onclick="self.location = '/showLogon.do?back'" type="button" value="<bean:message key='selectAuthenticationScheme.cancel' bundle='security'/>"/>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>		
+	</core:form>
+</div>

@@ -1,0 +1,47 @@
+Like with any community driven open source project there are several ways you can contribute. It doesn't matter whether you have prior experience with SSL-Explorer, as there are many ways you can contribute:
+Documentation
+-------------
+
+* Write a quickstart/user's guide. 3sp's SSL-Explorer user's guide can't be used due to copyright issues. Luckily it's full of very generic information, such as "What is a proxy server". As there's no need to reinvent the wheel, it's probably easiest to just have links to Wikipedia and/or copy the content from there.
+* Write HOWTO's: how to translate Adito (in the works), how to create an extensions, how to convert SSL-Explorer extensions to Adito.
+* Document Adito development as thoroughly as necessary.
+
+Using and testing Adito
+-----------------------
+
+* Use Adito and report bugs.
+* Follow the mailing list discussions and respond to questions when you can.
+* Send suggestions and enhancement requests to the mailing list.
+
+Coding and scripting
+--------------------
+
+* Convert existing SSL-Explorer extensions to Adito 
+* Provide bug fixes to the actual code, build files, graphics, documentation etc. 
+* Add new features and improve Adito
+* Fix the help file fetching (origanally fetched from 3sp's servers)
+* Integrate sslexplorer-pam to Adito (see http://sourceforge.net/projects/sslexplorer-pam). This allows, among other things, LDAP authentication on UNIX/Linux hosts. It also removes the need to reinvent the wheel for every possible authentication scheme known to man. The sslexplorer-pam extension needs enhancements itself.
+* Create a command line utility for creating the resources (SSL-tunnels, web forwards and such). This will save lots of time if there's a need to create a lot of resources for lots of users.
+
+Enhancing the user experience
+-----------------------------
+
+* Add support for more languages. SSL-Explorer language packs are trivial to convert to Adito language packs (see below).
+* Enhance the look of Adito (icons, graphics, layout). For example some icons are too small or too big. Some are too complex for their size. This is especially true for very small (16x16) icons.
+
+Known bugs/TODO items
+---------------------
+
+* Current SSL-Explorer language packs and other extensions have not been yet ported to Adito. This trivial to do: just replace all references to "sslexplorer" to "adito". Also make sure that the the required host version is set to 0.9.0. 
+* Extension store capability is disabled crudely by pointing the default extension store server to localhost.
+* Automatic updates is disabled similarly.
+* Help file fetching is disabled similarly.
+* "Exit install" icon in the installation wizard flows over the text. 
+* No (MS) Windows-icon. It was removed just to be on the safe side.
+* The non-existent Extension store is connected at startup. This fails because it's currently bound to localhost.  
+* There are references to the "Adito Enterprise Edition" in the initial Installation wizard and in Java properties files.
+* Remove the requirement for a description when creating the resources. Probably pre-filling it with "No description" is the easiest route.
+* When launching a SSL-tunnel the popup info appears to the bottom of the screen. This is usually correct for Windows, but often looks stupid on Linux where the system tray might be at the top of the screen (e.g. in Gnome)
+* Adito Agent sometimes tries to launch itself twice. This is probably related to Mozilla plugin for Java 1.6 (at least on Linux). This same bug is present in SSL-Explorer 0.2.13.
+* Adito has no logo.
+* Various references to Adito homepage are missing. For example productURL for many extensions (in extension.xml) points to http://localhost.

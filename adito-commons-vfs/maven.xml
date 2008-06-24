@@ -1,0 +1,74 @@
+<project default="jar:jar" xmlns:j="jelly:core">
+
+    <!-- we can customize the Maven build here -->
+
+    <!-- Set up the test files -->
+    <postGoal name="test:test-resources">
+
+        <copy todir="${test.basedir}/read-tests">
+            <fileset dir="${test.data.src}/basedir"/>
+        </copy>
+        <copy todir="${test.basedir}/">
+            <fileset dir="${test.data.src}" includes="nested.*,test.*"/>
+        </copy>
+
+
+        <!-- Compile the code for the class loader test -->
+        <javac
+            destdir="${test.basedir}"
+            debug="${maven.compile.debug}"
+            deprecation="${maven.compile.deprecation}"
+            optimize="${maven.compile.optimize}">
+            <src>
+                <path>
+                    <pathelement location="${test.data.src}"/>
+                </path>
+            </src>
+        </javac>
+
+        <mkdir dir="${test.basedir}/read-tests/emptydir"/>
+
+        <!-- Create a zip file - its not possible to create tgz, tar and tbz2 so we provide
+				the whole set for download now
+        <zip zipfile="${test.basedir}/test.zip">
+            <zipfileset dir="${test.basedir}">
+                <include name="read-tests/**"/>
+                <include name="code/**"/>
+            </zipfileset>
+        </zip>
+        <zip zipfile="${test.basedir}/nested.zip">
+            <zipfileset dir="${test.basedir}">
+                <include name="test.zip"/>
+            </zipfileset>
+        </zip>
+
+        <jar
+            jarfile="${test.basedir}/test.jar"
+            manifest="${test.data.src}/test.mf">
+            <fileset dir="${test.basedir}">
+                <include name="read-tests/**"/>
+                <include name="code/**"/>
+            </fileset>
+        </jar>
+
+        <jar
+            jarfile="${test.basedir}/nested.jar"
+            basedir="${test.basedir}"
+            includes="test.jar"/>
+        -->
+    </postGoal>
+
+    <preGoal name="dist:build-bin">
+        <copy todir="${maven.dist.bin.assembly.dir}">
+            <fileset file='${basedir}/RELEASE_NOTES.txt'/>
+            <fileset file='${basedir}/NOTICE.txt'/>
+        </copy>
+    </preGoal>
+    <preGoal name="dist:build-src">
+        <copy todir="${maven.dist.src.assembly.dir}">
+            <fileset file='${basedir}/RELEASE_NOTES.txt'/>
+            <fileset file='${basedir}/NOTICE.txt'/>
+        </copy>
+    </preGoal>
+
+</project>

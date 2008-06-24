@@ -1,0 +1,33 @@
+<%@ page import="java.util.StringTokenizer" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+
+<tiles:useAttribute name="form" classname="com.adito.properties.forms.AbstractPropertiesForm"/> 
+<tiles:useAttribute name="actionMapping" classname="org.apache.struts.action.ActionMapping"/> 
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<% boolean propertyDisabled = !form.getEnabled(); %>	
+	<html:hidden property="referer" />
+	<html:hidden property="_charset_" />
+	<% int idx = 0; %>
+	<logic:iterate type="com.adito.properties.PropertyItemImpl"
+		name="<%= actionMapping.getName() %>" property="propertyItems" id="propertyItem">
+		<% 
+			if(form.getSelectedCategory() == -1 ||
+				form.getSelectedCategory() == propertyItem.getCategory()) {
+		%>		
+		
+			<tiles:insert page="/WEB-INF/jsp/content/properties/propertyRow.jspf" flush="false">
+				<tiles:put name="rowIdx" value="<%= Integer.valueOf(idx) %>"/>
+				<tiles:put name="propertyItem" beanName="propertyItem"/>
+				<tiles:put name="form" beanName="form"/>
+				<tiles:put name="propertyDisabled" value="<%= Boolean.valueOf(propertyDisabled) %>"/>
+			</tiles:insert>
+		<% 	idx++;
+		} %>
+	</logic:iterate>	
+</table>

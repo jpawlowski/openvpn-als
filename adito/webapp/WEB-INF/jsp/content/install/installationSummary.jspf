@@ -1,0 +1,138 @@
+<%@ page import="com.adito.install.forms.InstallationSummaryForm" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+
+<div id="wizardSummary">
+	<bean:define id="installationSummaryForm" name="installationSummaryForm" type="com.adito.install.forms.InstallationSummaryForm"/>
+	<table border="0" cellspacing="0" border="0">
+		<tr class="formBlock">
+			<td class="label" colspan="2">
+				<bean:message key="installation.installationSummary.certificate" bundle="install"/>
+			</td>
+		</tr>
+		<tr class="formLabel">
+			<td class="label" colspan="2">
+				<logic:equal name="installationSummaryForm" property="certificateSource" value="<%= com.adito.install.forms.SelectCertificateSourceForm.CREATE_NEW_CERTIFICATE %>">
+					<bean:message key="installation.installationSummary.certificate.createNew" bundle="install"/>
+				</logic:equal>
+				<logic:equal name="installationSummaryForm" property="certificateSource" value="<%= com.adito.install.forms.SelectCertificateSourceForm.IMPORT_EXISTING_CERTIFICATE %>">
+					<bean:message key="installation.installationSummary.certificate.importExisting" bundle="install"/>
+				</logic:equal>
+				<logic:equal name="installationSummaryForm" property="certificateSource" value="<%= com.adito.install.forms.SelectCertificateSourceForm.USE_CURRENT_CERTIFICATE %>">
+					<bean:message key="installation.installationSummary.certificate.useCurrent" bundle="install"/>
+				</logic:equal>
+			</td>
+		</tr>
+		<tr class="formBlock">
+			<td class="label" colspan="2">
+				<bean:message key="installation.installationSummary.userDatabase" bundle="install"/>
+			</td>
+		</tr>
+		<tr class="formLabel">			
+			<td class="label">
+				<bean:message key="installation.installationSummary.userDatabase.name" bundle="install"/>
+			</td>
+			<td class="value">
+				<bean:define id="userDatabaseDefinition" name="installationSummaryForm" property="userDatabaseDefinition" type="com.adito.security.UserDatabaseDefinition"/>
+				<bean:message key="<%= "security.userDatabase.value." + userDatabaseDefinition.getName() %>" bundle="<%= userDatabaseDefinition.getMessageResourcesKey() %>"/>
+			</td>
+		</tr>
+		<tr class="formBlock">
+			<td class="label" colspan="2">
+				<bean:message key="installation.installationSummary.webServer" bundle="install"/>
+			</td>
+		</tr>
+		<tr class="formLabel">
+			<td class="label">
+				<bean:message key="installation.installationSummary.webServer.port" bundle="install"/>
+			</td>
+			<td class="value">
+				<bean:write name="installationSummaryForm" property="webServerPort"/>
+			</td>
+		</tr>
+		<tr class="formLabel">
+			<td class="label">
+				<bean:message key="installation.installationSummary.webServer.protocol" bundle="install"/>
+			</td>
+			<td class="value">
+				<bean:write name="installationSummaryForm" property="webServerProtocol"/>
+			</td>
+		</tr>
+		<tr class="formLabel">
+			<td class="label">
+				<bean:message key="installation.installationSummary.webServer.listeningInterfaces" bundle="install"/>
+			</td>
+			<td class="value">
+				<logic:empty name="installationSummaryForm" property="webServerListeningInterfaces">
+					<bean:message key="installation.installationSummary.webServer.listeningInterfaces.any" bundle="install"/>
+				</logic:empty>
+				<logic:notEmpty name="installationSummaryForm" property="webServerListeningInterfaces">
+					<logic:iterate name="installationSummaryForm" property="webServerListeningInterfaces" id="ifname">
+						<bean:write name="ifname"/><br/>
+					</logic:iterate>
+				</logic:notEmpty>
+			</td>
+		</tr>
+		<tr class="formLabel">
+			<td class="label">
+				<bean:message key="installation.installationSummary.webServer.validExternalHostnames" bundle="install"/>
+			</td>
+			<td class="value">
+				<logic:empty name="installationSummaryForm" property="webServerValidExternalHostnames">
+					<bean:message key="installation.installationSummary.webServer.validExternalHostnames.any" bundle="install"/>
+				</logic:empty>
+				<logic:notEmpty name="installationSummaryForm" property="webServerValidExternalHostnames">
+					<logic:iterate name="installationSummaryForm" property="webServerValidExternalHostnames" id="hostname">
+						<bean:write name="hostname"/><br/>
+					</logic:iterate>
+				</logic:notEmpty>
+			</td>
+		</tr>
+		<tr class="formBlock">
+			<td class="label" colspan="2">
+				<bean:message key="installation.installationSummary.proxies" bundle="install"/>
+			</td>
+		</tr>
+		<tr class="formLabel">
+			<td class="label">
+				<bean:message key="installation.installationSummary.proxies.http" bundle="install"/>
+			</td>
+			<td class="value">
+				<logic:equal name="installationSummaryForm" property="useHTTPProxy" value="false">
+					<bean:message key="installation.installationSummary.proxies.http.disabled" bundle="install"/>
+				</logic:equal>
+				<logic:equal name="installationSummaryForm" property="useHTTPProxy" value="true">				
+					<logic:equal name="installationSummaryForm" property="httpProxyAuthenticate" value="true">
+						<bean:message key="installation.installationSummary.proxies.http.enabledAuthenticated" bundle="install"
+						arg0="<%= ((InstallationSummaryForm)installationSummaryForm).getHttpProxyHostname() %>" 
+						arg1="<%= ((InstallationSummaryForm)installationSummaryForm).getHttpProxyPort() %>" />
+					</logic:equal>
+					<logic:equal name="installationSummaryForm" property="httpProxyAuthenticate" value="false">
+						<bean:message key="installation.installationSummary.proxies.http.enabled" bundle="install"
+						arg0="<%= ((InstallationSummaryForm)installationSummaryForm).getHttpProxyHostname() %>" 
+						arg1="<%= ((InstallationSummaryForm)installationSummaryForm).getHttpProxyPort() %>" />
+					</logic:equal>
+				</logic:equal>
+			</td>
+		</tr>
+		<tr class="formBlock">
+			<td class="label" colspan="2">
+				<bean:message key="installation.installationSummary.extensions" bundle="install"/>
+			</td>
+		</tr>
+		<tr class="formLabel">
+			<td class="value" colspan="2">
+				<logic:empty name="installationSummaryForm" property="extensionsToInstall">
+					<bean:message key="installation.installationSummary.extensions.none" bundle="install"/>
+				</logic:empty>
+				<logic:notEmpty name="installationSummaryForm" property="extensionsToInstall">
+					<logic:iterate name="installationSummaryForm" property="extensionsToInstall" id="extensions">
+						<bean:write name="extensions"/><br/>
+					</logic:iterate>
+				</logic:notEmpty>
+			</td>
+		</tr>
+	</table>
+</div>

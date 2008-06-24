@@ -1,0 +1,92 @@
+<jsp:directive.page import="java.util.Iterator"/>
+<jsp:directive.page import="com.adito.extensions.ExtensionDescriptor"/>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+
+<% try { %>
+<div class="component_extensionBundleInformation">
+	<bean:define id="bundle" name="extensionBundleInformationForm" property="bundle" type="com.adito.extensions.ExtensionBundle"/>
+	<core:form method="post" action="/extensionBundleInformation.do">	
+			<html:hidden property="referer"/>
+			<html:hidden property="actionTarget"/>
+			<html:hidden property="_charset_"/>		
+			<div>
+			<logic:equal name="bundle" property="updateable" value="true">
+				<h3><bean:message key="extensionBundleInformation.title.1" bundle="extensions" arg0="<%= bundle.getName() %>" arg1="<%= bundle.getDisplayVersion().toString() %>" arg2="<%= bundle.getVersion().toString() %>"/></h3>
+			</logic:equal>
+			<logic:equal name="bundle" property="updateable" value="false">
+				<h3><bean:message key="extensionBundleInformation.title.2" bundle="extensions" arg0="<%= bundle.getName() %>" arg1="<%= bundle.getVersion().toString() %>"/></h3>
+			</logic:equal>
+				<div class="productURL">
+               		<logic:notEmpty name="bundle" property="productURL">               		
+						<bean:message key="extensionBundleInformation.productURL" bundle="extensions" arg0="<%= bundle.getProductURL().toString() %>"/>
+					</logic:notEmpty>
+				</div>
+				<div class="details">	
+               		<bean:write name="bundle" property="description"/>
+				</div>
+				<div class="versions">
+               		<logic:notEmpty name="bundle" property="requiredHostVersion">               		
+						<bean:message key="extensionBundleInformation.requires" bundle="extensions" arg0="<%= bundle.getRequiredHostVersion().toString() %>"/>
+					</logic:notEmpty>
+				</div class="type">
+					<h4><bean:message key="extensionBundleInformation.status.title" bundle="extensions"/></h4>
+					<bean:write name="bundle" property="status.name"/>
+				<div>
+				</div>
+				<div class="license">
+					<h4><bean:message key="extensionBundleInformation.license.title" bundle="extensions"/></h4>
+               		<bean:write name="bundle" property="license"/><br/>
+               		<logic:notEmpty name="bundle" property="licenseFile">               		
+						<bean:message key="extensionBundleInformation.license.see" bundle="extensions" arg0="<%= bundle.getLicenseFile().getPath() %>"/>
+               		</logic:notEmpty>
+				</div>
+				<logic:notEmpty name="bundle">
+					<h4><bean:message key="extensionBundleInformation.contains.title" bundle="extensions"/></h4>
+					<div class="extensions">
+						<table width="90%" cellpadding="0" cellspacing="0" border="0">						
+							<thead>
+								<tr>
+									<td><bean:message key="extensionBundleInformation.contains.name" bundle="extensions"/></td>
+									<td><bean:message key="extensionBundleInformation.contains.type" bundle="extensions"/></td>
+								</tr>
+							</thead>
+							<tbody>
+						<% for(Iterator i = bundle.iterator(); i.hasNext(); ) { 
+							   ExtensionDescriptor des = (ExtensionDescriptor)i.next();
+						%>
+								<tr>
+									<td>
+									<%= des.getName() %>
+									</td>
+									<td>
+										<% if (des.getExtensionType() != null){ 
+										%>
+											<bean:message key="<%= "extensionBundleInformation.contains.type." +  des.getTypeName() %>" bundle="<%= des.getExtensionType().getTypeBundle() %>"/>
+										<%
+										} %>
+									</td>
+								</tr>
+						<% } %>
+							</tbody>
+						</table>
+					</div>
+				</logic:notEmpty>
+				<logic:equal name="bundle" property="updateable" value="true"><logic:notEqual name="bundle" property="changes" value="">
+						<h4><bean:message bundle="extensions" key="extensionStore.changes"/></h4>
+						<pre><bean:write name="bundle" property="changes"/></pre>
+					</logic:notEqual></logic:equal>
+				<logic:notEmpty name="bundle" property="error">
+					<div class="extensionBundleError">					
+						<bean:message bundle="extensions" key="<%= "extensionBundleInformation.error" %>" arg0="<%= bundle.getError().getMessage() %>"/>
+					</div>
+				</logic:notEmpty>
+			</div>			
+	</core:form>
+</div>
+
+<% } catch(Exception e) { e.printStackTrace(); } %>

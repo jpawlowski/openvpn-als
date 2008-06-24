@@ -1,0 +1,9 @@
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+
+<tiles:insert flush="false" attribute="actionLink">
+	<tiles:put name="actionName" value="blank"/>
+	<tiles:put name="nameKey" value="blank.name"/>
+	<tiles:put name="descriptionKey" value="blank.description"/>
+	<tiles:put name="actionPath" value="javascript: void();"/>
+	<tiles:put name="bundle" value="navigation"/>
+</tiles:insert>

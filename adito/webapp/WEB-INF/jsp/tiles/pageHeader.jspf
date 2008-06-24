@@ -1,0 +1,12 @@
+<%@ page import="com.adito.core.CoreScript" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<!-- Page header -->
+<head>
+	<tiles:useAttribute name="resourcePrefix" scope="request" classname="java.lang.String"/>
+	<tiles:useAttribute name="resourceBundle" scope="request" classname="java.lang.String"/>
+	<title><bean:message key="<%= resourcePrefix + ".title" %>" bundle="<%= resourceBundle %>"/></title>	
+	<link type="text/css" rel="stylesheet" href='<core:themePath/>/style.jsp'/>		
+	<core:pageScripts position="<%= String.valueOf(CoreScript.PAGE_HEADER) %>"/>	
+</head>

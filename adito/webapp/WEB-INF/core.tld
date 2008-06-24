@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE taglib
+  PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
+  "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+
+<taglib>
+	<tlibversion>1.0</tlibversion>
+	<jspversion>1.1</jspversion>
+	<shortname>Enteprise Explorer General Tag Library</shortname>
+
+	<uri>/server/taglibs/core</uri>
+
+	<info>This tag library contains general tags for the 3SP Enterprise Explorer project.</info>
+
+	<tag>
+		<name>checkPropertyEquals</name>
+		<tagclass>com.adito.core.tags.CheckPropertyEqualsTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<info>Process the body if the user is authenticated (or not)</info>
+		<attribute>
+			<name>propertyName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>propertyValue</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>regExp</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>userProfile</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>checkPropertyNotEquals</name>
+		<tagclass>com.adito.core.tags.CheckPropertyNotEqualsTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<info>Process the body if the user is authenticated (or not)</info>
+
+		<attribute>
+			<name>propertyName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>propertyValue</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>regExp</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>userProfile</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+
+	<tag>
+		<name>getProperty</name>
+		<tagclass>com.adito.core.tags.GetPropertyTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<info>Insert the value of a property</info>
+
+		<attribute>
+			<name>propertyName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>userProfile</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>clientProxyURL</name>
+		<tagclass>com.adito.core.tags.ClientProxyURLTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<info>Insert the value to use for the VPN client proxy URL</info>
+	</tag>
+
+	<tag>
+		<name>themePath</name>
+		<tagclass>com.adito.core.tags.ThemePathTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<info>Insert the current theme path</info>
+	</tag>
+
+	<tag>
+		<name>setupMode</name>
+		<tagclass>com.adito.core.tags.SetupModeTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<info>Includes if in setup mode</info>
+
+		<attribute>
+			<name>requiresSetupMode</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>restartAvailable</name>
+		<tagclass>com.adito.core.tags.RestartAvailableTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<info>Includes if restart is available</info>
+
+		<attribute>
+			<name>requiresRestartAvailable</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>getExternalContent</name>
+		<tagclass>com.adito.core.tags.ExternalContentTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<info>Insert content from a URL</info>
+
+		<attribute>
+			<name>url</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>form</name>
+		<tagclass>com.adito.core.tags.FormTag</tagclass>
+		<attribute>
+			<name>action</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>method</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>autocomplete</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>binding</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>enctype</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>focus</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>focusIndex</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>onreset</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>onsubmit</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>rendered</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>style</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>styleClass</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>target</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>subFormName</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<name>messages</name>
+		<tagclass>com.adito.core.tags.BundleMessagesTag</tagclass>
+		<teiclass>org.apache.struts.taglib.html.MessagesTei</teiclass>
+		<bodycontent>JSP</bodycontent>
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>bundle</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>locale</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>name</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>property</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>header</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>footer</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>message</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>bundle</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<name>authenticationModuleInUse</name>
+		<tagclass>com.adito.core.tags.AuthenticationModuleInUseTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<name>pageScripts</name>
+		<tagclass>com.adito.core.tags.PageScriptsTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<attribute>
+			<name>position</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<name>panel</name>
+		<tagclass>com.adito.core.tags.PanelTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<name>browserCheck</name>
+		<tagclass>com.adito.core.tags.BrowserCheckTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<attribute>
+			<name>version</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>browser</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>required</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>	
+	<tag>
+		<name>blankActionFill</name>
+		<tagclass>com.adito.core.tags.BlankActionTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<info>
+		      show a blank action if the content is not shown.
+		</info>
+		<attribute>
+			<name>tiles</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

@@ -1,0 +1,89 @@
+<%@ page import="com.adito.boot.Util" %>
+<jsp:directive.page import="com.adito.core.CoreUtil"/>
+<%@ page import="com.adito.security.forms.LogonForm" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="/server/taglibs/core" prefix="core"%>
+
+<%@ include file="/WEB-INF/jsp/content/security/loginPageInfo.jspf" %>
+<%@page import="org.apache.struts.taglib.TagUtils"%>
+<%@page import="com.adito.core.CoreUtil"%>
+
+<div id="page_login_user_password">
+	<core:form styleClass="dialog_form" autocomplete="OFF" method="post" action="/showLogon.do" focus="username">
+		<html:hidden property="_charset_"/>
+		<noScript>
+			<table align="center">
+				<tr>
+					<td>
+						<img class="infoImage" src="<%= CoreUtil.getThemePath(session) + "/images/info/warning.gif" %>" />
+
+					</td>
+					<td>
+						<h3>					
+							<bean:message key="login.disabled.java.script" bundle="security" /> 
+						</h3>
+					</td>
+				</tr>
+			</table>	
+
+
+		</noScript>
+		<div class="dialog_content">
+			<div class="inner">
+				<table class="dialog_form_table" id="centered">
+					<tbody>
+						<tr>
+							<td class="value">
+								<label for="username">
+									<bean:message key="login.username" bundle="security" /> 
+								</label>
+								<br/>	
+								<input type="hidden" id="javascriptElement" name="javaScript" value="false"/>									
+								<html:text property="username" maxlength="50" styleId="password"/>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="2">							
+								<div class="button_bar">
+									<div class="formButton">
+										<html:submit styleClass="ok"><bean:message key="login.login" bundle="security"/></html:submit>
+									</div>
+								</div>
+							</td>						                        
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</core:form> 
+</div>
+<logic:notEqual name="logonForm" property="sessionLocked" value="true"> 
+	<core:checkPropertyNotEquals regExp="false" propertyValue="none" propertyName="loginPage.welcomeMessageType">
+		<div id="welcomeMessage">
+				<table class="dialog_form_table">
+						<core:checkPropertyNotEquals regExp="false" propertyValue="noicon" propertyName="loginPage.welcomeMessageType">
+							<tr class="formBlock"> 
+								<td class="label">
+									<img src="<%= CoreUtil.getThemePath(session) + "/images/dialog/" + Property.getProperty(new SystemConfigKey("loginPage.welcomeMessageType")) + ".gif" %>"/>
+								</td>
+							</tr>
+						</core:checkPropertyNotEquals>
+						<tr class="formBlock">
+							<td class="<%= Property.getProperty(new SystemConfigKey("loginPage.welcomeMessageAlign")) %>">     
+								<%= TagUtils.getInstance().filter(Property.getProperty(new SystemConfigKey("loginPage.welcomeMessage"))) %>
+							</td>
+						</tr>
+				</table>
+		</div>
+	</core:checkPropertyNotEquals>
+</logic:notEqual>
+<script type="text/javascript">
+<!--
+	$('javascriptElement').value = 'true';
+-->
+</script>

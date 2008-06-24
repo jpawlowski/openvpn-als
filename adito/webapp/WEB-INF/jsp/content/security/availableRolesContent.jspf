@@ -1,0 +1,105 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="/server/taglibs/security" prefix="security" %>
+<%@ taglib uri="/server/taglibs/table" prefix="table" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+<%@ taglib uri="/server/taglibs/navigation" prefix="navigation" %>
+<%@ page import="com.adito.boot.Util" %>
+<%@ page import="com.adito.policyframework.Permission" %>
+<%@ page import="com.adito.policyframework.PolicyConstants" %>
+
+<div id="page_roles">
+	<core:form method="post" action="/showAvailableRoles.do" onsubmit="setActionTarget('filter')">
+		<html:hidden name="showAvailableRolesForm" property="_charset_"/>
+		<html:hidden name="showAvailableRolesForm" property="actionTarget"/>
+		<html:hidden name="showAvailableRolesForm" property="pager.startRow"/>
+		<html:hidden name="showAvailableRolesForm" property="pager.sortName"/>
+		<html:hidden name="showAvailableRolesForm" property="pager.sortReverse"/>
+		<html:hidden name="showAvailableRolesForm" property="pager.pageSize"/>
+		<div class="dialog_content">				
+			<%@ include file="/WEB-INF/jsp/tiles/filter.jspf" %>	
+		</div>
+		<div class="filtered_resources">
+			<table class="resource_table">
+				<logic:equal name="showAvailableRolesForm" property="model.empty" value="true">
+					<tbody>
+						<tr>
+							<td colspan="2" class="tableMessage">
+							  	<bean:message key="availableRoles.noRoles" bundle="security"/>
+							</td>
+						</tr>
+					</tbody>
+				</logic:equal>
+				<logic:equal name="showAvailableRolesForm" property="model.empty" value="false">
+					<thead>
+						<tr>
+							<td class="role">
+								<table:columnHeader pagerName="showAvailableRolesForm" pagerProperty="pager" columnIndex="0" action="showAvailableRoles.do" styleClass="columnHeader"><bean:message key="availableRoles.role" bundle="security"/></table:columnHeader>
+							</td>
+					  		<td class="actions">
+					  			<bean:message key="availableRoles.action" bundle="security"/>
+					  		</td>
+						</tr>
+					</thead>
+					<tbody>
+					<!-- Start Groups -->
+						<% boolean highlight = true; 
+						int idx =0; %>
+						<logic:iterate id="role" indexId="i" name="showAvailableRolesForm" property="pager.pageItems" type="com.adito.security.RoleItem">
+							<tr 
+		      					onmouseover="<%= "this.className = 'selected';" %>"
+		      					onmouseout="<%= "this.className = '" + ( highlight ? "highlight" : "lowlight" ) + "';" %>" class="<%= highlight ? "highlight" : "lowlight" %>">           
+					  	  		<td class="role">
+									<img border="0" align="absmiddle" src="<%= role.getSmallIconPath(request) %>"/>
+									<input:toolTip width="400" borderWidth="0" padding="0" onclick="<%= role.getOnClick() %>" href="<%= role.getLink() %>" contentLocation="<%= "/roleInformation.do?principalName=" + role.getRole().getPrincipalName() + "&principalType=role" %>" value="<%= role.getRole().getPrincipalName() %>">
+								 		<bean:write name="role" property="role.principalName"/>
+									</input:toolTip>
+						  		</td>
+							  	<td class="actions">
+									  <security:permission resourceType="<%= PolicyConstants.ACCOUNTS_AND_GROUPS_RESOURCE_TYPE_ID %>" permissionList="<%= String.valueOf(PolicyConstants.PERM_CREATE_AND_ASSIGN_ID) %>">
+								   		<tiles:insert flush="false" attribute="actionLink">
+											<tiles:put name="actionName" value="edit"/>
+											<tiles:put name="bundle" value="security"/>
+											<tiles:put name="nameKey" value="action.editRole.name"/>
+											<tiles:put name="descriptionKey" value="action.editRole.description"/>
+											<tiles:put name="actionPath" value="<%= "/showAvailableRoles.do?actionTarget=edit&selectedItem=" + Util.urlEncode(role.getRole().getPrincipalName()) %>"/>
+										</tiles:insert>
+									</security:permission>
+									<security:permission resourceType="<%= PolicyConstants.ACCOUNTS_AND_GROUPS_RESOURCE_TYPE_ID %>" permissionList="<%= String.valueOf(PolicyConstants.PERM_DELETE_ID) %>">
+									  	<security:checkUserDatabaseSupport requiresAccountCreation="true" requiresPasswordChange="false">
+									   		<tiles:insert flush="false" attribute="actionLink">
+												<tiles:put name="actionName" value="remove"/>
+												<tiles:put name="bundle" value="security"/>
+												<tiles:put name="nameKey" value="action.deleteRole.name"/>
+												<tiles:put name="descriptionKey" value="action.deleteRole.description"/>
+												<tiles:put name="actionPath" value="<%= "/showAvailableRoles.do?actionTarget=confirmRoleDeletion&rolename=" + Util.urlEncode(role.getRole().getPrincipalName()) %>"/>
+											</tiles:insert>
+										</security:checkUserDatabaseSupport>			
+									</security:permission>
+								</td>
+							</tr>
+							<% highlight = !highlight; %>
+						</logic:iterate> 
+					<!-- End Groups -->
+					</tbody>
+					<tfoot>			
+						<tr>
+							<td colspan="2">
+								<div class="pager_navigation">
+									<table:navigation selectedStyleClass="pagerSelected" pagerName="showAvailableRolesForm" pagerProperty="pager" styleClass="pagerEnabled" disabledStyleClass="pagerDisabled" requestAttributes="actionTarget=redisplay"/>
+								</div>
+								<div class="pager_pages">
+									<table:pageSize pagerName="showAvailableRolesForm" pagerProperty="pager" styleClass="pagerEnabled" allowShowAll="false"/>
+								</div.
+							</td>
+						</tr>
+					</tfoot>
+				</logic:equal>
+			</table>
+		</div>
+	</core:form>
+</div>

@@ -1,0 +1,86 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:directive.page import="com.adito.vfs.forms.ShowUploadForm"/>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/security" prefix="security" %>
+<%@ taglib uri="/server/taglibs/table" prefix="table" %>
+<script language="JavaScript">
+<!--
+		function upload() {		   
+                     var form = document.forms["showUploadForm"];
+                     form.encoding = "multipart/form-data";
+    		         form.action = "/uploadFile.do";
+		     return true;		
+		}
+// -->
+</script>
+
+<div id="page_upload">
+	<core:form enctype="" autocomplete="OFF" method="post" action="/showUpload.do">
+		<html:hidden name="showUploadForm" property="actionTarget"/>	
+		<html:hidden name="showUploadForm" property="uploadId"/>	
+		<div class="dialog_content">
+			<div class="dialog_border">
+				<table class="dialog_form_table" id="form">
+					<tbody>
+						<tr class="formLabel">
+							<td class="label">
+								<bean:message key="upload.type" bundle="vfs"/>
+							</td>
+							<td class="value">
+								<bean:message bundle="<%= ((ShowUploadForm)request.getAttribute("showUploadForm")).getUploadDetails().getBundle() %>" 
+									key="<%= "upload." + ((ShowUploadForm)request.getAttribute("showUploadForm")).getUploadDetails().getType() %>"/>
+							</td>
+						</tr>
+						<logic:notEmpty name="showUploadForm" property="uploadDetails.resourcePath">
+							<tr class="formLabel">
+								<td class="label">
+									<bean:message key="upload.path" bundle="vfs"/>
+								</td>
+								<td class="value">
+									<bean:write name="showUploadForm" property="uploadDetails.resourcePath"/>
+								</td>
+							</tr>
+						</logic:notEmpty>
+						<tr class="formFile">
+							<td class="label">
+								<div class="required">
+									<bean:message key="upload.filename" bundle="vfs"/>
+								</div>
+							</td>
+							<td class="value">
+								<html:file property="uploadFile"/>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="2">							
+								<div class="button_bar">
+									<div class="formButton">								
+										<html:submit styleClass="upload" onclick="upload();"><bean:message key="upload.upload" bundle="vfs"/></html:submit>
+									</div>
+									<logic:notEmpty name="showUploadForm" property="uploadDetails.doneForward">
+										<bean:define id="doneForward" name="showUploadForm" property="uploadDetails.doneForward" type="org.apache.struts.action.ActionForward"/>
+										<div class="formButton">																								
+											<html:button property="done" styleClass="done" onclick="javascript: setActionTarget('uploadDone'); document.forms[0].submit();"><bean:message key="upload.done" bundle="vfs"/></html:button>
+										</div>
+									</logic:notEmpty>
+									<logic:notEmpty name="showUploadForm" property="uploadDetails.cancelForward">
+										<bean:define id="cancelForward" name="showUploadForm" property="uploadDetails.cancelForward" type="org.apache.struts.action.ActionForward"/>
+										<div class="formButton"> 																								
+											<html:button property="done" styleClass="cancel" onclick="javascript: setActionTarget('cancel'); document.forms[0].submit();"><bean:message key="upload.cancel" bundle="vfs"/></html:button>
+										</div>
+									</logic:notEmpty>
+								</div>
+							</td>						                        
+						</tr>
+					</tfoot>
+				</table>		  
+			</div>
+		</div>		
+	</core:form>
+</div>

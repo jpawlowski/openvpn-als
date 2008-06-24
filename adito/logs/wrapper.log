@@ -1,0 +1,459 @@
+STATUS | wrapper  | 2008/05/18 17:45:50 | --> Wrapper Started as Daemon
+STATUS | wrapper  | 2008/05/18 17:45:50 | Launching a JVM...
+INFO   | jvm 1    | 2008/05/18 17:45:50 | Wrapper (Version 3.1.2) http://wrapper.tanukisoftware.org
+INFO   | jvm 1    | 2008/05/18 17:45:50 | 
+STATUS | wrapper  | 2008/05/18 17:46:22 | TERM trapped.  Shutting down.
+STATUS | wrapper  | 2008/05/18 17:46:23 | <-- Wrapper Stopped
+STATUS | wrapper  | 2008/05/18 17:47:16 | --> Wrapper Started as Daemon
+STATUS | wrapper  | 2008/05/18 17:47:16 | Launching a JVM...
+INFO   | jvm 1    | 2008/05/18 17:47:17 | Wrapper (Version 3.1.2) http://wrapper.tanukisoftware.org
+INFO   | jvm 1    | 2008/05/18 17:47:17 | 
+INFO   | jvm 1    | 2008/05/18 17:47:17 | org.mortbay.util.MultiException[java.net.BindException: Permission denied]
+INFO   | jvm 1    | 2008/05/18 17:47:17 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:732)
+INFO   | jvm 1    | 2008/05/18 17:47:17 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/05/18 17:47:17 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 1    | 2008/05/18 17:47:17 | java.net.BindException: Permission denied
+INFO   | jvm 1    | 2008/05/18 17:47:17 | 	at java.net.PlainSocketImpl.socketBind(Native Method)
+INFO   | jvm 1    | 2008/05/18 17:47:17 | 	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)
+INFO   | jvm 1    | 2008/05/18 17:47:17 | 	at java.net.ServerSocket.bind(ServerSocket.java:319)
+INFO   | jvm 1    | 2008/05/18 17:47:17 | 	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+INFO   | jvm 1    | 2008/05/18 17:47:17 | 	at org.mortbay.util.ThreadedServer.newServerSocket(ThreadedServer.java:390)
+INFO   | jvm 1    | 2008/05/18 17:47:17 | 	at org.mortbay.util.ThreadedServer.open(ThreadedServer.java:476)
+INFO   | jvm 1    | 2008/05/18 17:47:17 | 	at org.mortbay.util.ThreadedServer.start(ThreadedServer.java:502)
+INFO   | jvm 1    | 2008/05/18 17:47:17 | 	at org.mortbay.http.SocketListener.start(SocketListener.java:202)
+INFO   | jvm 1    | 2008/05/18 17:47:17 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:762)
+INFO   | jvm 1    | 2008/05/18 17:47:17 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/05/18 17:47:17 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 1    | 2008/05/18 17:47:17 | java.net.BindException: Permission denied
+INFO   | jvm 1    | 2008/05/18 17:47:17 | 	at java.net.PlainSocketImpl.socketBind(Native Method)
+INFO   | jvm 1    | 2008/05/18 17:47:17 | 	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)
+INFO   | jvm 1    | 2008/05/18 17:47:17 | 	at java.net.ServerSocket.bind(ServerSocket.java:319)
+INFO   | jvm 1    | 2008/05/18 17:47:17 | 	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+INFO   | jvm 1    | 2008/05/18 17:47:17 | 	at org.mortbay.util.ThreadedServer.newServerSocket(ThreadedServer.java:390)
+INFO   | jvm 1    | 2008/05/18 17:47:17 | 	at org.mortbay.util.ThreadedServer.open(ThreadedServer.java:476)
+INFO   | jvm 1    | 2008/05/18 17:47:17 | 	at org.mortbay.util.ThreadedServer.start(ThreadedServer.java:502)
+INFO   | jvm 1    | 2008/05/18 17:47:17 | 	at org.mortbay.http.SocketListener.start(SocketListener.java:202)
+INFO   | jvm 1    | 2008/05/18 17:47:17 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:762)
+INFO   | jvm 1    | 2008/05/18 17:47:17 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/05/18 17:47:17 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 1    | 2008/05/18 17:52:47 | Generating 1024 bit ssh-rsa key pair
+STATUS | wrapper  | 2008/05/18 18:03:38 | <-- Wrapper Stopped
+STATUS | wrapper  | 2008/05/18 18:17:19 | --> Wrapper Started as Daemon
+STATUS | wrapper  | 2008/05/18 18:17:19 | Launching a JVM...
+INFO   | jvm 1    | 2008/05/18 18:17:19 | Wrapper (Version 3.1.2) http://wrapper.tanukisoftware.org
+INFO   | jvm 1    | 2008/05/18 18:17:19 | 
+INFO   | jvm 1    | 2008/05/18 18:17:20 | org.mortbay.util.MultiException[java.net.BindException: Permission denied]
+INFO   | jvm 1    | 2008/05/18 18:17:20 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:732)
+INFO   | jvm 1    | 2008/05/18 18:17:20 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/05/18 18:17:20 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 1    | 2008/05/18 18:17:20 | java.net.BindException: Permission denied
+INFO   | jvm 1    | 2008/05/18 18:17:20 | 	at java.net.PlainSocketImpl.socketBind(Native Method)
+INFO   | jvm 1    | 2008/05/18 18:17:20 | 	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)
+INFO   | jvm 1    | 2008/05/18 18:17:20 | 	at java.net.ServerSocket.bind(ServerSocket.java:319)
+INFO   | jvm 1    | 2008/05/18 18:17:20 | 	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+INFO   | jvm 1    | 2008/05/18 18:17:20 | 	at org.mortbay.util.ThreadedServer.newServerSocket(ThreadedServer.java:390)
+INFO   | jvm 1    | 2008/05/18 18:17:20 | 	at org.mortbay.util.ThreadedServer.open(ThreadedServer.java:476)
+INFO   | jvm 1    | 2008/05/18 18:17:20 | 	at org.mortbay.util.ThreadedServer.start(ThreadedServer.java:502)
+INFO   | jvm 1    | 2008/05/18 18:17:20 | 	at org.mortbay.http.SocketListener.start(SocketListener.java:202)
+INFO   | jvm 1    | 2008/05/18 18:17:20 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:762)
+INFO   | jvm 1    | 2008/05/18 18:17:20 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/05/18 18:17:20 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 1    | 2008/05/18 18:17:20 | java.net.BindException: Permission denied
+INFO   | jvm 1    | 2008/05/18 18:17:20 | 	at java.net.PlainSocketImpl.socketBind(Native Method)
+INFO   | jvm 1    | 2008/05/18 18:17:20 | 	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)
+INFO   | jvm 1    | 2008/05/18 18:17:20 | 	at java.net.ServerSocket.bind(ServerSocket.java:319)
+INFO   | jvm 1    | 2008/05/18 18:17:20 | 	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+INFO   | jvm 1    | 2008/05/18 18:17:20 | 	at org.mortbay.util.ThreadedServer.newServerSocket(ThreadedServer.java:390)
+INFO   | jvm 1    | 2008/05/18 18:17:20 | 	at org.mortbay.util.ThreadedServer.open(ThreadedServer.java:476)
+INFO   | jvm 1    | 2008/05/18 18:17:20 | 	at org.mortbay.util.ThreadedServer.start(ThreadedServer.java:502)
+INFO   | jvm 1    | 2008/05/18 18:17:20 | 	at org.mortbay.http.SocketListener.start(SocketListener.java:202)
+INFO   | jvm 1    | 2008/05/18 18:17:20 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:762)
+INFO   | jvm 1    | 2008/05/18 18:17:20 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/05/18 18:17:20 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 1    | 2008/05/18 18:18:47 | Generating 1024 bit ssh-rsa key pair
+INFO   | jvm 1    | 2008/05/18 18:25:43 | Generating 1024 bit ssh-rsa key pair
+INFO   | wrapper  | 2008/05/19 09:18:11 | Wrapper Process has not received any CPU time for 36826 seconds.  Extending timeouts.
+INFO   | jvm 1    | 2008/05/19 09:18:11 | JVM Process has not received any CPU time for 36826 seconds.  Extending timeouts.
+STATUS | wrapper  | 2008/05/19 10:12:18 | TERM trapped.  Shutting down.
+STATUS | wrapper  | 2008/05/19 10:12:19 | <-- Wrapper Stopped
+STATUS | wrapper  | 2008/05/19 11:50:56 | --> Wrapper Started as Daemon
+STATUS | wrapper  | 2008/05/19 11:50:56 | Launching a JVM...
+INFO   | jvm 1    | 2008/05/19 11:50:56 | Wrapper (Version 3.1.2) http://wrapper.tanukisoftware.org
+INFO   | jvm 1    | 2008/05/19 11:50:56 | 
+INFO   | jvm 1    | 2008/05/19 11:50:57 | org.mortbay.util.MultiException[java.net.BindException: Permission denied]
+INFO   | jvm 1    | 2008/05/19 11:50:57 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:732)
+INFO   | jvm 1    | 2008/05/19 11:50:57 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/05/19 11:50:57 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 1    | 2008/05/19 11:50:57 | java.net.BindException: Permission denied
+INFO   | jvm 1    | 2008/05/19 11:50:57 | 	at java.net.PlainSocketImpl.socketBind(Native Method)
+INFO   | jvm 1    | 2008/05/19 11:50:57 | 	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)
+INFO   | jvm 1    | 2008/05/19 11:50:57 | 	at java.net.ServerSocket.bind(ServerSocket.java:319)
+INFO   | jvm 1    | 2008/05/19 11:50:57 | 	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+INFO   | jvm 1    | 2008/05/19 11:50:57 | 	at org.mortbay.util.ThreadedServer.newServerSocket(ThreadedServer.java:390)
+INFO   | jvm 1    | 2008/05/19 11:50:57 | 	at org.mortbay.util.ThreadedServer.open(ThreadedServer.java:476)
+INFO   | jvm 1    | 2008/05/19 11:50:57 | 	at org.mortbay.util.ThreadedServer.start(ThreadedServer.java:502)
+INFO   | jvm 1    | 2008/05/19 11:50:57 | 	at org.mortbay.http.SocketListener.start(SocketListener.java:202)
+INFO   | jvm 1    | 2008/05/19 11:50:57 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:762)
+INFO   | jvm 1    | 2008/05/19 11:50:57 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/05/19 11:50:57 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 1    | 2008/05/19 11:50:57 | java.net.BindException: Permission denied
+INFO   | jvm 1    | 2008/05/19 11:50:57 | 	at java.net.PlainSocketImpl.socketBind(Native Method)
+INFO   | jvm 1    | 2008/05/19 11:50:57 | 	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)
+INFO   | jvm 1    | 2008/05/19 11:50:57 | 	at java.net.ServerSocket.bind(ServerSocket.java:319)
+INFO   | jvm 1    | 2008/05/19 11:50:57 | 	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+INFO   | jvm 1    | 2008/05/19 11:50:57 | 	at org.mortbay.util.ThreadedServer.newServerSocket(ThreadedServer.java:390)
+INFO   | jvm 1    | 2008/05/19 11:50:57 | 	at org.mortbay.util.ThreadedServer.open(ThreadedServer.java:476)
+INFO   | jvm 1    | 2008/05/19 11:50:57 | 	at org.mortbay.util.ThreadedServer.start(ThreadedServer.java:502)
+INFO   | jvm 1    | 2008/05/19 11:50:57 | 	at org.mortbay.http.SocketListener.start(SocketListener.java:202)
+INFO   | jvm 1    | 2008/05/19 11:50:57 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:762)
+INFO   | jvm 1    | 2008/05/19 11:50:57 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/05/19 11:50:57 | 	at com.adito.server.Main$4.run(Main.java:871)
+STATUS | wrapper  | 2008/05/19 11:56:14 | TERM trapped.  Shutting down.
+STATUS | wrapper  | 2008/05/19 11:56:15 | <-- Wrapper Stopped
+STATUS | wrapper  | 2008/05/25 10:50:11 | --> Wrapper Started as Daemon
+STATUS | wrapper  | 2008/05/25 10:50:11 | Launching a JVM...
+INFO   | jvm 1    | 2008/05/25 10:50:11 | Wrapper (Version 3.1.2) http://wrapper.tanukisoftware.org
+INFO   | jvm 1    | 2008/05/25 10:50:11 | 
+INFO   | jvm 1    | 2008/05/25 10:50:12 | org.mortbay.util.MultiException[java.net.BindException: Permission denied]
+INFO   | jvm 1    | 2008/05/25 10:50:12 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:732)
+INFO   | jvm 1    | 2008/05/25 10:50:12 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/05/25 10:50:12 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 1    | 2008/05/25 10:50:12 | java.net.BindException: Permission denied
+INFO   | jvm 1    | 2008/05/25 10:50:12 | 	at java.net.PlainSocketImpl.socketBind(Native Method)
+INFO   | jvm 1    | 2008/05/25 10:50:12 | 	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)
+INFO   | jvm 1    | 2008/05/25 10:50:12 | 	at java.net.ServerSocket.bind(ServerSocket.java:319)
+INFO   | jvm 1    | 2008/05/25 10:50:12 | 	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+INFO   | jvm 1    | 2008/05/25 10:50:12 | 	at org.mortbay.util.ThreadedServer.newServerSocket(ThreadedServer.java:390)
+INFO   | jvm 1    | 2008/05/25 10:50:12 | 	at org.mortbay.util.ThreadedServer.open(ThreadedServer.java:476)
+INFO   | jvm 1    | 2008/05/25 10:50:12 | 	at org.mortbay.util.ThreadedServer.start(ThreadedServer.java:502)
+INFO   | jvm 1    | 2008/05/25 10:50:12 | 	at org.mortbay.http.SocketListener.start(SocketListener.java:202)
+INFO   | jvm 1    | 2008/05/25 10:50:12 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:762)
+INFO   | jvm 1    | 2008/05/25 10:50:12 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/05/25 10:50:12 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 1    | 2008/05/25 10:50:12 | java.net.BindException: Permission denied
+INFO   | jvm 1    | 2008/05/25 10:50:12 | 	at java.net.PlainSocketImpl.socketBind(Native Method)
+INFO   | jvm 1    | 2008/05/25 10:50:12 | 	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)
+INFO   | jvm 1    | 2008/05/25 10:50:12 | 	at java.net.ServerSocket.bind(ServerSocket.java:319)
+INFO   | jvm 1    | 2008/05/25 10:50:12 | 	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+INFO   | jvm 1    | 2008/05/25 10:50:12 | 	at org.mortbay.util.ThreadedServer.newServerSocket(ThreadedServer.java:390)
+INFO   | jvm 1    | 2008/05/25 10:50:12 | 	at org.mortbay.util.ThreadedServer.open(ThreadedServer.java:476)
+INFO   | jvm 1    | 2008/05/25 10:50:12 | 	at org.mortbay.util.ThreadedServer.start(ThreadedServer.java:502)
+INFO   | jvm 1    | 2008/05/25 10:50:12 | 	at org.mortbay.http.SocketListener.start(SocketListener.java:202)
+INFO   | jvm 1    | 2008/05/25 10:50:12 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:762)
+INFO   | jvm 1    | 2008/05/25 10:50:12 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/05/25 10:50:12 | 	at com.adito.server.Main$4.run(Main.java:871)
+STATUS | wrapper  | 2008/05/25 10:50:40 | TERM trapped.  Shutting down.
+STATUS | wrapper  | 2008/05/25 10:50:42 | <-- Wrapper Stopped
+STATUS | wrapper  | 2008/05/25 11:45:52 | --> Wrapper Started as Daemon
+STATUS | wrapper  | 2008/05/25 11:45:52 | Launching a JVM...
+INFO   | jvm 1    | 2008/05/25 11:45:53 | Wrapper (Version 3.1.2) http://wrapper.tanukisoftware.org
+INFO   | jvm 1    | 2008/05/25 11:45:53 | 
+INFO   | jvm 1    | 2008/05/25 11:45:53 | org.mortbay.util.MultiException[java.net.BindException: Permission denied]
+INFO   | jvm 1    | 2008/05/25 11:45:53 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:732)
+INFO   | jvm 1    | 2008/05/25 11:45:53 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/05/25 11:45:53 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 1    | 2008/05/25 11:45:53 | java.net.BindException: Permission denied
+INFO   | jvm 1    | 2008/05/25 11:45:53 | 	at java.net.PlainSocketImpl.socketBind(Native Method)
+INFO   | jvm 1    | 2008/05/25 11:45:53 | 	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)
+INFO   | jvm 1    | 2008/05/25 11:45:53 | 	at java.net.ServerSocket.bind(ServerSocket.java:319)
+INFO   | jvm 1    | 2008/05/25 11:45:53 | 	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+INFO   | jvm 1    | 2008/05/25 11:45:53 | 	at org.mortbay.util.ThreadedServer.newServerSocket(ThreadedServer.java:390)
+INFO   | jvm 1    | 2008/05/25 11:45:53 | 	at org.mortbay.util.ThreadedServer.open(ThreadedServer.java:476)
+INFO   | jvm 1    | 2008/05/25 11:45:53 | 	at org.mortbay.util.ThreadedServer.start(ThreadedServer.java:502)
+INFO   | jvm 1    | 2008/05/25 11:45:53 | 	at org.mortbay.http.SocketListener.start(SocketListener.java:202)
+INFO   | jvm 1    | 2008/05/25 11:45:53 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:762)
+INFO   | jvm 1    | 2008/05/25 11:45:53 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/05/25 11:45:53 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 1    | 2008/05/25 11:45:53 | java.net.BindException: Permission denied
+INFO   | jvm 1    | 2008/05/25 11:45:53 | 	at java.net.PlainSocketImpl.socketBind(Native Method)
+INFO   | jvm 1    | 2008/05/25 11:45:53 | 	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)
+INFO   | jvm 1    | 2008/05/25 11:45:53 | 	at java.net.ServerSocket.bind(ServerSocket.java:319)
+INFO   | jvm 1    | 2008/05/25 11:45:53 | 	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+INFO   | jvm 1    | 2008/05/25 11:45:53 | 	at org.mortbay.util.ThreadedServer.newServerSocket(ThreadedServer.java:390)
+INFO   | jvm 1    | 2008/05/25 11:45:53 | 	at org.mortbay.util.ThreadedServer.open(ThreadedServer.java:476)
+INFO   | jvm 1    | 2008/05/25 11:45:53 | 	at org.mortbay.util.ThreadedServer.start(ThreadedServer.java:502)
+INFO   | jvm 1    | 2008/05/25 11:45:53 | 	at org.mortbay.http.SocketListener.start(SocketListener.java:202)
+INFO   | jvm 1    | 2008/05/25 11:45:53 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:762)
+INFO   | jvm 1    | 2008/05/25 11:45:53 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/05/25 11:45:53 | 	at com.adito.server.Main$4.run(Main.java:871)
+STATUS | wrapper  | 2008/05/25 12:00:17 | TERM trapped.  Shutting down.
+STATUS | wrapper  | 2008/05/25 12:00:18 | <-- Wrapper Stopped
+STATUS | wrapper  | 2008/05/26 21:18:57 | --> Wrapper Started as Daemon
+STATUS | wrapper  | 2008/05/26 21:18:57 | Launching a JVM...
+INFO   | jvm 1    | 2008/05/26 21:18:58 | Wrapper (Version 3.1.2) http://wrapper.tanukisoftware.org
+INFO   | jvm 1    | 2008/05/26 21:18:58 | 
+INFO   | jvm 1    | 2008/05/26 21:18:58 | org.mortbay.util.MultiException[java.net.BindException: Permission denied]
+INFO   | jvm 1    | 2008/05/26 21:18:58 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:732)
+INFO   | jvm 1    | 2008/05/26 21:18:58 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/05/26 21:18:58 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 1    | 2008/05/26 21:18:58 | java.net.BindException: Permission denied
+INFO   | jvm 1    | 2008/05/26 21:18:58 | 	at java.net.PlainSocketImpl.socketBind(Native Method)
+INFO   | jvm 1    | 2008/05/26 21:18:58 | 	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)
+INFO   | jvm 1    | 2008/05/26 21:18:58 | 	at java.net.ServerSocket.bind(ServerSocket.java:319)
+INFO   | jvm 1    | 2008/05/26 21:18:58 | 	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+INFO   | jvm 1    | 2008/05/26 21:18:58 | 	at org.mortbay.util.ThreadedServer.newServerSocket(ThreadedServer.java:390)
+INFO   | jvm 1    | 2008/05/26 21:18:58 | 	at org.mortbay.util.ThreadedServer.open(ThreadedServer.java:476)
+INFO   | jvm 1    | 2008/05/26 21:18:58 | 	at org.mortbay.util.ThreadedServer.start(ThreadedServer.java:502)
+INFO   | jvm 1    | 2008/05/26 21:18:58 | 	at org.mortbay.http.SocketListener.start(SocketListener.java:202)
+INFO   | jvm 1    | 2008/05/26 21:18:58 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:762)
+INFO   | jvm 1    | 2008/05/26 21:18:58 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/05/26 21:18:58 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 1    | 2008/05/26 21:18:58 | java.net.BindException: Permission denied
+INFO   | jvm 1    | 2008/05/26 21:18:58 | 	at java.net.PlainSocketImpl.socketBind(Native Method)
+INFO   | jvm 1    | 2008/05/26 21:18:58 | 	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)
+INFO   | jvm 1    | 2008/05/26 21:18:58 | 	at java.net.ServerSocket.bind(ServerSocket.java:319)
+INFO   | jvm 1    | 2008/05/26 21:18:58 | 	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+INFO   | jvm 1    | 2008/05/26 21:18:58 | 	at org.mortbay.util.ThreadedServer.newServerSocket(ThreadedServer.java:390)
+INFO   | jvm 1    | 2008/05/26 21:18:58 | 	at org.mortbay.util.ThreadedServer.open(ThreadedServer.java:476)
+INFO   | jvm 1    | 2008/05/26 21:18:58 | 	at org.mortbay.util.ThreadedServer.start(ThreadedServer.java:502)
+INFO   | jvm 1    | 2008/05/26 21:18:58 | 	at org.mortbay.http.SocketListener.start(SocketListener.java:202)
+INFO   | jvm 1    | 2008/05/26 21:18:58 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:762)
+INFO   | jvm 1    | 2008/05/26 21:18:58 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/05/26 21:18:58 | 	at com.adito.server.Main$4.run(Main.java:871)
+STATUS | wrapper  | 2008/05/26 22:48:32 | TERM trapped.  Shutting down.
+STATUS | wrapper  | 2008/05/26 22:48:33 | <-- Wrapper Stopped
+STATUS | wrapper  | 2008/05/28 18:52:16 | --> Wrapper Started as Daemon
+STATUS | wrapper  | 2008/05/28 18:52:16 | Launching a JVM...
+INFO   | jvm 1    | 2008/05/28 18:52:17 | Wrapper (Version 3.1.2) http://wrapper.tanukisoftware.org
+INFO   | jvm 1    | 2008/05/28 18:52:17 | 
+INFO   | jvm 1    | 2008/05/28 18:52:17 | org.mortbay.util.MultiException[java.net.BindException: Permission denied]
+INFO   | jvm 1    | 2008/05/28 18:52:17 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:732)
+INFO   | jvm 1    | 2008/05/28 18:52:17 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/05/28 18:52:17 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 1    | 2008/05/28 18:52:17 | java.net.BindException: Permission denied
+INFO   | jvm 1    | 2008/05/28 18:52:17 | 	at java.net.PlainSocketImpl.socketBind(Native Method)
+INFO   | jvm 1    | 2008/05/28 18:52:17 | 	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)
+INFO   | jvm 1    | 2008/05/28 18:52:17 | 	at java.net.ServerSocket.bind(ServerSocket.java:319)
+INFO   | jvm 1    | 2008/05/28 18:52:17 | 	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+INFO   | jvm 1    | 2008/05/28 18:52:17 | 	at org.mortbay.util.ThreadedServer.newServerSocket(ThreadedServer.java:390)
+INFO   | jvm 1    | 2008/05/28 18:52:17 | 	at org.mortbay.util.ThreadedServer.open(ThreadedServer.java:476)
+INFO   | jvm 1    | 2008/05/28 18:52:17 | 	at org.mortbay.util.ThreadedServer.start(ThreadedServer.java:502)
+INFO   | jvm 1    | 2008/05/28 18:52:17 | 	at org.mortbay.http.SocketListener.start(SocketListener.java:202)
+INFO   | jvm 1    | 2008/05/28 18:52:17 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:762)
+INFO   | jvm 1    | 2008/05/28 18:52:17 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/05/28 18:52:17 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 1    | 2008/05/28 18:52:17 | java.net.BindException: Permission denied
+INFO   | jvm 1    | 2008/05/28 18:52:17 | 	at java.net.PlainSocketImpl.socketBind(Native Method)
+INFO   | jvm 1    | 2008/05/28 18:52:17 | 	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)
+INFO   | jvm 1    | 2008/05/28 18:52:17 | 	at java.net.ServerSocket.bind(ServerSocket.java:319)
+INFO   | jvm 1    | 2008/05/28 18:52:17 | 	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+INFO   | jvm 1    | 2008/05/28 18:52:17 | 	at org.mortbay.util.ThreadedServer.newServerSocket(ThreadedServer.java:390)
+INFO   | jvm 1    | 2008/05/28 18:52:17 | 	at org.mortbay.util.ThreadedServer.open(ThreadedServer.java:476)
+INFO   | jvm 1    | 2008/05/28 18:52:17 | 	at org.mortbay.util.ThreadedServer.start(ThreadedServer.java:502)
+INFO   | jvm 1    | 2008/05/28 18:52:17 | 	at org.mortbay.http.SocketListener.start(SocketListener.java:202)
+INFO   | jvm 1    | 2008/05/28 18:52:17 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:762)
+INFO   | jvm 1    | 2008/05/28 18:52:17 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/05/28 18:52:17 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 1    | 2008/05/28 22:01:14 | JVM Process has not received any CPU time for 4711 seconds.  Extending timeouts.
+INFO   | wrapper  | 2008/05/28 22:01:14 | Wrapper Process has not received any CPU time for 4711 seconds.  Extending timeouts.
+INFO   | jvm 1    | 2008/05/28 22:08:26 | =============== DEBUG MESSAGE: illegal bytecode sequence - method not verified ================
+INFO   | jvm 1    | 2008/05/28 22:08:26 | 
+ERROR  | wrapper  | 2008/05/28 22:08:59 | JVM appears hung: Timed out waiting for signal from JVM.
+ERROR  | wrapper  | 2008/05/28 22:08:59 | JVM did not exit on request, terminated
+STATUS | wrapper  | 2008/05/28 22:09:04 | Launching a JVM...
+INFO   | jvm 2    | 2008/05/28 22:09:04 | Wrapper (Version 3.1.2) http://wrapper.tanukisoftware.org
+INFO   | jvm 2    | 2008/05/28 22:09:04 | 
+INFO   | jvm 2    | 2008/05/28 22:09:05 | org.mortbay.util.MultiException[java.net.BindException: Permission denied]
+INFO   | jvm 2    | 2008/05/28 22:09:05 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:732)
+INFO   | jvm 2    | 2008/05/28 22:09:05 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 2    | 2008/05/28 22:09:05 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 2    | 2008/05/28 22:09:05 | java.net.BindException: Permission denied
+INFO   | jvm 2    | 2008/05/28 22:09:05 | 	at java.net.PlainSocketImpl.socketBind(Native Method)
+INFO   | jvm 2    | 2008/05/28 22:09:05 | 	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)
+INFO   | jvm 2    | 2008/05/28 22:09:05 | 	at java.net.ServerSocket.bind(ServerSocket.java:319)
+INFO   | jvm 2    | 2008/05/28 22:09:05 | 	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+INFO   | jvm 2    | 2008/05/28 22:09:05 | 	at org.mortbay.util.ThreadedServer.newServerSocket(ThreadedServer.java:390)
+INFO   | jvm 2    | 2008/05/28 22:09:05 | 	at org.mortbay.util.ThreadedServer.open(ThreadedServer.java:476)
+INFO   | jvm 2    | 2008/05/28 22:09:05 | 	at org.mortbay.util.ThreadedServer.start(ThreadedServer.java:502)
+INFO   | jvm 2    | 2008/05/28 22:09:05 | 	at org.mortbay.http.SocketListener.start(SocketListener.java:202)
+INFO   | jvm 2    | 2008/05/28 22:09:05 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:762)
+INFO   | jvm 2    | 2008/05/28 22:09:05 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 2    | 2008/05/28 22:09:05 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 2    | 2008/05/28 22:09:05 | java.net.BindException: Permission denied
+INFO   | jvm 2    | 2008/05/28 22:09:05 | 	at java.net.PlainSocketImpl.socketBind(Native Method)
+INFO   | jvm 2    | 2008/05/28 22:09:05 | 	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)
+INFO   | jvm 2    | 2008/05/28 22:09:05 | 	at java.net.ServerSocket.bind(ServerSocket.java:319)
+INFO   | jvm 2    | 2008/05/28 22:09:05 | 	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+INFO   | jvm 2    | 2008/05/28 22:09:05 | 	at org.mortbay.util.ThreadedServer.newServerSocket(ThreadedServer.java:390)
+INFO   | jvm 2    | 2008/05/28 22:09:05 | 	at org.mortbay.util.ThreadedServer.open(ThreadedServer.java:476)
+INFO   | jvm 2    | 2008/05/28 22:09:05 | 	at org.mortbay.util.ThreadedServer.start(ThreadedServer.java:502)
+INFO   | jvm 2    | 2008/05/28 22:09:05 | 	at org.mortbay.http.SocketListener.start(SocketListener.java:202)
+INFO   | jvm 2    | 2008/05/28 22:09:05 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:762)
+INFO   | jvm 2    | 2008/05/28 22:09:05 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 2    | 2008/05/28 22:09:05 | 	at com.adito.server.Main$4.run(Main.java:871)
+STATUS | wrapper  | 2008/05/28 22:09:15 | TERM trapped.  Shutting down.
+STATUS | wrapper  | 2008/05/28 22:09:16 | <-- Wrapper Stopped
+STATUS | wrapper  | 2008/05/28 22:09:50 | --> Wrapper Started as Daemon
+STATUS | wrapper  | 2008/05/28 22:09:50 | Launching a JVM...
+INFO   | jvm 1    | 2008/05/28 22:09:51 | Wrapper (Version 3.1.2) http://wrapper.tanukisoftware.org
+INFO   | jvm 1    | 2008/05/28 22:09:51 | 
+INFO   | jvm 1    | 2008/05/28 22:09:51 | org.mortbay.util.MultiException[java.net.BindException: Permission denied]
+INFO   | jvm 1    | 2008/05/28 22:09:51 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:732)
+INFO   | jvm 1    | 2008/05/28 22:09:51 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/05/28 22:09:51 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 1    | 2008/05/28 22:09:51 | java.net.BindException: Permission denied
+INFO   | jvm 1    | 2008/05/28 22:09:51 | 	at java.net.PlainSocketImpl.socketBind(Native Method)
+INFO   | jvm 1    | 2008/05/28 22:09:51 | 	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)
+INFO   | jvm 1    | 2008/05/28 22:09:51 | 	at java.net.ServerSocket.bind(ServerSocket.java:319)
+INFO   | jvm 1    | 2008/05/28 22:09:51 | 	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+INFO   | jvm 1    | 2008/05/28 22:09:51 | 	at org.mortbay.util.ThreadedServer.newServerSocket(ThreadedServer.java:390)
+INFO   | jvm 1    | 2008/05/28 22:09:51 | 	at org.mortbay.util.ThreadedServer.open(ThreadedServer.java:476)
+INFO   | jvm 1    | 2008/05/28 22:09:51 | 	at org.mortbay.util.ThreadedServer.start(ThreadedServer.java:502)
+INFO   | jvm 1    | 2008/05/28 22:09:51 | 	at org.mortbay.http.SocketListener.start(SocketListener.java:202)
+INFO   | jvm 1    | 2008/05/28 22:09:51 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:762)
+INFO   | jvm 1    | 2008/05/28 22:09:51 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/05/28 22:09:51 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 1    | 2008/05/28 22:09:51 | java.net.BindException: Permission denied
+INFO   | jvm 1    | 2008/05/28 22:09:51 | 	at java.net.PlainSocketImpl.socketBind(Native Method)
+INFO   | jvm 1    | 2008/05/28 22:09:51 | 	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)
+INFO   | jvm 1    | 2008/05/28 22:09:51 | 	at java.net.ServerSocket.bind(ServerSocket.java:319)
+INFO   | jvm 1    | 2008/05/28 22:09:51 | 	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+INFO   | jvm 1    | 2008/05/28 22:09:51 | 	at org.mortbay.util.ThreadedServer.newServerSocket(ThreadedServer.java:390)
+INFO   | jvm 1    | 2008/05/28 22:09:51 | 	at org.mortbay.util.ThreadedServer.open(ThreadedServer.java:476)
+INFO   | jvm 1    | 2008/05/28 22:09:51 | 	at org.mortbay.util.ThreadedServer.start(ThreadedServer.java:502)
+INFO   | jvm 1    | 2008/05/28 22:09:51 | 	at org.mortbay.http.SocketListener.start(SocketListener.java:202)
+INFO   | jvm 1    | 2008/05/28 22:09:51 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:762)
+INFO   | jvm 1    | 2008/05/28 22:09:51 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/05/28 22:09:51 | 	at com.adito.server.Main$4.run(Main.java:871)
+STATUS | wrapper  | 2008/05/28 22:51:14 | TERM trapped.  Shutting down.
+STATUS | wrapper  | 2008/05/28 22:51:15 | <-- Wrapper Stopped
+STATUS | wrapper  | 2008/05/31 10:40:57 | --> Wrapper Started as Daemon
+STATUS | wrapper  | 2008/05/31 10:40:58 | Launching a JVM...
+INFO   | jvm 1    | 2008/05/31 10:40:58 | Wrapper (Version 3.1.2) http://wrapper.tanukisoftware.org
+INFO   | jvm 1    | 2008/05/31 10:40:58 | 
+INFO   | jvm 1    | 2008/05/31 10:40:59 | org.mortbay.util.MultiException[java.net.BindException: Permission denied]
+INFO   | jvm 1    | 2008/05/31 10:40:59 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:732)
+INFO   | jvm 1    | 2008/05/31 10:40:59 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/05/31 10:40:59 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 1    | 2008/05/31 10:40:59 | java.net.BindException: Permission denied
+INFO   | jvm 1    | 2008/05/31 10:40:59 | 	at java.net.PlainSocketImpl.socketBind(Native Method)
+INFO   | jvm 1    | 2008/05/31 10:40:59 | 	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)
+INFO   | jvm 1    | 2008/05/31 10:40:59 | 	at java.net.ServerSocket.bind(ServerSocket.java:319)
+INFO   | jvm 1    | 2008/05/31 10:40:59 | 	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+INFO   | jvm 1    | 2008/05/31 10:40:59 | 	at org.mortbay.util.ThreadedServer.newServerSocket(ThreadedServer.java:390)
+INFO   | jvm 1    | 2008/05/31 10:40:59 | 	at org.mortbay.util.ThreadedServer.open(ThreadedServer.java:476)
+INFO   | jvm 1    | 2008/05/31 10:40:59 | 	at org.mortbay.util.ThreadedServer.start(ThreadedServer.java:502)
+INFO   | jvm 1    | 2008/05/31 10:40:59 | 	at org.mortbay.http.SocketListener.start(SocketListener.java:202)
+INFO   | jvm 1    | 2008/05/31 10:40:59 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:762)
+INFO   | jvm 1    | 2008/05/31 10:40:59 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/05/31 10:40:59 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 1    | 2008/05/31 10:40:59 | java.net.BindException: Permission denied
+INFO   | jvm 1    | 2008/05/31 10:40:59 | 	at java.net.PlainSocketImpl.socketBind(Native Method)
+INFO   | jvm 1    | 2008/05/31 10:40:59 | 	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)
+INFO   | jvm 1    | 2008/05/31 10:40:59 | 	at java.net.ServerSocket.bind(ServerSocket.java:319)
+INFO   | jvm 1    | 2008/05/31 10:40:59 | 	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+INFO   | jvm 1    | 2008/05/31 10:40:59 | 	at org.mortbay.util.ThreadedServer.newServerSocket(ThreadedServer.java:390)
+INFO   | jvm 1    | 2008/05/31 10:40:59 | 	at org.mortbay.util.ThreadedServer.open(ThreadedServer.java:476)
+INFO   | jvm 1    | 2008/05/31 10:40:59 | 	at org.mortbay.util.ThreadedServer.start(ThreadedServer.java:502)
+INFO   | jvm 1    | 2008/05/31 10:40:59 | 	at org.mortbay.http.SocketListener.start(SocketListener.java:202)
+INFO   | jvm 1    | 2008/05/31 10:40:59 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:762)
+INFO   | jvm 1    | 2008/05/31 10:40:59 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/05/31 10:40:59 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | wrapper  | 2008/05/31 18:36:10 | Wrapper Process has not received any CPU time for 25882 seconds.  Extending timeouts.
+INFO   | jvm 1    | 2008/05/31 18:36:10 | JVM Process has not received any CPU time for 25882 seconds.  Extending timeouts.
+INFO   | wrapper  | 2008/05/31 22:46:14 | Wrapper Process has not received any CPU time for 716 seconds.  Extending timeouts.
+INFO   | jvm 1    | 2008/05/31 22:46:14 | JVM Process has not received any CPU time for 716 seconds.  Extending timeouts.
+STATUS | wrapper  | 2008/05/31 22:46:29 | TERM trapped.  Shutting down.
+STATUS | wrapper  | 2008/05/31 22:46:30 | <-- Wrapper Stopped
+STATUS | wrapper  | 2008/06/12 15:48:26 | --> Wrapper Started as Daemon
+STATUS | wrapper  | 2008/06/12 15:48:26 | Launching a JVM...
+INFO   | jvm 1    | 2008/06/12 15:48:27 | Wrapper (Version 3.1.2) http://wrapper.tanukisoftware.org
+INFO   | jvm 1    | 2008/06/12 15:48:27 | 
+INFO   | jvm 1    | 2008/06/12 15:48:27 | org.mortbay.util.MultiException[java.net.BindException: Permission denied]
+INFO   | jvm 1    | 2008/06/12 15:48:27 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:732)
+INFO   | jvm 1    | 2008/06/12 15:48:27 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/06/12 15:48:27 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 1    | 2008/06/12 15:48:27 | java.net.BindException: Permission denied
+INFO   | jvm 1    | 2008/06/12 15:48:27 | 	at java.net.PlainSocketImpl.socketBind(Native Method)
+INFO   | jvm 1    | 2008/06/12 15:48:27 | 	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)
+INFO   | jvm 1    | 2008/06/12 15:48:27 | 	at java.net.ServerSocket.bind(ServerSocket.java:319)
+INFO   | jvm 1    | 2008/06/12 15:48:27 | 	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+INFO   | jvm 1    | 2008/06/12 15:48:27 | 	at org.mortbay.util.ThreadedServer.newServerSocket(ThreadedServer.java:390)
+INFO   | jvm 1    | 2008/06/12 15:48:27 | 	at org.mortbay.util.ThreadedServer.open(ThreadedServer.java:476)
+INFO   | jvm 1    | 2008/06/12 15:48:27 | 	at org.mortbay.util.ThreadedServer.start(ThreadedServer.java:502)
+INFO   | jvm 1    | 2008/06/12 15:48:27 | 	at org.mortbay.http.SocketListener.start(SocketListener.java:202)
+INFO   | jvm 1    | 2008/06/12 15:48:27 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:762)
+INFO   | jvm 1    | 2008/06/12 15:48:27 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/06/12 15:48:27 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 1    | 2008/06/12 15:48:27 | java.net.BindException: Permission denied
+INFO   | jvm 1    | 2008/06/12 15:48:27 | 	at java.net.PlainSocketImpl.socketBind(Native Method)
+INFO   | jvm 1    | 2008/06/12 15:48:27 | 	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)
+INFO   | jvm 1    | 2008/06/12 15:48:27 | 	at java.net.ServerSocket.bind(ServerSocket.java:319)
+INFO   | jvm 1    | 2008/06/12 15:48:27 | 	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+INFO   | jvm 1    | 2008/06/12 15:48:27 | 	at org.mortbay.util.ThreadedServer.newServerSocket(ThreadedServer.java:390)
+INFO   | jvm 1    | 2008/06/12 15:48:27 | 	at org.mortbay.util.ThreadedServer.open(ThreadedServer.java:476)
+INFO   | jvm 1    | 2008/06/12 15:48:27 | 	at org.mortbay.util.ThreadedServer.start(ThreadedServer.java:502)
+INFO   | jvm 1    | 2008/06/12 15:48:27 | 	at org.mortbay.http.SocketListener.start(SocketListener.java:202)
+INFO   | jvm 1    | 2008/06/12 15:48:27 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:762)
+INFO   | jvm 1    | 2008/06/12 15:48:27 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/06/12 15:48:27 | 	at com.adito.server.Main$4.run(Main.java:871)
+STATUS | wrapper  | 2008/06/12 17:39:11 | TERM trapped.  Shutting down.
+STATUS | wrapper  | 2008/06/12 17:39:12 | <-- Wrapper Stopped
+STATUS | wrapper  | 2008/06/18 12:20:59 | --> Wrapper Started as Daemon
+STATUS | wrapper  | 2008/06/18 12:20:59 | Launching a JVM...
+INFO   | jvm 1    | 2008/06/18 12:20:59 | Wrapper (Version 3.1.2) http://wrapper.tanukisoftware.org
+INFO   | jvm 1    | 2008/06/18 12:20:59 | 
+INFO   | jvm 1    | 2008/06/18 12:21:00 | org.mortbay.util.MultiException[java.net.BindException: Permission denied]
+INFO   | jvm 1    | 2008/06/18 12:21:00 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:732)
+INFO   | jvm 1    | 2008/06/18 12:21:00 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/06/18 12:21:00 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 1    | 2008/06/18 12:21:00 | java.net.BindException: Permission denied
+INFO   | jvm 1    | 2008/06/18 12:21:00 | 	at java.net.PlainSocketImpl.socketBind(Native Method)
+INFO   | jvm 1    | 2008/06/18 12:21:00 | 	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)
+INFO   | jvm 1    | 2008/06/18 12:21:00 | 	at java.net.ServerSocket.bind(ServerSocket.java:319)
+INFO   | jvm 1    | 2008/06/18 12:21:00 | 	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+INFO   | jvm 1    | 2008/06/18 12:21:00 | 	at org.mortbay.util.ThreadedServer.newServerSocket(ThreadedServer.java:390)
+INFO   | jvm 1    | 2008/06/18 12:21:00 | 	at org.mortbay.util.ThreadedServer.open(ThreadedServer.java:476)
+INFO   | jvm 1    | 2008/06/18 12:21:00 | 	at org.mortbay.util.ThreadedServer.start(ThreadedServer.java:502)
+INFO   | jvm 1    | 2008/06/18 12:21:00 | 	at org.mortbay.http.SocketListener.start(SocketListener.java:202)
+INFO   | jvm 1    | 2008/06/18 12:21:00 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:762)
+INFO   | jvm 1    | 2008/06/18 12:21:00 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/06/18 12:21:00 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 1    | 2008/06/18 12:21:00 | java.net.BindException: Permission denied
+INFO   | jvm 1    | 2008/06/18 12:21:00 | 	at java.net.PlainSocketImpl.socketBind(Native Method)
+INFO   | jvm 1    | 2008/06/18 12:21:00 | 	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)
+INFO   | jvm 1    | 2008/06/18 12:21:00 | 	at java.net.ServerSocket.bind(ServerSocket.java:319)
+INFO   | jvm 1    | 2008/06/18 12:21:00 | 	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+INFO   | jvm 1    | 2008/06/18 12:21:00 | 	at org.mortbay.util.ThreadedServer.newServerSocket(ThreadedServer.java:390)
+INFO   | jvm 1    | 2008/06/18 12:21:00 | 	at org.mortbay.util.ThreadedServer.open(ThreadedServer.java:476)
+INFO   | jvm 1    | 2008/06/18 12:21:00 | 	at org.mortbay.util.ThreadedServer.start(ThreadedServer.java:502)
+INFO   | jvm 1    | 2008/06/18 12:21:00 | 	at org.mortbay.http.SocketListener.start(SocketListener.java:202)
+INFO   | jvm 1    | 2008/06/18 12:21:00 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:762)
+INFO   | jvm 1    | 2008/06/18 12:21:00 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/06/18 12:21:00 | 	at com.adito.server.Main$4.run(Main.java:871)
+STATUS | wrapper  | 2008/06/18 17:26:11 | TERM trapped.  Shutting down.
+STATUS | wrapper  | 2008/06/18 17:26:12 | <-- Wrapper Stopped
+STATUS | wrapper  | 2008/06/22 17:24:31 | --> Wrapper Started as Daemon
+STATUS | wrapper  | 2008/06/22 17:24:31 | Launching a JVM...
+INFO   | jvm 1    | 2008/06/22 17:24:31 | Wrapper (Version 3.1.2) http://wrapper.tanukisoftware.org
+INFO   | jvm 1    | 2008/06/22 17:24:31 | 
+INFO   | jvm 1    | 2008/06/22 17:24:33 | org.mortbay.util.MultiException[java.net.BindException: Permission denied]
+INFO   | jvm 1    | 2008/06/22 17:24:33 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:732)
+INFO   | jvm 1    | 2008/06/22 17:24:33 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/06/22 17:24:33 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 1    | 2008/06/22 17:24:33 | java.net.BindException: Permission denied
+INFO   | jvm 1    | 2008/06/22 17:24:33 | 	at java.net.PlainSocketImpl.socketBind(Native Method)
+INFO   | jvm 1    | 2008/06/22 17:24:33 | 	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)
+INFO   | jvm 1    | 2008/06/22 17:24:33 | 	at java.net.ServerSocket.bind(ServerSocket.java:319)
+INFO   | jvm 1    | 2008/06/22 17:24:33 | 	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+INFO   | jvm 1    | 2008/06/22 17:24:33 | 	at org.mortbay.util.ThreadedServer.newServerSocket(ThreadedServer.java:390)
+INFO   | jvm 1    | 2008/06/22 17:24:33 | 	at org.mortbay.util.ThreadedServer.open(ThreadedServer.java:476)
+INFO   | jvm 1    | 2008/06/22 17:24:33 | 	at org.mortbay.util.ThreadedServer.start(ThreadedServer.java:502)
+INFO   | jvm 1    | 2008/06/22 17:24:33 | 	at org.mortbay.http.SocketListener.start(SocketListener.java:202)
+INFO   | jvm 1    | 2008/06/22 17:24:33 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:762)
+INFO   | jvm 1    | 2008/06/22 17:24:33 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/06/22 17:24:33 | 	at com.adito.server.Main$4.run(Main.java:871)
+INFO   | jvm 1    | 2008/06/22 17:24:33 | java.net.BindException: Permission denied
+INFO   | jvm 1    | 2008/06/22 17:24:33 | 	at java.net.PlainSocketImpl.socketBind(Native Method)
+INFO   | jvm 1    | 2008/06/22 17:24:33 | 	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)
+INFO   | jvm 1    | 2008/06/22 17:24:33 | 	at java.net.ServerSocket.bind(ServerSocket.java:319)
+INFO   | jvm 1    | 2008/06/22 17:24:33 | 	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+INFO   | jvm 1    | 2008/06/22 17:24:33 | 	at org.mortbay.util.ThreadedServer.newServerSocket(ThreadedServer.java:390)
+INFO   | jvm 1    | 2008/06/22 17:24:33 | 	at org.mortbay.util.ThreadedServer.open(ThreadedServer.java:476)
+INFO   | jvm 1    | 2008/06/22 17:24:33 | 	at org.mortbay.util.ThreadedServer.start(ThreadedServer.java:502)
+INFO   | jvm 1    | 2008/06/22 17:24:33 | 	at org.mortbay.http.SocketListener.start(SocketListener.java:202)
+INFO   | jvm 1    | 2008/06/22 17:24:33 | 	at org.mortbay.http.HttpServer.doStart(HttpServer.java:762)
+INFO   | jvm 1    | 2008/06/22 17:24:33 | 	at org.mortbay.util.Container.start(Container.java:71)
+INFO   | jvm 1    | 2008/06/22 17:24:33 | 	at com.adito.server.Main$4.run(Main.java:871)
+STATUS | wrapper  | 2008/06/22 19:07:33 | TERM trapped.  Shutting down.
+STATUS | wrapper  | 2008/06/22 19:07:34 | <-- Wrapper Stopped

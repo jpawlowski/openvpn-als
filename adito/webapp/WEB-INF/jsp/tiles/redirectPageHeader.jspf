@@ -1,0 +1,33 @@
+
+<jsp:directive.page import="com.adito.boot.Util"/>
+<jsp:directive.page import="com.adito.core.CoreScript"/><%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<!-- Page header -->
+<head>
+	<title>
+		<bean:message key="redirect.title" bundle="navigation" />
+	</title>
+	<link type="text/css" rel="stylesheet" href='<core:themePath/>/style.jsp'/>		
+    <meta http-equiv="refresh" content="3; URL=javascript:doRedirect()"/>
+    <bean:define name="redirectForm" property="forwardTo" id="forwardTo" type="java.lang.String"/>
+    <bean:define name="redirectForm" property="folder" id="folder" type="java.lang.String"/>
+    <bean:define name="redirectForm" property="target" id="target" type="java.lang.String"/>
+    <script language="JavaScript">
+		<!--	
+function doRedirect() {
+	if(!popupBlocked) {
+	<%
+		if(forwardTo.startsWith("javascript:")) {
+			out.println(forwardTo.substring(11));
+		}
+		else { %>		
+		open('<%= Util.escapeForJavascriptString(forwardTo) %>', '_self');
+		<% 
+		} %>
+	}
+}			
+		// -->    
+    </script>
+	<core:pageScripts position="<%= String.valueOf(CoreScript.PAGE_HEADER) %>"/>	
+</head>

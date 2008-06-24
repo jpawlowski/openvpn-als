@@ -1,0 +1,24 @@
+<%@ taglib uri="/server/taglibs/core" prefix="core"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<div id="page_support">
+	<div class="dialog_content">
+		<table class="dialog_form_table">
+			<tbody>
+				<tr>
+					<td><bean:message key="support.forums" bundle="navigation"/></a></td>
+				</tr>
+				<tr>
+					<td><bean:message key="support.commercial" bundle="navigation"/></td>
+				</tr>
+
+			</tbody>
+			<tfoot>
+				<tr>
+					<td>
+						<input class="close" onclick="history.back() ; return false" type="button" value="<bean:message key='about.close' bundle='navigation'/>" />
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+</div>

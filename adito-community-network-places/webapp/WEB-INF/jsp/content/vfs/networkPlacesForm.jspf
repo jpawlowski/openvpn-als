@@ -1,0 +1,22 @@
+
+<jsp:directive.page import="com.adito.networkplaces.NetworkPlacePlugin"/><%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+
+<tiles:useAttribute name="actionLink" scope="request" classname="java.lang.String"/> 
+<html:hidden property="actionTarget" />
+<html:hidden property="selectedResource" />
+
+<div class="dialog_content">
+	<tiles:insert flush="false" page="/WEB-INF/jsp/tiles/filterAndView.jspf">		
+		<tiles:put name="actionLink" beanName="actionLink" type="java.lang.String"/>
+	</tiles:insert>
+</div>
+
+<tiles:insert flush="false" page="/WEB-INF/jsp/tiles/resourcesView.jspf">		
+	<tiles:put name="pager" beanName="showNetworkPlacesForm" beanProperty="pager"/>
+	<tiles:put name="messageResourcesKey" value="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>"/>
+	<tiles:put name="resourcePrefix" value="networkPlaces"/>
+	<tiles:put name="selectedView" beanName="showNetworkPlacesForm" beanProperty="selectedView"/>
+	<tiles:put name="actionLink" beanName="actionLink"/>
+	<tiles:put name="policyLaunching" value="true"/>
+</tiles:insert>	

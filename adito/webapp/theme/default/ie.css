@@ -1,0 +1,55 @@
+/* IE Specific styles that overide all others */
+
+/* Adjust font slightly */
+
+body { 
+    font-size: small;
+}
+
+/* Allows words to be broken up in icons view */
+
+.icons .icon {
+	word-wrap: break-word;
+}
+
+/* IE6 <= doesn't suppose position fix so absolute with a hack is used */
+
+#component_pageFooter {
+  position: absolute;
+  right: auto;
+  bottom: auto;
+  left: 0;
+  top: expression( ( -1 * component_pageFooter.offsetHeight + ( document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight ) + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' );
+}
+
+/* Extend the navigation menu component to get rid of the white space problem when scrolling */
+
+#component_navmenu , #component_wizardSequenceInfoContainer {
+	padding-bottom: 128em;
+}
+
+/* Stop the width of the exception going to 100% with big traces */
+#page_confirm .traceMessage pre {
+	width: 37em;
+}
+
+/* Fix various radio buttons and checkboxes */
+div#wizardPage_selectCertificateSource input, #wizardPage_selectUserDatabase input, #wizardPage_configureProxies .toggles input,
+ .dialog_content .formRadio input, .dialog_content .formCheckbox input, 
+ .tabContent .formRadio input, .tabContent .formCheckbox input,
+ .titled_dialog_content .formRadio input, .titled_dialog_content .formCheckbox input {
+	background-color: #e6e6e6;
+	border: 1px solid #e6e6e6;
+}
+
+/* Shifts the month drop down menu in calendar picker component a little */
+.component_dateTimePicker .monthMenu { margin-top: -2px; }
+
+.httpFolder {
+	behavior: url(#default#httpFolder);
+}
+
+div#page_attributeDefinition .dialog_form_table tr.formTextArea textarea {
+	overflow-x: hidden;
+	overflow-y: auto;
+}

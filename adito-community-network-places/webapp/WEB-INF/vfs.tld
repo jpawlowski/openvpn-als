@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE taglib
+  PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
+  "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+
+<taglib>
+
+	<tlibversion>1.0</tlibversion>
+	<jspversion>1.1</jspversion>
+	<shortname>Adito Explorer VFS Tag Library</shortname>
+
+	<uri>/server/taglibs/vfs</uri>
+
+	<info>
+		This tag library contains vfs tags for the 3SP Enterprise
+		Explorer project.
+	</info>
+
+
+	<tag>
+		<name>noDelete</name>
+		<tagclass>com.adito.networkplaces.tags.NoDeleteTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<info>
+			Include network place content if the user can delete.
+		</info>
+	</tag>
+	<tag>
+		<name>readOnly</name>
+		<tagclass>com.adito.networkplaces.tags.ReadOnlyTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<info>
+			Does not include content if network place is read only.
+		</info>
+	</tag>
+	<tag>
+		<name>paths</name>
+		<tagclass>com.adito.networkplaces.tags.PathsTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<info>Provides the folder names to jump to.</info>
+
+		<attribute>
+			<name>property</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>scope</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+</taglib>

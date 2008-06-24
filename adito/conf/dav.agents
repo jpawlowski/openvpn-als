@@ -1,0 +1,8 @@
+# 
+# This file contains the list of user agents that will be 
+# use to identify DAV clients. Any agents that match any
+# of the following regular expressions will be recognised
+# as DAV clients.
+
+Microsoft Data Access.*
+UCI DAV Explorer.*

@@ -1,0 +1,51 @@
+<%@ page import="com.adito.install.forms.SelectCertificateSourceForm" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+
+<bean:define id="importType" name="keyStoreImportFileForm" property="importType" type="com.adito.keystore.wizards.AbstractKeyStoreImportType"/>
+<div class="importTypeTitle">
+	<bean:message key="<%= "keyStoreImportType." + importType.getName() + ".title" %>" bundle="<%= importType.getBundle() %>"/>
+</div>
+<div class="importTypeTitle">
+	<bean:message key="<%= "keyStoreImportType." + importType.getName() + ".description" %>" bundle="<%= importType.getBundle() %>"/>
+</div>
+<table class="resourceDetails">
+	<logic:equal name="keyStoreImportFileForm" property="askForName" value="true">
+		<tr class="formText">
+			<td class="label">
+				<bean:message key="<%= "keyStoreImportType." + importType.getName() + ".alias" %>" bundle="<%= importType.getBundle() %>"/>
+			</td>
+			<td class="value">
+				<html:text property="alias"/>
+			</td>
+		</tr>
+	</logic:equal>
+	<logic:equal name="keyStoreImportFileForm" property="askForPassphrase" value="true">
+		<tr class="formPassword">
+			<td class="label">
+				<bean:message key="keyStoreImportWizard.keyStoreImportFile.passphrase" bundle="keystore"/>
+			</td>
+			<td class="value">
+				<html:password property="passphrase"/>
+			</td>
+		</tr>
+	</logic:equal>
+	<tr class="formFile">  			
+		<td class="label">
+			<bean:message key="keyStoreImportWizard.keyStoreImportFile.filename" bundle="keystore"/>
+		</td>
+		<td class="value">
+			<html:file size="35" property="uploadFile"/>
+		</td>                         
+	</tr>
+</table>
+<script language="JavaScript">
+<!--	
+	function upload() {		   
+		var form = document.forms[0];
+		form.action = "/keyStoreImportUpload.do";
+		form.submit();	
+	}
+-->
+</script>

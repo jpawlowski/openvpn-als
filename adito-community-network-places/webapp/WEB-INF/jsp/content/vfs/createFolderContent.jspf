@@ -1,0 +1,57 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:directive.page import="com.adito.networkplaces.NetworkPlacePlugin"/>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/security" prefix="security" %>
+<%@ taglib uri="/server/taglibs/table" prefix="table" %>
+
+<div id="page_createFolder">
+	<core:form autocomplete="OFF" method="post" action="/fileSystem.do" focus="newFolder">
+		<html:hidden property="referer"/> 
+		<html:hidden property="actionTarget"/> 
+		<html:hidden property="launchId"/> 
+		<html:hidden property="path"/> 
+	
+		<div class="dialog_content">
+			<table class="dialog_form_table" id="form">
+				<tbody>
+					<tr class="formText">
+						<td class="label">
+							<bean:message key="vfs.create.path" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>" /> 
+						</td>
+						<td class="value"> 
+	                   		<bean:write name="fileSystemForm" property="path"/>
+						</td>
+					</tr>
+					<tr class="formText">
+						<td class="label">
+							<div class="required">
+								<bean:message key="vfs.create.folder" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>" /> 
+							</div>
+						</td>
+						<td class="value"> 
+	                   		<html:text name="fileSystemForm" property="newFolder" styleId="newFolder"/>
+						</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="2">							
+							<div class="button_bar">
+								<div class="formButton">
+									<html:submit styleClass="save" onclick="setActionTarget('mkdir'); return true"><bean:message key='createFolder.commit' bundle='<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>'/></html:submit>
+								</div>
+								<div class="formButton">
+									<html:submit styleClass="cancel" onclick="setActionTarget('list'); return true"><bean:message key='createFolder.cancel' bundle='<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>'/></html:submit>
+								</div>
+							</div>
+						</td>						                        
+					</tr>
+				</tfoot>
+			</table>		  
+		</div>		
+	</core:form>
+</div>

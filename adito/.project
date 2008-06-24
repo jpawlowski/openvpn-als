@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>adito</name>
+	<comment>@key 32303035303232382073736C6578706C6F7265722F6272657474 </comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>com.genuitec.eclipse.j2eedt.core.WebClasspathBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.genuitec.eclipse.j2eedt.core.J2EEProjectValidator</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.genuitec.eclipse.j2eedt.core.DeploymentDescriptorValidator</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.validation.validationbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.sse.model.structuredbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>com.genuitec.eclipse.j2eedt.core.webnature</nature>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>com.genuitec.eclipse.cross.easystruts.eclipse.easystrutsnature</nature>
+		<nature>com.omondo.uml.std.Nature</nature>
+		<nature>org.python.pydev.pythonNature</nature>
+	</natures>
+</projectDescription>

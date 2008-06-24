@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="codeswitcher/src"/>
+	<classpathentry exported="true" kind="lib" path="ant/ant-contrib.jar"/>
+	<classpathentry exported="true" kind="lib" path="unit-testing/httpunit.jar"/>
+	<classpathentry exported="true" kind="lib" path="unit-testing/junit.jar"/>
+	<classpathentry exported="true" kind="lib" path="unit-testing/nekohtml.jar"/>
+	<classpathentry exported="true" kind="lib" path="unit-testing/junit-4.1.jar"/>
+	<classpathentry kind="lib" path="unit-testing/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="unit-testing/commons-digester-1.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="unit-testing/easymock/easymock.jar"/>
+	<classpathentry exported="true" kind="lib" path="unit-testing/strutstestcase/strutstest-2.1.3.jar"/>
+	<classpathentry kind="output" path="classes"/>
+</classpath>

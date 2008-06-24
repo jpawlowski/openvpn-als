@@ -1,0 +1,27 @@
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+
+<tiles:useAttribute name="actionOnclick" scope="request" classname="java.lang.String" ignore="true"/> 
+<tiles:useAttribute name="actionPath" scope="request" classname="java.lang.String"/> 
+<tiles:useAttribute name="nameKey" scope="request" classname="java.lang.String"/> 
+<tiles:useAttribute name="descriptionKey" scope="request" classname="java.lang.String"/> 
+<tiles:useAttribute name="bundle" scope="request" classname="java.lang.String"/> 
+<tiles:useAttribute name="actionName" scope="request" classname="java.lang.String"/> 
+
+<bean:define id="themePath"><core:themePath/></bean:define>
+<logic:notEqual  name="descriptionKey" value="blank.description">
+	<input:toolTip href='<%= actionPath %>' key='<%= descriptionKey %>' bundle='<%= bundle %>' styleId='<%= "action_" + actionName %>' onclick='<%= actionOnclick %>'>
+		<img alt="" src="<%= themePath  + "/images/actions/" + actionName + ".gif" %>"/>
+	</input:toolTip>
+</logic:notEqual>
+
+<logic:equal  name="descriptionKey" value="blank.description">
+	<input:toolTip showToolTip="true" key='<%= descriptionKey %>' bundle='<%= bundle %>' styleId='<%= "action_" + actionName %>' onclick='<%= actionOnclick %>'>
+		<img alt="" src="<%= themePath  + "/images/actions/" + actionName + ".gif" %>"/>
+	</input:toolTip>
+</logic:equal>
+
+<% actionOnclick = "";%>

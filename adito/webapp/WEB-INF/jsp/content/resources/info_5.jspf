@@ -1,0 +1,27 @@
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+
+<tiles:useAttribute name="resource" scope="request" classname="com.adito.policyframework.Policy"/> 
+<bean:define id="themePath"><core:themePath/></bean:define>
+<% try { %>
+
+<div class="resourceInformationDetails">
+	<table class="dialog_form_table" id="form">
+		<tbody>
+			<tr class="formText">
+			<%int attachedUsers = resource.getAttachedUsers();%>
+				<td>
+					<bean:message key="policy.attached.users" bundle="policyframework" arg0="<%= String.valueOf(attachedUsers)%>"/>
+				</td>
+			</tr>
+			<tr class="formText">
+			<%int attachedRoles = resource.getAttachedGroups();%>
+				<td>
+					<bean:message key="policy.attached.roles" bundle="policyframework" arg0="<%= String.valueOf(attachedRoles)%>"/>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<% } catch(Exception e) { e.printStackTrace(); } %>

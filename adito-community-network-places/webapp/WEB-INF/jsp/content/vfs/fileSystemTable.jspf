@@ -1,0 +1,207 @@
+<%@ page import="com.adito.security.Constants"%>
+<%@ page import="com.adito.networkplaces.forms.FileSystemForm" %>
+<%@ page import="com.adito.security.WebDAVAuthenticationModule" %>
+<%@ page import="com.adito.boot.Util" %>
+<jsp:directive.page import="com.adito.networkplaces.NetworkPlacePlugin"/>
+<jsp:directive.page import="com.adito.core.BrowserChecker"/>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="/server/taglibs/input" prefix="input"%>
+<%@ taglib uri="/server/taglibs/table" prefix="table"%>
+<%@ taglib uri="/server/taglibs/vfs" prefix="vfs"%>
+<%@ taglib uri="/server/taglibs/navigation" prefix="navigation"%>
+
+<script>
+
+function doCheck(field, field2)
+{
+   if(field.checked)
+      checkAll(field2);
+   else
+      uncheckAll(field2);
+
+}
+<!-- Begin
+function checkAll(field)
+{
+for (i = 0; i < field.length; i++)
+	field[i].checked = true ;
+}
+
+function uncheckAll(field)
+{
+for (i = 0; i < field.length; i++)
+	field[i].checked = false ;
+}
+
+function fileActionTarget(file, actionTarget)
+{
+	document.forms[0].fileName.value = file;
+	setActionTarget(actionTarget);
+	document.forms[0].submit();
+}
+//  End -->
+</script>
+
+	
+<div id="paths" class="dialog_content">
+	<vfs:paths name="fileSystemForm" property="launchSession"/>
+</div>
+
+<div class="dialog_content">				
+	<%@ include file="/WEB-INF/jsp/tiles/filter.jspf" %>	
+</div>
+<div class="filtered_resources">
+	<table class="resource_table">
+		<thead>
+			<tr>
+				<td class="name">
+					<table:columnHeader attributesName="fileSystemForm" attributesProperties="path,actionTarget,filterText,launchId" page="" pagerName="fileSystemForm" pagerProperty="pager" columnIndex="0" styleClass="columnHeader">
+						<bean:message key="vfs.name" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>" />
+					</table:columnHeader>
+				</td>
+				<td class="modified">
+					<table:columnHeader attributesName="fileSystemForm" attributesProperties="path,actionTarget,filterText,launchId" page="" pagerName="fileSystemForm" pagerProperty="pager" columnIndex="1" styleClass="columnHeader">
+						<bean:message key="vfs.modified" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>" />
+					</table:columnHeader>
+				</td>
+				<td class="size">
+					<table:columnHeader attributesName="fileSystemForm" attributesProperties="path,actionTarget,filterText,launchId" page="" pagerName="fileSystemForm" pagerProperty="pager" columnIndex="2" styleClass="columnHeader">
+						<bean:message key="vfs.size" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>" />
+					</table:columnHeader>
+				</td>
+				<td class="actions">
+					<bean:message key="vfs.actions" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>" />
+				</td>
+				<td class="select">
+				    <input type="checkbox" name="selectAll" onClick="doCheck(document.fileSystemForm.selectAll, document.fileSystemForm.elements)"/>
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+			<%boolean highlight = false; %>
+	        <logic:equal name="fileSystemForm" property="model.empty" value="true">
+				<tr class="<%= highlight ? "highlight" : "lowlight" %>">
+					<td class="tableMessage" colspan="5">
+						<bean:message key="vfs.noFilesOrFolders" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>"/>
+					</td>
+				</tr>
+			</logic:equal>
+			<logic:equal name="fileSystemForm" property="model.empty" value="false">
+				<logic:equal name="fileSystemForm" property="pager.empty" value="true">											
+					<tr class="<%= highlight ? "highlight" : "lowlight" %>">
+				  		<td class="tableMessage" colspan="5">		   
+						  	<bean:message key="vfs.noMatch" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>"/>
+						</td>
+					</tr>
+				</logic:equal>
+			</logic:equal>
+			<logic:equal name="fileSystemForm" property="pager.empty" value="false">
+				<logic:iterate indexId="idx" id="fileSystemItem" name="fileSystemForm" property="pager.pageItems" type="com.adito.networkplaces.model.FileSystemItem">
+					<tr class="<%= highlight ? "highlight" : "lowlight" %>">
+						<td class="name">
+							<span class="<bean:write name="fileSystemItem" property="fileType"/>">
+								<input:toolTip href="<%= fileSystemItem.onClick(fileSystemForm.getPath())%>" value="<%= fileSystemItem.getFileName()%>">
+									<bean:write name="fileSystemItem" property="fileName" />
+								</input:toolTip>
+							</span>
+						</td>
+						<td class="modified">
+							<bean:write name="fileSystemItem" property="dateModified" />
+						</td>
+						<td class="size">
+							<logic:equal name="fileSystemItem" property="fileType" value="file">
+								<bean:write name="fileSystemItem" property="bytes" />
+							</logic:equal>
+						</td>
+						<td class="actions">
+							<logic:equal name="fileSystemForm" property="viewOnly" value="false">
+								<vfs:noDelete>
+									<tiles:insert flush="false" attribute="actionLink">
+										<tiles:put name="actionName" value="deleteFile" />
+										<tiles:put name="bundle" value="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>" />
+										<tiles:put name="nameKey" value="action.deleteFile.name" />
+										<tiles:put name="descriptionKey" value="action.deleteFile.description" />
+										<tiles:put name="actionPath" value="<%= "javascript: fileActionTarget('" + Util.escapeForJavascriptString(fileSystemItem.getFileName()) + "','confirmDeleteFile')" %>" />
+									</tiles:insert>
+									<tiles:insert flush="false" attribute="actionLink">
+										<tiles:put name="actionName" value="renameFile" />
+										<tiles:put name="bundle" value="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>" />
+										<tiles:put name="nameKey" value="action.renameFile.name" />
+										<tiles:put name="descriptionKey" value="action.renameFile.description" />
+										<tiles:put name="actionPath" value="<%= "javascript: fileActionTarget('" + Util.escapeForJavascriptString(fileSystemItem.getFileName()) + "','showRenameFile')" %>"/>
+									</tiles:insert>
+								</vfs:noDelete>
+								<tiles:insert flush="false" attribute="actionLink">
+									<tiles:put name="actionName" value="copyFile" />
+									<tiles:put name="bundle" value="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>" />
+									<tiles:put name="nameKey" value="action.copyFile.name" />
+									<tiles:put name="descriptionKey" value="action.copyFile.description" />
+									<tiles:put name="actionPath" value="<%= "javascript: fileActionTarget('" + Util.escapeForJavascriptString(fileSystemItem.getFileName()) + "','copyFile')" %>" />
+								</tiles:insert>
+								<vfs:readOnly>
+									<tiles:insert flush="false" attribute="actionLink">
+										<tiles:put name="actionName" value="cutFile" />
+										<tiles:put name="bundle" value="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>" />
+										<tiles:put name="nameKey" value="action.cutFile.name" />
+										<tiles:put name="descriptionKey" value="action.cutFile.description" />
+										<tiles:put name="actionPath" value="<%= "javascript: fileActionTarget('" + Util.escapeForJavascriptString(fileSystemItem.getFileName()) + "','cutFile')" %>" />
+									</tiles:insert>
+								</vfs:readOnly>
+								<logic:equal name="fileSystemItem" property="fileType" value="folder">
+									<vfs:readOnly>
+										<tiles:insert flush="false" attribute="actionLink">
+											<tiles:put name="actionName" value="pasteFile" />
+											<tiles:put name="bundle" value="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>" />
+											<tiles:put name="nameKey" value="action.pasteFile.name" />
+											<tiles:put name="descriptionKey" value="action.pasteFile.description" />
+											<tiles:put name="actionPath" value="<%= "javascript: fileActionTarget('" + Util.escapeForJavascriptString(fileSystemItem.getFileName()) + "','confirmPasteFile')" %>" />
+										</tiles:insert>
+									</vfs:readOnly>
+									<tiles:insert flush="false" attribute="actionLink">
+										<tiles:put name="actionName" value="zipFile" />
+										<tiles:put name="bundle" value="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>" />
+										<tiles:put name="nameKey" value="action.zipFile.name" />
+										<tiles:put name="descriptionKey" value="action.zipFile.description" />
+										<tiles:put name="actionPath" value="<%= "javascript: fileActionTarget('" + Util.escapeForJavascriptString(fileSystemItem.getFileName()) + "','zipFile')" %>" />
+									</tiles:insert>
+								</logic:equal>
+								<core:authenticationModuleInUse name="<%= WebDAVAuthenticationModule.MODULE_NAME %>">
+									<core:browserCheck browser="<%= BrowserChecker.BROWSER_IE %>" version="+=5">
+										<logic:equal name="fileSystemItem" property="fileType" value="folder">
+											<a class='action_openWebFolder' href='<bean:write name="fileSystemItem" property="webFolderPath"/>' folder='<bean:write name='host'/><bean:write name="fileSystemItem" property="webFolderPath"/>'>
+												<img class="action_openWebFolder" alt="" border="0" src="/theme/default/images/actions/openWebFolder.gif" />
+											</a>
+										</logic:equal>
+									</core:browserCheck>
+								</core:authenticationModuleInUse>
+							</logic:equal>
+						</td>
+						<td class="select">
+							<logic:equal name="fileSystemForm" property="viewOnly" value="false">
+								<input type="checkbox" value="true" name="<%= "select" + Util.urlEncode(fileSystemItem.getFileName()) %>"/>
+							</logic:equal>
+						</td>
+					<tr />
+						<%highlight = !highlight;
+		
+		        %>
+				</logic:iterate>
+			</logic:equal>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="5">
+					<div class="pager_navigation">
+						<table:navigation selectedStyleClass="pagerSelected" attributesName="fileSystemForm" attributesProperties="launchId,path,actionTarget,filterText" pagerName="fileSystemForm" pagerProperty="pager" styleClass="pagerEnabled" disabledStyleClass="pagerDisabled" />
+					</div>
+					<div class="pager_pages">
+						<table:pageSize attributesName="fileSystemForm" attributesProperties="launchId,path,actionTarget,filterText" pagerName="fileSystemForm" pagerProperty="pager" styleClass="pagerEnabled" />
+					</div>
+				</td>
+			</tr>
+		</tfoot>	
+	</table>
+</div>

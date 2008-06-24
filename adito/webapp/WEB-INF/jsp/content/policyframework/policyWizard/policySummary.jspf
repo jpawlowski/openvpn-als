@@ -1,0 +1,70 @@
+<%@ page import="com.adito.install.forms.InstallationSummaryForm" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+
+<div id="wizardSummary">
+	<bean:define id="policySummaryForm" name="policySummaryForm" type="com.adito.policyframework.wizards.forms.PolicySummaryForm"/>
+	<table border="0" cellspacing="0" border="0">
+		<tr class="formBlock">
+			<td class="label" colspan="2">
+				<bean:message key="policyWizard.policySummary.details" bundle="policyframework"/>
+			</td>
+		</tr>
+		<tr class="formLabel">			
+			<td class="label">
+				<bean:message key="policyWizard.policySummary.policy.name" bundle="policyframework"/>
+			</td>
+			<td class="value">
+				<bean:write name="policySummaryForm" property="policyName"/>
+			</td>
+		</tr>
+		<tr class="formLabel">			
+			<td class="label">
+				<bean:message key="policyWizard.policySummary.policy.description" bundle="policyframework"/>
+			</td>
+			<td class="value">
+				<bean:write name="policySummaryForm" property="policyDescription"/>
+			</td>
+		</tr>
+		<tr class="formBlock">
+			<td class="label" colspan="2">
+				<bean:message key="policyWizard.policySummary.selectedPrincipals" bundle="policyframework"/>
+			</td>
+		</tr>
+		<logic:empty name="policySummaryForm" property="selectedAccounts">
+			<logic:empty name="policySummaryForm" property="selectedRoles">
+				<tr class="formLabel">		
+					<td class="value" colspan="2">
+						<bean:message key="policyWizard.policySummary.selectedPrincipals.none" bundle="policyframework"/>
+					</td>
+				</tr>
+			</logic:empty>
+		</logic:empty>
+		<logic:notEmpty name="policySummaryForm" property="selectedAccounts">
+			<tr class="formLabel">		
+				<td class="label">
+					<bean:message key="policyWizard.policySummary.selectedPrincipals.accounts" bundle="policyframework"/>
+				</td>
+				<td class="value">
+					<logic:iterate name="policySummaryForm" property="selectedAccounts" id="account">
+						<bean:write name="account"/><br/>
+					</logic:iterate>
+				</td>
+			</tr>
+		</logic:notEmpty>
+		<logic:notEmpty name="policySummaryForm" property="selectedRoles">
+			<tr class="formLabel">		
+				<td class="label">
+					<bean:message key="policyWizard.policySummary.selectedPrincipals.roles" bundle="policyframework"/>
+				</td>
+				<td class="value">
+					<logic:iterate name="policySummaryForm" property="selectedRoles" id="role">
+						<bean:write name="role"/><br/>
+					</logic:iterate>
+				</td>
+			</tr>
+		</logic:notEmpty>
+	</table>
+</div>

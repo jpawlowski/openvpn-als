@@ -1,0 +1,23 @@
+
+<jsp:directive.page import="com.adito.applications.ApplicationsPlugin"/><%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+
+<html:hidden property="actionTarget" />
+<html:hidden property="selectedResource" />
+
+<tiles:useAttribute name="actionLink" scope="request" classname="java.lang.String"/> 
+
+<div class="dialog_content">
+	<tiles:insert flush="false" page="/WEB-INF/jsp/tiles/filterAndView.jspf">		
+		<tiles:put name="actionLink" beanName="actionLink" type="java.lange.String"/>
+	</tiles:insert>
+</div>
+
+<tiles:insert flush="false" page="/WEB-INF/jsp/tiles/resourcesView.jspf">		
+	<tiles:put name="pager" beanName="applicationShortcutsForm" beanProperty="pager"/>
+	<tiles:put name="messageResourcesKey" value="<%= ApplicationsPlugin.MESSAGE_RESOURCES_KEY %>"/>
+	<tiles:put name="resourcePrefix" value="applicationShortcuts"/>
+	<tiles:put name="selectedView" beanName="applicationShortcutsForm" beanProperty="selectedView"/>
+	<tiles:put name="actionLink" beanName="actionLink"/>
+	<tiles:put name="policyLaunching" value="true"/>
+</tiles:insert>		

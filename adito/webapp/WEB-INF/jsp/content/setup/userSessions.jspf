@@ -1,0 +1,81 @@
+
+<jsp:directive.page import="com.adito.security.SessionInfo"/><%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/table" prefix="table" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+
+<div id="page_userSessions">
+	<core:form subFormName="userSessionsForm" autocomplete="OFF" method="post" action="/status.do">  
+		<html:hidden property="subForm" value="userSessionsForm"/>
+		<html:hidden property="_charset_"/> 
+		<html:hidden property="actionTarget"/>
+		<html:hidden property="pager.startRow"/>
+		<html:hidden property="pager.sortName"/>
+		<html:hidden property="pager.sortReverse"/>
+		<html:hidden property="pager.pageSize"/>		
+		<%@ include file="/WEB-INF/jsp/tiles/filter.jspf" %>	
+		<div class="filtered_resources">
+			<table class="resource_table">
+				<thead>
+					<tr>
+						<td class="user">
+							<table:columnHeader pagerName="userSessionsForm" pagerProperty="pager" columnIndex="0" styleClass="columnHeader">
+								<bean:message key="status.sessions.user" bundle="setup" />
+							</table:columnHeader>
+						</td>
+						<td class="actions">
+				            <bean:message key="status.sessions.actions" bundle="setup" />
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<% boolean shade = false ; %>													
+					<logic:equal name="userSessionsForm" property="pager.empty" value="true">						
+						<tr class="<%= shade ? "highlight" : "lowlight" %>">
+					  		<td class="tableMessage" colspan="2">		   
+							  	<bean:message key="status.sessions.noMatch" bundle="setup"/>
+							</td>
+						</tr>
+					</logic:equal>
+					<logic:equal name="userSessionsForm" property="pager.empty" value="false">					
+						<logic:iterate name="userSessionsForm" property="pager.pageItems" id="activeSession" type="com.adito.setup.ActiveSession">
+							<tr class="<%= shade ? "highlight" : "lowlight" %>">
+				               	<td class="user">				               	
+									<img border="0" align="absmiddle" src="<%= activeSession.getSmallIconPath(request) %>"/>
+			  		  				<input:toolTip width="400" borderWidth="0" padding="4" href="javascript: void(0);" contentLocation="<%= "/sessionInformation.do?ticket=" + activeSession.getInfo().getLogonTicket() %>">
+			  		  					<bean:write name="activeSession" property="info.user.principalName"/>
+									</input:toolTip>
+				               	</td>
+				               	<td class="actions">
+								   	<tiles:insert flush="false" attribute="actionLink">
+										<tiles:put name="actionName" value="logoff"/>
+										<tiles:put name="bundle" value="setup"/>
+										<tiles:put name="nameKey" value="action.logoff.name"/>
+										<tiles:put name="descriptionKey" value="action.logoff.description"/>
+										<tiles:put name="actionPath" value="<%= "/logoffSession.do?ticket=" + activeSession.getInfo().getLogonTicket() %>"/>
+									</tiles:insert>
+								</td>                	
+							</tr>		
+							<% shade = !shade; %> 
+						</logic:iterate>
+					</logic:equal>
+				</tbody>				
+				<tfoot>			
+					<tr>
+						<td colspan="2">
+							<div class="pager_navigation">
+								<table:navigation selectedStyleClass="pagerSelected" pagerName="userSessionsForm" pagerProperty="pager" styleClass="pagerEnabled" disabledStyleClass="pagerDisabled"/>
+							</div>
+							<div class="pager_pages">
+								<table:pageSize pagerName="userSessionsForm" pagerProperty="pager" styleClass="pagerEnabled"/>
+							</div.
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</core:form>
+</div>

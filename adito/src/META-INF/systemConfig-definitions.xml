@@ -1,0 +1,139 @@
+<definitions>
+
+	<!-- UI  -->
+	<definition type="2" name="ui.allowLanguageSelection" typeMeta=""
+		category="30" defaultValue="true"  sortOrder="30"
+		validation="" messageResourcesKey="properties" />
+	<definition type="3" name="ui.defaultLanguage"
+		typeMeta="!com.adito.language.LanguagePairListDataSource"
+		category="30" defaultValue="en_GB"  sortOrder="30"
+		validation="" messageResourcesKey="properties" />		
+	<definition type="3" name="ui.defaultManagementConsoleViewType"
+		typeMeta="list,icons" category="30" defaultValue="list" 
+		hidden="true" sortOrder="90" validation="" messageResourcesKey="properties" />	
+	<definition type="2" name="ui.rssFeeds"
+		typeMeta="" category="30" defaultValue="true" 
+		sortOrder="95" validation="" messageResourcesKey="properties" />
+	<definition type="1" name="ui.maxuser.count" typeMeta=""
+		category="30" defaultValue="2000" sortOrder="100"
+		validation="com.adito.input.validators.IntegerValidator"
+		messageResourcesKey="properties" />
+	<definition type="1" name="ui.maxrole.count" typeMeta=""
+		category="30" defaultValue="2000" sortOrder="105"
+		validation="com.adito.input.validators.IntegerValidator"
+		messageResourcesKey="properties" />
+	<definition type="2"
+		name="updates.automaticallyConnectToApplicationStore" typeMeta=""
+		category="30" defaultValue="true"  sortOrder="0"
+		validation="" messageResourcesKey="properties" />	
+			
+	<!--  Security -->
+
+	<!-- Policy -->
+	<definition type="2" name="security.enforce.policy.resource.access"
+		typeMeta="" category="55" defaultValue="false" 
+		sortOrder="10" validation="" messageResourcesKey="properties" />
+
+    <!-- Confidential -->
+	<definition type="3" name="security.privateKeyMode"
+		typeMeta="disabled,prompt,automatic" category="67"
+		defaultValue="automatic"  sortOrder="90" validation=""
+		messageResourcesKey="properties" />
+	<definition type="3" name="pki.algorithm" typeMeta="rsa,dsa"
+		category="67" defaultValue="rsa"  sortOrder="200"
+		validation="" messageResourcesKey="properties" />
+	<definition type="3" name="pki.bitLength"
+		typeMeta="512,768,1024,2048" category="67" defaultValue="1024"
+		 sortOrder="210" validation=""
+		messageResourcesKey="properties" />
+	<definition type="1" name="security.maxUserCount" typeMeta=""
+		category="99999" defaultValue="0"  sortOrder="0"
+		validation="com.adito.input.validators.IntegerValidator"
+		messageResourcesKey="properties" />
+	<definition type="2" name="security.maskPersonalAnswers" typeMeta=""
+		category="67" defaultValue="true"  sortOrder="130"
+		validation="" messageResourcesKey="properties" />
+		
+	<!--  Session -->
+		<definition type="1" name="security.session.maxCookieAge"
+		typeMeta="" category="61" defaultValue="900" 
+		sortOrder="80"
+		validation="com.adito.input.validators.IntegerValidator"
+		messageResourcesKey="properties" />
+		<definition type="2"
+		name="security.session.lockSessionOnBrowserClose" typeMeta=""
+		category="61" defaultValue="true"  sortOrder="102"
+		validation="" messageResourcesKey="properties" />
+	<definition type="2" name="security.allowUntrackedWebDAVSessions"
+		typeMeta="" category="61" defaultValue="true" 
+		sortOrder="103" validation="" messageResourcesKey="properties" />
+	
+			
+	<!--  Logon Page -->
+	
+	<definition type="0" name="loginPage.siteName"
+		typeMeta="30" category="190"
+		defaultValue=""
+		 sortOrder="10" validation=""
+		messageResourcesKey="properties" />
+	
+	<definition type="0" name="loginPage.welcomeTitle"
+		typeMeta="" category="190"
+		defaultValue=""
+		 sortOrder="20" validation=""
+		messageResourcesKey="properties" />
+	
+	<definition type="3" name="loginPage.welcomeLogo"
+		typeMeta="!com.adito.vfs.store.site.SiteIconsListDataSource" category="190"
+		defaultValue="default"
+		 sortOrder="30" validation=""
+		messageResourcesKey="properties" />
+	
+	<definition type="3" name="loginPage.welcomeMessageType"
+		typeMeta="none,noicon,broadcast,information,warning,stop" category="190"
+		defaultValue="none"
+		 sortOrder="40" validation=""
+		messageResourcesKey="properties" />
+
+	<definition type="3" name="loginPage.welcomeMessageAlign"
+		typeMeta="justify,center" category="190"
+		defaultValue="justify"
+		 sortOrder="45" validation=""
+		messageResourcesKey="properties" />
+	
+	<definition type="6" name="loginPage.welcomeMessage"
+		typeMeta="30x5" category="190"
+		defaultValue=""
+		 sortOrder="50" validation=""
+		messageResourcesKey="properties" />
+		
+	<!--  Web Server -->
+	
+	<definition type="5" name="webServer.validExternalHostnames"
+		typeMeta="30x5" category="70" defaultValue="" 
+		sortOrder="150" validation="" messageResourcesKey="properties" />
+	<definition type="3" name="webServer.invalidHostnameAction"
+		typeMeta="none,redirect,error,disconnect" category="70"
+		defaultValue="none"  sortOrder="160" validation=""
+		messageResourcesKey="properties" />
+		
+	<!--  SMTP -->
+	
+	<definition type="2" name="smtp.startOnStartup" typeMeta=""
+		category="220" defaultValue="true"  sortOrder="0"
+		validation="" messageResourcesKey="properties" />
+	<definition type="0" name="smtp.hostname" typeMeta="" category="220"
+		defaultValue="localhost"  sortOrder="10" validation=""
+		messageResourcesKey="properties" />
+	<definition type="1" name="smtp.port" typeMeta="" category="220"
+		defaultValue="25"  sortOrder="20"
+		validation="com.adito.input.validators.IntegerValidator"
+		messageResourcesKey="properties" />
+	<definition type="0" name="smtp.login" typeMeta="" category="220"
+		defaultValue=""  sortOrder="30" validation=""
+		messageResourcesKey="properties" />
+	<definition type="0" name="smtp.senderAddress" typeMeta=""
+		category="220" defaultValue="adito@localhost.localdomain"
+		 sortOrder="30" validation=""
+		messageResourcesKey="properties" />
+</definitions>
