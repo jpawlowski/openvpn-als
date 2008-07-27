@@ -64,7 +64,9 @@
 		<ant dir="${maverick-crypto.home}" target="compile"/>
 
 		
-		<delete dir="${build.output}"/>
+		<delete>
+			<fileset dir="${build.output}"/>
+		</delete>
 		<mkdir dir="${build.output}"/>
 		<copy todir="${build.output}">
 			<fileset dir="trustedcacerts">
@@ -95,15 +97,19 @@
 
 		<ant dir="${maverick-util.home}" target="compile"/>
 		<ant dir="${maverick-crypto.home}" target="compile"/>
-		<delete dir="${build.tmp}"/>
+		<delete>
+			<fileset dir="${build.tmp}"/>
+		</delete>
 		<mkdir dir="${build.tmp}"/>
 		<copy todir="${build.tmp}">
 			<fileset dir="${build.src}">
 				<include name="**/*"/>
 				<exclude name="**/CVS/**/*"/>
 			</fileset>
-		</copy>	
-		<delete dir="${build.output}"/>
+		</copy>
+		<delete>
+			<fileset dir="${build.output}"/>
+		</delete>
 		<mkdir dir="${build.output}"/>
 		<copy todir="${build.output}">
 			<fileset dir="trustedcacerts">
@@ -124,8 +130,9 @@
 				includeantruntime="false" includes="**/*.java" classpathref="maverick-ssl.class.path"
 			    debug="true">
 		</javac>
-		<delete dir="${build.tmp}"/>
-		
+		<delete>
+			<fileset dir="${build.tmp}"/>
+		</delete>		
 		<copy todir="${build.tmp}">
 			<fileset dir="${build.src1.5}">
 				<include name="**/*"/>
@@ -156,9 +163,11 @@
 	<!-- Clean up all built files -->
 
 	<target name="clean">
-		<delete dir="${build.tmp}"/>
-		<delete dir="${build.output}"/>
-		<delete dir="${build.dist}"/>
+		<delete>
+			<fileset dir="${build.tmp}"/>
+			<fileset dir="${build.output}"/>
+			<fileset dir="${build.dist}"/>
+		</delete>	
 	</target>
 	
 	<!-- Create API documentation -->
