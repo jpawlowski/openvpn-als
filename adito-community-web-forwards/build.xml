@@ -167,14 +167,16 @@
 	<target name="clean-dist" depends="clean,dist"/>
 
 	<target name="clean" description="Clean up all built files">
-		<delete dir="${build.dir}" includes="*.*" failonerror="false"/>
-		<delete dir="${build.output}"/>
-		<delete dir="${build.output.instrumented}"/>
-		<delete dir="${build.output.test}"/>
-		<delete dir="${build.docs}"/>
-		<delete dir="${build.dist}"/>
-		<delete dir="${build.release}"/>
-		<delete dir="${build.extension}"/>
+		<delete>	
+			<fileset dir="${build.dir}" includes="*.*"/>
+			<fileset dir="${build.output}"/>
+			<fileset dir="${build.output.instrumented}"/>
+			<fileset dir="${build.output.test}"/>
+			<fileset dir="${build.docs}"/>
+			<fileset dir="${build.dist}"/>
+			<fileset dir="${build.release}"/>
+			<fileset dir="${build.extension}"/>
+		</delete>
 		<antcall target="clean-reports"/>
 	</target>
 
@@ -341,12 +343,14 @@
     </target>
 
     <target name="test-report-cleanup" description="Removes all the generated report meta-data, leaving behind the useful reports" unless="run.all.tests">
-		<delete dir="${build.reports}/${build.reports.junit}" includes="*.*"/>
-		<delete dir="${build.reports}/${build.reports.junit.xml}"/>
-		<delete dir="${build.reports}/${build.reports.emma.coverage}"/>
-		<delete dir="${build.reports}/${build.reports.findbugs.xml}"/>
-		<delete dir="${build.reports}/${build.reports.pmd.xml}"/>
-		
+		<delete>
+			<fileset dir="${build.reports}/${build.reports.junit}" includes="*.*"/>
+			<fileset dir="${build.reports}/${build.reports.junit.xml}"/>
+			<fileset dir="${build.reports}/${build.reports.emma.coverage}"/>
+			<fileset dir="${build.reports}/${build.reports.findbugs.xml}"/>
+			<fileset dir="${build.reports}/${build.reports.pmd.xml}"/>
+		</delete>		
+
 		<copy todir="${build.reports}/${build.reports.junit}">
 			<fileset dir="${build.reports}/${build.reports.junit.html}" includes="**/*"/>
 		</copy>
@@ -360,14 +364,18 @@
 			<fileset dir="${build.reports}/${build.reports.pmd.html}" includes="**/*"/>
 		</copy>
 
-		<delete dir="${build.reports}/${build.reports.junit.html}"/>
-		<delete dir="${build.reports}/${build.reports.emma.html}"/>
-		<delete dir="${build.reports}/${build.reports.findbugs.html}"/>            
-		<delete dir="${build.reports}/${build.reports.pmd.html}"/>            
+		<delete>
+			<fileset dir="${build.reports}/${build.reports.junit.html}"/>
+			<fileset dir="${build.reports}/${build.reports.emma.html}"/>
+			<fileset dir="${build.reports}/${build.reports.findbugs.html}"/>            
+			<fileset dir="${build.reports}/${build.reports.pmd.html}"/>
+		</delete>            
     </target>
 	
 	<target name="clean-reports" unless="run.all.tests">
-		<delete dir="${build.reports}"/>
+		<delete>
+			<fileset dir="${build.reports}"/>
+		</delete>
 	</target>
 
 </project>

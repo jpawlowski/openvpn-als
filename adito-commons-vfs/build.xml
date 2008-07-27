@@ -86,9 +86,10 @@
             </fileset>
         </copy>
     </target>
-    <target name="clean" description="o Clean up the generated directories">
-        <delete dir="${builddir}">
-        </delete>
+    <target name="clean" description="Clean up the generated directories">
+        <delete>
+            <fileset dir="${builddir}"/>
+	</delete>
     </target>
     <target name="dist" description="o Create a distribution" depends="jar, javadoc">
         <mkdir dir="dist">

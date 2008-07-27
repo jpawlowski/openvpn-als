@@ -95,13 +95,15 @@
 		</copy>
 	</target>
 
-	<!-- Clean up all built files -->
+	<!-- Clean up all built files. Changed 2008-07-20 to delete only the files in the build directory instead of the directories
+	     themselves. This is to prevent problems with SVN and especially the svn:propget property. Now we can version the various
+	     build directories and rest assured that the files inside them are newer versioned, whether they exist or not. --> 
 
 	<target name="clean">
-		<delete dir="${build.output}" />
-		<delete dir="${build.dist}" />
-		<delete dir="${build.release}" />
-		<delete dir="${build.extension}" />
+		<delete>
+			<fileset dir="${build.dir}"/>
+		</delete>
+
 	</target>
 
 	<!-- Create API documentation -->
