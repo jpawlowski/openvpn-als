@@ -40,10 +40,6 @@ uninstall-service  Uninstall Adito service.
 		<ant dir="maverick-util" target="clean"/>
 	</target>
 
-	<target name="run" description="Starts the Adito server in the foreground display all output to the console. NOTE, this is deprecated, use the 'console' target instead.">
-		<ant dir="${adito.home}" target="run"/>
-	</target>
-	
 	<!-- Run the Adito server as a console application -->
 	<target name="console" description="Starts the Adito server in the foreground display all output to the console">
 		<ant dir="${adito.home}" target="console"/>

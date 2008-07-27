@@ -120,10 +120,12 @@
 	<!-- Clean up all built files -->
 
 	<target name="clean">
-		<delete dir="${build.output}" />
-		<delete dir="${build.dist}" />
-		<delete dir="${build.release}" />
-		<delete dir="${build.extension}" />
+		<delete>
+			<fileset dir="${build.output}" />
+			<fileset dir="${build.dist}" />
+			<fileset dir="${build.release}" />
+			<fileset dir="${build.extension}" />
+		</delete>
 	</target>
 
 	<!-- Create API documentation -->

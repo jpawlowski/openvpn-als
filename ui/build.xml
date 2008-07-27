@@ -210,9 +210,11 @@
   <!-- Clean up all the generated files -->
 	<target name="clean">
     <!-- delete the classpath -->
-		<delete dir="${build.dist}"/>
-		<delete dir="${build.docs}"/>
-		<delete dir="${build.release}"/>
-		<delete dir="${build.tmp}"/>
+		<delete>
+			<fileset dir="${build.dist}"/>
+			<fileset dir="${build.docs}"/>
+			<fileset dir="${build.release}"/>
+			<fileset dir="${build.tmp}"/>
+		</delete>
 	</target>
 </project>

@@ -1,0 +1,6 @@
+*.log
+*.log.?
+*~
+*.class
+*.backup
+*.data

@@ -28,7 +28,7 @@ Once Adito has been built, running it is really simple. Just enter the Adito dir
  user@server:/opt/adito-0.9.0$ ant start
  
 If you've configured Adito to listen on any port lower than 1024, you have to run this command as root.
-
+
 Adito modules
 -------------
 
@@ -144,8 +144,9 @@ Contains the Java source for the default server implementation. This is based on
 
 * src
 
-Contains the Java source for the actual application and web	based user interface.
-    				* webapp
+Contains the Java source for the actual application and web based user interface.
+
+* webapp
 
 Contains all of the HTML resources (including images and CSS) as well as the JSP files.    				
 

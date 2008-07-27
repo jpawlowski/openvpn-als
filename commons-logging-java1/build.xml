@@ -45,7 +45,9 @@
 
     <!-- Delete all built files -->
     <target name="clean" description="Clean built directories">
-        <delete dir="${commons-logging-java1.classes}"/>
-        <delete dir="${commons-logging-java1.dist}"/>
+	<delete>
+	        <fileset dir="${commons-logging-java1.classes}"/>
+		<fileset dir="${commons-logging-java1.dist}"/>
+	</delete>
     </target>
 </project>

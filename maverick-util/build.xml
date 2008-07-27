@@ -41,15 +41,17 @@
 
 	<target name="compile">
 		<mkdir dir="${build.output}" />
-		<javac target="1.1" source="1.1" compiler="${build.compiler}" destdir="${build.output}" srcdir="${build.src}" includeantruntime="false" includes="**/*.java" classpathref="maverick-util.class.path">
+		<javac target="1.1" source="1.2" compiler="${build.compiler}" destdir="${build.output}" srcdir="${build.src}" includeantruntime="false" includes="**/*.java" classpathref="maverick-util.class.path">
 		</javac>
 	</target>
 
 	<!-- Clean up all built files -->
 
 	<target name="clean">
-		<delete dir="${build.output}" />
-		<delete dir="${build.dist}" />
+		<delete>
+			<fileset dir="${build.output}" />
+			<fileset dir="${build.dist}" />
+		</delete>
 	</target>
 
 	<!-- Create API documentation -->
