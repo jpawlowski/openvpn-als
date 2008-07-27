@@ -1,5 +1,5 @@
 #Database versions
-#Sun Jul 27 13:03:18 EEST 2008
+#Sun Jul 27 18:35:57 EEST 2008
 policyDatabase=0.9.0
 applicationShortcutsDatabase=1.0.11
 webForwardsDatabase=1.0.18
