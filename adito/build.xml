@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="adito" default="console">
 
+	<property file="../build.properties"/>
 	<property file="build.properties"/>
-	<property file="local.build.properties"/>
 
-	<!-- Options for running ssl explorer -->
+	<!-- Options for running Adito -->
 	<property name="adito.conf" value="conf"/>
 
 	<!-- Location of tools.jar (Java compiler) -->
@@ -357,12 +357,6 @@
 			<pathelement location="${build-tools.home}/ant/ant-contrib.jar" />
 		</classpath>
 	</taskdef>
-
-	<!-- Run the default Adito server in the foreground -->
-	<target name="run">
-		<echo>*WARNING* The 'run' target is deprecated. Use 'console', 'start' and 'stop'</echo>
-		<antcall target="console"/>
-	</target>
 
 	<!-- Run the default Adito server in the foreground -->
 	<target name="console" depends="compile,local-deploy,deploy-community-extensions">
