@@ -68,8 +68,10 @@
 	<!-- Clean up all built files -->
 
 	<target name="clean">
-		<delete dir="${build.output}" />
-		<delete dir="${build.dist}" />
+		<delete>
+			<fileset dir="${build.output}"/>
+			<fileset dir="${build.dist}"/>
+		</delete>
 	</target>
 
 	<!-- Create API documentation -->

@@ -57,6 +57,8 @@
 	<property name="build.test.output" value="${build.dir}/test" />
 	<property name="build.test" value="test" />
 	<property name="build.reports" value="${build.dir}/reports"/>
+
+
 		
 	
 	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
@@ -79,10 +81,10 @@
 	
 	<target name="setup-client">
 
-		<delete dir="${build.tmp}"/>
-		<delete dir="${build.extension.output}"/>
-		<mkdir dir="${build.extension.output}"/>
-		<mkdir dir="${build.tmp}"/>
+		<delete>
+			<fileset dir="${build.tmp}"/>
+			<fileset dir="${build.extension.output}"/>
+		</delete>
 
 		<copy todir="${build.tmp}">
 			<fileset dir="${maverick-crypto.home}/src"/>
@@ -140,11 +142,10 @@
 
 	<target name="setup-launcher">
 
-		<delete dir="${build.tmp}"/>
-		<delete dir="${build.extension.output}"/>
-
-		<mkdir dir="${build.extension.output}"/>
-		<mkdir dir="${build.tmp}"/>
+		<delete>
+			<fileset dir="${build.tmp}"/>
+			<fileset dir="${build.extension.output}"/>
+		</delete>
 
 		<copy todir="${build.tmp}">
 			<fileset dir="./common"/>
@@ -705,14 +706,17 @@
 	</target>
 	
 	<target name="clean">
-		<delete dir="${build.extension.output}"/>
-		<delete dir="${build.release}"/>
-		<delete dir="${build.jars}"/>
-		<delete dir="${build.extension}"/>
-		<delete dir="${build.tmp}"/>
-		<delete dir="${build.dist}"/>
-		<delete dir="${build.test.output}" />
-		<!-- delete dir="${build.reports}"/ -->
+
+		<delete>
+			<fileset dir="${build.extension.output}"/>
+			<fileset dir="${build.release}"/>
+<!--			<fileset dir="${build.jars}"/> -->
+			<fileset dir="${build.extension}"/>
+			<fileset dir="${build.tmp}"/>
+			<fileset dir="${build.dist}"/>
+			<fileset dir="${build.test.output}" />
+		</delete>
+
 	</target>
 	
 	<!-- Compile the test  -->
