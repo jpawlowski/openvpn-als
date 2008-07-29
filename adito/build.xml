@@ -919,6 +919,7 @@ ${jsp.servlets.text}
 	     details -->
 
 	<target name="install-agent">
+		<ant inheritall="false" dir="${agent.home}" target="clean" />
 		<ant inheritall="false" dir="${agent.home}" target="release" />
 		<copy file="${agent.home}/build/release/adito-agent.zip"
 			todir="${adito.conf}/repository/archives"/>
