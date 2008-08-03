@@ -37,7 +37,7 @@
 	<!-- Compile the library  -->
 	<target name="compile">
 		<mkdir dir="${build.output}" />
-		<javac target="1.1" source="1.2" classpathref="maverick-crypto.class.path" compiler="${build.compiler}" destdir="${build.output}" srcdir="${build.src}" includeantruntime="false" includes="**/*.java"></javac>
+		<javac target="1.2" source="1.2" classpathref="maverick-crypto.class.path" compiler="${build.compiler}" destdir="${build.output}" srcdir="${build.src}" includeantruntime="false" includes="**/*.java"></javac>
 	</target>
 
 	<!-- Clean up all built files -->
