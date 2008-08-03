@@ -41,7 +41,7 @@
 
 	<target name="compile">
 		<mkdir dir="${build.output}" />
-		<javac target="1.1" source="1.2" compiler="${build.compiler}" destdir="${build.output}" srcdir="${build.src}" includeantruntime="false" includes="**/*.java" classpathref="maverick-util.class.path">
+		<javac target="1.2" source="1.2" compiler="${build.compiler}" destdir="${build.output}" srcdir="${build.src}" includeantruntime="false" includes="**/*.java" classpathref="maverick-util.class.path">
 		</javac>
 	</target>
 
