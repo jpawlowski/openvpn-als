@@ -82,6 +82,10 @@ following:
 or you won't have write access to system directories.
     * Issue ant install-service
 
+Next check that settings in $ADITO_HOME/adito/conf/wrapper.conf are
+sane. Most importantly you need to point the wrapper to correct
+Java binary. The file is heavily commented.
+
 After that you should be able to stop Adito by doing
 
 $ /etc/init.d/adito stop
