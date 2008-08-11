@@ -390,7 +390,7 @@
 							generic method. You will not have restart ability from the user interface and
 							beware of using CTRL+C, it may leave processes running
 						</echo>
-						<antcall target="console-using-java"/>
+						<antcall target="start-using-java"/>
 					</else>
 				</if>
 			</else>
@@ -398,8 +398,8 @@
 	</target>
 
 	<!-- Launch using Java (avoids wrapper) -->
-
-	<target name="console-using-java">
+	<!-- This target tested and works at least on Gentoo Linux with Sun JDK 1.6. -matt 10.8.2008 --> 
+	<target name="start-using-java">
 		<java fork="true" classname="com.adito.boot.Bootstrap">
 			<classpath>
 				<pathelement path="${build.boot.output}"/>
@@ -408,8 +408,10 @@
 		</java>
 	</target>
 
+
 	<!-- Start the default Adito server in the background -->
-	<target name="start" depends="compile,local-deploy,deploy-community-extensions">
+	<!-- Removed dependencies on compile and deployment targets, which are called in the "install" target -->
+	<target name="start">
 		<!-- Launch on Linux -->
 		<if>
 			<equals arg1="${os.name}" arg2="Linux"/>

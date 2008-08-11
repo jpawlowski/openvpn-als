@@ -49,6 +49,11 @@ uninstall-service  Uninstall Adito service.
 	<target name="start" description="Starts the Adito in the background">
 		<ant dir="${adito.home}" target="start"/>
 	</target>
+
+	<!-- Start the Adito server without the wrapper -->	
+	<target name="start-using-java" description="Starts the Adito in the foreground without the OS-dependent wrapper">
+		<ant dir="${adito.home}" target="start-using-java"/>
+	</target>
 	
 	<!-- Stops a the running Adito server -->	
 	<target name="stop" description="Stops the running Adito. Note, this currently does not work on all platforms.">

@@ -2,7 +2,6 @@ Latest version of this guide can be found from
 
 http://adito.wiki.sourceforge.net/installing_and_running_the_adito_server
 
-
 =Getting Adito=
 
 Latest official Adito releases can be found from 
@@ -14,13 +13,11 @@ Windows you need to download Subversion from
 
 http://subversion.tigris.org/
 
-
 Then, when Subversion is installed, you can get latest Adito version 
 with the following command (from an UNIX shell/terminal or Windows 
 command line prompt):
 
 svn co https://adito.svn.sourceforge.net/svnroot/adito adito
-
 
 Most of the time the development (svn) version of Adito should be just 
 as stable as the official releases, so use that whenever possible.
@@ -29,7 +26,7 @@ as stable as the official releases, so use that whenever possible.
 
 ==Generic instructions==
 
-First install (Sun's) Java Development Kit (JDK) version 1.6 from from 
+First install (Sun's) Java Development Kit (JDK) version 1.6 from
 http://java.sun.com/javase/downloads/?intcmp=1281. If you use 
 adito-0.9.0 download JDK 1.5 instead to avoid build problems. In Linux 
 you can most likely install JDK with your package manager.
@@ -39,7 +36,6 @@ tools.jar with Adito. For more information take a look at these links:
 
     * http://java.sun.com/j2se/1.5.0/README.html#redistribution
     * http://java.sun.com/javase/6/webnotes/README.html
-
 
 To use Adito, you need to copy tools.jar from $JDK_HOME/lib to 
 $ADITO_HOME/adito/lib. In Debian GNU/Linux distribution $JDK_HOME is 
@@ -63,7 +59,8 @@ sudo -s or su. This is required only if you wan't Adito to run on port
 
     * Issue "ant install". Note that you must run the 'install' target 
 of the default build file at least once. This compiles everything and 
-launches the install wizard. You may re-run this at any time.
+launches the installation wizard. You may re-run the installation
+wizard at any time.
 
     * Navigate to http://localhost:28080 with your browser and go 
 through the install wizard. Ant will exit when the wizard is complete or 
@@ -72,6 +69,9 @@ is cancelled. You may abort the wizard at any time using your INTR key
 
     * Proceed to "Compiling Adito Agent". Otherwise all functionality 
 depending on the Agent is broken.
+
+
+==Installing Adito as a Linux service==
 
 Note that if you wish to install Adito as a Linux service, do the 
 following:
@@ -90,7 +90,8 @@ After that you should be able to stop Adito by doing
 
 $ /etc/init.d/adito stop
 
-and start it with
+and start it with. With latest SVN versions the "start" target does not
+compile everything anymore each time.
 
 $ /etc/init.d/adito start
 
@@ -157,7 +158,6 @@ ant executable.
 version (1.6 for svn, 1.5 for Adito 0.9.0).
     * If you're running Adito 0.9.0, use Sun's JDK 1.5.
     * If you're running SVN version of Adito, use Sun's JDK 1.6.
-
 
 =Compiling the Adito Agent=
 
@@ -272,12 +272,10 @@ netstat command see
 
 http://technet.microsoft.com/en-us/library/bb490947(TechNet.10).aspx
 
-==Problems with Java and Adito wrapper==
+==Problems with Adito wrapper==
 
 Sometimes Adito simply refuses to start with "ant start" or 
-"/etc/init.d/adito start". Unfortunately un/jre/bin/java
-wrapper.working.dir=/opt/adito/adito
-wrapper.java.library.path.1=/opt/adito/adito/install/platforms/linux/x86
-
-If you run into wrapper problems you probably have to modify them to 
-suit your environment.
+"/etc/init.d/adito start". In this case you can either use the
+command "ant start-using-java" which avoids the wrapper altogether or
+edit the wrapper configuration file in $ADITO_HOME/adito/conf/wrapper.conf
+to fit your system.
