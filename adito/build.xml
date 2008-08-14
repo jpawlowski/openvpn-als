@@ -511,8 +511,14 @@
 		</if>
 	</target>
 
+        <!-- Copy wrapper.conf.example to wrapper.conf if wrapper.conf does not exist -->
+        <target name="check-wrapper-conf">
+		<echo>Checking if wrapper.conf exists and copying it to place</echo>
+		<copy failonerror="false" file="${adito.conf}/wrapper.conf.example" tofile="${adito.conf}/wrapper.conf" />
+	</target>
+
 	<!-- Start the install wizard  -->
-	<target name="install" depends="compile,local-deploy,deploy-community-extensions">
+	<target name="install" depends="compile,local-deploy,deploy-community-extensions,check-wrapper-conf">
 
 		<!-- Just in case -->
 		<mkdir dir="logs"/>
@@ -528,7 +534,7 @@
 	</target>
 
 	<!-- Install Adito as a service  -->
-	<target name="install-service" depends="compile,local-deploy,deploy-community-extensions">
+	<target name="install-service" depends="compile,local-deploy,deploy-community-extensions,check-wrapper-conf">
 		<if>
 			<equals arg1="${os.name}" arg2="Linux"/>
 			<then>
