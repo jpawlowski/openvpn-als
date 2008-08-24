@@ -51,7 +51,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/commons-logging.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/antlr.jar"/>
-	<classpathentry kind="lib" path="lib/tools.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/standard-1.0.6.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/hsqldb.jar"/>
 	<classpathentry kind="src" output="build/boot" path="boot/src"/>
