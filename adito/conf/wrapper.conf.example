@@ -68,7 +68,14 @@ wrapper.java.classpath.2=lib/adito-boot.jar
 wrapper.java.additional.1=-Dorg.mortbay.http.Version.paranoid=true
 
 # Java Additional Parameters
-wrapper.java.additional.2=-Dfile.encoding=UTF-8
+# file.encoding forces the file encoding in java process in wrapper, 
+# but in adito when you launch server without wrapper (start-using-java)
+# the file.encoding is taken from java runtime, on windows it is cp1252.
+# encoding is use when you login and when you change password.
+# if you launch server using wrapper, you change your password.
+# you stop server, and start-using-java with different file.encoding, you cannot login. 
+# It cause some problems if encoding are different.
+#wrapper.java.additional.2=-Dfile.encoding=UTF-8
 
 # Initial Java Heap Size (in MB)
 wrapper.java.initmemory=64
