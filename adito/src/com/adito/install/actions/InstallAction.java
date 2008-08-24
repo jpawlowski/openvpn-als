@@ -24,14 +24,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,37 +35,27 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.jdom.JDOMException;
 
 import com.adito.boot.ContextKey;
 import com.adito.boot.KeyStoreManager;
 import com.adito.boot.KeyStoreType;
 import com.adito.boot.PropertyClassManager;
 import com.adito.boot.PropertyList;
-import com.adito.boot.RepositoryFactory;
 import com.adito.boot.RepositoryStore;
 import com.adito.boot.Util;
 import com.adito.core.BundleActionMessage;
 import com.adito.core.CoreAttributeConstants;
 import com.adito.core.CoreEvent;
 import com.adito.core.CoreEventConstants;
-import com.adito.core.CoreException;
 import com.adito.core.CoreServlet;
-import com.adito.core.CoreUtil;
-import com.adito.core.GlobalWarning;
-import com.adito.core.GlobalWarningManager;
-import com.adito.core.LicenseAgreement;
 import com.adito.core.UserDatabaseManager;
-import com.adito.core.GlobalWarning.DismissType;
 import com.adito.extensions.ExtensionBundle;
 import com.adito.extensions.store.ExtensionStore;
-import com.adito.extensions.store.ExtensionStoreDescriptor;
 import com.adito.install.forms.ConfigureProxiesForm;
 import com.adito.install.forms.ConfigureSuperUserForm;
 import com.adito.install.forms.CreateNewCertificateForm;
 import com.adito.install.forms.ImportExistingCertificateForm;
 import com.adito.install.forms.InstallForm;
-import com.adito.install.forms.InstallXtraForm;
 import com.adito.install.forms.SelectCertificateSourceForm;
 import com.adito.install.forms.SelectUserDatabaseForm;
 import com.adito.install.forms.SetKeyStorePasswordForm;
@@ -95,7 +79,6 @@ import com.adito.security.UserDatabaseDefinition;
 import com.adito.setup.LicenseAgreementCallback;
 import com.adito.tasks.Task;
 import com.adito.tasks.TaskHttpServletRequest;
-import com.adito.tasks.TaskInputStream;
 import com.adito.tasks.TaskProgressBar;
 import com.adito.wizard.AbstractWizardSequence;
 import com.adito.wizard.WizardActionStatus;
@@ -137,12 +120,8 @@ public class InstallAction extends AbstractInstallWizardAction {
         ((InstallForm) form).setActionStatus(actionStatus);
         AbstractWizardSequence seq = getWizardSequence(request);
 
-        /*
-         * Get the list of extensions to install. We do this now so that we have
-         * a max value for the overall progress bar
-         */
-        Map<String, String> extensionsToInstall = getExtensionsToInstall(seq);
-        overallProgress.setMaxValue(7 + extensionsToInstall.size());
+
+        overallProgress.setMaxValue(6);
         task.configured();
 
         /*
@@ -158,16 +137,18 @@ public class InstallAction extends AbstractInstallWizardAction {
         doWebServer(overallProgress, atomicProgress, actionStatus, seq);
         doConfigureProxies(request, overallProgress, atomicProgress, actionStatus, seq);
         doCommitProperties(overallProgress, atomicProgress);
-        boolean forwardToLicense = doInstallExtensions(request, overallProgress, atomicProgress, actionStatus, seq, fwd,
-            extensionsToInstall);
 
-        // Finish up and redirect
-        if (forwardToLicense) {
-            fwd = mapping.findForward("licenseAgreement");
-        }
+
         return fwd;
     }
 
+    /**
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return forward
+     */
     public ActionForward installDone(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
          return mapping.findForward("display");
     }
@@ -219,25 +200,7 @@ public class InstallAction extends AbstractInstallWizardAction {
         return mapping.findForward("rerun");
     }
 
-    private Map<String, String> getExtensionsToInstall(AbstractWizardSequence seq) throws IOException, JDOMException {
-        Map<String, String> extensionsToInstall = new HashMap<String, String>();
-        ExtensionStore store = ExtensionStore.getInstance();
-        if (seq.getAttribute(InstallXtraForm.ATTR_INSTALL_XTRA, "false").equals("true")) {
-            // JB we have no version at this point, so we can only add
-            // extensions with extension bundles.
-            // extensionsToInstall.add(InstallXtraForm.ENTERPRISE_CORE_BUNDLE_ID);
-            ExtensionStoreDescriptor descriptor = store.getDownloadableExtensionStoreDescriptor(true);
-            for (Iterator i = descriptor.getExtensionBundles().iterator(); i.hasNext();) {
-                ExtensionBundle bundle = (ExtensionBundle) i.next();
-                if (bundle.getId().startsWith("adito-enterprise")) {
-                    if (!store.isExtensionLoaded(bundle.getId())) {
-                        extensionsToInstall.put(bundle.getId(), bundle.getVersion().toString());
-                    }
-                }
-            }
-        }
-        return extensionsToInstall;
-    }
+
 
     private void doConfigureCertificate(TaskProgressBar overallProgress, TaskProgressBar atomicProgress,
                                         List<WizardActionStatus> actionStatus, AbstractWizardSequence seq)
@@ -301,16 +264,7 @@ public class InstallAction extends AbstractInstallWizardAction {
         Thread.sleep(INSTALL_TASK_DELAY);
     }
 
-    private boolean doInstallExtensions(HttpServletRequest request, TaskProgressBar overallProgress,
-                                        TaskProgressBar atomicProgress, List<WizardActionStatus> actionStatus,
-                                        AbstractWizardSequence seq, ActionForward fwd, Map<String, String> extensionsToInstall)
-                    throws InterruptedException, IOException, JDOMException {
-        // Install the extensions (7)
-        boolean forwardToLicense = installExtensions(request, actionStatus, extensionsToInstall, fwd, overallProgress,
-            atomicProgress);
-        Thread.sleep(INSTALL_TASK_DELAY);
-        return forwardToLicense;
-    }
+
 
     WizardActionStatus configureProxies(AbstractWizardSequence seq, HttpServletRequest request) {
         try {
@@ -514,65 +468,6 @@ public class InstallAction extends AbstractInstallWizardAction {
         return isJdbcDatabase && userDatabase.supportsAccountCreation();
     }
 
-    private boolean installExtensions(HttpServletRequest request, List<WizardActionStatus> actionStatus,
-                                      Map<String, String> extensionsToInstall, ActionForward fwd, TaskProgressBar overallProgress,
-                                      TaskProgressBar atomicProgress) throws IOException {
-        boolean forwardToLicense = false;
-        int val = 7;
-        request.setAttribute(TaskHttpServletRequest.ATTR_TASK_PROGRESS_HANDLED_EXTERNALLY, Boolean.TRUE);
-        for (Iterator<Entry<String, String>> i = extensionsToInstall.entrySet().iterator(); i.hasNext();) {
-            overallProgress.setValue(val++);
-            atomicProgress.setValue(0);
-            atomicProgress.setMinValue(0);
-            atomicProgress.setMaxValue(100);
-            atomicProgress.setValue(100);
-            Entry<String, String> ext = i.next();
-            atomicProgress.setNote(new BundleActionMessage("install", "taskProgress.install.atomic.installExtension.note", ext
-                            .getKey()));
-            URLConnection con = ExtensionStore.getInstance().downloadExtension(ext.getKey(), ext.getValue());
-            InputStream in = null;
-            try {
-                atomicProgress.setMaxValue(con.getContentLength());
-                atomicProgress.setValue(0);
-                ExtensionBundle bundle = null;
-                in = con.getInputStream();
-                in = new TaskInputStream(atomicProgress, in);
-                if (ExtensionStore.getInstance().isExtensionBundleLoaded(ext.getKey())) {
-                    bundle = ExtensionStore.getInstance().updateExtension(ext.getKey(), in, request, con.getContentLength());
-                    if (bundle.isContainsPlugin())
-                        GlobalWarningManager.getInstance().addMultipleGlobalWarning(new GlobalWarning(GlobalWarning.MANAGEMENT_USERS, new BundleActionMessage("extensions",
-                            "extensionStore.message.extensionUpdatedRestartRequired"), DismissType.DISMISS_FOR_USER));
-                } else {
-                    bundle = ExtensionStore.getInstance().installExtensionFromStore(ext.getKey(), in, request, con.getContentLength());
-                    File licenseFile = bundle.getLicenseFile();
-                    final RepositoryStore repStore = RepositoryFactory.getRepository().getStore(ExtensionStore.ARCHIVE_STORE);
-                    if (licenseFile != null && licenseFile.exists()) {
-                        forwardToLicense = true;
-                        CoreUtil.requestLicenseAgreement(request.getSession(), new LicenseAgreement(bundle.getName(), licenseFile,
-                                        new ExtensionLicenseAgreementCallback(repStore, bundle, actionStatus), fwd));
-                    } else {
-                        ExtensionStore.getInstance().postInstallExtension(bundle, request);
-                        actionStatus.add(new WizardActionStatus(WizardActionStatus.COMPLETED_OK,
-                                        "installation.install.status.installedExtension", bundle.getName(), bundle.getId()));
-                    }
-                }
-
-            } catch (CoreException ce) {
-                log.error("Failed to install extension " + ext.getKey() + ".", ce);
-                actionStatus.add(new WizardActionStatus(WizardActionStatus.COMPLETED_WITH_ERRORS,
-                                "installation.install.status.failedToInstallExtension", ext.getKey(), ce
-                                                .getLocalizedMessage(request.getSession())));
-            } catch (Exception e) {
-                log.error("Failed to install extension " + ext.getKey() + ".", e);
-                actionStatus.add(new WizardActionStatus(WizardActionStatus.COMPLETED_WITH_ERRORS,
-                                "installation.install.status.failedToInstallExtension", ext.getKey(), e.getMessage()));
-            } finally {
-                Util.closeStream(in);
-            }
-
-        }
-        return forwardToLicense;
-    }
 
     WizardActionStatus configureCertificate(AbstractWizardSequence seq) {
         String certSource = (String) seq.getAttribute(SelectCertificateSourceForm.ATTR_CERTIFICATE_SOURCE, "");

@@ -97,6 +97,7 @@ public class SelectCertificateSourceAction extends AbstractInstallWizardAction {
         throw new Exception("No previous steps.");
     }
 
+    
     /* (non-Javadoc)
      * @see com.adito.wizard.actions.AbstractWizardAction#createWizardSequence(org.apache.struts.action.ActionMapping, org.apache.struts.action.ActionForm, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
      */
@@ -108,7 +109,6 @@ public class SelectCertificateSourceAction extends AbstractInstallWizardAction {
         seq.addStep(new WizardStep("/configureSuperUser.do"));
         seq.addStep(new WizardStep("/webServer.do"));
         seq.addStep(new WizardStep("/configureProxies.do"));
-        seq.addStep(new WizardStep("/installXtra.do"));
         seq.addStep(new WizardStep("/installationSummary.do"));
         return seq;
     }

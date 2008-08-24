@@ -117,9 +117,6 @@
 	<definition name=".site.ConfigureProxies" extends=".site.InstallWizardPage">
 				<put name="rssFeed" value="configureProxies"/>
 	</definition>	
-	<definition name=".site.InstallXtra" extends=".site.InstallWizardPage">
-				<put name="rssFeed" value="installEnterprise"/>
-	</definition>	
 	<definition name=".site.InstallExtensions" extends=".site.InstallWizardPage">
 				<put name="rssFeed" value="installExtensions"/>
 	</definition>		

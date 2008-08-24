@@ -63,7 +63,7 @@ public class InstallationSummaryForm extends DefaultWizardForm {
 
     public InstallationSummaryForm() {
         super(false, true, "/WEB-INF/jsp/content/install/installationSummary.jspf",
-            "", true, true, "installationSummary", "install", "installation.installationSummary", 7);
+            "", true, true, "installationSummary", "install", "installation.installationSummary", 6);
     }
 
     @Override
@@ -92,10 +92,7 @@ public class InstallationSummaryForm extends DefaultWizardForm {
         httpProxyHostname = (String)sequence.getAttribute(ConfigureProxiesForm.ATTR_HTTP_PROXY_HOSTNAME, "");
         httpProxyPort = (String)sequence.getAttribute(ConfigureProxiesForm.ATTR_HTTP_PROXY_PORT, "");
         httpProxyAuthenticate= !("".equals((String)sequence.getAttribute(ConfigureProxiesForm.ATTR_HTTP_PROXY_USERNAME, "")));
-        extensionsToInstall = new ArrayList();
-        if(sequence.getAttribute(InstallXtraForm.ATTR_INSTALL_XTRA, "false").equals("true")) {
-            extensionsToInstall.add("Adito Enterprise Edition");
-        }
+        
         userDatabaseDefinition = UserDatabaseManager.getInstance().getUserDatabaseDefinition((String)sequence.getAttribute(SelectUserDatabaseForm.ATTR_USER_DATABASE, ""));
         
     }

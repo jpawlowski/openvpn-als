@@ -22,7 +22,6 @@
 		<form-bean name="configureSuperUserForm" type="com.adito.install.forms.ConfigureSuperUserForm"></form-bean>
 		<form-bean name="webServerForm" type="com.adito.install.forms.WebServerForm"></form-bean>
 		<form-bean name="configureProxiesForm" type="com.adito.install.forms.ConfigureProxiesForm"></form-bean>
-		<form-bean name="installXtraForm" type="com.adito.install.forms.InstallXtraForm"></form-bean>
 		<form-bean name="installationSummaryForm" type="com.adito.install.forms.InstallationSummaryForm"></form-bean>
 		<form-bean name="installForm" type="com.adito.install.forms.InstallForm"></form-bean>
 		
@@ -293,17 +292,6 @@
 				input=".site.ConfigureProxies">
 			<forward name="display" path=".site.ConfigureProxies" />
 			<forward name="previous" path="/webServer.do" redirect="true"/>
-			<forward name="next" path="/installXtra.do" redirect="true"/>
-		</action>
-		<action path="/installXtra" 
-				name="installXtraForm" 
-				scope="session" 
-				type="com.adito.install.actions.InstallXtraAction"
-				parameter="actionTarget" 
-				validate="true" 
-				input=".site.InstallXtra">
-			<forward name="display" path=".site.InstallXtra" />
-			<forward name="previous" path="/configureProxies.do" redirect="true"/>
 			<forward name="next" path="/installationSummary.do" redirect="true"/>
 		</action>
 		<action path="/installationSummary" 
@@ -314,7 +302,7 @@
 				validate="true" 
 				input=".site.InstallationSummary">
 			<forward name="display" path=".site.InstallationSummary" />
-			<forward name="previous" path="/installXtra.do" redirect="true"/>
+			<forward name="previous" path="/configureProxies.do" redirect="true"/>
 		</action>
 		<action path="/install" 
 				name="installForm" 
