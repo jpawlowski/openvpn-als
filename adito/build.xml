@@ -1,185 +1,186 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="adito" default="console">
 
-	<property file="../build.properties"/>
-	<property file="build.properties"/>
+	<property file="../build.properties" />
+	<property file="build.properties" />
 
 	<!-- Options for running Adito -->
-	<property name="adito.conf" value="conf"/>
+	<property name="adito.conf" value="conf" />
 
 	<!-- Location of tools.jar (Java compiler) -->
-	<property name="tools.jar" value="lib/tools.jar"/>
+	<property name="tools.jar" value="lib/tools.jar" />
 
 	<!-- Standard build locations -->
 
-	<property name="build.compiler" value="modern"/>
-	<property name="build.dir" value="build"/>
-	<property name="build.lib" value="lib"/>
-	<property name="build.serverlib" value="serverlib"/>
-	<property name="build.doc" value="${build.dir}/doc"/>
-	<property name="build.webapp.lib" value="webapp/WEB-INF/lib"/>
-	<property name="build.boot.output" value="${build.dir}/boot"/>
-	<property name="build.jsp.output" value="${build.dir}/jsp"/>
-	<property name="build.jsp.classes.output" value="${build.dir}/jspclasses"/>
-	<property name="build.jsp.mappings.output" value="${build.dir}/gen"/>
-	<property name="build.jsp.mappings.file" value="${build.jsp.mappings.output}/mappings.xml"/>
-	<property name="build.tools.output" value="${build.dir}/tools"/>
-	<property name="build.server.output" value="${build.dir}/server"/>
-	<property name="build.webapp.output" value="${build.dir}/webapp"/>
-	<property name="build.output.instrumented" value="${build.dir}/instrumented"/>
+	<property name="build.compiler" value="modern" />
+	<property name="build.dir" value="build" />
+	<property name="dist.dir" value="dist" />
+	<property name="build.lib" value="lib" />
+	<property name="build.serverlib" value="serverlib" />
+	<property name="build.doc" value="${build.dir}/doc" />
+	<property name="build.webapp.lib" value="webapp/WEB-INF/lib" />
+	<property name="build.boot.output" value="${build.dir}/boot" />
+	<property name="build.jsp.output" value="${build.dir}/jsp" />
+	<property name="build.jsp.classes.output" value="${build.dir}/jspclasses" />
+	<property name="build.jsp.mappings.output" value="${build.dir}/gen" />
+	<property name="build.jsp.mappings.file" value="${build.jsp.mappings.output}/mappings.xml" />
+	<property name="build.tools.output" value="${build.dir}/tools" />
+	<property name="build.server.output" value="${build.dir}/server" />
+	<property name="build.webapp.output" value="${build.dir}/webapp" />
+	<property name="build.output.instrumented" value="${build.dir}/instrumented" />
 	<property name="build.output.test" value="${build.dir}/test" />
-	<property name="build.webapp.deploy" value="webapp/WEB-INF/classes"/>
-	<property name="build.boot.src" value="boot/src"/>
-	<property name="build.server.src" value="server/src"/>
-	<property name="build.webapp.src" value="src"/>
-	<property name="build.test.src" value="test/src"/>
-	<property name="build.tools.home" value="tools"/>
+	<property name="build.webapp.deploy" value="webapp/WEB-INF/classes" />
+	<property name="build.boot.src" value="boot/src" />
+	<property name="build.server.src" value="server/src" />
+	<property name="build.webapp.src" value="src" />
+	<property name="build.test.src" value="test/src" />
+	<property name="build.tools.home" value="tools" />
 	<property name="build.test" value="test" />
-	<property name="build.debug" value="on"/>
-	<property name="build.reports" value="${build.dir}/reports"/>
-	<property name="tmpdir" value="tmp"/>
+	<property name="build.debug" value="on" />
+	<property name="build.reports" value="${build.dir}/reports" />
+	<property name="tmpdir" value="tmp" />
 
 	<!-- Reports -->
 	<!-- build.reports is overridden when running the suite of tests -->
-	<property name="build.reports" value="${basedir}/${build.dir}/reports"/>
-	<property name="build.reports.junit" value="junit"/>
-	<property name="build.reports.junit.xml" value="${build.reports.junit}/xml"/>
-	<property name="build.reports.junit.html" value="${build.reports.junit}/html"/>
-	<property name="build.reports.emma" value="emma"/>
-	<property name="build.reports.emma.coverage" value="${build.reports.emma}/coverage"/>
-	<property name="build.reports.emma.html" value="${build.reports.emma}/html"/>
-	<property name="build.reports.findbugs" value="findbugs"/>
-	<property name="build.reports.findbugs.xml" value="${build.reports.findbugs}/xml"/>
-	<property name="build.reports.findbugs.html" value="${build.reports.findbugs}/html"/>
-	<property name="build.reports.cpd" value="cpd"/>
-	<property name="build.reports.cpd.xml" value="${build.reports.cpd}/xml"/>
-	<property name="build.reports.cpd.html" value="${build.reports.cpd}/html"/>
-	<property name="build.reports.pmd" value="pmd"/>
-	<property name="build.reports.pmd.xml" value="${build.reports.pmd}/xml"/>
-	<property name="build.reports.pmd.html" value="${build.reports.pmd}/html"/>
+	<property name="build.reports" value="${basedir}/${build.dir}/reports" />
+	<property name="build.reports.junit" value="junit" />
+	<property name="build.reports.junit.xml" value="${build.reports.junit}/xml" />
+	<property name="build.reports.junit.html" value="${build.reports.junit}/html" />
+	<property name="build.reports.emma" value="emma" />
+	<property name="build.reports.emma.coverage" value="${build.reports.emma}/coverage" />
+	<property name="build.reports.emma.html" value="${build.reports.emma}/html" />
+	<property name="build.reports.findbugs" value="findbugs" />
+	<property name="build.reports.findbugs.xml" value="${build.reports.findbugs}/xml" />
+	<property name="build.reports.findbugs.html" value="${build.reports.findbugs}/html" />
+	<property name="build.reports.cpd" value="cpd" />
+	<property name="build.reports.cpd.xml" value="${build.reports.cpd}/xml" />
+	<property name="build.reports.cpd.html" value="${build.reports.cpd}/html" />
+	<property name="build.reports.pmd" value="pmd" />
+	<property name="build.reports.pmd.xml" value="${build.reports.pmd}/xml" />
+	<property name="build.reports.pmd.html" value="${build.reports.pmd}/html" />
 
 	<!-- Dependencies -->
-	<property name="build-tools.home" value="${basedir}/../build-tools"/>
-	<property name="unit-testing.home" value="${build-tools.home}/unit-testing"/>
-	<property name="maverick-util.home" value="../maverick-util"/>
-	<property name="maverick-util.classes" value="${maverick-util.home}/build/classes"/>
-	<property name="maverick-crypto.home" value="../maverick-crypto"/>
-	<property name="maverick-crypto.classes" value="${maverick-crypto.home}/build/classes"/>
-	<property name="maverick-ssl.home" value="../maverick-ssl"/>
-	<property name="maverick-ssl.classes" value="${maverick-ssl.home}/build/classes"/>
-	<property name="maverick-multiplex.home" value="../maverick-multiplex"/>
-	<property name="maverick-multiplex.classes" value="${maverick-multiplex.home}/build/classes"/>
+	<property name="build-tools.home" value="${basedir}/../build-tools" />
+	<property name="unit-testing.home" value="${build-tools.home}/unit-testing" />
+	<property name="maverick-util.home" value="../maverick-util" />
+	<property name="maverick-util.classes" value="${maverick-util.home}/build/classes" />
+	<property name="maverick-crypto.home" value="../maverick-crypto" />
+	<property name="maverick-crypto.classes" value="${maverick-crypto.home}/build/classes" />
+	<property name="maverick-ssl.home" value="../maverick-ssl" />
+	<property name="maverick-ssl.classes" value="${maverick-ssl.home}/build/classes" />
+	<property name="maverick-multiplex.home" value="../maverick-multiplex" />
+	<property name="maverick-multiplex.classes" value="${maverick-multiplex.home}/build/classes" />
 
 	<!-- emma code coverage task definition -->
 	<taskdef name="emma" classname="com.vladium.emma.emmaTask">
-		<classpath location="${unit-testing.home}/emma/emma.jar"/>
-		<classpath location="${unit-testing.home}/emma/emma_ant.jar"/>
+		<classpath location="${unit-testing.home}/emma/emma.jar" />
+		<classpath location="${unit-testing.home}/emma/emma_ant.jar" />
 	</taskdef>
 
 	<!-- Copy and paste detector task definition -->
 	<taskdef name="cpd" classname="net.sourceforge.pmd.cpd.CPDTask">
-		<classpath location="${unit-testing.home}/pmd/pmd-4.0rc1.jar"/>
+		<classpath location="${unit-testing.home}/pmd/pmd-4.0rc1.jar" />
 	</taskdef>
 
 	<!-- FindBugs code quality task definition -->
 	<taskdef name="findbugs" classname="edu.umd.cs.findbugs.anttask.FindBugsTask">
-		<classpath location="${unit-testing.home}/findbugs/findbugs-ant.jar"/>
+		<classpath location="${unit-testing.home}/findbugs/findbugs-ant.jar" />
 	</taskdef>
 
 	<!-- PMD code quaility task definition -->
 	<taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask">
-		<classpath location="${unit-testing.home}/pmd/pmd-4.0rc1.jar"/>
+		<classpath location="${unit-testing.home}/pmd/pmd-4.0rc1.jar" />
 	</taskdef>
 
 	<!-- NOTE These should not be here, they place a ciruclar dependency on the following community extensions. -->
 
-	<property name="adito-commons-vfs.home" value="../adito-commons-vfs"/>
-	<property name="adito-commons-vfs.classes" value="../adito-commons-vfs/build/classes"/>
-	<property name="adito-community-tunnels.home" value="../adito-community-tunnels"/>
-	<property name="adito-community-applications.home" value="../adito-community-applications"/>
-	<property name="adito-community-web-forwards.home" value="../adito-community-web-forwards"/>
-	<property name="adito-community-network-places.home" value="../adito-community-network-places"/>
-	<property name="adito-community-unix.home" value="../adito-community-unix"/>
-	<property name="adito-community-activedirectory.home" value="../adito-community-activedirectory"/>
+	<property name="adito-commons-vfs.home" value="../adito-commons-vfs" />
+	<property name="adito-commons-vfs.classes" value="../adito-commons-vfs/build/classes" />
+	<property name="adito-community-tunnels.home" value="../adito-community-tunnels" />
+	<property name="adito-community-applications.home" value="../adito-community-applications" />
+	<property name="adito-community-web-forwards.home" value="../adito-community-web-forwards" />
+	<property name="adito-community-network-places.home" value="../adito-community-network-places" />
+	<property name="adito-community-unix.home" value="../adito-community-unix" />
+	<property name="adito-community-activedirectory.home" value="../adito-community-activedirectory" />
 
-	<property name="agent.home" value="../adito-agent"/>
+	<property name="agent.home" value="../adito-agent" />
 
 	<!-- Classpath -->
 	<path id="jsp.precompile.path">
-		<pathelement location="${build.boot.output}"/>
-		<pathelement location="${build.server.output}"/>
-		<pathelement location="${build.webapp.output}"/>
-		<pathelement path="${maverick-ssl.classes}"/>
-		<pathelement path="${maverick-crypto.classes}"/>
-		<pathelement path="${maverick-util.classes}"/>
-		<pathelement path="${maverick-multiplex.classes}"/>
+		<pathelement location="${build.boot.output}" />
+		<pathelement location="${build.server.output}" />
+		<pathelement location="${build.webapp.output}" />
+		<pathelement path="${maverick-ssl.classes}" />
+		<pathelement path="${maverick-crypto.classes}" />
+		<pathelement path="${maverick-util.classes}" />
+		<pathelement path="${maverick-multiplex.classes}" />
 		<fileset dir="${build.webapp.lib}">
-			<include name="**/*.jar"/>
+			<include name="**/*.jar" />
 		</fileset>
 		<fileset dir="${build-tools.home}">
-			<include name="**/*.jar"/>
+			<include name="**/*.jar" />
 		</fileset>
 		<fileset dir="${build.lib}">
-			<include name="**/*.jar"/>
+			<include name="**/*.jar" />
 		</fileset>
 		<fileset dir="${build.serverlib}">
-			<include name="**/*.jar"/>
+			<include name="**/*.jar" />
 		</fileset>
 	</path>
 
 	<path id="build.classpath">
-		<pathelement path="${build.boot.output}"/>
-		<pathelement path="${build.server.output}"/>
-		<pathelement path="${build.lib}"/>
-		<pathelement path="${build.serverlib}"/>
-		<pathelement path="${build.webapp.output}"/>
-		<pathelement path="${maverick-ssl.classes}"/>
-		<pathelement path="${maverick-multiplex.classes}"/>
-		<pathelement path="${maverick-crypto.classes}"/>
-		<pathelement path="${maverick-util.classes}"/>
+		<pathelement path="${build.boot.output}" />
+		<pathelement path="${build.server.output}" />
+		<pathelement path="${build.lib}" />
+		<pathelement path="${build.serverlib}" />
+		<pathelement path="${build.webapp.output}" />
+		<pathelement path="${maverick-ssl.classes}" />
+		<pathelement path="${maverick-multiplex.classes}" />
+		<pathelement path="${maverick-crypto.classes}" />
+		<pathelement path="${maverick-util.classes}" />
 
-		<fileset dir="${build.lib}" includes="*.jar"/>
-		<fileset dir="${build.serverlib}" includes="**/*.jar"/>
-		<fileset dir="${build.webapp.lib}" includes="**/*.jar"/>
-		<pathelement path="webapp"/>
+		<fileset dir="${build.lib}" includes="*.jar" />
+		<fileset dir="${build.serverlib}" includes="**/*.jar" />
+		<fileset dir="${build.webapp.lib}" includes="**/*.jar" />
+		<pathelement path="webapp" />
 	</path>
 
 	<path id="test.classpath">
-		<path refid="build.classpath"/>
-		<fileset dir="${build-tools.home}" includes="**/*.jar"/>
+		<path refid="build.classpath" />
+		<fileset dir="${build-tools.home}" includes="**/*.jar" />
 	</path>
 
 	<target name="test" description="Run the various tests for this extension" depends="clean">
-		<mkdir dir="${build.reports}"/>
-		<antcall target="test-junit"/>
-		<antcall target="test-findbugs"/>
-		<antcall target="test-cpd"/>
-		<antcall target="test-pmd"/>
-		<antcall target="test-report"/>
-		<fail if="junit.test.failure" unless="run.all.tests" message="One or more JUnit tests failed, please consult the report for more information"/>
+		<mkdir dir="${build.reports}" />
+		<antcall target="test-junit" />
+		<antcall target="test-findbugs" />
+		<antcall target="test-cpd" />
+		<antcall target="test-pmd" />
+		<antcall target="test-report" />
+		<fail if="junit.test.failure" unless="run.all.tests" message="One or more JUnit tests failed, please consult the report for more information" />
 	</target>
 
 	<target name="test-junit" description="Run the JUnit tests for this extension" depends="compile-test">
-		<mkdir dir="${build.reports}/${build.reports.junit.xml}"/>
+		<mkdir dir="${build.reports}/${build.reports.junit.xml}" />
 
 		<junit fork="yes" printsummary="yes" failureproperty="junit.test.failure" dir=".">
 			<classpath>
-				<pathelement path="${build.output.test}"/>
-				<pathelement path="${build.output.instrumented}"/>
+				<pathelement path="${build.output.test}" />
+				<pathelement path="${build.output.instrumented}" />
 			</classpath>
-			<classpath refid="test.classpath"/>
+			<classpath refid="test.classpath" />
 
-			<jvmarg value="-Demma.coverage.out.file=${build.reports}/${build.reports.emma.coverage}/${ant.project.name}-coverage.emma"/>
-			<jvmarg value="-Demma.coverage.out.merge=true"/>
+			<jvmarg value="-Demma.coverage.out.file=${build.reports}/${build.reports.emma.coverage}/${ant.project.name}-coverage.emma" />
+			<jvmarg value="-Demma.coverage.out.merge=true" />
 
-			<formatter type="xml"/>
+			<formatter type="xml" />
 			<batchtest todir="${build.reports}/${build.reports.junit.xml}">
 				<fileset dir="${build.output.test}">
-					<include name="**/*Test*.class"/>
-					<exclude name="**/*Abstract*.class"/>
-					<exclude name="**/*$*.class"/>
-					<exclude name="com/adito/httpunit/*"/>
-					<exclude name="com/adito/testcontainer/*"/>
+					<include name="**/*Test*.class" />
+					<exclude name="**/*Abstract*.class" />
+					<exclude name="**/*$*.class" />
+					<exclude name="com/adito/httpunit/*" />
+					<exclude name="com/adito/testcontainer/*" />
 				</fileset>
 			</batchtest>
 		</junit>
@@ -187,56 +188,44 @@
 
 	<target name="compile-test" description="Compile the tests" depends="compile,compile-test-dependencies">
 		<antcall target="compile">
-			<param name="build.debug" value="on"/>
+			<param name="build.debug" value="on" />
 		</antcall>
-		<antcall target="compile-emma"/>
+		<antcall target="compile-emma" />
 
-		<mkdir dir="${build.output.test}"/>
+		<mkdir dir="${build.output.test}" />
 		<javac destdir="${build.output.test}" srcdir="${build.test.src}" debug="true" includeantruntime="false" includes="**/*.java">
-			<classpath refid="test.classpath"/>
+			<classpath refid="test.classpath" />
 		</javac>
 		<copy todir="${build.output.test}">
 			<fileset dir="${build.test.src}">
-				<include name="**/*.properties"/>
-				<include name="**/*.txt"/>
-				<include name="**/*.xml"/>
+				<include name="**/*.properties" />
+				<include name="**/*.txt" />
+				<include name="**/*.xml" />
 			</fileset>
 		</copy>
 	</target>
 
 	<target name="compile-test-dependencies" description="Compile the test dependencies for this project">
-		<ant inheritall="false" dir="${maverick-crypto.home}" target="compile"/>
-		<ant inheritall="false" dir="${maverick-multiplex.home}" target="compile"/>
-		<ant inheritall="false" dir="${maverick-ssl.home}" target="compile"/>
-		<ant inheritall="false" dir="${maverick-util.home}" target="compile"/>
+		<ant inheritall="false" dir="${maverick-crypto.home}" target="compile" />
+		<ant inheritall="false" dir="${maverick-multiplex.home}" target="compile" />
+		<ant inheritall="false" dir="${maverick-ssl.home}" target="compile" />
+		<ant inheritall="false" dir="${maverick-util.home}" target="compile" />
 	</target>
 
 	<target name="compile-emma" description="Instrument the classes to provide emma code coverage">
-		<mkdir dir="${build.output.instrumented}"/>
-		<mkdir dir="${build.reports}/${build.reports.emma.coverage}"/>
+		<mkdir dir="${build.output.instrumented}" />
+		<mkdir dir="${build.reports}/${build.reports.emma.coverage}" />
 		<!-- shouldn't have to do this, but it it doesn't seem to work with multiple instrpaths set -->
 		<emma>
-			<instr instrpath="${build.boot.output}"
-                mode="copy"
-                outdir="${build.output.instrumented}"
-                metadatafile="${build.reports}/${build.reports.emma.coverage}/${ant.project.name}-metadata.emma"
-                merge="true">
+			<instr instrpath="${build.boot.output}" mode="copy" outdir="${build.output.instrumented}" metadatafile="${build.reports}/${build.reports.emma.coverage}/${ant.project.name}-metadata.emma" merge="true">
 			</instr>
 		</emma>
 		<emma>
-			<instr instrpath="${build.server.output}"
-                mode="copy"
-                outdir="${build.output.instrumented}"
-                metadatafile="${build.reports}/${build.reports.emma.coverage}/${ant.project.name}-metadata.emma"
-                merge="true">
+			<instr instrpath="${build.server.output}" mode="copy" outdir="${build.output.instrumented}" metadatafile="${build.reports}/${build.reports.emma.coverage}/${ant.project.name}-metadata.emma" merge="true">
 			</instr>
 		</emma>
 		<emma>
-			<instr instrpath="${build.webapp.output}"
-                mode="copy"
-                outdir="${build.output.instrumented}"
-                metadatafile="${build.reports}/${build.reports.emma.coverage}/${ant.project.name}-metadata.emma"
-                merge="true">
+			<instr instrpath="${build.webapp.output}" mode="copy" outdir="${build.output.instrumented}" metadatafile="${build.reports}/${build.reports.emma.coverage}/${ant.project.name}-metadata.emma" merge="true">
 			</instr>
 		</emma>
 	</target>
@@ -244,111 +233,106 @@
 	<target name="test-emma" description="Test the code coverage against the JUnit tests" depends="test-junit" />
 
 	<target name="test-findbugs" description="Test the extension against FindBugs">
-		<mkdir dir="${build.reports}/${build.reports.findbugs.xml}"/>
+		<mkdir dir="${build.reports}/${build.reports.findbugs.xml}" />
 
-		<findbugs projectname="${ant.project.name}" 
-				  home="${unit-testing.home}/findbugs"
-	              output="xml:withMessages"
-	              outputFile="${build.reports}/${build.reports.findbugs.xml}/${ant.project.name}-findbugs-report.xml" 
-				  reportLevel="low"
-				  jvmargs="-Xms128m -Xmx512m -XX:+UseParallelGC">
-			<sourcePath path="${build.boot.src}"/>
-			<sourcePath path="${build.server.src}"/>
-			<sourcePath path="${build.webapp.src}"/>
-			<class location="${build.boot.output}"/>
-			<class location="${build.server.output}"/>
-			<class location="${build.webapp.output}"/>
-			<auxclasspath refid="test.classpath"/>
+		<findbugs projectname="${ant.project.name}" home="${unit-testing.home}/findbugs" output="xml:withMessages" outputFile="${build.reports}/${build.reports.findbugs.xml}/${ant.project.name}-findbugs-report.xml" reportLevel="low" jvmargs="-Xms128m -Xmx512m -XX:+UseParallelGC">
+			<sourcePath path="${build.boot.src}" />
+			<sourcePath path="${build.server.src}" />
+			<sourcePath path="${build.webapp.src}" />
+			<class location="${build.boot.output}" />
+			<class location="${build.server.output}" />
+			<class location="${build.webapp.output}" />
+			<auxclasspath refid="test.classpath" />
 		</findbugs>
 	</target>
 
 	<target name="test-cpd" description="Test the extension against the Copy and Paste Detector">
-		<mkdir dir="${build.reports}/${build.reports.cpd.xml}"/>
+		<mkdir dir="${build.reports}/${build.reports.cpd.xml}" />
 
 		<cpd minimumTokenCount="50" outputFile="${build.reports}/${build.reports.cpd.xml}/${ant.project.name}-cpd-report.txt">
-			<fileset dir="${build.webapp.src}" includes="**/*.java"/>
+			<fileset dir="${build.webapp.src}" includes="**/*.java" />
 		</cpd>
 	</target>
 
 	<target name="test-pmd" description="Test the extension against the PMD rules">
-		<mkdir dir="${build.reports}/${build.reports.pmd.xml}"/>
+		<mkdir dir="${build.reports}/${build.reports.pmd.xml}" />
 
 		<pmd shortFilenames="true" targetjdk="1.5" rulesetfiles="${unit-testing.home}/pmd/pmd-report-all.xml">
-			<fileset dir="${build.webapp.src}" includes="**/*.java"/>
-			<formatter type="xml" toFile="${build.reports}/${build.reports.pmd.xml}/${ant.project.name}-pmd-report.xml"/>
+			<fileset dir="${build.webapp.src}" includes="**/*.java" />
+			<formatter type="xml" toFile="${build.reports}/${build.reports.pmd.xml}/${ant.project.name}-pmd-report.xml" />
 		</pmd>
 	</target>
 
 	<target name="test-report" description="Generate the HTML reports">
-		<antcall target="test-junit-report"/>
-		<antcall target="test-emma-report"/>
-		<antcall target="test-findbugs-report"/>
+		<antcall target="test-junit-report" />
+		<antcall target="test-emma-report" />
+		<antcall target="test-findbugs-report" />
 		<!-- antcall target="test-cpd-report"/ -->
-		<antcall target="test-pmd-report"/>
-		<antcall target="test-report-cleanup"/>
+		<antcall target="test-pmd-report" />
+		<antcall target="test-report-cleanup" />
 	</target>
 
 	<target name="test-junit-report" description="Generate the JUnit HTML report" unless="run.all.tests">
-		<mkdir dir="${build.reports}/${build.reports.junit.html}"/>
+		<mkdir dir="${build.reports}/${build.reports.junit.html}" />
 		<junitreport todir="${build.reports}/${build.reports.junit}">
-			<fileset dir="${build.reports}/${build.reports.junit.xml}" includes="TEST-*.xml"/>
-			<report format="frames" todir="${build.reports}/${build.reports.junit.html}"/>
+			<fileset dir="${build.reports}/${build.reports.junit.xml}" includes="TEST-*.xml" />
+			<report format="frames" todir="${build.reports}/${build.reports.junit.html}" />
 		</junitreport>
 	</target>
 
 	<target name="test-emma-report" description="Creates a code coverage report using emma stats gathered whilst running junit tests" unless="run.all.tests">
-		<mkdir dir="${build.reports}/${build.reports.emma.html}"/>
+		<mkdir dir="${build.reports}/${build.reports.emma.html}" />
 		<emma>
 			<report sourcepath="${build.webapp.src}" sort="+block,+name,+method,+class" metrics="method:70,block:80,line:80,class:100">
-				<fileset dir="${build.reports}/${build.reports.emma.coverage}" includes="${ant.project.name}-*.emma"/>
-				<html outfile="${build.reports}/${build.reports.emma.html}/${ant.project.name}-coverage.html" depth="method" columns="name,class,method,block,line"/>
+				<fileset dir="${build.reports}/${build.reports.emma.coverage}" includes="${ant.project.name}-*.emma" />
+				<html outfile="${build.reports}/${build.reports.emma.html}/${ant.project.name}-coverage.html" depth="method" columns="name,class,method,block,line" />
 			</report>
 		</emma>
 	</target>
 
 	<target name="test-findbugs-report" description="Generate the FindBugs HTML report">
-		<mkdir dir="${build.reports}/${build.reports.findbugs.html}"/>
-		<xslt in="${build.reports}/${build.reports.findbugs.xml}/${ant.project.name}-findbugs-report.xml" style="${unit-testing.home}/findbugs/fancy.xsl" out="${build.reports}/${build.reports.findbugs.html}/${ant.project.name}-findbugs-report.html"/>
+		<mkdir dir="${build.reports}/${build.reports.findbugs.html}" />
+		<xslt in="${build.reports}/${build.reports.findbugs.xml}/${ant.project.name}-findbugs-report.xml" style="${unit-testing.home}/findbugs/fancy.xsl" out="${build.reports}/${build.reports.findbugs.html}/${ant.project.name}-findbugs-report.html" />
 	</target>
 
 	<target name="test-cpd-report" description="Generate the Copy and Paste detector HTML report">
-		<mkdir dir="${build.reports}/${build.reports.cpd.html}"/>
-		<xslt in="${build.reports}/${build.reports.cpd.xml}/${ant.project.name}-cpd-report.txt" style="${unit-testing.home}/pmd/cpdhtml.xslt" out="${build.reports}/${build.reports.cpd.html}/${ant.project.name}-cpd-report.html"/>
+		<mkdir dir="${build.reports}/${build.reports.cpd.html}" />
+		<xslt in="${build.reports}/${build.reports.cpd.xml}/${ant.project.name}-cpd-report.txt" style="${unit-testing.home}/pmd/cpdhtml.xslt" out="${build.reports}/${build.reports.cpd.html}/${ant.project.name}-cpd-report.html" />
 	</target>
 
 	<target name="test-pmd-report" description="Generate the PMD HTML report">
-		<mkdir dir="${build.reports}/${build.reports.pmd.html}"/>
-		<xslt in="${build.reports}/${build.reports.pmd.xml}/${ant.project.name}-pmd-report.xml" style="${unit-testing.home}/pmd/wz-pmd-report.xslt" out="${build.reports}/${build.reports.pmd.html}/${ant.project.name}-pmd-report.html"/>
+		<mkdir dir="${build.reports}/${build.reports.pmd.html}" />
+		<xslt in="${build.reports}/${build.reports.pmd.xml}/${ant.project.name}-pmd-report.xml" style="${unit-testing.home}/pmd/wz-pmd-report.xslt" out="${build.reports}/${build.reports.pmd.html}/${ant.project.name}-pmd-report.html" />
 	</target>
 
 	<target name="test-report-cleanup" description="Removes all the generated report meta-data, leaving behind the useful reports" unless="run.all.tests">
-		<delete dir="${build.reports}/${build.reports.junit}" includes="*.*"/>
-		<delete dir="${build.reports}/${build.reports.junit.xml}"/>
-		<delete dir="${build.reports}/${build.reports.emma.coverage}"/>
-		<delete dir="${build.reports}/${build.reports.findbugs.xml}"/>
-		<delete dir="${build.reports}/${build.reports.pmd.xml}"/>
+		<delete dir="${build.reports}/${build.reports.junit}" includes="*.*" />
+		<delete dir="${build.reports}/${build.reports.junit.xml}" />
+		<delete dir="${build.reports}/${build.reports.emma.coverage}" />
+		<delete dir="${build.reports}/${build.reports.findbugs.xml}" />
+		<delete dir="${build.reports}/${build.reports.pmd.xml}" />
 
 		<copy todir="${build.reports}/${build.reports.junit}">
-			<fileset dir="${build.reports}/${build.reports.junit.html}" includes="**/*"/>
+			<fileset dir="${build.reports}/${build.reports.junit.html}" includes="**/*" />
 		</copy>
 		<copy todir="${build.reports}/${build.reports.emma}">
-			<fileset dir="${build.reports}/${build.reports.emma.html}" includes="**/*"/>
+			<fileset dir="${build.reports}/${build.reports.emma.html}" includes="**/*" />
 		</copy>
 		<copy todir="${build.reports}/${build.reports.findbugs}">
-			<fileset dir="${build.reports}/${build.reports.findbugs.html}" includes="**/*"/>
+			<fileset dir="${build.reports}/${build.reports.findbugs.html}" includes="**/*" />
 		</copy>
 		<copy todir="${build.reports}/${build.reports.pmd}">
-			<fileset dir="${build.reports}/${build.reports.pmd.html}" includes="**/*"/>
+			<fileset dir="${build.reports}/${build.reports.pmd.html}" includes="**/*" />
 		</copy>
 
-		<delete dir="${build.reports}/${build.reports.junit.html}"/>
-		<delete dir="${build.reports}/${build.reports.emma.html}"/>
-		<delete dir="${build.reports}/${build.reports.findbugs.html}"/>
-		<delete dir="${build.reports}/${build.reports.pmd.html}"/>
+		<delete dir="${build.reports}/${build.reports.junit.html}" />
+		<delete dir="${build.reports}/${build.reports.emma.html}" />
+		<delete dir="${build.reports}/${build.reports.findbugs.html}" />
+		<delete dir="${build.reports}/${build.reports.pmd.html}" />
 	</target>
 
 	<target name="clean-reports" unless="run.all.tests">
-		<delete dir="${build.reports}"/>
+		<delete dir="${build.reports}" />
 	</target>
 
 	<!-- Ant Contrib is required -->
@@ -362,25 +346,25 @@
 	<target name="console" depends="compile,local-deploy,deploy-community-extensions">
 		<!-- Launch on Linux -->
 		<if>
-			<equals arg1="${os.name}" arg2="Linux"/>
+			<equals arg1="${os.name}" arg2="Linux" />
 			<then>
-				<chmod perm="a+x" type="file" file="install/platforms/linux/adito"/>
-				<chmod perm="a+x" type="file" file="install/platforms/linux/wrapper"/>
+				<chmod perm="a+x" type="file" file="install/platforms/linux/adito" />
+				<chmod perm="a+x" type="file" file="install/platforms/linux/wrapper" />
 				<exec executable="${basedir}/install/platforms/linux/adito">
-					<arg value="console"/>
-					<env key="WRAPPER_CONF" value="${adito.conf}/wrapper.conf"/>
+					<arg value="console" />
+					<env key="WRAPPER_CONF" value="${adito.conf}/wrapper.conf" />
 				</exec>
 			</then>
 			<else>
 				<!-- Launch on Windows -->
 				<if>
-					<os family="windows"/>
+					<os family="windows" />
 					<then>
 						<exec executable="${basedir}/install/platforms/windows/wrapper">
-							<arg value="-c"/>
-							<arg value="../../../${adito.conf}/wrapper.conf"/>
-							<arg value="wrapper.working.dir=../../.."/>
-							<arg value="wrapper.java.library.path.1=install/platforms/windows"/>
+							<arg value="-c" />
+							<arg value="../../../${adito.conf}/wrapper.conf" />
+							<arg value="wrapper.working.dir=../../.." />
+							<arg value="wrapper.java.library.path.1=install/platforms/windows" />
 						</exec>
 					</then>
 					<else>
@@ -390,7 +374,7 @@
 							generic method. You will not have restart ability from the user interface and
 							beware of using CTRL+C, it may leave processes running
 						</echo>
-						<antcall target="start-using-java"/>
+						<antcall target="start-using-java" />
 					</else>
 				</if>
 			</else>
@@ -398,13 +382,13 @@
 	</target>
 
 	<!-- Launch using Java (avoids wrapper) -->
-	<!-- This target tested and works at least on Gentoo Linux with Sun JDK 1.6. -matt 10.8.2008 --> 
+	<!-- This target tested and works at least on Gentoo Linux with Sun JDK 1.6. -matt 10.8.2008 -->
 	<target name="start-using-java">
 		<java fork="true" classname="com.adito.boot.Bootstrap">
 			<classpath>
-				<pathelement path="${build.boot.output}"/>
+				<pathelement path="${build.boot.output}" />
 			</classpath>
-			<arg value="--conf=${adito.conf}"/>
+			<arg value="--conf=${adito.conf}" />
 		</java>
 	</target>
 
@@ -414,26 +398,26 @@
 	<target name="start">
 		<!-- Launch on Linux -->
 		<if>
-			<equals arg1="${os.name}" arg2="Linux"/>
+			<equals arg1="${os.name}" arg2="Linux" />
 			<then>
-				<chmod perm="a+x" type="file" file="install/platforms/linux/adito"/>
-				<chmod perm="a+x" type="file" file="install/platforms/linux/wrapper"/>
+				<chmod perm="a+x" type="file" file="install/platforms/linux/adito" />
+				<chmod perm="a+x" type="file" file="install/platforms/linux/wrapper" />
 				<exec executable="${basedir}/install/platforms/linux/adito">
-					<arg value="start"/>
-					<env key="WRAPPER_CONF" value="${adito.conf}/wrapper.conf"/>
+					<arg value="start" />
+					<env key="WRAPPER_CONF" value="${adito.conf}/wrapper.conf" />
 				</exec>
 				<echo>Adito started</echo>
 			</then>
 			<else>
 				<!-- Launch on Windows -->
 				<if>
-					<os family="windows"/>
+					<os family="windows" />
 					<then>
 						<exec spawn="true" executable="${basedir}/install/platforms/windows/wrapper">
-							<arg value="-c"/>
-							<arg value="../../../${adito.conf}/wrapper.conf"/>
-							<arg value="wrapper.working.dir=../../.."/>
-							<arg value="wrapper.java.library.path.1=install/platforms/windows"/>
+							<arg value="-c" />
+							<arg value="../../../${adito.conf}/wrapper.conf" />
+							<arg value="wrapper.working.dir=../../.." />
+							<arg value="wrapper.java.library.path.1=install/platforms/windows" />
 						</exec>
 						<echo>Adito started</echo>
 					</then>
@@ -446,9 +430,9 @@
 						</echo>
 						<java spawn="true" fork="true" classname="com.adito.boot.Bootstrap">
 							<classpath>
-								<pathelement path="${build.boot.output}"/>
+								<pathelement path="${build.boot.output}" />
 							</classpath>
-							<arg value="--conf=${adito.conf}"/>
+							<arg value="--conf=${adito.conf}" />
 						</java>
 						<echo>Adito started</echo>
 					</else>
@@ -461,17 +445,17 @@
 	<target name="stop">
 		<!-- Stop on Linux -->
 		<if>
-			<equals arg1="${os.name}" arg2="Linux"/>
+			<equals arg1="${os.name}" arg2="Linux" />
 			<then>
-				<chmod perm="a+x" type="file" file="install/platforms/linux/adito"/>
-				<chmod perm="a+x" type="file" file="install/platforms/linux/wrapper"/>
+				<chmod perm="a+x" type="file" file="install/platforms/linux/adito" />
+				<chmod perm="a+x" type="file" file="install/platforms/linux/wrapper" />
 				<exec executable="${basedir}/install/platforms/linux/adito">
-					<arg value="stop"/>
-					<env key="WRAPPER_CONF" value="${adito.conf}/wrapper.conf"/>
+					<arg value="stop" />
+					<env key="WRAPPER_CONF" value="${adito.conf}/wrapper.conf" />
 				</exec>
 			</then>
 			<else>
-				<antcall target="stop-using-signal"/>
+				<antcall target="stop-using-signal" />
 			</else>
 		</if>
 	</target>
@@ -486,18 +470,18 @@
 	<target name="restart" depends="compile,local-deploy,deploy-community-extensions">
 		<!-- Restart on Linux -->
 		<if>
-			<equals arg1="${os.name}" arg2="Linux"/>
+			<equals arg1="${os.name}" arg2="Linux" />
 			<then>
-				<chmod perm="a+x" type="file" file="install/platforms/linux/adito"/>
-				<chmod perm="a+x" type="file" file="install/platforms/linux/wrapper"/>
+				<chmod perm="a+x" type="file" file="install/platforms/linux/adito" />
+				<chmod perm="a+x" type="file" file="install/platforms/linux/wrapper" />
 				<exec executable="${basedir}/install/platforms/linux/adito">
-					<arg value="restart"/>
-					<env key="WRAPPER_CONF" value="${adito.conf}/wrapper.conf"/>
+					<arg value="restart" />
+					<env key="WRAPPER_CONF" value="${adito.conf}/wrapper.conf" />
 				</exec>
 			</then>
 			<else>
 				<if>
-					<os family="windows"/>
+					<os family="windows" />
 					<then>
 						<echo file="tmp/server.run">restart</echo>
 						<echo>Restart signal sent. This may take a few seconds to take effect.</echo>
@@ -511,8 +495,8 @@
 		</if>
 	</target>
 
-        <!-- Copy wrapper.conf.example to wrapper.conf if wrapper.conf does not exist -->
-        <target name="check-wrapper-conf">
+	<!-- Copy wrapper.conf.example to wrapper.conf if wrapper.conf does not exist -->
+	<target name="check-wrapper-conf">
 		<echo>Checking if wrapper.conf exists and copying it to place</echo>
 		<copy failonerror="false" file="${adito.conf}/wrapper.conf.example" tofile="${adito.conf}/wrapper.conf" />
 	</target>
@@ -521,44 +505,44 @@
 	<target name="install" depends="compile,local-deploy,deploy-community-extensions,check-wrapper-conf">
 
 		<!-- Just in case -->
-		<mkdir dir="logs"/>
-		<mkdir dir="tmp"/>
+		<mkdir dir="logs" />
+		<mkdir dir="tmp" />
 
 		<java fork="true" classname="com.adito.boot.Bootstrap">
-			<arg value="--install"/>
+			<arg value="--install" />
 			<classpath>
-				<pathelement path="${build.boot.output}"/>
+				<pathelement path="${build.boot.output}" />
 			</classpath>
-			<arg value="--conf=${adito.conf}"/>
+			<arg value="--conf=${adito.conf}" />
 		</java>
 	</target>
 
 	<!-- Install Adito as a service  -->
 	<target name="install-service" depends="compile,local-deploy,deploy-community-extensions,check-wrapper-conf">
 		<if>
-			<equals arg1="${os.name}" arg2="Linux"/>
+			<equals arg1="${os.name}" arg2="Linux" />
 			<then>
 				<!-- Install on Linux -->
 				<echo>Installing Adito as Linux service</echo>
-				<chmod perm="a+x" type="file" file="install/platforms/linux/install-service"/>
+				<chmod perm="a+x" type="file" file="install/platforms/linux/install-service" />
 				<exec executable="${basedir}/install/platforms/linux/install-service">
-					<arg value="-j"/>
-					<arg value="${java.home}"/>
+					<arg value="-j" />
+					<arg value="${java.home}" />
 				</exec>
 				<echo>Adito installed as Linux service</echo>
 			</then>
 			<else>
 				<!-- Install on Windows -->
 				<if>
-					<os family="windows"/>
+					<os family="windows" />
 					<then>
 						<!-- Install on Linux -->
 						<echo>Installing Adito as Windows service</echo>
 						<exec spawn="true" executable="${basedir}/install/platforms/windows/wrapper">
-							<arg value="-i"/>
-							<arg value="../../../${adito.conf}/wrapper.conf"/>
-							<arg value="wrapper.working.dir=../../.."/>
-							<arg value="wrapper.java.library.path.1=install/platforms/windows"/>
+							<arg value="-i" />
+							<arg value="../../../${adito.conf}/wrapper.conf" />
+							<arg value="wrapper.working.dir=../../.." />
+							<arg value="wrapper.java.library.path.1=install/platforms/windows" />
 						</exec>
 						<echo>Adito installed as Windows service</echo>
 					</then>
@@ -576,28 +560,28 @@
 	<!-- Uninstall Adito as a services  -->
 	<target name="uninstall-service" depends="compile,local-deploy,deploy-community-extensions">
 		<if>
-			<equals arg1="${os.name}" arg2="Linux"/>
+			<equals arg1="${os.name}" arg2="Linux" />
 			<then>
 				<!-- Install on Linux -->
 				<echo>Uninstalling Adito Linux service</echo>
-				<chmod perm="a+x" type="file" file="install/platforms/linux/install-service"/>
+				<chmod perm="a+x" type="file" file="install/platforms/linux/install-service" />
 				<exec executable="${basedir}/install/platforms/linux/install-service">
-					<arg value="-u"/>
+					<arg value="-u" />
 				</exec>
 				<echo>Uinstalled Adito Linux service</echo>
 			</then>
 			<else>
 				<!-- Install on Windows -->
 				<if>
-					<os family="windows"/>
+					<os family="windows" />
 					<then>
 						<!-- Install on Linux -->
 						<echo>Uinstallign Adito Windows service</echo>
 						<exec spawn="true" executable="${basedir}/install/platforms/windows/wrapper">
-							<arg value="-r"/>
-							<arg value="../../../${adito.conf}/wrapper.conf"/>
-							<arg value="wrapper.working.dir=../../.."/>
-							<arg value="wrapper.java.library.path.1=install/platforms/windows"/>
+							<arg value="-r" />
+							<arg value="../../../${adito.conf}/wrapper.conf" />
+							<arg value="wrapper.working.dir=../../.." />
+							<arg value="wrapper.java.library.path.1=install/platforms/windows" />
 						</exec>
 						<echo>Uinstalled Adito Windows server</echo>
 					</then>
@@ -618,31 +602,31 @@
 		<input message="Enter the directory where the old Adito 0.1.15+ installation is (or just hit ENTER to attempt to run GUI front end)" addproperty="upgrader.old">
 		</input>
 		<if>
-			<equals arg1="${upgrader.old}" arg2=""/>
+			<equals arg1="${upgrader.old}" arg2="" />
 			<then>
 				<java spawn="true" fork="true" classname="com.adito.upgrade.Upgrade">
 					<classpath>
-						<pathelement path="${build.tools.output}"/>
+						<pathelement path="${build.tools.output}" />
 						<fileset dir="${build.lib}">
-							<include name="commons-logging.jar"/>
+							<include name="commons-logging.jar" />
 						</fileset>
 						<fileset dir="${build.webapp.lib}">
-							<include name="hsqldb.jar"/>
+							<include name="hsqldb.jar" />
 						</fileset>
 					</classpath>
 				</java>
 			</then>
 			<else>
 				<java logerror="true" classname="com.adito.upgrade.Upgrade">
-					<arg value="${upgrader.old}"/>
-					<arg value="${basedir}"/>
+					<arg value="${upgrader.old}" />
+					<arg value="${basedir}" />
 					<classpath>
-						<pathelement path="${build.tools.output}"/>
+						<pathelement path="${build.tools.output}" />
 						<fileset dir="${build.lib}">
-							<include name="commons-logging.jar"/>
+							<include name="commons-logging.jar" />
 						</fileset>
 						<fileset dir="${build.webapp.lib}">
-							<include name="hsqldb.jar"/>
+							<include name="hsqldb.jar" />
 						</fileset>
 					</classpath>
 				</java>
@@ -652,19 +636,19 @@
 
 	<!-- Run the HSQLDB manager -->
 	<target name="hsqldb-manager">
-		<java logerror="true"  fork="true" classname="org.hsqldb.util.DatabaseManagerSwing">
+		<java logerror="true" fork="true" classname="org.hsqldb.util.DatabaseManagerSwing">
 			<classpath>
-				<pathelement path="${build.boot.output}"/>
-				<pathelement path="${build.server.output}"/>
-				<pathelement path="${build.webapp.output}"/>
-				<pathelement path="${maverick-crypto.classes}"/>
-				<pathelement path="${maverick-ssl.classes}"/>
-				<pathelement location="${tools.jar}"/>
+				<pathelement path="${build.boot.output}" />
+				<pathelement path="${build.server.output}" />
+				<pathelement path="${build.webapp.output}" />
+				<pathelement path="${maverick-crypto.classes}" />
+				<pathelement path="${maverick-ssl.classes}" />
+				<pathelement location="${tools.jar}" />
 				<fileset dir="${build.lib}">
-					<include name="*.jar"/>
+					<include name="*.jar" />
 				</fileset>
 				<fileset dir="${build.webapp.lib}">
-					<include name="*.jar"/>
+					<include name="*.jar" />
 				</fileset>
 			</classpath>
 		</java>
@@ -673,19 +657,19 @@
 	<!-- Run the HSQLDB dump -->
 	<target name="hsqldb-dump">
 		<java fork="true" classname="org.hsqldb.util.Transfer">
-			<arg value="--dump"/>
+			<arg value="--dump" />
 			<classpath>
-				<pathelement path="${build.boot.output}"/>
-				<pathelement path="${build.server.output}"/>
-				<pathelement path="${build.webapp.output}"/>
-				<pathelement path="${maverick-crypto.classes}"/>
-				<pathelement path="${maverick-ssl.classes}"/>
-				<pathelement location="${tools.jar}"/>
+				<pathelement path="${build.boot.output}" />
+				<pathelement path="${build.server.output}" />
+				<pathelement path="${build.webapp.output}" />
+				<pathelement path="${maverick-crypto.classes}" />
+				<pathelement path="${maverick-ssl.classes}" />
+				<pathelement location="${tools.jar}" />
 				<fileset dir="${build.lib}">
-					<include name="*.jar"/>
+					<include name="*.jar" />
 				</fileset>
 				<fileset dir="${build.webapp.lib}">
-					<include name="*.jar"/>
+					<include name="*.jar" />
 				</fileset>
 			</classpath>
 		</java>
@@ -699,63 +683,161 @@
 		     to the repository -->
 
 		<ant inheritall="false" dir="${adito-community-tunnels.home}" target="release">
-			<property name="build.compiler" value="${build.compiler}"/>
+			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
-		<copy file="${adito-community-tunnels.home}/build/release/adito-community-tunnels.zip"
-			todir="${adito.conf}/repository/archives"/>
+		<copy file="${adito-community-tunnels.home}/build/release/adito-community-tunnels.zip" todir="${adito.conf}/repository/archives" />
 
 		<ant inheritall="false" dir="${adito-community-applications.home}" target="release">
-			<property name="build.compiler" value="${build.compiler}"/>
+			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
-		<copy file="${adito-community-applications.home}/build/release/adito-community-applications.zip"
-			todir="${adito.conf}/repository/archives"/>
+		<copy file="${adito-community-applications.home}/build/release/adito-community-applications.zip" todir="${adito.conf}/repository/archives" />
 
 		<ant inheritall="false" dir="${adito-community-web-forwards.home}" target="release">
-			<property name="build.compiler" value="${build.compiler}"/>
+			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
-		<copy file="${adito-community-web-forwards.home}/build/release/adito-community-web-forwards.zip"
-			todir="${adito.conf}/repository/archives"/>
+		<copy file="${adito-community-web-forwards.home}/build/release/adito-community-web-forwards.zip" todir="${adito.conf}/repository/archives" />
 
 		<ant inheritall="false" dir="${adito-community-network-places.home}" target="release">
-			<property name="build.compiler" value="${build.compiler}"/>
+			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
-		<copy file="${adito-community-network-places.home}/build/release/adito-community-network-places.zip"
-			todir="${adito.conf}/repository/archives"/>
+		<copy file="${adito-community-network-places.home}/build/release/adito-community-network-places.zip" todir="${adito.conf}/repository/archives" />
 
 		<ant inheritall="false" dir="${adito-community-unix.home}" target="release">
-			<property name="build.compiler" value="${build.compiler}"/>
+			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
-		<copy file="${adito-community-unix.home}/build/release/adito-community-unix.zip"
-			todir="${adito.conf}/repository/archives"/>
+		<copy file="${adito-community-unix.home}/build/release/adito-community-unix.zip" todir="${adito.conf}/repository/archives" />
 
 		<ant inheritall="false" dir="${adito-community-activedirectory.home}" target="release">
-			<property name="build.compiler" value="${build.compiler}"/>
+			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
-		<copy file="${adito-community-activedirectory.home}/build/release/adito-community-activedirectory.zip"
-			todir="${adito.conf}/repository/archives"/>
+		<copy file="${adito-community-activedirectory.home}/build/release/adito-community-activedirectory.zip" todir="${adito.conf}/repository/archives" />
 	</target>
 
 	<!-- Compile everything -->
 	<target name="compile" depends="compile-dependencies,compile-boot,compile-server,compile-webapp">
 	</target>
 
+
+
+	<!-- Compile everything for distribute adito -->
+	<target name="compile-for-dist" depends="dist-dependencies,compile-boot,compile-server,compile-webapp,local-deploy">
+	</target>
+
+	<!-- Compile everything for distribute adito -->
+	<target name="dist" depends="deploy-community-extensions,install-agent,clean-dist">
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${dist.dir}/tmp" />
+		<mkdir dir="${dist.dir}/logs" />
+
+		<copy todir="${dist.dir}/notes">
+			<fileset dir="notes" />
+		</copy>
+
+		<copy todir="${dist.dir}/install">
+			<fileset dir="install" />
+		</copy>
+
+		<copy todir="${dist.dir}/conf">
+			<fileset dir="conf" />
+		</copy>
+
+		<copy todir="${dist.dir}/serverlib">
+			<fileset dir="serverlib" />
+		</copy>
+
+		<copy todir="${dist.dir}/lib">
+			<fileset dir="lib" />
+		</copy>
+
+		<copy todir="${dist.dir}/webapp">
+			<fileset dir="webapp" />
+		</copy>
+		<copy todir="${dist.dir}/db">
+			<fileset dir="db" />
+		</copy>
+
+
+		<!-- Compile adito server and put jar in serverlib -->
+		<jar jarfile="${dist.dir}/serverlib/adito-server.jar">
+			<fileset dir="${build.server.output}">
+				<include name="**/*" />
+			</fileset>
+		</jar>
+
+		<copy todir="${dist.dir}/lib" file="${maverick-util.home}/build/dist/maverick-util.jar" />
+		<copy todir="${dist.dir}/lib" file="${maverick-crypto.home}/build/dist/maverick-crypto.jar" />
+		<copy todir="${dist.dir}/lib" file="${maverick-ssl.home}/build/dist/maverick-ssl.jar" />
+		<copy todir="${dist.dir}/lib" file="${maverick-multiplex.home}/build/dist/maverick-multiplex.jar" />
+		<copy todir="${dist.dir}/lib" file="${build-tools.home}/ant/ant-contrib.jar" />
+
+		<!-- Compile adito boot and put jar in lib -->
+		<jar jarfile="${dist.dir}/lib/adito-boot.jar">
+			<fileset dir="${build.boot.output}">
+				<include name="**/*" />
+			</fileset>
+		</jar>
+
+
+		<!-- Compile adito boot and put jar in lib -->
+		<jar jarfile="${dist.dir}/webapp/WEB-INF/lib/adito-webapp.jar">
+			<fileset dir="${build.webapp.output}">
+				<include name="**/*" />
+			</fileset>
+		</jar>
+		<delete dir="${dist.dir}/webapp/WEB-INF/classes" />
+
+		<copy failonerror="true" file="build-dist.xml" tofile="${dist.dir}/build.xml" />
+
+		<zip destfile="adito-0.9.0-bin.zip">
+			<zipfileset dir="${dist.dir}" prefix="adito-0.9.0-bin">
+				<exclude name="**/svn-*" />
+				<exclude name="**/*.log" />
+			</zipfileset>
+		</zip>
+	</target>
+
+	<target name="clean-dist">
+		<delete dir="${dist.dir}" />
+	</target>
+
+	<!-- Dist server dependencies, TODO remove from svn adito-commons-vfs.jar under 
+	webapp/WEB-INF/lib/ and rebuild this jar from project adito-commons-vfs
+	  -->
+	<target name="dist-dependencies">
+		<ant inheritall="false" dir="${maverick-util.home}" target="dist">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+		<ant inheritall="false" dir="${maverick-crypto.home}" target="dist">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+		<ant inheritall="false" dir="${maverick-ssl.home}" target="dist">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+		<ant inheritall="false" dir="${maverick-multiplex.home}" target="dist">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+		<ant inheritall="false" dir="${adito-commons-vfs.home}" target="compile">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+	</target>
+
 	<!-- Compile server dependencies -->
 
 	<target name="compile-dependencies">
 		<ant inheritall="false" dir="${maverick-util.home}" target="compile">
-			<property name="build.compiler" value="${build.compiler}"/>
+			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
 		<ant inheritall="false" dir="${maverick-crypto.home}" target="compile">
-			<property name="build.compiler" value="${build.compiler}"/>
+			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
 		<ant inheritall="false" dir="${maverick-ssl.home}" target="compile">
-			<property name="build.compiler" value="${build.compiler}"/>
+			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
 		<ant inheritall="false" dir="${maverick-multiplex.home}" target="compile">
-			<property name="build.compiler" value="${build.compiler}"/>
+			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
 		<ant inheritall="false" dir="${adito-commons-vfs.home}" target="compile">
-			<property name="build.compiler" value="${build.compiler}"/>
+			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
 
 	</target>
@@ -763,30 +845,26 @@
 	<!-- Compile the boot classes  -->
 
 	<target name="compile-boot">
-		<mkdir dir="${build.boot.output}"/>
-		<javac compiler="${build.compiler}" destdir="${build.boot.output}"
-				srcdir="${build.boot.src}"
-				includeantruntime="false" 
-			    includes="**/*.java"
-			    debug="${build.debug}">
+		<mkdir dir="${build.boot.output}" />
+		<javac compiler="${build.compiler}" destdir="${build.boot.output}" srcdir="${build.boot.src}" includeantruntime="false" includes="**/*.java" debug="${build.debug}">
 			<classpath>
-				<pathelement path="${maverick-crypto.classes}"/>
-				<pathelement path="${maverick-ssl.classes}"/>
+				<pathelement path="${maverick-crypto.classes}" />
+				<pathelement path="${maverick-ssl.classes}" />
 				<fileset dir="${build.lib}">
-					<include name="commons-logging.jar"/>
-					<include name="javax.servlet.jar"/>
-					<include name="jdom.jar"/>
+					<include name="commons-logging.jar" />
+					<include name="javax.servlet.jar" />
+					<include name="jdom.jar" />
 				</fileset>
 			</classpath>
 		</javac>
 		<copy todir="${build.boot.output}">
 			<fileset dir="${build.boot.src}">
-				<include name="**/*.xml"/>
-				<include name="**/*.properties"/>
+				<include name="**/*.xml" />
+				<include name="**/*.properties" />
 			</fileset>
 			<fileset dir="${build.boot.src}">
-				<include name="**/*.xml"/>
-				<include name="**/*.properties"/>
+				<include name="**/*.xml" />
+				<include name="**/*.properties" />
 			</fileset>
 		</copy>
 	</target>
@@ -794,24 +872,20 @@
 	<!-- Compile the upgrader utility  -->
 
 	<target name="compile-upgrader">
-		<mkdir dir="${build.tools.output}"/>
-		<javac compiler="${build.compiler}" destdir="${build.tools.output}"
-				srcdir="${build.tools.home}/upgrader/src"
-				includeantruntime="false" 
-			    includes="**/*.java"
-			    debug="${build.debug}">
+		<mkdir dir="${build.tools.output}" />
+		<javac compiler="${build.compiler}" destdir="${build.tools.output}" srcdir="${build.tools.home}/upgrader/src" includeantruntime="false" includes="**/*.java" debug="${build.debug}">
 			<classpath>
 				<fileset dir="${build.lib}">
-					<include name="commons-logging.jar"/>
+					<include name="commons-logging.jar" />
 				</fileset>
 				<fileset dir="${build.webapp.lib}">
-					<include name="hsqldb.jar"/>
+					<include name="hsqldb.jar" />
 				</fileset>
 			</classpath>
 		</javac>
 		<copy todir="${build.tools.output}">
 			<fileset dir="${build.tools.home}/upgrader/src">
-				<include name="**/*.png"/>
+				<include name="**/*.png" />
 			</fileset>
 		</copy>
 	</target>
@@ -819,33 +893,29 @@
 	<!-- Compile the server classes  -->
 
 	<target name="compile-server">
-		<mkdir dir="${build.server.output}"/>
-		<javac compiler="${build.compiler}" destdir="${build.server.output}"
-				srcdir="${build.server.src}"
-				includeantruntime="false" 
-			    debug="${build.debug}"
-			    includes="**/*.java">
+		<mkdir dir="${build.server.output}" />
+		<javac compiler="${build.compiler}" destdir="${build.server.output}" srcdir="${build.server.src}" includeantruntime="false" debug="${build.debug}" includes="**/*.java">
 			<classpath>
-				<pathelement path="${build.boot.output}"/>
+				<pathelement path="${build.boot.output}" />
 				<fileset dir="${build.serverlib}">
-					<include name="org.mortbay.jetty.jar"/>
-					<include name="wrapper.jar"/>
+					<include name="org.mortbay.jetty.jar" />
+					<include name="wrapper.jar" />
 				</fileset>
 				<fileset dir="${build.lib}">
-					<include name="javax.servlet.jar"/>
-					<include name="commons-logging.jar"/>
-					<include name="jdom.jar"/>
-					<include name="ant.jar"/>
-					<include name="ant-nodeps.jar"/>
-					<include name="jasper-compiler.jar"/>
-					<include name="jasper-runtime.jar"/>
+					<include name="javax.servlet.jar" />
+					<include name="commons-logging.jar" />
+					<include name="jdom.jar" />
+					<include name="ant.jar" />
+					<include name="ant-nodeps.jar" />
+					<include name="jasper-compiler.jar" />
+					<include name="jasper-runtime.jar" />
 				</fileset>
 			</classpath>
 		</javac>
 		<copy todir="${build.server.output}">
 			<fileset dir="${build.server.src}">
-				<include name="**/*.xml"/>
-				<include name="**/*.properties"/>
+				<include name="**/*.xml" />
+				<include name="**/*.properties" />
 			</fileset>
 		</copy>
 	</target>
@@ -853,33 +923,29 @@
 	<!-- Compile the webapp classes  -->
 
 	<target name="compile-webapp">
-		<mkdir dir="${build.webapp.output}"/>
-		<javac compiler="${build.compiler}" destdir="${build.webapp.output}"
-				srcdir="${build.webapp.src}"
-				includeantruntime="false" 
-			    debug="${build.debug}"
-			    includes="**/*.java">
+		<mkdir dir="${build.webapp.output}" />
+		<javac compiler="${build.compiler}" destdir="${build.webapp.output}" srcdir="${build.webapp.src}" includeantruntime="false" debug="${build.debug}" includes="**/*.java">
 			<classpath>
-				<pathelement path="${build.boot.output}"/>
-				<pathelement path="${maverick-crypto.classes}"/>
-				<pathelement path="${maverick-ssl.classes}"/>
-				<pathelement path="${maverick-multiplex.classes}"/>
-				<pathelement path="${maverick-util.classes}"/>
-				<pathelement path="${adito-commons-vfs.classes}"/>
+				<pathelement path="${build.boot.output}" />
+				<pathelement path="${maverick-crypto.classes}" />
+				<pathelement path="${maverick-ssl.classes}" />
+				<pathelement path="${maverick-multiplex.classes}" />
+				<pathelement path="${maverick-util.classes}" />
+				<pathelement path="${adito-commons-vfs.classes}" />
 				<fileset dir="${build.webapp.lib}">
-					<include name="*.jar"/>
+					<include name="*.jar" />
 				</fileset>
 				<fileset dir="${build.lib}">
-					<include name="*.jar"/>
+					<include name="*.jar" />
 				</fileset>
 			</classpath>
 		</javac>
 		<copy todir="${build.webapp.output}">
 			<fileset dir="${build.webapp.src}">
-				<include name="**/*.xml"/>
-				<include name="**/*.properties"/>
-				<include name="**/*.types"/>
-				<include name="**/*.props"/>
+				<include name="**/*.xml" />
+				<include name="**/*.properties" />
+				<include name="**/*.types" />
+				<include name="**/*.props" />
 			</fileset>
 		</copy>
 	</target>
@@ -887,29 +953,26 @@
 	<!-- Precompile JSPs -->
 
 	<target name="precompile-jsp">
-		<mkdir dir="${build.jsp.classes.output}"/>
-		<mkdir dir="${build.jsp.mappings.output}"/>
-		<mkdir dir="${build.jsp.output}"/>
-		<echo message="Precompiling JSP to Java code..."/>
+		<mkdir dir="${build.jsp.classes.output}" />
+		<mkdir dir="${build.jsp.mappings.output}" />
+		<mkdir dir="${build.jsp.output}" />
+		<echo message="Precompiling JSP to Java code..." />
 		<java fork="true" classname="org.apache.jasper.JspC" classpathref="jsp.precompile.path">
-			<arg value="-die"/>
-			<arg value="-d"/>
+			<arg value="-die" />
+			<arg value="-d" />
 			<arg value="${build.jsp.output}" />
-			<arg value="-p"/>
-			<arg value="org.apache.jsp"/>
-			<arg value="-webinc"/>
-			<arg value="${build.jsp.mappings.file}"/>
-			<arg value="-webapp"/>
-			<arg value="${basedir}/webapp"/>
-			<arg value="-uriroot"/>
-			<arg value="${basedir}/webapp"/>
+			<arg value="-p" />
+			<arg value="org.apache.jsp" />
+			<arg value="-webinc" />
+			<arg value="${build.jsp.mappings.file}" />
+			<arg value="-webapp" />
+			<arg value="${basedir}/webapp" />
+			<arg value="-uriroot" />
+			<arg value="${basedir}/webapp" />
 		</java>
-		<echo message="Compiling translated JSP code..."/>
-		<javac srcdir="${build.jsp.output}"
-					destdir="${build.jsp.classes.output}"
-					classpathref="jsp.precompile.path"
-					debug="${build.debug}"/>
-		<loadfile property="jsp.servlets.text" srcFile="${build.jsp.mappings.file}"/>
+		<echo message="Compiling translated JSP code..." />
+		<javac srcdir="${build.jsp.output}" destdir="${build.jsp.classes.output}" classpathref="jsp.precompile.path" debug="${build.debug}" />
+		<loadfile property="jsp.servlets.text" srcFile="${build.jsp.mappings.file}" />
 		<echo file="webapp/WEB-INF/jsp-mappings.xml">
 			<![CDATA[<?xml version="1.0" encoding="ISO-8859-1"?>
 
@@ -929,8 +992,7 @@ ${jsp.servlets.text}
 	<target name="install-agent">
 		<ant inheritall="false" dir="${agent.home}" target="clean" />
 		<ant inheritall="false" dir="${agent.home}" target="release" />
-		<copy file="${agent.home}/build/release/adito-agent.zip"
-			todir="${adito.conf}/repository/archives"/>
+		<copy file="${agent.home}/build/release/adito-agent.zip" todir="${adito.conf}/repository/archives" />
 	</target>
 
 	<!-- Copy the generated webapp files to the local webapp/WEB-INF/classes
@@ -947,7 +1009,7 @@ ${jsp.servlets.text}
 	<!-- Clean up all built files -->
 
 	<target name="clean">
-		<delete dir="${build.dir}" includes="*.*" failonerror="false"/>
+		<delete dir="${build.dir}" includes="*.*" failonerror="false" />
 		<delete dir="${build.boot.output}" />
 		<delete dir="${build.server.output}" />
 		<delete dir="${build.webapp.output}" />
@@ -957,10 +1019,10 @@ ${jsp.servlets.text}
 		<delete dir="${build.jsp.classes.output}" />
 		<delete dir="${build.jsp.mappings.output}" />
 		<delete dir="${build.doc}" />
-		<delete dir="${build.output.test}"/>
-		<delete dir="${build.output.instrumented}"/>
-		<delete dir="${tmpdir}"/>
-		<antcall target="clean-reports"/>
+		<delete dir="${build.output.test}" />
+		<delete dir="${build.output.instrumented}" />
+		<delete dir="${tmpdir}" />
+		<antcall target="clean-reports" />
 	</target>
 
 	<!-- Create API documentation -->
@@ -974,25 +1036,25 @@ ${jsp.servlets.text}
 				<p>The Adito gateway.</p>]]></doctitle>
 			<bottom>
 				<![CDATA[<i>Copyright &#169; 2003-2006 3SP LTD. All Rights Reserved.</i>]]></bottom>
-			<packageset dir="src" defaultexcludes="yes">
-				<include name="com/adito/**" />
-			</packageset>
-			<classpath>
-				<pathelement path="${build.boot.output}" />
-				<pathelement path="${maverick-crypto.classes}" />
-				<pathelement path="${maverick-ssl.classes}" />
-				<pathelement path="${maverick-multiplex.classes}" />
-				<fileset dir="${build.webapp.lib}">
-					<include name="*.jar" />
-				</fileset>
-				<fileset dir="${build.lib}">
-					<include name="*.jar" />
-				</fileset>
-				<fileset dir="${build.serverlib}">
-					<include name="*.jar" />
-				</fileset>
-			</classpath>
-		</javadoc>
-	</target>
-	
+		<packageset dir="src" defaultexcludes="yes">
+			<include name="com/adito/**" />
+		</packageset>
+		<classpath>
+			<pathelement path="${build.boot.output}" />
+			<pathelement path="${maverick-crypto.classes}" />
+			<pathelement path="${maverick-ssl.classes}" />
+			<pathelement path="${maverick-multiplex.classes}" />
+			<fileset dir="${build.webapp.lib}">
+				<include name="*.jar" />
+			</fileset>
+			<fileset dir="${build.lib}">
+				<include name="*.jar" />
+			</fileset>
+			<fileset dir="${build.serverlib}">
+				<include name="*.jar" />
+			</fileset>
+		</classpath>
+	</javadoc>
+</target>
+
 </project>
