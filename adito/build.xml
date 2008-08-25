@@ -10,6 +10,9 @@
 	<!-- Location of tools.jar (Java compiler) -->
 	<property name="tools.jar" value="lib/tools.jar" />
 
+	<!-- Location of the JDK's tools.jar -->
+	<property name="tools.jar.jdk" location="${java.home}/../lib/tools.jar" />
+
 	<!-- Standard build locations -->
 
 	<property name="build.compiler" value="modern" />
@@ -343,7 +346,7 @@
 	</taskdef>
 
 	<!-- Run the default Adito server in the foreground -->
-	<target name="console" depends="compile,local-deploy,deploy-community-extensions">
+	<target name="console" depends="compile,local-deploy,deploy-community-extensions,check-tools">
 		<!-- Launch on Linux -->
 		<if>
 			<equals arg1="${os.name}" arg2="Linux" />
@@ -383,7 +386,7 @@
 
 	<!-- Launch using Java (avoids wrapper) -->
 	<!-- This target tested and works at least on Gentoo Linux with Sun JDK 1.6. -matt 10.8.2008 -->
-	<target name="start-using-java">
+	<target name="start-using-java" depends="check-tools">
 		<java fork="true" classname="com.adito.boot.Bootstrap">
 			<classpath>
 				<pathelement path="${build.boot.output}" />
@@ -395,7 +398,7 @@
 
 	<!-- Start the default Adito server in the background -->
 	<!-- Removed dependencies on compile and deployment targets, which are called in the "install" target -->
-	<target name="start">
+	<target name="start" depends="check-tools">
 		<!-- Launch on Linux -->
 		<if>
 			<equals arg1="${os.name}" arg2="Linux" />
@@ -502,7 +505,7 @@
 	</target>
 
 	<!-- Start the install wizard  -->
-	<target name="install" depends="compile,local-deploy,deploy-community-extensions,check-wrapper-conf">
+	<target name="install" depends="compile,local-deploy,deploy-community-extensions,check-wrapper-conf,check-tools">
 
 		<!-- Just in case -->
 		<mkdir dir="logs" />
@@ -518,7 +521,7 @@
 	</target>
 
 	<!-- Install Adito as a service  -->
-	<target name="install-service" depends="compile,local-deploy,deploy-community-extensions,check-wrapper-conf">
+	<target name="install-service" depends="compile,local-deploy,deploy-community-extensions,check-wrapper-conf,check-tools">
 		<if>
 			<equals arg1="${os.name}" arg2="Linux" />
 			<then>
@@ -1057,4 +1060,41 @@ ${jsp.servlets.text}
 	</javadoc>
 </target>
 
+	<!-- Test that tools.jar exists. Adito won't launch without it -->
+        <target name="check-tools">
+		<if>
+			<!-- Check if a tools.jar is available already in $ADITO_HOME/adito/lib -->
+			<not>
+				<available file="${tools.jar}"/>
+			</not>
+
+			<!-- Was not available, copy it from JDK's lib directory -->
+			<then>
+				<echo message="Couldn't find tools.jar from $ADITO_HOME/adito/lib"/>
+
+			<!-- Was not available, copy it from JDK's lib directory. Fail on error. -->
+			 	<echo message="Copying the tools.jar from your JDK"/>
+
+				<fail message="Could not find tools.jar from your JDK. Check your JAVA_HOME environment variable. It should point to your JDK's root directory.">
+					<condition>
+						<not>
+							<available file="${tools.jar.jdk}"/>
+						</not>
+					</condition>
+				</fail>
+
+				<copy todir="${build.lib}" file="${tools.jar.jdk}" failonerror="True"/>
+
+			</then>
+
+
+		</if>
+
+
+
+        </target>
+
+
+
 </project>
+
