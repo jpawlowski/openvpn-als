@@ -797,6 +797,16 @@
 				<exclude name="**/*.log" />
 			</zipfileset>
 		</zip>
+		
+		<tar destfile="adito-0.9.0-bin.tar.bz2" compression="bzip2" >
+                        <tarfileset dir="${dist.dir}" prefix="adito-0.9.0-bin">
+                                <exclude name="**/svn-*" />
+                                <exclude name="**/*.log" />
+                        </tarfileset>
+                </tar>
+
+
+
 	</target>
 
 	<target name="clean-dist">
@@ -1025,6 +1035,7 @@ ${jsp.servlets.text}
 		<delete dir="${build.output.test}" />
 		<delete dir="${build.output.instrumented}" />
 		<delete dir="${tmpdir}" />
+		<delete dir="${dist.dir}" />
 		<antcall target="clean-reports" />
 	</target>
 

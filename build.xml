@@ -2,6 +2,7 @@
 <project name="adito-build" default="run">
 	
 	<property name="adito.home" value="adito"/>
+	<property name="agent.home" value="adito-agent"/>
 	
 	<!-- Display some help -->
 	<target name="help" description="Displays some help.">
@@ -38,6 +39,7 @@ uninstall-service  Uninstall Adito service.
 		<ant dir="maverick-multiplex" target="clean"/>
 		<ant dir="maverick-ssl" target="clean"/>
 		<ant dir="maverick-util" target="clean"/>
+		<ant dir="${agent.home}" target="clean"/>
 	</target>
 
 	<!-- Run the Adito server as a console application -->
@@ -75,10 +77,14 @@ uninstall-service  Uninstall Adito service.
 		<ant dir="${adito.home}" target="uninstall-service"/>
 	</target>
 
-
 	<!-- Compile everything -->
 	<target name="compile">
 		<ant dir="${adito.home}" target="deploy-community-extensions"/>
+	</target>
+
+	<!-- Create Adito binary packages to $ADITO_HOME/adito -->
+	<target name="dist">
+		<ant dir="${adito.home}" target="dist"/>
 	</target>
 
 

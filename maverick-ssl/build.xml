@@ -164,9 +164,7 @@
 
 	<target name="clean">
 		<delete>
-			<fileset dir="${build.tmp}"/>
-			<fileset dir="${build.output}"/>
-			<fileset dir="${build.dist}"/>
+			<fileset dir="${build.dir}"/>
 		</delete>	
 	</target>
 	
