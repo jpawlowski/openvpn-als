@@ -42,6 +42,27 @@ uninstall-service  Uninstall Adito service.
 		<ant dir="${agent.home}" target="clean"/>
 	</target>
 
+	<!-- Generate javadocs for everything-->
+	<!-- Warning: there's no target to remove the generated HTML files yet -->
+	<target name="javadoc" description="Generate javadocs for everything">
+		<ant dir="${adito.home}" target="javadoc"/>
+		<ant dir="adito-commons-vfs" target="javadoc"/>
+		<ant dir="adito-community-activedirectory" target="javadoc"/>
+		<ant dir="adito-community-applications" target="javadoc"/>
+		<ant dir="adito-community-network-places" target="javadoc"/>
+		<ant dir="adito-community-tunnels" target="javadoc"/>
+		<ant dir="adito-community-unix" target="javadoc"/>
+		<ant dir="adito-community-web-forwards" target="javadoc"/>
+		<ant dir="maverick-crypto" target="javadoc"/>
+		<ant dir="maverick-multiplex" target="javadoc"/>
+		<ant dir="maverick-ssl" target="javadoc"/>
+		<ant dir="maverick-util" target="javadoc"/>
+
+		<!-- Javadoc target for Agent is not yet finished -->
+		<!-- <ant dir="${agent.home}" target="javadoc"/> -->
+	</target>
+
+
 	<!-- Run the Adito server as a console application -->
 	<target name="console" description="Starts the Adito server in the foreground display all output to the console">
 		<ant dir="${adito.home}" target="console"/>
