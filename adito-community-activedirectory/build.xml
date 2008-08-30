@@ -11,6 +11,7 @@
 	<property name="build.extension" value="${build.dir}/extension" />
 	<property name="build.release" value="${build.dir}/release" />
 	<property name="build.dist" value="${build.dir}/dist" />
+	<property name="build.docs" value="${build.dir}/docs" />	
 	<property name="build.src" value="src" />
 		
 	<!-- Dependencies -->

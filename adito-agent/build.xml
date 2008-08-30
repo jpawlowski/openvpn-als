@@ -8,7 +8,7 @@
 	<property name="build.extension.output" value="${build.dir}/output"/>
 	<property name="build.tmp" value="${build.dir}/tmp"/>
 	<property name="build.dist" value="${build.dir}/dist"/>
-	<property name="build.docs" value="${build.dir}/api"/>
+	<property name="build.docs" value="${build.dir}/docs"/>
 	<property name="build.extension" value="${build.dir}/extension" />
 	<property name="build.release" value="${build.dir}/release" />
 
@@ -59,6 +59,30 @@
 	<property name="build.reports" value="${build.dir}/reports"/>
 
 
+<!-- Work in progress. We wan't Javadocs from the Agent also -->
+<!--
+	<target name="javadoc" description="Create API documentation">
+                <mkdir dir="${build.docs}/api"/>
+                <javadoc sourcepath="src" defaultexcludes="yes" destdir="${build.docs}/api" author="true" version="true" use="true" windowtitle="${ant.project.name}" notree="true">
+                        <doctitle>
+                                <![CDATA[<h1>Adito Agent</h1>
+                                <br>
+                                <p>This extension adds Adito Agent to Adito server. Large part of
+				Adito's advanced functionality depends on Adito Agent.</p>]]>
+                        </doctitle>
+                        <bottom>
+                                <![CDATA[<i>Copyright &#169; 2003-2007 3SP LTD. All Rights Reserved.</i>]]>
+                        </bottom>
+                        <packageset dir="client" defaultexcludes="yes">
+                                <include name="com/adito/**"/>
+                        </packageset>
+                        <packageset dir="common" defaultexcludes="yes">
+                                <include name="com/adito/**"/>
+                        </packageset>
+                </javadoc>
+        </target>
+
+-->
 		
 	
 	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
