@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bundle version="1.0.0" requiredHostVersion="0.9.0" id="adito-language-@LANG@-22082008" type="languagePack" name="@NAME_SHORT_LANG@" license="Free to Use" productURL="http://sourceforge.net/projects/adito/" startOnSetupMode="true">
+  <description />
+  <extension type="languagePack" extension="adito-language-@LANG@-22082008-core" name="@NAME_SHORT_LANG@">
+    <description>for the core</description>
+    <languagePack name="adito-language-@LANG@-22082008">
+     <date>1219431167906</date>
+      <language code="@LANG2@_22082008">@LANGNAME@</language>
+      <classpath>adito-language-@LANG@-22082008.jar</classpath>
+      <classpath>adito-language-@LANG@-22082008-agent.jar</classpath>
+    </languagePack>
+  </extension>
+  <extension type="agent" extension="adito-language-@LANG@-22082008-agent" name="fr">
+    <description>for the agent</description>
+    <agent name="adito-language-@LANG@-22082008" hostVersion="0.9.0" order="10" plugin="adito-language-@LANG@-22082008-agent">
+      <classpath>
+        <jar>adito-language-@LANG@-22082008-agent.jar</jar>
+      </classpath>
+    </agent>
+  </extension>
+</bundle>
+
