@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="adito" default="console">
+<project name="adito" default="start">
 
 	<property file="../build.properties" />
 	<property file="build.properties" />
@@ -345,14 +345,14 @@
 		</classpath>
 	</taskdef>
 
+
+
 	<!-- Run the default Adito server in the foreground -->
-	<target name="console" depends="check-tools">
+	<target name="console" depends="check-tools,check-permissions">
 		<!-- Launch on Linux -->
 		<if>
 			<equals arg1="${os.name}" arg2="Linux" />
 			<then>
-				<chmod perm="a+x" type="file" file="install/platforms/linux/adito" />
-				<chmod perm="a+x" type="file" file="install/platforms/linux/wrapper" />
 				<exec executable="${basedir}/install/platforms/linux/adito">
 					<arg value="console" />
 					<env key="WRAPPER_CONF" value="${adito.conf}/wrapper.conf" />
@@ -399,13 +399,11 @@
 
 	<!-- Start the default Adito server in the background -->
 	<!-- Removed dependencies on compile and deployment targets, which are called in the "install" target -->
-	<target name="start" depends="check-tools">
+	<target name="start" depends="check-tools, check-permissions">
 		<!-- Launch on Linux -->
 		<if>
 			<equals arg1="${os.name}" arg2="Linux" />
 			<then>
-				<chmod perm="a+x" type="file" file="install/platforms/linux/adito" />
-				<chmod perm="a+x" type="file" file="install/platforms/linux/wrapper" />
 				<exec executable="${basedir}/install/platforms/linux/adito">
 					<arg value="start" />
 					<env key="WRAPPER_CONF" value="${adito.conf}/wrapper.conf" />
@@ -446,13 +444,11 @@
 	</target>
 
 	<!-- Stop tun running Adito server -->
-	<target name="stop">
+	<target name="stop" depends="check-permissions">
 		<!-- Stop on Linux -->
 		<if>
 			<equals arg1="${os.name}" arg2="Linux" />
 			<then>
-				<chmod perm="a+x" type="file" file="install/platforms/linux/adito" />
-				<chmod perm="a+x" type="file" file="install/platforms/linux/wrapper" />
 				<exec executable="${basedir}/install/platforms/linux/adito">
 					<arg value="stop" />
 					<env key="WRAPPER_CONF" value="${adito.conf}/wrapper.conf" />
@@ -471,13 +467,11 @@
 	</target>
 
 	<!-- Restart the running Adito server -->
-	<target name="restart" depends="compile,local-deploy,deploy-community-extensions">
+	<target name="restart" depends="compile,local-deploy,deploy-community-extensions,check-permissions">
 		<!-- Restart on Linux -->
 		<if>
 			<equals arg1="${os.name}" arg2="Linux" />
 			<then>
-				<chmod perm="a+x" type="file" file="install/platforms/linux/adito" />
-				<chmod perm="a+x" type="file" file="install/platforms/linux/wrapper" />
 				<exec executable="${basedir}/install/platforms/linux/adito">
 					<arg value="restart" />
 					<env key="WRAPPER_CONF" value="${adito.conf}/wrapper.conf" />
@@ -521,14 +515,14 @@
 		</java>
 	</target>
 
+
 	<!-- Install Adito as a service  -->
-	<target name="install-service" depends="compile,local-deploy,deploy-community-extensions,check-wrapper-conf,check-tools">
+	<target name="install-service" depends="compile,local-deploy,deploy-community-extensions,check-wrapper-conf,check-tools,check-permissions">
 		<if>
 			<equals arg1="${os.name}" arg2="Linux" />
 			<then>
 				<!-- Install on Linux -->
 				<echo>Installing Adito as Linux service</echo>
-				<chmod perm="a+x" type="file" file="install/platforms/linux/install-service" />
 				<exec executable="${basedir}/install/platforms/linux/install-service">
 					<arg value="-j" />
 					<arg value="${java.home}" />
@@ -562,13 +556,12 @@
 	</target>
 
 	<!-- Uninstall Adito as a services  -->
-	<target name="uninstall-service" depends="compile,local-deploy,deploy-community-extensions">
+	<target name="uninstall-service" depends="compile,local-deploy,deploy-community-extensions,check-permissions">
 		<if>
 			<equals arg1="${os.name}" arg2="Linux" />
 			<then>
 				<!-- Install on Linux -->
 				<echo>Uninstalling Adito Linux service</echo>
-				<chmod perm="a+x" type="file" file="install/platforms/linux/install-service" />
 				<exec executable="${basedir}/install/platforms/linux/install-service">
 					<arg value="-u" />
 				</exec>
@@ -723,7 +716,7 @@
 
 
 
-	<!-- Compile everything for distribute adito -->
+	<!-- Compile everything to distribute adito -->
 	<target name="compile-for-dist" depends="dist-dependencies,compile-boot,compile-server,compile-webapp,local-deploy">
 	</target>
 
@@ -1096,16 +1089,22 @@ ${jsp.servlets.text}
 				</fail>
 
 				<copy todir="${build.lib}" file="${tools.jar.jdk}" failonerror="True"/>
-
 			</then>
-
-
 		</if>
-
-
-
         </target>
 
+	<!-- Fix binary executable permissions -->
+	<target name="check-permissions">
+		<if>
+			<equals arg1="${os.name}" arg2="Linux" />
+			<then>
+				<chmod perm="a+x" type="file" file="install/platforms/linux/adito" />
+				<chmod perm="a+x" type="file" file="install/platforms/linux/x86/wrapper" />
+				<chmod perm="a+x" type="file" file="install/platforms/linux/x86-64/wrapper" />
+				<chmod perm="a+x" type="file" file="install/platforms/linux/install-service" />
+			</then>
+		</if>
+	</target>
 
 
 </project>
