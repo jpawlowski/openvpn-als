@@ -1,0 +1,74 @@
+#!/bin/bash
+
+# svg_to_bitmap
+
+# Before you begin, copy all the Adito icons (png and gif) to a directory,
+# e.g. with
+#
+# mkdir /tmp/icons
+# find /opt/adito/adito/trunk -iname "*.gif" -exec cp {} /tmp/icons \; 
+# find /opt/adito/adito/trunk -iname "*.png" -exec cp {} /tmp/icons \; 
+#
+# This program requires an bitmap icon info file which can be created thusly:
+#
+# cd /tmp/icons
+# for i in $(ls); do identify $i;done > icon-info.txt
+# cat icon-info.txt |cut -d " " -f 1 > col1
+# cat icon-info.txt |cut -d " " -f 3 > col2
+# paste col1 col2 > icon-sizes.txt
+#
+# The icons-sizes.txt should now be in this format:
+#
+# windows.gif     48x47
+# year-down.gif   16x16
+# year-up.gif     16x16
+# zipFile.gif     16x16
+#
+# The idea of this program is to get the size of the original bitmap image from the info file,
+# check the current file's name against it and rescale the current (svg) image to match the
+# required size. Run this in a "for" loop or with "find -exec".
+
+usage() {
+	echo	
+	echo "Usage: svg_to_bitmap -i input_file -f icon_size_file -e input_file_extension -o output_file_extension"
+	echo
+	echo "Options:"
+	echo " -i	input file (SVG image)"
+	echo " -f	icon size file (see comments in this"
+	echo " -e	input file extension (e.g. svg)"
+	echo " -o	output file extension (e.g. gif)"	
+	exit 1
+}
+
+
+# Parse the options
+
+# We are run without parameters -> usage
+if [ "$1" == "" ]; then
+	usage
+fi
+
+
+while getopts "i:f:e:o:h" options; do
+  case $options in
+	i ) INFILE=$OPTARG;;
+	f ) SIZEFILE=$OPTARG;;
+	e ) INEXT=$OPTARG;;
+	o ) OUTEXT=$OPTARG;;
+	h ) usage;;
+	\? ) usage;;
+	* ) usage;;
+  esac
+done	
+
+# Get the file's basename (e.g. file.svg -> file)
+BASENAME=`basename $INFILE .$INEXT`
+
+# Create the new filename (e.g. file -> file.gif)
+NEWFILENAME=$BASENAME.$OUTEXT
+
+# Get the file's required size
+NEWFILESIZE=`grep $NEWFILENAME $SIZEFILE|cut -f 2`
+
+# Resize the image and make all totally white areas transparent
+convert -verbose -transparent "#ffffff" -resize "$NEWFILESIZE" "$INFILE" "$NEWFILENAME"
