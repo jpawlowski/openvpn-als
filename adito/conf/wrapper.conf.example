@@ -13,7 +13,7 @@
 # (java). You will most likely need to modify this.
 
 # Java 1.5.0 on Debian GNU/Linux compatible systems
-#wrapper.java.command=/usr/lib/jvm/java-1.5.0-sun-1.5.0.15/jre/bin/java
+#wrapper.java.command=/usr/lib/jvm/java-1.5.0-sun/jre/bin/java
 
 # Java 1.6.0 on Debian GNU/Linux compatible systems
 #wrapper.java.command=/usr/lib/jvm/java-6-sun/jre/bin/java
