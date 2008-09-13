@@ -5,6 +5,7 @@
 	<property name="build-tools.home" value="${basedir}/../build-tools" />
 
 	<property name="dist.dir" value="dist" />
+	<property name="bin.dir" value="bin" />	
 	<property name="dest.dir" value="dest" />
 	<property name="ui.src.dir" value="../ui/src" />
 	<property name="webforwards.src.dir" value="../adito-community-web-forwards/src" />
@@ -20,10 +21,12 @@
 	<property name="agentlauncher.src.dir" value="../adito-agent/launcher" />
 	<property name="agentclient.src.dir" value="../adito-agent/client" />
 	<property name="adito.src.dir" value="../adito/src" />
+
 	<!-- Ant Contrib is required -->
 	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
 		<classpath>
 			<pathelement location="${build-tools.home}/ant/ant-contrib.jar" />
+			<pathelement location="${build-tools.home}/ant/native2ascii.jar" />
 		</classpath>
 	</taskdef>
 	
@@ -47,11 +50,16 @@
 		<delete dir="${dist.dir}" />
 		<delete dir="${bin.dir}/${code.lang}" />
 		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${bin.dir}/${code.lang}" />
+
 		<!--  code.lang2 will contains "fr_FR" for code.lang "fr-FR",  -->
 		<propertyregex property="code.lang2" input="${code.lang}" regexp="(.*)-{1}(.*)" replace="\1_\2" casesensitive="true" />
 		<!--  name.short.lang will contains "fr" for code.lang "fr-FR",  -->
 		<propertyregex property="name.short.lang" input="${code.lang}" regexp="(.*)-{1}(.*)" replace="\1" casesensitive="true" />
+
+		<!-- Native2ascii is not required when using OmegaT but it does no harm -->
 		<native2ascii encoding="UTF-8" src="src/${code.lang}" dest="bin/${code.lang}" includes="**/*_${name.short.lang}.properties" />
+
 		<move todir="bin/${code.lang}" includeemptydirs="false">
 			<fileset dir="bin/${code.lang}" />
 
