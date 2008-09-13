@@ -5,7 +5,7 @@
 	<property file="build.properties" />
 
 	<!-- Options for running Adito -->
-	<property name="adito.conf" value="conf" />
+	<property name="adito.conf" value="${basedir}/conf" />
 
 	<!-- Location of tools.jar (Java compiler) -->
 	<property name="tools.jar" value="lib/tools.jar" />
@@ -346,7 +346,7 @@
 	</taskdef>
 
 	<!-- Run the default Adito server in the foreground -->
-	<target name="console" depends="compile,local-deploy,deploy-community-extensions,check-tools">
+	<target name="console" depends="check-tools">
 		<!-- Launch on Linux -->
 		<if>
 			<equals arg1="${os.name}" arg2="Linux" />
@@ -356,6 +356,7 @@
 				<exec executable="${basedir}/install/platforms/linux/adito">
 					<arg value="console" />
 					<env key="WRAPPER_CONF" value="${adito.conf}/wrapper.conf" />
+					<env key="PIDDIR" value="${basedir}/adito/tmp" />
 				</exec>
 			</then>
 			<else>
