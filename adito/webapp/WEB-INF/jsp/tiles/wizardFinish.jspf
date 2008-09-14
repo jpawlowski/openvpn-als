@@ -44,7 +44,7 @@
 			<tr class="formBlock">
 				<td>
 					<logic:equal name="<%= seq.getCurrentPageForm().getPageName() + "Form" %>" property="completedOk" value="true">
-						<html:submit property="finish" styleClass="exit" onclick="setActionTarget('exit'); return true"><bean:message key="<%= seq.getCurrentPageForm().getResourcePrefix() + ".exit" %>" bundle="<%= seq.getCurrentPageForm().getResourceBundle() %>"/></html:submit>
+						<html:submit property="exit" styleClass="exit" onclick="setActionTarget('exit'); return true"><bean:message key="<%= seq.getCurrentPageForm().getResourcePrefix() + ".exit" %>" bundle="<%= seq.getCurrentPageForm().getResourceBundle() %>"/></html:submit>
 					</logic:equal>
 					<logic:equal name="<%= seq.getCurrentPageForm().getPageName() + "Form" %>" property="completedOk" value="false">					
 						<html:submit property="rerun" styleClass="retry" onclick="setActionTarget('rerun'); return true"><bean:message key="<%= seq.getCurrentPageForm().getResourcePrefix() + ".rerun" %>" bundle="<%= seq.getCurrentPageForm().getResourceBundle() %>"/></html:submit>&nbsp;
