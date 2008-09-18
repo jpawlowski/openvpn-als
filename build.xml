@@ -88,6 +88,11 @@ uninstall-service  Uninstall Adito service.
 		<ant dir="${adito.home}" target="install"/>
 	</target>
 
+	<!-- Install Adito Agent -->
+	<target name="install-agent" description="Install Adito Agent.">
+		<ant dir="${adito.home}" target="install-agent"/>
+	</target>
+
 	<!-- Install as a service -->
 	<target name="install-service" description="Install Adito as a service.">
 		<ant dir="${adito.home}" target="install-service"/>
