@@ -1,38 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="adito-community-activedirectory" default="dist">
-	<property file="build.properties" />
-	<property file="${user.home}/.3sp.build.properties" />
-	
-	
-	<!-- Standard build locations -->
-	<property name="build.dir" value="build" />
-	<property name="build.lib" value="lib" />
-	<property name="build.output" value="${build.dir}/classes" />
-	<property name="build.extension" value="${build.dir}/extension" />
-	<property name="build.release" value="${build.dir}/release" />
-	<property name="build.dist" value="${build.dir}/dist" />
-	<property name="build.docs" value="${build.dir}/docs" />	
-	<property name="build.src" value="src" />
+
+	<!-- Load global properties -->
+	<property file="../build.properties" />
 		
-	<!-- Dependencies -->
-			
-	<property name="adito.home" value="../adito"/>
-	<property name="adito.boot.classes" value="${adito.home}/build/boot"/>
-	<property name="adito.server.classes" value="${adito.home}/build/server"/>
-	<property name="adito.webapp.classes" value="${adito.home}/build/webapp"/>
-	<property name="maverick-crypto.home" value="../maverick-crypto"/>
-	<property name="maverick-crypto.classes" value="${maverick-crypto.home}/build/classes"/>
-	<property name="maverick-ssl.home" value="../maverick-ssl"/>
-	<property name="maverick-ssl.classes" value="${maverick-ssl.home}/build/classes"/>
-	
 	<!-- Clean -->
 	<target name="clean-dist" depends="clean,dist" />
     	
 	<!-- Create the extension archive -->
 	<target name="release" depends="clean,dist">
-		<mkdir dir="${build.extension}"/>
-		<mkdir dir="${build.extension}/private"/>
-		<copy todir="${build.extension}">
+		<mkdir dir="${dir.build.extension}"/>
+		<mkdir dir="${dir.build.extension}/private"/>
+		<copy todir="${dir.build.extension}">
 			<fileset dir="extensions/${ant.project.name}">
 				<include name="**/*"/>
 				<exclude name="**/CVS/**/*"/>
@@ -42,19 +21,19 @@
 				<exclude name="**/CVS/**/*"/>
 			</fileset>
 		</copy>
-		<copy file="${build.dist}/${ant.project.name}.jar" tofile="${build.extension}/private/${ant.project.name}.jar"/>
+		<copy file="${dir.build.dist}/${ant.project.name}.jar" tofile="${dir.build.extension}/private/${ant.project.name}.jar"/>
 
 		<!-- Create the archive -->
-		<mkdir dir="${build.release}"/>
-		<zip destfile="${build.release}/${ant.project.name}.zip">
-			<zipfileset dir="${build.extension}" prefix="${ant.project.name}">
+		<mkdir dir="${dir.build.release}"/>
+		<zip destfile="${dir.build.release}/${ant.project.name}.zip">
+			<zipfileset dir="${dir.build.extension}" prefix="${ant.project.name}">
 				<include name="**/*"/>
 			</zipfileset>
 		</zip>
 		
 		<!-- Generate checksums -->
 		<checksum>
-			<fileset dir="${build.release}">
+			<fileset dir="${dir.build.release}">
 				<include name="*.zip"/>
 			</fileset>
 		</checksum>
@@ -62,9 +41,9 @@
 	
 	<!-- Build the library jar files -->
 	<target name="dist" depends="compile">
-		<mkdir dir="${build.dist}" />
-		<jar jarfile="${build.dist}/${ant.project.name}.jar">
-			<fileset dir="${build.output}">
+		<mkdir dir="${dir.build.dist}" />
+		<jar jarfile="${dir.build.dist}/${ant.project.name}.jar">
+			<fileset dir="${dir.build.classes}">
 				<include name="**/*" />
 			</fileset>
 		</jar>
@@ -72,37 +51,37 @@
 	
 	<!-- Compile the extension  -->
 	<target name="compile">
-		<mkdir dir="${build.output}" />
-		<javac destdir="${build.output}" srcdir="${build.src}" 
+		<mkdir dir="${dir.build.classes}" />
+		<javac destdir="${dir.build.classes}" srcdir="${dir.src}" 
 			   includeantruntime="false" includes="**/*.java">
             <classpath>
-            	<pathelement path="${adito.boot.classes}"/>
-            	<pathelement path="${adito.server.classes}"/>
-               	<pathelement path="${adito.webapp.classes}"/>
-            	<pathelement path="${maverick-ssl.classes}"/>
-            	<pathelement path="${maverick-crypto.classes}"/>
-            	<fileset dir="${adito.home}/lib">
+            	<pathelement path="${dir.adito-server.build.boot}"/>
+            	<pathelement path="${dir.adito-server.build.server}"/>
+               	<pathelement path="${dir.adito-server.build.webapp}"/>
+            	<pathelement path="${dir.maverick-ssl.classes}"/>
+            	<pathelement path="${dir.maverick-crypto.classes}"/>
+            	<fileset dir="${dir.adito-server.home}/lib">
             		<include name="*.jar"/>
             	</fileset>
-            	<fileset dir="${adito.home}/webapp/WEB-INF/lib">
+            	<fileset dir="${dir.adito-server.home}/webapp/WEB-INF/lib">
             		<include name="*.jar"/>
             	</fileset>
 			</classpath>
 		</javac>
-		<copy todir="${build.output}">
-			<fileset dir="${build.src}">
+		<copy todir="${dir.build.classes}">
+			<fileset dir="${dir.src}">
 				<include name="**/*.properties"/>
 			</fileset>
 		</copy>
 	</target>
 
-	<!-- Clean up all built files. Changed 2008-07-20 to delete only the files in the build directory instead of the directories
+	<!-- Clean up all built files. Changed 2008-07-20 to delete only the files in the dir.buildectory instead of the directories
 	     themselves. This is to prevent problems with SVN and especially the svn:propget property. Now we can version the various
-	     build directories and rest assured that the files inside them are newer versioned, whether they exist or not. --> 
+	     dir.buildectories and rest assured that the files inside them are newer versioned, whether they exist or not. --> 
 
 	<target name="clean">
 		<delete>
-			<fileset dir="${build.dir}"/>
+			<fileset dir="${dir.build}"/>
 		</delete>
 
 	</target>
@@ -110,8 +89,8 @@
 	<!-- Create API documentation -->
 
 	<target name="javadoc">
-		<mkdir dir="${build.docs}/api" />
-		<javadoc sourcepath="src" defaultexcludes="yes" destdir="${build.docs}/api" author="true" version="true" use="true" windowtitle="Maverick Crypto" notree="true">
+		<mkdir dir="${dir.build.docs}/api" />
+		<javadoc sourcepath="src" defaultexcludes="yes" destdir="${dir.build.docs}/api" author="true" version="true" use="true" windowtitle="Maverick Crypto" notree="true">
 			<doctitle>
 				<![CDATA[<h1>Adito Active Directory User Database</h1>
 					 <br>
