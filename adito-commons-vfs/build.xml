@@ -1,26 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <project default="jar" name="commons-vfs" basedir=".">
 
-    <!-- All modules inherit some default properties  -->
-    <!-- to help keep buildfiles consistent and clean -->
-    <property file="../build.properties"/>
-
-    <property name="testdir.classes" value="test-classes">
-    </property>
-    <property name="testdir.classes" value="test-classes">
-    </property>
-    <property name="testreportdir" value="test-reports">
-    </property>
-    <property name="final.name" value="adito-commons-vfs">
-    </property>
-	
-    <property name="maverick-util.home" value="../maverick-util"/>
-    <property name="maverick-util.classes" value="${maverick-util.home}/build/classes"/>
+    <!-- Load global properties -->
+    <property file="../build.properties" />
 
     <path id="build.classpath">
-		<pathelement path="${maverick-util.classes}"/>
+		<pathelement path="${dir.maverick-util.classes}"/>
         <fileset dir="${dir.lib}">
             <include name="**/*.jar">
             </include>
@@ -39,9 +25,9 @@
         </available>
     </target>
     <target name="compile" description="o Compile the code">
-        <mkdir dir="${dir.classes}">
+        <mkdir dir="${dir.build.classes}">
         </mkdir>
-        <javac source="1.2" target="1.2" destdir="${dir.classes}" deprecation="true" debug="true" optimize="false" excludes="**/package.html">
+        <javac source="1.2" target="1.2" destdir="${dir.build.classes}" deprecation="true" debug="true" optimize="false" excludes="**/package.html">
             <src>
                 <pathelement location="src/java">
                 </pathelement>
@@ -49,7 +35,7 @@
             <classpath refid="build.classpath">
             </classpath>
         </javac>
-        <copy todir="${dir.classes}">
+        <copy todir="${dir.build.classes}">
             <fileset dir="src/java">
                 <include name="**/*.properties">
                 </include>
@@ -57,9 +43,9 @@
                 </include>
             </fileset>
         </copy>
-        <mkdir dir="${dir.classes}/META-INF">
+        <mkdir dir="${dir.build.classes}/META-INF">
         </mkdir>
-        <copy todir="${dir.classes}/META-INF">
+        <copy todir="${dir.build.classes}/META-INF">
             <fileset dir=".">
                 <include name="NOTICE.txt">
                 </include>
@@ -68,10 +54,10 @@
     </target>
 	
     <target name="jar" description="o Create the jar" depends="compile,test">
-        <mkdir dir="${dir.dist}"/>
-        <jar jarfile="${dir.dist}/${final.name}.jar" excludes="**/package.html" basedir="${dir.classes}">
+        <mkdir dir="${dir.build.dist}"/>
+        <jar jarfile="${dir.build.dist}/${final.name}.jar" excludes="**/package.html" basedir="${dir.build.classes}">
         </jar>
-        <copy todir="${dir.dist}">
+        <copy todir="${dir.build.dist}">
             <fileset dir="${dir.lib}">
                 <include name="jcifs*.jar">
                 </include>
@@ -96,7 +82,7 @@
         </fail>
     </target>
     <target name="internal-test" if="Junit.present" depends="junit-present,compile-tests">
-        <mkdir dir="${testreportdir}">
+        <mkdir dir="${dir.test.reports}">
         </mkdir>
         <junit dir="./" failureproperty="test.failure" printSummary="yes" fork="true" haltonerror="true">
             <sysproperty key="basedir" value=".">
@@ -108,12 +94,12 @@
             <classpath>
                 <path refid="build.classpath">
                 </path>
-                <pathelement path="${testdir.classes}">
+                <pathelement path="${dir.build.classes}">
                 </pathelement>
-                <pathelement path="${dir.classes}">
+                <pathelement path="${dir.build.classes}">
                 </pathelement>
             </classpath>
-            <batchtest todir="${testreportdir}">
+            <batchtest todir="${dir.test.reports}">
                 <fileset dir="src/test">
                     <include name="**/test/*TestCase.java">
                     </include>
@@ -129,9 +115,9 @@
         <echo>==========================================================================</echo>
     </target>
     <target name="compile-tests" if="Junit.present" depends="junit-present,compile">
-        <mkdir dir="${testdir.classes}">
+        <mkdir dir="${dir.build.classes}">
         </mkdir>
-        <javac source="1.2" target="1.2" destdir="${testdir.classes}" deprecation="true" debug="true" optimize="false" excludes="**/package.html">
+        <javac source="1.2" target="1.2" destdir="${dir.build.classes}" deprecation="true" debug="true" optimize="false" excludes="**/package.html">
             <src>
                 <pathelement location="src/test">
                 </pathelement>
@@ -139,13 +125,13 @@
             <classpath>
                 <path refid="build.classpath">
                 </path>
-                <pathelement path="${dir.classes}">
+                <pathelement path="${dir.build.classes}">
                 </pathelement>
             </classpath>
         </javac>
     </target>
-    <target name="javadoc" description="Generate javadoc">
-        <mkdir dir="${dir.javadoc}">
+    <target name="javadoc" description="o Generate javadoc">
+        <mkdir dir="${dir.build.docs.api}">
         </mkdir>
         <tstamp>
             <format pattern="2002-yyyy" property="year">
@@ -155,7 +141,7 @@
         </property>
         <property name="title" value="Commons VFS 1.0-RC6 API">
         </property>
-        <javadoc use="true" private="true" destdir="${dir.javadoc}" author="true" version="true" sourcepath="src/java"
+        <javadoc use="true" private="true" destdir="${dir.build.docs.api}" author="true" version="true" sourcepath="src/java"
                  packagenames="org.apache.commons.vfs.*">
             <classpath>
                 <path refid="build.classpath">
