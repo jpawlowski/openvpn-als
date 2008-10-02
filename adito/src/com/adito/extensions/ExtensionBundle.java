@@ -46,10 +46,10 @@ import com.adito.extensions.types.PluginType;
 /**
  * Extension bundles describe a collection of <i>Extension Descriptors</i>.
  * <p>
- * A bundle may come from one of two places, either the <i>3SP Application Store</i>
+ * A bundle may come from one of two places, either the <i>Adito Application Store</i>
  * or from an installed extension bundle retrieved via the <i>Repository</i>.
  * <p>
- * If from the 3SP Application Store, the descriptor will not contain all
+ * If from the Adito Application Store, the descriptor will not contain all
  * details, only enough to determine the name, description, versions,
  * dependencies and a few others pieces of information. Such bundles do not have
  * a life cycle in the way local extension bundles do (i.e. be <i>Started</i>,
@@ -81,20 +81,20 @@ public class ExtensionBundle extends ArrayList<ExtensionDescriptor> implements C
 	final static Log log = LogFactory.getLog(ExtensionBundle.class);
 
 	/**
-	 * Extension 'type' code indicating a new version is available from the 3SP
+	 * Extension 'type' code indicating a new version is available from the Adito
 	 * Application Store
 	 */
 	public static final int TYPE_UPDATEABLE = 0;
 
 	/**
-	 * Extension 'type' code indicating the most up to date version in 3SP
+	 * Extension 'type' code indicating the most up to date version in Adito
 	 * Application Store is already correctly installed 
 	 */
 	public static final int TYPE_INSTALLED = 1;
 
 	/**
 	 * Extension 'type' code indicating the bundle is not currently installed
-	 * but available from the 3SP Application Store
+	 * but available from the Adito Application Store
 	 */
 	public static final int TYPE_INSTALLABLE = 2;
 
@@ -345,7 +345,7 @@ public class ExtensionBundle extends ArrayList<ExtensionDescriptor> implements C
 
 	/**
 	 * Get the extension descriptor file that represents this bundle. If the
-	 * bundle is not loaded locally (i.e. it came from the 3SP Application
+	 * bundle is not loaded locally (i.e. it came from the Adito Application
 	 * Store) then this will be <code>null</code>.
 	 * 
 	 * @return extension descriptor file

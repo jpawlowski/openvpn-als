@@ -86,7 +86,7 @@ import com.adito.util.ZipExtract;
  * Manages all aspects of <i>Extensions</i> including loading, starting,
  * activating, disabling, installing, remove and updating.
  * <p>
- * This class also manages the interaction with the <i>3SP Extension Store</i>,
+ * This class also manages the interaction with the <i>Adito Extension Store</i>,
  * including update checking and installing from the store.
  */
 public class ExtensionStore {
@@ -1089,7 +1089,7 @@ public class ExtensionStore {
 	}
 
 	/**
-	 * Install an extension directly from the 3SP Extension Store given its id
+	 * Install an extension directly from the Adito Extension Store given its id
 	 * and an input stream providing the extension bundle archive in zip format.
 	 * This method will also attempt to install all of the bundles dependencies.
 	 * 
@@ -1169,7 +1169,7 @@ public class ExtensionStore {
 	}
 
 	/**
-	 * Install an extension directly from the 3SP Extension Store given its id.
+	 * Install an extension directly from the Adito Extension Store given its id.
 	 * This method will also attempt to install all of the bundles dependencies.
 	 * 
 	 * @param id extension bundle ID
@@ -1228,7 +1228,7 @@ public class ExtensionStore {
 	 * user to accept a license agreement if required.
 	 * <p>
 	 * This should be called just after an extenion is installed either from the
-	 * 3SP Application Store or manually.
+	 * Adito Application Store or manually.
 	 * 
 	 * @param newBundle newly installed bundle
 	 * @param request request object
