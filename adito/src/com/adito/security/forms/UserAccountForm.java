@@ -328,15 +328,15 @@ public class UserAccountForm extends CoreForm implements TabModel {
             if (username == null || username.length() == 0) {
                 errors.add(Globals.ERROR_KEY, new ActionMessage("createAccount.error.noUsername"));
             }
-            if (username.length() > 32) {
-                errors.add(Globals.ERROR_KEY, new ActionMessage("createAccount.error.usernameExceeds32Chars"));
+            if (username.length() > 75) {
+                errors.add(Globals.ERROR_KEY, new ActionMessage("createAccount.error.usernameExceeds75Chars"));
             }
             if (udb.supportsAccountCreation()) {
                 if (fullname == null || fullname.length() == 0) {
                     errors.add(Globals.ERROR_KEY, new ActionMessage("createAccount.error.noFullName"));
                 }
-                if (fullname.length() > 32) {
-                    errors.add(Globals.ERROR_KEY, new ActionMessage("createAccount.error.fullNameExceeds32Chars"));
+                if (fullname.length() > 75) {
+                    errors.add(Globals.ERROR_KEY, new ActionMessage("createAccount.error.fullNameExceeds75Chars"));
                 }
             }
             User currentUser;
