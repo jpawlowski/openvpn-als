@@ -117,8 +117,8 @@ public class RoleForm extends CoreForm {
            if (Util.isNullOrTrimmedBlank(rolename)) {
                 errors.add(Globals.ERROR_KEY, new ActionMessage("availableRoles.noRolenameSupplied"));
             }
-            if (rolename.length() > 32) {
-                errors.add(Globals.ERROR_KEY, new ActionMessage("availableRoles.roleNameExceeds32Chars"));
+            if (rolename.length() > 75) {
+                errors.add(Globals.ERROR_KEY, new ActionMessage("availableRoles.roleNameExceeds75Chars"));
             }
             
             try {
