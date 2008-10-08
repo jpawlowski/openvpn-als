@@ -60,10 +60,10 @@
                	<pathelement path="${dir.adito-server.build.webapp}"/>
             	<pathelement path="${dir.maverick-ssl.classes}"/>
             	<pathelement path="${dir.maverick-crypto.classes}"/>
-            	<fileset dir="${dir.adito-server.home}/lib">
+            	<fileset dir="${dir.adito-server}/lib">
             		<include name="*.jar"/>
             	</fileset>
-            	<fileset dir="${dir.adito-server.home}/webapp/WEB-INF/lib">
+            	<fileset dir="${dir.adito-server}/webapp/WEB-INF/lib">
             		<include name="*.jar"/>
             	</fileset>
 			</classpath>
