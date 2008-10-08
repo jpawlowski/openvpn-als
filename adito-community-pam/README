@@ -1,0 +1,105 @@
+Adito-PAM
+PAM Authentication Plugin for Adito
+
+This distribution is licensed under the GNU General Public License.
+This is a license that allows the free use of the software for
+commercial/non-commercial usage, however you must not incorporate code from
+this software into a commercial product, unless your commercial product is
+also to be licensed under the terms of the GPL.
+
+Adito-PAM also includes other components under licenses other than the GPL.
+See notes.
+
+This plugin is essentially the SSL-Explorer PAM module converted for Adito.
+See https://sourceforge.net/search/?type_of_search=soft&words=sslexplorer-pam
+for the original code.
+
+**********************
+*** IMPORTANT NOTE ***
+**********************
+
+Currently adito-community-pam is not usable. The original
+sslexplorer-community-pam was written for an older SSL-Explorer version than
+the one Adito is based on. The authentication module API changed after
+SSL-Explorer PAM's release and it does not implement all the required methods.
+Reimplementing these should not be difficult, though.
+
+In short, do not expect this module to build cleanly just yet.
+
+**********************
+*** IMPORTANT NOTE ***
+**********************
+
+version 0.1.0
+-------------
+
+REQUIREMENTS
+------------
+* UN*X Platform
+* Adito 0.9 or a version from SVN
+* Adito requirements (java 1.5+, ant 1.6+, etc.)
+* PAM
+
+INCLUDES
+--------
+* JPAM 1.0 built from trunk
+* Apache Commons Logging
+* Three simples pam configs
+
+
+DEVELOPING/TESTING PLATFORM
+----------------------------
+* Ubuntu 6.06
+  * kernel 2.6.15-28-686 (ubuntu)
+  * java 1.5.06
+  * ant 1.6.5
+
+
+KNOW ISSUES / LIMITATIONS
+-------------------------
+All users are assignated to a same group, "Users".
+User Database is built as the users try to log in :
+	* The extension only checks credentitials
+	* Due to PAM modules, all given username are supposed to exist.
+	Therefore, the user unknow error is checked but I'm not able to test it.
+
+
+DEALING WITH SOURCES
+--------------------
+
+First of all, download last Adito source package from Sourceforge.net, then extract it somewhere, /opt for
+example.
+
+Next extract the PAM plugin source to Adito root. If you use the SVN version of Adito, you already have
+adito-community-pam directory in $ADITO_HOME. If not already done, open a shell and go into
+adito-community-pam directory.
+
+You can now use ant, with a specified target:
+
+install:
+
+Compile, build a ZIP Extension, then copy it to adito repository.
+It also copy usefull shared object library (libjpam.so) to Java lib directory. And JPam-1.0.jar to adito/lib
+Create a default PAM Service into /etc/pam.d - adito - using unix auth.
+
+adito-install:
+
+Install then call "install" target on adito default ant script.
+
+uninstall:
+
+Remove copied files.
+
+
+So with a clean install you should do :
+
+
+$ cd /opt/adito-0.9.0
+$ cd adito-community-pam
+$ ant install
+$ cd ..
+[... installing others extensions ...]
+$ ant install
+[... installing as service, start Adito ...]
+
+
