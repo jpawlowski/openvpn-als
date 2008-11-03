@@ -32,6 +32,7 @@ uninstall-service  Uninstall Adito service.
 		<ant dir="adito-community-activedirectory" target="clean"/>
 		<ant dir="adito-community-applications" target="clean"/>
 		<ant dir="adito-community-network-places" target="clean"/>
+		<ant dir="adito-community-pam" target="clean"/>
 		<ant dir="adito-community-tunnels" target="clean"/>
 		<ant dir="adito-community-unix" target="clean"/>
 		<ant dir="adito-community-web-forwards" target="clean"/>
