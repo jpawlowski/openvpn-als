@@ -1,5 +1,6 @@
 Adito-PAM
 PAM Authentication Plugin for Adito
+Version 0.3.0
 
 This distribution is licensed under the GNU General Public License.
 This is a license that allows the free use of the software for
@@ -14,24 +15,15 @@ This plugin is essentially the SSL-Explorer PAM module converted for Adito.
 See https://sourceforge.net/search/?type_of_search=soft&words=sslexplorer-pam
 for the original code.
 
-**********************
-*** IMPORTANT NOTE ***
-**********************
 
-Currently adito-community-pam is not usable. The original
-sslexplorer-community-pam was written for an older SSL-Explorer version than
-the one Adito is based on. The authentication module API changed after
-SSL-Explorer PAM's release and it does not implement all the required methods.
-Reimplementing these should not be difficult, though.
+CHANGELOG
+---------
+0.3.0
+* Now work with Adito
+* Updated JPAM to 1.1 for both amd64 and i386 architectures
 
-In short, do not expect this module to build cleanly just yet.
-
-**********************
-*** IMPORTANT NOTE ***
-**********************
-
-version 0.1.0
--------------
+0.1.0
+* Initial release (unusable)  from sslexplorer-community-pam
 
 REQUIREMENTS
 ------------
@@ -42,17 +34,17 @@ REQUIREMENTS
 
 INCLUDES
 --------
-* JPAM 1.0 built from trunk
+* JPAM 1.1 for both i386 and amd64 architectures
 * Apache Commons Logging
 * Three simples pam configs
 
 
 DEVELOPING/TESTING PLATFORM
 ----------------------------
-* Ubuntu 6.06
-  * kernel 2.6.15-28-686 (ubuntu)
-  * java 1.5.06
-  * ant 1.6.5
+* Ubuntu 8.04
+  * kernel 2.6.24-21-generic (ubuntu)
+  * java 1.5.0.15
+  * ant 1.7.0
 
 
 KNOW ISSUES / LIMITATIONS

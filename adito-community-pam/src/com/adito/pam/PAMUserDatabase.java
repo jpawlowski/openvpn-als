@@ -16,8 +16,8 @@
  */
 package com.adito.pam;
 
-import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import javax.security.auth.login.AppConfigurationEntry;
@@ -30,7 +30,6 @@ import net.sf.jpam.PamReturnValue;
 
 import com.adito.core.CoreJAASConfiguration;
 import com.adito.core.CoreServlet;
-import com.adito.policyframework.Principal;
 import com.adito.properties.Property;
 import com.adito.properties.impl.realms.RealmKey;
 import com.adito.realms.Realm;
@@ -135,11 +134,13 @@ public class PAMUserDatabase extends DefaultUserDatabase
 		// TODO Check if username exists, need to checks the dependencie to PAM modules.
 		PAMUser user = users.get(username);
 		if (user == null) {
-			PamReturnValue r = pam.authenticate(username, "");
-			if (r != PamReturnValue.PAM_USER_UNKNOWN) {
+			if (pam.authenticate(username, "") != PamReturnValue.PAM_USER_UNKNOWN) {
 				user = new PAMUser(username, this.realm);
 				user.addGroup(groups.get("Users"));
 				users.put(username, user);
+			}
+			else {
+				throw new UserNotFoundException(username);
 			}
 		}
 		return user; 
@@ -148,6 +149,7 @@ public class PAMUserDatabase extends DefaultUserDatabase
 	/* (non-Javadoc)
 	 * @see com.adito.security.UserDatabase#getRole(java.lang.String)
 	 */
+	@SuppressWarnings("unchecked")
 	public Role getRole(String rolename) throws Exception {
 		PAMGroup group = groups.get(rolename);
 		if (group == null) {
@@ -156,30 +158,6 @@ public class PAMUserDatabase extends DefaultUserDatabase
 		return group;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.adito.security.UserDatabase#listAllRoles(java.lang.String)
-	 */
-	public Role[] listAllRoles(String filter) throws Exception {
-		Collection<PAMGroup> values = groups.values();
-		return groups.values().toArray(new PAMGroup[values.size()]);
-	}
-
-	/* (non-Javadoc)
-	 * @see com.adito.security.UserDatabase#listAllUsers(java.lang.String)
-	 */
-	public User[] listAllUsers(String filter) throws Exception {
-		Collection<PAMUser> values = users.values();
-		User[] users = values.toArray(new User[values.size()]);
-		return users;
-	}
-
-	/* (non-Javadoc)
-	 * @see com.adito.security.UserDatabase#listAvailablePrincipals()
-	 */
-	public Principal[] listAvailablePrincipals() throws Exception {
-		return null;
-	}
-	
 	/* (non-Javadoc)
 	 * @see com.adito.security.UserDatabase#logon(java.lang.String, java.lang.String)
 	 */
@@ -215,6 +193,24 @@ public class PAMUserDatabase extends DefaultUserDatabase
 		else {
 			serviceName = newServiceName;
 		}
+	}
+
+	/* (non-Javadoc)
+	 * @see com.adito.security.UserDatabase#allRoles()
+	 */
+	@SuppressWarnings("unchecked")
+	public Iterable<Role> allRoles() throws UserDatabaseException {
+        Iterator<? extends Role> retrievePrincipals = groups.values().iterator();
+		return (Iterable<Role>) toIterable(retrievePrincipals);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.adito.security.UserDatabase#allUsers()
+	 */
+	@SuppressWarnings("unchecked")
+	public Iterable<User> allUsers() throws UserDatabaseException {
+        Iterator<? extends User> retrieveUsers = users.values().iterator();
+		return (Iterable<User>) toIterable(retrieveUsers);
 	}
 	
 

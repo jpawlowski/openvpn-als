@@ -4,6 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/commons-logging.jar"/>
 	<classpathentry kind="lib" path="lib/JPam-1.0.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/sslexplorer"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/adito"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
