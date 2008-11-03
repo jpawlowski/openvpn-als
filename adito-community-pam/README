@@ -66,7 +66,8 @@ Next extract the PAM plugin source to Adito root. If you use the SVN version of 
 adito-community-pam directory in $ADITO_HOME. If not already done, open a shell and go into
 adito-community-pam directory.
 
-You can now use ant, with a specified target:
+Switch to root user with su or sudo. This is required because adito-community-pam needs to write to /etc/pam.d.
+Next you can now use ant, with a specified target:
 
 install:
 
