@@ -29,7 +29,7 @@
 	<!-- Clean -->
 	<target name="clean-dist" depends="clean,dist" />
     	
-	<!-- Obfuscate and create the extension archive -->
+	<!-- Create the extension archive -->
 	<target name="release" depends="clean,dist">
 		<mkdir dir="${build.extension}"/>
 		<mkdir dir="${build.extension}/private"/>
@@ -140,13 +140,16 @@
 	<target name="install" depends="release">
 		<copy file="${build.release}/${ant.project.name}.zip" todir="${adito.home}/conf/repository/archives" />
 		<copy file="${build.lib}/JPam-1.1.jar" todir="${adito.home}/lib" />
-		<copy file="conf/pam/pam.unix" tofile="/etc/pam.d/adito" />
 		<copy file="lib/native/i386/libjpam.so" todir="${java.home}/lib/i386/client" />
 		<copy file="lib/native/i386/libjpam.so" todir="${java.home}/lib/i386/server" />
 		<copy file="lib/native/amd64/libjpam.so" todir="${java.home}/lib/amd64/server" />
 		<copy file="lib/native/amd64/libjpam.so" todir="${java.home}/lib/amd64" />
 	</target>
 	
+	<target name="install-pam-conf">
+		<copy file="examples/etc/pam.d/pam.unix" tofile="/etc/pam.d/adito" />
+	</target>
+
 	<target name="uninstall">
 		<delete file="${adito.home}/conf/repository/archives/${ant.project.name}.zip" />
 		<delete file="${adito.home}/lib/JPam-1.1.jar" />

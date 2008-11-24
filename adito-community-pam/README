@@ -39,13 +39,22 @@ INCLUDES
 * Three simples pam configs
 
 
-DEVELOPING/TESTING PLATFORM
-----------------------------
+DEVELOPMENT PLATFORM
+--------------------
 * Ubuntu 8.04
   * kernel 2.6.24-21-generic (ubuntu)
   * java 1.5.0.15
   * ant 1.7.0
 
+OTHER TESTED PLATFORMS
+----------------------
+* Debian Lenny
+  * Java 1.5.0.16
+  * ant 1.7.0
+
+* Gentoo Linux
+  * Java 1.6.0.x
+  * ant 1.7.0
 
 KNOW ISSUES / LIMITATIONS
 -------------------------
@@ -56,18 +65,36 @@ User Database is built as the users try to log in :
 	Therefore, the user unknow error is checked but I'm not able to test it.
 
 
-DEALING WITH SOURCES
---------------------
+INSTALLATION
+------------
 
-First of all, download last Adito source package from Sourceforge.net, then extract it somewhere, /opt for
-example.
+If you have a recent (rev. 171+) the SVN version of Adito, adito-community-pam is already included. If 
+you're using Adito 0.9.0, you need to download adito-community-pam first:
 
-Next extract the PAM plugin source to Adito root. If you use the SVN version of Adito, you already have
-adito-community-pam directory in $ADITO_HOME. If not already done, open a shell and go into
-adito-community-pam directory.
+ $ cd $ADITO_HOME
+ $ svn co https://adito.svn.sourceforge.net/svnroot/adito/adito/trunk/adito-community-pam
 
-Switch to root user with su or sudo. This is required because adito-community-pam needs to write to /etc/pam.d.
-Next you can now use ant, with a specified target:
+For more information about how to use Adito's SVN repository see
+
+ http://adito.wiki.sourceforge.net/using_adito_svn
+
+If you have clean, unused Adito source tree, you can use "ant adito-install" to first build 
+adito-community-pam and then run the Adito installation wizard. If you just want to build the module, use 
+"ant install". Next you need to create a PAM configuration file for Adito and copy it to /etc/pam.d. This 
+is easiest to do if you issue "ant install-pam-conf" as root, for example with:
+
+ $ su -c "ant install-pam-conf"
+
+or
+
+ $ sudo ant install-pam-conf
+
+You probably need to install the PAM configuration file before configuring PAM in the installation 
+wizard.
+
+
+BUILD TARGETS
+-------------
 
 install:
 
@@ -82,17 +109,3 @@ Install then call "install" target on adito default ant script.
 uninstall:
 
 Remove copied files.
-
-
-So with a clean install you should do :
-
-
-$ cd /opt/adito-0.9.0
-$ cd adito-community-pam
-$ ant install
-$ cd ..
-[... installing others extensions ...]
-$ ant install
-[... installing as service, start Adito ...]
-
-
