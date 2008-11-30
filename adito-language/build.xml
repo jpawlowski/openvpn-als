@@ -31,30 +31,32 @@
 	</taskdef>
 	
 	
-	<target name="existCodeLang" unless="code.lang">
+	<target name="existsCodeLang" unless="code.lang">
 		<echo level="error" message="missing argument code.lang"/>
 		<fail/>
 	</target>
-	<target name="existLanguageName" unless="language.name">
+	<target name="existsLanguageName" unless="language.name">
 		<echo level="error" message="missing argument language.name"/>
 		<fail/>
 	</target>	
-	
-	<!-- build an extension for desired language you must set the property code.lang -->
+	<target name="existsLicense" unless="license">
+		<echo level="error" message="missing argument license"/>
+		<fail/>
+	</target>	
+
+	<!-- Build an extension for desired language you must set the property code.lang -->
 	<!-- and set the property language.name that will be displayed in UI -->
-	<target name="dist-language" depends="existCodeLang,existLanguageName">
-		
-		<!--	<property name="code.lang" value="fr-FR" />
-		<property name="language.name" value="Fran&amp;#231;ais" />-->
-		
+	<target name="dist-language" depends="existsCodeLang,existsLanguageName,existsLicense">
+
+		<!-- Recreate the dist directory -->		
 		<delete dir="${dist.dir}" />
 		<delete dir="${bin.dir}/${code.lang}" />
 		<mkdir dir="${dist.dir}" />
 		<mkdir dir="${bin.dir}/${code.lang}" />
 
-		<!--  code.lang2 will contains "fr_FR" for code.lang "fr-FR",  -->
+		<!--  code.lang2 will contain "fr_FR" for code.lang "fr-FR",  -->
 		<propertyregex property="code.lang2" input="${code.lang}" regexp="(.*)-{1}(.*)" replace="\1_\2" casesensitive="true" />
-		<!--  name.short.lang will contains "fr" for code.lang "fr-FR",  -->
+		<!--  name.short.lang will contain "fr" for code.lang "fr-FR",  -->
 		<propertyregex property="name.short.lang" input="${code.lang}" regexp="(.*)-{1}(.*)" replace="\1" casesensitive="true" />
 
 		<!-- Native2ascii is not required when using OmegaT but it does no harm -->
@@ -82,21 +84,24 @@
 
 		<copy todir="${dist.dir}" file="extension-dist.xml" />
 
-		
-
+	
+		<!-- Replace the entries in extension-dist.xml with user-defined values -->
 		<replace file="${dist.dir}/extension-dist.xml" value="${code.lang}">
 			<replacefilter token="@LANG@" />
-
-
 			<replacefilter token="@NAME_SHORT_LANG@" value="${name.short.lang}" />
 			<replacefilter token="@LANG2@" value="${code.lang2}" />
-		<replacefilter token="@LANGNAME@" value="${language.name}" />
+			<replacefilter token="@LANGNAME@" value="${language.name}" />
+			<replacefilter token="@LICENSE@" value="${license}" />
 		</replace>
 
 		 <move file="${dist.dir}/extension-dist.xml" tofile="${dist.dir}/extension.xml"/>
 		<zip destfile="adito-language-${code.lang}-22082008.zip">
 			<zipfileset dir="${dist.dir}" prefix="adito-language-${code.lang}-22082008" />
 		</zip>
+
+		<echo message="Removing build directories"/>
+		<delete dir="${dist.dir}" />
+		<delete dir="${bin.dir}/${code.lang}" />
 	</target>
 
 	<target name="extract">
