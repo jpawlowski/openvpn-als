@@ -91,7 +91,7 @@ import com.adito.util.ZipExtract;
  */
 public class ExtensionStore {
 
-    public static final String HTTP_3SP_COM_APPSTORE = "http://download.localhost/appstore/";
+    public static final String HTTP_3SP_COM_APPSTORE = "http://www.aditoproject.org/appstore/";
     private static final Log log = LogFactory.getLog(ExtensionStore.class);
 	private static final String DIRS_TO_REMOVE = "dirsToRemove";
 	private static String currentEdition = "Community Edition";
