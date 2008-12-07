@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="dir.adito-server" default="start">
+<project name="adito" default="start">
 
 	<property file="../build.properties" />
-	<property file="build.properties" />
+	<property file="release.properties" />
 
 	<!-- Options for running Adito -->
 	<property name="adito.conf" value="${basedir}/conf" />
@@ -785,23 +785,22 @@
 		</jar>
 		<delete dir="${dist.dir}/webapp/WEB-INF/classes" />
 
+		<!-- We need to use a minimal build file instead of this one --> 
 		<copy failonerror="true" file="build-dist.xml" tofile="${dist.dir}/build.xml" />
 
-		<zip destfile="adito-0.9.0-bin.zip">
-			<zipfileset dir="${dist.dir}" prefix="adito-0.9.0-bin">
+		<zip destfile="adito-${version.number}-bin.zip">
+			<zipfileset dir="${dist.dir}" prefix="adito-${version.number}">
 				<exclude name="**/svn-*" />
 				<exclude name="**/*.log" />
 			</zipfileset>
 		</zip>
 		
-		<tar destfile="adito-0.9.0-bin.tar.bz2" compression="bzip2" >
-                        <tarfileset dir="${dist.dir}" prefix="adito-0.9.0-bin">
+		<tar destfile="adito-${version.number}-bin.tar.bz2" compression="bzip2" >
+                        <tarfileset dir="${dist.dir}" prefix="adito-${version.number}">
                                 <exclude name="**/svn-*" />
                                 <exclude name="**/*.log" />
                         </tarfileset>
                 </tar>
-
-
 
 	</target>
 
