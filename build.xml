@@ -8,19 +8,25 @@
 	<target name="help" description="Displays some help.">
 		<echo>
 You must have run the 'install' target at least once which compiles
-all source starts Adito's installation wizard.
+all source starts Adito's installation wizard. You also should
+configure the Agent certificate and run 'install-agent' target.
+Otherwise resources based on SSL-tunnels will not work.
 			
 Available targets :-
-			
-console            Starts the Adito server in the foreground 
-                   displaying all output to the console.
-start              Starts  the Adito in the background.
-stop               Stops the running Adito. Note, this currently 
-                   does not work on all platforms.
-install            Run the Adito installation wizard. The server 
-                   must not be running.
-install-service    Install Adito as a service. 
-uninstall-service  Uninstall Adito service. 
+
+clean              Removes compiled files.
+javadoc            Generate javadocs for everything
+console            Starts the Adito server in the foreground display all output to the console
+start              Starts the Adito in the background
+start-using-java   Starts the Adito in the foreground without the OS-dependent wrapper
+stop               Stops the running Adito. Note, this currently does not work on all platforms.
+install            Run the Adito installation wizard. The server must not be running.
+install-agent      Install Adito Agent.
+install-service    Install Adito as a service.
+uninstall-service  Uninstall Adito service.
+compile
+dist
+   
 			
 		</echo>
 	</target>
@@ -112,7 +118,7 @@ uninstall-service  Uninstall Adito service.
 
 	<!-- Create Adito binary packages to $ADITO_HOME/adito -->
 	<target name="dist">
-		<ant dir="${adito.home}" target="dist"/>
+		<ant inheritall="false" dir="${adito.home}" target="dist"/>
 	</target>
 
 
