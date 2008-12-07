@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="adito" default="start">
+<project name="dir.adito-server" default="start">
 
 	<property file="../build.properties" />
 	<property file="build.properties" />
@@ -16,22 +16,22 @@
 	<!-- Standard build locations -->
 
 	<property name="build.compiler" value="modern" />
-	<property name="build.dir" value="build" />
+	<property name="dir.build" value="build" />
 	<property name="dist.dir" value="dist" />
-	<property name="build.lib" value="lib" />
+	<property name="dir.lib" value="lib" />
 	<property name="build.serverlib" value="serverlib" />
-	<property name="build.doc" value="${build.dir}/doc" />
+	<property name="build.doc" value="${dir.build}/doc" />
 	<property name="build.webapp.lib" value="webapp/WEB-INF/lib" />
-	<property name="build.boot.output" value="${build.dir}/boot" />
-	<property name="build.jsp.output" value="${build.dir}/jsp" />
-	<property name="build.jsp.classes.output" value="${build.dir}/jspclasses" />
-	<property name="build.jsp.mappings.output" value="${build.dir}/gen" />
+	<property name="build.boot.output" value="${dir.build}/boot" />
+	<property name="build.jsp.output" value="${dir.build}/jsp" />
+	<property name="build.jsp.classes.output" value="${dir.build}/jspclasses" />
+	<property name="build.jsp.mappings.output" value="${dir.build}/gen" />
 	<property name="build.jsp.mappings.file" value="${build.jsp.mappings.output}/mappings.xml" />
-	<property name="build.tools.output" value="${build.dir}/tools" />
-	<property name="build.server.output" value="${build.dir}/server" />
-	<property name="build.webapp.output" value="${build.dir}/webapp" />
-	<property name="build.output.instrumented" value="${build.dir}/instrumented" />
-	<property name="build.output.test" value="${build.dir}/test" />
+	<property name="build.tools.output" value="${dir.build}/tools" />
+	<property name="build.server.output" value="${dir.build}/server" />
+	<property name="build.webapp.output" value="${dir.build}/webapp" />
+	<property name="build.output.instrumented" value="${dir.build}/instrumented" />
+	<property name="build.output.test" value="${dir.build}/test" />
 	<property name="build.webapp.deploy" value="webapp/WEB-INF/classes" />
 	<property name="build.boot.src" value="boot/src" />
 	<property name="build.server.src" value="server/src" />
@@ -40,39 +40,39 @@
 	<property name="build.tools.home" value="tools" />
 	<property name="build.test" value="test" />
 	<property name="build.debug" value="on" />
-	<property name="build.reports" value="${build.dir}/reports" />
+	<property name="dir.build.reports" value="${dir.build}/reports" />
 	<property name="tmpdir" value="tmp" />
 
 	<!-- Reports -->
 	<!-- build.reports is overridden when running the suite of tests -->
-	<property name="build.reports" value="${basedir}/${build.dir}/reports" />
-	<property name="build.reports.junit" value="junit" />
-	<property name="build.reports.junit.xml" value="${build.reports.junit}/xml" />
-	<property name="build.reports.junit.html" value="${build.reports.junit}/html" />
-	<property name="build.reports.emma" value="emma" />
-	<property name="build.reports.emma.coverage" value="${build.reports.emma}/coverage" />
-	<property name="build.reports.emma.html" value="${build.reports.emma}/html" />
-	<property name="build.reports.findbugs" value="findbugs" />
-	<property name="build.reports.findbugs.xml" value="${build.reports.findbugs}/xml" />
-	<property name="build.reports.findbugs.html" value="${build.reports.findbugs}/html" />
-	<property name="build.reports.cpd" value="cpd" />
-	<property name="build.reports.cpd.xml" value="${build.reports.cpd}/xml" />
-	<property name="build.reports.cpd.html" value="${build.reports.cpd}/html" />
-	<property name="build.reports.pmd" value="pmd" />
-	<property name="build.reports.pmd.xml" value="${build.reports.pmd}/xml" />
-	<property name="build.reports.pmd.html" value="${build.reports.pmd}/html" />
+	<property name="dir.build.reports" value="${basedir}/${dir.build}/reports" />
+	<property name="dir.build.reports.junit" value="junit" />
+	<property name="dir.build.reports.junit.xml" value="${dir.build.reports.junit}/xml" />
+	<property name="dir.build.reports.junit.html" value="${dir.build.reports.junit}/html" />
+	<property name="dir.build.reports.emma" value="emma" />
+	<property name="dir.build.reports.emma.coverage" value="${dir.build.reports.emma}/coverage" />
+	<property name="dir.build.reports.emma.html" value="${dir.build.reports.emma}/html" />
+	<property name="dir.build.reports.findbugs" value="findbugs" />
+	<property name="dir.build.reports.findbugs.xml" value="${dir.build.reports.findbugs}/xml" />
+	<property name="dir.build.reports.findbugs.html" value="${dir.build.reports.findbugs}/html" />
+	<property name="dir.build.reports.cpd" value="cpd" />
+	<property name="dir.build.reports.cpd.xml" value="${dir.build.reports.cpd}/xml" />
+	<property name="dir.build.reports.cpd.html" value="${dir.build.reports.cpd}/html" />
+	<property name="dir.build.reports.pmd" value="pmd" />
+	<property name="dir.build.reports.pmd.xml" value="${dir.build.reports.pmd}/xml" />
+	<property name="dir.build.reports.pmd.html" value="${dir.build.reports.pmd}/html" />
 
 	<!-- Dependencies -->
-	<property name="build-tools.home" value="${basedir}/../build-tools" />
-	<property name="unit-testing.home" value="${build-tools.home}/unit-testing" />
-	<property name="maverick-util.home" value="../maverick-util" />
-	<property name="maverick-util.classes" value="${maverick-util.home}/build/classes" />
-	<property name="maverick-crypto.home" value="../maverick-crypto" />
-	<property name="maverick-crypto.classes" value="${maverick-crypto.home}/build/classes" />
-	<property name="maverick-ssl.home" value="../maverick-ssl" />
-	<property name="maverick-ssl.classes" value="${maverick-ssl.home}/build/classes" />
-	<property name="maverick-multiplex.home" value="../maverick-multiplex" />
-	<property name="maverick-multiplex.classes" value="${maverick-multiplex.home}/build/classes" />
+	<property name="dir.build-tools" value="${basedir}/../build-tools" />
+	<property name="unit-testing.home" value="${dir.build-tools}/unit-testing" />
+	<property name="dir.maverick-util" value="../maverick-util" />
+	<property name="dir.maverick-util.classes" value="${dir.maverick-util}/build/classes" />
+	<property name="dir.maverick-crypto" value="../maverick-crypto" />
+	<property name="dir.maverick-crypto.classes" value="${dir.maverick-crypto}/build/classes" />
+	<property name="dir.maverick-ssl" value="../maverick-ssl" />
+	<property name="dir.maverick-ssl.classes" value="${dir.maverick-ssl}/build/classes" />
+	<property name="dir.maverick-multiplex" value="../maverick-multiplex" />
+	<property name="dir.maverick-multiplex.classes" value="${dir.maverick-multiplex}/build/classes" />
 
 	<!-- emma code coverage task definition -->
 	<taskdef name="emma" classname="com.vladium.emma.emmaTask">
@@ -113,17 +113,17 @@
 		<pathelement location="${build.boot.output}" />
 		<pathelement location="${build.server.output}" />
 		<pathelement location="${build.webapp.output}" />
-		<pathelement path="${maverick-ssl.classes}" />
-		<pathelement path="${maverick-crypto.classes}" />
-		<pathelement path="${maverick-util.classes}" />
-		<pathelement path="${maverick-multiplex.classes}" />
+		<pathelement path="${dir.maverick-ssl.classes}" />
+		<pathelement path="${dir.maverick-crypto.classes}" />
+		<pathelement path="${dir.maverick-util.classes}" />
+		<pathelement path="${dir.maverick-multiplex.classes}" />
 		<fileset dir="${build.webapp.lib}">
 			<include name="**/*.jar" />
 		</fileset>
-		<fileset dir="${build-tools.home}">
+		<fileset dir="${dir.build-tools}">
 			<include name="**/*.jar" />
 		</fileset>
-		<fileset dir="${build.lib}">
+		<fileset dir="${dir.lib}">
 			<include name="**/*.jar" />
 		</fileset>
 		<fileset dir="${build.serverlib}">
@@ -134,15 +134,15 @@
 	<path id="build.classpath">
 		<pathelement path="${build.boot.output}" />
 		<pathelement path="${build.server.output}" />
-		<pathelement path="${build.lib}" />
+		<pathelement path="${dir.lib}" />
 		<pathelement path="${build.serverlib}" />
 		<pathelement path="${build.webapp.output}" />
-		<pathelement path="${maverick-ssl.classes}" />
-		<pathelement path="${maverick-multiplex.classes}" />
-		<pathelement path="${maverick-crypto.classes}" />
-		<pathelement path="${maverick-util.classes}" />
+		<pathelement path="${dir.maverick-ssl.classes}" />
+		<pathelement path="${dir.maverick-multiplex.classes}" />
+		<pathelement path="${dir.maverick-crypto.classes}" />
+		<pathelement path="${dir.maverick-util.classes}" />
 
-		<fileset dir="${build.lib}" includes="*.jar" />
+		<fileset dir="${dir.lib}" includes="*.jar" />
 		<fileset dir="${build.serverlib}" includes="**/*.jar" />
 		<fileset dir="${build.webapp.lib}" includes="**/*.jar" />
 		<pathelement path="webapp" />
@@ -150,11 +150,11 @@
 
 	<path id="test.classpath">
 		<path refid="build.classpath" />
-		<fileset dir="${build-tools.home}" includes="**/*.jar" />
+		<fileset dir="${dir.build-tools}" includes="**/*.jar" />
 	</path>
 
 	<target name="test" description="Run the various tests for this extension" depends="clean">
-		<mkdir dir="${build.reports}" />
+		<mkdir dir="${dir.build.reports}" />
 		<antcall target="test-junit" />
 		<antcall target="test-findbugs" />
 		<antcall target="test-cpd" />
@@ -164,7 +164,7 @@
 	</target>
 
 	<target name="test-junit" description="Run the JUnit tests for this extension" depends="compile-test">
-		<mkdir dir="${build.reports}/${build.reports.junit.xml}" />
+		<mkdir dir="${dir.build.reports}/${dir.build.reports.junit.xml}" />
 
 		<junit fork="yes" printsummary="yes" failureproperty="junit.test.failure" dir=".">
 			<classpath>
@@ -173,11 +173,11 @@
 			</classpath>
 			<classpath refid="test.classpath" />
 
-			<jvmarg value="-Demma.coverage.out.file=${build.reports}/${build.reports.emma.coverage}/${ant.project.name}-coverage.emma" />
+			<jvmarg value="-Demma.coverage.out.file=${dir.build.reports}/${dir.build.reports.emma.coverage}/${ant.project.name}-coverage.emma" />
 			<jvmarg value="-Demma.coverage.out.merge=true" />
 
 			<formatter type="xml" />
-			<batchtest todir="${build.reports}/${build.reports.junit.xml}">
+			<batchtest todir="${dir.build.reports}/${dir.build.reports.junit.xml}">
 				<fileset dir="${build.output.test}">
 					<include name="**/*Test*.class" />
 					<exclude name="**/*Abstract*.class" />
@@ -208,27 +208,29 @@
 		</copy>
 	</target>
 
+	<!-- TODO: these might also require the maverick-* JAR-files. In that case the target should be "dist",
+             not compile (see target compile-dependencies -->
 	<target name="compile-test-dependencies" description="Compile the test dependencies for this project">
-		<ant inheritall="false" dir="${maverick-crypto.home}" target="compile" />
-		<ant inheritall="false" dir="${maverick-multiplex.home}" target="compile" />
-		<ant inheritall="false" dir="${maverick-ssl.home}" target="compile" />
-		<ant inheritall="false" dir="${maverick-util.home}" target="compile" />
+		<ant inheritall="false" dir="${dir.maverick-crypto}" target="compile" />
+		<ant inheritall="false" dir="${dir.maverick-multiplex}" target="compile" />
+		<ant inheritall="false" dir="${dir.maverick-ssl}" target="compile" />
+		<ant inheritall="false" dir="${dir.maverick-util}" target="compile" />
 	</target>
 
 	<target name="compile-emma" description="Instrument the classes to provide emma code coverage">
 		<mkdir dir="${build.output.instrumented}" />
-		<mkdir dir="${build.reports}/${build.reports.emma.coverage}" />
+		<mkdir dir="${dir.build.reports}/${dir.build.reports.emma.coverage}" />
 		<!-- shouldn't have to do this, but it it doesn't seem to work with multiple instrpaths set -->
 		<emma>
-			<instr instrpath="${build.boot.output}" mode="copy" outdir="${build.output.instrumented}" metadatafile="${build.reports}/${build.reports.emma.coverage}/${ant.project.name}-metadata.emma" merge="true">
+			<instr instrpath="${build.boot.output}" mode="copy" outdir="${build.output.instrumented}" metadatafile="${dir.build.reports}/${dir.build.reports.emma.coverage}/${ant.project.name}-metadata.emma" merge="true">
 			</instr>
 		</emma>
 		<emma>
-			<instr instrpath="${build.server.output}" mode="copy" outdir="${build.output.instrumented}" metadatafile="${build.reports}/${build.reports.emma.coverage}/${ant.project.name}-metadata.emma" merge="true">
+			<instr instrpath="${build.server.output}" mode="copy" outdir="${build.output.instrumented}" metadatafile="${dir.build.reports}/${dir.build.reports.emma.coverage}/${ant.project.name}-metadata.emma" merge="true">
 			</instr>
 		</emma>
 		<emma>
-			<instr instrpath="${build.webapp.output}" mode="copy" outdir="${build.output.instrumented}" metadatafile="${build.reports}/${build.reports.emma.coverage}/${ant.project.name}-metadata.emma" merge="true">
+			<instr instrpath="${build.webapp.output}" mode="copy" outdir="${build.output.instrumented}" metadatafile="${dir.build.reports}/${dir.build.reports.emma.coverage}/${ant.project.name}-metadata.emma" merge="true">
 			</instr>
 		</emma>
 	</target>
@@ -236,9 +238,9 @@
 	<target name="test-emma" description="Test the code coverage against the JUnit tests" depends="test-junit" />
 
 	<target name="test-findbugs" description="Test the extension against FindBugs">
-		<mkdir dir="${build.reports}/${build.reports.findbugs.xml}" />
+		<mkdir dir="${dir.build.reports}/${dir.build.reports.findbugs.xml}" />
 
-		<findbugs projectname="${ant.project.name}" home="${unit-testing.home}/findbugs" output="xml:withMessages" outputFile="${build.reports}/${build.reports.findbugs.xml}/${ant.project.name}-findbugs-report.xml" reportLevel="low" jvmargs="-Xms128m -Xmx512m -XX:+UseParallelGC">
+		<findbugs projectname="${ant.project.name}" home="${unit-testing.home}/findbugs" output="xml:withMessages" outputFile="${dir.build.reports}/${dir.build.reports.findbugs.xml}/${ant.project.name}-findbugs-report.xml" reportLevel="low" jvmargs="-Xms128m -Xmx512m -XX:+UseParallelGC">
 			<sourcePath path="${build.boot.src}" />
 			<sourcePath path="${build.server.src}" />
 			<sourcePath path="${build.webapp.src}" />
@@ -250,19 +252,19 @@
 	</target>
 
 	<target name="test-cpd" description="Test the extension against the Copy and Paste Detector">
-		<mkdir dir="${build.reports}/${build.reports.cpd.xml}" />
+		<mkdir dir="${dir.build.reports}/${dir.build.reports.cpd.xml}" />
 
-		<cpd minimumTokenCount="50" outputFile="${build.reports}/${build.reports.cpd.xml}/${ant.project.name}-cpd-report.txt">
+		<cpd minimumTokenCount="50" outputFile="${dir.build.reports}/${dir.build.reports.cpd.xml}/${ant.project.name}-cpd-report.txt">
 			<fileset dir="${build.webapp.src}" includes="**/*.java" />
 		</cpd>
 	</target>
 
 	<target name="test-pmd" description="Test the extension against the PMD rules">
-		<mkdir dir="${build.reports}/${build.reports.pmd.xml}" />
+		<mkdir dir="${dir.build.reports}/${dir.build.reports.pmd.xml}" />
 
 		<pmd shortFilenames="true" targetjdk="1.5" rulesetfiles="${unit-testing.home}/pmd/pmd-report-all.xml">
 			<fileset dir="${build.webapp.src}" includes="**/*.java" />
-			<formatter type="xml" toFile="${build.reports}/${build.reports.pmd.xml}/${ant.project.name}-pmd-report.xml" />
+			<formatter type="xml" toFile="${dir.build.reports}/${dir.build.reports.pmd.xml}/${ant.project.name}-pmd-report.xml" />
 		</pmd>
 	</target>
 
@@ -276,72 +278,72 @@
 	</target>
 
 	<target name="test-junit-report" description="Generate the JUnit HTML report" unless="run.all.tests">
-		<mkdir dir="${build.reports}/${build.reports.junit.html}" />
-		<junitreport todir="${build.reports}/${build.reports.junit}">
-			<fileset dir="${build.reports}/${build.reports.junit.xml}" includes="TEST-*.xml" />
-			<report format="frames" todir="${build.reports}/${build.reports.junit.html}" />
+		<mkdir dir="${dir.build.reports}/${dir.build.reports.junit.html}" />
+		<junitreport todir="${dir.build.reports}/${dir.build.reports.junit}">
+			<fileset dir="${dir.build.reports}/${dir.build.reports.junit.xml}" includes="TEST-*.xml" />
+			<report format="frames" todir="${dir.build.reports}/${dir.build.reports.junit.html}" />
 		</junitreport>
 	</target>
 
 	<target name="test-emma-report" description="Creates a code coverage report using emma stats gathered whilst running junit tests" unless="run.all.tests">
-		<mkdir dir="${build.reports}/${build.reports.emma.html}" />
+		<mkdir dir="${dir.build.reports}/${dir.build.reports.emma.html}" />
 		<emma>
 			<report sourcepath="${build.webapp.src}" sort="+block,+name,+method,+class" metrics="method:70,block:80,line:80,class:100">
-				<fileset dir="${build.reports}/${build.reports.emma.coverage}" includes="${ant.project.name}-*.emma" />
-				<html outfile="${build.reports}/${build.reports.emma.html}/${ant.project.name}-coverage.html" depth="method" columns="name,class,method,block,line" />
+				<fileset dir="${dir.build.reports}/${dir.build.reports.emma.coverage}" includes="${ant.project.name}-*.emma" />
+				<html outfile="${dir.build.reports}/${dir.build.reports.emma.html}/${ant.project.name}-coverage.html" depth="method" columns="name,class,method,block,line" />
 			</report>
 		</emma>
 	</target>
 
 	<target name="test-findbugs-report" description="Generate the FindBugs HTML report">
-		<mkdir dir="${build.reports}/${build.reports.findbugs.html}" />
-		<xslt in="${build.reports}/${build.reports.findbugs.xml}/${ant.project.name}-findbugs-report.xml" style="${unit-testing.home}/findbugs/fancy.xsl" out="${build.reports}/${build.reports.findbugs.html}/${ant.project.name}-findbugs-report.html" />
+		<mkdir dir="${dir.build.reports}/${dir.build.reports.findbugs.html}" />
+		<xslt in="${dir.build.reports}/${dir.build.reports.findbugs.xml}/${ant.project.name}-findbugs-report.xml" style="${unit-testing.home}/findbugs/fancy.xsl" out="${dir.build.reports}/${dir.build.reports.findbugs.html}/${ant.project.name}-findbugs-report.html" />
 	</target>
 
 	<target name="test-cpd-report" description="Generate the Copy and Paste detector HTML report">
-		<mkdir dir="${build.reports}/${build.reports.cpd.html}" />
-		<xslt in="${build.reports}/${build.reports.cpd.xml}/${ant.project.name}-cpd-report.txt" style="${unit-testing.home}/pmd/cpdhtml.xslt" out="${build.reports}/${build.reports.cpd.html}/${ant.project.name}-cpd-report.html" />
+		<mkdir dir="${dir.build.reports}/${dir.build.reports.cpd.html}" />
+		<xslt in="${dir.build.reports}/${dir.build.reports.cpd.xml}/${ant.project.name}-cpd-report.txt" style="${unit-testing.home}/pmd/cpdhtml.xslt" out="${dir.build.reports}/${dir.build.reports.cpd.html}/${ant.project.name}-cpd-report.html" />
 	</target>
 
 	<target name="test-pmd-report" description="Generate the PMD HTML report">
-		<mkdir dir="${build.reports}/${build.reports.pmd.html}" />
-		<xslt in="${build.reports}/${build.reports.pmd.xml}/${ant.project.name}-pmd-report.xml" style="${unit-testing.home}/pmd/wz-pmd-report.xslt" out="${build.reports}/${build.reports.pmd.html}/${ant.project.name}-pmd-report.html" />
+		<mkdir dir="${dir.build.reports}/${dir.build.reports.pmd.html}" />
+		<xslt in="${dir.build.reports}/${dir.build.reports.pmd.xml}/${ant.project.name}-pmd-report.xml" style="${unit-testing.home}/pmd/wz-pmd-report.xslt" out="${dir.build.reports}/${dir.build.reports.pmd.html}/${ant.project.name}-pmd-report.html" />
 	</target>
 
 	<target name="test-report-cleanup" description="Removes all the generated report meta-data, leaving behind the useful reports" unless="run.all.tests">
-		<delete dir="${build.reports}/${build.reports.junit}" includes="*.*" />
-		<delete dir="${build.reports}/${build.reports.junit.xml}" />
-		<delete dir="${build.reports}/${build.reports.emma.coverage}" />
-		<delete dir="${build.reports}/${build.reports.findbugs.xml}" />
-		<delete dir="${build.reports}/${build.reports.pmd.xml}" />
+		<delete dir="${dir.build.reports}/${dir.build.reports.junit}" includes="*.*" />
+		<delete dir="${dir.build.reports}/${dir.build.reports.junit.xml}" />
+		<delete dir="${dir.build.reports}/${dir.build.reports.emma.coverage}" />
+		<delete dir="${dir.build.reports}/${dir.build.reports.findbugs.xml}" />
+		<delete dir="${dir.build.reports}/${dir.build.reports.pmd.xml}" />
 
-		<copy todir="${build.reports}/${build.reports.junit}">
-			<fileset dir="${build.reports}/${build.reports.junit.html}" includes="**/*" />
+		<copy todir="${dir.build.reports}/${dir.build.reports.junit}">
+			<fileset dir="${dir.build.reports}/${dir.build.reports.junit.html}" includes="**/*" />
 		</copy>
-		<copy todir="${build.reports}/${build.reports.emma}">
-			<fileset dir="${build.reports}/${build.reports.emma.html}" includes="**/*" />
+		<copy todir="${dir.build.reports}/${dir.build.reports.emma}">
+			<fileset dir="${dir.build.reports}/${dir.build.reports.emma.html}" includes="**/*" />
 		</copy>
-		<copy todir="${build.reports}/${build.reports.findbugs}">
-			<fileset dir="${build.reports}/${build.reports.findbugs.html}" includes="**/*" />
+		<copy todir="${dir.build.reports}/${dir.build.reports.findbugs}">
+			<fileset dir="${dir.build.reports}/${dir.build.reports.findbugs.html}" includes="**/*" />
 		</copy>
-		<copy todir="${build.reports}/${build.reports.pmd}">
-			<fileset dir="${build.reports}/${build.reports.pmd.html}" includes="**/*" />
+		<copy todir="${dir.build.reports}/${dir.build.reports.pmd}">
+			<fileset dir="${dir.build.reports}/${dir.build.reports.pmd.html}" includes="**/*" />
 		</copy>
 
-		<delete dir="${build.reports}/${build.reports.junit.html}" />
-		<delete dir="${build.reports}/${build.reports.emma.html}" />
-		<delete dir="${build.reports}/${build.reports.findbugs.html}" />
-		<delete dir="${build.reports}/${build.reports.pmd.html}" />
+		<delete dir="${dir.build.reports}/${dir.build.reports.junit.html}" />
+		<delete dir="${dir.build.reports}/${dir.build.reports.emma.html}" />
+		<delete dir="${dir.build.reports}/${dir.build.reports.findbugs.html}" />
+		<delete dir="${dir.build.reports}/${dir.build.reports.pmd.html}" />
 	</target>
 
 	<target name="clean-reports" unless="run.all.tests">
-		<delete dir="${build.reports}" />
+		<delete dir="${dir.build.reports}" />
 	</target>
 
 	<!-- Ant Contrib is required -->
 	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
 		<classpath>
-			<pathelement location="${build-tools.home}/ant/ant-contrib.jar" />
+			<pathelement location="${dir.build-tools}/ant/ant-contrib.jar" />
 		</classpath>
 	</taskdef>
 
@@ -604,7 +606,7 @@
 				<java spawn="true" fork="true" classname="com.adito.upgrade.Upgrade">
 					<classpath>
 						<pathelement path="${build.tools.output}" />
-						<fileset dir="${build.lib}">
+						<fileset dir="${dir.lib}">
 							<include name="commons-logging.jar" />
 						</fileset>
 						<fileset dir="${build.webapp.lib}">
@@ -619,7 +621,7 @@
 					<arg value="${basedir}" />
 					<classpath>
 						<pathelement path="${build.tools.output}" />
-						<fileset dir="${build.lib}">
+						<fileset dir="${dir.lib}">
 							<include name="commons-logging.jar" />
 						</fileset>
 						<fileset dir="${build.webapp.lib}">
@@ -638,10 +640,10 @@
 				<pathelement path="${build.boot.output}" />
 				<pathelement path="${build.server.output}" />
 				<pathelement path="${build.webapp.output}" />
-				<pathelement path="${maverick-crypto.classes}" />
-				<pathelement path="${maverick-ssl.classes}" />
+				<pathelement path="${dir.maverick-crypto.classes}" />
+				<pathelement path="${dir.maverick-ssl.classes}" />
 				<pathelement location="${tools.jar}" />
-				<fileset dir="${build.lib}">
+				<fileset dir="${dir.lib}">
 					<include name="*.jar" />
 				</fileset>
 				<fileset dir="${build.webapp.lib}">
@@ -659,10 +661,10 @@
 				<pathelement path="${build.boot.output}" />
 				<pathelement path="${build.server.output}" />
 				<pathelement path="${build.webapp.output}" />
-				<pathelement path="${maverick-crypto.classes}" />
-				<pathelement path="${maverick-ssl.classes}" />
+				<pathelement path="${dir.maverick-crypto.classes}" />
+				<pathelement path="${dir.maverick-ssl.classes}" />
 				<pathelement location="${tools.jar}" />
-				<fileset dir="${build.lib}">
+				<fileset dir="${dir.lib}">
 					<include name="*.jar" />
 				</fileset>
 				<fileset dir="${build.webapp.lib}">
@@ -761,11 +763,11 @@
 			</fileset>
 		</jar>
 
-		<copy todir="${dist.dir}/lib" file="${maverick-util.home}/build/dist/maverick-util.jar" />
-		<copy todir="${dist.dir}/lib" file="${maverick-crypto.home}/build/dist/maverick-crypto.jar" />
-		<copy todir="${dist.dir}/lib" file="${maverick-ssl.home}/build/dist/maverick-ssl.jar" />
-		<copy todir="${dist.dir}/lib" file="${maverick-multiplex.home}/build/dist/maverick-multiplex.jar" />
-		<copy todir="${dist.dir}/lib" file="${build-tools.home}/ant/ant-contrib.jar" />
+		<copy todir="${dist.dir}/lib" file="${dir.maverick-util}/build/dist/maverick-util.jar" />
+		<copy todir="${dist.dir}/lib" file="${dir.maverick-crypto}/build/dist/maverick-crypto.jar" />
+		<copy todir="${dist.dir}/lib" file="${dir.maverick-ssl}/build/dist/maverick-ssl.jar" />
+		<copy todir="${dist.dir}/lib" file="${dir.maverick-multiplex}/build/dist/maverick-multiplex.jar" />
+		<copy todir="${dist.dir}/lib" file="${dir.build-tools}/ant/ant-contrib.jar" />
 
 		<!-- Compile adito boot and put jar in lib -->
 		<jar jarfile="${dist.dir}/lib/adito-boot.jar">
@@ -811,16 +813,16 @@
 	webapp/WEB-INF/lib/ and rebuild this jar from project adito-commons-vfs
 	  -->
 	<target name="dist-dependencies">
-		<ant inheritall="false" dir="${maverick-util.home}" target="dist">
+		<ant inheritall="false" dir="${dir.maverick-util}" target="dist">
 			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
-		<ant inheritall="false" dir="${maverick-crypto.home}" target="dist">
+		<ant inheritall="false" dir="${dir.maverick-crypto}" target="dist">
 			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
-		<ant inheritall="false" dir="${maverick-ssl.home}" target="dist">
+		<ant inheritall="false" dir="${dir.maverick-ssl}" target="dist">
 			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
-		<ant inheritall="false" dir="${maverick-multiplex.home}" target="dist">
+		<ant inheritall="false" dir="${dir.maverick-multiplex}" target="dist">
 			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
 		<ant inheritall="false" dir="${adito-commons-vfs.home}" target="compile">
@@ -828,22 +830,22 @@
 		</ant>
 	</target>
 
-	<!-- Compile server dependencies -->
-
+	<!-- Compile server dependencies. Also generate the necessary JAR-files for
+             the "dist" target. -->
 	<target name="compile-dependencies">
-		<ant inheritall="false" dir="${maverick-util.home}" target="compile">
+		<ant inheritall="false" dir="${dir.maverick-util}" target="dist">
 			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
-		<ant inheritall="false" dir="${maverick-crypto.home}" target="compile">
+		<ant inheritall="false" dir="${dir.maverick-crypto}" target="dist">
 			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
-		<ant inheritall="false" dir="${maverick-ssl.home}" target="compile">
+		<ant inheritall="false" dir="${dir.maverick-ssl}" target="dist">
 			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
-		<ant inheritall="false" dir="${maverick-multiplex.home}" target="compile">
+		<ant inheritall="false" dir="${dir.maverick-multiplex}" target="dist">
 			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
-		<ant inheritall="false" dir="${adito-commons-vfs.home}" target="compile">
+		<ant inheritall="false" dir="${adito-commons-vfs.home}" target="dist">
 			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
 
@@ -855,9 +857,9 @@
 		<mkdir dir="${build.boot.output}" />
 		<javac compiler="${build.compiler}" destdir="${build.boot.output}" srcdir="${build.boot.src}" includeantruntime="false" includes="**/*.java" debug="${build.debug}">
 			<classpath>
-				<pathelement path="${maverick-crypto.classes}" />
-				<pathelement path="${maverick-ssl.classes}" />
-				<fileset dir="${build.lib}">
+				<pathelement path="${dir.maverick-crypto.classes}" />
+				<pathelement path="${dir.maverick-ssl.classes}" />
+				<fileset dir="${dir.lib}">
 					<include name="commons-logging.jar" />
 					<include name="javax.servlet.jar" />
 					<include name="jdom.jar" />
@@ -882,7 +884,7 @@
 		<mkdir dir="${build.tools.output}" />
 		<javac compiler="${build.compiler}" destdir="${build.tools.output}" srcdir="${build.tools.home}/upgrader/src" includeantruntime="false" includes="**/*.java" debug="${build.debug}">
 			<classpath>
-				<fileset dir="${build.lib}">
+				<fileset dir="${dir.lib}">
 					<include name="commons-logging.jar" />
 				</fileset>
 				<fileset dir="${build.webapp.lib}">
@@ -908,7 +910,7 @@
 					<include name="org.mortbay.jetty.jar" />
 					<include name="wrapper.jar" />
 				</fileset>
-				<fileset dir="${build.lib}">
+				<fileset dir="${dir.lib}">
 					<include name="javax.servlet.jar" />
 					<include name="commons-logging.jar" />
 					<include name="jdom.jar" />
@@ -934,15 +936,15 @@
 		<javac compiler="${build.compiler}" destdir="${build.webapp.output}" srcdir="${build.webapp.src}" includeantruntime="false" debug="${build.debug}" includes="**/*.java">
 			<classpath>
 				<pathelement path="${build.boot.output}" />
-				<pathelement path="${maverick-crypto.classes}" />
-				<pathelement path="${maverick-ssl.classes}" />
-				<pathelement path="${maverick-multiplex.classes}" />
-				<pathelement path="${maverick-util.classes}" />
+				<pathelement path="${dir.maverick-crypto.classes}" />
+				<pathelement path="${dir.maverick-ssl.classes}" />
+				<pathelement path="${dir.maverick-multiplex.classes}" />
+				<pathelement path="${dir.maverick-util.classes}" />
 				<pathelement path="${adito-commons-vfs.classes}" />
 				<fileset dir="${build.webapp.lib}">
 					<include name="*.jar" />
 				</fileset>
-				<fileset dir="${build.lib}">
+				<fileset dir="${dir.lib}">
 					<include name="*.jar" />
 				</fileset>
 			</classpath>
@@ -1016,7 +1018,7 @@ ${jsp.servlets.text}
 	<!-- Clean up all built files -->
 
 	<target name="clean">
-		<delete dir="${build.dir}" includes="*.*" failonerror="false" />
+		<delete dir="${dir.build}" includes="*.*" failonerror="false" />
 		<delete dir="${build.boot.output}" />
 		<delete dir="${build.server.output}" />
 		<delete dir="${build.webapp.output}" />
@@ -1049,13 +1051,13 @@ ${jsp.servlets.text}
 		</packageset>
 		<classpath>
 			<pathelement path="${build.boot.output}" />
-			<pathelement path="${maverick-crypto.classes}" />
-			<pathelement path="${maverick-ssl.classes}" />
-			<pathelement path="${maverick-multiplex.classes}" />
+			<pathelement path="${dir.maverick-crypto.classes}" />
+			<pathelement path="${dir.maverick-ssl.classes}" />
+			<pathelement path="${dir.maverick-multiplex.classes}" />
 			<fileset dir="${build.webapp.lib}">
 				<include name="*.jar" />
 			</fileset>
-			<fileset dir="${build.lib}">
+			<fileset dir="${dir.lib}">
 				<include name="*.jar" />
 			</fileset>
 			<fileset dir="${build.serverlib}">
@@ -1088,7 +1090,7 @@ ${jsp.servlets.text}
 					</condition>
 				</fail>
 
-				<copy todir="${build.lib}" file="${tools.jar.jdk}" failonerror="True"/>
+				<copy todir="${dir.lib}" file="${tools.jar.jdk}" failonerror="True"/>
 			</then>
 		</if>
         </target>
