@@ -1,5 +1,5 @@
 #!/bin/bash
-# This read the "convlist" file, goes through it
+# This read the "variables" file, goes through it
 # line by line and converts old variable names
 # to new one in the most inefficient way possible,
 # but it works, kind of :)
