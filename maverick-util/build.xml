@@ -27,7 +27,7 @@
 
 	<!-- Build the library jar files -->
 
-	<target name="dist" depends="compile,javadoc">
+	<target name="dist" depends="compile">
 		<mkdir dir="${build.dist}" />
 		<jar jarfile="${build.dist}/maverick-util.jar">
 			<fileset dir="${build.output}">
