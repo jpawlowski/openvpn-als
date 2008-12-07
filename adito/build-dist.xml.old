@@ -331,4 +331,19 @@
 		</if>
 	</target>
 
+        <!-- Fix binary executable permissions -->
+        <target name="check-permissions">
+                <if>
+                        <equals arg1="${os.name}" arg2="Linux" />
+                        <then>
+                                <chmod perm="a+x" type="file" file="install/platforms/linux/adito" />
+                                <chmod perm="a+x" type="file" file="install/platforms/linux/x86/wrapper" />
+                                <chmod perm="a+x" type="file" file="install/platforms/linux/x86-64/wrapper" />
+                                <chmod perm="a+x" type="file" file="install/platforms/linux/install-service" />
+                        </then>
+                </if>
+        </target>
+
+
+
 </project>
