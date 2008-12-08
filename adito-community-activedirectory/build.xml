@@ -75,9 +75,10 @@
 		</copy>
 	</target>
 
-	<!-- Clean up all built files. Changed 2008-07-20 to delete only the files in the dir.buildectory instead of the directories
-	     themselves. This is to prevent problems with SVN and especially the svn:propget property. Now we can version the various
-	     dir.buildectories and rest assured that the files inside them are newer versioned, whether they exist or not. --> 
+	<!-- Clean up all built files. Changed 2008-07-20 to delete only the files in the dir.build directory instead of the 
+             directories themselves. This is to prevent problems with SVN and especially the svn:propget property. Now we can version 
+             the various 
+	     dir.build directories and rest assured that the files inside them are newer versioned, whether they exist or not. --> 
 
 	<target name="clean">
 		<delete>
