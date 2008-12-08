@@ -5,6 +5,10 @@
     <!-- Load global properties -->
     <property file="../build.properties" />
 
+
+    <!-- Local properties -->
+    <property name="final.name" value="adito-commons-vfs" />
+
     <path id="build.classpath">
 		<pathelement path="${dir.maverick-util.classes}"/>
         <fileset dir="${dir.lib}">
@@ -24,7 +28,7 @@
         <available property="Junit.present" classname="junit.framework.Test">
         </available>
     </target>
-    <target name="compile" description="o Compile the code">
+    <target name="compile" description="Compile the code">
         <mkdir dir="${dir.build.classes}">
         </mkdir>
         <javac source="1.2" target="1.2" destdir="${dir.build.classes}" deprecation="true" debug="true" optimize="false" excludes="**/package.html">
