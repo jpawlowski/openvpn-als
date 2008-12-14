@@ -5,3 +5,4 @@
 *.backup
 *.data
 tools.jar
+classes.jar
