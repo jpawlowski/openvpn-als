@@ -2,11 +2,9 @@
 # Adito wrapper configuration
 #********************************************************************
 
-####### VARIABLES THAT NEED CUSTOMIZATION #######
-
-# NOTE: Base directory (.) is $ADITO_HOME/adito. Make sure you
-# comment out the entries you don't need. Duplicate variables cause
-# unexpected behavior.
+# NOTE: This file is created dynamically on every Adito startup.
+#       You should not need to edit it manually. If you do have to,
+#       please file a bug report.
 
 #################################################################
 # Variable "wrapper.java.command". This is the actual Java binary
