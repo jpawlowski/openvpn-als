@@ -2,23 +2,20 @@
 <project name="adito" default="start">
 
 	<!-- Options for running Adito -->
-	<property name="adito.conf" value="${basedir}/conf" />
+	<property name="adito.conf" value="conf" />
 
-	<!-- Location of tools.jar (Java compiler) -->
-	<property name="tools.jar" value="lib/tools.jar" />
+	<!-- Standard build locations -->
 
-	<!-- Location of the JDK's tools.jar -->
-	<property name="tools.jar.jdk" location="${java.home}/../lib/tools.jar" />
+	<property name="dir.lib" value="lib" />
 
 	<!-- Ant Contrib is required -->
 	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
 		<classpath>
-			<pathelement location="${dir.build-tools}/ant/ant-contrib.jar" />
+			<pathelement location="${dir.lib}/ant-contrib.jar" />
 		</classpath>
 	</taskdef>
 
-	<!-- Run the default Adito server in the foreground -->
-	<target name="console" depends="check-tools,check-permissions">
+	<target name="console" depends="check-tools,check-permissions" description="Run Adito server in the foreground">
 		<!-- Launch on Linux -->
 		<if>
 			<equals arg1="${os.name}" arg2="Linux" />
@@ -55,21 +52,16 @@
 		</if>
 	</target>
 
-	<!-- Launch using Java (avoids wrapper) -->
-	<!-- This target tested and works at least on Gentoo Linux with Sun JDK 1.6. -matt 10.8.2008 -->
-	<target name="start-using-java" depends="check-tools">
+	<target name="start-using-java" depends="check-tools" description="Launch Adito server using Java-only method, avoiding the wrapper.">
 		<java fork="true" classname="com.adito.boot.Bootstrap">
 			<classpath>
-				<pathelement path="${build.boot.output}" />
+				<pathelement path="${dir.lib}/adito-boot.jar" />
 			</classpath>
 			<arg value="--conf=${adito.conf}" />
 		</java>
 	</target>
 
-
-	<!-- Start the default Adito server in the background -->
-	<!-- Removed dependencies on compile and deployment targets, which are called in the "install" target -->
-	<target name="start" depends="check-tools, check-permissions">
+	<target name="start" depends="check-tools, check-permissions" description="Start Adito server in the background">
 		<!-- Launch on Linux -->
 		<if>
 			<equals arg1="${os.name}" arg2="Linux" />
@@ -102,7 +94,7 @@
 						</echo>
 						<java spawn="true" fork="true" classname="com.adito.boot.Bootstrap">
 							<classpath>
-								<pathelement path="${build.boot.output}" />
+								<pathelement path="${dir.lib}/adito-boot.jar" />
 							</classpath>
 							<arg value="--conf=${adito.conf}" />
 						</java>
@@ -169,6 +161,54 @@
 		<copy failonerror="false" file="${adito.conf}/wrapper.conf.example" tofile="${adito.conf}/wrapper.conf" />
 	</target>
 
+	<!-- Create wrapper.conf dynamically from wrapper.conf.base -->
+	<target name="create-wrapper-conf" >
+
+		<!-- Select the correct wrapper directory based on the OS name -->
+
+		<!-- Overriding property value from within <if> statement does not seem to work,
+		     so we're have to do this the ugly way. -->
+
+		<if><equals arg1="${os.name}" arg2="Linux" />
+			<then><property name="wrapper.java.library.path" value="install/platforms/linux" /></then>
+		<else>
+			<if><os family="windows" />
+				<then><property name="wrapper.java.library.path" value="install/platforms/windows" /></then>
+			<else>
+					<echo>The wrapper directory for your OS (${os.name}) is not automatically detected!</echo>
+					<echo>Please send mail to the Adito mailinglists, file a bug report or post to the forums.</echo>
+					<echo>Meanwhile you can create the wrapper.conf manually or add an entry to "create-wrapper-conf"</echo>
+					<echo>in adito/build.xml for your OS.</echo>
+					<property name="wrapper.java.library.path" value="install/platforms/undetected" />
+			</else>
+			</if>
+		</else>
+		</if>
+
+		<!-- Overwrite existing wrapper.conf. Useful if the user changes Java version. -->
+		<!-- Do not overwrite if the OS was undetected. -->
+
+		<if><equals arg1="${wrapper.java.library.path}" arg2="install/platforms/undetected" />
+			<then><copy failonerror="false" file="${adito.conf}/wrapper.conf.base" tofile="${adito.conf}/wrapper.conf" /></then>
+		<else>
+			<copy overwrite="true" failonerror="false" file="${adito.conf}/wrapper.conf.base" tofile="${adito.conf}/wrapper.conf" />
+		</else>
+		</if>
+		
+
+		<echo>Creating wrapper configuration dynamically</echo>
+		<echo></echo>
+		<echo>   Java executable: ${java.home}/bin/java</echo>
+		<echo>   Wrapper directory: ${wrapper.java.library.path}</echo>
+
+                <replace file="${adito.conf}/wrapper.conf">
+                        <replacefilter token="@WRAPPER.JAVA.COMMAND@" value="${java.home}/bin/java" />
+                        <replacefilter token="@WRAPPER.JAVA.LIBRARY.PATH@" value="${wrapper.java.library.path}" />
+                </replace>
+
+
+	</target>
+
 	<!-- Start the install wizard  -->
 	<target name="install" depends="check-wrapper-conf,check-tools">
 
@@ -179,7 +219,7 @@
 		<java fork="true" classname="com.adito.boot.Bootstrap">
 			<arg value="--install" />
 			<classpath>
-				<pathelement path="${build.boot.output}" />
+				<pathelement path="${dir.lib}/adito-boot.jar" />
 			</classpath>
 			<arg value="--conf=${adito.conf}" />
 		</java>
@@ -204,7 +244,7 @@
 				<if>
 					<os family="windows" />
 					<then>
-						<!-- Install on Linux -->
+						<!-- Install on Windows -->
 						<echo>Installing Adito as Windows service</echo>
 						<exec spawn="true" executable="${basedir}/install/platforms/windows/wrapper">
 							<arg value="-i" />
@@ -263,27 +303,43 @@
 		</if>
 	</target>
 
-	<!-- Test that tools.jar exists. Adito won't launch without it -->
-        <target name="check-tools">
+
+	<target name="set-tools" description="Set the location of tools.jar or classes.jar.">
+		<!-- We need to do this because properties are immutable and <if> statements
+		     are not allowed outside target definitions. -->
+
+		<!-- Mac OS X is different and needs to be treated as such: -->
+		<!-- there's no Tools.jar in Mac OS X Java -->
+		<if><equals arg1="${os.name}" arg2="Mac OS X" /><then>
+			<property name="tools.jar.jdk" location="${java.home}/../classes/classes.jar" />
+			<property name="tools.jar" value="lib/classes.jar" />
+		</then>
+
+		<!-- Most other OS'es with Sun's JDK have tools.jar in the same place -->
+		<else>
+			<!-- Location of tools.jar once copied in place (Java compiler) -->
+			<property name="tools.jar" value="lib/tools.jar" />
+		
+			<!-- Tools.jar location on Windows, Linux and others using Sun's JDK -->
+			<property name="tools.jar.jdk" location="${java.home}/../lib/tools.jar" />
+		</else>
+		</if>	
+	</target>
+
+        <target name="check-tools" description="Test that tools.jar exists. Adito won't launch without it" depends="set-tools">
 		<if>
 			<!-- Check if a tools.jar is available already in $ADITO_HOME/adito/lib -->
-			<not>
-				<available file="${tools.jar}"/>
-			</not>
+			<not><available file="${tools.jar}"/></not>
 
 			<!-- Was not available, copy it from JDK's lib directory -->
 			<then>
 				<echo message="Couldn't find tools.jar from $ADITO_HOME/adito/lib"/>
 
-			<!-- Was not available, copy it from JDK's lib directory. Fail on error. -->
+				<!-- Was not available, copy it from JDK's lib directory. Fail on error. -->
 			 	<echo message="Copying the tools.jar from your JDK"/>
 
-				<fail message="Could not find tools.jar from your JDK. Check your JAVA_HOME environment variable. It should point to your JDK's root directory.">
-					<condition>
-						<not>
-							<available file="${tools.jar.jdk}"/>
-						</not>
-					</condition>
+				<fail message="Could not find classes.jar from your JDK. Check the output of ant sysinfo.">
+				<condition><not><available file="${tools.jar.jdk}"/></not></condition>
 				</fail>
 
 				<copy todir="${dir.lib}" file="${tools.jar.jdk}" failonerror="True"/>
@@ -291,8 +347,8 @@
 		</if>
         </target>
 
-	<!-- Fix binary executable permissions -->
-	<target name="check-permissions">
+	<target name="check-permissions" description="Checks and fixes wrapper file permissions on Linux">
+	<!-- Needed because ant's tar task can't understand file permissions and removes the executable flag -->
 		<if>
 			<equals arg1="${os.name}" arg2="Linux" />
 			<then>
