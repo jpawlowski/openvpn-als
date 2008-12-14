@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="adito-build" default="run">
+<project name="adito-build" default="start-using-java">
 	
 	<property name="adito.home" value="adito"/>
 	<property name="agent.home" value="adito-agent"/>
