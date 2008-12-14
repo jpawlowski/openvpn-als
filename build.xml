@@ -19,7 +19,7 @@ For a list of Ant targets, use "ant -projecthelp"
 
         <target name="sysinfo" description="Display some system information">
                 <echo>Operating system: ${os.name}</echo>
-                <echo></echo>
+                <echo>Java home: ${java.home}</echo>
         </target>
 
 
