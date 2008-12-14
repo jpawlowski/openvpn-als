@@ -12,21 +12,7 @@ all source starts Adito's installation wizard. You also should
 configure the Agent certificate and run 'install-agent' target.
 Otherwise resources based on SSL-tunnels will not work.
 			
-Available targets :-
-
-clean              Removes compiled files.
-javadoc            Generate javadocs for everything
-console            Starts the Adito server in the foreground display all output to the console
-start              Starts the Adito in the background
-start-using-java   Starts the Adito in the foreground without the OS-dependent wrapper
-stop               Stops the running Adito. Note, this currently does not work on all platforms.
-install            Run the Adito installation wizard. The server must not be running.
-install-agent      Install Adito Agent.
-install-service    Install Adito as a service.
-uninstall-service  Uninstall Adito service.
-compile
-dist
-   
+For a list of Ant targets, use "ant -projecthelp"   
 			
 		</echo>
 	</target>
