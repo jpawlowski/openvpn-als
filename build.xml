@@ -17,7 +17,12 @@ For a list of Ant targets, use "ant -projecthelp"
 		</echo>
 	</target>
 
-	<!-- Remove all compiled files -->
+        <target name="sysinfo" description="Display some system information">
+                <echo>Operating system: ${os.name}</echo>
+                <echo></echo>
+        </target>
+
+
 	<target name="clean" description="Removes compiled files">
 		<ant dir="${adito.home}" target="clean"/>
 		<ant dir="adito-commons-vfs" target="clean"/>
@@ -35,7 +40,6 @@ For a list of Ant targets, use "ant -projecthelp"
 		<ant dir="${agent.home}" target="clean"/>
 	</target>
 
-	<!-- Generate javadocs for everything-->
 	<!-- Warning: there's no target to remove the generated HTML files yet -->
 	<target name="javadoc" description="Generate javadocs for everything">
 		<ant dir="${adito.home}" target="javadoc"/>
@@ -56,54 +60,44 @@ For a list of Ant targets, use "ant -projecthelp"
 	</target>
 
 
-	<!-- Run the Adito server as a console application -->
 	<target name="console" description="Starts the Adito server in the foreground display all output to the console">
 		<ant dir="${adito.home}" target="console"/>
 	</target>
 	
-	<!-- Start the Adito server -->	
 	<target name="start" description="Starts the Adito in the background">
 		<ant dir="${adito.home}" target="start"/>
 	</target>
 
-	<!-- Start the Adito server without the wrapper -->	
 	<target name="start-using-java" description="Starts the Adito in the foreground without the OS-dependent wrapper">
 		<ant dir="${adito.home}" target="start-using-java"/>
 	</target>
 	
-	<!-- Stops a the running Adito server -->	
 	<target name="stop" description="Stops the running Adito. Note, this currently does not work on all platforms.">
 		<ant dir="${adito.home}" target="stop"/>
 	</target>
 
-	<!-- Run the installation wizard -->
 	<target name="install" description="Run the Adito installation wizard. The server must not be running.">
 		<ant dir="${adito.home}" target="install"/>
 	</target>
 
-	<!-- Install Adito Agent -->
 	<target name="install-agent" description="Install Adito Agent.">
 		<echo>Please use "ant install-agent" target from the adito-subdir</echo>
 		<ant inheritall="false" dir="${adito.home}" target="install-agent" />
 	</target>
 
-	<!-- Install as a service -->
 	<target name="install-service" description="Install Adito as a service.">
 		<ant dir="${adito.home}" target="install-service"/>
 	</target>
 
-	<!-- Uninstall service -->
 	<target name="uninstall-service" description="Uninstall Adito service.">
 		<ant dir="${adito.home}" target="uninstall-service"/>
 	</target>
 
-	<!-- Compile everything -->
-	<target name="compile">
+	<target name="compile" description="Compile Adito.">
 		<ant dir="${adito.home}" target="deploy-community-extensions"/>
 	</target>
 
-	<!-- Create Adito binary packages to $ADITO_HOME/adito -->
-	<target name="dist">
+	<target name="dist" description="Create an executable, ready to distribute version of Adito">
 		<ant inheritall="false" dir="${adito.home}" target="dist"/>
 	</target>
 
