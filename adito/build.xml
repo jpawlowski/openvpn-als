@@ -7,12 +7,6 @@
 	<!-- Options for running Adito -->
 	<property name="adito.conf" value="${basedir}/conf" />
 
-	<!-- Location of tools.jar (Java compiler) -->
-	<property name="tools.jar" value="lib/tools.jar" />
-
-	<!-- Location of the JDK's tools.jar -->
-	<property name="tools.jar.jdk" location="${java.home}/../lib/tools.jar" />
-
 	<!-- Standard build locations -->
 
 	<property name="build.compiler" value="modern" />
@@ -349,8 +343,7 @@
 
 
 
-	<!-- Run the default Adito server in the foreground -->
-	<target name="console" depends="check-tools,check-permissions">
+	<target name="console" depends="check-tools,check-permissions" description="Run Adito server in the foreground">
 		<!-- Launch on Linux -->
 		<if>
 			<equals arg1="${os.name}" arg2="Linux" />
@@ -387,9 +380,7 @@
 		</if>
 	</target>
 
-	<!-- Launch using Java (avoids wrapper) -->
-	<!-- This target tested and works at least on Gentoo Linux with Sun JDK 1.6. -matt 10.8.2008 -->
-	<target name="start-using-java" depends="check-tools">
+	<target name="start-using-java" depends="check-tools" description="Launch Adito server using Java-only method, avoiding the wrapper.">
 		<java fork="true" classname="com.adito.boot.Bootstrap">
 			<classpath>
 				<pathelement path="${build.boot.output}" />
@@ -398,10 +389,7 @@
 		</java>
 	</target>
 
-
-	<!-- Start the default Adito server in the background -->
-	<!-- Removed dependencies on compile and deployment targets, which are called in the "install" target -->
-	<target name="start" depends="check-tools, check-permissions">
+	<target name="start" depends="check-tools, check-permissions" description="Start Adito server in the background">
 		<!-- Launch on Linux -->
 		<if>
 			<equals arg1="${os.name}" arg2="Linux" />
@@ -1114,27 +1102,42 @@ ${jsp.servlets.text}
 	</javadoc>
 </target>
 
-	<!-- Test that tools.jar exists. Adito won't launch without it -->
-        <target name="check-tools">
+	<target name="set-tools" description="Set the location of tools.jar or classes.jar.">
+		<!-- We need to do this because properties are immutable and <if> statements
+		     are not allowed outside target definitions. -->
+
+		<!-- Mac OS X is different and needs to be treated as such: -->
+		<!-- there's no Tools.jar in Mac OS X Java -->
+		<if><equals arg1="${os.name}" arg2="Mac OS X" /><then>
+			<property name="tools.jar.jdk" location="${java.home}/../classes/classes.jar" />
+			<property name="tools.jar" value="lib/classes.jar" />
+		</then>
+
+		<!-- Most other OS'es with Sun's JDK have tools.jar in the same place -->
+		<else>
+			<!-- Location of tools.jar once copied in place (Java compiler) -->
+			<property name="tools.jar" value="lib/tools.jar" />
+		
+			<!-- Tools.jar location on Windows, Linux and others using Sun's JDK -->
+			<property name="tools.jar.jdk" location="${java.home}/../lib/tools.jar" />
+		</else>
+		</if>	
+	</target>
+
+        <target name="check-tools" description="Test that tools.jar exists. Adito won't launch without it" depends="set-tools">
 		<if>
 			<!-- Check if a tools.jar is available already in $ADITO_HOME/adito/lib -->
-			<not>
-				<available file="${tools.jar}"/>
-			</not>
+			<not><available file="${tools.jar}"/></not>
 
 			<!-- Was not available, copy it from JDK's lib directory -->
 			<then>
 				<echo message="Couldn't find tools.jar from $ADITO_HOME/adito/lib"/>
 
-			<!-- Was not available, copy it from JDK's lib directory. Fail on error. -->
+				<!-- Was not available, copy it from JDK's lib directory. Fail on error. -->
 			 	<echo message="Copying the tools.jar from your JDK"/>
 
-				<fail message="Could not find tools.jar from your JDK. Check your JAVA_HOME environment variable. It should point to your JDK's root directory.">
-					<condition>
-						<not>
-							<available file="${tools.jar.jdk}"/>
-						</not>
-					</condition>
+				<fail message="Could not find classes.jar from your JDK. Check the output of ant sysinfo.">
+				<condition><not><available file="${tools.jar.jdk}"/></not></condition>
 				</fail>
 
 				<copy todir="${dir.lib}" file="${tools.jar.jdk}" failonerror="True"/>
@@ -1142,8 +1145,8 @@ ${jsp.servlets.text}
 		</if>
         </target>
 
-	<!-- Fix binary executable permissions -->
-	<target name="check-permissions">
+	<target name="check-permissions" description="Checks and fixes wrapper file permissions on Linux">
+	<!-- Needed because ant's tar task can't understand file permissions and removes the executable flag -->
 		<if>
 			<equals arg1="${os.name}" arg2="Linux" />
 			<then>
