@@ -30,7 +30,7 @@
 
 
 # This entry is replaced dynamically with the correct settings
-wrapper.java.command="@WRAPPER.JAVA.COMMAND@"
+wrapper.java.command=@WRAPPER.JAVA.COMMAND@
 
 
 #################################################################
@@ -45,9 +45,7 @@ wrapper.java.command="@WRAPPER.JAVA.COMMAND@"
 #wrapper.java.library.path.1=install/platforms/windows
 
 # This entry is replaced dynamically with the correct settings
-wrapper.java.library.path.1="@WRAPPER.JAVA.LIBRARY.PATH@"
-
-####### VARIABLES THAT PROBABLY DON'T NEED TO CUSTOMIZED #######
+wrapper.java.library.path.1=@WRAPPER.JAVA.LIBRARY.PATH@
 
 #################################################################
 # Variable "wrapper.working.dir". This is the base directory for

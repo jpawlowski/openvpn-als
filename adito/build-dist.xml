@@ -15,7 +15,7 @@
 		</classpath>
 	</taskdef>
 
-	<target name="console" depends="check-tools,check-permissions" description="Run Adito server in the foreground">
+	<target name="console" depends="create-wrapper-conf,check-tools,check-permissions" description="Run Adito server in the foreground">
 		<!-- Launch on Linux -->
 		<if>
 			<equals arg1="${os.name}" arg2="Linux" />
@@ -61,7 +61,7 @@
 		</java>
 	</target>
 
-	<target name="start" depends="check-tools, check-permissions" description="Start Adito server in the background">
+	<target name="start" depends="create-wrapper-conf, check-tools, check-permissions" description="Start Adito server in the background">
 		<!-- Launch on Linux -->
 		<if>
 			<equals arg1="${os.name}" arg2="Linux" />
@@ -129,7 +129,7 @@
 	</target>
 
 	<!-- Restart the running Adito server -->
-	<target name="restart" depends="check-permissions">
+	<target name="restart" depends="create-wrapper-conf, check-tools, check-permissions">
 		<!-- Restart on Linux -->
 		<if>
 			<equals arg1="${os.name}" arg2="Linux" />
@@ -155,12 +155,6 @@
 		</if>
 	</target>
 
-	<!-- Copy wrapper.conf.example to wrapper.conf if wrapper.conf does not exist -->
-	<target name="check-wrapper-conf">
-		<echo>Checking if wrapper.conf exists and copying it to place</echo>
-		<copy failonerror="false" file="${adito.conf}/wrapper.conf.example" tofile="${adito.conf}/wrapper.conf" />
-	</target>
-
 	<!-- Create wrapper.conf dynamically from wrapper.conf.base -->
 	<target name="create-wrapper-conf" >
 
@@ -170,7 +164,7 @@
 		     so we're have to do this the ugly way. -->
 
 		<if><equals arg1="${os.name}" arg2="Linux" />
-			<then><property name="wrapper.java.library.path" value="install/platforms/linux" /></then>
+			<then><property name="wrapper.java.library.path" value="install/platforms/linux/x86" /></then>
 		<else>
 			<if><os family="windows" />
 				<then><property name="wrapper.java.library.path" value="install/platforms/windows" /></then>
@@ -210,7 +204,7 @@
 	</target>
 
 	<!-- Start the install wizard  -->
-	<target name="install" depends="check-wrapper-conf,check-tools">
+	<target name="install" depends="check-tools, check-permissions">
 
 		<!-- Just in case -->
 		<mkdir dir="logs" />
@@ -227,7 +221,7 @@
 
 
 	<!-- Install Adito as a service  -->
-	<target name="install-service" depends="check-wrapper-conf,check-tools,check-permissions">
+	<target name="install-service" depends="check-tools,check-permissions">
 		<if>
 			<equals arg1="${os.name}" arg2="Linux" />
 			<then>
