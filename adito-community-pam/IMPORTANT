@@ -1,7 +1,0 @@
-This initial version of adito-community-pam will not work if Adito is launched using the Adito wrapper. Please start Adito using the 
-java-only method. This is done with
-
- ant start-using-java (SVN version of Adito)
- ant console-using-java (Adito 0.9.0)
-
-This problem will be fixed soon.
