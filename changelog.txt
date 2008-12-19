@@ -1,3 +1,34 @@
+v0.9.1 (19.12.2008):
+
+Major new features:
+
+* Nearly all existing SSL-Explorer applications have been converted to Adito
+* Extension Store available and enabled by default
+* Source and binary releases
+* Localization support using adito-language module
+* Finnish translation
+* Most wrapper problems now fixed for good
+* SSL-Explorer PAM converted to Adito
+
+Lots of fixes to build files:
+
+* Building Adito is much simpler and less error-prone
+* Better SVN compatibility
+* Building on Mac OS X (10.4/10.5) now works
+* Moved most property definitions to a global build.properties-file
+* Lots of other small improvements to the build files
+
+Other changes:
+
+* A couple of graphical fixes
+* Removed most references to "Enterprise Edition"
+* Removed some references to 3sp where appropriate
+* Allowed use of longer username (e.g. email addresses)
+* Added some SSL-Explorer -> Adito conversion scripts to "tools" directory
+* Lots and lots of documentation written to Adito Wiki (http://adito.wiki.sourceforge.net/)
+* Lots of infrastructure and community building work
+
+
 v0.9.0 (18.5.2008):
 
 * Due to trademark issues all references to SSL-Explorer have been replaced with references to Adito. This includes Java variable names.
