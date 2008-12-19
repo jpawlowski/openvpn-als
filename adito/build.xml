@@ -1130,7 +1130,7 @@ ${jsp.servlets.text}
 				<!-- Was not available, copy it from JDK's lib directory. Fail on error. -->
 			 	<echo message="Copying the tools.jar from your JDK"/>
 
-				<fail message="Could not find classes.jar from your JDK. Check the output of ant sysinfo.">
+				<fail message="Could not find tools.jar from your JDK. Check the output of ant sysinfo.">
 				<condition><not><available file="${tools.jar.jdk}"/></not></condition>
 				</fail>
 
