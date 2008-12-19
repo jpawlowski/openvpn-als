@@ -1,0 +1,47 @@
+Plugin : sslexplorer-radius
+Version: 0.0.1
+
+Provides
+--------
+
+* Configuration Page - RADIUS
+* Authentication Method - RADIUS
+
+Note: If you are going to use an Active Directory user database. You will have
+to configure a guest username / password so SSL-Explorer can retrieve user
+accounts details. This is done using the conf/system.properties file. Edit the
+following two properties :-
+
+	1) sslexplorer.activeDirectory.guestUsername
+	2) sslexplorer.activeDirectory.guestPassword
+
+
+Building the plugin from source
+-------------------------------
+
+Requirements
+------------
+
+* SSL-Explorer 0.1.9 
+* Apache Ant 1.6+
+* Java 1.5 JDK.
+
+Procedure
+---------
+
+1. If you havnt done so already, install 0.1.9.
+
+2. Copy the provided build.properties.sample to build.properties in the 
+   same directory.
+   
+3. Edit build.properties and change sslexplorer.home to be location of
+   your SSL-Explorer installation.
+   
+4. Run the default ant target, e.g.
+
+   $ ant 
+   
+5. If all goes well, you will have a zip file in build/archive. Unzip 
+   the file into [sslexplorer.home]/conf/extensions and restart the
+   server.
+   

@@ -1,0 +1,27 @@
+<!DOCTYPE tiles-definitions PUBLIC 
+	"-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" 
+	"webapp/WEB-INF/tiles-config_1_1.dtd"> 
+<tiles-definitions>
+	<definition name=".site.Layout" path="/WEB-INF/jsp/layouts/layout.jsp">
+		<put name="pageHeader" value="/WEB-INF/jsp/tiles/pageHeader.jsp"/>
+		<put name="header" value="/WEB-INF/jsp/tiles/header.jsp"/>
+		<put name="footer" value="/WEB-INF/jsp/tiles/footer.jsp"/>
+		<put name="info" value="/WEB-INF/jsp/tiles/info.jsp"/>
+		<put name="content" value="${content}"/>
+		<put name="resourcePrefix" value="${resourcePrefix}"/>
+		<put name="menuItem" value="${menuItem}"/>
+		<put name="resourceBundle" value="${resourceBundle}"/>
+		<put name="infoImage" value="${infoImage}"/>
+		<put name="noBodyStyle" value="false"/>
+		<put name="displayGlobalWarnings" value="true"/>	
+	</definition>
+	
+	<definition name=".site.RADIUSConfiguration" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/administration/propertiesContent.jsp"/>
+		<put name="resourcePrefix" value="radiusConfiguration"/>
+		<put name="resourceBundle" value="radius"/>
+		<put name="menuItem" value="radiusConfiguration"/>
+		<put name="infoImage" value="/images/radius.gif"/>	
+	</definition>
+	
+</tiles-definitions>

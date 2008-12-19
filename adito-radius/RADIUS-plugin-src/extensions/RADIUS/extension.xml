@@ -1,0 +1,12 @@
+<bundle  version="1.0.0" type="html" id="RADIUS" licenseAgreement="LICENSE.txt" name="RADIUS Authentication" license="GPL" productURL="http://3sp.com">
+	<description>This extension contains the RADIUS plugin which allows you to authenticate against a RADIUS server.</description>    
+    <extension type="plugin" extension="RADIUS" name="RADIUS Authentication">
+    	<description>This plugin allows you to authenticate against a RADIUS server.</description>
+		<plugin name="radiusPlugin" class="com.sslexplorer.radius.RADIUSPlugin"
+				hostVersion="0.1.10" order="20">
+			<classpath>radius-plugin.jar</classpath>
+			<classpath>jradius-client.jar</classpath>	
+			<resources>webapp</resources>	
+		</plugin>
+	</extension>
+</bundle>
