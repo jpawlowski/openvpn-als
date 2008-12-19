@@ -39,7 +39,7 @@ import java.util.StringTokenizer;
  */
 public class VersionInfo {
 
-    private final static String VERSION = "0.9.0";
+    private final static String VERSION = "0.9.1";
 
     private static Version version;
     private static boolean developmentVersion;
@@ -55,7 +55,7 @@ public class VersionInfo {
                 version = new Version(p.getProperty("version.major", "999") + "." + p.getProperty("version.minor", "999") + "."
                                 + p.getProperty("version.build", "999") + p.getProperty("version.tag"));
             } catch (IOException ioe) {
-                version = new Version("0.9.0");
+                version = new Version("0.9.1");
             } finally {
                 if (in != null) {
                     try {
@@ -71,7 +71,7 @@ public class VersionInfo {
 
     /**
      * Determine if this is a development version. This is true if the 
-     * {@link #VERSION} has not been replaced (i.e. is 0.9.0).
+     * {@link #VERSION} has not been replaced (i.e. is 0.9.1).
      * 
      * @return is development version
      */
