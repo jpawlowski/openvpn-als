@@ -81,7 +81,6 @@ For a list of Ant targets, use "ant -projecthelp"
 	</target>
 
 	<target name="install-agent" description="Install Adito Agent.">
-		<echo>Please use "ant install-agent" target from the adito-subdir</echo>
 		<ant inheritall="false" dir="${adito.home}" target="install-agent" />
 	</target>
 
