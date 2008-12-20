@@ -11,7 +11,8 @@
         <version>0.9.2</version>
     </parent>
 
-    <artifactId>maverick-multiplex</artifactId>
+    <artifactId>maverick-ssl</artifactId>
+		<name>maverick-ssl</name>
 
     <packaging>jar</packaging>
 

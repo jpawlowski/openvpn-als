@@ -12,6 +12,7 @@
     </parent>
 
     <artifactId>agent</artifactId>
+		<name>adito-agent</name>
 
     <packaging>jar</packaging>
 

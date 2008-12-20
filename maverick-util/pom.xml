@@ -12,6 +12,7 @@
     </parent>
 
     <artifactId>maverick-util</artifactId>
+		<name>maverick-util</name>
 
     <packaging>jar</packaging>
 

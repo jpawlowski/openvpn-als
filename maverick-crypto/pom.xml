@@ -12,6 +12,7 @@
     </parent>
 
     <artifactId>maverick-crypto</artifactId>
+		<name>maverick-crypto</name>
 
     <packaging>jar</packaging>
 

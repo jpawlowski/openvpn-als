@@ -12,7 +12,8 @@
     </parent>
 
     <artifactId>console</artifactId>
-
+		<name>adito-console</name>
+		
     <packaging>war</packaging>
 
     <description>
