@@ -12,23 +12,22 @@
 	<property name="build.extension" value="${build.dir}/extension" />
 	<property name="build.release" value="${build.dir}/release" />
 
-        <!-- Agent build fails if Microsoft Java (Java 1) is enabled. -->
-        <!-- Disabled in Adito 0.9.0. --> 
+  <!-- Agent build fails if Microsoft Java (Java 1) is enabled. -->
+  <!-- Disabled in Adito 0.9.0. --> 
 	<!-- Global java1 properties -->
-        <property name="java1.home" value="jdk118_v3" />
-        <property name="java1.compiler" value="${java1.home}/../bin/javac" />
-        <property name="java1.compiler.ms" value="jvc" />
+  <property name="java1.home" value="jdk118_v3" />
+  <property name="java1.compiler" value="${java1.home}/../bin/javac" />
+  <property name="java1.compiler.ms" value="jvc" />
 	
-	<!-- Agent specific properties 
-	   
+	<!-- Agent specific properties   
 	   Some of these properties only come into play when you wish to 
 	   build on a  Windows platform for MS JVM clients (Java 1) . -->
 	<property name="agent.build.target" value="1.1"/>
 	<property name="agent.build.source" value="1.2"/>
 	<property name="agent.build.debug" value="true"/>
         
-        <!-- Agent build fails if Microsoft Java (Java 1) is enabled. -->
-        <!-- Disabled in Adito 0.9.0. --> 
+  <!-- Agent build fails if Microsoft Java (Java 1) is enabled. -->
+  <!-- Disabled in Adito 0.9.0. --> 
 	<property name="agent.build.java1" value="false"/>
 	<property name="agent.build.java1.windows.compiler" value="${java1.compiler.ms}"/>
 	<property name="agent.build.java1.other.compiler" value="${java1.compiler}"/>
@@ -62,26 +61,27 @@
 <!-- Work in progress. We wan't Javadocs from the Agent also -->
 <!--
 	<target name="javadoc" description="Create API documentation">
-                <mkdir dir="${build.docs}/api"/>
-                <javadoc sourcepath="src" defaultexcludes="yes" destdir="${build.docs}/api" author="true" version="true" use="true" windowtitle="${ant.project.name}" notree="true">
-                        <doctitle>
-                                <![CDATA[<h1>Adito Agent</h1>
-                                <br>
-                                <p>This extension adds Adito Agent to Adito server. Large part of
-				Adito's advanced functionality depends on Adito Agent.</p>]]>
-                        </doctitle>
-                        <bottom>
-                                <![CDATA[<i>Copyright &#169; 2003-2007 3SP LTD. All Rights Reserved.</i>]]>
-                        </bottom>
-                        <packageset dir="client" defaultexcludes="yes">
-                                <include name="com/adito/**"/>
-                        </packageset>
-                        <packageset dir="common" defaultexcludes="yes">
-                                <include name="com/adito/**"/>
-                        </packageset>
-                </javadoc>
-        </target>
-
+    <mkdir dir="${build.docs}/api"/>
+		<javadoc sourcepath="src" defaultexcludes="yes" destdir="${build.docs}/api" author="true" version="true" use="true" windowtitle="${ant.project.name}" notree="true">
+      <doctitle>
+        <![CDATA[
+					<h1>Adito Agent</h1>
+          <br>
+		      <p>This extension adds Adito Agent to Adito server. Large part of
+					Adito's advanced functionality depends on Adito Agent.</p>
+				]]>
+      </doctitle>
+      <bottom>
+        <![CDATA[<i>Copyright &#169; 2003-2007 3SP LTD. All Rights Reserved.</i>]]>
+      </bottom>
+      <packageset dir="client" defaultexcludes="yes">
+        <include name="com/adito/**"/>
+      </packageset>
+      <packageset dir="common" defaultexcludes="yes">
+        <include name="com/adito/**"/>
+      </packageset>
+    </javadoc>
+  </target>
 -->
 		
 	

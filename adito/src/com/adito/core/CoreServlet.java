@@ -821,7 +821,7 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
                                             null, "setup", false));
 
         // Add the default key store import types
-        KeyStoreImportTypeManager.getInstance().registerType(new _3SPPurchaseImportType());
+        // KeyStoreImportTypeManager.getInstance().registerType(new _3SPPurchaseImportType()); // Disabled for now, not sure how this fits in the new Adito context
         KeyStoreImportTypeManager.getInstance().registerType(new RootServerCertificateImportType());
         KeyStoreImportTypeManager.getInstance().registerType(new ReplyFromCAImportType());
         KeyStoreImportTypeManager.getInstance().registerType(new ServerAuthenticationKeyImportType());
