@@ -11,12 +11,12 @@
         <version>0.9.2</version>
     </parent>
 
-    <artifactId>maverick-crypto</artifactId>
+    <artifactId>maverick-util</artifactId>
 
     <packaging>jar</packaging>
 
     <description>
-      	Maverick crypto library
+      	Maverick util library
     </description>
 
     <profiles>
@@ -24,9 +24,9 @@
 
     <dependencies>
       <dependency>
-          <groupId>com.adito</groupId>
-          <artifactId>maverick-util</artifactId>
-          <version>${project.version}</version>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+          <version>1.1</version>
       </dependency>
     </dependencies>
 

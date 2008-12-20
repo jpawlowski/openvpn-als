@@ -48,6 +48,10 @@
     </developers>
     
     <modules>
+				<module>maverick-util</module>
+				<module>maverick-ssl</module>
+				<module>maverick-multiplex</module>
+				<module>maverick-crypto</module>
         <module>console</module>
         <module>agent</module>
     </modules>
@@ -199,5 +203,5 @@
                 </dependency>
             </dependencies>
         </profile>
-2    </profiles>
+		</profiles>
 </project>
