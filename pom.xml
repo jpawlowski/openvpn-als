@@ -36,6 +36,8 @@
     </organization>
     
     <developers>
+				<!-- Who were the original developers on this project? Current developers? People should
+				     be added below. -->
         <developer>
             <id>svetzal</id>
             <name>Steven Vetzal</name>
