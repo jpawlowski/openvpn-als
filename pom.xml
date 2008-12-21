@@ -20,7 +20,7 @@
     </description>
     
     <scm>
-        <connection>https://adito.svn.sourceforge.net/svnroot/adito/adito/trunk</connection>
+        <connection>scm:svn:https://adito.svn.sourceforge.net/svnroot/adito/adito/trunk</connection>
     </scm>
     
     <licenses>
@@ -49,7 +49,33 @@
             <timezone>+5</timezone>
         </developer>
     </developers>
+
+		<contributors>
+			<contributor>
+				<name>Matt Mattson</name>
+				<email>mmattson1980@yahoo.com</email>
+				<roles>
+					<role>Coordinator</role>
+				</roles>
+			</contributor>
+		</contributors>
     
+		<issueManagement>
+			<system>SourceForge</system>
+			<url>https://sourceforge.net/tracker2/?group_id=228294</url>
+		</issueManagement>
+
+		<mailingLists>
+			<mailingList>
+				<name>adito-user</name>
+				<archive>https://sourceforge.net/mailarchive/forum.php?forum_name=adito-user</archive>
+			</mailingList>
+			<mailingList>
+				<name>adito-devel</name>
+				<archive>https://sourceforge.net/mailarchive/forum.php?forum_name=adito-devel</archive>
+			</mailingList>
+		</mailingLists>
+
     <modules>
 				<module>maverick-util</module>
 				<module>maverick-ssl</module>
@@ -60,13 +86,13 @@
     </modules>
     
     <repositories>
-        <!--repository>
+        <repository>
             <id>maven2-repository.dev.java.net</id>
             <name>Java.net Repository for Maven</name>
             <url>http://download.java.net/maven/2</url>
             <layout>default</layout>
-        </repository-->
-        <!--repository>
+        </repository>
+        <repository>
             <id>Codehaus Snapshot Repo</id>
             <url>http://snapshots.repository.codehaus.org/</url>
             <snapshots>
@@ -74,7 +100,7 @@
             <releases>
                 <enabled>false</enabled>
             </releases>
-        </repository-->
+        </repository>
         <repository>
             <id>OpenQA</id>
             <url>http://maven.openqa.org</url>
@@ -82,16 +108,16 @@
     </repositories>
     
     <pluginRepositories>
-        <!--pluginRepository>
+        <pluginRepository>
             <id>Codehaus Plugins</id>
             <url>http://repository.codehaus.org/</url>
-        </pluginRepository-->
-        <!--pluginRepository>
+        </pluginRepository>
+        <pluginRepository>
             <id>maven2-repository.dev.java.net</id>
             <name>Java.net Repository for Maven</name>
             <url>http://download.java.net/maven/2/</url>
             <layout>default</layout>
-        </pluginRepository-->
+        </pluginRepository>
     </pluginRepositories>
     
     <dependencyManagement>
