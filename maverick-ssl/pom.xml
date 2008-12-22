@@ -12,7 +12,7 @@
     </parent>
 
     <artifactId>maverick-ssl</artifactId>
-		<name>maverick-ssl</name>
+    <name>maverick-ssl</name>
 
     <packaging>jar</packaging>
 
