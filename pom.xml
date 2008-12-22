@@ -52,11 +52,14 @@
 
 		<contributors>
 			<contributor>
-				<name>Matt Mattson</name>
+				<name>Samuli Seppänen</name>
 				<email>mmattson1980@yahoo.com</email>
+				<organization>Tietoteema Oy</organization>
 				<roles>
 					<role>Coordinator</role>
+					<role>Translator</role>
 				</roles>
+				<timezone>+2</timezone>
 			</contributor>
 		</contributors>
     
