@@ -26,6 +26,21 @@
     <licenses>
         <license>
             <name>GPLv2</name>
+            <comments>All Adito core components and Maverick-* use the GPLv2 license</comments>
+        </license>
+
+        <license>
+            <name>Others</name>
+            <comments>Some parts of Adito (e.g. the wrapper) are under permissive BSD/MIT style licenses.</comments>
+        </license>
+
+        <license>
+            <name>Hypersonic SQL license</name>
+            <comments>Adito's internal database (HSQLDB) uses it's own license</comments>
+        </license>
+
+        <license>
+            <name>Apache license 2.0</name>
             <comments></comments>
         </license>
     </licenses>
