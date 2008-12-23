@@ -1,0 +1,2 @@
+There are some jars that Adito requires which are not yet in public Maven repositories. The temporary directory m2-repo contains 
+those necessary jars so that the build works properly. Simply copy the contents of that dir to $HOME/.m2/repository as you're set.
