@@ -67,7 +67,6 @@
 
 		<contributors>
 			<contributor>
-				<id>Mattock</id>
 				<name>Samuli Seppänen</name>
 				<email>mmattson1980@yahoo.com</email>
 				<organization>Tietoteema Oy</organization>
@@ -100,6 +99,7 @@
 				<module>maverick-ssl</module>
 				<module>maverick-multiplex</module>
 				<module>maverick-crypto</module>
+<!--				<module>adito-boot</module> -->
         <!--module>console</module-->
         <!--module>agent</module-->
     </modules>
