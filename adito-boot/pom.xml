@@ -12,7 +12,7 @@
     </parent>
 
     <artifactId>adito-boot</artifactId>
-    <name>adito</name>
+    <name>adito-boot</name>
 
     <packaging>jar</packaging>
 
