@@ -99,8 +99,8 @@
 				<module>maverick-ssl</module>
 				<module>maverick-multiplex</module>
 				<module>maverick-crypto</module>
-				<module>adito-boot</module>
-				<module>adito-server</module>
+				<module>boot</module>
+				<module>server</module>
         <!--module>console</module-->
         <!--module>agent</module-->
     </modules>
