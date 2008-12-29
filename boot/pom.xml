@@ -11,8 +11,8 @@
         <version>0.9.2</version>
     </parent>
 
-    <artifactId>adito-boot</artifactId>
-    <name>adito-boot</name>
+    <artifactId>boot</artifactId>
+    <name>boot</name>
 
     <packaging>jar</packaging>
 

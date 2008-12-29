@@ -125,6 +125,16 @@
             <id>OpenQA</id>
             <url>http://maven.openqa.org</url>
         </repository>
+
+	<!-- Jetty 5.1.x and HSQLDB are currently required by Adito and are
+	     available from this Maven2 repository -->
+        <repository>
+            <id>mirrors.ibiblio.org</id>
+            <name>Ibiblio.org Maven2 repository</name>
+            <url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
+        </repository>
+
+
     </repositories>
     
     <pluginRepositories>
