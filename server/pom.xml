@@ -57,12 +57,14 @@
 	</dependency>
 
 	<!-- Adito contains a slightly patched version of commons-vfs
-	     but we'll try the vanilla version first to see what happens -->
+	     but we'll try the vanilla version first to see what happens.
+	     Version 20050307052300 did not allow compiling due to a
+	     missing interface. -->
 
 	<dependency>
 		<groupId>commons-vfs</groupId>
 		<artifactId>commons-vfs</artifactId>
-		<version>20050307052300</version>
+		<version>1.0</version>
 	</dependency>
 
 
@@ -125,6 +127,40 @@
 		<version>1.7.3.3</version>
 	</dependency>
 
+	<!-- Adito uses org.apache.commons.cache, which seems to
+	     be an unmaintained, sandboxed component. No official
+	     releases of it have been made. The component seems
+	     not to be available from any Maven repository. See
+	     these pages for more info:
+
+	     * http://commons.apache.org/sandbox/index.html
+	     * http://commons.apache.org/sandbox/cache/
+
+	     For now, we're using the jar from Adito and
+	     guessing 0.1 as the proper version
+
+	-->
+	
+	<dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>cache</artifactId>
+		<version>0.1</version>
+	</dependency>
+
+	<!-- RSS feed stuff requires ROME (RSS and atOM utilitiEs for Java).
+	     The original version used in Adito was 0.7 -->
+
+	<dependency>
+		<groupId>rome</groupId>
+		<artifactId>rome</artifactId>
+		<version>0.9</version>
+	</dependency>
+
+	<dependency>
+		<groupId>commons-net</groupId>
+		<artifactId>commons-net</artifactId>
+		<version>2.0</version>
+	</dependency> 
 
     </dependencies>
 </project>
