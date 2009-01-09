@@ -1,10 +1,15 @@
 #!/bin/bash
-# This read the "variables" file, goes through it
-# line by line and converts old variable names
-# to new one in the most inefficient way possible,
-# but it works, kind of :)
+# This read the file given as the second parameter,
+# goes through it line by line and converts old
+# variable names to new one in the most
+# inefficient way possible, but it works, kind of
+# :)
+#
+# Example usage:
+#
+# convert_variable_names.sh File.java file_with_replacements
 
-cat variables|while read line; do
+cat $2|while read line; do
 
 	# Skip lines that begin with # or are empty
 	echo "$line"|grep -E "(^$|^#.*$)"
@@ -29,9 +34,6 @@ cat variables|while read line; do
 		cat $1|sed s/"$ORIG"/"$NEW"/g > $1.new
 		cp -f $1.new $1
 		rm -f $1.new
-
-
-
 
 	fi
 done

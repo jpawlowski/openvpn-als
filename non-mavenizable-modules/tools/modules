@@ -1,0 +1,8 @@
+adito-agent=agent
+adito-community-activedirectory=activedirectory-auth
+adito-community-applications=applications
+adito-community-network-places=network-places
+adito-community-pam=pam-auth
+adito-community-tunnels=tunnels
+adito-community-unix=unix-auth
+adito-community-web-forwards=web-forwards
