@@ -1,6 +1,10 @@
-NOTE: There are some jars that Adito requires which are not yet in public Maven repositories. The 
+== Modules not available from public Maven2 repositories ==
+
+There are some jars that Adito requires which are not yet in public Maven repositories. The 
 temporary directory m2-repo contains those necessary jars so that the build works properly. Simply 
 copy the contents of that dir to $HOME/.m2/repository as you're set.
+
+== Build order ==
 
 Check the build order from branches/maven2/pom.xml. In a nutshell, due to dependencies modules have 
 to be mavenized in the following order:
@@ -12,3 +16,31 @@ to be mavenized in the following order:
 
 Most of the directories contain ant build stuff. It's best if old ant directories are renamed as 
 they are migrated to Maven2. This should reduce unnecessary confusion.
+
+== New module names ==
+
+For historic reasons modules have long names and are being converted to shorter names thusly:
+
+ adito-community-applications -> applications
+ adito-agent -> agent
+ 
+In some cases this affects the Maven src/main/java directory structure. All references in the java, xml, 
+property etc. files have to be converted, too. For this reason there is a Bash script 
+(tools/convert_variables.sh) that can help in the conversion process.
+
+== Reference modules ==
+
+You can use the jar's and zip-files in the "references" directory to see if output Maven creates is 
+correct. The directory contains fully functional JAR's and ZIP-files created by the original "ant" build 
+process.
+
+To peek inside a JAR, you can use
+
+ jar tf filename.jar
+
+For ZIP-files you can (on Linux) use
+
+ zipinfo filename.zip
+
+If contents of the Ant/Maven JAR/ZIP differs a lot, you've probably got a problem.  
+
