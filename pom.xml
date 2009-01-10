@@ -105,6 +105,7 @@
 				<module>activedirectory</module>
 				<module>applications</module>
 				<module>webforwards</module>
+				<module>tunnels</module>
     
     <!--module>console</module-->
         <!--module>agent</module-->
