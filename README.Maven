@@ -12,6 +12,7 @@ to be mavenized in the following order:
 * maverick-*
 * boot
 * server
+* agent (for extensions that require SSL-tunnels)
 * extensions (tunnels, agent, webforwards, etc.)
 
 Most of the directories contain ant build stuff. It's best if old ant directories are renamed as 
