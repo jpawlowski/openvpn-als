@@ -48,3 +48,10 @@ For ZIP-files you can (on Linux) use
 
 If contents of the Ant/Maven JAR/ZIP differs a lot, you've probably got a problem. Note that we probably
 have to use the Assembly plugin to create a fully functional, runnable version of Adito.
+
+== Notes on Apache commons-vfs ==
+
+Adito originally contained a patched version of Apache commons vfs. The patches themselves are available
+in directory adito-commons-vfs/patches and are _probably_ the only modifications to the original
+commons-vfs code. To reduce unnecessary work Mavenized Adito will use standard commons-vfs unless
+it turns out to be problematic.

@@ -106,6 +106,7 @@
 				<module>applications</module>
 				<module>webforwards</module>
 				<module>tunnels</module>
+				<module>networkplaces</module>
     
     <!--module>console</module-->
         <!--module>agent</module-->
