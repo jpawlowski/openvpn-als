@@ -12,11 +12,14 @@ to be mavenized in the following order:
 * maverick-*
 * boot
 * server
-* agent (for extensions that require SSL-tunnels)
 * extensions (tunnels, agent, webforwards, etc.)
 
 Most of the directories contain ant build stuff. It's best if old ant directories are renamed as 
-they are migrated to Maven2. This should reduce unnecessary confusion.
+they are migrated to Maven2. This should reduce unnecessary confusion. Many extensions depend on
+the Agent at runtime, but not during compilation.
+
+The directory maven-template-module contains a template module that can be used as a basis for
+other modules.
 
 == New module names ==
 
@@ -31,7 +34,7 @@ property etc. files have to be converted, too. For this reason there is a Bash s
 
 == Reference modules ==
 
-You can use the jar's and zip-files in the "references" directory to see if output Maven creates is 
+You can use the jar's and zip-files in the "comparison" directory to see if output Maven creates is 
 correct. The directory contains fully functional JAR's and ZIP-files created by the original "ant" build 
 process.
 
@@ -43,5 +46,5 @@ For ZIP-files you can (on Linux) use
 
  zipinfo filename.zip
 
-If contents of the Ant/Maven JAR/ZIP differs a lot, you've probably got a problem.  
-
+If contents of the Ant/Maven JAR/ZIP differs a lot, you've probably got a problem. Note that we probably
+have to use the Assembly plugin to create a fully functional, runnable version of Adito.

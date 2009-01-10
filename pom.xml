@@ -102,6 +102,7 @@
 				<module>boot</module>
 				<module>server</module>
 				<module>unix</module>
+				<module>activedirectory</module>
         <!--module>console</module-->
         <!--module>agent</module-->
     </modules>
