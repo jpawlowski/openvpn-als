@@ -103,7 +103,10 @@
 				<module>server</module>
 				<module>unix</module>
 				<module>activedirectory</module>
-        <!--module>console</module-->
+				<module>applications</module>
+				<module>webforwards</module>
+    
+    <!--module>console</module-->
         <!--module>agent</module-->
     </modules>
     
