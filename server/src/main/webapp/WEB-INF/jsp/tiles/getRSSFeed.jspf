@@ -1,0 +1,25 @@
+<%@ page import="java.util.Iterator" %>
+<%@ page import="com.sun.syndication.feed.synd.SyndEntry" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+
+<logic:notEmpty name="getRSSFeedForm" property="feed">
+	<bean:define id="feed" name="getRSSFeedForm" property="feed" type="com.adito.rss.Feed"/>
+	<div class="messages">
+		<%
+			if(feed.getFeed() != null && feed.getFeed().getEntries() != null) {
+				for(Iterator e = feed.getFeed().getEntries().iterator(); e.hasNext(); ) {
+					SyndEntry entry = (SyndEntry)e.next();
+		%>
+				<div class="text">																
+	                <input:toolTip width="300" href="<%= "javascript:windowRef = window.open('" + ( entry.getUri() == null ? "#" : entry.getUri() ) + "','external_resources_win','left=20,top=20,width=720,height=500,toolbar=1,resizable=1,menubar=1,scrollbars=1'); windowRef.focus()" %>" 
+	                	value="<%= entry.getDescription().getValue() %>">
+						<%= entry.getTitle() == null ? "" : entry.getTitle() %>
+					</input:toolTip>
+				</div>
+		<%
+				}
+			}
+		%>
+</logic:notEmpty>		

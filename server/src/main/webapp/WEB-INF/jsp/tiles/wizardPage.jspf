@@ -1,0 +1,55 @@
+<%@ page import="com.adito.install.forms.SelectCertificateSourceForm" %>
+<%@ page import="com.adito.wizard.actions.AbstractWizardAction" %>
+<%@ page import="com.adito.boot.Util" %>
+<%@ page import="com.adito.wizard.AbstractWizardSequence" %>
+<%@ page import="com.adito.security.Constants" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/navigation" prefix="navigation" %>
+<%@ taglib uri="/server/taglibs/security" prefix="security" %>
+			
+<% AbstractWizardSequence seq = (AbstractWizardSequence)request.getSession().getAttribute(Constants.WIZARD_SEQUENCE); %>
+<core:form enctype="<%= seq.getCurrentPageForm().getFormEncoding() %>" focus="<%= seq.getCurrentPageForm().getFocussedField() %>" autocomplete="<%= seq.getCurrentPageForm().getAutocomplete() ? "ON" : "OFF" %>" action="<%= seq.getCurrentPageForm().getFormAction() %>">
+	<div id="component_wizardPage">
+		<div class="dialog_content">		
+			<div id="<%= "wizard_" + seq.getWizardName() %>">
+				<html:hidden property="referer"/>
+				<html:hidden property="actionTarget"/>
+				<html:hidden property="_charset_"/>
+				<html:hidden property="gotoStep"/>
+				<div id="header">
+					<h3><bean:message key="<%= seq.getCurrentPageForm().getResourcePrefix() + ".title" %>" bundle="<%= seq.getCurrentPageForm().getResourceBundle() %>"/></h3>
+					<bean:message key="<%= seq.getCurrentPageForm().getResourcePrefix() + ".description" %>" bundle="<%= seq.getCurrentPageForm().getResourceBundle() %>"/>
+				</div>
+				<div id="<%= "wizardPage_" + seq.getCurrentPageForm().getPageName() %>">					
+					<div id="body">
+						<bean:define id="wizardPageContent"><%= seq.getCurrentPageForm().getPage() %></bean:define>
+						<tiles:insert flush="false" beanName="wizardPageContent"/>
+					</div>
+				</div>
+			</div>
+			<div id="footer">
+				<logic:equal name="<%= seq.getCurrentPageForm().getPageName() + "Form" %>" property="nextAvailable" value="true">
+					<logic:equal name="<%= seq.getCurrentPageForm().getPageName() + "Form" %>" property="previousAvailable" value="true">
+						<html:button property="previous" styleClass="previous" onclick="<%= seq.getCurrentPageForm().getPreviousOnClick() %>"><bean:message key="wizard.previous" bundle="navigation"/></html:button>
+					</logic:equal>
+					<html:submit property="next" styleClass="next" onclick="<%= seq.getCurrentPageForm().getNextOnClick() %>"><bean:message key="wizard.next" bundle="navigation"/></html:submit>
+				</logic:equal>
+				<logic:equal name="<%= seq.getCurrentPageForm().getPageName() + "Form" %>" property="nextAvailable" value="false">
+					<logic:equal name="<%= seq.getCurrentPageForm().getPageName() + "Form" %>" property="previousAvailable" value="true">
+						<html:submit property="previous" styleClass="previous" onclick="<%= seq.getCurrentPageForm().getPreviousOnClick() %>"><bean:message key="wizard.previous" bundle="navigation"/></html:submit>
+					</logic:equal>
+				</logic:equal>
+				<logic:equal name="<%= seq.getCurrentPageForm().getPageName() + "Form" %>" property="finishAvailable" value="true">
+					<html:button property="finish" styleClass="finish" onclick="<%= seq.getCurrentPageForm().getFinishOnClick() %>"><bean:message key="wizard.finish" bundle="navigation"/></html:button>
+				</logic:equal>
+				<navigation:inWizard finish="false">										
+					<html:button property="cancel" styleClass="cancel" onclick="setActionTarget('cancel'); document.forms[0].submit(); return false"><bean:message key="navigation.cancelWizard.buttonText" bundle="navigation"/></html:button>
+				</navigation:inWizard>&nbsp;
+			</div>
+		</div>
+	</div>	
+</core:form>

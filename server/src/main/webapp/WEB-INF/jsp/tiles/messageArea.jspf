@@ -1,0 +1,12 @@
+<%@ page import="java.util.Iterator" %>
+<%@ page import="com.adito.core.PanelManager" %>
+<%@ page import="com.adito.core.Panel" %>
+<jsp:directive.page import="java.util.List"/>
+<jsp:directive.page import="com.adito.boot.Util"/>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+
+<tiles:useAttribute name="resourcePrefix" scope="request" classname="java.lang.String"/> 
+<tiles:useAttribute name="resourceBundle" scope="request" classname="java.lang.String"/> 
+<tiles:useAttribute name="displayGlobalWarnings" scope="request" classname="java.lang.String"/> 
+<tiles:useAttribute name="rssFeed" scope="request" classname="java.lang.String"/>
+	

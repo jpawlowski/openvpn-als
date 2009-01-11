@@ -1,0 +1,8 @@
+.httpFolder {
+	behavior: url(#default#httpFolder);
+}
+
+div#page_attributeDefinition .dialog_form_table tr.formTextArea textarea {
+	overflow-x: hidden;
+	overflow-y: auto;
+}

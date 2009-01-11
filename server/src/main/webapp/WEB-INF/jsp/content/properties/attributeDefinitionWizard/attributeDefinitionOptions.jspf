@@ -1,0 +1,157 @@
+<jsp:directive.page
+	import="com.adito.properties.attributes.AttributeDefinition" />
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="http://ajaxtags.org/tags/ajax" prefix="ajax"%>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+
+<table class="resourceDetails">
+	<tr class="formText">
+		<td class="label">
+			<bean:message
+				key="attributeDefinitionWizard.attributeDefinitionOptions.type"
+				bundle="properties" />
+		</td>
+		<td class="value">
+			<html:select onchange="setActionTarget('typeChanged'); document.forms[0].submit();" tabindex="1" property="type">
+				<html:option
+					value="<%=String.valueOf(AttributeDefinition.TYPE_STRING)%>">
+					<bean:message bundle="properties" key="propertyDefinition.type.0" />
+				</html:option>
+				<html:option
+					value="<%=String.valueOf(AttributeDefinition.TYPE_INTEGER)%>">
+					<bean:message bundle="properties" key="propertyDefinition.type.1" />
+				</html:option>
+				<html:option
+					value="<%=String.valueOf(AttributeDefinition.TYPE_BOOLEAN)%>">
+					<bean:message bundle="properties" key="propertyDefinition.type.2" />
+				</html:option>
+				<html:option
+					value="<%=String.valueOf(AttributeDefinition.TYPE_PASSWORD)%>">
+					<bean:message bundle="properties" key="propertyDefinition.type.4" />
+				</html:option>
+				<html:option
+					value="<%=String.valueOf(AttributeDefinition.TYPE_TEXT_AREA)%>">
+					<bean:message bundle="properties" key="propertyDefinition.type.6" />
+				</html:option>
+			</html:select>
+		</td>
+	</tr>
+	<logic:equal name="form" property="attributesClass.supportsVisibility"
+		value="true">
+		<tr class="formRadio">
+			<td class="label">
+				<bean:message
+					key="attributeDefinitionWizard.attributeDefinitionOptions.visibility"
+					bundle="properties" />
+			</td>
+			<td class="value">
+				<html:radio tabindex="2" property="visibility"
+					value="<%=String
+									.valueOf(AttributeDefinition.USER_OVERRIDABLE_ATTRIBUTE)%>" />
+				<bean:message
+					key="attributeDefinitionWizard.attributeDefinitionOptions.visibility.userOverridable"
+					bundle="properties" />
+				<br />
+				<html:radio tabindex="3" property="visibility"
+					value="<%=String
+									.valueOf(AttributeDefinition.USER_VIEWABLE_ATTRIBUTE)%>" />
+				<bean:message
+					key="attributeDefinitionWizard.attributeDefinitionOptions.visibility.userVisible"
+					bundle="properties" />
+				<br />
+				<html:radio tabindex="4" property="visibility"
+					value="<%=String
+									.valueOf(AttributeDefinition.USER_USEABLE_ATTRIBUTE)%>" />
+				<bean:message
+					key="attributeDefinitionWizard.attributeDefinitionOptions.visibility.userUsable"
+					bundle="properties" />
+				<core:checkPropertyNotEquals regExp="false" propertyValue="disabled" propertyName="security.privateKeyMode">
+					<br />
+					<html:radio tabindex="5" property="visibility"
+						value="<%=String
+										.valueOf(AttributeDefinition.USER_CONFIDENTIAL_ATTRIBUTE)%>" />
+					<bean:message
+						key="attributeDefinitionWizard.attributeDefinitionOptions.visibility.userConfidential"
+						bundle="properties" />
+				</core:checkPropertyNotEquals>
+			</td>
+		</tr>
+	</logic:equal>
+	<tr class="formText">
+		<td class="label">
+			<bean:message
+				key="attributeDefinitionWizard.attributeDefinitionOptions.label"
+				bundle="properties" />
+		</td>
+		<td class="value">
+			<html:text tabindex="6" property="label" />
+		</td>
+	</tr>
+	<tr class="formText">
+		<td class="label">
+			<bean:message
+				key="attributeDefinitionWizard.attributeDefinitionOptions.defaultValue"
+				bundle="properties" />
+		</td>
+		<td class="value">
+			<html:text tabindex="7" styleId="defaultValue" property="defaultValue" />
+			<input:variables inputId="defaultValue" includeUserAttributes="false"/> 
+		</td>
+	</tr>
+	<tr class="formText">
+		<td class="label">
+			<bean:message
+				key="attributeDefinitionWizard.attributeDefinitionOptions.category"
+				bundle="properties" />
+		</td>
+		<td class="value">
+			<html:text styleId="category" tabindex="8" property="category" />
+			<span id="indicator" style="display:none;"> <img
+					src="<core:themePath/>/images/indicator.gif" /> </span>
+		</td>
+	</tr>
+	<tr class="formText">
+		<td class="label">
+			<bean:message
+				key="attributeDefinitionWizard.attributeDefinitionOptions.sortOrder"
+				bundle="properties" />
+		</td>
+		<td class="value">
+			<html:text tabindex="9" property="sortOrder" />
+		</td>
+	</tr>
+	<tr class="formText">
+		<td class="label">
+			<bean:message
+				key="attributeDefinitionWizard.attributeDefinitionOptions.validationString"
+				bundle="properties" />
+		</td>
+		<td class="value">
+			<html:text styleClass="fullWidth" styleId="validationString"
+				tabindex="10" property="validationString" />
+		</td>
+	</tr>
+	<tr class="formText">
+		<td class="label">
+			<bean:message
+				key="attributeDefinitionWizard.attributeDefinitionOptions.typeMeta"
+				bundle="properties" />
+		</td>
+		<td class="value">
+			<html:text tabindex="11" property="typeMeta" />
+		</td>
+	</tr>
+</table>
+<ajax:autocomplete source="category" target="category"
+	baseUrl="${contextPath}/ajaxListAttributeCategories.do"
+	parser="new ResponseXmlParser()" className="autocomplete"
+	indicator="indicator" parameters="account={category}"
+	minimumCharacters="1" />
+<ajax:autocomplete source="validationString" target="validationString"
+	baseUrl="${contextPath}/ajaxListValidationStrings.do"
+	parser="new ResponseXmlParser()" className="autocomplete"
+	indicator="indicator" parameters="validationString={validationString}"
+	minimumCharacters="1" />

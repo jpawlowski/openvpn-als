@@ -1,0 +1,46 @@
+<%@ page import="com.adito.security.Constants" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.text.DateFormat" %>
+<%@ page import="java.util.Date" %>
+<jsp:directive.page import="com.adito.security.SessionInfo"/>
+<jsp:directive.page import="java.io.File"/>
+<jsp:directive.page import="com.adito.boot.Util"/>
+<jsp:directive.page import="com.adito.boot.SystemProperties"/>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="/server/taglibs/security" prefix="security" %>
+
+<div id="aboutInfo">
+	<security:checkAuthenticated requiresAuthentication="true">
+		<logic:notEmpty scope="session" name="sessionInfo">						
+			<div id="component_logonStatus">
+				<bean:message key="footer.info" bundle="navigation" 
+						arg0="<%= ((SessionInfo)request.getSession().getAttribute(
+							Constants.SESSION_INFO)).getUser().getPrincipalName() %>"
+						arg1="<%= SimpleDateFormat.getDateInstance(SimpleDateFormat.SHORT).format(new Date(((SessionInfo)request.getSession().getAttribute(
+							Constants.SESSION_INFO)).getLogonTime().getTimeInMillis())) %>"/>
+			</div> 
+		</logic:notEmpty>
+	</security:checkAuthenticated>
+	<div id="component_sslx_version">
+	<% if (Util.isNullOrTrimmedBlank(SystemProperties.get("adito.footer.copyright", ""))) { %>
+		<bean:message key="footer.copyright" bundle="navigation"/>
+	<% } else {%>
+		<%= SystemProperties.get("adito.footer.copyright")%>
+	<% } %>
+    &nbsp;<%= com.adito.boot.ContextHolder.getContext().getVersion() %><br/>
+	
+		<% if(new File("build.xml").exists()) { %>	
+			<bean:message key="footer.sourceEdition" bundle="navigation"/>
+		<% } else { %>
+			<bean:message key="footer.communityEdition" bundle="navigation"/>
+		<% } %>			
+	</div> 
+	<div id="component_sslx_copyright">
+	<% if (Util.isNullOrTrimmedBlank(SystemProperties.get("adito.footer.copyright.additional", ""))) { %>
+		<bean:message key="footer.copyright.additional" bundle="navigation"/>
+	<% } else {%>
+		<%= SystemProperties.get("adito.footer.copyright.additional")%>
+	<% } %>
+	</div>
+</div>

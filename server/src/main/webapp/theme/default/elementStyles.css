@@ -1,0 +1,112 @@
+/*
+
+   WARNING - Please Do not change these styles lightly. They affect a *lot*.
+   It may be more approriate for you to overide your individual page styles
+   in pageStyles.css and wizardStyles.ss
+
+*/
+
+/* Global element styles */
+
+a, a:link, a:visited, a:hover {	
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    color: #3d649e;
+    text-decoration: none;
+}
+
+a:hover {	
+    text-decoration: underline;
+}
+
+textarea {
+	padding: 2px;
+	border: 1px solid #dcdcdc;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    background-color: white;
+    color: black;
+}
+
+/* External links */
+
+a.externalLink {
+    color: #00447C;
+    font-weight: bold;
+    text-decoration : none;
+}
+
+a.externalLink:link{
+    color: #00447C;
+    font-weight: bold;
+    font-family: Tahoma, Arial, Helvetica, sans-serif; 
+	font-size: 10pt;
+}
+
+a.externalLink:visited{
+    color: #00447C;
+    font-weight: bold;
+    font-family: Tahoma, Arial, Helvetica, sans-serif; 
+	font-size: 10pt;
+}
+
+a.externalLink:hover{
+    color: #00447C;
+    font-weight: bold;
+    font-family: Tahoma, Arial, Helvetica, sans-serif; 
+	font-size: 10pt;
+    text-decoration : underline;
+}
+
+/* Small text */
+
+
+.smallText {
+	font-family: Tahoma, Arial, Helvetica, sans-serif; 
+	font-size: 9pt;
+}
+
+/* Form fields */
+
+input.fullWidth {
+	width: 100%;
+}
+
+input.threeQuartersWidth {
+	width: 75%;
+}
+
+input {
+	padding: 2px;
+	border: 1px solid #dcdcdc;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    background-color: white;
+    color: black;
+}
+
+select {
+	padding: 2px;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 1em;
+	border: 1px solid #dcdcdc;
+    background-color: white;
+    color: black;
+}
+
+/* Separators */
+
+hr {
+	background-color : #b3b3b3;
+	color : #b3b3b3;
+	height : 1px;
+	border : 0 solid #b3b3b3;
+	border-top-width : thin;
+}
+
+hr.lineDot {
+	background-color : #777777;
+	color : #777777;
+	height : 1px;
+	border : 0 solid #777777;
+	border-top-width : thin;
+}

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE taglib
+  PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
+  "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+
+<taglib>
+
+	<tlibversion>1.0</tlibversion>
+	<jspversion>1.1</jspversion>
+	<shortname>Tabs Tag Library</shortname>
+
+	<uri>/server/taglibs/tabs</uri>
+
+	<info>
+		This tag library contains tags for tabs!
+	</info>
+
+	<tag>
+		<name>tabSet</name>
+		<tagclass>com.adito.tabs.tags.TabSetTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>property</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>bundle</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>resourcePrefix</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<name>tabHeadings</name>
+		<tagclass>com.adito.tabs.tags.TabHeadingsTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+	</tag>
+	
+	<tag>
+		<name>tab</name>
+		<tagclass>com.adito.tabs.tags.TabTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<attribute>
+			<name>tabName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

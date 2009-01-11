@@ -1,0 +1,112 @@
+<%@ page import="com.adito.boot.Util" %>
+<jsp:directive.page import="com.adito.extensions.ExtensionBundle.ExtensionBundleStatus"/>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/table" prefix="table"%>
+<%@ taglib uri="/server/taglibs/tabs" prefix="tabs"%>
+
+<div id="page_showExtensionStore" class="tabbedForm">     
+	<core:form autocomplete="OFF" method="post" action="/showExtensionStore.do">   
+			<html:hidden property="referer"/>
+			<html:hidden property="actionTarget"/>
+			<html:hidden property="selectedTab"/>
+			<logic:empty name="extensionStoreForm" property="descriptor">
+				<div id="notConnected" class="dialog">
+					<table>
+						<tr>
+							<td align="left">
+								<bean:message key="extensionStore.notConnected.text" bundle="extensions"/>
+							</td>
+							<td>    
+								<input type="button"
+										onclick="self.location = '/showExtensionStore.do?action=list&connect';"
+										value="<bean:message key='extensionStore.notConnected.connect' bundle='extensions'/>" 
+								/>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</logic:empty>
+			<bean:define id="extensionStoreForm" name="extensionStoreForm" type="com.adito.extensions.forms.ExtensionStoreForm"/>
+			<tabs:tabSet name="extensionStoreForm" bundle="extensions" resourcePrefix="extensionStore.tab">
+				<tabs:tabHeadings/>
+				<logic:iterate name="extensionStoreForm" property="tabbedCategories" id="cat" type="com.adito.extensions.ExtensionBundleCategoryItem">
+					<tabs:tab tabName="<%= cat.getCategory() %>">
+				    	<logic:iterate name="cat" property="types" id="typeItem" type="com.adito.extensions.ExtensionBundleTypeItem">
+							<table class="resource_table">
+								<tr class="typeTitle">
+									<td>
+										<bean:message key="<%= "extensionStore.type." + typeItem.getType() + ".name" %>" bundle="extensions" />
+									</td>
+								</tr>
+								<tr class="typeDescription"> 
+									<td>
+										<bean:message key="<%= "extensionStore.type." + typeItem.getType() + ".description" %>" bundle="extensions" />
+									</td>
+								</tr>	
+								<tr class="typeItems">
+									<td>
+										<table class="resource_table">
+											<thead>
+												<tr class="titles">
+													<td class="extension">
+														<bean:message key="extensionStore.extension" bundle="extensions"/>
+													</td>
+													<td class="actions">
+														<bean:message key="extensionStore.actions" bundle="extensions" />
+													</td>
+												</tr>
+											</thead>
+											<tbody>
+										    	<% boolean highlight= true; %>	
+												<logic:iterate name="typeItem" indexId="idx" property="extensionBundles" id="element" type="com.adito.extensions.ExtensionBundleItem">
+													<tr  
+								      					onmouseover="<%= "this.className = 'selected';" %>"
+								      					onmouseout="<%= "this.className = '" + ( highlight ? "highlight" : "lowlight" ) + "';" %>" class="<%= highlight ? "highlight" : "lowlight" %>">           
+														<td class="extension">
+															<logic:equal name="element" property="bundle.devExtension" value="true">
+																<span style="color: red;"><b>DEV</b></span>
+															</logic:equal>
+															<span class="<%= "extensionBundle_" + element.getBundleStatusName() %>">
+																<logic:notEmpty name="element" property="bundle.productURL">
+																	<input:toolTip width="400" href="#" onclick="<%= "window.open('" + Util.escapeForJavascriptString(element.getBundle().getProductURL()) + "');" %>" 
+					 															   contentLocation="<%= "/extensionBundleInformation.do?bundleId=" + element.getBundle().getId() %>">
+																		<bean:write name="element" property="bundle.name"/>
+																	</input:toolTip>
+																</logic:notEmpty>
+																<logic:empty name="element" property="bundle.productURL">
+																	<input:toolTip width="400" href="#" 
+																				   contentLocation="<%= "/extensionBundleInformation.do?bundleId=" + element.getBundle().getId() %>">
+																		<bean:write name="element" property="bundle.name"/>
+																	</input:toolTip>
+																</logic:empty>
+															</span>
+														</td>
+														<td class="actions">																					
+															<tiles:insert flush="false" page="/WEB-INF/jsp/tiles/tableItemActionBar.jspf">		
+																<tiles:put name="pager" beanName="typeItem" beanProperty="pager"/>
+																<tiles:put name="rowIndex" beanName="idx"/>
+																<tiles:put name="policyLaunching" value="false"/>
+																<tiles:put name="actionsTableId" value="extensionStore"/>
+																<tiles:put name="displayBlanks" value="false"/>
+															</tiles:insert>		
+														</td>
+													</tr>
+												<% highlight = !highlight; %>
+												</logic:iterate>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+							</table>
+						</logic:iterate>
+					</tabs:tab>
+				</logic:iterate>
+			</tabs:tabSet>
+	</core:form>
+</div>
+			

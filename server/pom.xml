@@ -14,7 +14,7 @@
     <artifactId>server</artifactId>
     <name>server</name>
 
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <description>
 	Adito web application
@@ -161,6 +161,52 @@
 		<artifactId>commons-net</artifactId>
 		<version>2.0</version>
 	</dependency> 
+
+	<!-- Test-scoped dependencies -->
+
+	<!-- NOTE: these dependencies should be all the tests need, but
+	most of them fail with the following error message:
+	
+	"Unable to autoload servlet: com.adito.core.CoreServlet:
+	javax.servlet.UnavailableException: Failed to initialise system
+	database."
+
+	-->
+
+	<dependency>
+		<groupId>org.easymock</groupId>
+		<artifactId>easymock</artifactId>
+		<version>2.4</version>
+		<scope>test</scope>
+	</dependency>
+
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>4.4</version>
+		<scope>test</scope>
+	</dependency>
+
+	<dependency>
+		<groupId>strutstestcase</groupId>
+		<artifactId>strutstestcase</artifactId>
+		<version>2.1.4-1.2-2.4</version>
+		<scope>test</scope>
+	</dependency>
+
+	<dependency>
+		<groupId>httpunit</groupId>
+		<artifactId>httpunit</artifactId>
+		<version>1.6.1</version>
+		<scope>test</scope>
+	</dependency>
+
+	<dependency>
+		<groupId>org.bouncycastle</groupId>
+		<artifactId>bcprov-jdk12</artifactId>
+		<version>130</version>
+		<scope>test</scope>
+	</dependency>
 
     </dependencies>
 </project>

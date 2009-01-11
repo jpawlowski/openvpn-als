@@ -1,0 +1,41 @@
+<%@ page import="com.adito.policyframework.PolicyConstants" %>
+<jsp:directive.page import="com.adito.policyframework.wizards.forms.AccessRightsDetailsForm"/>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %> 
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %> 
+<%@ taglib uri="/server/taglibs/input" prefix="input"%>
+ 
+<bean:define id="accessRightsDetailsForm" name="accessRightsDetailsForm" type="com.adito.policyframework.wizards.forms.AccessRightsDetailsForm" />
+<table class="resourceDetails">	
+	<tr class="formText">
+		<td class="label">
+			<bean:message key="accessRightsWizard.resourceDetails.accessRightsType" bundle="policyframework" />
+		</td>
+		<td class="value">
+			<input:toolTip width="400" 
+				key="<%= "accessRightsWizard.resourceDetails.accessRightsType." + accessRightsDetailsForm.getWizardSequence().getAttribute(AccessRightsDetailsForm.ATTR_RESOURCE_PERMISSION_CLASS, null) + ".description" %>" bundle="policyframework">  
+				<bean:message key="<%= "accessRightsWizard.resourceDetails.accessRightsType." + accessRightsDetailsForm.getWizardSequence().getAttribute(AccessRightsDetailsForm.ATTR_RESOURCE_PERMISSION_CLASS, null) + ".name" %>" bundle="policyframework"/>
+			</input:toolTip>
+		</td>
+	</tr>	
+	<tr class="formText">
+		<td class="label">
+			<div class="required">
+				<bean:message key="accessRightsWizard.resourceDetails.resourceName" bundle="policyframework"/>
+			</div>
+		</td>
+		<td class="value">
+		    <html:text property="resourceName" size="20"/>
+		</td>
+	</tr>
+	<tr class="formTextArea">
+		<td class="label">
+			<div class="required">
+				<bean:message key="accessRightsWizard.resourceDetails.resourceDescription" bundle="policyframework"/>
+			</div>
+		</td>
+		<td class="value">		
+		    <html:textarea property="resourceDescription"/>
+		</td>
+	</tr>
+</table>

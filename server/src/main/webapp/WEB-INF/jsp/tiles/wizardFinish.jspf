@@ -1,0 +1,57 @@
+<%@ page import="com.adito.wizard.WizardActionStatus" %>
+<%@ page import="com.adito.wizard.AbstractWizardSequence" %>
+<%@ page import="com.adito.security.Constants" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+
+<div id="wizardFinish">
+	<% AbstractWizardSequence seq = (AbstractWizardSequence)request.getSession().getAttribute(Constants.WIZARD_SEQUENCE); %>
+	<table>
+		<logic:iterate name="<%= seq.getCurrentPageForm().getPageName() + "Form" %>" property="actionStatus" type="com.adito.wizard.WizardActionStatus" id="actionStatus">
+			<% String bundle = actionStatus.getBundle() == null ? seq.getCurrentPageForm().getResourceBundle() : actionStatus.getBundle(); %>
+			<tr class="formBlock">			
+				<td class="value">
+					<logic:equal name="actionStatus" property="status" value="<%= String.valueOf(WizardActionStatus.COMPLETED_OK) %>">
+						<span class="statusOk"><bean:message key="<%= actionStatus.getKey() %>" bundle="<%= bundle %>" arg0="<%= actionStatus.getArg0() %>" arg1="<%= actionStatus.getArg1() %>" arg2="<%= actionStatus.getArg2() %>" arg3="<%= actionStatus.getArg3() %>" arg4="<%= actionStatus.getArg4() %>"/></span>					
+					</logic:equal>
+					<logic:equal name="actionStatus" property="status" value="<%= String.valueOf(WizardActionStatus.COMPLETED_WITH_WARNINGS) %>">
+						<span class="statusWarning"><bean:message key="<%= actionStatus.getKey() %>" bundle="<%= bundle %>" arg0="<%= actionStatus.getArg0() %>" arg1="<%= actionStatus.getArg1() %>" arg2="<%= actionStatus.getArg2() %>" arg3="<%= actionStatus.getArg3() %>" arg4="<%= actionStatus.getArg4() %>"/></span>					
+					</logic:equal>
+					<logic:equal name="actionStatus" property="status" value="<%= String.valueOf(WizardActionStatus.COMPLETED_WITH_ERRORS) %>">
+						<span class="statusError"><bean:message key="<%= actionStatus.getKey() %>" bundle="<%= bundle %>" arg0="<%= actionStatus.getArg0() %>" arg1="<%= actionStatus.getArg1() %>" arg2="<%= actionStatus.getArg2() %>" arg3="<%= actionStatus.getArg3() %>" arg4="<%= actionStatus.getArg4() %>"/></span>					
+					</logic:equal>
+				</td>
+			</tr>
+		</logic:iterate>
+		<tfoot>
+			<tr class="formBlock">
+				<td>
+					<logic:equal name="<%= seq.getCurrentPageForm().getPageName() + "Form" %>" property="completedWithErrors" value="true">
+						<bean:message key="<%= seq.getCurrentPageForm().getResourcePrefix() + ".completedWithErrors" %>" bundle="<%= seq.getCurrentPageForm().getResourceBundle() %>"/>
+					</logic:equal>
+					<logic:equal name="<%= seq.getCurrentPageForm().getPageName() + "Form" %>" property="completedWithErrors" value="false">
+						<logic:equal name="<%= seq.getCurrentPageForm().getPageName() + "Form" %>" property="completedWithWarnings" value="true">
+							<bean:message key="<%= seq.getCurrentPageForm().getResourcePrefix() + ".completedWithWarnings" %>" bundle="<%= seq.getCurrentPageForm().getResourceBundle() %>"/>
+						</logic:equal>
+						<logic:equal name="<%= seq.getCurrentPageForm().getPageName() + "Form" %>" property="completedWithWarnings" value="false">
+							<bean:message key="<%= seq.getCurrentPageForm().getResourcePrefix() + ".allOk" %>" bundle="<%= seq.getCurrentPageForm().getResourceBundle() %>"/>
+						</logic:equal>
+					</logic:equal>
+				</td>
+			</tr>
+			<tr class="formBlock">
+				<td>
+					<logic:equal name="<%= seq.getCurrentPageForm().getPageName() + "Form" %>" property="completedOk" value="true">
+						<html:submit property="exit" styleClass="exit" onclick="setActionTarget('exit'); return true"><bean:message key="<%= seq.getCurrentPageForm().getResourcePrefix() + ".exit" %>" bundle="<%= seq.getCurrentPageForm().getResourceBundle() %>"/></html:submit>
+					</logic:equal>
+					<logic:equal name="<%= seq.getCurrentPageForm().getPageName() + "Form" %>" property="completedOk" value="false">					
+						<html:submit property="rerun" styleClass="retry" onclick="setActionTarget('rerun'); return true"><bean:message key="<%= seq.getCurrentPageForm().getResourcePrefix() + ".rerun" %>" bundle="<%= seq.getCurrentPageForm().getResourceBundle() %>"/></html:submit>&nbsp;
+						<html:submit property="exit" styleClass="cancel" onclick="setActionTarget('exit'); return true"><bean:message key="<%= seq.getCurrentPageForm().getResourcePrefix() + ".exit" %>" bundle="<%= seq.getCurrentPageForm().getResourceBundle() %>"/></html:submit>
+					</logic:equal>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+</div>

@@ -1,0 +1,15 @@
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="/server/taglibs/security" prefix="security" %>
+
+<table border="0" align="left" width="100%">
+	<tr>
+		<td colspan="3" align="left">
+			<security:checkUserDatabaseSupport requiresAccountCreation="false" requiresPasswordChange="true">
+				<logic:equal name="showAvailableAccountsForm" property="editable" value="true">
+					<input type="submit" value="<bean:message key='availableAccounts.password' bundle='security'/>" onclick="setActionTarget('password');"/>
+				</logic:equal>
+			</security:checkUserDatabaseSupport>
+		</td>
+	</tr>
+</table>

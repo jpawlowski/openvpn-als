@@ -1,0 +1,60 @@
+<%@ page import="com.adito.install.forms.SelectCertificateSourceForm" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@page import="com.adito.core.CoreUtil"%>
+
+<noScript>
+	<table align="center">
+		<tr>
+			<td>
+				<img class="infoImage" src="<%= CoreUtil.getThemePath(session) + "/images/info/warning.gif" %>" />
+			</td>
+			<td>
+				<h3>					
+					<bean:message key="login.disabled.java.script" bundle="security" /> 
+				</h3>
+			</td>
+		</tr>
+	</table>	
+</noScript>
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<logic:equal name="selectCertificateSourceForm" property="certificatesAvailable" value="true">
+		<tr class="formBlock">
+			<td class="value">
+				<html:radio name="selectCertificateSourceForm" property="certificateSource" value="<%= SelectCertificateSourceForm.USE_CURRENT_CERTIFICATE %>"/><span class="valueLabel"><bean:message key="installation.selectCertificateSource.useCurrentCertificate.title" bundle="install"/></span>
+			</td>
+		</tr>
+		<tr class="formBlock">
+			<td class="label">
+				<bean:message key="installation.selectCertificateSource.useCurrentCertificate.description" bundle="install"/>
+			</td>
+		</tr>
+	</logic:equal>
+	<tr class="formBlock">
+		<td class="value"">
+			<html:radio name="selectCertificateSourceForm" property="certificateSource" value="<%= SelectCertificateSourceForm.CREATE_NEW_CERTIFICATE %>"/><span class="valueLabel"><bean:message key="installation.selectCertificateSource.createNewCertificate.title" bundle="install"/></span>
+		</td>
+	</tr>
+	<tr class="formBlock">
+		<td class="label">
+			<bean:message key="installation.selectCertificateSource.createNewCertificate.description" bundle="install"/>
+		</td>
+	</tr>
+	<tr class="formBlock">
+		<td class="value">
+			<html:radio name="selectCertificateSourceForm" property="certificateSource" value="<%= SelectCertificateSourceForm.IMPORT_EXISTING_CERTIFICATE %>"/><span class="valueLabel"><bean:message key="installation.selectCertificateSource.importExistingCertificate.title" bundle="install"/></span>
+		</td>
+	</tr>
+	<tr class="formBlock">
+		<td class="label">
+			<bean:message key="installation.selectCertificateSource.importExistingCertificate.description" bundle="install"/>
+		</td>
+	</tr>
+</table>
+<script type="text/javascript">
+<!--
+	$('javascriptElement').value = 'true';
+-->
+</script>

@@ -1,0 +1,60 @@
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Iterator" %>
+<%@ page import="com.adito.properties.PropertyProfile" %>
+<%@ page import="com.adito.security.Constants" %>
+<%@ page import="com.adito.core.AvailableMenuItem" %>
+<%@ page import="com.adito.wizard.AbstractWizardSequence" %>
+<%@ page import="com.adito.wizard.WizardStep" %>
+<%@ page import="com.adito.policyframework.Resource" %>
+<%@ page import="com.adito.core.CoreServlet" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.text.DateFormat" %>
+<jsp:directive.page import="com.adito.policyframework.ResourceStack"/>
+<jsp:directive.page import="com.adito.boot.Util"/>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/navigation" prefix="navigation" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+
+<% Resource editingResource = ResourceStack.peekEditingStack(session);
+ %>
+<input:frame titleKey="messages.editingResourceInfo" styleClass="component_messageBox" panelId="editingResourceInfo">
+	<div id="resourceDetails">
+		<div class="title">
+			<bean:message key="navigation.resourceName.title" bundle="navigation"/>
+		</div>
+		<div class="detail">
+			<%=
+				editingResource.getResourceDisplayName()
+			%>
+		</div>
+		<div class="title">
+			<bean:message key="navigation.dateCreated.title" bundle="navigation"/>
+		</div>
+		<div class="detail">
+			<% if(editingResource.getDateCreated() == null) { %>
+				<bean:message key="navigation.dateCreated.noDate" bundle="navigation"/>
+			<% } else {
+					DateFormat sdf = SimpleDateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);
+					String date = sdf.format(editingResource.getDateCreated().getTime());
+				%>
+				<%= date %>
+			<% } %>
+		</div>
+		<div class="title">
+			<bean:message key="navigation.dateAmended.title" bundle="navigation"/>
+		</div>
+		<div class="detail">
+			<% if(editingResource.getDateAmended() == null) { %>
+				<bean:message key="navigation.dateAmended.noDate" bundle="navigation"/>
+			<% } else {
+					DateFormat sdf = SimpleDateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);
+					String date = sdf.format(editingResource.getDateAmended().getTime());
+				%>
+				<%= date %>
+			<% } %>
+		</div>
+	</div>
+</input:frame>

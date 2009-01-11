@@ -1,0 +1,122 @@
+/*
+
+   WARNING - Please Do not change these styles lightly. They affect a *lot*.
+   It may be more approriate for you to overide your individual page styles
+   in pageStyles.css and wizardStyles.ss
+
+*/
+
+/* Buttons */
+
+.formButton {
+	display: inline;
+}
+
+input.save {
+	background: url(images/actions/save.gif);
+}
+
+input.new {
+	background: url(images/actions/new.gif);
+}
+
+input.ok {
+	background: url(images/actions/ok.gif);
+}
+
+input.cancel {
+	background: url(images/actions/cancel.gif);
+}
+
+input.close {
+	background: url(images/actions/cancel.gif);
+}
+
+input.yes {
+	background: url(images/actions/ok.gif);
+}
+
+input.no {
+	background: url(images/actions/cancel.gif);
+}
+
+input.configure {
+	background: url(images/actions/configure.gif);
+}
+
+input.reset {
+	background: url(images/actions/reset.gif);
+}
+
+input.next {
+	background: url(images/actions/next.gif);
+}
+
+input.previous {
+	background: url(images/actions/previous.gif);
+}
+
+input.finish {
+	background: url(images/actions/ok.gif);
+}
+
+input.multiAdd {
+	background: url(images/actions/ok.gif);
+}
+
+input.multiRemove {
+	background: url(images/actions/cancel.gif);
+}
+
+input.multiUp {
+	background: url(images/actions/up.gif);
+}
+
+input.multiDown {
+	background: url(images/actions/down.gif);
+}
+
+input.retry {
+	background: url(images/actions/retry.gif);
+}
+
+input.exit {
+	background: url(images/actions/exit.gif);
+}
+
+input.search {
+	background: url(images/actions/search.gif);
+}
+
+input.upload {
+	background: url(images/actions/upload.gif);
+}
+
+input.done {
+	background: url(images/actions/done.gif);
+}
+
+input.info {
+	background: url(images/actions/information.gif);
+}
+
+/*
+ * NOTE, if you add styles here, remember to add them to the JSP code
+ * that adds rounding and allows custom colors to be set (style.jsp in this
+ * directory)
+ */
+
+input.cancel, input.close, input.configure, input.exit, input.finish, input.multiAdd, input.multiRemove,
+input.new, input.no, input.ok, input.next, input.previous, input.reset, input.retry, input.save, input.yes,
+input.search, input.upload, input.done, input.multiUp, input.multiDown, input.info {
+	padding-left: 20px;
+	padding-right: 4px;
+	background-position: 4px;
+	background-repeat: no-repeat;
+	background-color: #f6f6f6;
+	border: 1px outset black;
+	border: 1px solid #dcdcdc;
+	text-align: center;
+	cursor: pointer;
+	z-index: 1;
+}

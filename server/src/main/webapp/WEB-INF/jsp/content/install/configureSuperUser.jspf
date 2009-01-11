@@ -1,0 +1,53 @@
+<%@ page import="com.adito.install.forms.SelectCertificateSourceForm" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://ajaxtags.org/tags/ajax" prefix="ajax" %> 
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+
+<table border="0" cellspacing="0" border="0">
+	<tr class="formText">
+		<td class="label">
+			<div class="required"><bean:message key="installation.configureSuperUser.username" bundle="install"/></div>
+		</td>
+		<td class="value">
+			<html:text styleId="account" property="account" size="15"/>
+			<span id="accountIndicator" style="display:none;">
+				<img src="<core:themePath/>/images/indicator.gif"/>
+			</span>
+		</td>
+	</tr>
+	<logic:equal name="configureSuperUserForm" property="superUserCreationSupported" value="true">
+		<tr class="formText">
+			<td class="label">
+				<bean:message key="installation.configureSuperUser.email" bundle="install"/>
+			</td>
+			<td class="value">
+				<html:text property="email" size="15"/>
+			</td>
+		</tr>
+		<tr class="formPassword">
+			<td class="label">
+				<bean:message key="installation.configureSuperUser.password" bundle="install"/>
+			</td>
+			<td class="value">
+	    	    <html:password property="superUserPassword" size="30"/>
+			</td>
+		</tr>
+		<tr class="formPassword">
+			<td class="label">
+				<bean:message key="installation.configureSuperUser.confirmPassword" bundle="install"/>
+			</td>
+			<td class="value">
+		        <html:password property="confirmSuperUserPassword" size="30"/>
+			</td>
+		</tr>
+	</logic:equal>
+</table>
+<ajax:autocomplete source="account"
+                   target="account"
+                   baseUrl="${contextPath}/ajaxListAccounts.do"
+                   className="autocomplete"
+                   parameters="account={account}"
+                   indicator="accountIndicator"
+                   minimumCharacters="1"/>    

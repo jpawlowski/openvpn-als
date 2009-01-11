@@ -1,0 +1,64 @@
+<jsp:directive.page import="com.adito.policyframework.ResourceItem"/>
+<jsp:directive.page import="java.util.Iterator"/>
+<jsp:directive.page import="com.adito.policyframework.Policy"/>
+<jsp:directive.page import="com.adito.navigation.WrappedFavoriteItem"/>
+<jsp:directive.page import="com.adito.table.TableItem"/>
+<jsp:directive.page import="com.adito.boot.Util"/>
+<jsp:directive.page import="com.adito.policyframework.PolicyDatabaseFactory"/>
+<jsp:directive.page import="com.adito.security.SessionInfo"/>
+<jsp:directive.page import="com.adito.core.CoreServlet"/>
+<jsp:directive.page import="com.adito.security.LogonControllerFactory"/><%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+
+<tiles:useAttribute name="pager" scope="request" classname="com.adito.table.Pager"/> 
+<tiles:useAttribute name="rowIndex" scope="request" classname="java.lang.Integer"/> 
+<bean:define id="themePath"><core:themePath/></bean:define>
+<% TableItem item = pager.getFilteredItem(rowIndex.intValue() + pager.getStartRow());
+   ResourceItem resourceItem = item instanceof WrappedFavoriteItem ? ((WrappedFavoriteItem)item).getFavoriteItem() : (ResourceItem)item; 
+   if(resourceItem.getPolicies() != null && !resourceItem.getPolicies().isEmpty()) { 
+   		String popupScript =  "togglePopupBelowLeft(document.getElementById('policyLaunch_" + 
+		pager.getModel().getId() + "_" + rowIndex + "'), document.getElementById('policyLaunchTrigger_" + 
+		pager.getModel().getId() + "_" + rowIndex + "')); event.cancelBubble = true;"; %>
+
+<span id="<%= "policyLaunchTrigger_" + pager.getModel().getId() + "_" + rowIndex  %>">
+	<a onclick="<%= popupScript %>" 
+		href="javascript: void(0);">
+		<img href="<%= "javascript:" + popupScript %>" border="0" src="<%= themePath + "/images/actions/launch.gif" %>"/>
+	</a>
+</span>
+<div style="display: none;" class="policyLaunch" id="<%= "policyLaunch_" + pager.getModel().getId() + "_" + rowIndex %>">
+   <div class="policyLaunchInner">
+   	<div>
+	<div class="text">
+		Select policy to launch this resource as <img border="0" href="<%= "javascript:"+ popupScript %>" src="<%= themePath + "/images/close-reverse.gif" %>"/>
+	</div>
+   	<% 
+   	SessionInfo sessionInfo = LogonControllerFactory.getInstance().getSessionInfo(request);
+   	for(Iterator i = resourceItem.getPolicies().iterator(); i.hasNext(); ) {
+		Policy policy = (Policy)i.next(); 
+		if(PolicyDatabaseFactory.getInstance().isPolicyGrantedToUser(policy, sessionInfo.getUser())) { %>
+			<div class="policyLaunchItem">
+				<input:toolTip onclick="<%= "togglePopupBelowLeft(document.getElementById('policyLaunch_" + pager.getModel().getId() + "_" + ( rowIndex.intValue() + pager.getStartRow() ) + "')," + 
+						"document.getElementById('policyLaunchTrigger_" + 
+						pager.getModel().getId() + "_" + ( rowIndex.intValue() + pager.getStartRow() ) + "'));" +
+						resourceItem.getOnClick(policy.getResourceId(), request) %>" 
+					href="<%= resourceItem.getLink(policy.getResourceId(), request) %>" 
+					value="<%= policy.getResourceDescription() %>" 
+					styleId="<%= "policyLaunch_" + resourceItem.getResource().getResourceId() %>">
+					<span class="policyName">
+						<%= policy.getResourceName() %>
+					</span>
+				</input:toolTip>
+			</div>
+	<% 	} 
+	}%>
+	</div>
+   </div>
+</div>
+<% } %>
+

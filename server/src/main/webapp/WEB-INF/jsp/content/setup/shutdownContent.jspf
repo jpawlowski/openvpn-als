@@ -1,0 +1,210 @@
+<%@ page import="com.adito.policyframework.PolicyConstants" %>
+<%@ page import="com.adito.setup.forms.ShutdownForm" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/security" prefix="security" %>
+
+<bean:define id="shutdownForm" type="com.adito.setup.forms.ShutdownForm" name="shutdownForm"/>
+<core:form autocomplete="OFF" method="post" action="/shutdown.do" focus="cancelShutdown">   
+	<div id="page_shutdown">     
+		<html:hidden property="referer"/>
+		<html:hidden property="actionTarget"/>
+		<div id="messageSinks" class="titled_dialog_content">
+			<table class="titled_dialog_table">
+				<thead>
+					<tr>
+						<td>
+							<logic:equal name="shutdownForm" property="shutdownType" value="<%= ShutdownForm.SHUTTING_DOWN %>">
+								<div id="serverStoppingTitle" style="visible;height:25px">
+									<bean:message key="shutdown.title.shutdownAlreadyPerforming" bundle="setup"/>
+								</div>
+								<div id="serverStoppedTitle" style="hidden;height:1px">
+									<bean:message key="shutdown.title.serverShutdown" bundle="setup"/>
+								</div>
+								<div id="serverStartedTitle" style="hidden;height:1px">
+									<bean:message key="shutdown.title.serverStarted" bundle="setup"/>
+								</div>
+							</logic:equal>
+							<logic:equal name="shutdownForm" property="shutdownType" value="<%= ShutdownForm.BOTH %>">
+								<bean:message key="shutdown.title.shutdownOrRestart" bundle="setup"/>
+							</logic:equal>
+							<logic:equal name="shutdownForm" property="shutdownType" value="<%= ShutdownForm.SHUTDOWN %>">
+								<bean:message key="shutdown.title.shutdown" bundle="setup"/>
+							</logic:equal>
+							<logic:equal name="shutdownForm" property="shutdownType" value="<%= ShutdownForm.RESTART %>">
+								<bean:message key="shutdown.title.restart" bundle="setup"/>
+							</logic:equal>
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>							
+							<table class="dialog_form_table">
+								<tbody>
+									<logic:equal name="shutdownForm" property="shutdownType" value="<%= ShutdownForm.BOTH %>">
+										<tr class="formRadio">
+											<td class="label">				
+												<html:radio property="shutdownOperation" value="shutdown" />
+											</td>
+											<td class="value">
+												<bean:message key="shutdown.shutdown" bundle="setup"/>
+											</td>
+										</tr>
+										<tr class="formRadio">
+											<td class="label">				
+												<core:restartAvailable requiresRestartAvailable="false">
+													<html:radio disabled="true" property="shutdownOperation" value="restart" />
+												</core:restartAvailable> 
+												<core:restartAvailable requiresRestartAvailable="true">
+													<html:radio property="shutdownOperation" value="restart" />
+												</core:restartAvailable>
+											</td>
+											<td class="value">
+												<bean:message key="shutdown.restart" bundle="setup" />
+											</td>
+										</tr>
+									</logic:equal>
+									<logic:notEqual name="shutdownForm" property="shutdownType" value="<%= ShutdownForm.BOTH %>">
+										<html:hidden property="shutdownOperation"/>
+									</logic:notEqual>								
+									<logic:notEqual name="shutdownForm" property="shutdownType" value="<%= ShutdownForm.SHUTTING_DOWN %>">
+										<tr class="formBlock">
+											<td colspan="2">
+												<bean:message key="shutdown.shutdownDelay" bundle="setup" />
+												<html:text property="shutdownDelay"/>	
+											</td>
+										</tr>
+									</logic:notEqual>
+									<logic:equal name="shutdownForm" property="shutdownType" value="<%= ShutdownForm.SHUTTING_DOWN %>">
+										<tr class="formBlock">
+											<td colspan="2">
+												<div id="serverStoppingDescription" style="visible;height:25px">
+													<bean:message key="shutdown.description.shutdownAlreadyPerforming" bundle="setup" arg0="<%= shutdownForm.getShutdownTime() %>"/>
+												</div>
+												<div id="serverStoppedDescription" style="hidden;height:1px">
+													<bean:message key="shutdown.description.serverShutdown" bundle="setup"/>
+												</div>
+												<div id="serverStartedDescription" style="hidden;height:1px">
+													<bean:message key="shutdown.description.serverStarted" bundle="setup"/>
+												</div>
+											</td>
+										</tr>
+									</logic:equal>
+								</tbody>
+								<tfoot>
+									<tr>
+										<td colspan="2">							
+											<div class="button_bar">
+												<div class="formButton">
+													<logic:equal name="shutdownForm" property="shutdownType" value="<%= ShutdownForm.SHUTTING_DOWN %>">
+														<div id="serverStoppingButton" style="visible;height:25px">
+															<html:submit styleClass="cancel" onclick="setActionTarget('shutdown'); return true"><bean:message key="shutdown.cancelShutdown" bundle="setup"/></html:submit>
+														</div>
+													</logic:equal>
+													<logic:notEqual name="shutdownForm" property="shutdownType" value="<%= ShutdownForm.SHUTTING_DOWN %>">
+														<html:submit styleClass="ok" onclick="setActionTarget('shutdown'); return true"><bean:message key="shutdown.submit" bundle="setup"/></html:submit>
+													</logic:notEqual>
+												</div>
+											</div>
+										</td>						                        
+									</tr>
+								</tfoot>
+							</table>
+						</td>
+					</tr>
+				</tbody>
+			</table>	
+		</div>		
+	</div>
+</core:form>
+
+<logic:equal name="shutdownForm" property="shutdownType" value="<%= ShutdownForm.SHUTTING_DOWN %>">
+	<script type="text/javascript">
+		
+		function doPollUntillStopped(){
+			if(pollServer("/serverRunning.do")){
+				setTimeout(doPollUntillStopped, 1000);
+				$('serverStoppingTitle').style.visibility = "visible";
+				$('serverStoppingTitle').style.height = "25px";
+				$('serverStoppingButton').style.visibility = "visible";
+				$('serverStoppingButton').style.height = "25px";
+				$('serverStoppedTitle').style.visibility = "hidden";
+				$('serverStoppedTitle').style.height = "1px";
+				$('serverStartedTitle').style.visibility = "hidden";
+				$('serverStartedTitle').style.height = "1px";
+				$('serverStoppingDescription').style.visibility = "visible";
+				$('serverStoppingDescription').style.height = "25px";
+				$('serverStoppedDescription').style.visibility = "hidden";
+				$('serverStoppedDescription').style.height = "1px";
+				$('serverStartedDescription').style.visibility = "hidden";
+				$('serverStartedDescription').style.height = "1px";
+			}
+			else{
+				//usefulldebug alert('Server has gone down.');
+				/* document.getElementById('serverStopping'); */
+				$('serverStoppingTitle').style.visibility = "hidden";
+				$('serverStoppingTitle').style.height = "1px";
+				$('serverStoppingButton').style.visibility = "hidden";
+				$('serverStoppingButton').style.height = "1px";
+				$('serverStoppedTitle').style.visibility = "visible";
+				$('serverStoppedTitle').style.height = "25px";
+				$('serverStartedTitle').style.visibility = "hidden";
+				$('serverStartedTitle').style.height = "1px";
+				$('serverStoppingDescription').style.visibility = "hidden";
+				$('serverStoppingDescription').style.height = "1px";
+				$('serverStoppedDescription').style.visibility = "visible";
+				$('serverStoppedDescription').style.height = "25px";
+				$('serverStartedDescription').style.visibility = "hidden";
+				$('serverStartedDescription').style.height = "1px";
+				doPoll();
+			}
+		}
+		
+		function doPoll(){
+			if(!pollServer("/serverRunning.do")){
+				setTimeout(doPoll, 1000);
+				$('serverStoppingTitle').style.visibility = "hidden";
+				$('serverStoppingTitle').style.height = "1px";
+				$('serverStoppingButton').style.visibility = "hidden";
+				$('serverStoppingButton').style.height = "1px";
+				$('serverStoppedTitle').style.visibility = "visible";
+				$('serverStoppedTitle').style.height = "25px";
+				$('serverStartedTitle').style.visibility = "hidden";
+				$('serverStartedTitle').style.height = "1px";
+				$('serverStoppingDescription').style.visibility = "hidden";
+				$('serverStoppingDescription').style.height = "1px";
+				$('serverStoppedDescription').style.visibility = "visible";
+				$('serverStoppedDescription').style.height = "25px";
+				$('serverStartedDescription').style.visibility = "hidden";
+				$('serverStartedDescription').style.height = "1px";
+			}
+			else{
+				/* document.getElementById('serverStopping'); */
+				$('serverStoppingTitle').style.visibility = "hidden";
+				$('serverStoppingTitle').style.height = "1px";
+				$('serverStoppingButton').style.visibility = "hidden";
+				$('serverStoppingButton').style.height = "1px";
+				$('serverStoppedTitle').style.visibility = "hidden";
+				$('serverStoppedTitle').style.height = "1px";
+				$('serverStartedTitle').style.visibility = "visible";
+				$('serverStartedTitle').style.height = "25px";
+				$('serverStoppingDescription').style.visibility = "hidden";
+				$('serverStoppingDescription').style.height = "1px";
+				$('serverStoppedDescription').style.visibility = "hidden";
+				$('serverStoppedDescription').style.height = "1px";
+				$('serverStartedDescription').style.visibility = "visible";
+				$('serverStartedDescription').style.height = "25px";
+				//usefulldebug alert('Server is now running.');
+				document.location.href = "/showHome.do";	
+			}
+		}
+		
+		doPollUntillStopped();
+
+	</script>
+</logic:equal>
+
+

@@ -1,0 +1,32 @@
+<%@ page import="com.adito.policyframework.PolicyConstants" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/security" prefix="security" %>
+
+<div id="page_installShutdown">
+<div class="dialog_content">
+	<div id="shutdownMessage">
+		Exiting Installer 
+	</div>
+</div>
+<script language="JavaScript">
+<!--
+
+var seconds = 10;
+countdownId = window.setTimeout('updateCountdown();', 1000);
+	
+function updateCountdown() {
+	if(seconds > 0) {
+		seconds--;
+		$('shutdownMessage').update('Exiting installer - <b>' + seconds + 's</b>');
+		countdownId = window.setTimeout('updateCountdown();', 1000);
+	}	
+	else {
+		$('shutdownMessage').update('Exited Installer. You may now restart the service');
+	}
+}
+
+// --></script>
+</div>

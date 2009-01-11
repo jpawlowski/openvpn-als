@@ -1,0 +1,9 @@
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<div id="page_profiles">
+	<core:form method="post" action="/showUserProfiles.do" onsubmit="setActionTarget('filter')">	
+		<%@ include file="/WEB-INF/jsp/content/properties/profiles.jspf" %>	
+	</core:form>
+</div>

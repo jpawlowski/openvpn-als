@@ -1,0 +1,137 @@
+
+<jsp:directive.page import="com.adito.boot.Util"/><%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+
+<jsp:directive.page import="com.adito.properties.attributes.AttributeDefinition"/>
+<tiles:useAttribute name="items" classname="java.util.Collection"/> 
+<tiles:useAttribute name="rowIdx" classname="java.lang.Integer"/> 
+<logic:iterate id="attributeValueItems" name="items" offset="<%= rowIdx.toString() %>" length="1" type="com.adito.properties.PropertyItem">												
+	<%-- String --%>
+	<logic:equal name="attributeValueItems" property="definition.type" value="<%= String.valueOf(AttributeDefinition.TYPE_STRING) %>">										
+		<tr class="formText">
+			<td class="label">
+				<tiles:insert page="/WEB-INF/jsp/content/properties/propertyLabel.jspf"
+					flush="false">
+					<tiles:put name="propertyItem" beanName="attributeValueItems"/>
+				</tiles:insert>
+			</td>
+			<td class="value">
+				<html:text size="<%= String.valueOf(attributeValueItems.getColumns()) %>" indexed="true" name="attributeValueItems" property="value"/>
+			</td>
+		</tr>
+	</logic:equal>
+	<%-- Integer --%>
+	<logic:equal name="attributeValueItems" property="definition.type" value="<%= String.valueOf(AttributeDefinition.TYPE_INTEGER) %>">
+		<tr class="formPassword">
+			<td class="label">		
+				<tiles:insert page="/WEB-INF/jsp/content/properties/propertyLabel.jspf"
+					flush="false">
+					<tiles:put name="propertyItem" beanName="attributeValueItems"/>
+				</tiles:insert>
+			</td>
+			<td class="value">
+				<html:text size="<%= String.valueOf(attributeValueItems.getColumns()) %>" indexed="true" name="attributeValueItems" property="value"/>
+			</td>
+		</tr>
+	</logic:equal>
+	<%-- Boolean --%>
+	<logic:equal name="attributeValueItems" property="definition.type" value="<%= String.valueOf(AttributeDefinition.TYPE_BOOLEAN) %>">
+		<tr class="formPassword">
+			<td class="label">		
+				<tiles:insert page="/WEB-INF/jsp/content/properties/propertyLabel.jspf"
+					flush="false">
+					<tiles:put name="propertyItem" beanName="attributeValueItems"/>
+				</tiles:insert>
+			</td>
+			<td class="value">
+				<html:checkbox indexed="true" name="attributeValueItems" property="selected"/>
+			</td>
+		</tr>
+	</logic:equal>
+	<%-- List --%>
+	<logic:equal name="attributeValueItems" property="definition.type" value="<%= String.valueOf(AttributeDefinition.TYPE_LIST) %>">
+		<tr class="formList">
+			<td class="label">		
+				<tiles:insert page="/WEB-INF/jsp/content/properties/propertyLabel.jspf"
+					flush="false">
+					<tiles:put name="propertyItem" beanName="attributeValueItems"/>
+				</tiles:insert>
+			</td>
+			<td class="value">
+				<html:select indexed="true" name="attributeValueItems" property="value">
+					<html:optionsCollection name="attributeValueItems" property="listItems" />
+				</html:select>
+			</td>
+		</tr>					
+	</logic:equal>
+	<%-- Password --%>
+	<logic:equal name="attributeValueItems" property="definition.type" value="<%= String.valueOf(AttributeDefinition.TYPE_PASSWORD) %>">
+		<tr class="formPassword">
+			<td class="label">
+				<bean:write name="attributeValueItems" property="label"/>
+			</td>
+			<td class="value">
+				<input:password autocomplete="false" indexed="true" size="<%= String.valueOf(attributeValueItems.getColumns()) %>" name="attributeValueItems" property="value"/>
+			</td>
+		</tr>
+	</logic:equal>
+	<%-- Text Area --%>
+	<logic:equal name="attributeValueItems" property="definition.type" value="<%= String.valueOf(AttributeDefinition.TYPE_TEXT_AREA) %>">
+		<tr class="formTextArea">
+			<td class="label">		
+				<tiles:insert page="/WEB-INF/jsp/content/properties/propertyLabel.jspf"
+					flush="false">
+					<tiles:put name="propertyItem" beanName="attributeValueItems"/>
+				</tiles:insert>
+			</td>
+			<td class="value">
+				<html:textarea 
+					indexed="true" name="attributeValueItems" property="value"
+					cols="<%= String.valueOf(attributeValueItems.getColumns()) %>"
+					rows="<%= String.valueOf(attributeValueItems.getRows()) %>" />
+			</td>
+		</tr>
+	</logic:equal>	
+	<%-- Multi-entry --%>
+	<logic:equal name="attributeValueItems" property="definition.type" value="<%= String.valueOf(AttributeDefinition.TYPE_MULTI_ENTRY_LIST) %>">
+		<tr class="formMultiEntry">
+			<td class="label" >	
+				<tiles:insert page="/WEB-INF/jsp/content/properties/propertyLabel.jspf"
+					flush="false">
+					<tiles:put name="propertyItem" beanName="attributeValueItems"/>
+				</tiles:insert>
+			</td>
+			<td class="value">
+				<logic:equal name="attributeValueItems" property="definition.propertyClass.supportsReplacementVariablesInValues" value="false">
+					<input:multiEntryListBox tabindex="<%= String.valueOf(rowIdx.intValue() + 1) %>" 
+					                         entryTitleKey="<%= attributeValueItems.getDefinition().getPropertyClass().getName() + "." + attributeValueItems.getName() + ".entryTitle" %>"
+					                         targetTitleKey="<%= attributeValueItems.getDefinition().getPropertyClass().getName() + "." +attributeValueItems.getName() + ".targetTitle" %>"
+					                         addKey="<%= attributeValueItems.getDefinition().getPropertyClass().getName() + "." + attributeValueItems.getName() + ".add" %>"
+					                         removeKey="<%= attributeValueItems.getDefinition().getPropertyClass().getName() + "." +attributeValueItems.getName() + ".remove" %>" 
+					                         bundle="<%= attributeValueItems.getMessageResourcesKey() %>" 
+					                         styleClass="multiEntry" entrySize="16" indexed="true" name="attributeValueItems" property="value"/>
+				</logic:equal>
+				<logic:equal name="attributeValueItems" property="definition.propertyClass.supportsReplacementVariablesInValues" value="true">
+					<input:multiEntryListBox includeSession="false" includeUserAttributes="true" showReplacementVariables="true" tabindex="<%= String.valueOf(rowIdx.intValue() + 1) %>" entryTitleKey="<%= attributeValueItems.getName() + ".entryTitle" %>" targetTitleKey="<%= attributeValueItems.getName() + ".targetTitle" %>" addKey="<%= attributeValueItems.getName() + ".add" %>" removeKey="<%= attributeValueItems.getName() + ".remove" %>" bundle="<%= attributeValueItems.getMessageResourcesKey() %>" styleClass="multiEntry" entrySize="16" indexed="true" name="attributeValueItems" property="value"/>
+				</logic:equal>
+			</td>
+		</tr>
+	</logic:equal>
+	<%-- Time --%>
+	<logic:equal name="attributeValueItems" property="definition.type" value="<%= String.valueOf(AttributeDefinition.TYPE_TIME_IN_MS) %>">
+		<tr class="formTextArea">
+			<td class="label">		
+				<tiles:insert page="/WEB-INF/jsp/content/properties/propertyLabel.jspf"
+					flush="false">
+					<tiles:put name="propertyItem" beanName="attributeValueItems"/>
+				</tiles:insert>
+			</td>
+			<td class="value">
+				<html:text indexed="true" name="attributeValueItems" property="value"/>
+			</td>
+		</tr>
+	</logic:equal>
+</logic:iterate>

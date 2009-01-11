@@ -1,0 +1,19 @@
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+
+<tiles:useAttribute name="resource" scope="request" classname="com.adito.policyframework.AccessRights"/> 
+<bean:define id="themePath"><core:themePath/></bean:define>
+<div class="resourceInformationDetails">
+	<table class="dialog_form_table" id="form">
+		<tbody>
+			<tr class="formText">
+				<td class="label">
+					<bean:message key="accessRightsInformation.class" bundle="policyframework"/>
+				</td>
+				<td class="value">	
+					<bean:message key="<%= "permission.type." + resource.getAccessRightsClass() %>" bundle="policyframework"/>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

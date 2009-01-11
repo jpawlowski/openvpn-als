@@ -1,0 +1,45 @@
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+
+<div id="page_set_personal_answers">   
+	<core:form focus="personalAnswer[0].answer" method="post" action="/setPersonalAnswers.do" autocomplete="OFF">
+		<html:hidden name="personalAnswersForm" property="_charset_"/>
+		<div class="dialog_content">
+			<table class="dialog_form_table">
+				<tbody>
+					<logic:iterate id="personalAnswer" name="personalAnswersForm"
+						property="personalAnswers" type="com.adito.security.PersonalAnswer">
+						<tr class="formPassword">
+							<td class="label">
+								<bean:write name="personalAnswer" property="label"/>
+							</td>
+							<td class="value">
+								<html:text indexed="true" size="20" name="personalAnswer" property="answer"/>
+							</td>
+						</tr>
+					</logic:iterate>
+				</tbody>					
+				<tfoot>
+					<tr>
+						<td colspan="2">							
+							<div class="button_bar">
+								<div class="formButton">
+									<html:submit styleClass="save">
+										<bean:message key="setPersonalAnswers.commit" bundle="security"/>
+									</html:submit>
+								</div>
+								<logic:notEmpty name="personalAnswersForm" property="referer">
+									<div class="formButton">										
+										<input class="cancel" type="button" value="<bean:message key='setPersonalAnswers.cancel' bundle='security'/>" onclick="javascript: self.location = '<bean:write name='personalAnswersForm' property='referer'/>'; return false" />
+									</div>
+								</logic:notEmpty>
+							</div>
+						</td>						                        
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</core:form>
+</div>

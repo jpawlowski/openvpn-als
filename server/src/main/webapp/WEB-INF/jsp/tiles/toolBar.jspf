@@ -1,0 +1,19 @@
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+
+<logic:notEmpty name="toolBarItems">	
+	<input:frame panelId="toolBar">
+		<div class="actions">
+			<logic:iterate id="rootMenuItem" name="toolBarItems" type="com.adito.core.AvailableMenuItem">			
+				<div class="button">
+					<input:toolTip target="<%= rootMenuItem.getMenuItem().getTarget() %>" key="<%= "toolBar." + rootMenuItem.getMenuItem().getId() + ".description"  %>"
+									  bundle="<%= rootMenuItem.getMenuItem().getMessageResourcesKey() %>"
+									  href="<%= rootMenuItem.getPath() %>">
+						<bean:message key="<%= "toolBar." + rootMenuItem.getMenuItem().getId() + ".title"  %>" bundle="<%= rootMenuItem.getMenuItem().getMessageResourcesKey() %>"/>
+					</input:toolTip>
+				</div>
+			</logic:iterate>
+		</div>
+	</input:frame>	
+</logic:notEmpty>

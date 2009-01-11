@@ -1,0 +1,54 @@
+<%@ page import="com.adito.install.forms.InstallationSummaryForm" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+
+<div id="wizardSummary">
+	<bean:define id="accessRightsSummaryForm" name="accessRightsSummaryForm" type="com.adito.policyframework.wizards.forms.AccessRightsSummaryForm"/>
+	<table border="0" cellspacing="0" border="0">
+		<tr class="formBlock">
+			<td class="label" colspan="2">
+				<bean:message key="accessRightsWizard.resourceSummary.resource" bundle="policyframework"/>
+			</td>
+		</tr>
+		<tr class="formLabel">			
+			<td class="label">
+				<bean:message key="accessRightsWizard.resourceSummary.resource.name" bundle="policyframework"/>
+			</td>
+			<td class="value">
+				<bean:write name="accessRightsSummaryForm" property="resourceName"/>
+			</td>
+		</tr>
+		<tr class="formBlock">
+			<td class="label" colspan="2">
+				<bean:message key="accessRightsWizard.resourceSummary.selectedPolicies" bundle="policyframework"/>
+			</td>
+		</tr>
+		<tr class="formLabel">		
+			<td class="label">
+				<bean:message key="accessRightsWizard.resourceSummary.selectedPolicies.names" bundle="policyframework"/>
+			</td>
+			<td class="value">
+				<logic:iterate name="accessRightsSummaryForm" property="selectedPolicies" id="policy">
+					<bean:write name="policy"/><br/>
+				</logic:iterate>
+			</td>
+		</tr>		
+		<tr class="formBlock">
+			<td class="label" colspan="2">
+				<bean:message key="accessRightsWizard.resourceSummary.selectedPermissions" bundle="policyframework"/>
+			</td>
+		</tr>	
+		<tr class="formLabel">	
+			<logic:notEmpty name="accessRightsSummaryForm" property="selectedPermissions">
+				<td class="label"/>
+				<td class="value">
+					<logic:iterate type="java.lang.String" name="accessRightsSummaryForm" property="selectedPermissions" id="permission">
+						<bean:write name="permission"/><br/>
+					</logic:iterate>
+				</td>
+			</logic:notEmpty>
+		</tr>
+	</table>
+</div>

@@ -1,0 +1,90 @@
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Iterator" %>
+<%@ page import="com.adito.properties.PropertyProfile" %>
+<%@ page import="com.adito.security.Constants" %>
+<%@ page import="com.adito.core.AvailableMenuItem" %>
+<%@ page import="com.adito.wizard.AbstractWizardSequence" %>
+<%@ page import="com.adito.wizard.WizardStep" %>
+<%@ page import="com.adito.policyframework.Resource" %>
+<%@ page import="com.adito.core.CoreServlet" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.text.DateFormat" %>
+<jsp:directive.page import="com.adito.core.CoreUtil"/>
+<jsp:directive.page import="com.adito.boot.Util"/>
+<jsp:directive.page import="com.adito.security.SessionInfo"/>
+<jsp:directive.page import="java.util.Date"/>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/navigation" prefix="navigation" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+<navigation:menuAvailable>
+	<logic:notEmpty name="menuTree">	
+		<% AvailableMenuItem selectedMenuItem = (AvailableMenuItem)request.getAttribute(Constants.SELECTED_MENU); 
+		   String titleKey = "navigation.userConsole";
+		   String titleId = "userConsoleTitle";
+		   if(CoreUtil.isInManagementConsole(request)) {
+		   		titleKey = "navigation.managementConsole";
+		   		titleId = "managementConsoleTitle";
+		   }
+		%>
+		<input:frame titleId="<%= titleId %>" titleKey="<%= titleKey %>" bundle="navigation" styleClass="component_messageBox" panelId="menu">
+			<div id="component_navmenu">	
+				<logic:iterate id="rootMenuItem" name="menuTree" type="com.adito.core.AvailableMenuItem">
+						<logic:notEmpty name="rootMenuItem" property="path">
+							<div class="item">
+								<input:toolTip styleId='<%= rootMenuItem == selectedMenuItem ? "selected" : "deselected" %>' 
+												href="<%= rootMenuItem.getPath() %>"
+												target="<%= rootMenuItem.getMenuItem().getTarget() %>" 
+												bundle="<%= rootMenuItem.getMenuItem().getMessageResourcesKey() %>" 
+												key="<%= "menuItem." + rootMenuItem.getMenuItem().getId() + ".description"  %>"><bean:message key="<%= "menuItem." + rootMenuItem.getMenuItem().getId() + ".title"  %>" bundle="<%= rootMenuItem.getMenuItem().getMessageResourcesKey() %>"/></input:toolTip>
+							</div>
+						</logic:notEmpty>
+						<logic:empty name="rootMenuItem" property="path">
+							<div class="group">
+								<bean:message key="<%= "menuItem." + rootMenuItem.getMenuItem().getId() + ".title"  %>" bundle="<%= rootMenuItem.getMenuItem().getMessageResourcesKey() %>"/>
+							</div>
+						</logic:empty>
+					<logic:notEqual name="rootMenuItem" property="empty"  value="true">
+						<logic:iterate id="level1MenuItem" name="rootMenuItem" type="com.adito.core.AvailableMenuItem">					
+								<logic:notEmpty name="level1MenuItem" property="path">
+									<div class="item">
+										<input:toolTip styleId='<%= level1MenuItem == selectedMenuItem ? "selected" : "deselected" %>' 
+										href="<%= level1MenuItem.getPath() %>" 
+										target="<%= level1MenuItem.getMenuItem().getTarget() %>" 
+										bundle="<%= level1MenuItem.getMenuItem().getMessageResourcesKey() %>" 
+										key="<%= "menuItem." + level1MenuItem.getMenuItem().getId() + ".description"  %>"><bean:message key="<%= "menuItem." + level1MenuItem.getMenuItem().getId() + ".title"  %>" bundle="<%= level1MenuItem.getMenuItem().getMessageResourcesKey() %>"/></input:toolTip>
+									</div>
+								</logic:notEmpty>
+								<logic:empty name="level1MenuItem" property="path">
+									<div class="group">
+										<bean:message key="<%= "menuItem." + level1MenuItem.getMenuItem().getId() + ".title"  %>" bundle="<%= level1MenuItem.getMenuItem().getMessageResourcesKey() %>"/>
+									</div>
+								</logic:empty>
+							<logic:notEqual name="level1MenuItem" property="empty" value="true">	
+								<logic:iterate id="level2MenuItem" name="level1MenuItem" type="com.adito.core.AvailableMenuItem">					
+										<logic:notEmpty name="level2MenuItem" property="path">
+											<div class="item">
+												<input:toolTip styleId='<%= level2MenuItem == selectedMenuItem ? "selected" : "deselected" %>' 
+													href="<%= level2MenuItem.getPath() %>" 
+													target="<%= level2MenuItem.getMenuItem().getTarget() %>" 
+													bundle="<%= level2MenuItem.getMenuItem().getMessageResourcesKey() %>" 
+													key="<%= "menuItem." + level2MenuItem.getMenuItem().getId() + ".description"  %>"><bean:message key="<%= "menuItem." + level2MenuItem.getMenuItem().getId() + ".title"  %>" bundle="<%= level2MenuItem.getMenuItem().getMessageResourcesKey() %>"/></input:toolTip>
+											</div>
+										</logic:notEmpty>
+										<logic:empty name="level2MenuItem" property="path">
+											<div class="group">
+												<bean:message key="<%= "menuItem." + level2MenuItem.getMenuItem().getId() + ".title"  %>" bundle="<%= level2MenuItem.getMenuItem().getMessageResourcesKey() %>"/>
+											</div>
+										</logic:empty>		
+								</logic:iterate>	
+							</logic:notEqual>
+						</logic:iterate>
+					</logic:notEqual>
+				</logic:iterate>
+			</div>
+			<%@ include file="/WEB-INF/jsp/tiles/footerInfo.jspf" %>
+		</input:frame>
+	</logic:notEmpty>
+</navigation:menuAvailable>

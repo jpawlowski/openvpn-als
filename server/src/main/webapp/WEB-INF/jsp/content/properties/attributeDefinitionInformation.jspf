@@ -1,0 +1,99 @@
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+
+<% try { %>
+<div class="component_attributeDefinitionInformation">
+	<bean:define id="definition" name="attributeDefinitionInformationForm" property="definition" type="com.adito.properties.attributes.AttributeDefinition"/>
+	<core:form method="post" action="/attributeDefinitionInformation.do">	
+			<html:hidden property="referer"/>
+			<html:hidden property="actionTarget"/>
+			<html:hidden property="_charset_"/>						
+			<h3><bean:write name="definition" property="name"/></h3>
+			<div class="description">	
+				<bean:write name="attributeDefinitionInformationForm" property="description"/>
+			</div>					
+			<h4><bean:message key="attributeDefinitionInformation.details" bundle="properties"/></h4>
+			<table class="dialog_form_table" id="form">
+				<tbody>
+					<tr class="formText">
+						<td class="label">
+							<bean:message key="attributeDefinitionInformation.label" bundle="properties"/>							
+						</td>
+						<td class="value">	
+							<bean:write name="attributeDefinitionInformationForm" property="label"/>
+						</td>
+					</tr>
+					<tr class="formText">
+						<td class="label">
+							<bean:message key="attributeDefinitionInformation.propertyClass" bundle="properties"/>							
+						</td>
+						<td class="value">	
+							<bean:message key="<%= "propertyClass." + definition.getPropertyClass().getName() + ".name" %>" bundle="properties"/>
+						</td>
+					</tr>
+					<tr class="formText">
+						<td class="label">
+							<bean:message key="attributeDefinitionInformation.type" bundle="properties"/>							
+						</td>
+						<td class="value">	
+							<bean:message key="<%= "propertyDefinition.type." + definition.getType() %>" bundle="properties"/>
+						</td>
+					</tr>
+					<tr class="formText">
+						<td class="label">
+							<bean:message key="attributeDefinitionInformation.visibility" bundle="properties"/>							
+						</td>
+						<td class="value">	
+							<bean:message key="<%= "propertyDefinition.visibility." + definition.getVisibility() %>" bundle="properties"/>
+						</td>
+					</tr>
+					<tr class="formText">
+						<td class="label">
+							<bean:message key="attributeDefinitionInformation.category" bundle="properties"/>							
+						</td>
+						<td class="value">	
+							<bean:write name="attributeDefinitionInformationForm" property="categoryLabel"/>
+						</td>
+					</tr>
+					<tr class="formText">
+						<td class="label">							
+							<bean:message key="attributeDefinitionInformation.defaultValue" bundle="properties"/>							
+						</td>
+						<td class="value">	
+							<bean:write name="definition" property="defaultValue"/>
+						</td>
+					</tr>
+					<tr class="formText">
+						<td class="label">								
+							<bean:message key="attributeDefinitionInformation.weight" bundle="properties"/>							
+						</td>
+						<td class="value">	
+							<bean:write format="0" name="definition" property="sortOrder"/>
+						</td>
+					</tr>
+					<tr class="formText">
+						<td class="label">
+							<bean:message key="attributeDefinitionInformation.validator" bundle="properties"/>							
+						</td>
+						<td class="value">	
+							<bean:write name="definition" property="validationString"/>
+						</td>
+					</tr>
+					<tr class="formText">
+						<td class="label">													
+							<bean:message key="attributeDefinitionInformation.typeMeta" bundle="properties"/>							
+						</td>
+						<td class="value">	
+							<bean:write name="definition" property="typeMeta"/>
+						</td>
+					</tr>
+				</tbody>
+			</table>	
+	</core:form>
+</div>
+
+<% } catch(Exception e) { e.printStackTrace(); } %>

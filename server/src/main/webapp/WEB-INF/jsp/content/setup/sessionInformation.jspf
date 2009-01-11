@@ -1,0 +1,128 @@
+
+<jsp:directive.page import="com.adito.security.SessionInfo" />
+<jsp:directive.page import="java.text.SimpleDateFormat" />
+<jsp:directive.page import="java.util.Date" />
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="/server/taglibs/core" prefix="core"%>
+<%@ taglib uri="/server/taglibs/input" prefix="input"%>
+<%@ page import="com.adito.security.User"%>
+
+<div class="component_sessionInformation">
+	<bean:define id="sessionInfo" name="sessionInformationForm"
+		property="session" type="com.adito.security.SessionInfo" />
+	<core:form method="post" action="/sessionInformation.do">
+		<html:hidden property="referer" />
+		<html:hidden property="actionTarget" />
+		<html:hidden property="_charset_" />
+		<div>
+			<h3>
+				<bean:message key="sessionInformation.principal" bundle="setup" />
+			</h3>
+			<table class="dialog_form_table">
+				<tbody>
+					<tr class="formText">
+						<td class="label">
+							<bean:message key="sessionInformation.principalName"
+								bundle="setup" />
+							:
+						</td>
+						<td class="value">
+							<bean:write name="sessionInfo" property="user.principalName" />
+						</td>
+					</tr>
+					<tr class="formText">
+						<td class="label">
+							<bean:message key="sessionInformation.fullName" bundle="setup" />
+							:
+						</td>
+						<td class="value">
+							<bean:write name="sessionInfo" property="user.fullname" />
+						</td>
+					</tr>
+					<tr class="formText">
+						<td class="label">
+							<bean:message key="sessionInformation.emailAddress"
+								bundle="setup" />
+							:
+						</td>
+						<td class="value">
+							<bean:write name="sessionInfo" property="user.email" />
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<hr />
+		<div class="details">
+			<h3>
+				<bean:message key="sessionInformation.client" bundle="setup" />
+			</h3>
+			<table class="dialog_form_table">
+				<tbody>
+					<tr class="formText">
+						<td class="label">
+							<bean:message key="sessionInformation.sessionType" bundle="setup" />
+							:
+						</td>
+						<td class="value">
+							<logic:equal name="sessionInfo" property="type"
+								value="<%=String.valueOf(SessionInfo.UI)%>">
+								<bean:message key="sessionInformation.sessionType.userInterface"
+									bundle="setup" />
+							</logic:equal>
+							<logic:equal name="sessionInfo" property="type"
+								value="<%=String.valueOf(SessionInfo.AGENT)%>">
+								<bean:message key="sessionInformation.sessionType.vpnClient"
+									bundle="setup" />
+							</logic:equal>
+							<logic:equal name="sessionInfo" property="type"
+								value="<%=String.valueOf(SessionInfo.DAV_CLIENT)%>">
+								<bean:message key="sessionInformation.sessionType.davClient"
+									bundle="setup" />
+							</logic:equal>
+						</td>
+					</tr>
+					<tr class="formText">
+						<td class="label">
+							<bean:message key="sessionInformation.logonTime" bundle="setup" />
+							:
+						</td>
+						<td class="value">
+							<%=SimpleDateFormat.getDateTimeInstance().format(new Date(sessionInfo.getLogonTime().getTimeInMillis()))%>
+						</td>
+					</tr>
+					<tr class="formText">
+						<td class="label">
+							<bean:message key="sessionInformation.ipAddress" bundle="setup" />
+							:
+						</td>
+						<td class="value">
+							<bean:write name="sessionInfo" property="address.hostAddress" />
+						</td>
+					</tr>
+					<tr class="formText">
+						<td class="label">
+							<bean:message key="sessionInformation.hostName" bundle="setup" />
+							:
+						</td>
+						<td class="value">
+							<bean:write name="sessionInfo" property="address.hostName" />
+						</td>
+					</tr>
+					<tr class="formText">
+						<td class="label">
+							<bean:message key="sessionInformation.userAgent" bundle="setup" />
+							:
+						</td>
+						<td class="value">
+							<bean:write name="sessionInfo" property="userAgent" />
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</core:form>
+</div>

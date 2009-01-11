@@ -1,0 +1,114 @@
+<%@ page import="com.adito.properties.attributes.AttributeDefinition" %>
+<jsp:directive.page import="com.adito.boot.Util"/>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="/server/taglibs/security" prefix="properties" %>
+<%@ taglib uri="/server/taglibs/table" prefix="table" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+
+<div id="page_attributeDefinitions">
+	<core:form method="post" action="/showAttributeDefinitions.do" onsubmit="setActionTarget('filter')">
+		<html:hidden property="_charset_"/>
+		<html:hidden property="actionTarget"/>
+		<html:hidden property="selectedItem"/>
+		<html:hidden property="propertyClassName"/>
+		<div class="dialog_content">				
+			<%@ include file="/WEB-INF/jsp/tiles/filter.jspf" %>	
+		</div>
+		<div class="filtered_resources">
+			<table class="resource_table">
+				<thead>
+					<tr>
+						<td class="name">
+							<table:columnHeader action="/showAttributeDefinitions.do" pagerName="attributeDefinitionsForm" pagerProperty="pager" columnIndex="0" styleClass="columnHeader"><bean:message key="attributeDefinitions.name" bundle="properties"/></table:columnHeader>
+						</td>
+				  		<td class="actions">
+				  			<bean:message key="attributeDefinitions.actions" bundle="properties"/>
+				  		</td>
+					</tr>
+				</thead>
+				<tbody>
+				<!-- Start Groups -->
+					<% boolean highlight = true; 
+					int idx =0; %>			 		
+					<logic:equal name="attributeDefinitionsForm" property="model.empty" value="true">						
+						<tr 
+		      					onmouseover="<%= "this.className = 'selected';" %>"
+		      					onmouseout="<%= "this.className = '" + ( highlight ? "highlight" : "lowlight" ) + "';" %>" class="<%= highlight ? "highlight" : "lowlight" %>">           
+							<td class="tableMessage" colspan="2">
+								<bean:message key="attributeDefinitions.noItems" bundle="properties"/>
+							</td>
+						</tr>
+					</logic:equal>
+					<logic:equal name="attributeDefinitionsForm" property="model.empty" value="false">
+						<logic:equal name="attributeDefinitionsForm" property="pager.empty" value="true">																		
+							<tr 
+		      					onmouseover="<%= "this.className = 'selected';" %>"
+		      					onmouseout="<%= "this.className = '" + ( highlight ? "highlight" : "lowlight" ) + "';" %>" class="<%= highlight ? "highlight" : "lowlight" %>">           
+						  		<td class="tableMessage" colspan="2">		   
+								  	<bean:message key="attributeDefinitions.noMatch" bundle="properties"/>
+								</td>
+							</tr>
+						</logic:equal>
+					</logic:equal>
+					<logic:equal name="attributeDefinitionsForm" property="pager.empty" value="false">
+						<logic:iterate id="item" indexId="i" name="attributeDefinitionsForm" property="pager.pageItems" type="com.adito.properties.attributes.AttributeDefinitionItem">
+							<tr 
+		      					onmouseover="<%= "this.className = 'selected';" %>"
+		      					onmouseout="<%= "this.className = '" + ( highlight ? "highlight" : "lowlight" ) + "';" %>" class="<%= highlight ? "highlight" : "lowlight" %>">           
+					  	  		<td class="name">					  	  			   		
+									<img border="0" align="absmiddle" src="<%= item.getSmallIconPath(request) %>"/>
+					  	  			<logic:equal name="item" property="definition.system" value="false">
+										<input:toolTip width="400" contentLocation="<%= "/attributeDefinitionInformation.do?propertyClass=" + item.getDefinition().getPropertyClass().getName() + "&name=" + item.getDefinition().getName() %>" href="<%= "/showAttributeDefinitions.do?actionTarget=edit&selectedItem=" + Util.urlEncode(item.getDefinition().getPropertyClass().getName() + "/" + item.getDefinition().getName() ) %>">
+									 		<bean:write name="item" property="categoryLabel"/> - <bean:write name="item" property="label"/>
+										</input:toolTip>
+									</logic:equal>					  	  			   		
+					  	  			<logic:equal name="item" property="definition.system" value="true">
+										<input:toolTip width="400" contentLocation="<%= "/attributeDefinitionInformation.do?propertyClass=" + item.getDefinition().getPropertyClass().getName() + "&name=" + item.getDefinition().getName() %>" href="#">
+									 		<bean:write name="item" property="categoryLabel"/> - <bean:write name="item" property="label"/>
+										</input:toolTip>
+					  	  			</logic:equal>
+						  		</td>
+							  	<td class="actions">				   		
+					  	  			<logic:equal name="item" property="definition.system" value="false">
+								   		<tiles:insert flush="false" attribute="actionLink">
+											<tiles:put name="actionName" value="remove"/>
+											<tiles:put name="bundle" value="properties"/>
+											<tiles:put name="nameKey" value="attributeDefinitions.remove.name"/>
+											<tiles:put name="descriptionKey" value="attributeDefinitions.remove.description"/>
+											<tiles:put name="actionPath" value="<%= "/showAttributeDefinitions.do?actionTarget=confirmRemove&selectedItem=" + Util.urlEncode(item.getDefinition().getPropertyClass().getName() + "/" + item.getDefinition().getName()) %>"/>
+										</tiles:insert>
+								   		<tiles:insert flush="false" attribute="actionLink">
+											<tiles:put name="actionName" value="edit"/>
+											<tiles:put name="bundle" value="properties"/>
+											<tiles:put name="nameKey" value="attributeDefinitions.edit.name"/>
+											<tiles:put name="descriptionKey" value="attributeDefinitions.edit.description"/>
+											<tiles:put name="actionPath" value="<%= "/showAttributeDefinitions.do?actionTarget=edit&selectedItem=" + Util.urlEncode(item.getDefinition().getPropertyClass().getName() + "/" + item.getDefinition().getName() ) %>"/>
+										</tiles:insert>
+									</logic:equal>
+								</td>
+							</tr>
+							<% highlight = !highlight; %>
+						</logic:iterate> 
+					</logic:equal>
+				<!-- End Groups -->
+				</tbody>
+				<tfoot>			
+					<tr>
+						<td colspan="2">
+							<div class="pager_navigation">
+								<table:navigation selectedStyleClass="pagerSelected" pagerName="attributeDefinitionsForm" pagerProperty="pager" styleClass="pagerEnabled" disabledStyleClass="pagerDisabled"/>
+							</div>
+							<div class="pager_pages">
+								<table:pageSize pagerName="attributeDefinitionsForm" pagerProperty="pager" styleClass="pagerEnabled"/>
+							</div.
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</core:form>
+</div>

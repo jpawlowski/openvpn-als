@@ -1,0 +1,34 @@
+<%@ page import="com.adito.security.Constants" %>
+<%@ page import="com.adito.policyframework.PolicyConstants" %>
+<%@ page import="com.adito.policyframework.Permission" %>
+<jsp:directive.page import="com.adito.policyframework.forms.AbstractResourcesForm"/>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/security" prefix="security" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+<%@ taglib uri="/server/taglibs/table" prefix="table" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+
+<tiles:useAttribute name="actionLink" scope="request" classname="java.lang.String"/> 
+<bean:define id="profilesForm" name="profilesForm" type="com.adito.properties.forms.ProfilesForm"/>
+
+<html:hidden name="profilesForm" property="selectedResource"/>
+<html:hidden name="profilesForm" property="profileScope" />
+<html:hidden name="profilesForm" property="actionTarget" />
+
+<div class="dialog_content">
+	<tiles:insert flush="false" page="/WEB-INF/jsp/tiles/filterAndView.jspf">		
+		<tiles:put name="actionLink" beanName="actionLink" type="java.lange.String"/>
+	</tiles:insert>
+</div>
+
+<tiles:insert flush="false" page="/WEB-INF/jsp/tiles/resourcesView.jspf">		
+	<tiles:put name="pager" beanName="profilesForm" beanProperty="pager"/>
+	<tiles:put name="messageResourcesKey" value="properties"/>
+	<tiles:put name="resourcePrefix" value="profiles"/>
+	<tiles:put name="selectedView" beanName="profilesForm" beanProperty="selectedView"/>
+	<tiles:put name="actionLink" beanName="actionLink"/>
+	<tiles:put name="policyLaunching" value="false"/>
+</tiles:insert>	

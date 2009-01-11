@@ -1,0 +1,1700 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/policyDetails.do" location="50,50" dimension="446,100" />
+  <StrutsActivity path="/policyPrincipalSelection.do" location="650,50" dimension="511,100" />
+  <StrutsActivity path="/policyNesting.do" location="1250,50" dimension="449,100" />
+  <StrutsActivity path="/policySummary.do" location="1850,50" dimension="461,100" />
+  <StrutsActivity path="/policyFinish.do" location="50,250" dimension="439,100" />
+  <StrutsActivity path="/profileDetails.do" location="650,250" dimension="433,100" />
+  <StrutsActivity path="/profilePolicySelection.do" location="1250,250" dimension="482,100" />
+  <StrutsActivity path="/profileSummary.do" location="1850,250" dimension="448,100" />
+  <StrutsActivity path="/profileFinish.do" location="50,450" dimension="426,100" />
+  <StrutsActivity path="/selectCertificateSource.do" location="350,1650" dimension="398,100" />
+  <StrutsActivity path="/createNewCertificate.do" location="1550,1650" dimension="385,100" />
+  <StrutsActivity path="/importExistingCertificate.do" location="2150,1650" dimension="400,100" />
+  <StrutsActivity path="/uploadExistingCertificate.do" location="50,1850" dimension="360,100" />
+  <StrutsActivity path="/setKeyStorePassword.do" location="1850,1850" dimension="392,100" />
+  <StrutsActivity path="/selectUserDatabase.do" location="650,1950" dimension="384,100" />
+  <StrutsActivity path="/configureUserDatabase.do" location="1250,1950" dimension="403,100" />
+  <StrutsActivity path="/configureSuperUser.do" location="1850,2050" dimension="379,100" />
+  <StrutsActivity path="/webServer.do" location="1250,2150" dimension="326,100" />
+  <StrutsActivity path="/configureProxies.do" location="50,2250" dimension="360,100" />
+  <StrutsActivity path="/installXtra.do" location="650,2250" dimension="316,100" />
+  <StrutsActivity path="/installExtensions.do" location="1850,2250" dimension="356,100" />
+  <StrutsActivity path="/installationSummary.do" location="50,2450" dimension="377,100" />
+  <StrutsActivity path="/install.do" location="650,2450" dimension="292,100" />
+  <StrutsActivity path="/showActiveDirectoryConfiguration.do" location="1250,2450" dimension="422,100" />
+  <StrutsActivity path="/accessRightsDetails.do" location="2150,2550" dimension="403,88" />
+  <StrutsActivity path="/accessRightsPermissions.do" location="50,2650" dimension="426,88" />
+  <StrutsActivity path="/accessRightsPolicySelection.do" location="650,2650" dimension="441,88" />
+  <StrutsActivity path="/accessRightsSummary.do" location="1850,2750" dimension="415,88" />
+  <StrutsActivity path="/accessRightsFinish.do" location="50,2850" dimension="398,88" />
+  <StrutsActivity path="/keyStoreImportType.do" location="1850,2950" dimension="403,100" />
+  <StrutsActivity path="/keyStoreImportFile.do" location="2450,450" dimension="418,100" />
+  <StrutsActivity path="/keyStoreImportUpload.do" location="2450,2250" dimension="439,100" />
+  <StrutsActivity path="/keyStoreImportSummary.do" location="2450,1850" dimension="453,100" />
+  <StrutsActivity path="/keyStoreImportFinish.do" location="2450,1050" dimension="408,100" />
+  <StrutsActivity path="/athenticationSchemeDetails.do" location="2450,3550" dimension="392,88" />
+  <StrutsActivity path="/athenticationSchemeSelection.do" location="2750,3350" dimension="429,88" />
+  <StrutsActivity path="/athenticationSchemePolicySelection.do" location="50,3450" dimension="456,88" />
+  <StrutsActivity path="/athenticationSchemeSummary.do" location="650,3450" dimension="430,88" />
+  <StrutsActivity path="/athenticationSchemeFinish.do" location="1250,3450" dimension="413,88" />
+  <StrutsActivity path="/attributeDefinitionDetails.do" location="1850,3550" dimension="450,88" />
+  <StrutsActivity path="/attributeDefinitionOptions.do" location="50,3650" dimension="455,88" />
+  <StrutsActivity path="/attributeDefinitionSummary.do" location="650,3650" dimension="462,88" />
+  <StrutsActivity path="/attributeDefinitionFinish.do" location="1250,3650" dimension="445,88" />
+  <StrutsActivity path="restartInstallWizard;6" location="1250,2850" dimension="170,75" />
+  <StrutsActivity path=".site.PolicyWizardPage" location="316,2104" dimension="138,49" />
+  <StrutsActivity path=".site.ProfileWizardPage" location="2450,650" dimension="169,52" />
+  <StrutsActivity path=".site.SelectCertificateSource" location="898,1089" dimension="166,49" />
+  <StrutsActivity path=".site.CreateNewCertificate" location="1212,851" dimension="158,49" />
+  <StrutsActivity path=".site.ImportExistingCertificate" location="25,1277" dimension="173,49" />
+  <StrutsActivity path=".site.SetKeyStorePassword" location="824,1465" dimension="160,49" />
+  <StrutsActivity path=".site.SelectUserDatabase" location="1972,475" dimension="151,49" />
+  <StrutsActivity path=".site.ConfigureUserDatabase" location="1447,663" dimension="169,49" />
+  <StrutsActivity path=".site.ConfigureSuperUser" location="1649,851" dimension="151,49" />
+  <StrutsActivity path=".site.WebServer" location="2109,1089" dimension="108,49" />
+  <StrutsActivity path=".site.ConfigureProxies" location="1926,1277" dimension="136,49" />
+  <StrutsActivity path=".site.InstallXtra" location="1768,1465" dimension="103,49" />
+  <StrutsActivity path=".site.InstallExtensions" location="1311,1653" dimension="135,49" />
+  <StrutsActivity path=".site.InstallationSummary" location="1628,1822" dimension="151,49" />
+  <StrutsActivity path=".site.Install" location="579,1277" dimension="83,49" />
+  <StrutsActivity path="/showLicenseAgreement.do" location="2750,850" dimension="172,75" />
+  <StrutsActivity path="/shutdown.do" location="950,950" dimension="106,75" />
+  <StrutsActivity path=".site.ActiveDirectoryConfiguration" location="2313,2104" dimension="193,49" />
+  <StrutsActivity path=".site.AccessRightsWizardPage" location="950,3250" dimension="174,49" />
+  <StrutsActivity path="/showHome.do" location="650,1050" dimension="111,75" />
+  <StrutsActivity path=".site.KeyStoreImportWizardPage" location="1550,1150" dimension="223,52" />
+  <StrutsActivity path=".site.WebForwardWizardPage" location="50,3350" dimension="173,49" />
+  <StrutsActivity path=".site.AthenticationSchemeWizardPage" location="650,1850" dimension="212,49" />
+  <StrutsActivity path=".site.AttributeDefinitionWizardPage" location="650,3950" dimension="199,49" />
+  <StrutsActivity path=".site.NetworkPlaceWizardPage" location="2150,3350" dimension="265,57" />
+  <StrutsActivity path=".site.TunnelWizardPage" location="950,1250" dimension="214,57" />
+  <StrutsActivity path=".site.ApplicationShortcutWizardPage" location="2750,3150" dimension="308,57" />
+  <StrutsActivity path=".site.accessRightsWizardPage" location="950,3350" dimension="173,49" />
+  <StrutsActivity path=".site.ResourcePermissionWizardPage" location="950,1750" dimension="255,52" />
+  <StrutsActivity path=".site.ProfileDetails" location="908,2123" dimension="116,49" />
+  <StrutsActivity path=".site.ProfilePolicySelection" location="1564,2311" dimension="154,49" />
+  <StrutsActivity path=".site.ProfileSummary" location="1932,2480" dimension="128,49" />
+  <StrutsActivity path=".site.ProfileFinish" location="1223,2311" dimension="111,49" />
+  <StrutsActivity path=".site.DefaultNetworkPlaceDetails" location="650,2950" dimension="224,52" />
+  <StrutsActivity path=".site.NetworkPlaceDetails" location="650,550" dimension="151,49" />
+  <StrutsActivity path=".site.NetworkPlacePolicySelection" location="50,650" dimension="189,49" />
+  <StrutsActivity path=".site.NetworkPlaceSummary" location="350,650" dimension="163,49" />
+  <StrutsActivity path=".site.NetworkPlaceFinish" location="650,650" dimension="146,49" />
+  <StrutsActivity path=".site.BasicTunnelDetails" location="2150,2450" dimension="142,49" />
+  <StrutsActivity path=".site.DefaultTunnelDetails" location="350,3050" dimension="181,52" />
+  <StrutsActivity path=".site.TunnelDetails" location="950,850" dimension="118,49" />
+  <StrutsActivity path=".site.TunnelPolicySelection" location="1250,1150" dimension="156,49" />
+  <StrutsActivity path=".site.TunnelSummary" location="1250,1250" dimension="130,49" />
+  <StrutsActivity path=".site.TunnelFinish" location="950,1650" dimension="113,49" />
+  <StrutsActivity path=".site.SampleWizardPage" location="1250,1550" dimension="145,49" />
+  <StrutsActivity path=".site.SystemResourceWizardPage" location="50,3150" dimension="234,52" />
+  <StrutsActivity path=".site.DelegationResourceWizardPage" location="50,850" dimension="254,52" />
+  <StrutsActivity path=".site.DelegationResourceDetails" location="50,1650" dimension="222,52" />
+  <StrutsActivity path=".site.PersonalResourceWizardPage" location="950,2850" dimension="242,52" />
+  <StrutsTransition id="/configureSuperUser.do,display,.site.ConfigureSuperUser,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2229,2094" />
+      <AbsolutePoint location="2328,2094" />
+      <AbsolutePoint location="2328,1817" />
+      <AbsolutePoint location="2142,1817" />
+      <AbsolutePoint location="2142,1153" />
+      <AbsolutePoint location="1995,1153" />
+      <AbsolutePoint location="1995,1001" />
+      <AbsolutePoint location="1724,1001" />
+      <AbsolutePoint location="1724,900" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.WebForwardWizardPage,null,/webForwardPolicySelection.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="106,3350" />
+      <AbsolutePoint location="106,3217" />
+      <AbsolutePoint location="2150,3217" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/selectCertificateSource.do,finish,/install.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="494,1750" />
+      <AbsolutePoint location="494,2530" />
+      <AbsolutePoint location="650,2530" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.PolicyWizardPage,null,/policyFinish.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="417,2104" />
+      <AbsolutePoint location="417,1771" />
+      <AbsolutePoint location="808,1771" />
+      <AbsolutePoint location="808,399" />
+      <AbsolutePoint location="279,399" />
+      <AbsolutePoint location="279,350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/attributeDefinitionOptions.do,display,.site.AttributeDefinitionWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="247,3738" />
+      <AbsolutePoint location="247,4014" />
+      <AbsolutePoint location="749,4014" />
+      <AbsolutePoint location="749,3999" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/webForwardSpecificDetails.do,display,.site.WebForwardWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="950,3117" />
+      <AbsolutePoint location="10,3117" />
+      <AbsolutePoint location="10,3217" />
+      <AbsolutePoint location="76,3217" />
+      <AbsolutePoint location="76,3350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.ConfigureSuperUser,null,/configureSuperUser.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1790,900" />
+      <AbsolutePoint location="1790,1447" />
+      <AbsolutePoint location="1944,1447" />
+      <AbsolutePoint location="1944,1797" />
+      <AbsolutePoint location="2378,1797" />
+      <AbsolutePoint location="2378,2100" />
+      <AbsolutePoint location="2229,2100" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/keyStoreImportFinish.do,exit,/showHome.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2650,1050" />
+      <AbsolutePoint location="2650,587" />
+      <AbsolutePoint location="919,587" />
+      <AbsolutePoint location="919,1073" />
+      <AbsolutePoint location="761,1073" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/accessRightsPermissions.do,previous,/accessRightsDetails.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="263,2650" />
+      <AbsolutePoint location="263,2616" />
+      <AbsolutePoint location="2150,2616" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/uploadExistingCertificate.do,success,/selectUserDatabase.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="230,1950" />
+      <AbsolutePoint location="230,2000" />
+      <AbsolutePoint location="650,2000" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="restartInstallWizard;6,null,/selectCertificateSource.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1335,2850" />
+      <AbsolutePoint location="1335,2795" />
+      <AbsolutePoint location="-50,2795" />
+      <AbsolutePoint location="-50,1717" />
+      <AbsolutePoint location="350,1717" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/setKeyStorePassword.do,previous,/selectCertificateSource.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1850,1914" />
+      <AbsolutePoint location="609,1914" />
+      <AbsolutePoint location="609,1750" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/keyStoreImportFile.do,previous,/keyStoreImportType.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2659,500" />
+      <AbsolutePoint location="2659,3000" />
+      <AbsolutePoint location="2051,3000" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/policyNesting.do,next,/policySummary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1699,64" />
+      <AbsolutePoint location="1850,64" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.InstallXtra,null,/installXtra.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1819,1489" />
+      <AbsolutePoint location="1819,2300" />
+      <AbsolutePoint location="808,2300" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/athenticationSchemeFinish.do,rerun,/athenticationSchemeDetails.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1250,3494" />
+      <AbsolutePoint location="1221,3494" />
+      <AbsolutePoint location="1221,3849" />
+      <AbsolutePoint location="2646,3849" />
+      <AbsolutePoint location="2646,3638" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/webServer.do,display,.site.WebServer,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1576,2176" />
+      <AbsolutePoint location="1710,2176" />
+      <AbsolutePoint location="1710,1971" />
+      <AbsolutePoint location="1830,1971" />
+      <AbsolutePoint location="1830,1787" />
+      <AbsolutePoint location="1998,1787" />
+      <AbsolutePoint location="1998,1535" />
+      <AbsolutePoint location="1908,1535" />
+      <AbsolutePoint location="1908,1112" />
+      <AbsolutePoint location="2109,1112" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/policyDetails.do,finish,/policyFinish.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="273,150" />
+      <AbsolutePoint location="273,250" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/installationSummary.do,display,.site.InstallationSummary,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="238,2450" />
+      <AbsolutePoint location="238,2353" />
+      <AbsolutePoint location="1085,2353" />
+      <AbsolutePoint location="1085,2146" />
+      <AbsolutePoint location="1755,2146" />
+      <AbsolutePoint location="1755,1871" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/createNewCertificate.do,next,/selectUserDatabase.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1607,1750" />
+      <AbsolutePoint location="1607,1864" />
+      <AbsolutePoint location="1083,1864" />
+      <AbsolutePoint location="1083,1964" />
+      <AbsolutePoint location="1034,1964" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/policyNesting.do,display,.site.PolicyWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1474,150" />
+      <AbsolutePoint location="1474,231" />
+      <AbsolutePoint location="571,231" />
+      <AbsolutePoint location="571,1571" />
+      <AbsolutePoint location="927,1571" />
+      <AbsolutePoint location="927,1785" />
+      <AbsolutePoint location="631,1785" />
+      <AbsolutePoint location="631,2130" />
+      <AbsolutePoint location="454,2130" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/attributeDefinitionFinish.do,rerun,/attributeDefinitionDetails.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1695,3694" />
+      <AbsolutePoint location="2045,3694" />
+      <AbsolutePoint location="2045,3638" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/install.do,licenseAgreement,/showLicenseAgreement.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="796,2500" />
+      <AbsolutePoint location="796,887" />
+      <AbsolutePoint location="2836,887" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/webForwardAuthenticationDetails.do,next,/webForwardPolicySelection.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3071,698" />
+      <AbsolutePoint location="3071,3194" />
+      <AbsolutePoint location="2389,3194" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/profilePolicySelection.do,previous,/profileDetails.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1250,300" />
+      <AbsolutePoint location="1083,300" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/policyFinish.do,display,.site.PolicyWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="269,350" />
+      <AbsolutePoint location="269,427" />
+      <AbsolutePoint location="818,427" />
+      <AbsolutePoint location="818,1759" />
+      <AbsolutePoint location="463,1759" />
+      <AbsolutePoint location="463,2119" />
+      <AbsolutePoint location="454,2119" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.ImportExistingCertificate,null,/importExistingCertificate.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="198,1301" />
+      <AbsolutePoint location="475,1301" />
+      <AbsolutePoint location="475,1547" />
+      <AbsolutePoint location="2014,1547" />
+      <AbsolutePoint location="2014,1700" />
+      <AbsolutePoint location="2150,1700" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.Install,null,/install.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="620,1326" />
+      <AbsolutePoint location="620,1631" />
+      <AbsolutePoint location="1264,1631" />
+      <AbsolutePoint location="1264,1796" />
+      <AbsolutePoint location="1847,1796" />
+      <AbsolutePoint location="1847,2611" />
+      <AbsolutePoint location="796,2611" />
+      <AbsolutePoint location="796,2550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/installExtensions.do,display,.site.InstallExtensions,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1850,2257" />
+      <AbsolutePoint location="1660,2257" />
+      <AbsolutePoint location="1660,2017" />
+      <AbsolutePoint location="3036,2017" />
+      <AbsolutePoint location="3036,1811" />
+      <AbsolutePoint location="2571,1811" />
+      <AbsolutePoint location="2571,1557" />
+      <AbsolutePoint location="1402,1557" />
+      <AbsolutePoint location="1402,1653" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.KeyStoreImportWizardPage,null,/keyStoreImportSummary.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1773,1193" />
+      <AbsolutePoint location="2746,1193" />
+      <AbsolutePoint location="2746,1850" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.WebForwardWizardPage,null,/webForwardResourceDetails.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="136,3399" />
+      <AbsolutePoint location="136,3422" />
+      <AbsolutePoint location="2714,3422" />
+      <AbsolutePoint location="2714,3038" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/webForwardFinish.do,display,.site.WebForwardWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1467,3250" />
+      <AbsolutePoint location="1467,3245" />
+      <AbsolutePoint location="136,3245" />
+      <AbsolutePoint location="136,3350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/accessRightsPermissions.do,next,/accessRightsPolicySelection.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="476,2724" />
+      <AbsolutePoint location="650,2724" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.PolicyWizardPage,null,/policyDetails.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="316,2150" />
+      <AbsolutePoint location="10,2150" />
+      <AbsolutePoint location="10,130" />
+      <AbsolutePoint location="50,130" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/policyDetails.do,next,/policyPrincipalSelection.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="496,78" />
+      <AbsolutePoint location="650,78" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.AccessRightsWizardPage,null,/accessRightsDetails.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="950,3274" />
+      <AbsolutePoint location="895,3274" />
+      <AbsolutePoint location="895,2932" />
+      <AbsolutePoint location="2361,2932" />
+      <AbsolutePoint location="2361,2638" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/accessRightsFinish.do,display,.site.AccessRightsWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="347,2938" />
+      <AbsolutePoint location="347,3183" />
+      <AbsolutePoint location="1031,3183" />
+      <AbsolutePoint location="1031,3250" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.WebForwardWizardPage,null,/webForwardFinish.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="218,3350" />
+      <AbsolutePoint location="218,3324" />
+      <AbsolutePoint location="329,3324" />
+      <AbsolutePoint location="329,3165" />
+      <AbsolutePoint location="1489,3165" />
+      <AbsolutePoint location="1489,3250" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/webForwardPolicySelection.do,next,/webForwardSummary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2456,3238" />
+      <AbsolutePoint location="2456,3444" />
+      <AbsolutePoint location="576,3444" />
+      <AbsolutePoint location="576,3338" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/profileSummary.do,previous,/profilePolicySelection.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1850,330" />
+      <AbsolutePoint location="1732,330" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/setKeyStorePassword.do,createNewCertificate,/createNewCertificate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1920,1850" />
+      <AbsolutePoint location="1920,1750" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.AttributeDefinitionWizardPage,null,/attributeDefinitionSummary.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="719,3950" />
+      <AbsolutePoint location="719,3738" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/webForwardAuthenticationDetails.do,previous,/webForwardSpecificDetails.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3071,746" />
+      <AbsolutePoint location="3071,1182" />
+      <AbsolutePoint location="2729,1182" />
+      <AbsolutePoint location="2729,1787" />
+      <AbsolutePoint location="3190,1787" />
+      <AbsolutePoint location="3190,2017" />
+      <AbsolutePoint location="3547,2017" />
+      <AbsolutePoint location="3547,2367" />
+      <AbsolutePoint location="631,2367" />
+      <AbsolutePoint location="631,3065" />
+      <AbsolutePoint location="950,3065" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.AttributeDefinitionWizardPage,null,/attributeDefinitionDetails.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="849,3974" />
+      <AbsolutePoint location="2165,3974" />
+      <AbsolutePoint location="2165,3638" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.SelectUserDatabase,null,/selectUserDatabase.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1972,513" />
+      <AbsolutePoint location="1684,513" />
+      <AbsolutePoint location="1684,817" />
+      <AbsolutePoint location="494,817" />
+      <AbsolutePoint location="494,1557" />
+      <AbsolutePoint location="899,1557" />
+      <AbsolutePoint location="899,1950" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.WebForwardWizardPage,null,/webForwardSummary.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="196,3350" />
+      <AbsolutePoint location="196,3272" />
+      <AbsolutePoint location="350,3272" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.WebServer,null,/webServer.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2109,1104" />
+      <AbsolutePoint location="1857,1104" />
+      <AbsolutePoint location="1857,1333" />
+      <AbsolutePoint location="1956,1333" />
+      <AbsolutePoint location="1956,1829" />
+      <AbsolutePoint location="1816,1829" />
+      <AbsolutePoint location="1816,1957" />
+      <AbsolutePoint location="1696,1957" />
+      <AbsolutePoint location="1696,2168" />
+      <AbsolutePoint location="1576,2168" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/configureProxies.do,display,.site.ConfigureProxies,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="410,2300" />
+      <AbsolutePoint location="410,1326" />
+      <AbsolutePoint location="2055,1326" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/accessRightsSummary.do,previous,/accessRightsPolicySelection.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2053,2750" />
+      <AbsolutePoint location="2053,2632" />
+      <AbsolutePoint location="870,2632" />
+      <AbsolutePoint location="870,2650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/attributeDefinitionDetails.do,display,.site.AttributeDefinitionWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2075,3638" />
+      <AbsolutePoint location="2075,3783" />
+      <AbsolutePoint location="779,3783" />
+      <AbsolutePoint location="779,3950" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/webForwardSummary.do,display,.site.WebForwardWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="350,3265" />
+      <AbsolutePoint location="166,3265" />
+      <AbsolutePoint location="166,3350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.SelectCertificateSource,null,/selectCertificateSource.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="898,1110" />
+      <AbsolutePoint location="776,1110" />
+      <AbsolutePoint location="776,1654" />
+      <AbsolutePoint location="748,1654" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/athenticationSchemeSelection.do,previous,/athenticationSchemeDetails.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2827,3438" />
+      <AbsolutePoint location="2827,3550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/configureUserDatabase.do,display,.site.ConfigureUserDatabase,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1531,1950" />
+      <AbsolutePoint location="1531,1457" />
+      <AbsolutePoint location="1780,1457" />
+      <AbsolutePoint location="1780,937" />
+      <AbsolutePoint location="1531,937" />
+      <AbsolutePoint location="1531,712" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.ConfigureUserDatabase,null,/configureUserDatabase.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1531,663" />
+      <AbsolutePoint location="1531,421" />
+      <AbsolutePoint location="839,421" />
+      <AbsolutePoint location="839,1421" />
+      <AbsolutePoint location="1018,1421" />
+      <AbsolutePoint location="1018,1480" />
+      <AbsolutePoint location="1509,1480" />
+      <AbsolutePoint location="1509,1950" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.ProfileWizardPage,null,/profilePolicySelection.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2564,650" />
+      <AbsolutePoint location="2564,565" />
+      <AbsolutePoint location="1491,565" />
+      <AbsolutePoint location="1491,350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/athenticationSchemeSelection.do,next,/athenticationSchemePolicySelection.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2964,3438" />
+      <AbsolutePoint location="2964,3873" />
+      <AbsolutePoint location="581,3873" />
+      <AbsolutePoint location="581,3511" />
+      <AbsolutePoint location="506,3511" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/installExtensions.do,previous,/installXtra.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1850,2300" />
+      <AbsolutePoint location="966,2300" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/athenticationSchemeSummary.do,previous,/athenticationSchemePolicySelection.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,3494" />
+      <AbsolutePoint location="506,3494" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/athenticationSchemeSelection.do,finish,/athenticationSchemeFinish.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2934,3438" />
+      <AbsolutePoint location="2934,3494" />
+      <AbsolutePoint location="1663,3494" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.CreateNewCertificate,null,/createNewCertificate.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1215,900" />
+      <AbsolutePoint location="1215,1302" />
+      <AbsolutePoint location="1760,1302" />
+      <AbsolutePoint location="1760,1650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/athenticationSchemePolicySelection.do,previous,/athenticationSchemeSelection.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="50,3494" />
+      <AbsolutePoint location="10,3494" />
+      <AbsolutePoint location="10,4044" />
+      <AbsolutePoint location="2994,4044" />
+      <AbsolutePoint location="2994,3438" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/accessRightsDetails.do,finish,/accessRightsFinish.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2351,2638" />
+      <AbsolutePoint location="2351,2742" />
+      <AbsolutePoint location="249,2742" />
+      <AbsolutePoint location="249,2850" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/importExistingCertificate.do,setKeyStorePassword,/setKeyStorePassword.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2227,1750" />
+      <AbsolutePoint location="2227,1850" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.KeyStoreImportWizardPage,null,/keyStoreImportType.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1661,1176" />
+      <AbsolutePoint location="1661,3000" />
+      <AbsolutePoint location="2051,3000" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/keyStoreImportSummary.do,display,.site.KeyStoreImportWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2677,1850" />
+      <AbsolutePoint location="2677,1415" />
+      <AbsolutePoint location="1709,1415" />
+      <AbsolutePoint location="1709,1202" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.AthenticationSchemeWizardPage,null,/athenticationSchemeFinish.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="862,1854" />
+      <AbsolutePoint location="1158,1854" />
+      <AbsolutePoint location="1158,2831" />
+      <AbsolutePoint location="1559,2831" />
+      <AbsolutePoint location="1559,3171" />
+      <AbsolutePoint location="1927,3171" />
+      <AbsolutePoint location="1927,3472" />
+      <AbsolutePoint location="1663,3472" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/selectUserDatabase.do,next,/configureSuperUser.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="842,2050" />
+      <AbsolutePoint location="842,2119" />
+      <AbsolutePoint location="1850,2119" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/webForwardPolicySelection.do,previousSkipAuthentication,/webForwardSpecificDetails.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2430,3238" />
+      <AbsolutePoint location="2430,3753" />
+      <AbsolutePoint location="1169,3753" />
+      <AbsolutePoint location="1169,3138" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/selectUserDatabase.do,createNewCertificate,/createNewCertificate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1034,1978" />
+      <AbsolutePoint location="1182,1978" />
+      <AbsolutePoint location="1182,1843" />
+      <AbsolutePoint location="1565,1843" />
+      <AbsolutePoint location="1565,1750" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/profileSummary.do,display,.site.ProfileWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2298,300" />
+      <AbsolutePoint location="3408,300" />
+      <AbsolutePoint location="3408,765" />
+      <AbsolutePoint location="2564,765" />
+      <AbsolutePoint location="2564,702" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/install.do,display,.site.Install,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="942,2500" />
+      <AbsolutePoint location="1041,2500" />
+      <AbsolutePoint location="1041,1811" />
+      <AbsolutePoint location="845,1811" />
+      <AbsolutePoint location="845,1589" />
+      <AbsolutePoint location="625,1589" />
+      <AbsolutePoint location="625,1326" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.AthenticationSchemeWizardPage,null,/athenticationSchemePolicySelection.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="862,1878" />
+      <AbsolutePoint location="1069,1878" />
+      <AbsolutePoint location="1069,2499" />
+      <AbsolutePoint location="1230,2499" />
+      <AbsolutePoint location="1230,3039" />
+      <AbsolutePoint location="291,3039" />
+      <AbsolutePoint location="291,3450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/install.do,exit,/shutdown.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="942,2506" />
+      <AbsolutePoint location="942,987" />
+      <AbsolutePoint location="1056,987" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/athenticationSchemeDetails.do,display,.site.AthenticationSchemeWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2842,3594" />
+      <AbsolutePoint location="3428,3594" />
+      <AbsolutePoint location="3428,2641" />
+      <AbsolutePoint location="1049,2641" />
+      <AbsolutePoint location="1049,1892" />
+      <AbsolutePoint location="862,1892" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/createNewCertificate.do,display,.site.CreateNewCertificate,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1918,1650" />
+      <AbsolutePoint location="1918,1083" />
+      <AbsolutePoint location="1217,1083" />
+      <AbsolutePoint location="1217,900" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.WebForwardWizardPage,null,/webForwardSpecificDetails.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="223,3396" />
+      <AbsolutePoint location="919,3396" />
+      <AbsolutePoint location="919,3087" />
+      <AbsolutePoint location="950,3087" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/keyStoreImportUpload.do,success,/keyStoreImportSummary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2669,2250" />
+      <AbsolutePoint location="2669,1950" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.AccessRightsWizardPage,null,/accessRightsFinish.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="950,3260" />
+      <AbsolutePoint location="941,3260" />
+      <AbsolutePoint location="941,2894" />
+      <AbsolutePoint location="448,2894" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.InstallationSummary,null,/installationSummary.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1751,1871" />
+      <AbsolutePoint location="1751,2140" />
+      <AbsolutePoint location="1100,2140" />
+      <AbsolutePoint location="1100,2385" />
+      <AbsolutePoint location="244,2385" />
+      <AbsolutePoint location="244,2450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/showActiveDirectoryConfiguration.do,display,.site.ActiveDirectoryConfiguration,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1672,2465" />
+      <AbsolutePoint location="2133,2465" />
+      <AbsolutePoint location="2133,2514" />
+      <AbsolutePoint location="2379,2514" />
+      <AbsolutePoint location="2379,2153" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/athenticationSchemeSummary.do,display,.site.AthenticationSchemeWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="870,3538" />
+      <AbsolutePoint location="870,3620" />
+      <AbsolutePoint location="1715,3620" />
+      <AbsolutePoint location="1715,2568" />
+      <AbsolutePoint location="468,2568" />
+      <AbsolutePoint location="468,1874" />
+      <AbsolutePoint location="650,1874" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/configureSuperUser.do,configureUserDatabase,/configureUserDatabase.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1850,2065" />
+      <AbsolutePoint location="1451,2065" />
+      <AbsolutePoint location="1451,2050" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.ProfileWizardPage,null,/profileSummary.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2450,676" />
+      <AbsolutePoint location="2407,676" />
+      <AbsolutePoint location="2407,330" />
+      <AbsolutePoint location="2298,330" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/attributeDefinitionSummary.do,display,.site.AttributeDefinitionWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="749,3738" />
+      <AbsolutePoint location="749,3950" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/keyStoreImportFinish.do,rerun,/keyStoreImportType.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2654,1100" />
+      <AbsolutePoint location="2654,3000" />
+      <AbsolutePoint location="2051,3000" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/webForwardResourceDetails.do,next,/webForwardSpecificDetails.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2568,2950" />
+      <AbsolutePoint location="2568,2917" />
+      <AbsolutePoint location="1517,2917" />
+      <AbsolutePoint location="1517,3065" />
+      <AbsolutePoint location="1426,3065" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/policyPrincipalSelection.do,display,.site.PolicyWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,122" />
+      <AbsolutePoint location="520,122" />
+      <AbsolutePoint location="520,1399" />
+      <AbsolutePoint location="1219,1399" />
+      <AbsolutePoint location="1219,2193" />
+      <AbsolutePoint location="407,2193" />
+      <AbsolutePoint location="407,2153" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.AccessRightsWizardPage,null,/accessRightsSummary.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1059,3299" />
+      <AbsolutePoint location="1059,3326" />
+      <AbsolutePoint location="1139,3326" />
+      <AbsolutePoint location="1139,4074" />
+      <AbsolutePoint location="3284,4074" />
+      <AbsolutePoint location="3284,2785" />
+      <AbsolutePoint location="2265,2785" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.ActiveDirectoryConfiguration,null,/showActiveDirectoryConfiguration.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2409,2153" />
+      <AbsolutePoint location="2409,2465" />
+      <AbsolutePoint location="2568,2465" />
+      <AbsolutePoint location="2568,2665" />
+      <AbsolutePoint location="1895,2665" />
+      <AbsolutePoint location="1895,2500" />
+      <AbsolutePoint location="1672,2500" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/createNewCertificate.do,selectCertificateSource,/selectCertificateSource.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1709,1650" />
+      <AbsolutePoint location="1709,1529" />
+      <AbsolutePoint location="520,1529" />
+      <AbsolutePoint location="520,1650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/installationSummary.do,previous,/installExtensions.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="252,2550" />
+      <AbsolutePoint location="252,2557" />
+      <AbsolutePoint location="2067,2557" />
+      <AbsolutePoint location="2067,2350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/athenticationSchemePolicySelection.do,next,/athenticationSchemeSummary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="506,3464" />
+      <AbsolutePoint location="650,3464" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/profilePolicySelection.do,next,/profileSummary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1732,300" />
+      <AbsolutePoint location="1850,300" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/installXtra.do,previous,/configureProxies.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,2304" />
+      <AbsolutePoint location="410,2304" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/configureProxies.do,next,/installXtra.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="410,2300" />
+      <AbsolutePoint location="650,2300" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/profileFinish.do,display,.site.ProfileWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="263,550" />
+      <AbsolutePoint location="263,636" />
+      <AbsolutePoint location="2512,636" />
+      <AbsolutePoint location="2512,650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/selectUserDatabase.do,display,.site.SelectUserDatabase,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="913,1950" />
+      <AbsolutePoint location="913,1587" />
+      <AbsolutePoint location="1199,1587" />
+      <AbsolutePoint location="1199,923" />
+      <AbsolutePoint location="1426,923" />
+      <AbsolutePoint location="1426,499" />
+      <AbsolutePoint location="1972,499" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.AthenticationSchemeWizardPage,null,/athenticationSchemeDetails.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="862,1877" />
+      <AbsolutePoint location="1112,1877" />
+      <AbsolutePoint location="1112,2817" />
+      <AbsolutePoint location="1635,2817" />
+      <AbsolutePoint location="1635,3117" />
+      <AbsolutePoint location="2645,3117" />
+      <AbsolutePoint location="2645,3550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/keyStoreImportType.do,display,.site.KeyStoreImportWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2051,3000" />
+      <AbsolutePoint location="2051,1176" />
+      <AbsolutePoint location="1661,1176" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/webForwardSpecificDetails.do,next,/webForwardAuthenticationDetails.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1215,3050" />
+      <AbsolutePoint location="1215,2332" />
+      <AbsolutePoint location="1055,2332" />
+      <AbsolutePoint location="1055,1805" />
+      <AbsolutePoint location="2583,1805" />
+      <AbsolutePoint location="2583,1217" />
+      <AbsolutePoint location="3089,1217" />
+      <AbsolutePoint location="3089,746" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.AthenticationSchemeWizardPage,null,/athenticationSchemeSummary.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,1869" />
+      <AbsolutePoint location="457,1869" />
+      <AbsolutePoint location="457,2622" />
+      <AbsolutePoint location="42,2622" />
+      <AbsolutePoint location="42,3571" />
+      <AbsolutePoint location="865,3571" />
+      <AbsolutePoint location="865,3538" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/installExtensions.do,next,/installationSummary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2081,2350" />
+      <AbsolutePoint location="2081,2577" />
+      <AbsolutePoint location="238,2577" />
+      <AbsolutePoint location="238,2550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/accessRightsPolicySelection.do,previous,/accessRightsPermissions.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,2694" />
+      <AbsolutePoint location="476,2694" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/importExistingCertificate.do,display,.site.ImportExistingCertificate,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2541,1650" />
+      <AbsolutePoint location="2541,1364" />
+      <AbsolutePoint location="1796,1364" />
+      <AbsolutePoint location="1796,911" />
+      <AbsolutePoint location="47,911" />
+      <AbsolutePoint location="47,1277" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/webForwardResourceDetails.do,display,.site.WebForwardWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2692,2950" />
+      <AbsolutePoint location="2692,2435" />
+      <AbsolutePoint location="-110,2435" />
+      <AbsolutePoint location="-110,3265" />
+      <AbsolutePoint location="54,3265" />
+      <AbsolutePoint location="54,3350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/configureSuperUser.do,next,/webServer.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2039,2150" />
+      <AbsolutePoint location="2039,2200" />
+      <AbsolutePoint location="1576,2200" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/athenticationSchemePolicySelection.do,display,.site.AthenticationSchemeWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="278,3494" />
+      <AbsolutePoint location="278,1874" />
+      <AbsolutePoint location="756,1874" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/selectCertificateSource.do,setKeyStorePassword,/setKeyStorePassword.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="516,1750" />
+      <AbsolutePoint location="516,1936" />
+      <AbsolutePoint location="1850,1936" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/webForwardSpecificDetails.do,nextSkipAuthentication,/webForwardPolicySelection.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1426,3073" />
+      <AbsolutePoint location="1601,3073" />
+      <AbsolutePoint location="1601,2865" />
+      <AbsolutePoint location="2389,2865" />
+      <AbsolutePoint location="2389,3150" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/accessRightsPolicySelection.do,display,.site.AccessRightsWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="911,2738" />
+      <AbsolutePoint location="911,3023" />
+      <AbsolutePoint location="1755,3023" />
+      <AbsolutePoint location="1755,3599" />
+      <AbsolutePoint location="1235,3599" />
+      <AbsolutePoint location="1235,3274" />
+      <AbsolutePoint location="1124,3274" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/athenticationSchemeFinish.do,display,.site.AthenticationSchemeWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1663,3504" />
+      <AbsolutePoint location="3472,3504" />
+      <AbsolutePoint location="3472,2216" />
+      <AbsolutePoint location="1686,2216" />
+      <AbsolutePoint location="1686,1946" />
+      <AbsolutePoint location="762,1946" />
+      <AbsolutePoint location="762,1899" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/webForwardAuthenticationDetails.do,display,.site.WebForwardWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3071,650" />
+      <AbsolutePoint location="3071,-25" />
+      <AbsolutePoint location="-80,-25" />
+      <AbsolutePoint location="-80,3422" />
+      <AbsolutePoint location="106,3422" />
+      <AbsolutePoint location="106,3399" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/attributeDefinitionSummary.do,previous,/attributeDefinitionOptions.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,3664" />
+      <AbsolutePoint location="505,3664" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/accessRightsPermissions.do,display,.site.AccessRightsWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="263,2738" />
+      <AbsolutePoint location="263,2775" />
+      <AbsolutePoint location="881,2775" />
+      <AbsolutePoint location="881,3318" />
+      <AbsolutePoint location="1015,3318" />
+      <AbsolutePoint location="1015,3299" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/policyPrincipalSelection.do,previous,/policyDetails.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,100" />
+      <AbsolutePoint location="496,100" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/accessRightsSummary.do,display,.site.AccessRightsWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1850,2775" />
+      <AbsolutePoint location="1535,2775" />
+      <AbsolutePoint location="1535,3183" />
+      <AbsolutePoint location="1037,3183" />
+      <AbsolutePoint location="1037,3250" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/selectUserDatabase.do,importExistingCertificate,/importExistingCertificate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1031,2050" />
+      <AbsolutePoint location="1031,2285" />
+      <AbsolutePoint location="1674,2285" />
+      <AbsolutePoint location="1674,2031" />
+      <AbsolutePoint location="2350,2031" />
+      <AbsolutePoint location="2350,1750" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/attributeDefinitionOptions.do,next,/attributeDefinitionSummary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="505,3694" />
+      <AbsolutePoint location="650,3694" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/athenticationSchemeDetails.do,finish,/athenticationSchemeFinish.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2452,3550" />
+      <AbsolutePoint location="2452,3522" />
+      <AbsolutePoint location="1663,3522" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/attributeDefinitionOptions.do,previous,/attributeDefinitionDetails.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="307,3738" />
+      <AbsolutePoint location="307,3933" />
+      <AbsolutePoint location="2135,3933" />
+      <AbsolutePoint location="2135,3638" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/keyStoreImportFile.do,null,/keyStoreImportUpload.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2868,500" />
+      <AbsolutePoint location="3437,500" />
+      <AbsolutePoint location="3437,1414" />
+      <AbsolutePoint location="2742,1414" />
+      <AbsolutePoint location="2742,1810" />
+      <AbsolutePoint location="2308,1810" />
+      <AbsolutePoint location="2308,2300" />
+      <AbsolutePoint location="2450,2300" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.WebForwardWizardPage,null,/webForwardAuthenticationDetails.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="50,3374" />
+      <AbsolutePoint location="-20,3374" />
+      <AbsolutePoint location="-20,795" />
+      <AbsolutePoint location="3049,795" />
+      <AbsolutePoint location="3049,746" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.AccessRightsWizardPage,null,/accessRightsPolicySelection.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1124,3296" />
+      <AbsolutePoint location="1199,3296" />
+      <AbsolutePoint location="1199,3843" />
+      <AbsolutePoint location="-50,3843" />
+      <AbsolutePoint location="-50,2825" />
+      <AbsolutePoint location="859,2825" />
+      <AbsolutePoint location="859,2738" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/accessRightsDetails.do,next,/accessRightsPermissions.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2150,2604" />
+      <AbsolutePoint location="252,2604" />
+      <AbsolutePoint location="252,2650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.SetKeyStorePassword,null,/setKeyStorePassword.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="905,1465" />
+      <AbsolutePoint location="905,1314" />
+      <AbsolutePoint location="1821,1314" />
+      <AbsolutePoint location="1821,1457" />
+      <AbsolutePoint location="1984,1457" />
+      <AbsolutePoint location="1984,1850" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/webForwardResourceDetails.do,finish,/webForwardFinish.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2692,3038" />
+      <AbsolutePoint location="2692,3287" />
+      <AbsolutePoint location="1685,3287" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.PolicyWizardPage,null,/policyNesting.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="454,2108" />
+      <AbsolutePoint location="1238,2108" />
+      <AbsolutePoint location="1238,1104" />
+      <AbsolutePoint location="1815,1104" />
+      <AbsolutePoint location="1815,100" />
+      <AbsolutePoint location="1699,100" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/setKeyStorePassword.do,display,.site.SetKeyStorePassword,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2046,1850" />
+      <AbsolutePoint location="2046,1437" />
+      <AbsolutePoint location="1715,1437" />
+      <AbsolutePoint location="1715,1502" />
+      <AbsolutePoint location="984,1502" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/keyStoreImportType.do,next,/keyStoreImportFile.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2051,3000" />
+      <AbsolutePoint location="2051,500" />
+      <AbsolutePoint location="2659,500" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/keyStoreImportSummary.do,previous,/keyStoreImportFile.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2707,1850" />
+      <AbsolutePoint location="2707,1208" />
+      <AbsolutePoint location="2442,1208" />
+      <AbsolutePoint location="2442,504" />
+      <AbsolutePoint location="2450,504" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/profileDetails.do,finish,/profileFinish.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="786,350" />
+      <AbsolutePoint location="786,478" />
+      <AbsolutePoint location="476,478" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.ImportExistingCertificate,null,/uploadExistingCertificate.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="198,1307" />
+      <AbsolutePoint location="463,1307" />
+      <AbsolutePoint location="463,1614" />
+      <AbsolutePoint location="335,1614" />
+      <AbsolutePoint location="335,1850" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/selectUserDatabase.do,configureUserDatabase,/configureUserDatabase.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1034,2000" />
+      <AbsolutePoint location="1250,2000" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/installXtra.do,next,/installExtensions.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="966,2271" />
+      <AbsolutePoint location="1850,2271" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/webForwardPolicySelection.do,previous,/webForwardAuthenticationDetails.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2389,3194" />
+      <AbsolutePoint location="2389,698" />
+      <AbsolutePoint location="3071,698" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.PolicyWizardPage,null,/policyPrincipalSelection.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="385,2104" />
+      <AbsolutePoint location="385,1965" />
+      <AbsolutePoint location="-110,1965" />
+      <AbsolutePoint location="-110,195" />
+      <AbsolutePoint location="905,195" />
+      <AbsolutePoint location="905,150" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.PolicyWizardPage,null,/policySummary.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="316,2128" />
+      <AbsolutePoint location="32,2128" />
+      <AbsolutePoint location="32,1333" />
+      <AbsolutePoint location="1837,1333" />
+      <AbsolutePoint location="1837,82" />
+      <AbsolutePoint location="1850,82" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/webForwardFinish.do,rerun,/webForwardSpecificDetails.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1411,3250" />
+      <AbsolutePoint location="1411,3138" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/profilePolicySelection.do,display,.site.ProfileWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1496,250" />
+      <AbsolutePoint location="1496,195" />
+      <AbsolutePoint location="3467,195" />
+      <AbsolutePoint location="3467,965" />
+      <AbsolutePoint location="2534,965" />
+      <AbsolutePoint location="2534,702" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/importExistingCertificate.do,selectCertificateSource,/selectCertificateSource.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2277,1750" />
+      <AbsolutePoint location="2277,2405" />
+      <AbsolutePoint location="549,2405" />
+      <AbsolutePoint location="549,1750" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/policyPrincipalSelection.do,next,/policySummary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="905,50" />
+      <AbsolutePoint location="905,-85" />
+      <AbsolutePoint location="2110,-85" />
+      <AbsolutePoint location="2110,50" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/attributeDefinitionOptions.do,finish,/attributeDefinitionFinish.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="277,3650" />
+      <AbsolutePoint location="277,3565" />
+      <AbsolutePoint location="1472,3565" />
+      <AbsolutePoint location="1472,3650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.AttributeDefinitionWizardPage,null,/attributeDefinitionFinish.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="834,3950" />
+      <AbsolutePoint location="834,3903" />
+      <AbsolutePoint location="1472,3903" />
+      <AbsolutePoint location="1472,3738" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/webForwardPolicySelection.do,display,.site.WebForwardWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2150,3194" />
+      <AbsolutePoint location="837,3194" />
+      <AbsolutePoint location="837,3374" />
+      <AbsolutePoint location="223,3374" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/webServer.do,previous,/configureSuperUser.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1413,2150" />
+      <AbsolutePoint location="1413,2130" />
+      <AbsolutePoint location="1850,2130" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.ConfigureProxies,null,/configureProxies.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1994,1301" />
+      <AbsolutePoint location="1994,2300" />
+      <AbsolutePoint location="230,2300" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/policySummary.do,display,.site.PolicyWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1850,100" />
+      <AbsolutePoint location="1847,100" />
+      <AbsolutePoint location="1847,1343" />
+      <AbsolutePoint location="42,1343" />
+      <AbsolutePoint location="42,2110" />
+      <AbsolutePoint location="316,2110" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/selectCertificateSource.do,importExistingCertificate,/importExistingCertificate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="549,1650" />
+      <AbsolutePoint location="549,1614" />
+      <AbsolutePoint location="2350,1614" />
+      <AbsolutePoint location="2350,1650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/installXtra.do,display,.site.InstallXtra,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="808,2300" />
+      <AbsolutePoint location="808,1489" />
+      <AbsolutePoint location="1819,1489" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/profileDetails.do,display,.site.ProfileWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="866,250" />
+      <AbsolutePoint location="866,165" />
+      <AbsolutePoint location="2377,165" />
+      <AbsolutePoint location="2377,717" />
+      <AbsolutePoint location="2474,717" />
+      <AbsolutePoint location="2474,702" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.InstallExtensions,null,/installExtensions.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1378,1653" />
+      <AbsolutePoint location="1378,1632" />
+      <AbsolutePoint location="2032,1632" />
+      <AbsolutePoint location="2032,1839" />
+      <AbsolutePoint location="2259,1839" />
+      <AbsolutePoint location="2259,2300" />
+      <AbsolutePoint location="2206,2300" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/accessRightsFinish.do,exit,/showHome.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="249,2894" />
+      <AbsolutePoint location="249,1087" />
+      <AbsolutePoint location="705,1087" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/createNewCertificate.do,setKeyStorePassword,/setKeyStorePassword.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1865,1750" />
+      <AbsolutePoint location="1865,1850" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/selectCertificateSource.do,createNewCertificate,/createNewCertificate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="748,1717" />
+      <AbsolutePoint location="1550,1717" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/policySummary.do,previous,/policyPrincipalSelection.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2080,50" />
+      <AbsolutePoint location="2080,-55" />
+      <AbsolutePoint location="935,-55" />
+      <AbsolutePoint location="935,50" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/accessRightsDetails.do,display,.site.AccessRightsWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2150,2594" />
+      <AbsolutePoint location="32,2594" />
+      <AbsolutePoint location="32,3348" />
+      <AbsolutePoint location="1037,3348" />
+      <AbsolutePoint location="1037,3299" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/athenticationSchemeSelection.do,display,.site.AthenticationSchemeWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3072,3350" />
+      <AbsolutePoint location="3072,2942" />
+      <AbsolutePoint location="516,2942" />
+      <AbsolutePoint location="516,1946" />
+      <AbsolutePoint location="756,1946" />
+      <AbsolutePoint location="756,1899" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/attributeDefinitionDetails.do,next,/attributeDefinitionOptions.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2105,3638" />
+      <AbsolutePoint location="2105,3813" />
+      <AbsolutePoint location="337,3813" />
+      <AbsolutePoint location="337,3738" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/install.do,redisplay,/install.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="796,2450" />
+      <AbsolutePoint location="796,2380" />
+      <AbsolutePoint location="996,2380" />
+      <AbsolutePoint location="996,2499" />
+      <AbsolutePoint location="942,2499" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/webForwardSummary.do,previous,/webForwardPolicySelection.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="580,3338" />
+      <AbsolutePoint location="580,3440" />
+      <AbsolutePoint location="2452,3440" />
+      <AbsolutePoint location="2452,3238" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/policyNesting.do,previous,/policyPrincipalSelection.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1250,100" />
+      <AbsolutePoint location="1161,100" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.AccessRightsWizardPage,null,/accessRightsPermissions.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="950,3296" />
+      <AbsolutePoint location="859,3296" />
+      <AbsolutePoint location="859,3017" />
+      <AbsolutePoint location="463,3017" />
+      <AbsolutePoint location="463,2738" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/accessRightsPolicySelection.do,next,/accessRightsSummary.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="919,2738" />
+      <AbsolutePoint location="919,2755" />
+      <AbsolutePoint location="1850,2755" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.ProfileWizardPage,null,/profileFinish.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2504,702" />
+      <AbsolutePoint location="2504,895" />
+      <AbsolutePoint location="2347,895" />
+      <AbsolutePoint location="2347,365" />
+      <AbsolutePoint location="247,365" />
+      <AbsolutePoint location="247,450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/configureProxies.do,previous,/webServer.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="230,2250" />
+      <AbsolutePoint location="230,2179" />
+      <AbsolutePoint location="1250,2179" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.KeyStoreImportWizardPage,null,/keyStoreImportFile.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1678,1150" />
+      <AbsolutePoint location="1678,1032" />
+      <AbsolutePoint location="2659,1032" />
+      <AbsolutePoint location="2659,550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/webServer.do,next,/configureProxies.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1250,2239" />
+      <AbsolutePoint location="244,2239" />
+      <AbsolutePoint location="244,2250" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/keyStoreImportFile.do,display,.site.KeyStoreImportWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2450,500" />
+      <AbsolutePoint location="2322,500" />
+      <AbsolutePoint location="2322,1176" />
+      <AbsolutePoint location="1773,1176" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/keyStoreImportType.do,finish,/keyStoreImportFinish.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1850,3000" />
+      <AbsolutePoint location="1243,3000" />
+      <AbsolutePoint location="1243,2692" />
+      <AbsolutePoint location="1167,2692" />
+      <AbsolutePoint location="1167,1877" />
+      <AbsolutePoint location="1452,1877" />
+      <AbsolutePoint location="1452,1566" />
+      <AbsolutePoint location="2548,1566" />
+      <AbsolutePoint location="2548,1150" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/webForwardAuthenticationDetails.do,finish,/webForwardFinish.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3071,698" />
+      <AbsolutePoint location="3071,3294" />
+      <AbsolutePoint location="1467,3294" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.KeyStoreImportWizardPage,null,/keyStoreImportFinish.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1661,1150" />
+      <AbsolutePoint location="1661,965" />
+      <AbsolutePoint location="2474,965" />
+      <AbsolutePoint location="2474,1050" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/attributeDefinitionDetails.do,finish,/attributeDefinitionFinish.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2015,3638" />
+      <AbsolutePoint location="2015,3664" />
+      <AbsolutePoint location="1695,3664" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.AthenticationSchemeWizardPage,null,/athenticationSchemeSelection.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,1880" />
+      <AbsolutePoint location="481,1880" />
+      <AbsolutePoint location="481,2843" />
+      <AbsolutePoint location="3078,2843" />
+      <AbsolutePoint location="3078,3350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/accessRightsFinish.do,rerun,/accessRightsDetails.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="50,2894" />
+      <AbsolutePoint location="10,2894" />
+      <AbsolutePoint location="10,2647" />
+      <AbsolutePoint location="2341,2647" />
+      <AbsolutePoint location="2341,2638" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/configureUserDatabase.do,previous,/selectUserDatabase.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1250,2022" />
+      <AbsolutePoint location="1034,2022" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/webForwardSpecificDetails.do,previous,/webForwardResourceDetails.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1426,3131" />
+      <AbsolutePoint location="2670,3131" />
+      <AbsolutePoint location="2670,3038" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/install.do,rerun,/selectCertificateSource.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,2500" />
+      <AbsolutePoint location="579,2500" />
+      <AbsolutePoint location="579,2065" />
+      <AbsolutePoint location="439,2065" />
+      <AbsolutePoint location="439,1750" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/selectCertificateSource.do,useCurrentCertificate,/selectUserDatabase.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="579,1750" />
+      <AbsolutePoint location="579,1965" />
+      <AbsolutePoint location="650,1965" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/configureUserDatabase.do,next,/configureSuperUser.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1413,2050" />
+      <AbsolutePoint location="1413,2084" />
+      <AbsolutePoint location="1850,2084" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/keyStoreImportFinish.do,display,.site.KeyStoreImportWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2571,1150" />
+      <AbsolutePoint location="2571,1385" />
+      <AbsolutePoint location="1715,1385" />
+      <AbsolutePoint location="1715,1202" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/configureSuperUser.do,previous,/selectUserDatabase.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1850,2090" />
+      <AbsolutePoint location="1098,2090" />
+      <AbsolutePoint location="1098,2036" />
+      <AbsolutePoint location="1034,2036" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/selectUserDatabase.do,selectCertificateSource,/selectCertificateSource.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="877,1950" />
+      <AbsolutePoint location="877,1739" />
+      <AbsolutePoint location="748,1739" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/configureUserDatabase.do,createNewCertificate,/createNewCertificate.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1621,1950" />
+      <AbsolutePoint location="1621,1750" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/profileDetails.do,next,/profilePolicySelection.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1083,330" />
+      <AbsolutePoint location="1250,330" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.AttributeDefinitionWizardPage,null,/attributeDefinitionOptions.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,3974" />
+      <AbsolutePoint location="277,3974" />
+      <AbsolutePoint location="277,3738" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/athenticationSchemeDetails.do,next,/athenticationSchemeSelection.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2765,3550" />
+      <AbsolutePoint location="2765,3438" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id=".site.ProfileWizardPage,null,/profileDetails.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2534,650" />
+      <AbsolutePoint location="2534,614" />
+      <AbsolutePoint location="881,614" />
+      <AbsolutePoint location="881,350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/attributeDefinitionFinish.do,display,.site.AttributeDefinitionWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1502,3738" />
+      <AbsolutePoint location="1502,4104" />
+      <AbsolutePoint location="779,4104" />
+      <AbsolutePoint location="779,3999" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/selectCertificateSource.do,display,.site.SelectCertificateSource,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="519,1650" />
+      <AbsolutePoint location="519,1217" />
+      <AbsolutePoint location="981,1217" />
+      <AbsolutePoint location="981,1138" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/policyDetails.do,display,.site.PolicyWizardPage,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="50,100" />
+      <AbsolutePoint location="-50,100" />
+      <AbsolutePoint location="-50,1565" />
+      <AbsolutePoint location="317,1565" />
+      <AbsolutePoint location="317,1837" />
+      <AbsolutePoint location="1136,1837" />
+      <AbsolutePoint location="1136,2217" />
+      <AbsolutePoint location="385,2217" />
+      <AbsolutePoint location="385,2153" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/webForwardSpecificDetails.do,finish,/webForwardFinish.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1265,3138" />
+      <AbsolutePoint location="1265,3250" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+
