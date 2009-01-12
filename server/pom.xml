@@ -171,7 +171,6 @@
 	javax.servlet.UnavailableException: Failed to initialise system
 	database."
 
-	-->
 
 	<dependency>
 		<groupId>org.easymock</groupId>
@@ -207,6 +206,9 @@
 		<version>130</version>
 		<scope>test</scope>
 	</dependency>
+
+	-->
+
 
     </dependencies>
 </project>
