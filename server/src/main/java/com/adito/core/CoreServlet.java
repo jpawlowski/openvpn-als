@@ -556,6 +556,7 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
                 ProfilesFactory.getInstance().open(this);
             } catch (Exception e) {
                 log.error("Failed to initialise property database.", e);
+				e.printStackTrace();
                 throw new ServletException("Failed to initialise system database.", e);
             }
 
