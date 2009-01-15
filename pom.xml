@@ -135,12 +135,15 @@
 
 	<!-- Jetty 5.1.x and HSQLDB are currently required by Adito and are
 	     available from this Maven2 repository -->
+
+	<!-- IBiblio responds slowly/not at all, disabling temporarily
+
         <repository>
             <id>mirrors.ibiblio.org</id>
             <name>Ibiblio.org Maven2 repository</name>
             <url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
         </repository>
-
+	-->
 
     </repositories>
     
@@ -166,7 +169,6 @@
 		<enabled>true</enabled>
 	    </releases>
 	</pluginRepository>
-
     </pluginRepositories>
     
     <dependencyManagement>
@@ -267,6 +269,31 @@
                 </configuration>
             </plugin>
         </plugins>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>2.2-beta-2</version>
+          <executions>
+            <execution>
+              <id>create-project-bundle</id>
+              <phase>package</phase>
+              <goals>
+                <goal>single</goal>
+              </goals>
+              <configuration>
+                <descriptorRefs>
+                  <descriptorRef>project</descriptorRef>
+                </descriptorRefs>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+
     </build>
     
     <profiles>

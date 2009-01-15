@@ -117,10 +117,6 @@
     		<version>5.1.12</version>
 	</dependency>
 
-	<!-- HSQLDB 1.8.x does not work properly, because it's
-	     API has changed. So we use 1.7.x for now, which
-	     seems to work. -->
-
 	<dependency>
 		<groupId>hsqldb</groupId>
 		<artifactId>hsqldb</artifactId>
