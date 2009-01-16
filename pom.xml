@@ -159,16 +159,6 @@
             <layout>default</layout>
         </pluginRepository>
 
-	<pluginRepository>
-	    <id>Maven Overview Plugin - Release Repository</id>
-	    <url>http://maven-overview-plugin.googlecode.com/svn/release-repository</url>
-	    <snapshots>
-		<enabled>false</enabled>
-	    </snapshots>
-	    <releases>
-		<enabled>true</enabled>
-	    </releases>
-	</pluginRepository>
     </pluginRepositories>
     
     <dependencyManagement>
