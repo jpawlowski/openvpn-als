@@ -136,14 +136,27 @@
 	<!-- Jetty 5.1.x and HSQLDB are currently required by Adito and are
 	     available from this Maven2 repository -->
 
-	<!-- IBiblio responds slowly/not at all, disabling temporarily
+	<!-- IBiblio sometimes responds slowly/not at all. If that happens
+	     and you already have the necessary modules, commenting this
+	     repository out helps. There seems not to be a timeout value
+	     that could be set, so it may be the only fix -->
 
         <repository>
             <id>mirrors.ibiblio.org</id>
             <name>Ibiblio.org Maven2 repository</name>
             <url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
         </repository>
-	-->
+
+	<!-- A few Adito components are not available in any public Maven2
+	     repository. This custom repository contains all the Adito-specific
+	     stuff. -->
+
+        <repository>
+            <id>adito.pcdog.ch</id>
+            <name>Adito Maven2 repository</name>
+            <url>http://adito.pcdog.ch/maven2</url>
+        </repository>
+
 
     </repositories>
     

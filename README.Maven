@@ -1,8 +1,7 @@
 == Modules not available from public Maven2 repositories ==
 
-There are some jars that Adito requires which are not yet in public Maven repositories. The 
-temporary directory m2-repo contains those necessary jars so that the build works properly. Simply 
-copy the contents of that dir to $HOME/.m2/repository as you're set.
+There are some jars that Adito requires which are not yet in public Maven repositories. These
+modules are currently hosted in a custom Maven2 repository (http://adito.pcdog.ch/maven2).
 
 == Build order ==
 
@@ -49,9 +48,22 @@ For ZIP-files you can (on Linux) use
 If contents of the Ant/Maven JAR/ZIP differs a lot, you've probably got a problem. Note that we probably
 have to use the Assembly plugin to create a fully functional, runnable version of Adito.
 
-== Notes on Apache commons-vfs ==
+== Misc notes ==
 
 Adito originally contained a patched version of Apache commons vfs. The patches themselves are available
 in directory adito-commons-vfs/patches and are _probably_ the only modifications to the original
 commons-vfs code. To reduce unnecessary work Mavenized Adito will use standard commons-vfs unless
 it turns out to be problematic.
+
+---
+
+It may be possible to convert Adito into a standard Java web application. Currently Maven creates a WAR
+out of Adito's server component. The format of a WAR archive is documented here:
+
+http://java.sun.com/j2ee/tutorial/1_3-fcs/doc/WebComponents3.html
+
+---
+
+Unit tests don't work yet. In fact the build fails if they're used. To skip them, use -Dmaven.test.skip=true:
+
+mvn -Dmaven.test.skip=true clean install 
