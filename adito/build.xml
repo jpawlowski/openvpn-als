@@ -548,6 +548,24 @@
 	</target>
 
 
+	<!-- Start the install wizard  -->
+	<target name="install-without-compiling" depends="check-tools,check-permissions">
+
+		<!-- Just in case -->
+		<mkdir dir="logs" />
+		<mkdir dir="tmp" />
+
+		<java fork="true" classname="com.adito.boot.Bootstrap">
+			<arg value="--install" />
+			<classpath>
+				<pathelement path="${build.boot.output}" />
+			</classpath>
+			<arg value="--conf=${adito.conf}" />
+		</java>
+	</target>
+
+
+
 	<!-- Install Adito as a service  -->
 	<target name="install-service" depends="compile,local-deploy,deploy-community-extensions,create-wrapper-conf,check-tools,check-permissions">
 		<if>
