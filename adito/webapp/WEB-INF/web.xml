@@ -1,11 +1,13 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-<!DOCTYPE web-app
-  PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
-  "webapp/WEB-INF/web-app_2_3.dtd">
+<!DOCTYPE web-app PUBLIC
+	"-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+	"http://java.sun.com/dtd/web-app_2_3.dtd">
 
 <web-app>
+
 	<display-name>Adito</display-name>
+
 	<filter>
 		<filter-name>compressionFilter</filter-name>
 		<filter-class>
@@ -16,22 +18,19 @@
 			<param-value>10</param-value>
 		</init-param>
 	</filter>
+
 	<filter-mapping>
-    	<filter-name>compressionFilter</filter-name>
-    	<servlet-name>action</servlet-name>
+    		<filter-name>compressionFilter</filter-name>
+    		<servlet-name>action</servlet-name>
    	</filter-mapping> 
 	<filter-mapping>
-    	<filter-name>compressionFilter</filter-name>
-    	<servlet-name>messageResourceLoader</servlet-name>
+    		<filter-name>compressionFilter</filter-name>
+    		<servlet-name>messageResourceLoader</servlet-name>
    	</filter-mapping>  
 	<filter-mapping>
-    	<filter-name>compressionFilter</filter-name>
-    	<servlet-name>staticResourceServlet</servlet-name>
+    		<filter-name>compressionFilter</filter-name>
+    		<servlet-name>staticResourceServlet</servlet-name>
    	</filter-mapping> 
-	<filter-mapping>
-    	<filter-name>compressionFilter</filter-name>
-    	<servlet-name>jsp</servlet-name>
-   	</filter-mapping>
 	  
 	<!-- Standard Action Servlet Configuration (with debugging) -->
 	<servlet>
@@ -41,7 +40,6 @@
 			<param-name>config</param-name>
 			<param-value>/WEB-INF/struts-config.xml</param-value>
 		</init-param>
-
 		<init-param>
 			<param-name>debug</param-name>
 			<param-value>2</param-value>
@@ -491,7 +489,6 @@
 		<mime-type>text/plain</mime-type>
 	</mime-mapping>
 
-
 	<!-- The Usual Welcome File List -->
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
@@ -510,7 +507,6 @@
 		<error-code>500</error-code>
 		<location>/WEB-INF/jsp/errors/generic.jsp</location>
 	</error-page>
-
 
 	<!--  Tag Library Descriptors -->
 
@@ -548,4 +544,5 @@
 		<taglib-uri>/server/taglibs/webforwards</taglib-uri>
 		<taglib-location>/WEB-INF/webforwards.tld</taglib-location>
 	</taglib>
+
 </web-app>
