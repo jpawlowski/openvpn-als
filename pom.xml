@@ -108,8 +108,8 @@
 				<module>tunnels</module>
 				<module>networkplaces</module>
     
-    <!--module>console</module-->
-        <!--module>agent</module-->
+    				<!--<module>console</module-->
+        			<!--<module>agent</module-->
     </modules>
     
     <repositories>
