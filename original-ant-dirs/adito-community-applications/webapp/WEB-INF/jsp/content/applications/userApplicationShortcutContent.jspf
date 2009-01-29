@@ -1,5 +1,0 @@
-<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
-
-<html:form action="/editUserApplicationShortcut.do">
-	<%@ include file="/WEB-INF/jsp/content/applications/applicationShortcutForm.jspf" %>
-</html:form>
