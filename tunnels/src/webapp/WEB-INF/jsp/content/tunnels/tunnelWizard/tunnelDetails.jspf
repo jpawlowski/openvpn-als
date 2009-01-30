@@ -1,0 +1,79 @@
+
+<jsp:directive.page import="com.adito.tunnels.TransportType"/><%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="/server/taglibs/input" prefix="input"%>
+
+<table class="resourceDetails">
+
+	<tr class="formTextArea">
+		<td class="label">
+			<bean:message key="tunnel.sourceInterface" bundle="tunnels" />
+		</td>
+		<td class="value">
+			<html:text property="sourceInterface" />
+		</td>
+	</tr>
+	
+	<tr class="formTextArea">
+		<td class="label">
+			<div class="required">
+				<bean:message key="tunnel.sourcePort" bundle="tunnels" />
+			</div>
+		</td>
+		<td class="value">
+			<html:text property="sourcePort" />
+		</td>
+	</tr>
+
+	<tr class="formTextArea">
+		<td class="label">
+			<div class="required">
+				<bean:message key="tunnel.destination.host" bundle="tunnels" />
+			</div>
+		</td>
+		<td class="value">			
+			<html:text property="destinationHost" styleId="destinationHost" styleClass="threeQuartersWidth" />
+			<input:variables inputId="destinationHost"/>
+		</td>
+	</tr>
+
+	<tr class="formTextArea">
+		<td class="label">
+			<div class="required">
+				<bean:message key="tunnel.destination.port" bundle="tunnels" />
+			</div>
+		</td>
+		<td class="value">
+			<html:text property="destinationPort" />
+		</td>
+	</tr>
+
+
+	<tr class="formText">
+		<td class="label">
+			<bean:message key="tunnel.autoStart" bundle="tunnels" />
+		</td>
+		<td class="value">
+			<logic:equal name="tunnelDetailsForm" property="autoStart" value="true">
+				<html:checkbox property="autoStart" />
+			</logic:equal>
+			<logic:equal name="tunnelDetailsForm" property="autoStart" value="false">
+				<html:checkbox property="autoStart" />
+			</logic:equal>
+		</td>
+	</tr>
+
+	<tr class="formEditableList">
+		<td class="label">
+			<bean:message key="tunnel.type" bundle="tunnels" />
+		</td>
+		<td class="value">
+			<html:select property="tunnelType">
+				<html:option value="<%= String.valueOf(TransportType.LOCAL_TUNNEL_ID) %>"><bean:message key="tunnel.tunnelType.local" bundle="tunnels"/></html:option>
+				<html:option value="<%= String.valueOf(TransportType.REMOTE_TUNNEL_ID) %>"><bean:message key="tunnel.tunnelType.remote" bundle="tunnels"/></html:option>
+			</html:select>
+		</td>
+	</tr>
+
+</table>
