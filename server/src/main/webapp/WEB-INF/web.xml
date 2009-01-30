@@ -1,11 +1,15 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-<!DOCTYPE web-app
-  PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
-  "webapp/WEB-INF/web-app_2_3.dtd">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:web="http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+  version="2.4">
+	
+	<description></description>
 
-<web-app>
 	<display-name>Adito</display-name>
+
 	<filter>
 		<filter-name>compressionFilter</filter-name>
 		<filter-class>
@@ -16,22 +20,19 @@
 			<param-value>10</param-value>
 		</init-param>
 	</filter>
+
 	<filter-mapping>
-    	<filter-name>compressionFilter</filter-name>
-    	<servlet-name>action</servlet-name>
+    		<filter-name>compressionFilter</filter-name>
+	    	<servlet-name>action</servlet-name>
    	</filter-mapping> 
 	<filter-mapping>
-    	<filter-name>compressionFilter</filter-name>
-    	<servlet-name>messageResourceLoader</servlet-name>
+	    	<filter-name>compressionFilter</filter-name>
+	    	<servlet-name>messageResourceLoader</servlet-name>
    	</filter-mapping>  
 	<filter-mapping>
-    	<filter-name>compressionFilter</filter-name>
-    	<servlet-name>staticResourceServlet</servlet-name>
+	    	<filter-name>compressionFilter</filter-name>
+	    	<servlet-name>staticResourceServlet</servlet-name>
    	</filter-mapping> 
-	<filter-mapping>
-    	<filter-name>compressionFilter</filter-name>
-    	<servlet-name>jsp</servlet-name>
-   	</filter-mapping>
 	  
 	<!-- Standard Action Servlet Configuration (with debugging) -->
 	<servlet>
@@ -41,7 +42,6 @@
 			<param-name>config</param-name>
 			<param-value>/WEB-INF/struts-config.xml</param-value>
 		</init-param>
-
 		<init-param>
 			<param-name>debug</param-name>
 			<param-value>2</param-value>
@@ -491,7 +491,6 @@
 		<mime-type>text/plain</mime-type>
 	</mime-mapping>
 
-
 	<!-- The Usual Welcome File List -->
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
@@ -511,41 +510,34 @@
 		<location>/WEB-INF/jsp/errors/generic.jsp</location>
 	</error-page>
 
-
 	<!--  Tag Library Descriptors -->
-
 	<taglib>
 		<taglib-uri>/server/taglibs/core</taglib-uri>
 		<taglib-location>/WEB-INF/core.tld</taglib-location>
 	</taglib>
-
 	<taglib>
 		<taglib-uri>/server/taglibs/security</taglib-uri>
 		<taglib-location>/WEB-INF/security.tld</taglib-location>
 	</taglib>
-
 	<taglib>
 		<taglib-uri>/server/taglibs/navigation</taglib-uri>
 		<taglib-location>/WEB-INF/navigation.tld</taglib-location>
 	</taglib>
-
 	<taglib>
 		<taglib-uri>/server/taglibs/table</taglib-uri>
 		<taglib-location>/WEB-INF/table.tld</taglib-location>
 	</taglib>
-
 	<taglib>
 		<taglib-uri>/server/taglibs/tabs</taglib-uri>
 		<taglib-location>/WEB-INF/tabs.tld</taglib-location>
 	</taglib>
-
 	<taglib>
 		<taglib-uri>/server/taglibs/input</taglib-uri>
 		<taglib-location>/WEB-INF/input.tld</taglib-location>
 	</taglib>
-
 	<taglib>
 		<taglib-uri>/server/taglibs/webforwards</taglib-uri>
 		<taglib-location>/WEB-INF/webforwards.tld</taglib-location>
 	</taglib>
+
 </web-app>
