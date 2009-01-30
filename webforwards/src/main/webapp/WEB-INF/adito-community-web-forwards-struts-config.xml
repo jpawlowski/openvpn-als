@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+
+		<!-- Web Forwards -->
+		<form-bean name="webForwardsForm"
+			type="com.adito.webforwards.forms.WebForwardsForm">
+		</form-bean>
+		<form-bean name="webForwardForm"
+			type="com.adito.webforwards.forms.WebForwardForm">
+		</form-bean>
+
+		<!--  web forward wizard forms -->
+		<form-bean name="webForwardTypeSelectionForm" type="com.adito.webforwards.webforwardwizard.forms.WebForwardTypeSelectionForm"></form-bean>
+		<form-bean name="webForwardResourceDetailsForm" type="com.adito.webforwards.webforwardwizard.forms.WebForwardResourceDetailsForm"></form-bean>
+		<form-bean name="webForwardSpecificDetailsForm" type="com.adito.webforwards.webforwardwizard.forms.WebForwardSpecificDetailsForm"></form-bean>
+		<form-bean name="webForwardAuthenticationDetailsForm" type="com.adito.webforwards.webforwardwizard.forms.WebForwardAuthenticationDetailsForm"></form-bean>
+		<form-bean name="webForwardPolicySelectionForm" type="com.adito.webforwards.webforwardwizard.forms.WebForwardPolicySelectionForm"></form-bean>
+		<form-bean name="webForwardPersonalPolicyForm" type="com.adito.webforwards.webforwardwizard.forms.WebForwardPersonalPolicyForm"></form-bean>
+		<form-bean name="webForwardSummaryForm" type="com.adito.webforwards.webforwardwizard.forms.WebForwardSummaryForm"></form-bean>
+		<form-bean name="webForwardFinishForm" type="com.adito.webforwards.webforwardwizard.forms.WebForwardFinishForm"></form-bean>
+
+		<!-- Replacments -->
+		<form-bean name="replacementsForm"
+			type="com.adito.replacementproxy.forms.ReplacementsForm">
+		</form-bean>
+		<form-bean name="replacementForm"
+			type="com.adito.replacementproxy.forms.ReplacementForm">
+		</form-bean>
+
+
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+
+		<!--  Web Forwards -->
+		<action path="/showWebForwards"
+			type="com.adito.webforwards.actions.ShowWebForwardsAction"
+			name="webForwardsForm" parameter="actionTarget" scope="session">
+			<forward name="display" path=".site.WebForwards" />
+			<forward name="edit" path="/editWebForward.do" />
+			<forward name="clone" path="/editWebForward.do" />
+			<forward name="confirmRemove" path="/removeWebForward.do" />
+			<forward name="refresh" path="/showWebForwards.do"
+				redirect="true" />
+		</action>
+
+		<action path="/showUserWebForwards"
+			type="com.adito.webforwards.actions.ShowWebForwardsAction"
+			name="webForwardsForm" parameter="actionTarget" scope="session">
+			<forward name="display" path=".site.UserWebForwards" />
+			<forward name="edit" path="/editUserWebForward.do" />
+			<forward name="confirmRemove" path="/removeUserWebForward.do" />
+			<forward name="refresh" path="/showUserWebForwards.do"
+				redirect="true" />
+		</action>
+
+		<action path="/removeWebForward" name="confirmForm"
+			parameter="question,true,webForwards,removeWebForward,yes=/showWebForwards.do?actionTarget=remove,no=/showWebForwards.do?actionTarget=unspecified"
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+		
+		<action path="/removeUserWebForward" name="confirmForm"
+			parameter="question,true,webForwards,removeWebForward,yes=/showUserWebForwards.do?actionTarget=remove,no=/showUserWebForwards.do?actionTarget=unspecified"
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<action path="/editWebForward" name="webForwardForm"
+			scope="session" validate="true" parameter="actionTarget"
+			input=".site.EditWebForward"
+			type="com.adito.webforwards.actions.EditWebForwardAction">
+			<forward name="display" path=".site.EditWebForward" />
+			<forward name="done" path="/showWebForwards.do?actionTarget=unspecified" redirect="false"/>
+		</action>
+		
+		<action path="/editUserWebForward" name="webForwardForm"
+			scope="session" validate="true" parameter="actionTarget"
+			input=".site.UserEditWebForward"
+			type="com.adito.webforwards.actions.EditWebForwardAction">
+			<forward name="display" path=".site.UserEditWebForward" />
+			<forward name="done" path="/showUserWebForwards.do?actionTarget=unspecified" redirect="false"/>
+		</action>
+
+		<!--  Web Forward resource Wizard -->
+		<action path="/webForwardTypeSelection" name="webForwardTypeSelectionForm" scope="session" type="com.adito.webforwards.webforwardwizard.actions.WebForwardTypeSelectionAction" parameter="actionTarget" validate="true" input=".site.WebForwardWizardPage">
+			<forward name="finish" path="/webForwardFinish.do" redirect="true" />
+			<forward name="display" path=".site.WebForwardWizardPage" />
+			<forward name="next" path="/webForwardResourceDetails.do" redirect="true" />
+		</action>
+		<action path="/webForwardResourceDetails" name="webForwardResourceDetailsForm" scope="session" type="com.adito.webforwards.webforwardwizard.actions.WebForwardResourceDetailsAction" parameter="actionTarget" validate="true" input=".site.WebForwardWizardPage">
+			<forward name="finish" path="/webForwardFinish.do" redirect="true" />
+			<forward name="display" path=".site.WebForwardWizardPage" />
+			<forward name="previous" path="/webForwardTypeSelection.do" redirect="true" />
+			<forward name="next" path="/webForwardSpecificDetails.do" redirect="true" />
+		</action>
+		<action path="/webForwardSpecificDetails" name="webForwardSpecificDetailsForm" scope="session" type="com.adito.webforwards.webforwardwizard.actions.WebForwardSpecificDetailsAction" parameter="actionTarget" validate="true" input=".site.WebForwardWizardPage">
+			<forward name="finish" path="/webForwardFinish.do" redirect="true" />
+			<forward name="display" path=".site.WebForwardWizardPage" />
+			<forward name="previous" path="/webForwardResourceDetails.do" redirect="true" />
+			<forward name="next" path="/webForwardAuthenticationDetails.do" redirect="true" />
+			<forward name="nextSkipAuthentication" path="/webForwardPolicySelection.do" redirect="true" />
+			<forward name="nextPersonal" path="/webForwardPersonalPolicy.do" redirect="true" />
+		</action>
+		<action path="/webForwardAuthenticationDetails" name="webForwardAuthenticationDetailsForm" scope="session" type="com.adito.webforwards.webforwardwizard.actions.WebForwardAuthenticationDetailsAction" parameter="actionTarget" validate="true" input=".site.WebForwardWizardPage">
+			<forward name="finish" path="/webForwardFinish.do" redirect="true" />
+			<forward name="display" path=".site.WebForwardWizardPage" />
+			<forward name="previous" path="/webForwardSpecificDetails.do" redirect="true" />
+			<forward name="next" path="/webForwardPolicySelection.do" redirect="true" />
+			<forward name="nextPersonal" path="/webForwardPersonalPolicy.do" redirect="true" />
+		</action>
+		<action path="/webForwardPolicySelection" name="webForwardPolicySelectionForm" scope="session" type="com.adito.webforwards.webforwardwizard.actions.WebForwardPolicySelectionAction" parameter="actionTarget" validate="true" input=".site.WebForwardWizardPage">
+			<forward name="display" path=".site.WebForwardWizardPage" />
+			<forward name="previous" path="/webForwardAuthenticationDetails.do" redirect="true" />
+			<forward name="previousSkipAuthentication" path="/webForwardSpecificDetails.do" redirect="true" />
+			<forward name="next" path="/webForwardSummary.do" redirect="true" />
+		</action>
+		<action path="/webForwardPersonalPolicy" name="webForwardPersonalPolicyForm" scope="session" type="com.adito.webforwards.webforwardwizard.actions.WebForwardPersonalPolicyAction" parameter="actionTarget" validate="true" input=".site.WebForwardWizardPage">
+			<forward name="display" path=".site.WebForwardWizardPage" />
+			<forward name="previous" path="/webForwardAuthenticationDetails.do" redirect="true" />
+			<forward name="previousSkipAuthentication" path="/webForwardSpecificDetails.do" redirect="true" />
+			<forward name="next" path="/webForwardSummary.do" redirect="true" />
+		</action>
+		<action path="/webForwardSummary" name="webForwardSummaryForm" scope="session" type="com.adito.webforwards.webforwardwizard.actions.WebForwardSummaryAction" parameter="actionTarget" validate="true" input=".site.WebForwardWizardPage">
+			<forward name="display" path=".site.WebForwardWizardPage" />
+			<forward name="previous" path="/webForwardPolicySelection.do" redirect="true" />
+			<forward name="previousPersonal" path="/webForwardPersonalPolicy.do" redirect="true" />
+		</action>
+		<action path="/webForwardFinish" name="webForwardFinishForm" scope="session" type="com.adito.webforwards.webforwardwizard.actions.WebForwardFinishAction" parameter="actionTarget" validate="true" input=".site.WebForwardWizardPage">
+			<forward name="display" path=".site.WebForwardWizardPage" />
+			<forward name="rerun" path="/webForwardSpecificDetails.do" redirect="true" />
+		</action>	
+
+		<!-- Replacement proxy -->
+
+		<action path="/launchReplacementProxy"
+			type="com.adito.replacementproxy.actions.LaunchReplacementProxyAction" />
+
+		<action path="/getURLMultipartForm" parameter="multipartForm"
+			type="com.adito.replacementproxy.actions.GetURLAction" />
+
+
+		<!--  Replacements action -->
+		<action path="/showReplacements" parameter="actionTarget"
+			type="com.adito.replacementproxy.actions.ReplacementsDispatchAction"
+			name="replacementsForm" validate="true" scope="session"
+			input=".site.Replacements">
+			<forward name="success" path=".site.Replacements" />
+			<forward name="display" path="/showReplacements.do"
+				redirect="true" />
+			<forward name="create" path="/createReplacement.do" />
+			<forward name="edit" path="/editReplacement.do" />
+		</action>
+
+		<action path="/editReplacement" parameter="actionTarget"
+			type="com.adito.replacementproxy.actions.ReplacementDispatchAction"
+			name="replacementForm" validate="true" scope="session"
+			input=".site.EditReplacement">
+			<forward name="success" path="/showReplacements.do"
+				redirect="true" />
+			<forward name="display" path=".site.EditReplacement" />
+		</action>
+
+		<action path="/createReplacement" parameter="actionTarget"
+			type="com.adito.replacementproxy.actions.ReplacementDispatchAction"
+			name="replacementForm" validate="true" scope="session"
+			input=".site.CreateReplacement">
+			<forward name="success" path="/showReplacements.do"
+				redirect="true" />
+			<forward name="display" path=".site.CreateReplacement" />
+		</action>
+
+		<action path="/removeReplacement" name="confirmForm"
+			parameter="question,true,services,removeReplacement,yes=/showReplacements.do?actionTarget=remove,no=/showReplacements.do"
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+
+
+	</action-mappings>
+	<!-- ================================ Message Definitions -->
+	<message-resources parameter="com.adito.webforwards.ApplicationResources" key="webForwards" />
+
+</struts-config>

@@ -1,0 +1,129 @@
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="/server/taglibs/input" prefix="input"%>
+<%@ taglib uri="/server/taglibs/webforwards" prefix="webforwards"%>
+
+<bean:define id="webForwardSpecificDetailsForm" name="webForwardSpecificDetailsForm" type="com.adito.webforwards.webforwardwizard.forms.WebForwardSpecificDetailsForm"/>
+<table class="resourceDetails">
+
+	<webforwards:showTunneledSite>
+		<tr class="formTextArea">
+			<td class="label">
+				<div class="required">
+					<bean:message key="webForward.lable.destination.url" bundle="webForwards" />
+				</div>
+			</td>
+			<td class="value">
+				<html:text styleId="destinationURL" styleClass="threeQuartersWidth" property="destinationURL" />
+				<input:variables includeRequest="true" inputId="destinationURL"/>
+			</td>
+		</tr>
+	</webforwards:showTunneledSite>
+
+	<webforwards:showreplacementProxy>
+		<tr class="formTextArea">
+			<td class="label">
+				<div class="required">
+					<bean:message key="webForward.lable.destination.url" bundle="webForwards" />
+				</div>
+			</td>
+			<td class="value">
+				<html:text styleId="destinationURL" styleClass="threeQuartersWidth" property="destinationURL" />
+				<input:variables includeRequest="true" inputId="destinationURL"/>
+			</td>
+		</tr>
+		<tr class="formEditableList">
+			<td class="label">
+				<bean:message key="webForward.lable.encoding" bundle="webForwards" />
+			</td>
+			<td class="value">
+				<html:select property="encoding">
+					<html:optionsCollection value="value" label="label" property="encodeingTypeList" />
+				</html:select>
+			</td>
+		</tr>			
+		<tr class="formMultiEntry">
+			<td class="label">
+				<bean:message key="webForward.lable.restrictToHosts" bundle="webForwards" />
+			</td>
+			<td class="value">
+				<input:multiEntryListBox addKey="webForward.lable.restrictToHosts.add" 
+					removeKey="webForward.lable.restrictToHosts.remove" 
+					entryTitleKey="webForward.lable.restrictToHosts.host" 
+					targetTitleKey="webForward.lable.restrictToHosts.allowed"
+					name="webForwardSpecificDetailsForm" styleClass="multiEntry" 
+					entrySize="16" property="restrictToHosts" bundle="webForwards"/>
+			</td>
+		</tr>	
+	</webforwards:showreplacementProxy>
+
+	<webforwards:showReverseProxy>
+		<tr class="formTextArea">
+			<td class="label">
+				<div class="required">
+					<bean:message key="webForward.lable.destination.url" bundle="webForwards" />
+				</div>
+			</td>
+			<td class="value">
+				<html:text styleId="destinationURL" styleClass="threeQuartersWidth" property="destinationURL" />
+				<input:variables includeRequest="true" inputId="destinationURL"/>
+			</td>
+		</tr>
+		
+		<logic:equal name="webForwardSpecificDetailsForm" property="pathBased" value="true">
+			<tr class="formMultiEntry">
+				<td class="label">
+					<div class="required">
+						<bean:message key="webForward.lable.paths" bundle="webForwards" />
+					</div>
+				</td>
+				<td class="value">
+					<input:multiEntryListBox 
+						entryTitleKey="webForward.pathEntry.title"
+						targetTitleKey="webForward.paths.title"
+						addKey="webForward.addPath"
+						removeKey="webForward.removePath"
+						name="webForwardSpecificDetailsForm"
+						styleClass="multiEntry"
+						entryName="path"
+						entrySize="16"
+						bundle="webForwards"
+						property="paths"
+						tabindex="2"/>
+				</td>
+			</tr>
+		</logic:equal>
+		
+		<logic:equal name="webForwardSpecificDetailsForm" property="hostBased" value="true">
+			<tr class="formCheckbox">
+				<td class="label">
+					<bean:message key="webForward.lable.active.dns" bundle="webForwards" />
+				</td>
+				<td class="value">
+					<html:checkbox name="webForwardSpecificDetailsForm" property="activeDNS" onclick="setActionTarget('toggleActiveDns'); document.forms[0].submit(); return false"/>
+				</td>
+			</tr>
+			<tr class="formTextArea">
+				<td class="label">
+					<bean:message key="webForward.lable.host.header" bundle="webForwards" />
+				</td>
+				<td class="value">
+					<html:text property="hostHeader" disabled="<%= webForwardSpecificDetailsForm.isActiveDNS() %>"/>
+				</td>
+			</tr>
+		</logic:equal>
+		
+		<tr class="formEditableList">
+			<td class="label">
+				<bean:message key="webForward.lable.encoding" bundle="webForwards" />
+			</td>
+			<td class="value">
+				<html:select property="encoding">
+					<html:optionsCollection value="value" label="label" property="encodeingTypeList" />
+				</html:select>
+			</td>
+		</tr>			
+	</webforwards:showReverseProxy>
+	
+</table>
