@@ -1,0 +1,20 @@
+<%@ page import="com.adito.security.Constants"%>
+<%@ page import="com.adito.policyframework.PolicyConstants"%>
+<%@ page import="com.adito.applications.forms.ApplicationShortcutsForm" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="/server/taglibs/input" prefix="input"%>
+<%@ taglib uri="/server/taglibs/core" prefix="core"%>
+<%@ taglib uri="/server/taglibs/navigation" prefix="navigation"%>
+<%@ taglib uri="/server/taglibs/table" prefix="table"%>
+<%@ taglib uri="/server/taglibs/security" prefix="security"%>
+
+<bean:define id="applicationShortcutsForm" name="applicationShortcutsForm" type="com.adito.applications.forms.ApplicationShortcutsForm"></bean:define>
+
+<div id="page_applicationShortcuts">
+	<core:form method="post" action="/showUserApplicationShortcuts.do" onsubmit="setActionTarget('filter')">
+		<%@ include file="/WEB-INF/jsp/content/applications/applicationShortcutsForm.jspf" %>
+	</core:form>
+</div>
