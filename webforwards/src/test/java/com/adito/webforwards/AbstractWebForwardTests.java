@@ -31,7 +31,7 @@ public abstract class AbstractWebForwardTests extends AbstractTestPolicyEnabledR
 
     @BeforeClass
     public static void oneTimeSetUp() throws Exception {
-        setUp("adito-agent,adito-community-tunnels,adito-community-web-forwards");
+        setUp("agent,tunnels,webforwards");
     }
 
     @Override
