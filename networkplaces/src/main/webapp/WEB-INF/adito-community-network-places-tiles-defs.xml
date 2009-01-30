@@ -1,0 +1,81 @@
+<!DOCTYPE tiles-definitions PUBLIC 
+	"-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" 
+	"webapp/WEB-INF/tiles-config_1_1.dtd"> 
+
+<tiles-definitions>	
+	
+	
+	<!--  VFS -->
+
+	<definition name=".site.FileSystem" extends=".site.PopupLayout">
+		<put name="content" value="/WEB-INF/jsp/content/vfs/fileSystem.jspf"/>
+		<put name="resourcePrefix" value="vfs.viewFolder"/>
+		<put name="menuItem" value=""/>
+		<put name="resourceBundle" value="networkPlaces"/>
+		<put name="infoImage" value="viewFolder.gif"/>
+	</definition>
+
+	<definition name=".site.FileSystemCreateFolder" extends=".site.PopupLayout">
+		<put name="content" value="/WEB-INF/jsp/content/vfs/createFolderContent.jspf"/>
+		<put name="resourcePrefix" value="vfs.createFolder"/>
+		<put name="menuItem" value=""/>
+		<put name="resourceBundle" value="networkPlaces"/>
+		<put name="infoImage" value="createFolder.gif"/>
+	</definition>
+	
+	<definition name=".site.FileSystemRenameFile" extends=".site.PopupLayout">
+		<put name="content" value="/WEB-INF/jsp/content/vfs/renameFileContent.jspf"/>
+		<put name="resourcePrefix" value="vfs.renameFile"/>
+		<put name="menuItem" value=""/>
+		<put name="resourceBundle" value="networkPlaces"/>
+		<put name="infoImage" value="renameFile.gif"/>
+	</definition>
+
+	<!--  Network Places -->
+
+	<definition name=".site.UserNetworkPlaces" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/vfs/userNetworkPlacesContent.jspf"/>
+		<put name="resourcePrefix" value="userNetworkPlaces"/>
+		<put name="menuItem" value="userNetworkPlaces"/>
+		<put name="resourceBundle" value="networkPlaces"/>
+		<put name="infoImage" value="fileSystem.gif"/>
+	</definition>
+
+	<definition name=".site.NetworkPlaces" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/vfs/networkPlacesContent.jspf"/>
+		<put name="resourcePrefix" value="networkPlaces"/>
+		<put name="menuItem" value="networkPlaces"/>
+		<put name="resourceBundle" value="networkPlaces"/>
+		<put name="rssFeed" value="networkPlaces"/>
+		<put name="infoImage" value="fileSystem.gif"/>
+	</definition>
+
+	<definition name=".site.EditNetworkPlace" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/vfs/networkPlaceContent.jspf"/>
+		<put name="resourcePrefix" value="editNetworkPlace"/>
+		<put name="resourceBundle" value="networkPlaces"/>
+		<put name="menuItem" value=""/>
+		<put name="infoImage" value="fileSystem.gif"/>
+		<put name="rssFeed" value="editNetworkPlace"/>
+	</definition>
+	
+	<definition name=".site.UserEditNetworkPlace" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/vfs/userNetworkPlaceContent.jspf"/>
+		<put name="resourcePrefix" value="editNetworkPlace"/>
+		<put name="resourceBundle" value="networkPlaces"/>
+		<put name="menuItem" value=""/>
+		<put name="infoImage" value="fileSystem.gif"/>
+		<put name="rssFeed" value="editNetworkPlace"/>
+	</definition>
+
+	<!--  Network Place Wizard --> 
+	
+	<definition name=".site.NetworkPlaceWizardPage" extends=".site.Layout">
+		<put name="resourcePrefix" value="networkPlaceWizard"/>
+		<put name="resourceBundle" value="networkPlaces"/>
+		<put name="content" value="/WEB-INF/jsp/tiles/wizardPage.jspf"/>
+		<put name="infoImage" value="fileSystem.gif"/>
+		<put name="rssFeed" value="networkPlaceWizard"/>
+	</definition>	
+</tiles-definitions>
+

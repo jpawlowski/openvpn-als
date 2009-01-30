@@ -1,0 +1,23 @@
+<%@ page import="com.adito.wizard.AbstractWizardSequence" %>
+<%@ page import="com.adito.security.Constants" %>
+<jsp:directive.page import="com.adito.policyframework.forms.AbstractWizardPolicySelectionForm"/>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %> 
+ 				
+<% AbstractWizardSequence seq = (AbstractWizardSequence)request.getSession().getAttribute(Constants.WIZARD_SEQUENCE); %>									
+<input:multiSelectPoliciesListBox 
+	tabindex="1" 
+	sourceTitleKey="policySelection.availablePolicies.title" 
+	targetTitleKey="policySelection.selectedPolicies.title" 
+	addKey="policySelection.addPolicy" 
+	removeKey="policySelection.removePolicy" 
+	configureKey="policySelection.configurePolicies" 
+	configureOnClick="window.location = '/configurePolicies.do?referer=/networkPlacePolicySelection.do'" 
+	bundle="policyframework" 
+	styleClass="multiSelect" 
+	modelName="networkPlacePolicySelectionForm" 
+	modelProperty="policyModel" 
+	name="networkPlacePolicySelectionForm" 
+	property="selectedPolicies"
+	showPersonalPoliciesKey="policySelection.showPersonalPolicies.title"
+	showPersonalPolicies="<%= ((AbstractWizardPolicySelectionForm)seq.getCurrentPageForm()).isShowPersonalPolicies() %>"/>
+	

@@ -1,0 +1,26 @@
+<%@ page import="com.adito.security.Constants" %>
+<jsp:directive.page import="com.adito.boot.Util"/>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+
+<bean:define scope="request" id="fileSystemForm" name="fileSystemForm" type="com.adito.networkplaces.forms.FileSystemForm"></bean:define>
+
+<div id="page_fileSystem">
+	<core:form  onsubmit="setActionTarget('filter')" method="post" action="/fileSystem.do" focus="filterText">	
+		<html:hidden name="fileSystemForm" property="referer"/> 
+		<html:hidden name="fileSystemForm" property="actionTarget"/> 
+		<html:hidden name="fileSystemForm" property="launchId"/> 
+		<html:hidden name="fileSystemForm" property="path"/> 
+		<html:hidden name="fileSystemForm" property="newFolder"/> 
+		<html:hidden name="fileSystemForm" property="fileName"/> 
+		<html:hidden name="fileSystemForm" property="selectedResource" />
+		<html:hidden name="fileSystemForm" property="startRow" />
+		<html:hidden name="fileSystemForm" property="sortName" />
+		<html:hidden name="fileSystemForm" property="sortReverse" />
+		<html:hidden name="fileSystemForm" property="pageSize" />
+		<%@ include file="/WEB-INF/jsp/content/vfs/fileSystemTable.jspf" %>	
+	</core:form>
+</div>
