@@ -1,6 +1,7 @@
 To generate documentation from this branch run the following command
 from this directory:
 
-doxygen doxygen-template
+doxygen
 
-If you want to customize the output, edit the template file as you will.
+If you want to customize the output, edit the doxygen configuration file (Doxyfile) as you will.
+
