@@ -28,7 +28,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.adito.boot.Util;
-import com.adito.core.CoreUtil;
 import com.adito.core.DownloadContent;
 import com.adito.core.WindowOpenJavascriptLink;
 import com.adito.core.forms.CoreForm;

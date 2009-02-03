@@ -23,7 +23,6 @@ package com.adito.webforwards;
 import java.io.File;
 import java.io.Serializable;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -35,7 +34,6 @@ import org.apache.commons.cache.SimpleCache;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.maverick.http.HttpAuthenticatorFactory;
 import com.adito.boot.ContextHolder;
 import com.adito.boot.PropertyList;
 import com.adito.boot.SystemProperties;
@@ -52,6 +50,7 @@ import com.adito.jdbc.JDBCUtil;
 import com.adito.replacementproxy.DefaultReplacement;
 import com.adito.replacementproxy.Replacement;
 import com.adito.security.User;
+import com.maverick.http.HttpAuthenticatorFactory;
 
 /**
  * Implementation of a {@link com.adito.security.SystemDatabase} that uses

@@ -28,11 +28,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import com.adito.security.SessionInfo;
 import com.adito.vfs.store.apps.ApplicationStore;
 import com.adito.vfs.store.downloads.TempStore;
 import com.adito.vfs.store.site.SiteStore;
-import com.adito.vfs.utils.URI;
 
 /**
  * Manages {@link VFSStore} implementations. The core and plugins

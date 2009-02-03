@@ -18,7 +18,6 @@ import org.apache.struts.util.MessageResources;
 import com.adito.boot.ContextHolder;
 import com.adito.boot.Util;
 import com.adito.core.BundleActionMessage;
-import com.adito.core.CoreRequestProcessor;
 import com.adito.core.CoreServlet;
 import com.adito.core.CoreUtil;
 import com.adito.core.actions.AuthenticatedDispatchAction;

@@ -23,7 +23,6 @@ package com.adito.replacementproxy;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLDecoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -35,14 +34,13 @@ import java.util.zip.GZIPInputStream;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.maverick.http.HttpResponse;
 import com.adito.boot.CaseInsensitiveMap;
 import com.adito.boot.HttpConstants;
 import com.adito.boot.Util;
 import com.adito.core.CookieItem;
 import com.adito.core.CookieMap;
-import com.adito.policyframework.LaunchSession;
 import com.adito.util.Utils;
+import com.maverick.http.HttpResponse;
 
 /**
  */

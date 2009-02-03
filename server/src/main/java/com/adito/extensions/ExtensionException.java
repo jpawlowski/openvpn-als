@@ -20,8 +20,6 @@
 			
 package com.adito.extensions;
 
-import javax.servlet.http.HttpSession;
-
 import org.apache.struts.util.MessageResources;
 import org.apache.struts.util.MessageResourcesFactory;
 import org.apache.struts.util.PropertyMessageResources;

@@ -31,7 +31,6 @@ import org.apache.struts.action.ActionMapping;
 
 import com.adito.core.CoreServlet;
 import com.adito.core.actions.AuthenticatedDispatchAction;
-import com.adito.extensions.actions.ExtensionBundleInformationAction;
 import com.adito.notification.Notifier;
 import com.adito.notification.Notifier.MessageWrapper;
 import com.adito.security.Constants;

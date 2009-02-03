@@ -27,8 +27,6 @@ import java.util.TreeMap;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.adito.core.CoreServlet;
-
 /**
  * Manages registered {@link com.adito.security.AuthenticationModuleDefinition}
  * objects that are used to create {@link com.adito.security.AuthenticationModule}

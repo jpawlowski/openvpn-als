@@ -44,7 +44,6 @@ import com.adito.core.CoreUtil;
 import com.adito.core.GlobalWarning;
 import com.adito.core.GlobalWarningManager;
 import com.adito.core.UserDatabaseManager;
-import com.adito.core.GlobalWarning.DismissType;
 import com.adito.core.actions.AuthenticatedAction;
 import com.adito.policyframework.Permission;
 import com.adito.policyframework.PolicyConstants;

@@ -23,9 +23,6 @@ package com.adito.policyframework;
 import java.io.Serializable;
 import java.util.Calendar;
 
-import com.adito.boot.PropertyList;
-import com.adito.properties.Property;
-import com.adito.properties.impl.resource.ResourceKey;
 import com.adito.security.AuthenticationScheme;
 import com.adito.security.Constants;
 import com.adito.security.LogonControllerFactory;

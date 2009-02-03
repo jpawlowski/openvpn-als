@@ -20,8 +20,6 @@
 			
 package com.adito.setup.actions;
 
-import java.util.Arrays;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -31,15 +29,11 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import com.adito.core.UserDatabaseManager;
 import com.adito.core.actions.AuthenticatedDispatchAction;
 import com.adito.policyframework.PolicyConstants;
 import com.adito.policyframework.PolicyUtil;
-import com.adito.policyframework.Principal;
-import com.adito.policyframework.forms.PrincipalInformationForm;
 import com.adito.security.Constants;
 import com.adito.security.LogonControllerFactory;
-import com.adito.security.Role;
 import com.adito.security.SessionInfo;
 import com.adito.setup.forms.SessionInformationForm;
 

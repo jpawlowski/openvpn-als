@@ -20,19 +20,8 @@
 			
 package com.adito.security;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.struts.Globals;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionMessage;
-import org.apache.struts.action.ActionMessages;
-
-import com.adito.core.CoreUtil;
-import com.adito.core.RedirectWithMessages;
-import com.adito.core.actions.AuthenticatedAction;
 
 
 /**

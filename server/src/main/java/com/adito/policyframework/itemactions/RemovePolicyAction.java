@@ -23,7 +23,6 @@ package com.adito.policyframework.itemactions;
 import com.adito.core.UserDatabaseManager;
 import com.adito.policyframework.NoPermissionException;
 import com.adito.policyframework.Permission;
-import com.adito.policyframework.Policy;
 import com.adito.policyframework.PolicyConstants;
 import com.adito.policyframework.PolicyDatabaseFactory;
 import com.adito.policyframework.ResourceItem;

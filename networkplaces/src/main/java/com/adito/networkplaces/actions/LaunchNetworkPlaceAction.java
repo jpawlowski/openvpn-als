@@ -22,7 +22,6 @@ package com.adito.networkplaces.actions;
 
 import java.awt.Rectangle;
 
-import com.adito.boot.Util;
 import com.adito.core.WindowOpenJavascriptLink;
 import com.adito.networkplaces.NetworkPlace;
 import com.adito.networkplaces.NetworkPlaceItem;

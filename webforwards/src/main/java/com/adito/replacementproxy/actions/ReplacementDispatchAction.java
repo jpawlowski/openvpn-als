@@ -30,9 +30,7 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
 
-import com.adito.core.CoreAttributeConstants;
 import com.adito.core.CoreEvent;
-import com.adito.core.CoreEventConstants;
 import com.adito.core.CoreServlet;
 import com.adito.core.CoreUtil;
 import com.adito.core.actions.AuthenticatedDispatchAction;
@@ -42,8 +40,8 @@ import com.adito.replacementproxy.DefaultReplacement;
 import com.adito.replacementproxy.Replacement;
 import com.adito.replacementproxy.forms.ReplacementForm;
 import com.adito.security.SessionInfo;
-import com.adito.webforwards.WebForwardEventConstants;
 import com.adito.webforwards.WebForwardDatabaseFactory;
+import com.adito.webforwards.WebForwardEventConstants;
 
 public class ReplacementDispatchAction
     extends AuthenticatedDispatchAction {

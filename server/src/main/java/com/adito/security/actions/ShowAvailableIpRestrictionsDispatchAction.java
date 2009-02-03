@@ -47,7 +47,6 @@ import com.adito.security.SystemDatabase;
 import com.adito.security.SystemDatabaseFactory;
 import com.adito.security.forms.ShowAvailableIpRestrictionsForm;
 import com.adito.table.actions.AbstractPagerAction;
-import com.adito.table.forms.AbstractPagerForm;
 
 /**
  * Implementation of

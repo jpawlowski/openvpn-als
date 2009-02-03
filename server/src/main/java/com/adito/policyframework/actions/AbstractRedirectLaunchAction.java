@@ -21,23 +21,13 @@
 package com.adito.policyframework.actions;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import com.adito.agent.DefaultAgentManager;
-import com.adito.boot.Util;
-import com.adito.core.CoreUtil;
-import com.adito.core.actions.AuthenticatedAction;
 import com.adito.policyframework.LaunchSession;
-import com.adito.policyframework.LaunchSessionFactory;
-import com.adito.policyframework.Policy;
-import com.adito.policyframework.Resource;
 import com.adito.policyframework.ResourceType;
 import com.adito.security.Constants;
-import com.adito.security.SessionInfo;
 
 /**
  * Abstract implementation of {@link com.adito.core.actions.AuthenticatedAction}

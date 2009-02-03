@@ -42,7 +42,6 @@ import org.apache.struts.config.ActionConfig;
 import org.apache.struts.config.FormBeanConfig;
 import org.apache.struts.util.RequestUtils;
 
-import com.adito.boot.Util;
 import com.adito.core.DefaultPanel;
 import com.adito.core.Panel;
 import com.adito.core.PanelManager;

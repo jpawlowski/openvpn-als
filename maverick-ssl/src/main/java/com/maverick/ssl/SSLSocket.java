@@ -28,7 +28,6 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.UnknownHostException;
 
-import com.maverick.crypto.asn1.x509.X509Certificate;
 import com.maverick.ssl.https.HttpsURLStreamHandlerFactory;
 
 /**

@@ -20,7 +20,6 @@
 			
 package com.adito.boot;
 
-import java.io.File;
 import java.util.prefs.Preferences;
 import java.util.prefs.PreferencesFactory;
 

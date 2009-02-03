@@ -7,16 +7,12 @@ import java.util.List;
 import java.util.Locale;
 import java.util.StringTokenizer;
 
-import org.apache.struts.Globals;
-import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMessage;
 
-import com.adito.boot.CodedException;
 import com.adito.boot.PropertyDefinition;
 import com.adito.boot.PropertyList;
 import com.adito.core.BundleActionMessage;
 import com.adito.core.CoreException;
-import com.adito.core.CoreUtil;
 
 /**
  * Wraps an {@link ApplicationParameterDefinition} for use when editing an

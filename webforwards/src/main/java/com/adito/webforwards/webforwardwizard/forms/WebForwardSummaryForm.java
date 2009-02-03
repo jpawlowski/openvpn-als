@@ -27,7 +27,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.adito.boot.PropertyList;
-import com.adito.policyframework.Policy;
 import com.adito.policyframework.PolicyDatabaseFactory;
 import com.adito.security.LogonControllerFactory;
 import com.adito.security.SessionInfo;

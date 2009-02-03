@@ -1,7 +1,5 @@
 package com.adito.tasks;
 
-import org.apache.struts.action.ActionMessage;
-
 import com.adito.core.BundleActionMessage;
 
 

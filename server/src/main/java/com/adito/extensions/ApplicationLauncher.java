@@ -34,7 +34,6 @@ import org.apache.struts.util.MessageResources;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 
-import com.adito.boot.PropertyClassManager;
 import com.adito.core.CoreUtil;
 
 public class ApplicationLauncher {  

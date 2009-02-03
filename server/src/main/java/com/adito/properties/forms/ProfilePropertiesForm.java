@@ -31,7 +31,6 @@ import org.apache.struts.action.ActionMapping;
 
 import com.adito.boot.PropertyClass;
 import com.adito.boot.PropertyClassManager;
-import com.adito.core.CoreServlet;
 import com.adito.properties.ProfilesFactory;
 import com.adito.properties.PropertyProfile;
 import com.adito.properties.impl.profile.ProfileProperties;

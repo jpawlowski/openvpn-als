@@ -4,7 +4,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.adito.jdbc.JDBCPropertyDatabase;
-import com.adito.jdbc.JDBCSystemDatabase;
 
 /**
  * System profiles factory for creating and manageing profiles.

@@ -29,7 +29,6 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import com.adito.core.CoreServlet;
 import com.adito.core.CoreUtil;
 import com.adito.core.actions.AuthenticatedDispatchAction;
 import com.adito.policyframework.Permission;

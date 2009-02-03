@@ -20,8 +20,6 @@
 			
 package com.adito.setup.forms;
 
-import java.text.SimpleDateFormat;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts.Globals;

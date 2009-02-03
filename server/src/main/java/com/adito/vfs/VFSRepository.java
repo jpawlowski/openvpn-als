@@ -55,14 +55,11 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.commons.vfs.FileSystemException;
 import org.apache.commons.vfs.FileSystemManager;
 import org.apache.commons.vfs.VFS;
-import org.apache.commons.vfs.impl.DefaultFileReplicator;
 import org.apache.commons.vfs.impl.DefaultFileSystemManager;
 
 import com.adito.boot.SystemProperties;
-import com.adito.boot.Util;
 import com.adito.core.BundleActionMessage;
 import com.adito.policyframework.LaunchSession;
-import com.adito.policyframework.LaunchSessionManager;
 import com.adito.policyframework.NoPermissionException;
 import com.adito.policyframework.PolicyException;
 import com.adito.security.Constants;

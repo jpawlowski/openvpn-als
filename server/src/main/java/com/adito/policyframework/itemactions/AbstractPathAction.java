@@ -24,7 +24,6 @@ import java.text.MessageFormat;
 
 import org.apache.struts.action.ActionMapping;
 
-import com.adito.boot.Util;
 import com.adito.policyframework.ResourceItem;
 import com.adito.security.Constants;
 import com.adito.security.SessionInfo;

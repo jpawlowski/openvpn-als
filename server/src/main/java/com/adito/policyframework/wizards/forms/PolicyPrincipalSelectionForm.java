@@ -20,8 +20,6 @@
 			
 package com.adito.policyframework.wizards.forms;
 
-import java.util.Iterator;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts.Globals;
@@ -30,7 +28,6 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 
 import com.adito.boot.PropertyList;
-import com.adito.core.BundleActionMessage;
 import com.adito.core.UserDatabaseManager;
 import com.adito.security.LogonControllerFactory;
 import com.adito.security.SessionInfo;

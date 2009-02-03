@@ -42,7 +42,6 @@ import com.adito.policyframework.PolicyUtil;
 import com.adito.policyframework.Resource;
 import com.adito.policyframework.ResourceType;
 import com.adito.policyframework.ResourceUtil;
-import com.adito.policyframework.forms.AbstractWizardPersonalResourcePolicyForm;
 import com.adito.policyframework.forms.AbstractWizardPolicySelectionForm;
 import com.adito.security.Constants;
 import com.adito.security.SessionInfo;

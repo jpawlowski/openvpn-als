@@ -34,7 +34,6 @@ import com.adito.keystore.forms.KeyStoreInformationForm;
 import com.adito.policyframework.Permission;
 import com.adito.policyframework.PolicyConstants;
 import com.adito.security.SessionInfo;
-import com.adito.security.forms.IpRestrictionInformationForm;
 
 public class KeyStoreInformationAction extends AuthenticatedDispatchAction {
 

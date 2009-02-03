@@ -22,7 +22,6 @@ package com.adito.networkplaces;
 
 import java.io.File;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;

@@ -21,7 +21,6 @@
 package com.adito.setup.actions;
 
 import java.util.Iterator;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -42,12 +41,10 @@ import com.adito.input.MultiSelectSelectionModel;
 import com.adito.notification.Message;
 import com.adito.notification.Recipient;
 import com.adito.policyframework.Permission;
-import com.adito.policyframework.Policy;
 import com.adito.policyframework.PolicyConstants;
 import com.adito.policyframework.PolicyDataSource;
 import com.adito.policyframework.PolicyDatabaseFactory;
 import com.adito.policyframework.PolicyExcludePersonalDataSource;
-import com.adito.policyframework.Resource;
 import com.adito.realms.Realm;
 import com.adito.security.LogonControllerFactory;
 import com.adito.security.SessionInfo;

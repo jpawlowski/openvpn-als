@@ -19,7 +19,6 @@ import com.adito.navigation.FavoriteResourceType;
 import com.adito.policyframework.Permission;
 import com.adito.policyframework.PolicyConstants;
 import com.adito.policyframework.PolicyDatabaseFactory;
-import com.adito.policyframework.PolicyUtil;
 import com.adito.policyframework.Resource;
 import com.adito.policyframework.ResourceType;
 import com.adito.policyframework.ResourceUtil;

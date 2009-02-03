@@ -48,7 +48,6 @@ import com.adito.keystore.CSRDownload;
 import com.adito.keystore.forms.ShowKeyStoreForm;
 import com.adito.policyframework.Permission;
 import com.adito.policyframework.PolicyConstants;
-import com.adito.security.Constants;
 import com.adito.security.LogonControllerFactory;
 import com.adito.security.SessionInfo;
 import com.adito.table.actions.AbstractPagerAction;

@@ -28,7 +28,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.adito.core.CoreServlet;
 import com.adito.core.forms.AbstractResourceDetailsWizardForm;
 import com.adito.policyframework.PolicyConstants;
 import com.adito.policyframework.ResourceUtil;

@@ -26,7 +26,6 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.adito.boot.ContextHolder;
 import com.adito.extensions.ExtensionInstaller;
 import com.adito.extensions.ExtensionInstaller.ExtensionInstallOp;
 

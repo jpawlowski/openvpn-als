@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import com.maverick.crypto.asn1.x509.X509Certificate;
-
 public interface SSLTransport {
 
 	public abstract void initialize(InputStream in, OutputStream out)

@@ -67,11 +67,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.adito.boot.ContextHolder;
-import com.adito.boot.HttpConstants;
 import com.adito.boot.RequestHandlerRequest;
 import com.adito.boot.SystemProperties;
 import com.adito.boot.Util;
-import com.adito.core.stringreplacement.SessionInfoReplacer;
 import com.adito.policyframework.LaunchSession;
 import com.adito.security.SessionInfo;
 

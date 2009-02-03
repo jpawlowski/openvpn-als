@@ -31,9 +31,6 @@ import com.adito.networkplaces.AbstractNetworkPlaceStore;
 import com.adito.policyframework.LaunchSession;
 import com.adito.properties.Property;
 import com.adito.properties.impl.systemconfig.SystemConfigKey;
-import com.adito.vfs.utils.URI;
-import com.adito.vfs.utils.URI.MalformedURIException;
-import com.adito.vfs.webdav.DAVUtilities;
 
 /**
  * CIFS implementation of a {@link AbstractNetworkPlaceStore},handles URIs with

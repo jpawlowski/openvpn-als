@@ -21,10 +21,9 @@
 package com.maverick.crypto.publickey;
 
 import java.io.IOException;
+import java.math.BigInteger;
 
 import com.maverick.crypto.digests.SHA1Digest;
-import java.math.BigInteger;
-import com.maverick.crypto.security.SecureRandom;
 
 public class RsaPrivateKey
     extends RsaKey {

@@ -10,7 +10,6 @@ import org.apache.commons.logging.LogFactory;
 import org.jdom.Element;
 
 import com.adito.agent.AgentExtensionDefinition;
-import com.adito.boot.Util;
 import com.adito.extensions.ExtensionDescriptor;
 import com.adito.extensions.ExtensionException;
 import com.adito.extensions.ExtensionType;

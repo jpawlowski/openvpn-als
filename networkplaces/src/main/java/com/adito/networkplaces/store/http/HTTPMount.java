@@ -27,7 +27,6 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.commons.vfs.FileObject;
 import org.apache.commons.vfs.FileSystemException;
 import org.apache.commons.vfs.FileSystemOptions;
-import org.apache.commons.vfs.provider.ftp.FtpFileSystemConfigBuilder;
 
 import com.adito.networkplaces.AbstractNetworkPlaceMount;
 import com.adito.policyframework.LaunchSession;

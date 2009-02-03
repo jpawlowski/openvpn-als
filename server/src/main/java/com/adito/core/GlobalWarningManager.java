@@ -32,9 +32,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.adito.core.GlobalWarning.DismissType;
-import com.adito.policyframework.Permission;
 import com.adito.policyframework.PolicyDatabaseFactory;
-import com.adito.policyframework.ResourceType;
 import com.adito.security.Constants;
 import com.adito.security.LogonControllerFactory;
 import com.adito.security.SessionInfo;

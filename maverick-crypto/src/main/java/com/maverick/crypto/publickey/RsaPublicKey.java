@@ -20,9 +20,9 @@
 			
 package com.maverick.crypto.publickey;
 
-import java.io.IOException;
-import com.maverick.crypto.digests.SHA1Digest;
 import java.math.BigInteger;
+
+import com.maverick.crypto.digests.SHA1Digest;
 
 
 public class RsaPublicKey

@@ -20,10 +20,7 @@
 			
 package com.adito.applications.actions;
 
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Locale;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,7 +38,6 @@ import com.adito.applications.ApplicationShortcut;
 import com.adito.applications.ApplicationShortcutDatabaseFactory;
 import com.adito.applications.ApplicationsPlugin;
 import com.adito.applications.forms.ApplicationShortcutForm;
-import com.adito.extensions.ShortcutParameterItem;
 import com.adito.policyframework.Resource;
 import com.adito.policyframework.actions.AbstractResourceDispatchAction;
 import com.adito.policyframework.forms.AbstractResourceForm;

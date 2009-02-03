@@ -16,7 +16,6 @@ import com.adito.input.MultiSelectDataSource;
 import com.adito.input.MultiSelectSelectionModel;
 import com.adito.policyframework.PolicyDataSource;
 import com.adito.policyframework.PolicyDatabaseFactory;
-import com.adito.security.LogonControllerFactory;
 import com.adito.security.SessionInfo;
 import com.adito.security.User;
 import com.adito.security.UserNotFoundException;

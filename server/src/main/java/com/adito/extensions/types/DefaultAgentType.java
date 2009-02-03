@@ -1,6 +1,5 @@
 package com.adito.extensions.types;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -10,10 +9,7 @@ import org.jdom.Element;
 
 import com.adito.agent.AgentExtensionDefinition;
 import com.adito.agent.AgentExtensionVerifier;
-import com.adito.agent.AgentTunnel;
-import com.adito.agent.DefaultAgentManager;
 import com.adito.boot.ContextHolder;
-import com.adito.core.CoreUtil;
 import com.adito.extensions.ExtensionDescriptor;
 import com.adito.extensions.ExtensionException;
 import com.adito.policyframework.Resource.LaunchRequirement;

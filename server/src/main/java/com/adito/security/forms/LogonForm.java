@@ -20,13 +20,11 @@
 			
 package com.adito.security.forms;
 
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts.Globals;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionMessage;
 
 import com.adito.boot.Util;
 import com.adito.core.BundleActionMessage;

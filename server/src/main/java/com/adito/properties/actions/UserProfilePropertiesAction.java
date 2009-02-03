@@ -31,7 +31,6 @@ import org.apache.struts.action.ActionMapping;
 
 import com.adito.boot.AbstractPropertyKey;
 import com.adito.boot.PropertyDefinition;
-import com.adito.core.CoreServlet;
 import com.adito.policyframework.Permission;
 import com.adito.policyframework.PolicyConstants;
 import com.adito.policyframework.ResourceUtil;

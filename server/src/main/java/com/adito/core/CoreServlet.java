@@ -46,8 +46,6 @@ import org.apache.struts.config.ModuleConfig;
 import org.apache.struts.util.MessageResources;
 import org.apache.struts.util.MessageResourcesFactory;
 
-import com.maverick.ssl.SSLTransportFactory;
-import com.maverick.ssl.SSLTransportImpl;
 import com.adito.agent.AgentRequestHandler;
 import com.adito.boot.BootProgressMonitor;
 import com.adito.boot.ContextHolder;
@@ -66,7 +64,6 @@ import com.adito.keystore.wizards.types.ReplyFromCAImportType;
 import com.adito.keystore.wizards.types.RootServerCertificateImportType;
 import com.adito.keystore.wizards.types.ServerAuthenticationKeyImportType;
 import com.adito.keystore.wizards.types.TrustedServerCertificateImportType;
-import com.adito.keystore.wizards.types._3SPPurchaseImportType;
 import com.adito.language.Language;
 import com.adito.language.LanguagePackDefinition;
 import com.adito.language.LanguagePackManager;
@@ -104,6 +101,8 @@ import com.adito.services.CoreEventServiceImpl;
 import com.adito.services.MessageResourceService;
 import com.adito.table.TableItemActionMenuTree;
 import com.adito.tasks.timer.StoppableTimer;
+import com.maverick.ssl.SSLTransportFactory;
+import com.maverick.ssl.SSLTransportImpl;
 
 /**
  * Main controlling servlet. This extends struts own

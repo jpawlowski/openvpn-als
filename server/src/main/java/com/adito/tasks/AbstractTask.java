@@ -3,7 +3,6 @@ package com.adito.tasks;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import com.adito.boot.Util;
 import com.adito.security.SessionInfo;
 
 public abstract class AbstractTask implements Task {

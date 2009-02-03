@@ -20,8 +20,6 @@
 			
 package com.adito.extensions.itemactions;
 
-import javax.servlet.http.HttpServletRequest;
-
 import com.adito.extensions.ExtensionBundleItem;
 import com.adito.policyframework.Permission;
 import com.adito.policyframework.PolicyConstants;

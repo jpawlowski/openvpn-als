@@ -30,7 +30,6 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
 import com.adito.boot.BootProgressMonitor;
-import com.adito.boot.Util;
 
 
 /**

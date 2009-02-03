@@ -39,7 +39,6 @@ import com.adito.security.LogonControllerFactory;
 import com.adito.security.PasswordCredentials;
 import com.adito.security.SessionInfo;
 import com.adito.vfs.VFSMount;
-import com.adito.vfs.VFSProvider;
 import com.adito.vfs.VFSResource;
 import com.adito.vfs.VFSStore;
 import com.adito.vfs.VfsUtils;

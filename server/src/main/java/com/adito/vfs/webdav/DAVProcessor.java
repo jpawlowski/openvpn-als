@@ -27,8 +27,6 @@ import org.apache.commons.logging.LogFactory;
 import com.adito.boot.Util;
 import com.adito.policyframework.LaunchSession;
 import com.adito.policyframework.LaunchSessionFactory;
-import com.adito.security.SessionInfo;
-import com.adito.security.WebDAVAuthenticationModule;
 import com.adito.vfs.VFSRepository;
 import com.adito.vfs.VFSResource;
 import com.adito.vfs.webdav.methods.COPY;

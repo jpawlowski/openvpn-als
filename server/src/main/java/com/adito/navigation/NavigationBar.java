@@ -20,8 +20,6 @@
 			
 package com.adito.navigation;
 
-import static com.adito.navigation.NavigationBar.log;
-
 import java.util.Iterator;
 import java.util.List;
 

@@ -7,18 +7,8 @@ import org.ajaxtags.helpers.AjaxXmlBuilder;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 
-import com.adito.boot.ContextHolder;
-import com.adito.boot.Util;
-import com.adito.core.CoreUtil;
 import com.adito.core.GlobalWarningManager;
-import com.adito.core.UserDatabaseManager;
-import com.adito.install.forms.SelectUserDatabaseForm;
-import com.adito.security.Constants;
-import com.adito.security.LogonControllerFactory;
 import com.adito.security.SessionInfo;
-import com.adito.security.User;
-import com.adito.security.UserDatabase;
-import com.adito.wizard.AbstractWizardSequence;
 
 /**
  * Implementation of {@link com.adito.ajax.AbstractAjaxXMLAction} that

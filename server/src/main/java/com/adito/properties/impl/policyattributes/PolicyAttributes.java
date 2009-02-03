@@ -30,7 +30,6 @@ import com.adito.boot.AbstractPropertyKey;
 import com.adito.boot.ContextHolder;
 import com.adito.boot.PropertyClass;
 import com.adito.boot.PropertyDefinition;
-import com.adito.core.CoreServlet;
 import com.adito.properties.ProfilesFactory;
 import com.adito.properties.attributes.AbstractXMLDefinedAttributesPropertyClass;
 import com.adito.properties.attributes.AttributeDefinition;

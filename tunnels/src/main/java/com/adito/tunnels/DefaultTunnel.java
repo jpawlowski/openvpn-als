@@ -24,7 +24,6 @@ import java.util.Calendar;
 
 import com.adito.boot.HostService;
 import com.adito.policyframework.AbstractResource;
-import com.adito.policyframework.Resource.LaunchRequirement;
 
 public class DefaultTunnel extends AbstractResource implements Tunnel {
 

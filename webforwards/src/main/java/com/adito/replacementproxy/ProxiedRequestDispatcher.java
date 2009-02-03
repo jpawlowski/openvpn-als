@@ -25,7 +25,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Enumeration;
@@ -38,11 +37,6 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.maverick.http.HttpAuthenticatorFactory;
-import com.maverick.http.HttpClient;
-import com.maverick.http.HttpResponse;
-import com.maverick.http.PasswordCredentials;
-import com.maverick.util.IOUtil;
 import com.adito.boot.Branding;
 import com.adito.boot.CaseInsensitiveMap;
 import com.adito.boot.HttpConstants;
@@ -60,6 +54,11 @@ import com.adito.security.Constants;
 import com.adito.util.ProxiedHttpMethod;
 import com.adito.webforwards.WebForwardDatabaseFactory;
 import com.adito.webforwards.WebForwardTypes;
+import com.maverick.http.HttpAuthenticatorFactory;
+import com.maverick.http.HttpClient;
+import com.maverick.http.HttpResponse;
+import com.maverick.http.PasswordCredentials;
+import com.maverick.util.IOUtil;
 
 /**
  */

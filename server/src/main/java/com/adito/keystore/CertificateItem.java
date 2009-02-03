@@ -27,7 +27,6 @@ import javax.servlet.http.HttpServletRequest;
 import com.adito.boot.KeyStoreManager;
 import com.adito.core.CoreUtil;
 import com.adito.install.actions.InstallAction;
-import com.adito.security.LogonController;
 import com.adito.table.TableItem;
 
 /**

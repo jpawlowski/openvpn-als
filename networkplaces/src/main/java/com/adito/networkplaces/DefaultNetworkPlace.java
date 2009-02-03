@@ -25,7 +25,6 @@ import java.util.Calendar;
 import com.adito.boot.Util;
 import com.adito.policyframework.AbstractResource;
 import com.adito.policyframework.LaunchSession;
-import com.adito.policyframework.Resource.LaunchRequirement;
 import com.adito.security.SessionInfo;
 import com.adito.vfs.utils.URI.MalformedURIException;
 

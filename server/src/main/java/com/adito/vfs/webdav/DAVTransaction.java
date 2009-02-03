@@ -37,10 +37,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.maverick.crypto.encoders.Base64;
 import com.adito.boot.HttpConstants;
 import com.adito.boot.SystemProperties;
-import com.adito.boot.Util;
 import com.adito.core.ServletRequestAdapter;
 import com.adito.core.ServletResponseAdapter;
 import com.adito.core.UserDatabaseManager;
@@ -48,13 +46,10 @@ import com.adito.policyframework.LaunchSession;
 import com.adito.policyframework.LaunchSessionFactory;
 import com.adito.properties.Property;
 import com.adito.properties.impl.systemconfig.SystemConfigKey;
-import com.adito.security.AccountLockedException;
-import com.adito.security.AuthenticationModuleManager;
 import com.adito.security.AuthenticationScheme;
 import com.adito.security.Constants;
 import com.adito.security.DefaultAuthenticationScheme;
 import com.adito.security.InvalidLoginCredentialsException;
-import com.adito.security.LogonController;
 import com.adito.security.LogonControllerFactory;
 import com.adito.security.PasswordCredentials;
 import com.adito.security.SessionInfo;
@@ -64,6 +59,7 @@ import com.adito.security.UserNotFoundException;
 import com.adito.security.WebDAVAuthenticationModule;
 import com.adito.security.actions.LogonAction;
 import com.adito.vfs.VFSResource;
+import com.maverick.crypto.encoders.Base64;
 
 /**
  * <p>

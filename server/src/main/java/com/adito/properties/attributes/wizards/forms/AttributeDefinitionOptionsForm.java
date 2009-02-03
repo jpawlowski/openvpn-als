@@ -29,7 +29,6 @@ import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 
-import com.adito.boot.CodedException;
 import com.adito.boot.DefaultPropertyDefinition;
 import com.adito.boot.PropertyClassManager;
 import com.adito.boot.PropertyDefinition;

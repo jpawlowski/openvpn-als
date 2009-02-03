@@ -39,7 +39,6 @@ import com.adito.realms.Realm;
 import com.adito.security.LogonControllerFactory;
 import com.adito.security.Role;
 import com.adito.security.SessionInfo;
-import com.adito.security.User;
 import com.adito.security.UserDatabase;
 
 /**

@@ -1,8 +1,7 @@
 package com.adito.agent;
 
-import com.maverick.multiplex.Channel;
-import com.maverick.multiplex.MultiplexedConnectionListener;
 import com.adito.security.SessionInfo;
+import com.maverick.multiplex.MultiplexedConnectionListener;
 
 public class DefaultAgentStartupListener implements
 		MultiplexedConnectionListener {

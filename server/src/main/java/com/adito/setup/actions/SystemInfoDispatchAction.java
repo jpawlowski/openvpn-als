@@ -33,7 +33,6 @@ import com.adito.core.CoreUtil;
 import com.adito.core.actions.AuthenticatedDispatchAction;
 import com.adito.policyframework.Permission;
 import com.adito.policyframework.PolicyConstants;
-import com.adito.security.Constants;
 import com.adito.security.SessionInfo;
 
 

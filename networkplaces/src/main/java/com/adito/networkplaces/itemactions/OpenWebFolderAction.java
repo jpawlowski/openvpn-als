@@ -33,7 +33,6 @@ import com.adito.properties.impl.systemconfig.SystemConfigKey;
 import com.adito.security.AuthenticationScheme;
 import com.adito.security.LogonControllerFactory;
 import com.adito.security.SessionInfo;
-import com.adito.security.SystemDatabase;
 import com.adito.security.SystemDatabaseFactory;
 import com.adito.security.WebDAVAuthenticationModule;
 import com.adito.table.AvailableTableItemAction;

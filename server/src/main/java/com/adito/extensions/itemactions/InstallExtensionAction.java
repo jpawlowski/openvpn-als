@@ -7,7 +7,6 @@ import com.adito.extensions.ExtensionBundle;
 import com.adito.extensions.ExtensionBundleItem;
 import com.adito.policyframework.Permission;
 import com.adito.policyframework.PolicyConstants;
-import com.adito.policyframework.ResourceType;
 import com.adito.security.SessionInfo;
 import com.adito.table.AvailableTableItemAction;
 import com.adito.table.TableItemAction;

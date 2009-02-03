@@ -38,7 +38,6 @@ import com.adito.core.CoreEventConstants;
 import com.adito.core.CoreServlet;
 import com.adito.core.UserDatabaseManager;
 import com.adito.input.MultiSelectDataSource;
-import com.adito.policyframework.DefaultAccessRights;
 import com.adito.policyframework.DefaultPolicy;
 import com.adito.policyframework.DelegatedPoliciesDataSource;
 import com.adito.policyframework.Policy;

@@ -20,7 +20,6 @@
 			
 package com.adito.extensions.actions;
 
-import com.adito.extensions.store.ExtensionStore;
 
 public class UserInterfaceExtensionsAction extends DefaultExtensionsAction {
 

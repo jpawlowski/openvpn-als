@@ -31,7 +31,6 @@ import org.apache.struts.action.ActionMapping;
 
 import com.adito.boot.AbstractPropertyKey;
 import com.adito.boot.PropertyDefinition;
-import com.adito.policyframework.ResourceStack;
 import com.adito.properties.forms.AbstractPropertiesForm;
 import com.adito.properties.forms.ProfilePropertiesForm;
 import com.adito.properties.impl.profile.ProfilePropertyKey;

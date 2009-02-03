@@ -31,7 +31,6 @@ import com.adito.core.CoreUtil;
 import com.adito.core.FileDownloadPageInterceptListener;
 import com.adito.core.RedirectWithMessages;
 import com.adito.core.actions.AuthenticatedAction;
-import com.adito.security.Constants;
 import com.adito.security.SessionInfo;
 
 

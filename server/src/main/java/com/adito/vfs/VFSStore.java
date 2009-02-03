@@ -23,7 +23,6 @@ package com.adito.vfs;
 import java.util.Collection;
 
 import com.adito.policyframework.LaunchSession;
-import com.adito.vfs.utils.URI;
 import com.adito.vfs.webdav.DAVAuthenticationRequiredException;
 import com.adito.vfs.webdav.DAVException;
 
