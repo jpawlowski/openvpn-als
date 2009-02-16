@@ -53,6 +53,7 @@ import org.jdom.JDOMException;
 import com.adito.boot.Context;
 import com.adito.boot.ContextHolder;
 import com.adito.boot.PropertyList;
+import com.adito.boot.PropertyPreferences;
 import com.adito.boot.RepositoryFactory;
 import com.adito.boot.RepositoryStore;
 import com.adito.boot.SystemProperties;
@@ -117,7 +118,11 @@ public class ExtensionStore {
 	 * Preferences node for storing current extension version and other
 	 * extension related details
 	 */
-	public static final Preferences PREFS = ContextHolder.getContext().getPreferences().node("extensions");
+	// PLUNDEN: Removing the context
+    // public static final Preferences PREFS = ContextHolder.getContext().getPreferences().node("extensions");
+	public static final Preferences PREFS = PropertyPreferences.SYSTEM_ROOT.node("extensions");
+    // end change
+	
 
 	/**
 	 * Preferences node with the extensions node for storing extension store

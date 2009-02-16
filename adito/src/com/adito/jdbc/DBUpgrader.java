@@ -42,6 +42,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.adito.boot.ContextHolder;
+import com.adito.boot.PropertyPreferences;
 import com.adito.boot.SystemProperties;
 import com.adito.boot.Util;
 import com.adito.boot.VersionInfo;
@@ -135,7 +136,10 @@ public class DBUpgrader {
             // versionsFile = new File(ContextHolder.getContext().getDBDirectory(), "versions.log");
         	versionsFile = new File(SystemProperties.get("adito.directories.db", "db"), "versions.log");
             // end change
-            Preferences p = ContextHolder.getContext().getPreferences().node("dbupgrader");
+        	// PLUNDEN: Removing the context
+            // Preferences p = ContextHolder.getContext().getPreferences().node("dbupgrader");
+        	Preferences p = PropertyPreferences.SYSTEM_ROOT.node("dbupgrader");
+            // end change
             if (p.nodeExists("currentDataVersion")) {
                 log.warn("Migrating database versions from preferences to properties file in "
                 		// PLUNDEN: Removing the context
