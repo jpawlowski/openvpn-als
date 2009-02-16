@@ -35,6 +35,7 @@ import com.adito.properties.attributes.AttributeDefinition;
 import com.adito.properties.attributes.DefaultAttributeDefinition;
 import com.adito.properties.impl.profile.ProfileProperties;
 import com.adito.properties.impl.profile.ProfilePropertyKey;
+import com.adito.boot.VersionInfo;
 
 /**
  * Implementation of a {@link com.adito.properties.PropertyDatabase} that
@@ -67,7 +68,10 @@ public class JDBCPropertyDatabase implements PropertyDatabase {
      */
     public void open(CoreServlet controllingServlet) throws Exception {
         String dbName = SystemProperties.get("adito.propertyDatabase.jdbc.dbName", "explorer_configuration");
-        controllingServlet.addDatabase(dbName, ContextHolder.getContext().getDBDirectory());
+        // PLUNDEN: Removing the context
+        // controllingServlet.addDatabase(dbName, ContextHolder.getContext().getDBDirectory());
+        controllingServlet.addDatabase(dbName, new File(SystemProperties.get("adito.directories.db", "db")));
+        // end change
         String jdbcUser = SystemProperties.get("adito.jdbc.username", "sa");
         String jdbcPassword = SystemProperties.get("adito.jdbc.password", "");
         String vendorDB = SystemProperties.get("adito.jdbc.vendorClass", "com.adito.jdbc.hsqldb.HSQLDBDatabaseEngine");
@@ -81,8 +85,11 @@ public class JDBCPropertyDatabase implements PropertyDatabase {
         db.init("propertyDatabase", dbName, jdbcUser, jdbcPassword, null);
 
         File upgradeDir = new File("install/upgrade");
-        DBUpgrader upgrader = new DBUpgrader(ContextHolder.getContext().getVersion(), db, ContextHolder.getContext()
-                        .getDBDirectory(), upgradeDir);
+        // PLUNDEN: Removing the context
+        // DBUpgrader upgrader = new DBUpgrader(ContextHolder.getContext().getVersion(), db, ContextHolder.getContext()
+        // 	.getDBDirectory(), upgradeDir);
+        DBUpgrader upgrader = new DBUpgrader(new VersionInfo.Version(SystemProperties.get("adito.version", "0.9.1")), db, new File(SystemProperties.get("adito.directories.db", "db")), upgradeDir);
+        // end change
         upgrader.upgrade();
 
         int maxObjs = CACHE_MAXOBJS.intValue();

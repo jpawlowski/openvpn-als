@@ -458,7 +458,10 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
 
     protected void initNotifier() throws ServletException {
 
-        File queueDir = new File(ContextHolder.getContext().getConfDirectory(), "queue");
+    	// PLUNDEN: Removing the context
+        // File queueDir = new File(ContextHolder.getContext().getConfDirectory(), "queue");
+    	File queueDir = new File(SystemProperties.get("adito.directories.conf", "conf"), "queue");
+        // end change
         if (!queueDir.exists()) {
             if (!queueDir.mkdirs()) {
                 throw new ServletException("Could not create message queue directory " + queueDir.getAbsolutePath());
@@ -526,8 +529,9 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
         pastInitialisation = false;
 
         try {
-
-            ContextHolder.getContext().addContextListener(this);
+        	
+        	// PLUNDEN: Removing the context
+            // ContextHolder.getContext().addContextListener(this);
 
             if (SystemProperties.get("adito.disableNewSSLEngine", "false").equals("true"))
                 SSLTransportFactory.setTransportImpl(SSLTransportImpl.class);
@@ -835,7 +839,10 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
          * Add the 'site' VFS directory as a resource base. This must be done
          * because we need access to the resources without authentication
          */
-        File siteDir = new File(ContextHolder.getContext().getConfDirectory(), "site");
+        // PLUNDEN: Removing the context
+        // File siteDir = new File(ContextHolder.getContext().getConfDirectory(), "site");
+        File siteDir = new File(SystemProperties.get("adito.directories.conf", "conf"), "site");
+        // end change
         try {
             if (!siteDir.exists()) {
                 siteDir.mkdirs();
@@ -919,7 +926,10 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
 
         // Initialise store
         try {
-            store.init(ContextHolder.getContext().getApplicationDirectory());
+        	// PLUNDEN: Removing the context
+            // store.init(ContextHolder.getContext().getApplicationDirectory());
+        	store.init(new File(SystemProperties.get("adito.directories.apps", "tmp/extensions")));
+            // end change
         } catch (Exception e) {
             log.error("Failed to initialise extension store.", e);
             throw new ServletException(e);
@@ -998,7 +1008,10 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
         File defaultDevConfDir = new File(SystemProperties.get("user.dir"), "conf");
         try {
             if (devConfig
-                            && ContextHolder.getContext().getConfDirectory().getCanonicalFile().equals(
+            		// PLUNDEN: Removing the context
+                    // && ContextHolder.getContext().getConfDirectory().getCanonicalFile().equals(
+            		&& new File(SystemProperties.get("adito.directories.conf", "conf")).getCanonicalFile().equals(
+                    // end change
                                 defaultDevConfDir.getCanonicalFile())) {
                 throw new ServletException("When running in developmenet mode, you may NOT use "
                                 + defaultDevConfDir.getAbsolutePath() + " as your 'conf' directory. Please specifiy "

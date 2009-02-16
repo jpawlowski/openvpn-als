@@ -34,6 +34,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.adito.boot.ContextHolder;
+import com.adito.boot.SystemProperties;
 import com.adito.boot.Util;
 import com.adito.core.CoreUtil;
 import com.adito.core.UserDatabaseManager;
@@ -82,7 +83,10 @@ public class LogonStateAndCache {
      */
     private static Cache spoofCache;    
     static {
-    	File dir = new File(ContextHolder.getContext().getTempDirectory(), "spoof");
+    	// PLUNDEN: Removing the context
+		// File dir = new File(ContextHolder.getContext().getTempDirectory(), "spoof");
+    	File dir = new File(SystemProperties.get("adito.directories.tmp", "tmp"), "spoof");
+	    // end change
     	if(dir.exists()) {
     	    Util.delTree(dir);
     	}

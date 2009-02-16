@@ -117,7 +117,10 @@ public class CoreUtil {
      * @throws Exception
      */
     public static File getTempDownloadDirectory(SessionInfo session) throws Exception {
-        final File tempDownloadDirectory = new File(ContextHolder.getContext().getTempDirectory(), TempStore.TEMP_DOWNLOAD_MOUNT_NAME);
+    	// PLUNDEN: Removing the context
+        // final File tempDownloadDirectory = new File(ContextHolder.getContext().getTempDirectory(), TempStore.TEMP_DOWNLOAD_MOUNT_NAME);
+    	final File tempDownloadDirectory = new File(SystemProperties.get("adito.directories.tmp", "tmp"), TempStore.TEMP_DOWNLOAD_MOUNT_NAME);
+        // end change
         // create the download store if it does not exist.
         if (!tempDownloadDirectory.exists()) {        	
             if (!tempDownloadDirectory.mkdirs()) {
@@ -1038,7 +1041,10 @@ public class CoreUtil {
             System.setProperty("java.library.path", SystemProperties.get("java.library.path") + File.pathSeparator + path);
             log.warn("Failed to set library path using Sun JDK workaround. Just setting java.library.path in case " + "it works. If it doesn't, plugins that use native libraries will probably fail. To fix "
                 + "this you will have to alter "
-                + ContextHolder.getContext().getConfDirectory().getAbsolutePath()
+                // PLUNDEN: Removing the context
+                // + ContextHolder.getContext().getConfDirectory().getAbsolutePath()
+                + new File(SystemProperties.get("adito.directories.conf", "conf")).getAbsolutePath()
+                // end change
                 + File.separator
                 + "wrapper.conf to include the additional library path '"
                 + path

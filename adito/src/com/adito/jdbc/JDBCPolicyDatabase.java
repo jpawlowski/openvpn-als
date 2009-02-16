@@ -47,6 +47,7 @@ import org.apache.commons.logging.LogFactory;
 import com.adito.boot.ContextHolder;
 import com.adito.boot.PropertyList;
 import com.adito.boot.SystemProperties;
+import com.adito.boot.VersionInfo;
 import com.adito.core.CoreEvent;
 import com.adito.core.CoreEventConstants;
 import com.adito.core.CoreListener;
@@ -530,7 +531,10 @@ public class JDBCPolicyDatabase extends AbstractPolicyDatabase {
 		String dbName = SystemProperties.get(
 				"adito.policyDatabase.jdbc.dbName",
 				"explorer_configuration");
-		controllingServlet.addDatabase(dbName, ContextHolder.getContext().getDBDirectory());
+		// PLUNDEN: Removing the context
+        // controllingServlet.addDatabase(dbName, ContextHolder.getContext().getDBDirectory());
+		controllingServlet.addDatabase(dbName, new File(SystemProperties.get("adito.directories.db", "db")));
+        // end change
 		String jdbcUser = SystemProperties.get("adito.jdbc.username", "sa");
 		String jdbcPassword = SystemProperties.get("adito.jdbc.password",
 				"");
@@ -543,8 +547,11 @@ public class JDBCPolicyDatabase extends AbstractPolicyDatabase {
 		File upgradeDir = new File("install/upgrade");
 		db = (JDBCDatabaseEngine) Class.forName(vendorDB).newInstance();
 		db.init("policyDatabase", dbName, jdbcUser, jdbcPassword, null);
-		DBUpgrader upgrader = new DBUpgrader(ContextHolder.getContext()
-				.getVersion(), db, ContextHolder.getContext().getDBDirectory(),
+		// PLUNDEN: Removing the context
+		// DBUpgrader upgrader = new DBUpgrader(ContextHolder.getContext()
+	            // .getVersion(), db, ContextHolder.getContext().getDBDirectory(),
+		DBUpgrader upgrader = new DBUpgrader(new VersionInfo.Version(SystemProperties.get("adito.version", "0.9.1")), db, new File(SystemProperties.get("adito.directories.db", "db")),
+	    // end change
 				upgradeDir);
 		upgrader.upgrade();
 		policyCache = new SimpleCache(new MemoryStash(CACHE_MAXOBJS.intValue()));

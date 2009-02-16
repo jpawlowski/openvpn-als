@@ -17,14 +17,20 @@ public class HSQLDBDatabaseEngine extends JDBCDatabaseEngine {
     public HSQLDBDatabaseEngine() {
         super("HSQLDB", "org.hsqldb.jdbcDriver");
         serverMode = "true".equalsIgnoreCase(SystemProperties.get("adito.hsqldb.tcpipServer"));
-        dbDir = ContextHolder.getContext().getDBDirectory();
+        // PLUNDEN: Removing the context
+        // dbDir = ContextHolder.getContext().getDBDirectory();
+        dbDir = new File(SystemProperties.get("adito.directories.db", "db"));
+        // end change
     }
 
     public String getURL() {
         if (serverMode) {
             return "jdbc:hsqldb:hsql://127.0.0.1:9001/" + getDatabase();
         } else {
-            return "jdbc:hsqldb:file:" + ContextHolder.getContext().getDBDirectory() + "/" + getDatabase();
+            // PLUNDEN: Removing the context
+            // return "jdbc:hsqldb:file:" + ContextHolder.getContext().getDBDirectory() + "/" + getDatabase();
+        	return "jdbc:hsqldb:file:" + SystemProperties.get("adito.directories.db", "db") + "/" + getDatabase();
+            // end change
         }
     }
 

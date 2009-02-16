@@ -482,7 +482,10 @@ public class RequestParameterMap extends MultiMap {
     }
 
     private void initMultipart(String contentType, InputStream in) throws IOException, FileNotFoundException {
-        multipartFile = new File(ContextHolder.getContext().getTempDirectory(), "mpr" + ( tempIdx++ ) + ".tmp");
+    	// PLUNDEN: Removing the context
+        // multipartFile = new File(ContextHolder.getContext().getTempDirectory(), "mpr" + ( tempIdx++ ) + ".tmp");
+    	multipartFile = new File(SystemProperties.get("adito.directories.tmp", "tmp"), "mpr" + ( tempIdx++ ) + ".tmp");
+        // end change
         FileOutputStream mpOut = new FileOutputStream(multipartFile);
 
         try {

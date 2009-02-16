@@ -8,6 +8,7 @@ import java.util.Collection;
 import org.apache.commons.vfs.FileObject;
 
 import com.adito.boot.ContextHolder;
+import com.adito.boot.SystemProperties;
 import com.adito.extensions.ExtensionBundle;
 import com.adito.policyframework.LaunchSession;
 import com.adito.security.PasswordCredentials;
@@ -33,7 +34,10 @@ public class SiteStore extends AbstractStore {
 	 */
 	public SiteStore() {
 		super("site", "UTF-8");
-		siteDir = new File(ContextHolder.getContext().getConfDirectory(), "site");
+		// PLUNDEN: Removing the context
+		// siteDir = new File(ContextHolder.getContext().getConfDirectory(), "site");
+		siteDir = new File(SystemProperties.get("adito.directories.conf", "conf"), "site");
+	    // end change
 		if(!siteDir.exists()) {
 			siteDir.mkdirs();
 		} 

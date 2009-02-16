@@ -40,6 +40,7 @@ import org.apache.commons.logging.LogFactory;
 import com.adito.boot.ContextHolder;
 import com.adito.boot.SystemProperties;
 import com.adito.boot.Util;
+import com.adito.boot.VersionInfo;
 import com.adito.core.CoreEvent;
 import com.adito.core.CoreEventConstants;
 import com.adito.core.CoreListener;
@@ -82,7 +83,10 @@ public class JDBCSystemDatabase implements SystemDatabase, CoreListener {
      */
     public void open(CoreServlet controllingServlet) throws Exception {
         String dbName = SystemProperties.get("adito.systemDatabase.jdbc.dbName", "explorer_configuration");
-        controllingServlet.addDatabase(dbName, ContextHolder.getContext().getDBDirectory());
+        // PLUNDEN: Removing the context
+        // controllingServlet.addDatabase(dbName, ContextHolder.getContext().getDBDirectory());
+        controllingServlet.addDatabase(dbName, new File(SystemProperties.get("adito.directories.db", "db")));
+        // end change
         String jdbcUser = SystemProperties.get("adito.jdbc.username", "sa");
         String jdbcPassword = SystemProperties.get("adito.jdbc.password", "");
         String vendorDB = SystemProperties.get("adito.jdbc.vendorClass", "com.adito.jdbc.hsqldb.HSQLDBDatabaseEngine");
@@ -96,8 +100,11 @@ public class JDBCSystemDatabase implements SystemDatabase, CoreListener {
         db.init("systemDatabase", dbName, jdbcUser, jdbcPassword, null);
 
         File upgradeDir = new File("install/upgrade");
-        DBUpgrader upgrader = new DBUpgrader(ContextHolder.getContext()
-                        .getVersion(), db, ContextHolder.getContext().getDBDirectory(), upgradeDir);
+        // PLUNDEN: Removing the context
+		// DBUpgrader upgrader = new DBUpgrader(ContextHolder.getContext()
+	            // .getVersion(), db, ContextHolder.getContext().getDBDirectory(), upgradeDir);
+        DBUpgrader upgrader = new DBUpgrader(new VersionInfo.Version(SystemProperties.get("adito.version", "0.9.1")), db, new File(SystemProperties.get("adito.directories.db", "db")), upgradeDir);
+	    // end change
         upgrader.upgrade();
 
         CoreServlet.getServlet().addCoreListener(this);

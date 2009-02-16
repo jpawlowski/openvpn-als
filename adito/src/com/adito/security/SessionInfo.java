@@ -43,6 +43,7 @@ import com.maverick.crypto.digests.Hash;
 import com.maverick.crypto.digests.MD5Digest;
 import com.adito.boot.Context;
 import com.adito.boot.ContextHolder;
+import com.adito.boot.SystemProperties;
 import com.adito.boot.Util;
 import com.adito.core.CoreEvent;
 import com.adito.core.CoreEventConstants;
@@ -473,7 +474,10 @@ public class SessionInfo implements CoreListener {
         }
         if (davUserAgents == null) {
             davUserAgents = new ArrayList();
-            File f = new File(context.getConfDirectory(), "dav.agents");
+            // PLUNDEN: Removing the context
+    		// File f = new File(context.getConfDirectory(), "dav.agents");
+            File f = new File(SystemProperties.get("adito.directories.conf", "conf"), "dav.agents");
+    	    // end change
             FileInputStream fin = null;
             try {
                 fin = new FileInputStream(f);

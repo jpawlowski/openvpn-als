@@ -39,6 +39,7 @@ import org.hsqldb.Server;
 import org.hsqldb.ServerConstants;
 
 import com.adito.boot.ContextHolder;
+import com.adito.boot.SystemProperties;
 import com.adito.jdbc.JDBCConnectionImpl;
 
 /**
@@ -108,10 +109,13 @@ public class EmbeddedHSQLDBServer {
                 try {
                 	if (log.isInfoEnabled())
                 		log.info("Compacting database " + n);
-                    con = DriverManager
-                                    .getConnection(EmbeddedHSQLDBServer.this.serverMode ? "jdbc:hsqldb:hsql://localhost/" + n
-                                                    : "jdbc:hsqldb:file:" + ContextHolder.getContext().getDBDirectory().getPath()
-                                                                    + "/" + n);
+                	// PLUNDEN: Removing the context
+                	// con = DriverManager
+                                    // .getConnection(EmbeddedHSQLDBServer.this.serverMode ? "jdbc:hsqldb:hsql://localhost/" + n
+                                                    // : "jdbc:hsqldb:file:" + ContextHolder.getContext().getDBDirectory().getPath()
+                                                                    // + "/" + n);
+                	con = DriverManager.getConnection(EmbeddedHSQLDBServer.this.serverMode ? "jdbc:hsqldb:hsql://localhost/" + n : "jdbc:hsqldb:file:" + new File(SystemProperties.get("adito.directories.db", "db")).getPath() + "/" + n);
+                	// end change
                     Statement s = con.createStatement();
                     s.execute("SHUTDOWN COMPACT");
                     if (log.isInfoEnabled())

@@ -20,6 +20,7 @@
 			
 package com.adito.core.stringreplacement;
 
+import java.io.File;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -53,15 +54,30 @@ public class GlobalReplacer extends AbstractReplacementVariableReplacer {
             }
         } else if (type.equalsIgnoreCase("context")) {
             if (key.equals("conf.dir")) {
-                return ContextHolder.getContext().getConfDirectory().getAbsolutePath();
+            	// PLUNDEN: Removing the context
+                // return ContextHolder.getContext().getConfDirectory().getAbsolutePath();
+            	return new File(SystemProperties.get("adito.directories.conf", "conf")).getAbsolutePath();
+                // end change
             } else if (key.equals("log.dir")) {
-                return ContextHolder.getContext().getLogDirectory().getAbsolutePath();
+            	// PLUNDEN: Removing the context
+                // return ContextHolder.getContext().getLogDirectory().getAbsolutePath();
+            	return new File(SystemProperties.get("adito.directories.logs", "logs")).getAbsolutePath();
+                // end change
             } else if (key.equals("db.dir")) {
-                return ContextHolder.getContext().getDBDirectory().getAbsolutePath();
+            	// PLUNDEN: Removing the context
+                // return ContextHolder.getContext().getDBDirectory().getAbsolutePath();
+            	return new File(SystemProperties.get("adito.directories.db", "db")).getAbsolutePath();
+                // end change
             } else if (key.equals("temp.dir")) {
-                return ContextHolder.getContext().getTempDirectory().getAbsolutePath();
+            	// PLUNDEN: Removing the context
+                // return ContextHolder.getContext().getTempDirectory().getAbsolutePath();
+            	return new File(SystemProperties.get("adito.directories.tmp", "tmp")).getAbsolutePath();
+                // end change
             } else if (key.equals("version")) {
-                return ContextHolder.getContext().getVersion().toString();
+            	// PLUNDEN: Removing the context
+                // return ContextHolder.getContext().getVersion().toString();
+            	return SystemProperties.get("adito.version", "0.9.1");
+                // end change
             } else {
                 throw new Exception("Unknown key " + key + " for type " + type + ".");
             }

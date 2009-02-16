@@ -33,6 +33,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.adito.boot.ContextHolder;
 import com.adito.boot.SystemProperties;
+import com.adito.boot.VersionInfo;
 import com.adito.core.CoreServlet;
 import com.adito.core.UserDatabaseManager;
 import com.adito.realms.Realm;
@@ -80,7 +81,10 @@ public class JDBCUserDatabase extends DefaultUserDatabase {
     public void open(CoreServlet controllingServlet, Realm realm) throws Exception {
         super.open(controllingServlet, realm);
         String dbName = SystemProperties.get("adito.userDatabase.jdbc.dbName", "explorer_configuration");
-        controllingServlet.addDatabase(dbName, ContextHolder.getContext().getDBDirectory());
+     // PLUNDEN: Removing the context
+        // controllingServlet.addDatabase(dbName, ContextHolder.getContext().getDBDirectory());
+        controllingServlet.addDatabase(dbName, new File(SystemProperties.get("adito.directories.db", "db")));
+        // end change
         File upgradeDir = new File("install/upgrade");
         String jdbcUser = SystemProperties.get("adito.jdbc.username", "sa");
         String jdbcPassword = SystemProperties.get("adito.jdbc.password", "");
@@ -91,8 +95,11 @@ public class JDBCUserDatabase extends DefaultUserDatabase {
         }
         db = (JDBCDatabaseEngine) Class.forName(vendorDB).newInstance();
         db.init("userDatabase", dbName, jdbcUser, jdbcPassword, null);
-        DBUpgrader upgrader = new DBUpgrader(ContextHolder.getContext().getVersion(), db, ContextHolder.getContext()
-                        .getDBDirectory(), upgradeDir);
+        // PLUNDEN: Removing the context
+		// DBUpgrader upgrader = new DBUpgrader(ContextHolder.getContext().getVersion(), db, ContextHolder.getContext()
+	            // .getDBDirectory(), upgradeDir);
+        DBUpgrader upgrader = new DBUpgrader(new VersionInfo.Version(SystemProperties.get("adito.version", "0.9.1")), db, new File(SystemProperties.get("adito.directories.db", "db")), upgradeDir);
+	    // end change
         upgrader.upgrade();
         open = true;
 	}
