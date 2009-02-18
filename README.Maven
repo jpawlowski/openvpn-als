@@ -1,3 +1,12 @@
+*** NOTE ***
+
+Unit tests don't work yet. In fact the build fails if they're used. To skip them, use -Dmaven.test.skip=true:
+
+mvn -Dmaven.test.skip=true clean install 
+
+
+
+
 == Modules not available from public Maven2 repositories ==
 
 There are some jars that Adito requires which are not yet in public Maven repositories. These
@@ -46,7 +55,8 @@ For ZIP-files you can (on Linux) use
  zipinfo filename.zip
 
 If contents of the Ant/Maven JAR/ZIP differs a lot, you've probably got a problem. Note that we probably
-have to use the Assembly plugin to create a fully functional, runnable version of Adito.
+have to use the Assembly plugin to create a fully functional, runnable version of Adito. Another option
+is to call "ant" to build the actual extension ZIP-file.
 
 == Misc notes ==
 
@@ -57,13 +67,11 @@ it turns out to be problematic.
 
 ---
 
-It may be possible to convert Adito into a standard Java web application. Currently Maven creates a WAR
+It is possible to convert Adito into a standard Java web application. Currently Maven creates a WAR
 out of Adito's server component. The format of a WAR archive is documented here:
 
 http://java.sun.com/j2ee/tutorial/1_3-fcs/doc/WebComponents3.html
 
----
-
-Unit tests don't work yet. In fact the build fails if they're used. To skip them, use -Dmaven.test.skip=true:
-
-mvn -Dmaven.test.skip=true clean install 
+Adito is being converted into a standard webapp in branches/nonembedded. Code from the nonembedded branch
+will eventually be merged with this Maven2 branch. Current server WAR produced by Adito does not run on
+anything, but that's not an issue for now.
