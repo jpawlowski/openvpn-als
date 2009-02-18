@@ -40,7 +40,15 @@ In some cases this affects the Maven src/main/java directory structure. All refe
 property etc. files have to be converted, too. For this reason there is a Bash script 
 (tools/convert_variables.sh) that can help in the conversion process.
 
-== Reference modules ==
+== Basic techniques ==
+
+- Duplicate ("svn copy") the "maven-template-module" directory
+- Copy ("svn copy") the source (and resources) files to the new Maven2 module.Note that at some point
+  during the copying process SVN will start complaining and refuse to operate. At this point it's best
+  to remove the offending files/dirs and commit your changes. Then you can continue working.
+- Try building and fix any dependency problems that arise
+- Follow the original module's build.xml to see what it does, if necessary.
+- Compare Maven's output to the output of the original build (see below) to see it's identical
 
 You can use the jar's and zip-files in the "comparison" directory to see if output Maven creates is 
 correct. The directory contains fully functional JAR's and ZIP-files created by the original "ant" build 
@@ -57,6 +65,24 @@ For ZIP-files you can (on Linux) use
 If contents of the Ant/Maven JAR/ZIP differs a lot, you've probably got a problem. Note that we probably
 have to use the Assembly plugin to create a fully functional, runnable version of Adito. Another option
 is to call "ant" to build the actual extension ZIP-file.
+
+== Mavenizing the Adito Agent ==
+
+Adito Agent is not mavenized yet (18th Feb 2009). In "trunk", Agent is built from several components:
+
+adito-agent
+adito-agent-awt
+adito-agent-swt
+ui
+
+The Agent also needs a SSL-certificate for proper operation. The files required for
+the Agent's SSL certificate are these:
+
+agent-keystore.p12
+- the certificate container, created with Java keytool (see "Installing Adito..." in Wiki)
+
+certificate.properties
+- File that specifies the Agent's keystore password. It's used to sign the Agent Java applet.
 
 == Misc notes ==
 
