@@ -476,7 +476,7 @@ public class SessionInfo implements CoreListener {
             davUserAgents = new ArrayList();
             // PLUNDEN: Removing the context
     		// File f = new File(context.getConfDirectory(), "dav.agents");
-            File f = new File(SystemProperties.get("adito.directories.conf", "conf"), "dav.agents");
+            File f = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.conf", "conf"), "dav.agents");
     	    // end change
             FileInputStream fin = null;
             try {

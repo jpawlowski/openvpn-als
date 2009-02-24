@@ -36,10 +36,11 @@ import java.util.prefs.Preferences;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.adito.core.CoreServlet;
 
 /**
  * A simple implementation for the preferences API. That stores preferences
- * in propery files. We do not have to worry about sharing the preferencese 
+ * in propery files. We do not have to worry about sharing the preferencese
  * with other JVM instance so there is no need for any kind of synchronising
  * or locking.
  */
@@ -50,7 +51,8 @@ public class PropertyPreferences extends AbstractPreferences {
      */
 	// PLUNDEN: Removing the context
     // public final static Preferences SYSTEM_ROOT = new PropertyPreferences(new File(new File(ContextHolder.getContext().getConfDirectory(), "prefs"), "system"));
-	public final static Preferences SYSTEM_ROOT = new PropertyPreferences(new File(new File(SystemProperties.get("adito.directories.conf", "conf"), "prefs"), "system"));
+	public final static Preferences SYSTEM_ROOT = new PropertyPreferences(
+			new File(new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.conf", "conf"), "prefs"), "system"));
     // end change
     
     /**
@@ -58,7 +60,8 @@ public class PropertyPreferences extends AbstractPreferences {
      */
 	// PLUNDEN: Removing the context
     // public final static Preferences USER_ROOT = new PropertyPreferences(new File(new File(ContextHolder.getContext().getConfDirectory(), "prefs"), "system"));
-	public final static Preferences USER_ROOT = new PropertyPreferences(new File(new File(SystemProperties.get("adito.directories.conf", "conf"), "prefs"), "system"));
+	public final static Preferences USER_ROOT = new PropertyPreferences(
+			new File(new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.conf", "conf"), "prefs"), "system"));
     // end change
     
     private static final String[] EMPTY_STRING_ARRAY = new String[0];

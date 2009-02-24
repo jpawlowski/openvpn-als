@@ -31,6 +31,7 @@ import java.util.Properties;
 import com.adito.boot.ContextHolder;
 import com.adito.boot.SystemProperties;
 import com.adito.boot.Util;
+import com.adito.core.CoreServlet;
 import com.adito.extensions.ExtensionBundle;
 
 final class ExtensionStoreStatusManager {
@@ -126,7 +127,7 @@ final class ExtensionStoreStatusManager {
     private static File getDisabledExtensionFile() throws IOException {
     	// PLUNDEN: Removing the context
         // File confDirectory = ContextHolder.getContext().getConfDirectory();
-    	File confDirectory = new File(SystemProperties.get("adito.directories.conf", "conf"));
+    	File confDirectory = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.conf", "conf"));
         // end change
         File file = new File(confDirectory, DISABLED_EXTENSIONS_FILE);
         if(!file.exists() && !file.createNewFile())

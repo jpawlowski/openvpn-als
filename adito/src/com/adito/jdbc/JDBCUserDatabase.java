@@ -83,7 +83,7 @@ public class JDBCUserDatabase extends DefaultUserDatabase {
         String dbName = SystemProperties.get("adito.userDatabase.jdbc.dbName", "explorer_configuration");
      // PLUNDEN: Removing the context
         // controllingServlet.addDatabase(dbName, ContextHolder.getContext().getDBDirectory());
-        controllingServlet.addDatabase(dbName, new File(SystemProperties.get("adito.directories.db", "db")));
+        controllingServlet.addDatabase(dbName, new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.db", "db")));
         // end change
         File upgradeDir = new File("install/upgrade");
         String jdbcUser = SystemProperties.get("adito.jdbc.username", "sa");

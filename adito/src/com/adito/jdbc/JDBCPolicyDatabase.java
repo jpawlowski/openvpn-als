@@ -533,7 +533,7 @@ public class JDBCPolicyDatabase extends AbstractPolicyDatabase {
 				"explorer_configuration");
 		// PLUNDEN: Removing the context
         // controllingServlet.addDatabase(dbName, ContextHolder.getContext().getDBDirectory());
-		controllingServlet.addDatabase(dbName, new File(SystemProperties.get("adito.directories.db", "db")));
+		controllingServlet.addDatabase(dbName, new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.db", "db")));
         // end change
 		String jdbcUser = SystemProperties.get("adito.jdbc.username", "sa");
 		String jdbcPassword = SystemProperties.get("adito.jdbc.password",
@@ -550,7 +550,7 @@ public class JDBCPolicyDatabase extends AbstractPolicyDatabase {
 		// PLUNDEN: Removing the context
 		// DBUpgrader upgrader = new DBUpgrader(ContextHolder.getContext()
 	            // .getVersion(), db, ContextHolder.getContext().getDBDirectory(),
-		DBUpgrader upgrader = new DBUpgrader(new VersionInfo.Version(SystemProperties.get("adito.version", "0.9.1")), db, new File(SystemProperties.get("adito.directories.db", "db")),
+		DBUpgrader upgrader = new DBUpgrader(new VersionInfo.Version(SystemProperties.get("adito.version", "0.9.1")), db, new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.db", "db")),
 	    // end change
 				upgradeDir);
 		upgrader.upgrade();

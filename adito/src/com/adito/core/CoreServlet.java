@@ -50,6 +50,7 @@ import com.maverick.ssl.SSLTransportFactory;
 import com.maverick.ssl.SSLTransportImpl;
 import com.adito.agent.AgentRequestHandler;
 import com.adito.boot.BootProgressMonitor;
+import com.adito.boot.LogBootProgressMonitor;
 import com.adito.boot.ContextHolder;
 import com.adito.boot.ContextListener;
 import com.adito.boot.PropertyClassManager;
@@ -460,7 +461,7 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
 
     	// PLUNDEN: Removing the context
         // File queueDir = new File(ContextHolder.getContext().getConfDirectory(), "queue");
-    	File queueDir = new File(SystemProperties.get("adito.directories.conf", "conf"), "queue");
+    	File queueDir = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.conf", "conf"), "queue");
         // end change
         if (!queueDir.exists()) {
             if (!queueDir.mkdirs()) {
@@ -528,11 +529,24 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
     public void init() throws ServletException {
         pastInitialisation = false;
 
+        // PLUNDEN: Removing the context
+        getServletContext().setAttribute("bootProgressMonitor", new LogBootProgressMonitor());
+        String realPath = getServletContext().getRealPath("/");
+        String WIPath = realPath + "/WEB_INF/";
+        getServletContext().setAttribute("adito.directories.conf", WIPath + SystemProperties.get("adito.directories.conf", "conf"));
+        getServletContext().setAttribute("adito.directories.db", WIPath + SystemProperties.get("adito.directories.db", "db"));
+        getServletContext().setAttribute("adito.directories.logs", WIPath + SystemProperties.get("adito.directories.logs", "logs"));
+        getServletContext().setAttribute("adito.directories.tmp", WIPath + SystemProperties.get("adito.directories.tmp", "tmp"));
+        getServletContext().setAttribute("adito.directories.apps", WIPath + SystemProperties.get("adito.directories.apps", "tmp/extensions"));
+        getServletContext().setAttribute("adito.version", WIPath + SystemProperties.get("adito.version", "0.9.1"));
+        // end change
+        
         try {
         	
         	// PLUNDEN: Removing the context
             // ContextHolder.getContext().addContextListener(this);
-
+        	// end change
+        	
             if (SystemProperties.get("adito.disableNewSSLEngine", "false").equals("true"))
                 SSLTransportFactory.setTransportImpl(SSLTransportImpl.class);
 
@@ -554,6 +568,12 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
             PropertyClassManager.getInstance().registerPropertyClass(new ApplicationParameters());
             PropertyClassManager.getInstance().registerPropertyClass(new ResourceAttributes());
 
+            // PLUNDEN: log
+            log.info("PLUNDEN: " + realPath);
+            log.info("PLUNDEN: " + WIPath);
+            log.info("PLUNDEN: " + getServletContext().getAttribute("adito.directories.db"));
+            // end
+            
             // Load the property database and categories
             // Use the default system database if no other has been registered
             try {
@@ -563,7 +583,10 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
                 throw new ServletException("Failed to initialise system database.", e);
             }
 
-            bootProgressMonitor = ContextHolder.getContext().getBootProgressMonitor();
+            // PLUNDEN: Removing the context
+            // bootProgressMonitor = ContextHolder.getContext().getBootProgressMonitor();
+        	// end change
+            bootProgressMonitor = (BootProgressMonitor)getServletContext().getAttribute("bootProgressMonitor");
 
             // Initialise extensions
             bootProgressMonitor.updateMessage("Initialising extensions");
@@ -841,7 +864,7 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
          */
         // PLUNDEN: Removing the context
         // File siteDir = new File(ContextHolder.getContext().getConfDirectory(), "site");
-        File siteDir = new File(SystemProperties.get("adito.directories.conf", "conf"), "site");
+        File siteDir = new File(getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.conf", "conf"), "site");
         // end change
         try {
             if (!siteDir.exists()) {
@@ -928,7 +951,7 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
         try {
         	// PLUNDEN: Removing the context
             // store.init(ContextHolder.getContext().getApplicationDirectory());
-        	store.init(new File(SystemProperties.get("adito.directories.apps", "tmp/extensions")));
+        	store.init(new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.apps", "tmp/extensions")));
             // end change
         } catch (Exception e) {
             log.error("Failed to initialise extension store.", e);
@@ -1005,12 +1028,15 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
 
     void checkDevEnvironment() throws ServletException {
         devConfig = "true".equalsIgnoreCase(SystemProperties.get("adito.useDevConfig", "false"));
-        File defaultDevConfDir = new File(SystemProperties.get("user.dir"), "conf");
+		// PLUNDEN: Removing the context
+        // File defaultDevConfDir = new File(SystemProperties.get("user.dir"), "conf");
+        File defaultDevConfDir = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/conf");
+        // end change
         try {
             if (devConfig
             		// PLUNDEN: Removing the context
                     // && ContextHolder.getContext().getConfDirectory().getCanonicalFile().equals(
-            		&& new File(SystemProperties.get("adito.directories.conf", "conf")).getCanonicalFile().equals(
+            		&& new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.conf", "conf")).getCanonicalFile().equals(
                     // end change
                                 defaultDevConfDir.getCanonicalFile())) {
                 throw new ServletException("When running in developmenet mode, you may NOT use "

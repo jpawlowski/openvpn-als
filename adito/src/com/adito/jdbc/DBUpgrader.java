@@ -46,6 +46,7 @@ import com.adito.boot.PropertyPreferences;
 import com.adito.boot.SystemProperties;
 import com.adito.boot.Util;
 import com.adito.boot.VersionInfo;
+import com.adito.core.CoreServlet;
 
 /**
  * Checks database schemas to see if they are up to date, running the database
@@ -134,7 +135,7 @@ public class DBUpgrader {
              */
         	// PLUNDEN: Removing the context
             // versionsFile = new File(ContextHolder.getContext().getDBDirectory(), "versions.log");
-        	versionsFile = new File(SystemProperties.get("adito.directories.db", "db"), "versions.log");
+        	versionsFile = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.db", "db"), "versions.log");
             // end change
         	// PLUNDEN: Removing the context
             // Preferences p = ContextHolder.getContext().getPreferences().node("dbupgrader");
@@ -144,7 +145,7 @@ public class DBUpgrader {
                 log.warn("Migrating database versions from preferences to properties file in "
                 		// PLUNDEN: Removing the context
                         // + ContextHolder.getContext().getDBDirectory().getAbsolutePath() + ".");
-                		+ new File(SystemProperties.get("adito.directories.db", "db")).getAbsolutePath() + ".");
+                		+ new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.db", "db")).getAbsolutePath() + ".");
                         // end change        
                 versions = new Properties();
                 p = p.node("currentDataVersion");

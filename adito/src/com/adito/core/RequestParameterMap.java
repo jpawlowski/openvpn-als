@@ -484,7 +484,7 @@ public class RequestParameterMap extends MultiMap {
     private void initMultipart(String contentType, InputStream in) throws IOException, FileNotFoundException {
     	// PLUNDEN: Removing the context
         // multipartFile = new File(ContextHolder.getContext().getTempDirectory(), "mpr" + ( tempIdx++ ) + ".tmp");
-    	multipartFile = new File(SystemProperties.get("adito.directories.tmp", "tmp"), "mpr" + ( tempIdx++ ) + ".tmp");
+    	multipartFile = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.tmp", "tmp"), "mpr" + ( tempIdx++ ) + ".tmp");
         // end change
         FileOutputStream mpOut = new FileOutputStream(multipartFile);
 

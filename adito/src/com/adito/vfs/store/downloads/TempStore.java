@@ -11,6 +11,7 @@ import org.apache.commons.vfs.FileObject;
 
 import com.adito.boot.ContextHolder;
 import com.adito.boot.SystemProperties;
+import com.adito.core.CoreServlet;
 import com.adito.core.CoreUtil;
 import com.adito.policyframework.LaunchSession;
 import com.adito.security.PasswordCredentials;
@@ -72,7 +73,7 @@ public class TempStore extends AbstractStore {
     public Collection<String> getMountNames() throws Exception {
     	// PLUNDEN: Removing the context
 		// File tempDownloadDirectory = new File(ContextHolder.getContext().getTempDirectory(), TempStore.TEMP_DOWNLOAD_MOUNT_NAME);
-    	File tempDownloadDirectory = new File(SystemProperties.get("adito.directories.tmp", "tmp"), TempStore.TEMP_DOWNLOAD_MOUNT_NAME);
+    	File tempDownloadDirectory = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.tmp", "tmp"), TempStore.TEMP_DOWNLOAD_MOUNT_NAME);
 	    // end change
         File[] dirs = tempDownloadDirectory.listFiles(new FileFilter() {
 			public boolean accept(File pathname) {

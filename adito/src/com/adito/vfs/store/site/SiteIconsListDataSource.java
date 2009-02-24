@@ -28,6 +28,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.adito.boot.ContextHolder;
 import com.adito.boot.SystemProperties;
+import com.adito.core.CoreServlet;
 import com.adito.properties.Pair;
 import com.adito.properties.PairListDataSource;
 
@@ -36,7 +37,7 @@ public class SiteIconsListDataSource implements PairListDataSource {
 	public List getValues(HttpServletRequest request) {
 		// PLUNDEN: Removing the context
 		// File dir = new File(new File(ContextHolder.getContext().getConfDirectory(), "site"), "icons");
-		File dir = new File(new File(SystemProperties.get("adito.directories.conf", "conf"), "site"), "icons");
+		File dir = new File(new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.conf", "conf"), "site"), "icons");
 	    // end change
 		List l = new ArrayList();
 		l.add(new Pair("default", "Default"));

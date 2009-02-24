@@ -14,6 +14,8 @@ import java.util.HashMap;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.adito.core.CoreServlet;
+
 /**
  * Implementation of a {@link com.adito.boot.Repository} that uses
  * local files for storage. This implementation would <b>not</b> not 
@@ -50,7 +52,10 @@ public class LocalRepository implements Repository {
 		}
 		
 		if(basedir==null) {
-			basedir = new File(ContextHolder.getContext().getConfDirectory(), "repository");
+			// PLUNDEN: Removing the context
+	        // basedir = new File(ContextHolder.getContext().getConfDirectory(), "repository");
+			basedir = new File((String)CoreServlet.getServlet().getServletContext().getAttribute("adito.directories.conf"), "repository");
+			// end change
 		    basedir.mkdirs();
 		}
 
