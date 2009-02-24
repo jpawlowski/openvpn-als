@@ -7,7 +7,8 @@
 
 
     <!-- Local properties -->
-    <property name="final.name" value="adito-commons-vfs" />
+	<!-- NOTE This Code use Old Apache Commons VFS. This is not required for new Apache Commons VFS -->
+    <!--<property name="final.name" value="adito-commons-vfs" />-->
 
     <path id="build.classpath">
 		<pathelement path="${dir.maverick-util.classes}"/>
@@ -59,8 +60,11 @@
 	
     <target name="jar" description="o Create the jar" depends="compile,test">
         <mkdir dir="${dir.build.dist}"/>
-        <jar jarfile="${dir.build.dist}/${final.name}.jar" excludes="**/package.html" basedir="${dir.build.classes}">
+    	<!-- NOTE This Code use Old Apache Commons VFS source. This is not required for new Apache Commons VFS -->
+		<!--
+        <jar jarfile="${dir.build.dist}/${final.name}.jar" excludes="**/package.html" basedir="${dir.build.classes}">        	
         </jar>
+        -->
         <copy todir="${dir.build.dist}">
             <fileset dir="${dir.lib}">
                 <include name="jcifs*.jar">

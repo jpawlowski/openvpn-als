@@ -313,6 +313,10 @@ public class NetworkPlacePlugin extends DefaultPlugin {
 		/*
 		((StandardFileSystemManager)VFS.getManager()).addProvider("webdav", new WebdavFileProvider());
 		*/
+		//
+
+		//NOTE: This Code for Old Apache Commons VFS
+		/*
 		((StandardFileSystemManager)VFS.getManager()).addProvider("jar", new JarFileProvider());
 		((StandardFileSystemManager)VFS.getManager()).addProvider("zip", new ZipFileProvider());
 		((StandardFileSystemManager)VFS.getManager()).addProvider("tar", new TarFileProvider());
@@ -321,7 +325,19 @@ public class NetworkPlacePlugin extends DefaultPlugin {
 		((StandardFileSystemManager)VFS.getManager()).addProvider("gz", new GzipFileProvider());
 		((StandardFileSystemManager)VFS.getManager()).addProvider("tmp", new TemporaryFileProvider());
 		((StandardFileSystemManager)VFS.getManager()).addProvider(new String[] { "bzip2", "bz2" }, new Bzip2FileProvider());
+		*/
 		
+		//NOTE: This Code for Apache Commons VFS
+		StandardFileSystemManager sfsm = new StandardFileSystemManager();
+		sfsm.addProvider("jar", new JarFileProvider());
+		sfsm.addProvider("zip", new ZipFileProvider());
+		sfsm.addProvider("tar", new TarFileProvider());
+		sfsm.addProvider("tgz", new TgzFileProvider());
+		sfsm.addProvider("tbz2", new Tbz2FileProvider());
+		sfsm.addProvider("gz", new GzipFileProvider());
+		sfsm.addProvider("tmp", new TemporaryFileProvider());
+		sfsm.addProvider(new String[] { "bzip2", "bz2" }, new Bzip2FileProvider());
+	
 		mgr.registerProvider(new FileProvider());
 		mgr.registerProvider(new FTPProvider());
 		mgr.registerProvider(new CIFSProvider());

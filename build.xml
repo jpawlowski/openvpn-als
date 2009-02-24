@@ -25,7 +25,10 @@ For a list of Ant targets, use "ant -projecthelp"
 
 	<target name="clean" description="Removes compiled files">
 		<ant dir="${adito.home}" target="clean"/>
+		<!-- NOTE This Code use Old Apache Commons VFS. This is not required for new Apache Commons VFS -->
+		<!--
 		<ant dir="adito-commons-vfs" target="clean"/>
+		-->
 		<ant dir="adito-community-activedirectory" target="clean"/>
 		<ant dir="adito-community-applications" target="clean"/>
 		<ant dir="adito-community-network-places" target="clean"/>
@@ -43,7 +46,8 @@ For a list of Ant targets, use "ant -projecthelp"
 	<!-- Warning: there's no target to remove the generated HTML files yet -->
 	<target name="javadoc" description="Generate javadocs for everything">
 		<ant dir="${adito.home}" target="javadoc"/>
-		<ant dir="adito-commons-vfs" target="javadoc"/>
+		<!-- NOTE This Code use Old Apache Commons VFS. This is not required for new Apache Commons VFS -->
+		<!--<ant dir="adito-commons-vfs" target="javadoc"/>-->
 		<ant dir="adito-community-activedirectory" target="javadoc"/>
 		<ant dir="adito-community-applications" target="javadoc"/>
 		<ant dir="adito-community-network-places" target="javadoc"/>

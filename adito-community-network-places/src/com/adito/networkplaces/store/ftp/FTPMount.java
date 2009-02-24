@@ -53,7 +53,9 @@ public class FTPMount extends AbstractNetworkPlaceMount {
         String mode = Property.getProperty(new ResourceKey("ftp.mode", this.getNetworkPlace().getResourceType(), this.getNetworkPlace().getResourceId()));
         c.setPassiveMode(options, mode.equals("passive"));
         int idleTimeout = Property.getPropertyInt(new ResourceKey("ftp.idleTimeout", getNetworkPlace().getResourceType(), getNetworkPlace().getResourceId()));
-        c.setIdleTimeout(options, idleTimeout);
+        //NOTE New Apache-commons-vfs does not support setIdleTimeout(options, idleTimeout)
+        //c.setIdleTimeout(options, idleTimeout);
+        c.setDataTimeout(options, idleTimeout);
         // TODO: Add resource attribute for all these settings.
         c.setUserDirIsRoot(options, true);
         String hostType = Property.getProperty(new ResourceKey("ftp.hostType", this.getNetworkPlace().getResourceType(), this.getNetworkPlace().getResourceId()));
