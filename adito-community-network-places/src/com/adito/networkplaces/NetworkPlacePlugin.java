@@ -17,7 +17,7 @@
  *  License along with this program; if not, write to the Free Software
  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
-			
+
 package com.adito.networkplaces;
 
 import javax.servlet.http.HttpServletRequest;
@@ -77,6 +77,8 @@ import com.adito.security.SessionInfo;
 import com.adito.table.TableItemActionMenuTree;
 import com.adito.vfs.VFSProviderManager;
 import com.adito.vfs.utils.UploadHandlerFactory;
+import com.adito.networkplaces.store.sftp.SFTPProvider;
+
 
 /**
  * Plugin implementation thats the <i>Network Places</i> feature.
@@ -114,7 +116,7 @@ public class NetworkPlacePlugin extends DefaultPlugin {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see com.adito.plugin.DefaultPlugin#startPlugin()
 	 */
 	public void activatePlugin() throws ExtensionException {
@@ -307,9 +309,9 @@ public class NetworkPlacePlugin extends DefaultPlugin {
 
 	void initFileSystems() throws FileSystemException {
 		VFSProviderManager mgr = VFSProviderManager.getInstance();
-		
+
 		// Intialise the additional commons vfs providers
-		
+
 		/*
 		((StandardFileSystemManager)VFS.getManager()).addProvider("webdav", new WebdavFileProvider());
 		*/
@@ -326,7 +328,7 @@ public class NetworkPlacePlugin extends DefaultPlugin {
 		((StandardFileSystemManager)VFS.getManager()).addProvider("tmp", new TemporaryFileProvider());
 		((StandardFileSystemManager)VFS.getManager()).addProvider(new String[] { "bzip2", "bz2" }, new Bzip2FileProvider());
 		*/
-		
+
 		//NOTE: This Code for Apache Commons VFS
 		StandardFileSystemManager sfsm = new StandardFileSystemManager();
 		sfsm.addProvider("jar", new JarFileProvider());
@@ -337,9 +339,10 @@ public class NetworkPlacePlugin extends DefaultPlugin {
 		sfsm.addProvider("gz", new GzipFileProvider());
 		sfsm.addProvider("tmp", new TemporaryFileProvider());
 		sfsm.addProvider(new String[] { "bzip2", "bz2" }, new Bzip2FileProvider());
-	
+
 		mgr.registerProvider(new FileProvider());
 		mgr.registerProvider(new FTPProvider());
+		mgr.registerProvider(new SFTPProvider());//For SFTP Drive Mapping
 		mgr.registerProvider(new CIFSProvider());
 		mgr.registerProvider(new JarProvider());
 		mgr.registerProvider(new ZipProvider());
@@ -357,11 +360,11 @@ public class NetworkPlacePlugin extends DefaultPlugin {
 	void initUploadHandler() {
 		UploadHandlerFactory.getInstance().addHandler(NetworkPlaceUploadHandler.TYPE_VFS, NetworkPlaceUploadHandler.class);
 	}
-	
+
 	void initTagLib() {
 		ContextHolder.getContext().setResourceAlias("/server/taglibs/vfs", "/WEB-INF/vfs.tld");
 	}
-    
+
     public void stopPlugin() throws ExtensionException {
         super.stopPlugin();
         try {
@@ -390,6 +393,7 @@ public class NetworkPlacePlugin extends DefaultPlugin {
         VFSProviderManager mgr = VFSProviderManager.getInstance();
         mgr.deregisterProvider(FileStore.FILE_SCHEME);
         mgr.deregisterProvider(FTPStore.FTP_SCHEME);
+        mgr.deregisterProvider(SFTPStore.SFTP_SCHEME);//For SFTP Drive Mapping
         mgr.deregisterProvider(CIFSStore.CIFS_SCHEME);
         mgr.deregisterProvider(WebDAVStore.WEBDAV_SCHEME);
         mgr.deregisterProvider(JarStore.JAR_SCHEME);
@@ -437,7 +441,7 @@ public class NetworkPlacePlugin extends DefaultPlugin {
         NetworkPlaceDatabaseFactory.getInstance().close();
     }
 
-	
+
 	class WriteRequiredFileSystemPageTask extends MenuItem {
 		private WriteRequiredFileSystemPageTask(String id, String key, String path, int weight, boolean leaf, String target, int context) {
 			super(id, key, path, weight, leaf, target, context);
@@ -453,7 +457,7 @@ public class NetworkPlacePlugin extends DefaultPlugin {
 		}
 	}
 
-	
+
 	class DeleteRequiredFileSystemPageTask extends WriteRequiredFileSystemPageTask {
 		private DeleteRequiredFileSystemPageTask(String id, String key, String path, int weight, boolean leaf, String target, int context) {
 			super(id, key, path, weight, leaf, target, context);
