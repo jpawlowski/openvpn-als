@@ -35,6 +35,7 @@ import org.apache.commons.vfs.provider.tar.Tbz2FileProvider;
 import org.apache.commons.vfs.provider.tar.TgzFileProvider;
 import org.apache.commons.vfs.provider.temp.TemporaryFileProvider;
 import org.apache.commons.vfs.provider.zip.ZipFileProvider;
+import org.apache.commons.vfs.provider.sftp.SftpFileProvider;
 
 import com.adito.agent.DefaultAgentManager;
 import com.adito.boot.ContextHolder;
@@ -62,6 +63,9 @@ import com.adito.networkplaces.store.tar.TarStore;
 import com.adito.networkplaces.store.webdav.WebDAVStore;
 import com.adito.networkplaces.store.zip.ZipProvider;
 import com.adito.networkplaces.store.zip.ZipStore;
+import com.adito.networkplaces.store.sftp.SFTPStore;
+import com.adito.networkplaces.store.sftp.SFTPProvider;
+
 import com.adito.policyframework.Permission;
 import com.adito.policyframework.PolicyConstants;
 import com.adito.policyframework.PolicyDatabase;
@@ -77,7 +81,6 @@ import com.adito.security.SessionInfo;
 import com.adito.table.TableItemActionMenuTree;
 import com.adito.vfs.VFSProviderManager;
 import com.adito.vfs.utils.UploadHandlerFactory;
-import com.adito.networkplaces.store.sftp.SFTPProvider;
 
 
 /**
