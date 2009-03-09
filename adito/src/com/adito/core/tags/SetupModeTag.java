@@ -32,7 +32,10 @@ public class SetupModeTag extends TagSupport {
   }
 
   public int doStartTag() {
-    if (ContextHolder.getContext().isSetupMode()) {
+	// PLUNDEN: Removing the context
+	// if (ContextHolder.getContext().isSetupMode()) {
+	  if (false) {
+	// end change
       return requiresSetupMode ? EVAL_BODY_INCLUDE : SKIP_BODY;
     } else {
       return requiresSetupMode ? SKIP_BODY : EVAL_BODY_INCLUDE;

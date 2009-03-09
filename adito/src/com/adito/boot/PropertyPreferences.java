@@ -52,7 +52,7 @@ public class PropertyPreferences extends AbstractPreferences {
 	// PLUNDEN: Removing the context
     // public final static Preferences SYSTEM_ROOT = new PropertyPreferences(new File(new File(ContextHolder.getContext().getConfDirectory(), "prefs"), "system"));
 	public final static Preferences SYSTEM_ROOT = new PropertyPreferences(
-			new File(new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.conf", "conf"), "prefs"), "system"));
+			new File(new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.conf", "conf"), "prefs"), "system"));
     // end change
     
     /**
@@ -61,7 +61,7 @@ public class PropertyPreferences extends AbstractPreferences {
 	// PLUNDEN: Removing the context
     // public final static Preferences USER_ROOT = new PropertyPreferences(new File(new File(ContextHolder.getContext().getConfDirectory(), "prefs"), "system"));
 	public final static Preferences USER_ROOT = new PropertyPreferences(
-			new File(new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.conf", "conf"), "prefs"), "system"));
+			new File(new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.conf", "conf"), "prefs"), "system"));
     // end change
     
     private static final String[] EMPTY_STRING_ARRAY = new String[0];

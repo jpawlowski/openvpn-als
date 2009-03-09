@@ -31,7 +31,7 @@ public class SSLCipherSuitesDataSource implements MultiSelectDataSource {
 			
 			// PLUNDEN: Removing the context
 	        // File f = new File(ContextHolder.getContext().getTempDirectory(), "availableCipherSuites.txt");
-			File f = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.tmp", "tmp"), "availableCipherSuites.txt");
+			File f = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.tmp", "tmp"), "availableCipherSuites.txt");
 	        // end change
 			BufferedReader reader = null;
 			

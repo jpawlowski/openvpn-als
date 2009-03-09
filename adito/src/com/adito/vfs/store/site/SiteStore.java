@@ -37,7 +37,7 @@ public class SiteStore extends AbstractStore {
 		super("site", "UTF-8");
 		// PLUNDEN: Removing the context
 		// siteDir = new File(ContextHolder.getContext().getConfDirectory(), "site");
-		siteDir = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.conf", "conf"), "site");
+		siteDir = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.conf", "conf"), "site");
 	    // end change
 		if(!siteDir.exists()) {
 			siteDir.mkdirs();

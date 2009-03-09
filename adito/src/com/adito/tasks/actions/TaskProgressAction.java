@@ -56,7 +56,10 @@ public class TaskProgressAction extends AuthenticatedDispatchAction {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST);
             return null;
         }
-        if(ContextHolder.getContext().isSetupMode()) {
+        // PLUNDEN: Removing the context
+		// if(ContextHolder.getContext().isSetupMode()) {
+        if(false) {
+		// end change
             // No need to check session
         }
         else {

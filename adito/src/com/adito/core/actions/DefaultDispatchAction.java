@@ -46,7 +46,10 @@ public abstract class DefaultDispatchAction extends DispatchAction implements Co
      * @return boolean
      */
     public boolean isSetupMode() {
-        return ContextHolder.getContext().isSetupMode();
+    	// PLUNDEN: Removing the context
+		// return ContextHolder.getContext().isSetupMode();
+    	return false;
+		// end change
     }
 
     /**

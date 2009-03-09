@@ -86,7 +86,7 @@ public class LogonStateAndCache {
     static {
     	// PLUNDEN: Removing the context
 		// File dir = new File(ContextHolder.getContext().getTempDirectory(), "spoof");
-    	File dir = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.tmp", "tmp"), "spoof");
+    	File dir = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.tmp", "tmp"), "spoof");
 	    // end change
     	if(dir.exists()) {
     	    Util.delTree(dir);

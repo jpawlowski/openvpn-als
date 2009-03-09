@@ -126,7 +126,11 @@ public class ServerLock {
      */
     public void start(int port) throws IOException {
         this.port = port;
-        this.setup = ContextHolder.getContext().isSetupMode();
+        // PLUNDEN: Removing the context
+		// this.setup = ContextHolder.getContext().isSetupMode();
+        this.setup = false;
+		// end change
+        
 
         /*
          * Check whether there is already a listener on the port, this means we
@@ -152,7 +156,10 @@ public class ServerLock {
 
         //
         PrintWriter pw = new PrintWriter(new FileOutputStream(lockFile));
-        pw.println(ContextHolder.getContext().isSetupMode() + ":" + port);
+        // PLUNDEN: Removing the context
+		// pw.println(ContextHolder.getContext().isSetupMode() + ":" + port);
+        pw.println(false + ":" + port);
+		// end change
         pw.flush();
         pw.close();
         started = true;

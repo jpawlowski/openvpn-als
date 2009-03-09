@@ -60,7 +60,10 @@ public abstract class DefaultAction extends Action implements CoreAction {
      * @return in install mode
      */
     public boolean isInstallMode() {
-        return ContextHolder.getContext().isSetupMode();
+    	// PLUNDEN: Removing the context
+		// return ContextHolder.getContext().isSetupMode();
+    	return false;
+		// end change
     }
 
     /**

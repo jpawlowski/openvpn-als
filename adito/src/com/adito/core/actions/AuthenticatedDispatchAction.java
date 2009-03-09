@@ -113,7 +113,10 @@ public abstract class AuthenticatedDispatchAction extends DefaultDispatchAction 
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
                     throws Exception {
         // Setup mode
-        boolean setupMode = ContextHolder.getContext().isSetupMode();
+    	// PLUNDEN: Removing the context
+		// boolean setupMode = ContextHolder.getContext().isSetupMode();
+		boolean setupMode = false;
+		// end change
         if (setupMode) {
             if ((getNavigationContext(mapping, form, request, response) & SessionInfo.SETUP_CONSOLE_CONTEXT) == 0) {
                 return mapping.findForward("setup");

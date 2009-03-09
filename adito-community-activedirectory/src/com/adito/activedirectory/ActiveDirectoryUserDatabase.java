@@ -615,7 +615,10 @@ public class ActiveDirectoryUserDatabase extends DefaultUserDatabase implements 
     public void coreEvent(CoreEvent event) {
         // When in install mode, the wizard looks after re-initialising the user
         // database
-        if (!ContextHolder.getContext().isSetupMode() && event instanceof PropertyChangeEvent) {
+    	// PLUNDEN: Removing the context
+		// if (!ContextHolder.getContext().isSetupMode() && event instanceof PropertyChangeEvent) {
+    	if (!false && event instanceof PropertyChangeEvent) {
+		// end change
             PropertyChangeEvent changeEvent = (PropertyChangeEvent) event;
             if (changeEvent.getDefinition().getName().startsWith("activeDirectory.")) {
                 if (logger.isInfoEnabled()) {

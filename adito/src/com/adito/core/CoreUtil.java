@@ -120,7 +120,7 @@ public class CoreUtil {
     public static File getTempDownloadDirectory(SessionInfo session) throws Exception {
     	// PLUNDEN: Removing the context
         // final File tempDownloadDirectory = new File(ContextHolder.getContext().getTempDirectory(), TempStore.TEMP_DOWNLOAD_MOUNT_NAME);
-    	final File tempDownloadDirectory = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.tmp", "tmp"), TempStore.TEMP_DOWNLOAD_MOUNT_NAME);
+    	final File tempDownloadDirectory = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.tmp", "tmp"), TempStore.TEMP_DOWNLOAD_MOUNT_NAME);
         // end change
         // create the download store if it does not exist.
         if (!tempDownloadDirectory.exists()) {        	
@@ -776,7 +776,10 @@ public class CoreUtil {
     public static void checkNavigationContext(CoreAction action, ActionMapping mapping, ActionForm form,
                                               HttpServletRequest request, HttpServletResponse response) throws Exception {
         int navigationContext = action.getNavigationContext(mapping, form, request, response);
-        if (!ContextHolder.getContext().isSetupMode()) {
+        // PLUNDEN: Removing the context
+		// if (ContextHolder.getContext().isSetupMode()) {
+		if (false) {
+		// end change
             SessionInfo info = LogonControllerFactory.getInstance().getSessionInfo(request);
             if ((navigationContext & info.getNavigationContext()) == 0) {
                 if ((navigationContext & SessionInfo.MANAGEMENT_CONSOLE_CONTEXT) != 0) {                	
@@ -1044,7 +1047,7 @@ public class CoreUtil {
                 + "this you will have to alter "
                 // PLUNDEN: Removing the context
                 // + ContextHolder.getContext().getConfDirectory().getAbsolutePath()
-                + new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.conf", "conf")).getAbsolutePath()
+                + new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.conf", "conf")).getAbsolutePath()
                 // end change
                 + File.separator
                 + "wrapper.conf to include the additional library path '"

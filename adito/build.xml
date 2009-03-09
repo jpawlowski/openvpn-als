@@ -13,22 +13,22 @@
 	<property name="dir.build" value="build" />
 	<property name="dist.dir" value="dist" />
 	<property name="dir.lib" value="lib" />
-	<property name="build.serverlib" value="serverlib" />
+	<property name="build.serverlib" value="lib" />
 	<property name="build.doc" value="${dir.build}/doc" />
 	<property name="build.webapp.lib" value="webapp/WEB-INF/lib" />
-	<property name="build.boot.output" value="${dir.build}/boot" />
+	<property name="build.boot.output" value="${dir.build}" />
 	<property name="build.jsp.output" value="${dir.build}/jsp" />
 	<property name="build.jsp.classes.output" value="${dir.build}/jspclasses" />
 	<property name="build.jsp.mappings.output" value="${dir.build}/gen" />
 	<property name="build.jsp.mappings.file" value="${build.jsp.mappings.output}/mappings.xml" />
-	<property name="build.tools.output" value="${dir.build}/tools" />
-	<property name="build.server.output" value="${dir.build}/server" />
-	<property name="build.webapp.output" value="${dir.build}/webapp" />
+	<property name="build.tools.output" value="${dir.build}" />
+	<property name="build.server.output" value="${dir.build}" />
+	<property name="build.webapp.output" value="${dir.build}" />
 	<property name="build.output.instrumented" value="${dir.build}/instrumented" />
 	<property name="build.output.test" value="${dir.build}/test" />
 	<property name="build.webapp.deploy" value="webapp/WEB-INF/classes" />
-	<property name="build.boot.src" value="boot/src" />
-	<property name="build.server.src" value="server/src" />
+	<property name="build.boot.src" value="src" />
+	<property name="build.server.src" value="src" />
 	<property name="build.webapp.src" value="src" />
 	<property name="build.test.src" value="test/src" />
 	<property name="build.tools.home" value="tools" />
@@ -643,43 +643,6 @@
 		</if>
 	</target>
 
-	<!-- Run the upgrader utility -->
-	<target name="upgrader" depends="compile-upgrader">
-		<!-- Fall back to manually executing -->
-		<input message="Enter the directory where the old Adito 0.1.15+ installation is (or just hit ENTER to attempt to run GUI front end)" addproperty="upgrader.old">
-		</input>
-		<if>
-			<equals arg1="${upgrader.old}" arg2="" />
-			<then>
-				<java spawn="true" fork="true" classname="com.adito.upgrade.Upgrade">
-					<classpath>
-						<pathelement path="${build.tools.output}" />
-						<fileset dir="${dir.lib}">
-							<include name="commons-logging.jar" />
-						</fileset>
-						<fileset dir="${build.webapp.lib}">
-							<include name="hsqldb.jar" />
-						</fileset>
-					</classpath>
-				</java>
-			</then>
-			<else>
-				<java logerror="true" classname="com.adito.upgrade.Upgrade">
-					<arg value="${upgrader.old}" />
-					<arg value="${basedir}" />
-					<classpath>
-						<pathelement path="${build.tools.output}" />
-						<fileset dir="${dir.lib}">
-							<include name="commons-logging.jar" />
-						</fileset>
-						<fileset dir="${build.webapp.lib}">
-							<include name="hsqldb.jar" />
-						</fileset>
-					</classpath>
-				</java>
-			</else>
-		</if>
-	</target>
 
 	<!-- Run the HSQLDB manager -->
 	<target name="hsqldb-manager">
@@ -761,13 +724,13 @@
 	</target>
 
 	<!-- Compile everything -->
-	<target name="compile" depends="compile-dependencies,compile-boot,compile-server,compile-webapp">
+	<target name="compile" depends="compile-dependencies,compile-webapp">
 	</target>
 
 
 
 	<!-- Compile everything to distribute adito -->
-	<target name="compile-for-dist" depends="dist-dependencies,compile-boot,compile-server,compile-webapp,local-deploy">
+	<target name="compile-for-dist" depends="dist-dependencies,compile-webapp,local-deploy">
 	</target>
 
 	<!-- Compile everything for distribute adito -->
@@ -898,83 +861,6 @@
 
 	</target>
 
-	<!-- Compile the boot classes  -->
-
-	<target name="compile-boot">
-		<mkdir dir="${build.boot.output}" />
-		<javac compiler="${build.compiler}" destdir="${build.boot.output}" srcdir="${build.boot.src}" includeantruntime="false" includes="**/*.java" debug="${build.debug}">
-			<classpath>
-				<pathelement path="${dir.maverick-crypto.classes}" />
-				<pathelement path="${dir.maverick-ssl.classes}" />
-				<fileset dir="${dir.lib}">
-					<include name="commons-logging.jar" />
-					<include name="javax.servlet.jar" />
-					<include name="jdom.jar" />
-				</fileset>
-			</classpath>
-		</javac>
-		<copy todir="${build.boot.output}">
-			<fileset dir="${build.boot.src}">
-				<include name="**/*.xml" />
-				<include name="**/*.properties" />
-			</fileset>
-			<fileset dir="${build.boot.src}">
-				<include name="**/*.xml" />
-				<include name="**/*.properties" />
-			</fileset>
-		</copy>
-	</target>
-
-	<!-- Compile the upgrader utility  -->
-
-	<target name="compile-upgrader">
-		<mkdir dir="${build.tools.output}" />
-		<javac compiler="${build.compiler}" destdir="${build.tools.output}" srcdir="${build.tools.home}/upgrader/src" includeantruntime="false" includes="**/*.java" debug="${build.debug}">
-			<classpath>
-				<fileset dir="${dir.lib}">
-					<include name="commons-logging.jar" />
-				</fileset>
-				<fileset dir="${build.webapp.lib}">
-					<include name="hsqldb.jar" />
-				</fileset>
-			</classpath>
-		</javac>
-		<copy todir="${build.tools.output}">
-			<fileset dir="${build.tools.home}/upgrader/src">
-				<include name="**/*.png" />
-			</fileset>
-		</copy>
-	</target>
-
-	<!-- Compile the server classes  -->
-
-	<target name="compile-server">
-		<mkdir dir="${build.server.output}" />
-		<javac compiler="${build.compiler}" destdir="${build.server.output}" srcdir="${build.server.src}" includeantruntime="false" debug="${build.debug}" includes="**/*.java">
-			<classpath>
-				<pathelement path="${build.boot.output}" />
-				<fileset dir="${build.serverlib}">
-					<include name="org.mortbay.jetty.jar" />
-					<include name="wrapper.jar" />
-				</fileset>
-				<fileset dir="${dir.lib}">
-					<include name="javax.servlet.jar" />
-					<include name="commons-logging.jar" />
-					<include name="jdom.jar" />
-					<include name="ant.jar" />
-					<include name="ant-nodeps.jar" />
-					<include name="jasper-compiler.jar" />
-					<include name="jasper-runtime.jar" />
-				</fileset>
-			</classpath>
-		</javac>
-		<copy todir="${build.server.output}">
-			<fileset dir="${build.server.src}">
-				<include name="**/*.xml" />
-				<include name="**/*.properties" />
-			</fileset>
-		</copy>
-	</target>
 
 	<!-- Compile the webapp classes  -->
 
@@ -982,7 +868,6 @@
 		<mkdir dir="${build.webapp.output}" />
 		<javac compiler="${build.compiler}" destdir="${build.webapp.output}" srcdir="${build.webapp.src}" includeantruntime="false" debug="${build.debug}" includes="**/*.java">
 			<classpath>
-				<pathelement path="${build.boot.output}" />
 				<pathelement path="${dir.maverick-crypto.classes}" />
 				<pathelement path="${dir.maverick-ssl.classes}" />
 				<pathelement path="${dir.maverick-multiplex.classes}" />
@@ -1002,6 +887,7 @@
 				<include name="**/*.properties" />
 				<include name="**/*.types" />
 				<include name="**/*.props" />
+				<include name="**/*.png" />
 			</fileset>
 		</copy>
 	</target>

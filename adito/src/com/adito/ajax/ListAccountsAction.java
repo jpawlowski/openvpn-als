@@ -69,7 +69,10 @@ public class ListAccountsAction extends AbstractAjaxXMLAction {
     protected void onAjaxRequest(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response,
                                  AjaxXmlBuilder builder) throws Exception {
         UserDatabase userDatabase;
-        if (ContextHolder.getContext().isSetupMode()) {
+        // PLUNDEN: Removing the context
+		// if (ContextHolder.getContext().isSetupMode()) {
+		if (false) {
+		// end change
             AbstractWizardSequence sequence = (AbstractWizardSequence) request.getSession().getAttribute(Constants.WIZARD_SEQUENCE);
             if (sequence == null) {
                 log.error("No wizard sequence, cannot list users.");

@@ -66,7 +66,10 @@ public class ListRolesAction extends AbstractAjaxXMLAction {
     protected void onAjaxRequest(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response,
                                  AjaxXmlBuilder builder) throws Exception {
         UserDatabase userDatabase;
-        if (ContextHolder.getContext().isSetupMode()) {
+     // PLUNDEN: Removing the context
+		// if (ContextHolder.getContext().isSetupMode()) {
+		if (false) {
+		// end change
             userDatabase = UserDatabaseManager.getInstance().getDefaultUserDatabase();
         } else {
             Realm realm = LogonControllerFactory.getInstance().getUser(request).getRealm();

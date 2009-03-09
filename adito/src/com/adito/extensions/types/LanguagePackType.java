@@ -13,6 +13,7 @@ import org.jdom.Element;
 import com.adito.boot.ContextHolder;
 import com.adito.boot.SystemProperties;
 import com.adito.boot.Util;
+import com.adito.core.CoreServlet;
 import com.adito.extensions.ExtensionDescriptor;
 import com.adito.extensions.ExtensionException;
 import com.adito.extensions.ExtensionType;
@@ -103,7 +104,10 @@ public class LanguagePackType implements ExtensionType {
             if(!classpathAdded) {
                 for (Iterator j = packDefinition.getClassPath().iterator(); j.hasNext();) {
                     URL u = (URL) j.next();
-                    ContextHolder.getContext().addContextLoaderURL(u);
+                    // PLUNDEN: Removing the context
+			        // ContextHolder.getContext().addContextLoaderURL(u);
+					CoreServlet.getServlet().addContextLoaderURL(u);
+			        // end change
                 }
                 classpathAdded = true;
             }

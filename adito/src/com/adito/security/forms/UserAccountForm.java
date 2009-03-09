@@ -341,7 +341,10 @@ public class UserAccountForm extends CoreForm implements TabModel {
             }
             User currentUser;
             try {
-                currentUser = ContextHolder.getContext().isSetupMode() ? null : LogonControllerFactory.getInstance().getUser(
+            	// PLUNDEN: Removing the context
+        		// currentUser = ContextHolder.getContext().isSetupMode() ? null : LogonControllerFactory.getInstance().getUser(
+            	currentUser = false ? null : LogonControllerFactory.getInstance().getUser(
+        		// end change
                     request);
                 if (currentUser != null && getEditing() && currentUser.getPrincipalName().equals(getUsername())) {
                     // Make sure there is at least one enabled account

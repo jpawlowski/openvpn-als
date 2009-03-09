@@ -403,7 +403,10 @@ public class MenuItem implements Comparable {
      * @return item is available
      */
     public boolean isAvailable(int checkNavigationContext, SessionInfo info, HttpServletRequest request) {
-        if ((ContextHolder.getContext().isSetupMode() && ((navigationContext & SessionInfo.SETUP_CONSOLE_CONTEXT) != 0))
+    	// PLUNDEN: Removing the context
+		//         if ((ContextHolder.getContext().isSetupMode() && ((navigationContext & SessionInfo.SETUP_CONSOLE_CONTEXT) != 0))
+        if ((false && ((navigationContext & SessionInfo.SETUP_CONSOLE_CONTEXT) != 0))
+		// end change
                         || (navigationContext & checkNavigationContext) != 0 || navigationContext == 0 ) {
             
             // not available if there are no granted resources.

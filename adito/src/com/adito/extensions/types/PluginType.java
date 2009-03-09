@@ -330,7 +330,10 @@ public class PluginType implements ExtensionType {
 	        // Add to the classpath and native search path
 	        if (!classpathAdded) {
 	            for (URL url : def.getClassPath()) {
-	                ContextHolder.getContext().addContextLoaderURL(url);
+	            	// PLUNDEN: Removing the context
+			        // ContextHolder.getContext().addContextLoaderURL(url);
+					CoreServlet.getServlet().addContextLoaderURL(url);
+			        // end change
 	            }
 	            addNativeDirs(def);
 	            classpathAdded = true;

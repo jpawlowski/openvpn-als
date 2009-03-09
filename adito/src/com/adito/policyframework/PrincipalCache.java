@@ -173,7 +173,7 @@ public class PrincipalCache<T extends Principal> {
     protected final Cache createCache(String messageBundle, String cacheFullText) {
     	// PLUNDEN: Removing the context
 		// File cacheDirectory = new File(ContextHolder.getContext().getTempDirectory(), "cache");
-    	File cacheDirectory = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.tmp", "tmp"), "cache");
+    	File cacheDirectory = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.tmp", "tmp"), "cache");
 	    // end change
         File cacheTypeDirectory = new File(cacheDirectory, cacheType);
         Stash stash = inMemoryCache ? new MemoryStash(cacheSize) : new FileStash(Long.MAX_VALUE, cacheSize, new File[]{cacheTypeDirectory}, true);

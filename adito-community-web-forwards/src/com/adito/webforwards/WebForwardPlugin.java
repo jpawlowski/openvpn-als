@@ -223,7 +223,10 @@ public class WebForwardPlugin extends DefaultPlugin {
 
 	void initService() throws InstantiationException, IllegalAccessException {
 		// Register CONNECT handler
-		if (!ContextHolder.getContext().isSetupMode()) {
+		// PLUNDEN: Removing the context
+		// if (!ContextHolder.getContext().isSetupMode()) {
+		if (!false) {
+		// end change
 			ContextHolder.getContext().registerRequestHandler(new ReverseProxyMethodHandler());
 			ContextHolder.getContext().registerRequestHandler(new ReplacementProxyMethodHandler());
 		}
@@ -247,7 +250,10 @@ public class WebForwardPlugin extends DefaultPlugin {
 
 	private void stopService() {
 		// Register CONNECT handler
-		if (!ContextHolder.getContext().isSetupMode()) {
+		// PLUNDEN: Removing the context
+		// if (ContextHolder.getContext().isSetupMode()) {
+		if (false) {
+		// end change
 			ContextHolder.getContext().deregisterRequestHandler(new ReverseProxyMethodHandler());
 			ContextHolder.getContext().deregisterRequestHandler(new ReplacementProxyMethodHandler());
 		}

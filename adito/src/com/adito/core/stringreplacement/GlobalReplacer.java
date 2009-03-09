@@ -57,22 +57,22 @@ public class GlobalReplacer extends AbstractReplacementVariableReplacer {
             if (key.equals("conf.dir")) {
             	// PLUNDEN: Removing the context
                 // return ContextHolder.getContext().getConfDirectory().getAbsolutePath();
-            	return CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.conf", "conf");
+            	return CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.conf", "conf");
                 // end change
             } else if (key.equals("log.dir")) {
             	// PLUNDEN: Removing the context
                 // return ContextHolder.getContext().getLogDirectory().getAbsolutePath();
-            	return CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.logs", "logs");
+            	return CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.logs", "logs");
                 // end change
             } else if (key.equals("db.dir")) {
             	// PLUNDEN: Removing the context
                 // return ContextHolder.getContext().getDBDirectory().getAbsolutePath();
-            	return CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.db", "db");
+            	return CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.db", "db");
                 // end change
             } else if (key.equals("temp.dir")) {
             	// PLUNDEN: Removing the context
                 // return ContextHolder.getContext().getTempDirectory().getAbsolutePath();
-            	return CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.tmp", "tmp");
+            	return CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.tmp", "tmp");
                 // end change
             } else if (key.equals("version")) {
             	// PLUNDEN: Removing the context

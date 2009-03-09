@@ -144,7 +144,10 @@ public class UserDatabaseManager {
         try {
             if(userDatabases.containsKey(type)) {
                 createDefaultUserDatabase(type);
-            } else if (isSetupMode) {
+            // PLUNDEN: Removing the context
+        	// } else if (isSetupMode) {
+            } else if (false) {
+        	// end change
                 createDefaultUserDatabase("builtIn");
             } else {
                 throw new ServletException("Unable to initialise default user database = '" + type + "'.");
@@ -152,7 +155,10 @@ public class UserDatabaseManager {
         } catch (Exception e) {
             log.error("Unable to initialise default user database.", e);
             // if we can't open the database in setup mode we still have to continue
-            if(!isSetupMode) {
+            // PLUNDEN: Removing the context
+        	// if(!isSetupMode) {
+            if(true) {
+        	// end change
                 throw new ServletException("Unable to initialise default user database.", e);
             }
         }

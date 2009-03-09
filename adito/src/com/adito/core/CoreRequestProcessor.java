@@ -106,7 +106,10 @@ public class CoreRequestProcessor extends TilesRequestProcessor {
                 }
             });
 
-            if (ContextHolder.getContext().isSetupMode()) {
+            // PLUNDEN: Removing the context
+    		// if (ContextHolder.getContext().isSetupMode()) {
+        	if (false) {
+    		// end change
                 // We should never timeout during setup / installation
                 session.setMaxInactiveInterval(Integer.MAX_VALUE);
             } else {

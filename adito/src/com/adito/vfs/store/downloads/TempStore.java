@@ -73,7 +73,7 @@ public class TempStore extends AbstractStore {
     public Collection<String> getMountNames() throws Exception {
     	// PLUNDEN: Removing the context
 		// File tempDownloadDirectory = new File(ContextHolder.getContext().getTempDirectory(), TempStore.TEMP_DOWNLOAD_MOUNT_NAME);
-    	File tempDownloadDirectory = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.tmp", "tmp"), TempStore.TEMP_DOWNLOAD_MOUNT_NAME);
+    	File tempDownloadDirectory = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.tmp", "tmp"), TempStore.TEMP_DOWNLOAD_MOUNT_NAME);
 	    // end change
         File[] dirs = tempDownloadDirectory.listFiles(new FileFilter() {
 			public boolean accept(File pathname) {

@@ -13,6 +13,7 @@ import com.adito.agent.AgentExtensionVerifier;
 import com.adito.agent.AgentTunnel;
 import com.adito.agent.DefaultAgentManager;
 import com.adito.boot.ContextHolder;
+import com.adito.core.CoreServlet;
 import com.adito.core.CoreUtil;
 import com.adito.extensions.ExtensionDescriptor;
 import com.adito.extensions.ExtensionException;
@@ -54,10 +55,17 @@ public class DefaultAgentType extends AbstractJavaType {
         super.start(descriptor, element);
         try {
         	if(descriptor.containsFile("agent-en.jar")) {
-        		ContextHolder.getContext().addContextLoaderURL(descriptor.getFile("agent-en.jar").toURL());
+        		// PLUNDEN: Removing the context
+		        // ContextHolder.getContext().addContextLoaderURL(descriptor.getFile("agent-en.jar").toURL());
+        		CoreServlet.getServlet().addContextLoaderURL(descriptor.getFile("agent-en.jar").toURL());
+		        // end change
+        		
         	}
         	if(descriptor.containsFile("launcher-en.jar")) {
-        		ContextHolder.getContext().addContextLoaderURL(descriptor.getFile("launcher-en.jar").toURL());
+        		// PLUNDEN: Removing the context
+		        // ContextHolder.getContext().addContextLoaderURL(descriptor.getFile("launcher-en.jar").toURL());
+        		CoreServlet.getServlet().addContextLoaderURL(descriptor.getFile("launcher-en.jar").toURL());
+		        // end change
         	}
         }
         catch(IOException ioe) {

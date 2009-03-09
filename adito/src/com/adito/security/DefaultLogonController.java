@@ -134,7 +134,10 @@ public class DefaultLogonController implements LogonController {
 	 */
 	public boolean isAdministrator(User principal) {
 		// In setup mode everyone is an administrator
-		if (ContextHolder.getContext().isSetupMode()) {
+		// PLUNDEN: Removing the context
+		// if (ContextHolder.getContext().isSetupMode()) {
+		if (false) {
+		// end change
 			return true;
 		}
 		try {

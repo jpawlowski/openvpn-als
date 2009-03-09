@@ -20,7 +20,7 @@ public class HSQLDBDatabaseEngine extends JDBCDatabaseEngine {
         serverMode = "true".equalsIgnoreCase(SystemProperties.get("adito.hsqldb.tcpipServer"));
         // PLUNDEN: Removing the context
         // dbDir = ContextHolder.getContext().getDBDirectory();
-        dbDir = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.db", "db"));
+        dbDir = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.db", "db"));
         // end change
     }
 
@@ -30,7 +30,7 @@ public class HSQLDBDatabaseEngine extends JDBCDatabaseEngine {
         } else {
             // PLUNDEN: Removing the context
             // return "jdbc:hsqldb:file:" + ContextHolder.getContext().getDBDirectory() + "/" + getDatabase();
-        	return "jdbc:hsqldb:file:" + CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.db", "db") + "/" + getDatabase();
+        	return "jdbc:hsqldb:file:" + CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.db", "db") + "/" + getDatabase();
             // end change
         }
     }

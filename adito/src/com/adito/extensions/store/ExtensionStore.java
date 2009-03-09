@@ -50,6 +50,7 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.ActionForward;
 import org.jdom.JDOMException;
 
+import com.adito.boot.BootProgressMonitor;
 import com.adito.boot.Context;
 import com.adito.boot.ContextHolder;
 import com.adito.boot.PropertyList;
@@ -210,7 +211,10 @@ public class ExtensionStore {
         //updateChecker = new UpdateChecker();
 
 		// Get if the application store comes from the repository
-		repositoryBacked = "true".equals(SystemProperties.get("adito.extensions.repositoryBacked", "true"));
+		// PLUNDEN: Removing the context
+        // repositoryBacked = "true".equals(SystemProperties.get("adito.extensions.repositoryBacked", "true"));
+		repositoryBacked = false;
+        // end change
 
 		this.basedir = basedir;
 
@@ -291,7 +295,7 @@ public class ExtensionStore {
 				for (int i = 0; i < extensions.length; i++) {
 					// PLUNDEN: Removing the context
 			        // File destDir = new File(ContextHolder.getContext().getApplicationDirectory(), extensions[i].getName());
-					File destDir = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.apps", "tmp/extensions"), extensions[i].getName());
+					File destDir = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.apps", "tmp/extensions"), extensions[i].getName());
 			        // end change
 					if (destDir.exists()) {
 						if (log.isInfoEnabled())
@@ -432,12 +436,20 @@ public class ExtensionStore {
 		}
 
 		for (ExtensionBundle bundle : extensionBundlesList) {
-		    boolean setupMode = ContextHolder.getContext().isSetupMode();
+			// PLUNDEN: Removing the context
+			// boolean setupMode = ContextHolder.getContext().isSetupMode();
+			boolean setupMode = false;
+			// end change
             if (!setupMode || (setupMode && bundle.isStartOnSetupMode())) {
-    			ContextHolder.getContext().getBootProgressMonitor().updateMessage("Starting " + bundle.getName());
-    			ContextHolder.getContext()
-    							.getBootProgressMonitor()
-    							.updateProgress((int) (30 + (10 * ((float) extensionBundlesList.indexOf(bundle) / extensionBundlesList.size()))));
+            	// PLUNDEN: Removing the context
+    			// ContextHolder.getContext().getBootProgressMonitor().updateMessage("Starting " + bundle.getName());
+    			// ContextHolder.getContext()
+    			// 				.getBootProgressMonitor()
+    			// 				.updateProgress((int) (30 + (10 * ((float) extensionBundlesList.indexOf(bundle) / extensionBundlesList.size()))));
+    			BootProgressMonitor bootProgressMonitor = (BootProgressMonitor)CoreServlet.getServlet().getServletContext().getAttribute("bootProgressMonitor");
+            	bootProgressMonitor.updateMessage("Starting " + bundle.getName());
+    			bootProgressMonitor.updateProgress((int) (30 + (10 * ((float) extensionBundlesList.indexOf(bundle) / extensionBundlesList.size()))));
+    			// end change
     
     			// Start the bundle
     			try {
@@ -571,7 +583,7 @@ public class ExtensionStore {
 		if(!buf.toString().equals(PREFS.get("lastActivatedPlugins", ""))) {
 			// PLUNDEN: Removing the context
 	        // Util.delTree(new File(ContextHolder.getContext().getTempDirectory(), "org"));
-			Util.delTree(new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.tmp", "tmp"), "org"));
+			Util.delTree(new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.tmp", "tmp"), "org"));
 	        // end change
 		}
 		PREFS.put("lastActivatedPlugins", buf.toString());
@@ -1016,7 +1028,7 @@ public class ExtensionStore {
 	public File getUpdatedExtensionsDirectory() throws IOException {
 		// PLUNDEN: Removing the context
         // File updatedExtensionsDir = new File(ContextHolder.getContext().getConfDirectory(), "updated-extensions");
-		File updatedExtensionsDir = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB_INF/" + SystemProperties.get("adito.directories.conf", "conf"), "updated-extensions");
+		File updatedExtensionsDir = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.conf", "conf"), "updated-extensions");
         // end change
 		if (!updatedExtensionsDir.exists() && !updatedExtensionsDir.mkdirs()) {
 			throw new IOException("The extension update directory " + updatedExtensionsDir.getAbsolutePath()
@@ -1540,7 +1552,10 @@ public class ExtensionStore {
 				for (int j = 0; f != null && j < f.length; j++) {
 					if (f[j].exists() && (f[j].isDirectory() || f[j].getName().toLowerCase().endsWith(".jar"))) {
 						URL u = f[j].toURL();
-						ContextHolder.getContext().addContextLoaderURL(u);
+						// PLUNDEN: Removing the context
+				        // ContextHolder.getContext().addContextLoaderURL(u);
+						CoreServlet.getServlet().addContextLoaderURL(u);
+				        // end change
 					}
 				}
 			} catch (MalformedURLException murle) {
