@@ -20,6 +20,7 @@
 			
 package com.adito.server.jetty;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -33,8 +34,8 @@ import org.mortbay.http.HttpServer;
 import org.mortbay.http.ResourceCache;
 import org.mortbay.util.Resource;
 
-import com.adito.boot.ContextHolder;
 import com.adito.boot.RequestHandler;
+import com.adito.core.CoreServlet;
 
 /**
  * <p>An extension to the standard Jetty {@link org.mortbay.http.HttpContext} 
@@ -68,7 +69,10 @@ public class CustomHttpContext extends HttpContext {
         addHandler(requestHandlerAdapater = new RequestHandlerAdapter());
         setParentClassLoader(bootLoader);
         setClassLoaderJava2Compliant(false);
-        setTempDirectory(ContextHolder.getContext().getTempDirectory());
+        // PLUNDEN: Removing the context
+		// setTempDirectory(ContextHolder.getContext().getTempDirectory());
+        setTempDirectory(new File((String)CoreServlet.getServlet().getServletContext().getAttribute("adito.directories.tmp")));
+	    // end change
         setWelcomeFiles(new String[] { "showHome.do" });
         resourceCaches = new ArrayList();
     }

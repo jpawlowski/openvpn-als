@@ -26,7 +26,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.adito.boot.ContextHolder;
 import com.adito.boot.SystemProperties;
 import com.adito.core.CoreServlet;
 import com.adito.properties.Pair;

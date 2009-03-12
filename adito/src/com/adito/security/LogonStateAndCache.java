@@ -33,7 +33,7 @@ import org.apache.commons.cache.SimpleCache;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.adito.boot.ContextHolder;
+
 import com.adito.boot.SystemProperties;
 import com.adito.boot.Util;
 import com.adito.core.CoreServlet;
@@ -86,7 +86,7 @@ public class LogonStateAndCache {
     static {
     	// PLUNDEN: Removing the context
 		// File dir = new File(ContextHolder.getContext().getTempDirectory(), "spoof");
-    	File dir = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.tmp", "tmp"), "spoof");
+    	File dir = new File((String)CoreServlet.getServlet().getServletContext().getAttribute("adito.directories.tmp"), "spoof");
 	    // end change
     	if(dir.exists()) {
     	    Util.delTree(dir);

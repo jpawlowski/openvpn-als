@@ -476,7 +476,7 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
 
     	// PLUNDEN: Removing the context
         // File queueDir = new File(ContextHolder.getContext().getConfDirectory(), "queue");
-    	File queueDir = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.conf", "conf"), "queue");
+    	File queueDir = new File((String)getServletContext().getAttribute("adito.directories.conf"), "queue");
         // end change
         if (!queueDir.exists()) {
             if (!queueDir.mkdirs()) {
@@ -890,7 +890,7 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
          */
         // PLUNDEN: Removing the context
         // File siteDir = new File(ContextHolder.getContext().getConfDirectory(), "site");
-        File siteDir = new File(getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.conf", "conf"), "site");
+        File siteDir = new File((String)getServletContext().getAttribute("adito.directories.conf"), "site");
         // end change
         try {
             if (!siteDir.exists()) {
@@ -1062,7 +1062,7 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
             if (devConfig
             		// PLUNDEN: Removing the context
                     // && ContextHolder.getContext().getConfDirectory().getCanonicalFile().equals(
-            		&& new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.conf", "conf")).getCanonicalFile().equals(
+            		&& new File((String)getServletContext().getAttribute("adito.directories.conf")).getCanonicalFile().equals(
                     // end change
                                 defaultDevConfDir.getCanonicalFile())) {
                 throw new ServletException("When running in developmenet mode, you may NOT use "

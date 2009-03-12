@@ -39,7 +39,6 @@ import org.apache.commons.cache.StorageListener;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.adito.boot.ContextHolder;
 import com.adito.boot.SystemProperties;
 import com.adito.core.BundleActionMessage;
 import com.adito.core.CoreServlet;
@@ -173,7 +172,7 @@ public class PrincipalCache<T extends Principal> {
     protected final Cache createCache(String messageBundle, String cacheFullText) {
     	// PLUNDEN: Removing the context
 		// File cacheDirectory = new File(ContextHolder.getContext().getTempDirectory(), "cache");
-    	File cacheDirectory = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.tmp", "tmp"), "cache");
+    	File cacheDirectory = new File((String)CoreServlet.getServlet().getServletContext().getAttribute("adito.directories.tmp"), "cache");
 	    // end change
         File cacheTypeDirectory = new File(cacheDirectory, cacheType);
         Stash stash = inMemoryCache ? new MemoryStash(cacheSize) : new FileStash(Long.MAX_VALUE, cacheSize, new File[]{cacheTypeDirectory}, true);

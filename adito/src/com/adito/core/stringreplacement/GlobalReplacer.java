@@ -24,7 +24,6 @@ import java.io.File;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.adito.boot.ContextHolder;
 import com.adito.boot.ContextKey;
 import com.adito.boot.KeyStoreManager;
 import com.adito.boot.SystemProperties;
@@ -57,27 +56,27 @@ public class GlobalReplacer extends AbstractReplacementVariableReplacer {
             if (key.equals("conf.dir")) {
             	// PLUNDEN: Removing the context
                 // return ContextHolder.getContext().getConfDirectory().getAbsolutePath();
-            	return CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.conf", "conf");
+            	return (String)CoreServlet.getServlet().getServletContext().getAttribute("adito.directories.conf");
                 // end change
             } else if (key.equals("log.dir")) {
             	// PLUNDEN: Removing the context
                 // return ContextHolder.getContext().getLogDirectory().getAbsolutePath();
-            	return CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.logs", "logs");
+            	return (String)CoreServlet.getServlet().getServletContext().getAttribute("adito.directories.logs");
                 // end change
             } else if (key.equals("db.dir")) {
             	// PLUNDEN: Removing the context
                 // return ContextHolder.getContext().getDBDirectory().getAbsolutePath();
-            	return CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.db", "db");
+            	return (String)CoreServlet.getServlet().getServletContext().getAttribute("adito.directories.db");
                 // end change
             } else if (key.equals("temp.dir")) {
             	// PLUNDEN: Removing the context
                 // return ContextHolder.getContext().getTempDirectory().getAbsolutePath();
-            	return CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.tmp", "tmp");
+            	return (String)CoreServlet.getServlet().getServletContext().getAttribute("adito.directories.tmp");
                 // end change
             } else if (key.equals("version")) {
             	// PLUNDEN: Removing the context
                 // return ContextHolder.getContext().getVersion().toString();
-            	return SystemProperties.get("adito.version", "0.9.1");
+            	return (String)CoreServlet.getServlet().getServletContext().getAttribute("adito.version");
                 // end change
             } else {
                 throw new Exception("Unknown key " + key + " for type " + type + ".");

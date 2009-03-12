@@ -12,7 +12,6 @@ import com.adito.agent.AgentExtensionDefinition;
 import com.adito.agent.AgentExtensionVerifier;
 import com.adito.agent.AgentTunnel;
 import com.adito.agent.DefaultAgentManager;
-import com.adito.boot.ContextHolder;
 import com.adito.core.CoreServlet;
 import com.adito.core.CoreUtil;
 import com.adito.extensions.ExtensionDescriptor;

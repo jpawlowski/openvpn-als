@@ -215,6 +215,8 @@ public class ExtensionDescriptor implements Comparable {
     	Map<PropertyClass,Collection<PropertyDefinition>> oldDefinitions = new HashMap<PropertyClass, Collection<PropertyDefinition>>();
     	Map<PropertyClass,Collection<PropertyDefinitionCategory>> oldCategories = new HashMap<PropertyClass, Collection<PropertyDefinitionCategory>>();
     	Collection<PropertyClass> oldPropertyClasses = PropertyClassManager.getInstance().getPropertyClasses();
+    	// PLUNDEN
+		log.info("PLUNDEN: " + "HUBA!!! HUBA!!!");
     	try {
 	    	for(PropertyClass propertyClass : oldPropertyClasses) {
 	    		try {
@@ -234,7 +236,10 @@ public class ExtensionDescriptor implements Comparable {
         try {
 
 			// Load any message resources
-
+        	// PLUNDEN
+			log.info("PLUNDEN: " + "HABAA!!! HABAA!!!");
+			// end change
+			
 			try {
 				if (messagesElement != null) {
 					messageResources = CoreServlet.getServlet()
@@ -262,7 +267,11 @@ public class ExtensionDescriptor implements Comparable {
 					messageResources.setMessage("", "application." + getId()
 							+ ".name", name);
 				}
-
+				
+				// PLUNDEN
+				log.info("PLUNDEN: " + "HABAA!!! HABAA!!!");
+				// end change
+				
 				// Load any definitions
 
 				if (propertyDefinitionsElement != null) {
@@ -333,10 +342,24 @@ public class ExtensionDescriptor implements Comparable {
 			}
 
 			// Start the extension type
-
+			
+			// PLUNDEN
+			log.info("PLUNDEN: " + "HABAA!!! HABAA!!!");
+			log.info(typeName);
+			log.info(bundle);
+			log.info(typeElement);
+			// end change
+			
 			launcherType = ExtensionTypeManager.getInstance().getExtensionType(
 					typeName, bundle);
+			// PLUNDEN
+			log.info("PLUNDEN: " + "HABAA!!! HABAA!!!");
+			// end change
 			launcherType.start(this, typeElement);
+			
+			// PLUNDEN
+			log.info("PLUNDEN: " + "HUBAA!!! HUBAA!!!");
+			// end change
 			
 			// Reset stored property classes
 	    	for(PropertyClass propertyClass : oldPropertyClasses) {

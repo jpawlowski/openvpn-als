@@ -38,7 +38,6 @@ import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
 
 import com.adito.boot.Branding;
-import com.adito.boot.ContextHolder;
 import com.adito.boot.Util;
 import com.adito.core.CoreUtil;
 import com.adito.core.RedirectWithMessages;

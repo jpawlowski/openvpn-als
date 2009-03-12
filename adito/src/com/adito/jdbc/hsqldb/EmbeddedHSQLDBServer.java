@@ -38,7 +38,6 @@ import org.hsqldb.HsqlProperties;
 import org.hsqldb.Server;
 import org.hsqldb.ServerConstants;
 
-import com.adito.boot.ContextHolder;
 import com.adito.boot.SystemProperties;
 import com.adito.core.CoreServlet;
 import com.adito.jdbc.JDBCConnectionImpl;
@@ -115,7 +114,7 @@ public class EmbeddedHSQLDBServer {
                                     // .getConnection(EmbeddedHSQLDBServer.this.serverMode ? "jdbc:hsqldb:hsql://localhost/" + n
                                                     // : "jdbc:hsqldb:file:" + ContextHolder.getContext().getDBDirectory().getPath()
                                                                     // + "/" + n);
-                	con = DriverManager.getConnection(EmbeddedHSQLDBServer.this.serverMode ? "jdbc:hsqldb:hsql://localhost/" + n : "jdbc:hsqldb:file:" + new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.db", "db")).getPath() + "/" + n);
+                	con = DriverManager.getConnection(EmbeddedHSQLDBServer.this.serverMode ? "jdbc:hsqldb:hsql://localhost/" + n : "jdbc:hsqldb:file:" + new File((String)CoreServlet.getServlet().getServletContext().getAttribute("adito.directories.db")).getPath() + "/" + n);
                 	// end change
                     Statement s = con.createStatement();
                     s.execute("SHUTDOWN COMPACT");

@@ -13,7 +13,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts.util.LabelValueBean;
 
-import com.adito.boot.ContextHolder;
 import com.adito.boot.SystemProperties;
 import com.adito.input.MultiSelectDataSource;
 import com.adito.security.SessionInfo;
@@ -31,7 +30,7 @@ public class SSLCipherSuitesDataSource implements MultiSelectDataSource {
 			
 			// PLUNDEN: Removing the context
 	        // File f = new File(ContextHolder.getContext().getTempDirectory(), "availableCipherSuites.txt");
-			File f = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.tmp", "tmp"), "availableCipherSuites.txt");
+			File f = new File((String)CoreServlet.getServlet().getServletContext().getAttribute("adito.directories.tmp"), "availableCipherSuites.txt");
 	        // end change
 			BufferedReader reader = null;
 			

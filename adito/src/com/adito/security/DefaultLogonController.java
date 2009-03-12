@@ -44,7 +44,6 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.util.MessageResources;
 
-import com.adito.boot.ContextHolder;
 import com.adito.boot.DefaultPropertyDefinition;
 import com.adito.boot.HostService;
 import com.adito.boot.HttpConstants;

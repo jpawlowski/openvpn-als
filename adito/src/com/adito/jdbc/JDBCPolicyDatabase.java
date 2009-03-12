@@ -44,7 +44,6 @@ import org.apache.commons.cache.SimpleCache;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.adito.boot.ContextHolder;
 import com.adito.boot.PropertyList;
 import com.adito.boot.SystemProperties;
 import com.adito.boot.VersionInfo;
@@ -533,7 +532,7 @@ public class JDBCPolicyDatabase extends AbstractPolicyDatabase {
 				"explorer_configuration");
 		// PLUNDEN: Removing the context
         // controllingServlet.addDatabase(dbName, ContextHolder.getContext().getDBDirectory());
-		controllingServlet.addDatabase(dbName, new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.db", "db")));
+		controllingServlet.addDatabase(dbName, new File((String)CoreServlet.getServlet().getServletContext().getAttribute("adito.directories.db")));
         // end change
 		String jdbcUser = SystemProperties.get("adito.jdbc.username", "sa");
 		String jdbcPassword = SystemProperties.get("adito.jdbc.password",
@@ -550,7 +549,7 @@ public class JDBCPolicyDatabase extends AbstractPolicyDatabase {
 		// PLUNDEN: Removing the context
 		// DBUpgrader upgrader = new DBUpgrader(ContextHolder.getContext()
 	            // .getVersion(), db, ContextHolder.getContext().getDBDirectory(),
-		DBUpgrader upgrader = new DBUpgrader(new VersionInfo.Version(SystemProperties.get("adito.version", "0.9.1")), db, new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.db", "db")),
+		DBUpgrader upgrader = new DBUpgrader(new VersionInfo.Version((String)CoreServlet.getServlet().getServletContext().getAttribute("adito.version")), db, new File((String)CoreServlet.getServlet().getServletContext().getAttribute("adito.directories.db")),
 	    // end change
 				upgradeDir);
 		upgrader.upgrade();

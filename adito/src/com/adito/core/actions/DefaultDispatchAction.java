@@ -11,7 +11,6 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessages;
 import org.apache.struts.actions.DispatchAction;
 
-import com.adito.boot.ContextHolder;
 import com.adito.core.CoreUtil;
 import com.adito.security.SessionInfo;
 

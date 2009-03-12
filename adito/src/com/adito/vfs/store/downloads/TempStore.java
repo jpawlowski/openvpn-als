@@ -9,7 +9,6 @@ import java.util.List;
 
 import org.apache.commons.vfs.FileObject;
 
-import com.adito.boot.ContextHolder;
 import com.adito.boot.SystemProperties;
 import com.adito.core.CoreServlet;
 import com.adito.core.CoreUtil;

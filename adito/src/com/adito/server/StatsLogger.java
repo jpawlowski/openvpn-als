@@ -28,8 +28,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.mortbay.jetty.Server;
 
-import com.adito.boot.ContextHolder;
 import com.adito.boot.Util;
+import com.adito.core.CoreServlet; 
 
 public class StatsLogger extends Thread {
 	final static Log log = LogFactory.getLog(StatsLogger.class);
@@ -49,7 +49,10 @@ public class StatsLogger extends Thread {
 	public void run() {
 		FileOutputStream out = null;
 		try {
-			out = new FileOutputStream(new File(ContextHolder.getContext().getLogDirectory(), "stats.csv"));
+			// PLUNDEN: Removing the context
+			// out = new FileOutputStream(new File(ContextHolder.getContext().getLogDirectory(), "stats.csv"));
+			out = new FileOutputStream(new File((String)CoreServlet.getServlet().getServletContext().getAttribute("adito.directories.logs"), "stats.csv"));
+			// end change
 			PrintWriter pw = new PrintWriter(out, true);
 			pw.println("connections,connectionsOpen,connectionsOpenMax,connectionsDurationAve," + "connectionsDurationMax,connectionsRequestsAve,connectionsRequestsMax,"
 				+ "errors,requests,requestsActive,requestsActiveMax,requestsDurectionAve,requestsDurationMax");

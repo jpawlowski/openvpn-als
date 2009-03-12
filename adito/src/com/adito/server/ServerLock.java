@@ -38,6 +38,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.adito.boot.ContextHolder;
 import com.adito.boot.Util;
+import com.adito.core.CoreServlet;
 
 /**
  * Used to determine if Adito (or some other server) is already running
@@ -76,7 +77,10 @@ public class ServerLock {
     public ServerLock(String bindAddress) throws IOException {
 
         this.bindAddress = bindAddress;
-        lockFile = new File(ContextHolder.getContext().getTempDirectory(), LOCK_NAME);
+        // PLUNDEN: Removing the context
+        // lockFile = new File(ContextHolder.getContext().getTempDirectory(), LOCK_NAME);
+    	lockFile = new File((String)CoreServlet.getServlet().getServletContext().getAttribute("adito.directories.tmp"), LOCK_NAME);
+        // end change
 
         /*
          * Check that Adito is not already running using file locks. If

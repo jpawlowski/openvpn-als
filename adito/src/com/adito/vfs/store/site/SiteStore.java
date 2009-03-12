@@ -7,7 +7,6 @@ import java.util.Collection;
 
 import org.apache.commons.vfs.FileObject;
 
-import com.adito.boot.ContextHolder;
 import com.adito.boot.SystemProperties;
 import com.adito.core.CoreServlet;
 import com.adito.extensions.ExtensionBundle;

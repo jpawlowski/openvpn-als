@@ -344,8 +344,16 @@ public class PluginType implements ExtensionType {
         	if(log.isInfoEnabled()) {
         		log.info("Creating plugin " + def.getClassName());
         	}
+        	// PLUNDEN
+        	Class.forName("com.adito.core.FileDownload", true, classLoader);
+			log.info("PLUNDEN: " + def.getName() + ", " + def.getClassName());
+			log.info("PLUNDEN: " + "HOMMA");
+			// end change
         	Class pluginClass = Class.forName(def.getClassName(), true, classLoader);
-            plugin = (Plugin) pluginClass.newInstance();
+        	// PLUNDEN
+			log.info("PLUNDEN: " + "HUMMA");
+			// end change
+        	plugin = (Plugin) pluginClass.newInstance();
         } catch (Exception e) {
             throw new ExtensionException(ExtensionException.FAILED_TO_CREATE_PLUGIN_INSTANCE,
                 def.getName(),

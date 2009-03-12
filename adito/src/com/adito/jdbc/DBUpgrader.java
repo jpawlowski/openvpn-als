@@ -41,7 +41,6 @@ import java.util.prefs.Preferences;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.adito.boot.ContextHolder;
 import com.adito.boot.PropertyPreferences;
 import com.adito.boot.SystemProperties;
 import com.adito.boot.Util;
@@ -145,7 +144,7 @@ public class DBUpgrader {
                 log.warn("Migrating database versions from preferences to properties file in "
                 		// PLUNDEN: Removing the context
                         // + ContextHolder.getContext().getDBDirectory().getAbsolutePath() + ".");
-                		+ new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.db", "db")).getAbsolutePath() + ".");
+                		+ new File((String)CoreServlet.getServlet().getServletContext().getAttribute("adito.directories.db")).getAbsolutePath() + ".");
                         // end change        
                 versions = new Properties();
                 p = p.node("currentDataVersion");

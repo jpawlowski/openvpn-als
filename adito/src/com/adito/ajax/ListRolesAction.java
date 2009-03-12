@@ -32,7 +32,6 @@ import org.ajaxtags.helpers.AjaxXmlBuilder;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 
-import com.adito.boot.ContextHolder;
 import com.adito.boot.Util;
 import com.adito.core.UserDatabaseManager;
 import com.adito.realms.Realm;

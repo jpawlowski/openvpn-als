@@ -239,7 +239,7 @@ public class ExtensionStore {
 		 */
 		// PLUNDEN: Removing the context
         // VersionInfo.Version sslxVersion = ContextHolder.getContext().getVersion();
-		VersionInfo.Version sslxVersion = new VersionInfo.Version(SystemProperties.get("adito.version", "0.9.1"));
+		VersionInfo.Version sslxVersion = new VersionInfo.Version((String)CoreServlet.getServlet().getServletContext().getAttribute("adito.version"));
         // end change
 		if (sslxVersion.getMajor() == 0 && sslxVersion.getMinor() == 2 && sslxVersion.getBuild() == 10) {
 			StringBuffer buf = new StringBuffer();
@@ -295,7 +295,7 @@ public class ExtensionStore {
 				for (int i = 0; i < extensions.length; i++) {
 					// PLUNDEN: Removing the context
 			        // File destDir = new File(ContextHolder.getContext().getApplicationDirectory(), extensions[i].getName());
-					File destDir = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.apps", "tmp/extensions"), extensions[i].getName());
+					File destDir = new File((String)CoreServlet.getServlet().getServletContext().getAttribute("adito.directories.apps"), extensions[i].getName());
 			        // end change
 					if (destDir.exists()) {
 						if (log.isInfoEnabled())
@@ -531,12 +531,17 @@ public class ExtensionStore {
 		for (ExtensionBundle bundle : extensionBundlesList) {
 			try {
 				if (bundle.getStatus() == ExtensionBundleStatus.STARTED) {
-
-					ContextHolder.getContext().getBootProgressMonitor().updateMessage("Activating " + bundle.getName());
-					ContextHolder.getContext()
-									.getBootProgressMonitor()
-									.updateProgress((int) (65 + (10 * ((float) extensionBundlesList.indexOf(bundle) / extensionBundlesList.size()))));
-
+					// PLUNDEN: Removing the context
+	    			// BootProgressMonitor bootProgressMonitor = (BootProgressMonitor)CoreServlet.getServlet().getServletContext().getAttribute("bootProgressMonitor");
+					// ContextHolder.getContext().getBootProgressMonitor().updateMessage("Activating " + bundle.getName());
+					// ContextHolder.getContext()
+					// 				.getBootProgressMonitor()
+					// 				.updateProgress((int) (65 + (10 * ((float) extensionBundlesList.indexOf(bundle) / extensionBundlesList.size()))));
+					BootProgressMonitor bootProgressMonitor = (BootProgressMonitor)CoreServlet.getServlet().getServletContext().getAttribute("bootProgressMonitor");
+					bootProgressMonitor.updateMessage("Activating " + bundle.getName());
+					bootProgressMonitor.updateProgress((int) (65 + (10 * ((float) extensionBundlesList.indexOf(bundle) / extensionBundlesList.size()))));
+					// end change
+					
 					bundle.activate();
 					
 					if(buf.length() != 0)
@@ -583,7 +588,7 @@ public class ExtensionStore {
 		if(!buf.toString().equals(PREFS.get("lastActivatedPlugins", ""))) {
 			// PLUNDEN: Removing the context
 	        // Util.delTree(new File(ContextHolder.getContext().getTempDirectory(), "org"));
-			Util.delTree(new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.tmp", "tmp"), "org"));
+			Util.delTree(new File((String)CoreServlet.getServlet().getServletContext().getAttribute("adito.directories.tmp"), "org"));
 	        // end change
 		}
 		PREFS.put("lastActivatedPlugins", buf.toString());
@@ -992,7 +997,7 @@ public class ExtensionStore {
     public static VersionInfo.Version getWorkingVersion() {
     	// PLUNDEN: Removing the context
         // VersionInfo.Version version = new VersionInfo.Version(SystemProperties.get("adito.forceVersion", ContextHolder.getContext().getVersion().toString()));
-    	VersionInfo.Version version = new VersionInfo.Version(SystemProperties.get("adito.forceVersion", SystemProperties.get("adito.version", "0.9.1")));
+    	VersionInfo.Version version = new VersionInfo.Version(SystemProperties.get("adito.forceVersion", (String)CoreServlet.getServlet().getServletContext().getAttribute("adito.version")));
         // end change
         return version;
     }
@@ -1028,7 +1033,7 @@ public class ExtensionStore {
 	public File getUpdatedExtensionsDirectory() throws IOException {
 		// PLUNDEN: Removing the context
         // File updatedExtensionsDir = new File(ContextHolder.getContext().getConfDirectory(), "updated-extensions");
-		File updatedExtensionsDir = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.conf", "conf"), "updated-extensions");
+		File updatedExtensionsDir = new File((String)CoreServlet.getServlet().getServletContext().getAttribute("adito.directories.conf"), "updated-extensions");
         // end change
 		if (!updatedExtensionsDir.exists() && !updatedExtensionsDir.mkdirs()) {
 			throw new IOException("The extension update directory " + updatedExtensionsDir.getAbsolutePath()
@@ -1148,10 +1153,10 @@ public class ExtensionStore {
 			}
 
 			// Check host version
-			Context context = ContextHolder.getContext();
 			// PLUNDEN: Removing the context
+			// Context context = ContextHolder.getContext();
 	        // if (bundle.getRequiredHostVersion() != null && bundle.getRequiredHostVersion().compareTo(context.getVersion()) > 0) {
-			if (bundle.getRequiredHostVersion() != null && bundle.getRequiredHostVersion().compareTo(SystemProperties.get("adito.version", "0.9.1")) > 0) {
+			if (bundle.getRequiredHostVersion() != null && bundle.getRequiredHostVersion().compareTo((String)CoreServlet.getServlet().getServletContext().getAttribute("adito.version")) > 0) {
 	        // end change
 				throw new ExtensionException(ExtensionException.INSUFFICIENT_ADITO_HOST_VERSION,
 								bundle.getId(),

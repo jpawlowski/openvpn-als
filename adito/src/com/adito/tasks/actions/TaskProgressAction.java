@@ -15,7 +15,6 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.util.MessageResources;
 
-import com.adito.boot.ContextHolder;
 import com.adito.boot.Util;
 import com.adito.core.BundleActionMessage;
 import com.adito.core.CoreRequestProcessor;

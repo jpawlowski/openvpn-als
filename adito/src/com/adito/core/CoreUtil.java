@@ -74,7 +74,6 @@ import org.apache.struts.tiles.ComponentContext;
 import org.apache.struts.util.MessageResources;
 import org.apache.struts.util.ModuleUtils;
 
-import com.adito.boot.ContextHolder;
 import com.adito.boot.PropertyDefinition;
 import com.adito.boot.SystemProperties;
 import com.adito.boot.Util;
@@ -120,7 +119,7 @@ public class CoreUtil {
     public static File getTempDownloadDirectory(SessionInfo session) throws Exception {
     	// PLUNDEN: Removing the context
         // final File tempDownloadDirectory = new File(ContextHolder.getContext().getTempDirectory(), TempStore.TEMP_DOWNLOAD_MOUNT_NAME);
-    	final File tempDownloadDirectory = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.tmp", "tmp"), TempStore.TEMP_DOWNLOAD_MOUNT_NAME);
+    	final File tempDownloadDirectory = new File((String)CoreServlet.getServlet().getServletContext().getAttribute("adito.directories.tmp"), TempStore.TEMP_DOWNLOAD_MOUNT_NAME);
         // end change
         // create the download store if it does not exist.
         if (!tempDownloadDirectory.exists()) {        	
@@ -1047,7 +1046,7 @@ public class CoreUtil {
                 + "this you will have to alter "
                 // PLUNDEN: Removing the context
                 // + ContextHolder.getContext().getConfDirectory().getAbsolutePath()
-                + new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.conf", "conf")).getAbsolutePath()
+                + new File((String)CoreServlet.getServlet().getServletContext().getAttribute("adito.directories.conf")).getAbsolutePath()
                 // end change
                 + File.separator
                 + "wrapper.conf to include the additional library path '"

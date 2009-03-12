@@ -22,8 +22,6 @@ package com.adito.core.tags;
 
 import javax.servlet.jsp.tagext.TagSupport;
 
-import com.adito.boot.ContextHolder;
-
 public class SetupModeTag extends TagSupport {
 
   boolean requiresSetupMode;

@@ -35,7 +35,6 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 
 import com.adito.boot.CodedException;
-import com.adito.boot.ContextHolder;
 import com.adito.boot.PropertyClass;
 import com.adito.boot.PropertyClassManager;
 import com.adito.boot.PropertyDefinition;
@@ -355,6 +354,7 @@ public class UserAccountForm extends CoreForm implements TabModel {
                 if (!editing) {
                     try {
                         udb.getAccount(username);
+                        // TODO: Isn't this row in the wrong place? (plunden)
                         errors.add(Globals.ERROR_KEY, new ActionMessage("createAccount.error.userAlreadyExists", username));
                     } catch (Exception e) {
                     }

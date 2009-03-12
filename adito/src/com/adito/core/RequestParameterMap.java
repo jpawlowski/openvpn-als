@@ -66,7 +66,6 @@ import java.util.TreeMap;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.adito.boot.ContextHolder;
 import com.adito.boot.HttpConstants;
 import com.adito.boot.RequestHandlerRequest;
 import com.adito.boot.SystemProperties;
@@ -484,7 +483,7 @@ public class RequestParameterMap extends MultiMap {
     private void initMultipart(String contentType, InputStream in) throws IOException, FileNotFoundException {
     	// PLUNDEN: Removing the context
         // multipartFile = new File(ContextHolder.getContext().getTempDirectory(), "mpr" + ( tempIdx++ ) + ".tmp");
-    	multipartFile = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.tmp", "tmp"), "mpr" + ( tempIdx++ ) + ".tmp");
+    	multipartFile = new File((String)CoreServlet.getServlet().getServletContext().getAttribute("adito.directories.tmp"), "mpr" + ( tempIdx++ ) + ".tmp");
         // end change
         FileOutputStream mpOut = new FileOutputStream(multipartFile);
 

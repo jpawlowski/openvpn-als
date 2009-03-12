@@ -31,7 +31,6 @@ import java.util.Vector;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.adito.boot.ContextHolder;
 import com.adito.boot.SystemProperties;
 import com.adito.boot.VersionInfo;
 import com.adito.core.CoreServlet;
@@ -83,7 +82,7 @@ public class JDBCUserDatabase extends DefaultUserDatabase {
         String dbName = SystemProperties.get("adito.userDatabase.jdbc.dbName", "explorer_configuration");
      // PLUNDEN: Removing the context
         // controllingServlet.addDatabase(dbName, ContextHolder.getContext().getDBDirectory());
-        controllingServlet.addDatabase(dbName, new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.db", "db")));
+        controllingServlet.addDatabase(dbName, new File((String)CoreServlet.getServlet().getServletContext().getAttribute("adito.directories.db")));
         // end change
         File upgradeDir = new File("install/upgrade");
         String jdbcUser = SystemProperties.get("adito.jdbc.username", "sa");
@@ -98,7 +97,7 @@ public class JDBCUserDatabase extends DefaultUserDatabase {
         // PLUNDEN: Removing the context
 		// DBUpgrader upgrader = new DBUpgrader(ContextHolder.getContext().getVersion(), db, ContextHolder.getContext()
 	            // .getDBDirectory(), upgradeDir);
-        DBUpgrader upgrader = new DBUpgrader(new VersionInfo.Version(SystemProperties.get("adito.version", "0.9.1")), db, new File(SystemProperties.get("adito.directories.db", "db")), upgradeDir);
+        DBUpgrader upgrader = new DBUpgrader(new VersionInfo.Version((String)CoreServlet.getServlet().getServletContext().getAttribute("adito.version")), db, new File((String)CoreServlet.getServlet().getServletContext().getAttribute("adito.directories.db")), upgradeDir);
 	    // end change
         upgrader.upgrade();
         open = true;

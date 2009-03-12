@@ -29,7 +29,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.adito.boot.ContextHolder;
 import com.adito.policyframework.Permission;
 import com.adito.policyframework.PolicyDatabaseFactory;
 import com.adito.policyframework.ResourceType;
