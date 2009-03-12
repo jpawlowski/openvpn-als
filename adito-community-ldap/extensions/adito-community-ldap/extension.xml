@@ -53,7 +53,7 @@
 					category="91" defaultValue="" sortOrder="20"
 					validation="com.adito.install.validators.LdapBackupHostnameValidator"
 					messageResourcesKey="ldap" />  -->
-				<definition type="0" name="ldap.domain"
+				<definition type="0" name="ldap.baseDN"
 					typeMeta="" category="91" defaultValue="" sortOrder="30"
 					validation="com.adito.input.validators.NonBlankStringValidator" 
 					messageResourcesKey="ldap" />

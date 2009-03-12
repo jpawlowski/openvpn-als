@@ -842,7 +842,7 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
         Properties propertyNames = new Properties();
 
         setControllerHost(getProperty("ldap.controllerHost", propertyNames));
-        setBaseDN(getProperty("ldap.domain", propertyNames));
+        setBaseDN(getProperty("ldap.baseDN", propertyNames));
         setServiceAccountName(getProperty("ldap.serviceAccountUsername", propertyNames));
         setServiceAccountPassword(getProperty("ldap.serviceAccountPassword", propertyNames));
         setDomainUsers(getProperty("ldap.domainUsers", propertyNames));
@@ -976,7 +976,7 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
      */
     private void setControllerHost(String controllerHost) throws Exception {
         if (controllerHost.equals("")) {
-            throw new IllegalArgumentException("No active directory controller host configured.");
+            throw new IllegalArgumentException("No ldap controller host configured.");
         }
         this.controllerHost = controllerHost;
     }
@@ -1003,7 +1003,7 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
     private void setDomainUsers(String rdnUsers) throws Exception {
         this.rdnUsers = rdnUsers.trim();
         if (this.rdnUsers.equals("")) {
-            throw new IllegalArgumentException("No active directory domain of user configured.");
+            throw new IllegalArgumentException("No ldap domain of user configured.");
         }
     }
 
@@ -1016,7 +1016,7 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
     private void setDomainGroups(String rdnGroups) throws Exception {
         this.rdnGroups = rdnGroups.trim();
         if (this.rdnGroups.equals("")) {
-            throw new IllegalArgumentException("No active directory domain of group configured.");
+            throw new IllegalArgumentException("No ldap domain of group configured.");
         }
     }
 
