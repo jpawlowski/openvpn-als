@@ -1,5 +1,5 @@
 
-				/*
+/*
  *  Adito
  *
  *  Copyright (C) 2003-2006 3SP LTD. All Rights Reserved
@@ -17,7 +17,7 @@
  *  License along with this program; if not, write to the Free Software
  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
-			
+
 package com.adito.properties.actions;
 
 import java.util.ArrayList;
@@ -56,259 +56,265 @@ import com.adito.security.User;
 /**
  */
 public abstract class AbstractPropertiesAction extends AuthenticatedDispatchAction {
-    static Log log = LogFactory.getLog(AbstractPropertiesAction.class);
+	static Log log = LogFactory.getLog(AbstractPropertiesAction.class);
 
-    /**
-     * 
-     */
-    public AbstractPropertiesAction() {
-        super();
-    }
+	/**
+	 * 
+	 */
+	public AbstractPropertiesAction() {
+		super();
+	}
 
-    /**
-     * Reset the properties
-     * 
-     * @param mapping
-     * @param form
-     * @param request
-     * @param response
-     * @return ActionForward
-     * @throws Exception
-     */
-    public ActionForward reset(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
-                    throws Exception {
-        AbstractPropertiesForm f = (AbstractPropertiesForm) form;
-        f.clearValues();
-        User user = isSetupMode() ? null : LogonControllerFactory.getInstance().getUser((HttpServletRequest) request);
-        return rebuildItems(mapping, f.getParentCategory(), f, request, user);
-    }
+	/**
+	 * Reset the properties
+	 * 
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return ActionForward
+	 * @throws Exception
+	 */
+	public ActionForward reset(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
+	throws Exception {
+		AbstractPropertiesForm f = (AbstractPropertiesForm) form;
+		f.clearValues();
+		User user = isSetupMode() ? null : LogonControllerFactory.getInstance().getUser((HttpServletRequest) request);
+		return rebuildItems(mapping, f.getParentCategory(), f, request, user);
+	}
 
-    public ActionForward unspecified(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-                                     HttpServletResponse response) throws Exception {
-        // Initialise form
-        AbstractPropertiesForm pf = (AbstractPropertiesForm) form;
-        pf.clearValues();
-        pf.setUpdateAction(mapping.getPath() + ".do");
-        pf.setInput(mapping.getInput());
+	public ActionForward unspecified(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		// Initialise form
+		AbstractPropertiesForm pf = (AbstractPropertiesForm) form;
+		pf.clearValues();
+		pf.setUpdateAction(mapping.getPath() + ".do");
+		pf.setInput(mapping.getInput());
 
-        // Now try the struts supplied action mapping parameter
-        if (mapping.getParameter() != null && !mapping.getParameter().equals("")) {
-            PropertyList pl = new PropertyList(mapping.getParameter());
-            Properties pr = pl.getAsNameValuePairs();
-            BeanUtils.populate(pf, pr);
-        }
+		// Now try the struts supplied action mapping parameter
+		if (mapping.getParameter() != null && !mapping.getParameter().equals("")) {
+			PropertyList pl = new PropertyList(mapping.getParameter());
+			Properties pr = pl.getAsNameValuePairs();
+			BeanUtils.populate(pf, pr);
+		}
 
-        if ("changeSelectedCategory".equalsIgnoreCase(pf.getActionTarget())) {
-            pf.setSelectedCategory(pf.getNewSelectedCategory());
-        }
+		if ("changeSelectedCategory".equalsIgnoreCase(pf.getActionTarget())) {
+			pf.setSelectedCategory(pf.getNewSelectedCategory());
+		}
 
-        // Build and display
-        return rebuildItems(mapping, pf.getParentCategory(), pf, request, getSessionInfo(request).getUser());
-    }
+		// Build and display
+		return rebuildItems(mapping, pf.getParentCategory(), pf, request, getSessionInfo(request).getUser());
+	}
 
-    /**
-     * Change the selected category
-     * 
-     * @param mapping
-     * @param form
-     * @param request
-     * @param response
-     * @return ActionForward
-     * @throws Exception
-     */
-    public ActionForward changeSelectedCategory(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-                                                HttpServletResponse response) throws Exception {
-        if (log.isDebugEnabled())
-            log.debug("Storing properties");
-        AbstractPropertiesForm f = (AbstractPropertiesForm) form;
-        f.storeItems();
-        User user = isSetupMode() ? null : LogonControllerFactory.getInstance().getUser((HttpServletRequest) request);
-        f.setSelectedCategory(f.getNewSelectedCategory());
-        f.setNewSelectedCategory(-1);
-        return rebuildItems(mapping, f.getParentCategory(), f, request, user);
-    }
+	/**
+	 * Change the selected category
+	 * 
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return ActionForward
+	 * @throws Exception
+	 */
+	public ActionForward changeSelectedCategory(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		if (log.isDebugEnabled())
+			log.debug("Storing properties");
+		AbstractPropertiesForm f = (AbstractPropertiesForm) form;
+		f.storeItems();
+		User user = isSetupMode() ? null : LogonControllerFactory.getInstance().getUser((HttpServletRequest) request);
+		f.setSelectedCategory(f.getNewSelectedCategory());
+		f.setNewSelectedCategory(-1);
+		return rebuildItems(mapping, f.getParentCategory(), f, request, user);
+	}
 
-    public ActionForward cancel(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
-                    throws Exception {
-        AbstractPropertiesForm pf = (AbstractPropertiesForm) form;
-        User user = isSetupMode() ? null : LogonControllerFactory.getInstance().getUser((HttpServletRequest) request);
-        pf.setSelectedCategory(-1);
-        pf.clearValues();
-        int newCategory = pf.popCategory();
-        pf.setParentCategory(newCategory);
-        ActionForward fwd = rebuildItems(mapping, newCategory, pf, request, user);
-        ActionForward cancel = mapping.findForward("cancel");
-        return cancel != null ? cancel : fwd;
-    }
+	public ActionForward cancel(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
+	throws Exception {
+		AbstractPropertiesForm pf = (AbstractPropertiesForm) form;
+		User user = isSetupMode() ? null : LogonControllerFactory.getInstance().getUser((HttpServletRequest) request);
+		pf.setSelectedCategory(-1);
+		pf.clearValues();
+		int newCategory = pf.popCategory();
+		pf.setParentCategory(newCategory);
+		ActionForward fwd = rebuildItems(mapping, newCategory, pf, request, user);
+		ActionForward cancel = mapping.findForward("cancel");
+		return cancel != null ? cancel : fwd;
+	}
 
-    /**
-     * Display category
-     * 
-     * @param mapping
-     * @param form
-     * @param request
-     * @param response
-     * @return ActionForward
-     * @throws Exception
-     */
-    public ActionForward displayCategory(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-                                         HttpServletResponse response) throws Exception {
-        AbstractPropertiesForm pf = (AbstractPropertiesForm) form;
-        User user = isSetupMode() ? null : LogonControllerFactory.getInstance().getUser((HttpServletRequest) request);
-        pf.setSelectedCategory(-1);
-        pf.pushCategory(pf.getParentCategory());
-        pf.setParentCategory(pf.getNewSelectedCategory());
-        pf.setNewSelectedCategory(-1);
-        return rebuildItems(mapping, pf.getParentCategory(), pf, request, user);
-    }
+	/**
+	 * Display category
+	 * 
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return ActionForward
+	 * @throws Exception
+	 */
+	public ActionForward displayCategory(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		AbstractPropertiesForm pf = (AbstractPropertiesForm) form;
+		User user = isSetupMode() ? null : LogonControllerFactory.getInstance().getUser((HttpServletRequest) request);
+		pf.setSelectedCategory(-1);
+		pf.pushCategory(pf.getParentCategory());
+		pf.setParentCategory(pf.getNewSelectedCategory());
+		pf.setNewSelectedCategory(-1);
+		return rebuildItems(mapping, pf.getParentCategory(), pf, request, user);
+	}
 
-    /**
-     * Commit any changed properties.
-     * 
-     * @param mapping
-     * @param form
-     * @param request
-     * @param response
-     * @return ActionForward
-     * @throws Exception
-     */
-    public ActionForward commit(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
-                    throws Exception {
-        SessionInfo sessionInfo = getSessionInfo(request);
-        boolean restartRequired = false;
+	/**
+	 * Commit any changed properties.
+	 * 
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return ActionForward
+	 * @throws Exception
+	 */
+	public ActionForward commit(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
+	throws Exception {
+		SessionInfo sessionInfo = getSessionInfo(request);
+		boolean restartRequired = false;
 
-        // Temporarily store the properties
-        if (log.isDebugEnabled())
-            log.debug("Commiting properties");
-        AbstractPropertiesForm f = (AbstractPropertiesForm) form;
-        f.storeItems();
+		// Temporarily store the properties
+		if (log.isDebugEnabled())
+			log.debug("Commiting properties");
 
-        // Check for save ability
-        if (!((PropertiesForm) form).getEnabled()) {
-            throw new Exception("Disabled.");
-        }
+		AbstractPropertiesForm f = (AbstractPropertiesForm) form;
+		f.storeItems();
 
-        // Set the properties
-        String oldVal, newVal;
-        PropertyDefinition def;
-        for (Iterator i = f.storedItems(); i.hasNext();) {
-            PropertyItem item = (PropertyItem) i.next();
-            def = item.getDefinition();
-            newVal = String.valueOf(item.getPropertyValue());
-            if (log.isDebugEnabled())
-                log.debug("Setting '" + def.getName() + "' to '" + newVal + "'");
-            oldVal = Property.setProperty(createKey(def, f, sessionInfo), newVal, sessionInfo);
-            if ((oldVal == null && newVal != null) || !oldVal.equals(newVal)) {
-                if (def.isRestartRequired()) {
-                    restartRequired = true;
-                }
-            }
-        }
-        CoreUtil.resetMainNavigation(request.getSession());
+		// Check for save ability
+		if (!((PropertiesForm) form).getEnabled()) {
+			throw new Exception("Disabled.");
+		}
 
-        // Clean up and forward
-        f.clearValues();
-        ActionForward fwd;
-        if (f.getForwardTo() != null && !f.getForwardTo().equals("")) {
-            fwd = new ActionForward(f.getForwardTo(), f.isRedirect());
-        } else {
-            fwd = cancel(mapping, form, request, response);
-        }
-        if (restartRequired) {
-            String orig = fwd.getPath();
-            fwd = mapping.findForward("restartRequired");
-            fwd = CoreUtil.addParameterToForward(fwd, "no", orig);
-        }
-        return fwd;
-    }
+		// Set the properties
+		String oldVal, newVal;
+		PropertyDefinition def;
+		for (Iterator i = f.storedItems(); i.hasNext();) {
 
-    protected String getMethodName(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-                                   HttpServletResponse response, String parameter) throws Exception {
-        return request.getParameter("actionTarget");
-    }
+			PropertyItem item = (PropertyItem) i.next();
+			def = item.getDefinition();
+			            
+			newVal = String.valueOf(item.getValue());
 
-    protected ActionForward rebuildItems(ActionMapping mapping, int parentCategory, AbstractPropertiesForm pf,
-                                         HttpServletRequest request, User user) throws Exception {
-        SessionInfo sessionInfo = getSessionInfo(request);
-        List<PropertyDefinitionCategory> categoryDefinitions = new ArrayList<PropertyDefinitionCategory>();
-        List<PropertyDefinitionCategory> subCategories = new ArrayList<PropertyDefinitionCategory>();
-        Collection<PropertyDefinitionCategory> sourceCategories = null;
-        List<PropertyItemImpl> propertyItemImpls = new ArrayList<PropertyItemImpl>();
-        for (PropertyClass propertyClass : pf.getPropertyClasses()) {
+			if (log.isDebugEnabled())
+				log.debug("Setting '" + def.getName() + "' to '" + newVal + "'");
 
-            /*
-             * If no parent category is supplied, then assume all categories in
-             * the class, otherwise get all the child categories of the supplied
-             * one
-             */
-            if (parentCategory == 0) {
-                sourceCategories = propertyClass.getCategories();
-            } else {
-                PropertyDefinitionCategory category = propertyClass.getPropertyDefinitionCategory(parentCategory);
-                if (category != null) {
-                    sourceCategories = category.getCategories();
-                } else {
-                    sourceCategories = null;
-                }
-            }
+			oldVal = Property.setProperty(createKey(def, f, sessionInfo), newVal, sessionInfo);
 
-            if (sourceCategories != null) {
-                for (PropertyDefinitionCategory def : sourceCategories) {
-                    if (def.isEnabled()) {
-                        if (def.size() > 0) {
-                            if (!subCategories.contains(def)) {
-                                // Only add the subcategory if it has at least
-                                // one enabled subcategory within it
-                                for (PropertyDefinitionCategory subcat : def.getCategories()) {
-                                    if (subcat.isEnabled()) {
-                                        subCategories.add(def);
-                                        break;
-                                    }
-                                }
-                            }
-                        } else {
-                            if (!categoryDefinitions.contains(def))
-                                for (PropertyDefinition propertyDefinition : propertyClass.getDefinitions()) {
-                                    if (!propertyDefinition.isHidden() && includePropertyDefinition(propertyDefinition, request)
-                                                    && propertyDefinition.getCategory() == def.getId()) {
-                                        categoryDefinitions.add(def);
-                                        if (pf.getSelectedCategory() == -1) {
-                                            pf.setSelectedCategory(def.getId());
-                                        }
-                                        break;
-                                    }
-                                }
-                        }
-                    }
-                }
-            }
+			if ((oldVal == null && newVal != null) || !oldVal.equals(newVal)) {
+				if (def.isRestartRequired()) {
+					restartRequired = true;
+				}
+			}
+		}
+		CoreUtil.resetMainNavigation(request.getSession());
 
-            for (PropertyDefinition propertyDefinition : propertyClass.getDefinitions()) {
-                if (!propertyDefinition.isHidden() && propertyDefinition.getCategory() == pf.getSelectedCategory()) {
-                    if (includePropertyDefinition(propertyDefinition, request)) {
-                        propertyItemImpls.add(pf.retrieveItem(propertyDefinition.getName(), new PropertyItemImpl(request,
-                                        propertyDefinition, Property.getProperty(createKey(propertyDefinition, pf, sessionInfo)))));
-                    }
-                }
-            }
-            pf.setParentCategory(parentCategory);
-            pf.setSubCategories(subCategories);
-            pf.setCategoryDefinitions(categoryDefinitions);
-            Collections.sort(propertyItemImpls);
-            pf.setPropertyItems(propertyItemImpls.toArray(new PropertyItemImpl[propertyItemImpls.size()]));
-        }
-        if (propertyItemImpls.size() != 0 || subCategories.size() != 0) {
-            return mapping.findForward("display");
-        } else {
-            log.warn("No categories or definitions to display. May be the result of a session timeout.");
-            return mapping.findForward("home");
-        }
-    }
+		// Clean up and forward
+		f.clearValues();
+		ActionForward fwd;
+		if (f.getForwardTo() != null && !f.getForwardTo().equals("")) {
+			fwd = new ActionForward(f.getForwardTo(), f.isRedirect());
+		} else {
+			fwd = cancel(mapping, form, request, response);
+		}
+		if (restartRequired) {
+			String orig = fwd.getPath();
+			fwd = mapping.findForward("restartRequired");
+			fwd = CoreUtil.addParameterToForward(fwd, "no", orig);
+		}
+		return fwd;
+	}
 
-    protected boolean includePropertyDefinition(PropertyDefinition definition, HttpServletRequest request) {
-        return true;
-    }
+	protected String getMethodName(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+			HttpServletResponse response, String parameter) throws Exception {
+		return request.getParameter("actionTarget");
+	}
 
-    public abstract AbstractPropertyKey createKey(PropertyDefinition definition, AbstractPropertiesForm form,
-                                                  SessionInfo sessionInfo);
+	protected ActionForward rebuildItems(ActionMapping mapping, int parentCategory, AbstractPropertiesForm pf,
+			HttpServletRequest request, User user) throws Exception {
+		SessionInfo sessionInfo = getSessionInfo(request);
+		List<PropertyDefinitionCategory> categoryDefinitions = new ArrayList<PropertyDefinitionCategory>();
+		List<PropertyDefinitionCategory> subCategories = new ArrayList<PropertyDefinitionCategory>();
+		Collection<PropertyDefinitionCategory> sourceCategories = null;
+		List<PropertyItemImpl> propertyItemImpls = new ArrayList<PropertyItemImpl>();
+		for (PropertyClass propertyClass : pf.getPropertyClasses()) {
+
+			/*
+			 * If no parent category is supplied, then assume all categories in
+			 * the class, otherwise get all the child categories of the supplied
+			 * one
+			 */
+			if (parentCategory == 0) {
+				sourceCategories = propertyClass.getCategories();
+			} else {
+				PropertyDefinitionCategory category = propertyClass.getPropertyDefinitionCategory(parentCategory);
+				if (category != null) {
+					sourceCategories = category.getCategories();
+				} else {
+					sourceCategories = null;
+				}
+			}
+
+			if (sourceCategories != null) {
+				for (PropertyDefinitionCategory def : sourceCategories) {
+					if (def.isEnabled()) {
+						if (def.size() > 0) {
+							if (!subCategories.contains(def)) {
+								// Only add the subcategory if it has at least
+								// one enabled subcategory within it
+								for (PropertyDefinitionCategory subcat : def.getCategories()) {
+									if (subcat.isEnabled()) {
+										subCategories.add(def);
+										break;
+									}
+								}
+							}
+						} else {
+							if (!categoryDefinitions.contains(def))
+								for (PropertyDefinition propertyDefinition : propertyClass.getDefinitions()) {
+									if (!propertyDefinition.isHidden() && includePropertyDefinition(propertyDefinition, request)
+											&& propertyDefinition.getCategory() == def.getId()) {
+										categoryDefinitions.add(def);
+										if (pf.getSelectedCategory() == -1) {
+											pf.setSelectedCategory(def.getId());
+										}
+										break;
+									}
+								}
+						}
+					}
+				}
+			}
+
+			for (PropertyDefinition propertyDefinition : propertyClass.getDefinitions()) {
+				if (!propertyDefinition.isHidden() && propertyDefinition.getCategory() == pf.getSelectedCategory()) {
+					if (includePropertyDefinition(propertyDefinition, request)) {
+						propertyItemImpls.add(pf.retrieveItem(propertyDefinition.getName(), new PropertyItemImpl(request,
+								propertyDefinition, Property.getProperty(createKey(propertyDefinition, pf, sessionInfo)))));
+					}
+				}
+			}
+			pf.setParentCategory(parentCategory);
+			pf.setSubCategories(subCategories);
+			pf.setCategoryDefinitions(categoryDefinitions);
+			Collections.sort(propertyItemImpls);
+			pf.setPropertyItems(propertyItemImpls.toArray(new PropertyItemImpl[propertyItemImpls.size()]));
+		}
+		if (propertyItemImpls.size() != 0 || subCategories.size() != 0) {
+			return mapping.findForward("display");
+		} else {
+			log.warn("No categories or definitions to display. May be the result of a session timeout.");
+			return mapping.findForward("home");
+		}
+	}
+
+	protected boolean includePropertyDefinition(PropertyDefinition definition, HttpServletRequest request) {
+		return true;
+	}
+
+	public abstract AbstractPropertyKey createKey(PropertyDefinition definition, AbstractPropertiesForm form,
+			SessionInfo sessionInfo);
 }
