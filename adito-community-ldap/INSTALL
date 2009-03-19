@@ -1,0 +1,8 @@
+To install the Adito LDAP authentication module, do the following:
+
+* Run "ant install" in $ADITO_HOME
+* Run "ant install" in this directory.
+* Copy the build/release/adito-community-ldap.zip to $ADITO_HOME/adito/conf/repository/archives
+* Re-run "ant install" in $ADITO_HOME
+* Select LDAP for the user database in the install phase (see Installing and running Adito server in 
+Wiki)

@@ -8,8 +8,7 @@
 	order="40"
 	startOnSetupMode="true">
 	<description>
-		This extension contains a user database that supports Active
-		Directory
+		This extension contains a user database that supports LDAP
 	</description>
 
 	<install when="start">
