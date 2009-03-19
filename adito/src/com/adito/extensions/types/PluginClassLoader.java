@@ -5,10 +5,16 @@ import java.net.URLClassLoader;
 
 public class PluginClassLoader extends URLClassLoader {
 
+	/**
+	 * The one and only constructor so you have to specify the parent ClassLoader.
+	 */
     public PluginClassLoader(URL[] urls, ClassLoader parent) {
         super(urls, parent);
     }
 
+    /**
+	 * This method is not obeying the standard class loading delegation model.
+	 */
     @Override
     protected synchronized Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundException {
         // First, check if the class has already been loaded
