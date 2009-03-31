@@ -114,6 +114,7 @@
         <delete dir="${build.dist}"/>
         <delete dir="${build.release}"/>
         <delete dir="${build.extension}"/>
+        <delete dir="${build.dir}"/>
     </target>
 
     <!-- Create API documentation -->
