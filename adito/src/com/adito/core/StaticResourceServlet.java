@@ -50,7 +50,7 @@ public class StaticResourceServlet extends HttpServlet {
 
 		String pathInContext = DAVUtilities.concatenatePaths(servletPath, pathInfo);
 		if(pathInContext.equals("/")) {
-		    response.sendRedirect("/showHome.do");
+		    response.sendRedirect(request.getContextPath() + "/showHome.do");
 		    return;
 		}
 		boolean endsWithSlash = pathInContext.endsWith("/");

@@ -52,11 +52,8 @@ public class LocalRepository implements Repository {
 		}
 		
 		if(basedir==null) {
-			// PLUNDEN: Removing the context
-	        // basedir = new File(ContextHolder.getContext().getConfDirectory(), "repository");
-			basedir = new File((String)CoreServlet.getServlet().getServletContext().getAttribute("adito.directories.conf"), "repository");
-			// end change
-		    basedir.mkdirs();
+	        basedir = new File(ContextHolder.getContext().getConfDirectory(), "repository");
+			basedir.mkdirs();
 		}
 
 		if(!basedir.exists()) {

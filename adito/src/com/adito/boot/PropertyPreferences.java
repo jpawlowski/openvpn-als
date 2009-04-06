@@ -49,20 +49,12 @@ public class PropertyPreferences extends AbstractPreferences {
     /**
      * System root
      */
-	// PLUNDEN: Removing the context
-    // public final static Preferences SYSTEM_ROOT = new PropertyPreferences(new File(new File(ContextHolder.getContext().getConfDirectory(), "prefs"), "system"));
-	public final static Preferences SYSTEM_ROOT = new PropertyPreferences(
-			new File(new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.conf", "conf"), "prefs"), "system"));
-    // end change
+    public final static Preferences SYSTEM_ROOT = new PropertyPreferences(new File(new File(ContextHolder.getContext().getConfDirectory(), "prefs"), "system"));
     
     /**
      * User root
      */
-	// PLUNDEN: Removing the context
-    // public final static Preferences USER_ROOT = new PropertyPreferences(new File(new File(ContextHolder.getContext().getConfDirectory(), "prefs"), "system"));
-	public final static Preferences USER_ROOT = new PropertyPreferences(
-			new File(new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/" + SystemProperties.get("adito.directories.conf", "conf"), "prefs"), "system"));
-    // end change
+    public final static Preferences USER_ROOT = new PropertyPreferences(new File(new File(ContextHolder.getContext().getConfDirectory(), "prefs"), "system"));
     
     private static final String[] EMPTY_STRING_ARRAY = new String[0];
     private static final int FLUSH_INTERVAL = 30; // seconds

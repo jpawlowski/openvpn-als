@@ -32,6 +32,7 @@ import org.ajaxtags.helpers.AjaxXmlBuilder;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 
+import com.adito.boot.ContextHolder;
 import com.adito.boot.Util;
 import com.adito.core.UserDatabaseManager;
 import com.adito.install.forms.SelectUserDatabaseForm;
@@ -68,10 +69,7 @@ public class ListAccountsAction extends AbstractAjaxXMLAction {
     protected void onAjaxRequest(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response,
                                  AjaxXmlBuilder builder) throws Exception {
         UserDatabase userDatabase;
-        // PLUNDEN: Removing the context
-		// if (ContextHolder.getContext().isSetupMode()) {
-		if (false) {
-		// end change
+		if (ContextHolder.getContext().isSetupMode()) {
             AbstractWizardSequence sequence = (AbstractWizardSequence) request.getSession().getAttribute(Constants.WIZARD_SEQUENCE);
             if (sequence == null) {
                 log.error("No wizard sequence, cannot list users.");

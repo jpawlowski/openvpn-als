@@ -359,10 +359,7 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
         // process can proceed.
         bootProgressMonitor.updateMessage("Initialising user database");
         bootProgressMonitor.updateProgress(50);
-        // PLUNDEN: Removing the context
-		// UserDatabaseManager.getInstance().initialize(ContextHolder.getContext().isSetupMode());
-        UserDatabaseManager.getInstance().initialize(false);
-		// end change
+		UserDatabaseManager.getInstance().initialize(ContextHolder.getContext().isSetupMode());
 
         // Use the default system database if no other has been registered
         try {
@@ -401,10 +398,7 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
         // Register CONNECT handler
         bootProgressMonitor.updateMessage("Registering request handlers");
         bootProgressMonitor.updateProgress(75);
-        // PLUNDEN: Removing the context
-		// if (ContextHolder.getContext().isSetupMode()) {
-		if (false) {
-		// end change
+		if (ContextHolder.getContext().isSetupMode()) {
             if (SystemProperties.get("adito.testing", "false").equals("true")) {
                 ContextHolder.getContext().registerRequestHandler(new TestRequestHandler());
             }
@@ -415,20 +409,14 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
          * If running in setup mode, we don't want to change any properties
          * until the wizard has finished
          */
-		// PLUNDEN: Removing the context
-		// if (ContextHolder.getContext().isSetupMode())
-		if (false)
-		// end change
+		if (ContextHolder.getContext().isSetupMode())
             PropertyClassManager.getInstance().setAutoCommit(false);
 
         /*
          * Disable any property categories for user databases configuration if
          * not in setup mode
          */
-        // PLUNDEN: Removing the context
-    	// if (ContextHolder.getContext().isSetupMode()) {
-    	if (false) {
-    	// end change
+    	if (ContextHolder.getContext().isSetupMode()) {
             bootProgressMonitor.updateMessage("Removing hidden categories");
             bootProgressMonitor.updateProgress(80);
             UserDatabase defaultUserDatabase = UserDatabaseManager.getInstance().getDefaultUserDatabase();
@@ -474,10 +462,8 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
 
     protected void initNotifier() throws ServletException {
 
-    	// PLUNDEN: Removing the context
-        // File queueDir = new File(ContextHolder.getContext().getConfDirectory(), "queue");
-    	File queueDir = new File((String)getServletContext().getAttribute("adito.directories.conf"), "queue");
-        // end change
+    	File queueDir = new File(ContextHolder.getContext().getConfDirectory(), "queue");
+    	
         if (!queueDir.exists()) {
             if (!queueDir.mkdirs()) {
                 throw new ServletException("Could not create message queue directory " + queueDir.getAbsolutePath());
@@ -560,6 +546,7 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
         	
         	// PLUNDEN: Removing the context
             // ContextHolder.getContext().addContextListener(this);
+        	ContextHolder.setContext(new CoreContext());
         	// end change
         	
             if (SystemProperties.get("adito.disableNewSSLEngine", "false").equals("true"))
@@ -583,17 +570,6 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
             PropertyClassManager.getInstance().registerPropertyClass(new ApplicationParameters());
             PropertyClassManager.getInstance().registerPropertyClass(new ResourceAttributes());
 
-            // PLUNDEN: log
-            log.info("PLUNDEN: " + realPath);
-            log.info("PLUNDEN: " + WIPath);
-            log.info("PLUNDEN: " + getServletContext().getAttribute("adito.directories.conf"));
-            log.info("PLUNDEN: " + getServletContext().getAttribute("adito.directories.db"));
-            log.info("PLUNDEN: " + getServletContext().getAttribute("adito.directories.logs"));
-            log.info("PLUNDEN: " + getServletContext().getAttribute("adito.directories.tmp"));
-            log.info("PLUNDEN: " + getServletContext().getAttribute("adito.directories.apps"));
-            log.info("PLUNDEN: " + getServletContext().getAttribute("adito.version"));
-            // end
-            
             // Load the property database and categories
             // Use the default system database if no other has been registered
             try {
@@ -603,10 +579,7 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
                 throw new ServletException("Failed to initialise system database.", e);
             }
 
-            // PLUNDEN: Removing the context
-            // bootProgressMonitor = ContextHolder.getContext().getBootProgressMonitor();
-            bootProgressMonitor = (BootProgressMonitor)getServletContext().getAttribute("bootProgressMonitor");
-            // end change
+            bootProgressMonitor = ContextHolder.getContext().getBootProgressMonitor();
             
             // Initialise extensions
             bootProgressMonitor.updateMessage("Initialising extensions");
@@ -818,11 +791,8 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
             new DefaultPanel("pageInfo", Panel.CONTENT, 25, "/WEB-INF/jsp/tiles/pageInfo.jspf", null, "navigation") {
 
                 public boolean isAvailable(HttpServletRequest request, HttpServletResponse response, String layout) {
-                	// PLUNDEN: Removing the context
-            		// return (LogonControllerFactory.getInstance().getSessionInfo(request) != null || ContextHolder.getContext()
-                    //				.isSetupMode())
-                	return (LogonControllerFactory.getInstance().getSessionInfo(request) != null || false)
-            		// end change
+            		return (LogonControllerFactory.getInstance().getSessionInfo(request) != null || ContextHolder.getContext()
+                    			.isSetupMode())
                                     && request.getSession().getAttribute(Constants.SESSION_LOCKED) == null;
                 }
 
@@ -843,11 +813,8 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
         PanelManager.getInstance().addPanel(
             new DefaultPanel("toolBar", Panel.CONTENT, 35, "/WEB-INF/jsp/tiles/toolBar.jspf", null, "navigation") {
                 public boolean isAvailable(HttpServletRequest request, HttpServletResponse response, String layout) {
-                	// PLUNDEN: Removing the context
-            		// return (LogonControllerFactory.getInstance().getSessionInfo(request) != null || ContextHolder.getContext()
-                    //		.isSetupMode())
-                	return (LogonControllerFactory.getInstance().getSessionInfo(request) != null || false)
-            		// end change
+            		return (LogonControllerFactory.getInstance().getSessionInfo(request) != null || ContextHolder.getContext()
+                    	.isSetupMode())
                                     && request.getSession().getAttribute(Constants.TOOL_BAR_ITEMS) != null;
                 }
             });
@@ -888,10 +855,7 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
          * Add the 'site' VFS directory as a resource base. This must be done
          * because we need access to the resources without authentication
          */
-        // PLUNDEN: Removing the context
-        // File siteDir = new File(ContextHolder.getContext().getConfDirectory(), "site");
-        File siteDir = new File((String)getServletContext().getAttribute("adito.directories.conf"), "site");
-        // end change
+        File siteDir = new File(ContextHolder.getContext().getConfDirectory(), "site");
         try {
             if (!siteDir.exists()) {
                 siteDir.mkdirs();
@@ -975,10 +939,7 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
 
         // Initialise store
         try {
-        	// PLUNDEN: Removing the context
-            // store.init(ContextHolder.getContext().getApplicationDirectory());
-        	store.init(new File((String)getServletContext().getAttribute("adito.directories.apps")));
-            // end change
+            store.init(ContextHolder.getContext().getApplicationDirectory());
         } catch (Exception e) {
             log.error("Failed to initialise extension store.", e);
             throw new ServletException(e);
@@ -1054,16 +1015,10 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
 
     void checkDevEnvironment() throws ServletException {
         devConfig = "true".equalsIgnoreCase(SystemProperties.get("adito.useDevConfig", "false"));
-		// PLUNDEN: Removing the context
-        // File defaultDevConfDir = new File(SystemProperties.get("user.dir"), "conf");
-        File defaultDevConfDir = new File(CoreServlet.getServlet().getServletContext().getRealPath("/") + "/WEB-INF/conf");
-        // end change
+        File defaultDevConfDir = new File(SystemProperties.get("user.dir"), "conf");
         try {
             if (devConfig
-            		// PLUNDEN: Removing the context
-                    // && ContextHolder.getContext().getConfDirectory().getCanonicalFile().equals(
-            		&& new File((String)getServletContext().getAttribute("adito.directories.conf")).getCanonicalFile().equals(
-                    // end change
+                    && ContextHolder.getContext().getConfDirectory().getCanonicalFile().equals(
                                 defaultDevConfDir.getCanonicalFile())) {
                 throw new ServletException("When running in developmenet mode, you may NOT use "
                                 + defaultDevConfDir.getAbsolutePath() + " as your 'conf' directory. Please specifiy "
