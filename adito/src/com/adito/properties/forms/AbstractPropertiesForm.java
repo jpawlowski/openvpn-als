@@ -253,9 +253,13 @@ public class AbstractPropertiesForm extends CoreForm implements PropertiesForm {
                 PropertyDefinition def = item.getDefinition();
                 try {
                     Object propertyValue = item.getPropertyValue();
+                    Object value = item.getValue();
                     if (propertyValue instanceof String) {
                         propertyValue = String.valueOf(propertyValue).trim();
-                        item.setValue(propertyValue);
+                    }
+                    if (value instanceof String) {
+                        value = String.valueOf(value).trim();
+                        item.setValue(value);
                     }
                     def.validate(String.valueOf(propertyValue), getClass().getClassLoader());
                 } catch (CoreException ce) {

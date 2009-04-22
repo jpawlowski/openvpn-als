@@ -194,7 +194,7 @@ public abstract class AbstractPropertiesAction extends AuthenticatedDispatchActi
         for (Iterator i = f.storedItems(); i.hasNext();) {
             PropertyItem item = (PropertyItem) i.next();
             def = item.getDefinition();
-            newVal = String.valueOf(item.getValue());
+            newVal = String.valueOf(item.getPropertyValue());
             if (log.isDebugEnabled())
                 log.debug("Setting '" + def.getName() + "' to '" + newVal + "'");
             oldVal = Property.setProperty(createKey(def, f, sessionInfo), newVal, sessionInfo);
