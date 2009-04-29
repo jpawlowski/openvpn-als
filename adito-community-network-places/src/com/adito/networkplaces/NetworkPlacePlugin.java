@@ -36,6 +36,10 @@ import org.apache.commons.vfs.provider.tar.TgzFileProvider;
 import org.apache.commons.vfs.provider.temp.TemporaryFileProvider;
 import org.apache.commons.vfs.provider.zip.ZipFileProvider;
 import org.apache.commons.vfs.provider.sftp.SftpFileProvider;
+//for webdav support
+import  org.apache.commons.vfs.provider.webdav.WebdavFileProvider;
+import  com.adito.networkplaces.store.webdav.WebDAVProvider;
+
 
 import com.adito.agent.DefaultAgentManager;
 import com.adito.boot.ContextHolder;
@@ -343,12 +347,15 @@ public class NetworkPlacePlugin extends DefaultPlugin {
 		sfsm.addProvider("tmp", new TemporaryFileProvider());
 		sfsm.addProvider(new String[] { "bzip2", "bz2" }, new Bzip2FileProvider());
 
+		sfsm.addProvider("webdav", new WebdavFileProvider()); //For WebDAv provide added
+
 		mgr.registerProvider(new FileProvider());
 		mgr.registerProvider(new FTPProvider());
 		mgr.registerProvider(new SFTPProvider());//For SFTP Drive Mapping
 		mgr.registerProvider(new CIFSProvider());
 		mgr.registerProvider(new JarProvider());
 		mgr.registerProvider(new ZipProvider());
+		mgr.registerProvider(new WebDAVProvider()); //For WebDAv Drive Mapping
 
 		/*
 		Don't seem to work as expected.

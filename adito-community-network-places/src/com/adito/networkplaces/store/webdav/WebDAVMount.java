@@ -17,7 +17,7 @@
  *  License along with this program; if not, write to the Free Software
  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
-			
+
 package com.adito.networkplaces.store.webdav;
 
 import java.io.IOException;
@@ -34,6 +34,10 @@ import com.adito.vfs.VFSStore;
 import com.adito.vfs.utils.URI;
 import com.adito.vfs.webdav.DAVAuthenticationRequiredException;
 import com.adito.vfs.webdav.DAVUtilities;
+//for webdav support
+import org.apache.commons.vfs.impl.DefaultFileSystemManager;
+import org.apache.commons.vfs.provider.webdav.WebdavFileProvider;
+
 
 public class WebDAVMount extends AbstractNetworkPlaceMount {
 
@@ -50,7 +54,27 @@ public class WebDAVMount extends AbstractNetworkPlaceMount {
                 uri.setUserinfo(DAVUtilities.encodeURIUserInfo(credentials.getUsername() + (credentials.getPassword() != null ? ":" + new String(credentials.getPassword()) : "")));
             }
             uri.setPath(uri.getPath() + (uri.getPath().endsWith("/") ? "" : "/") + DAVUtilities.encodePath(path));
-            FileObject fileObject = this.getStore().getRepository().getFileSystemManager().resolveFile(uri.toString());
+
+			/* Note:Code used previously have some error due to file system provider
+			 * Error: org.apache.commons.vfs.FileSystemException: Badly formed URI "webdav://user:pws@localhost:80/webDAVStore/".
+			 * Comment: Old code should work because there is setBaseFile used in repository(Sets the base file to use when resolving relative URI.)
+			 *          not sure have to test it
+			 */
+
+			// previous code:  FileObject fileObject = this.getStore().getRepository().getFileSystemManager().resolveFile(uri.toString());
+
+
+
+			/*This code is working for web Dav. Generally every file system in this project using VFSRepository class to get VFS manager
+			 * and providers are initalized NetworkPlacePlugin class this rule is broken where due to some error. Completely new  VFS manager
+			 * is used here(should use  VFSRepository manager). Fortunately side effect not found on other and work with on commons-httpclient-2.0.2
+                         */
+
+			DefaultFileSystemManager mgr=new DefaultFileSystemManager();
+			((DefaultFileSystemManager)mgr).addProvider("webdav", new WebdavFileProvider());
+			((DefaultFileSystemManager)mgr).init();
+			FileObject fileObject = mgr.resolveFile(uri.toString());
+
             return fileObject;
         } catch (FileSystemException fse) {
             if (fse.getCode().equals("vfs.provider.ftp/connect.error")) {
