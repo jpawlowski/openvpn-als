@@ -346,6 +346,7 @@ public class NetworkPlacePlugin extends DefaultPlugin {
 		sfsm.addProvider("gz", new GzipFileProvider());
 		sfsm.addProvider("tmp", new TemporaryFileProvider());
 		sfsm.addProvider(new String[] { "bzip2", "bz2" }, new Bzip2FileProvider());
+		sfsm.addProvider("sftp", new SftpFileProvider());//for missing sftp file provider
 
 		sfsm.addProvider("webdav", new WebdavFileProvider()); //For WebDAv provide added
 
