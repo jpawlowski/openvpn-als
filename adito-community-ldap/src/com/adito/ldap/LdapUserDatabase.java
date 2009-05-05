@@ -43,6 +43,7 @@ import org.springframework.ldap.core.DirContextOperations;
 import org.springframework.ldap.core.DistinguishedName;
 import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.ldap.core.support.LdapContextSource;
+import org.springframework.ldap.core.support.AbstractContextMapper;
 import org.springframework.ldap.filter.AndFilter;
 import org.springframework.ldap.filter.EqualsFilter;
 import org.springframework.ldap.filter.LikeFilter;
@@ -551,30 +552,25 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
         filterS.and(new LikeFilter(UID_ATTRIBUTE, filter));
         List users = ldapTemplate.search(
                 rdnUsers, filterS.encode(),
-                new AttributesMapper() {
-                    public Object mapFromAttributes(Attributes attrs)
-                            throws NamingException {
+		new AbstractContextMapper() {
+		    protected Object doMapFromContext(DirContextOperations ctx) {
 
-                        if (attrs.get(MAIL_ATTRIBUTE) == null)
-                            attrs.put(MAIL_ATTRIBUTE, "");
-                        if (attrs.get(COMMON_NAME_ATTRIBUTE) == null)
-                            attrs.put(COMMON_NAME_ATTRIBUTE, "");
+			if (ctx.getStringAttribute(MAIL_ATTRIBUTE) == null)
+                            ctx.setAttributeValue(MAIL_ATTRIBUTE, "");
+			if (ctx.getStringAttribute(COMMON_NAME_ATTRIBUTE) == null)
+                            ctx.setAttributeValue(COMMON_NAME_ATTRIBUTE, "");
 
-                        String uid = attrs.get(UID_ATTRIBUTE).get().toString();
-
-                        String originalDn = UID_ATTRIBUTE + "=" + uid + "," + rdnUsers + "," + baseDn;
+			String uid = ctx.getStringAttribute(UID_ATTRIBUTE);
 
                         //get the date of last modify of this user
-                        DistinguishedName rdn = new DistinguishedName(UID_ATTRIBUTE + "=" + uid + "," + rdnUsers);
                         LdapTemplate tmp = new LdapTemplate();
                         tmp.setContextSource(ldapContextSource);
                         final String[] attrOp = {MODIFY_TIMESTAMP_ATTRIBUTE};
-                        Object o = tmp.lookup(rdn, attrOp,
+                        Object o = tmp.lookup(ctx.getDn(), attrOp,
                                 new ContextMapper() {
                                     public Object mapFromContext(Object ctx) {
                                         DirContextAdapter adapter = (DirContextAdapter) ctx;
                                         return adapter.getStringAttribute(attrOp[0]);
-
                                     }
                                 }
 
@@ -589,8 +585,7 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
                             lastPasswordChange = new Date();
                         }
 
-                        return new LdapUser(uid, originalDn, attrs.get(MAIL_ATTRIBUTE).get().toString(), attrs.get(COMMON_NAME_ATTRIBUTE).get().toString(), lastPasswordChange, getRealm());
-
+			return new LdapUser(uid, ctx.getNameInNamespace(), ctx.getStringAttribute(MAIL_ATTRIBUTE), ctx.getStringAttribute(COMMON_NAME_ATTRIBUTE), lastPasswordChange, getRealm());
 
                     }
                 });
@@ -630,11 +625,10 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
         filterS.and(new LikeFilter(COMMON_NAME_ATTRIBUTE, filter));
         List groups = ldapTemplate.search(
                 rdnGroups, filterS.encode(),
-                new AttributesMapper() {
-                    public Object mapFromAttributes(Attributes attrs) throws NamingException {
-                        String cn = attrs.get(COMMON_NAME_ATTRIBUTE).get().toString();
-                        String orginalDn = COMMON_NAME_ATTRIBUTE + "=" + cn + "," + rdnGroups + "," + baseDn;
-                        return new LdapGroup(cn, orginalDn, getRealm());
+                new AbstractContextMapper() {
+                    protected Object doMapFromContext(DirContextOperations ctx) {
+                      String cn = ctx.getStringAttribute(COMMON_NAME_ATTRIBUTE);
+                      return new LdapGroup(cn, ctx.getNameInNamespace(), getRealm());
                     }
                 });
 
