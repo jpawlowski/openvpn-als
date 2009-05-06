@@ -154,6 +154,10 @@
 					name="ldap.followReferrals" typeMeta=""
 					category="92" defaultValue="false" sortOrder="120" validation=""
 					messageResourcesKey="ldap" />
+				<definition type="2"
+					name="ldap.useSSL" typeMeta=""
+					category="92" defaultValue="false" sortOrder="130" validation=""
+					messageResourcesKey="ldap" />
 			</realmProperties>
 		</propertyDefinitions>
 	</extension>

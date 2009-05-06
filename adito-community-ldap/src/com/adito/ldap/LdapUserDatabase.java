@@ -92,6 +92,7 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
     private static final Log logger = LogFactory.getLog(LdapUserDatabase.class);
 
     private static final String LDAP_PROTOCOL = "ldap://";
+    private static final String LDAP_PROTOCOL_SSL = "ldaps://";
 
     private UserContainer userContainer = UserContainer.EMPTY_CACHE;
     private GroupContainer groupContainer = GroupContainer.EMPTY_CACHE;
@@ -111,6 +112,7 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
     private int timeOut;
     private boolean usernamesAreCaseSensitive;
     private boolean followReferrals;
+    private boolean useSSL;
 
 
     /**
@@ -802,7 +804,14 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
             groupContainer = new GroupContainer(groupCacheSize, inMemoryCache);
 
             ldapContextSource = new LdapContextSource();
-            ldapContextSource.setUrl(LDAP_PROTOCOL + controllerHost);
+            String ldapProtocol = LDAP_PROTOCOL;
+            if (useSSL) {
+            	ldapProtocol = LDAP_PROTOCOL_SSL;
+            } else {
+            	ldapProtocol = LDAP_PROTOCOL;
+            }
+            ldapContextSource.setUrl(ldapProtocol + controllerHost);
+            
             ldapContextSource.setBase(baseDn);
             ldapContextSource.setUserDn(serviceAccountName);
             ldapContextSource.setPassword(serviceAccountPassword);
@@ -842,6 +851,7 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
         setDomainUsers(getProperty("ldap.domainUsers", propertyNames));
         setDomainGroups(getProperty("ldap.domainGroups", propertyNames));
 
+        setUseSSL(getPropertyBoolean("ldap.useSSL", propertyNames));
         setFollowReferrals(getPropertyBoolean("ldap.followReferrals", propertyNames));
         setUserCacheSize(getPropertyInt("ldap.cacheUserMaxObjects", propertyNames));
         setGroupCacheSize(getPropertyInt("ldap.cacheGroupMaxObjects", propertyNames));
@@ -1041,6 +1051,15 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
         this.followReferrals = followReferrals;
     }
 
+    /**
+     * Set useSSL
+     *
+     * @param useSSL
+     */
+    void setUseSSL(boolean useSSL) {
+        this.useSSL = useSSL;
+    }
+    
     /**
      * Set userCacheSize
      *
