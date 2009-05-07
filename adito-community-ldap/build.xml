@@ -138,6 +138,7 @@
     </target>
 
   <target name="install" depends="release">
+    <copy file="${build.release}/${ant.project.name}.zip" todir="${adito.home}/conf/repository/archives" />
     <copy file="${build.lib}/commons-lang-2.3.jar" todir="${adito.home}/lib" />
     <copy file="${build.lib}/commons-logging-1.0.4.jar" todir="${adito.home}/lib" />
     <copy file="${build.lib}/commons-pool-1.3.jar" todir="${adito.home}/lib" />

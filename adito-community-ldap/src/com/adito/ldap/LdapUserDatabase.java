@@ -66,6 +66,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.security.cert.X509Certificate;
+import java.security.cert.CertificateFactory;
+import java.io.ByteArrayInputStream;
+import java.math.BigInteger;
 
 /**
  * <p/>
@@ -79,6 +83,7 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
     public static final String MAIL_ATTRIBUTE = "mail";
     public static final String MEMBER_ATTRIBUTE = "uniqueMember";
     public static final String PASSWORD_ATTRIBUTE = "userPassword";
+    public static final String CERTIFICATE_ATTRIBUTE="userCertificate;binary";
     public static final String UID_ATTRIBUTE = "uid";
     public static final String MODIFY_TIMESTAMP_ATTRIBUTE = "modifyTimestamp";
     public static final String OBJECT_CLASS_ATTRIBUTE = "objectclass";
@@ -554,15 +559,15 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
         filterS.and(new LikeFilter(UID_ATTRIBUTE, filter));
         List users = ldapTemplate.search(
                 rdnUsers, filterS.encode(),
-		new AbstractContextMapper() {
-		    protected Object doMapFromContext(DirContextOperations ctx) {
+                new AbstractContextMapper() {
+                    protected Object doMapFromContext(DirContextOperations ctx) {
 
-			if (ctx.getStringAttribute(MAIL_ATTRIBUTE) == null)
+                        if (ctx.getStringAttribute(MAIL_ATTRIBUTE) == null)
                             ctx.setAttributeValue(MAIL_ATTRIBUTE, "");
-			if (ctx.getStringAttribute(COMMON_NAME_ATTRIBUTE) == null)
+                        if (ctx.getStringAttribute(COMMON_NAME_ATTRIBUTE) == null)
                             ctx.setAttributeValue(COMMON_NAME_ATTRIBUTE, "");
 
-			String uid = ctx.getStringAttribute(UID_ATTRIBUTE);
+                        String uid = ctx.getStringAttribute(UID_ATTRIBUTE);
 
                         //get the date of last modify of this user
                         LdapTemplate tmp = new LdapTemplate();
@@ -587,7 +592,7 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
                             lastPasswordChange = new Date();
                         }
 
-			return new LdapUser(uid, ctx.getNameInNamespace(), ctx.getStringAttribute(MAIL_ATTRIBUTE), ctx.getStringAttribute(COMMON_NAME_ATTRIBUTE), lastPasswordChange, getRealm());
+                        return new LdapUser(uid, ctx.getNameInNamespace(), ctx.getStringAttribute(MAIL_ATTRIBUTE), ctx.getStringAttribute(COMMON_NAME_ATTRIBUTE), lastPasswordChange, getRealm());
 
                     }
                 });
@@ -629,8 +634,8 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
                 rdnGroups, filterS.encode(),
                 new AbstractContextMapper() {
                     protected Object doMapFromContext(DirContextOperations ctx) {
-                      String cn = ctx.getStringAttribute(COMMON_NAME_ATTRIBUTE);
-                      return new LdapGroup(cn, ctx.getNameInNamespace(), getRealm());
+                        String cn = ctx.getStringAttribute(COMMON_NAME_ATTRIBUTE);
+                        return new LdapGroup(cn, ctx.getNameInNamespace(), getRealm());
                     }
                 });
 
@@ -762,6 +767,177 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
 
     }
 
+    /**
+     * Register a certificate X509 in LDAP server for a user
+     * @param user the owner of certificate
+     * @param x509Certificate the certificate to register
+     * @throws Exception
+     */
+    public void registerCertificate(User user, X509Certificate x509Certificate) throws Exception {
+
+        if (!supportsAccountCreation()) {
+            throw new UnsupportedOperationException("User database is read-only");
+        }
+
+        if (logger.isInfoEnabled()) {
+            logger.info("Register Certificat " + user.getPrincipalName());
+        }
+
+        if (user instanceof LdapUser){
+
+            LdapTemplate ldapTemplate = new LdapTemplate();
+            ldapTemplate.setContextSource(ldapContextSource);
+
+            LdapUser ldapUser = (LdapUser) user;
+
+            String dn = ldapUser.getDn();
+
+            int ind = dn.indexOf(baseDn);
+
+            String rdn = dn.substring(0,ind - 1);
+
+            //add (or update) the certificat of user
+            DirContextOperations context = ldapTemplate.lookupContext(rdn);
+            context.setAttributeValue(CERTIFICATE_ATTRIBUTE,x509Certificate.getEncoded());
+            ldapTemplate.modifyAttributes(context);
+        }
+
+    }
+
+    /**
+     * Return the certificat store in LDAP server for a user (if exist)
+     * @param user
+     * @return X509Certificate of the user or null id this certificate doesn't exist
+     */
+    public X509Certificate getCertificate(User user) {
+
+        if (logger.isInfoEnabled()) {
+            logger.info("Get Certificat for " + user.getPrincipalName());
+        }
+
+        LdapTemplate ldapTemplate = new LdapTemplate();
+        ldapTemplate.setContextSource(ldapContextSource);
+
+        AndFilter filterS = new AndFilter();
+        filterS.and(new EqualsFilter(OBJECT_CLASS_ATTRIBUTE, USERS_CLASS));
+        filterS.and(new LikeFilter(UID_ATTRIBUTE,user.getPrincipalName()));
+        List certificats = ldapTemplate.search(
+                rdnUsers, filterS.encode(),
+                new AttributesMapper() {
+                    public Object mapFromAttributes(Attributes attrs)
+                            throws NamingException{
+
+                        try{
+                            CertificateFactory certificateFactory=CertificateFactory.getInstance("X.509");
+
+                            return certificateFactory.generateCertificate(new ByteArrayInputStream((byte[])attrs.get(CERTIFICATE_ATTRIBUTE).get()));
+
+                        }catch(Exception e){
+
+                            throw new NamingException(e.toString());
+                        }
+
+
+                    }
+                });
+
+        if(certificats.size()==0){
+            return null;
+        }
+        else {
+            X509Certificate cert = (X509Certificate) certificats.get(0);
+            return cert;
+        }
+
+    }
+
+    /**
+     * Return the user associated to a certiciate in LDAP server
+     * @param x509Certificate
+     * @return the user of the certificate or null if no associate exist
+     */
+    public User getUserByCertificate(X509Certificate x509Certificate){
+
+        if (logger.isInfoEnabled()) {
+            logger.info("Get user for serial number " + x509Certificate.getSerialNumber().toString(16));
+        }
+
+        LdapTemplate ldapTemplate = new LdapTemplate();
+        ldapTemplate.setContextSource(ldapContextSource);
+
+        AndFilter filterS = new AndFilter();
+        filterS.and(new EqualsFilter(OBJECT_CLASS_ATTRIBUTE, USERS_CLASS));
+        filterS.and(new LikeFilter("userCertificate","*"));
+        List serialNumbers = ldapTemplate.search(
+                rdnUsers, filterS.encode(),
+                new AbstractContextMapper() {
+                    public Object doMapFromContext(DirContextOperations ctx){
+
+                        try{
+                            CertificateFactory certificateFactory=CertificateFactory.getInstance("X.509");
+
+                            X509Certificate x509Certificate = (X509Certificate)certificateFactory.generateCertificate(new ByteArrayInputStream((byte[])ctx.getObjectAttribute(CERTIFICATE_ATTRIBUTE)));
+
+                            if (ctx.getStringAttribute(MAIL_ATTRIBUTE) == null)
+                                ctx.setAttributeValue(MAIL_ATTRIBUTE, "");
+                            if (ctx.getStringAttribute(COMMON_NAME_ATTRIBUTE) == null)
+                                ctx.setAttributeValue(COMMON_NAME_ATTRIBUTE, "");
+
+                            String uid = ctx.getStringAttribute(UID_ATTRIBUTE);
+
+                            //get the date of last modify of this user                            
+                            LdapTemplate tmp = new LdapTemplate();
+                            tmp.setContextSource(ldapContextSource);
+                            final String[] attrOp = {MODIFY_TIMESTAMP_ATTRIBUTE};
+                            Object o = tmp.lookup(ctx.getDn(), attrOp,
+                                    new ContextMapper() {
+                                        public Object mapFromContext(Object ctx) {
+                                            DirContextAdapter adapter = (DirContextAdapter) ctx;
+                                            return adapter.getStringAttribute(attrOp[0]);
+
+                                        }
+                                    }
+
+                            );
+
+                            Date lastPasswordChange; //the time of last change for the entry
+                            if (o != null) {
+                                String modifyTimestamp = o.toString();
+                                lastPasswordChange = getDate(modifyTimestamp);
+                            } else {
+                                //if the modifyTimeStamp is null
+                                lastPasswordChange = new Date();
+                            }
+
+                            LdapUser user= new LdapUser(uid, ctx.getNameInNamespace(), ctx.getStringAttribute(MAIL_ATTRIBUTE), ctx.getStringAttribute(COMMON_NAME_ATTRIBUTE), lastPasswordChange, getRealm());
+
+                            Object[] tab = {x509Certificate.getSerialNumber(),user};
+
+                            return tab;
+
+                        }catch(Exception e){
+
+                            logger.error(e);
+                            return null;
+                        }
+                    }
+                });
+
+        if( serialNumbers != null){
+            for(Object o: serialNumbers){
+
+                Object[] tab=(Object[])o;
+                BigInteger serialNumber=(BigInteger) tab[0];
+                LdapUser user=(LdapUser)tab[1];
+                if(serialNumber.equals(x509Certificate.getSerialNumber()))
+                    return user;
+            }
+        }
+
+        return null;
+
+
+    }
     /*
     * (non-Javadoc)
     *
@@ -806,12 +982,12 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
             ldapContextSource = new LdapContextSource();
             String ldapProtocol = LDAP_PROTOCOL;
             if (useSSL) {
-            	ldapProtocol = LDAP_PROTOCOL_SSL;
+                ldapProtocol = LDAP_PROTOCOL_SSL;
             } else {
-            	ldapProtocol = LDAP_PROTOCOL;
+                ldapProtocol = LDAP_PROTOCOL;
             }
             ldapContextSource.setUrl(ldapProtocol + controllerHost);
-            
+
             ldapContextSource.setBase(baseDn);
             ldapContextSource.setUserDn(serviceAccountName);
             ldapContextSource.setPassword(serviceAccountPassword);
@@ -1059,7 +1235,7 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
     void setUseSSL(boolean useSSL) {
         this.useSSL = useSSL;
     }
-    
+
     /**
      * Set userCacheSize
      *
@@ -1153,7 +1329,6 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
      */
     private RealmKey getRealmKey(String key, Properties propertyNames) {
         String propertyOrDefault = propertyNames.getProperty(key, key);
-        logger.info("propertyOrDefault: " + propertyOrDefault);
         return new RealmKey(propertyOrDefault, realm);
     }
 
