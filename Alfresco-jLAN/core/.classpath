@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="source/java"/>
+	<classpathentry kind="src" path="source/test-resources"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="/3rd Party/lib/commons/commons-logging-1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/3rd Party/lib/quartz-1.6.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/3rd Party/lib/dom4j-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/3rd Party/lib/guessencoding-1.0.jar" sourcepath="/3rd Party/src/guessencoding-1.0-src.zip"/>
+	<classpathentry exported="true" kind="lib" path="/3rd Party/lib/jta.jar"/>
+	<classpathentry exported="true" kind="lib" path="/3rd Party/lib/jug-lgpl-2.0.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/3rd Party/lib/spring-2.0.8.jar"/>
+	<classpathentry kind="lib" path="/3rd Party/lib/junit.jar"/>
+	<classpathentry kind="lib" path="/3rd Party/lib/xml-apis.jar"/>
+	<classpathentry kind="lib" path="/3rd Party/lib/ibatis-2.3.4.726-patched.jar" sourcepath="/3rd Party/src/ibatis-2.3.4.726-patched-src.zip"/>
+	<classpathentry kind="lib" path="/3rd Party/lib/devenv/servlet.jar"/>
+	<classpathentry kind="lib" path="/3rd Party/lib/jboss/jboss-vfs-2.1.0.GA.jar" sourcepath="/3rd Party/lib/jboss/jboss-vfs-2.1.0.GA-sources.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>
