@@ -22,7 +22,7 @@ public class HSQLDBDatabaseEngine extends JDBCDatabaseEngine {
 
     public String getURL() {
         if (serverMode) {
-            return "jdbc:hsqldb:hsql://127.0.0.1:9001/" + getDatabase();
+            return "jdbc:hsqldb:hsql://127.0.0.1:9002/" + getDatabase();
         } else {
             return "jdbc:hsqldb:file:" + ContextHolder.getContext().getDBDirectory() + "/" + getDatabase();
         }

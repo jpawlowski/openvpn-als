@@ -1098,6 +1098,7 @@ ${jsp.servlets.text}
 
 	<!-- Create API documentation -->
 
+<!--
 	<target name="javadoc">
 		<mkdir dir="${build.doc}/api" />
 		<javadoc sourcepath="src" defaultexcludes="yes" destdir="${build.doc}/api" author="true" version="true" use="true" windowtitle="Adito" notree="true">
@@ -1127,6 +1128,8 @@ ${jsp.servlets.text}
 		</classpath>
 	</javadoc>
 </target>
+
+-->
 
 	<target name="set-tools" description="Set the location of tools.jar or classes.jar.">
 		<!-- We need to do this because properties are immutable and <if> statements
