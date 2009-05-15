@@ -247,6 +247,7 @@ public class CoreContext implements Context {
      */
     public Thread getMainThread() {
     	
+    	log.info("NOT IMPLEMENTED");
     	return null;
     	
     }
@@ -284,6 +285,7 @@ public class CoreContext implements Context {
             log.error("Failed to add new resource base " + base.toExternalForm() + ".", e);
         }
         */
+    	log.info("NOT IMPLEMENTED");
     }
 
     
@@ -304,6 +306,7 @@ public class CoreContext implements Context {
             httpContext.removeResourceCache(cache);
         }
 		*/
+    	log.info("NOT IMPLEMENTED");
     }
 
     /**
@@ -314,6 +317,7 @@ public class CoreContext implements Context {
     public Collection<URL> getResourceBases() {
     	// TODO Copied as is from Main
     	//return resourceCaches.keySet();
+    	log.info("NOT IMPLEMENTED");
     	return null;
     }
 
@@ -324,6 +328,7 @@ public class CoreContext implements Context {
      */
     public String getHostname()
     {
+    	log.info("NOT IMPLEMENTED");
     	return null;
     }
 
@@ -337,6 +342,7 @@ public class CoreContext implements Context {
     public int getPort()
     {
     	return 0;
+    	log.info("NOT IMPLEMENTED");
     }
 
     /**
@@ -365,21 +371,27 @@ public class CoreContext implements Context {
      * 
      * @param requestHandler request handler
      */
-    public void registerRequestHandler(RequestHandler requestHandler) { }
+    public void registerRequestHandler(RequestHandler requestHandler) { 
+    	log.info("NOT IMPLEMENTED");
+    }
     
     /**
      * Add a custom request handler.
      * 
      * @param requestHandler request handler
      */
-    public void registerRequestHandler(RequestHandler requestHandler, HandlerProtocol protocol) { }
+    public void registerRequestHandler(RequestHandler requestHandler, HandlerProtocol protocol) { 
+    	log.info("NOT IMPLEMENTED");
+    }
 
     /**
      * Remove a custom request handler
      * 
      * @param requestHandler request handler
      */
-    public void deregisterRequestHandler(RequestHandler requestHandler) { }
+    public void deregisterRequestHandler(RequestHandler requestHandler) { 
+    	log.info("NOT IMPLEMENTED");
+    }
 
     /**
      * Obfuscate a password in a way that it be de-obfuscated with
@@ -390,6 +402,7 @@ public class CoreContext implements Context {
      */
     public String obfuscatePassword(String password)
     {
+    	log.info("NOT IMPLEMENTED");
     	return null;
     }
 
@@ -402,6 +415,7 @@ public class CoreContext implements Context {
      */
     public String deobfuscatePassword(String password)
     {
+    	log.info("NOT IMPLEMENTED");
     	return null;
     }
 
@@ -411,7 +425,9 @@ public class CoreContext implements Context {
      * @param trustManager trust manager to set
      * @param require required
      */
-    public void setTrustMananger(TrustManager trustManager, boolean require) { }
+    public void setTrustMananger(TrustManager trustManager, boolean require) { 
+    	log.info("NOT IMPLEMENTED");
+    }
 
     /**
      * Add a new web application
@@ -421,21 +437,27 @@ public class CoreContext implements Context {
      * @throws IOException on any error
      * @throws Exception
      */
-    public void addWebApp(String contextPathSpec, String webApp) throws Exception { }
+    public void addWebApp(String contextPathSpec, String webApp) throws Exception { 
+    	log.info("NOT IMPLEMENTED");
+    }
 
     /**
      * Add a listener to those being notified of events from the <i>Context</i>.
      * 
      * @param contextListener listener to add
      */
-    public void addContextListener(ContextListener contextListener) { }
+    public void addContextListener(ContextListener contextListener) {
+    	log.info("NOT IMPLEMENTED");
+    }
 
     /**
      * remove a listener from those being notified of events from the <i>Context</i>.
      * 
      * @param contextListener listener to remove
      */
-    public void removeContextListener(ContextListener contextListener) { }
+    public void removeContextListener(ContextListener contextListener) { 
+    	log.info("NOT IMPLEMENTED");
+    }
 
     /**
      * Get the root preferences node. Any component of Adito core or its
@@ -496,6 +518,7 @@ public class CoreContext implements Context {
      */
     public PropertyClass getConfig()
     {
+    	log.info("NOT IMPLEMENTED");
     	return null;
     }
 
@@ -516,6 +539,7 @@ public class CoreContext implements Context {
      */
     public ClassLoader getContextLoader()
     {
+    	log.info("NOT IMPLEMENTED");
     	return null;
     }
 
@@ -525,14 +549,18 @@ public class CoreContext implements Context {
      * @param uri uri to alias
      * @param location actual location
      */
-    public void setResourceAlias(String uri, String location) { }
+    public void setResourceAlias(String uri, String location) { 
+    	log.info("NOT IMPLEMENTED");
+    }
 
     /**
      * Remove an alias for the given URI.
      * 
      * @param uri uri to alias
      */
-    public void removeResourceAlias(String uri) { }
+    public void removeResourceAlias(String uri) { 
+    	log.info("NOT IMPLEMENTED");
+    }
 
     /**
      * Get the boot progress monitor. Calling methods on the monitor will have
@@ -560,6 +588,7 @@ public class CoreContext implements Context {
      */
     public HttpServletRequest createServletRequest(RequestHandlerRequest request)
     {
+    	log.info("NOT IMPLEMENTED");
     	return null;
     }
 
@@ -574,6 +603,7 @@ public class CoreContext implements Context {
     public HttpServletResponse createServletResponse(RequestHandlerResponse response, HttpServletRequest request)
     {
     	return null;
+    	log.info("NOT IMPLEMENTED");
     }
 
     
@@ -584,6 +614,7 @@ public class CoreContext implements Context {
      */
     public void access(HttpSession session) {
     	
+    	log.info("NOT IMPLEMENTED");
     	// Do nothing
     	
     }
