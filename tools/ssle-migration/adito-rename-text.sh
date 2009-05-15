@@ -12,7 +12,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Remove most variants of SSL-Explorer's name and references to 3sp
-cat $1 |sed s/"sslexplorer"/"adito"/g|sed s/SSL-Explorer/Adito/g|sed s/"SSL Explorer"/"Adito"/g|sed s/sslExplorer/adito/g|sed s/SSLEXPLORER/ADITO/g|sed s/SSLExplorer/Adito/g|sed s/ssl-explorer/adito/g|sed s/SslExplorer/Adito/g|sed s/SSl-Explorer/Adito/g|sed s/3sp\.com/localhost/g > $1.new
+cat $1 |sed s/"sslexplorer"/"adito"/g|sed s/SSL-Explorer/Adito/g|sed s/"SSL Explorer"/"Adito"/g|sed s/sslExplorer/adito/g|sed s/SSLEXPLORER/ADITO/g|sed s/SSLExplorer/Adito/g|sed s/ssl-explorer/adito/g|sed s/SslExplorer/Adito/g|sed s/SSl-Explorer/Adito/g|sed s/SSL-explorer/Adito/g|sed s/3sp\.com/localhost/g > $1.new
 
 mv $1.new $1
 rm -f $1.new
