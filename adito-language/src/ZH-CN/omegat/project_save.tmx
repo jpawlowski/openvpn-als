@@ -1,0 +1,4025 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx11.dtd">
+<tmx version="1.1">
+  <header
+    creationtool="OmegaT"
+    creationtoolversion="1.8.1_4"
+    segtype="sentence"
+    o-tmf="OmegaT TMX"
+    adminlang="EN-US"
+    srclang="EN-US"
+    datatype="plaintext"
+  >
+  </header>
+  <body>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Active Directory</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>当前路径</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Message resources for the Adito Active Directory feature</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito当前路径特点的信息资源</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Connection</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>连接</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Active Directory Connection</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>当前路径连接</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>OU Filter</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>OU 滤镜</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Active Directory OU Filter</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>OU 滤镜的当前路径</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Options</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>选项</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Active Directory Options</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>当前路径选项</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito will integrate with your network's Active Directory server allowing users to use the same logon credentials as they would use for other Windows resources.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito 将会整合你网络的当前路径下的服务器，允许用户使用和Windows一样的登录密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Roles will map to your Active Directory groups.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>角色讲对应当前用户组</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Domain Controller Hostname</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>管理员用户组名字</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Host name of Active Directory controller</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>当前管理员用户名</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Backup Domain Controller Hostnames</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>备份的管理员用户组名字</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Host names of backup Active Directory controllers.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>备份的当前目录的管理员用户名</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Note: Host names may also include a port to overide the default controller port setting e.g. HostName[:Port]</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>备注: 用户名可能包含端口覆盖缺省的管理员端口设置，例如：用户名［：端口］</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Hostname</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户名</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Hostnames</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户名组</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Add</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>添加</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Remove</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>删除</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Domain</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>域</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Your fully qualified Active Directory domain name.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你成功的定义了当前目录的域名</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Service Account Name</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>服务账户名字</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito requires a dedicated Active Directory account to retreive user and group details.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito要求一个有效的当前目录账户去审核用户和用户组的详细信</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If using the GSS-API authentication this should be set to the username of the service account e.g &quot;adito&quot;.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果使用GSS-API 授权，这需要设定服务的用户名账户，例如：&quot;adito&quot;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If you are using LDAP Simple authentication you must enter a DN in the form &quot;CN=Adito,OU=Accounts,DC=COMPANY,DC=NET&quot;</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果使用LDAP 简单授权，你必须输入一个DN（域名）在 &quot;CN=Adito,OU=Accounts,DC=COMPANY,DC=NET&quot;的格式下</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Service Account Password</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>服务账户密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito requires a dedicated Active Directoryaccount to retreive user and group details.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito要求一个有效的当前目录账户去审核用户和用户组的详细信</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This field should be set to the password for this account.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这里应该为这个账户设置密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Include Organizational Unit Filter</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>包含组织滤镜</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Only include the following OUs when listing accounts and roles from the Active Directory (will still list standard users and groups unless options below are unset).</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>仅仅包括下面的OUs，当列出当前目录的账户和角色（将仍然列出标准用户和用户组除非选择不罗列</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Filter</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>滤镜</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Filters</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>滤镜组</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Exclude Organizational Unit Filter</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>排除组织滤镜</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Exclude the following OUs when listing accounts and roles from the Active Directory.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>排除一下的OUs当罗列当前目录的账户组和角色组时</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Include built-in groups.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>包括创建用户组</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Include the built-in group base 'CN=Builtin ....' built from the domain name.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>包括创建用户组基于'CN=Builtin ....' 从域的名字中创建</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If you do not include these you will have to manually add your own group base string to the the 'Additional group bases' list.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果你不包含这些，你将需要手动的添加你自己的组基于字母串到‘额外的基础组’列表</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>See the documentation for more details.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>详情请察看文档</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Include distribution groups.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>包含分发组</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Include distribution groups or should only security groups be displayed.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>包含分发组或者仅仅显示安全组</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Include standard users and groups.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>包含标准的用户群和组群</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Include the standard user base 'CN=Users ....' built from the domain name.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>包含标准用户基于 'CN=Users ....' 从域名中创建</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If you do not include these you will have to manually add your own user base string to the the 'Additional user bases' list.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果你不包含这些，你将需要手动的添加你自己的组基于字母串到‘额外的基础组’列表</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Service Authentication Type</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>授权服务的形式</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Authentication Type used for service account authentication.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>授权形式用于服务账户的授权</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If end-users have non-ascii usernames, Simple authentication must be used.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果终端用户用不是ASC2码的用户名。简单授权将使用</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Simple</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>简单</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>User Authentication Type</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户授权形式</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Authentication Type used for user authentication.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>授权形式用于用户的授权</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Authentication Timeout</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>授权超时</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Number of seconds before an authentication request to the Active Directory is considered timed out.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>多少秒在一个授权请求到当前目录被认为是超时</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito Agent</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito 代理</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Close</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>关闭</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Local</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>本地</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Type</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>形式</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Name</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>名字</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Remote</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>远端</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Active</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>当前</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Stop</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>停止</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Total</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>总计</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Open Browser</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>打开浏览器</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Debug Console</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>纠错控制台</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Tunnel Monitor</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>隧道监视器</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Exit</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>退出</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>File</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>文件</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Domain:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>域:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Username:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户名：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Password:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>密码:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Ok</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>确定</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Cancel</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>取消</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Clear</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>清空</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito Console</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito控制台</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Local Port</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>当地端口</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Close tunnels</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>关闭隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Are you sure you wish to stop the selected tunnels?</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你确定你想停止你选择的隧道？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Any applications that are using them may cease working correctly and you may lose work.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>任何应用程序在使用这些隧道将正确的停止工作你可能失去你的工作</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Last data</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>最新的数据</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Agent (SWT Client)</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>代理 (SWT 客户端)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Message resources for the SWT version of the Adito Agent Client components.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>对于Adito代理的SWT版本的组件的信息资源</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Authentication Required</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>需要授权</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>{2} authentication required for {0} at {1}.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>{2} 需要授权 {0} at {1}.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>About Adito Agent</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>关于Adito代理</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The Adito Agent is an application that is required to provide tunneling, application launching and other features to the Adito server.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito代理是一个应用程序。 它需要被提供隧道，启动程序等功能向Adito服务器</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Host: {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>终端: {0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Port: {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>端口: {0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito Agent {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito代理 {0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Copyright© 2003-2007 3SP</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>版权© 2003-2007 3SP</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Username: {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户名: {0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Server Version: {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>服务器版本: {0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Agent Version: {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>代理版本: {0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>About</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>关于</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Policies</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>政策</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Actions</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>行为</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No items match the provided filter.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有项目的符合使用的过滤器。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Copy</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>复制</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Yes</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>是</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>否</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Description</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>描述</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Save</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>保存</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Details</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>详情</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to validate.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>无法验证</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Wizard</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>向导</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Policy Selection</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>政策选择</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Name:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>名字:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Description:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>描述:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Resource</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>资源</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Names:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>名字组:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No policies have been selected.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有选择政策.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No user will be able to access this resource.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有用户可以使用这个资源</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please review any information below.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请检查下面的信息</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>All steps completed OK.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>所有的步骤全部完成</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click &lt;strong&gt;Exit Wizard&lt;/strong&gt; to finish.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击 &lt;strong&gt;，退出向导&lt;/strong&gt; 完成.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please review any errors or warnings and either retry by clicking on &lt;strong&gt;Run Again&lt;/strong&gt;, or click &lt;strong&gt;Exit Wizard&lt;/strong&gt; to leave the wizard now.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请检阅任何错误或警告，并可以通过点击重试&lt;strong&gt;再次运行&lt;/strong&gt;, 或者点击&lt;strong&gt;退出向导&lt;/strong&gt; 现在退出向导</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please review the warnings and either retry by clicking on &lt;strong&gt;Run Again&lt;/strong&gt;, or click &lt;strong&gt;Exit Wizard&lt;/strong&gt; to leave the wizard now.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请检阅任何警告，并可以通过点击重试&lt;strong&gt;再次运行&lt;/strong&gt;, 或者点击&lt;strong&gt;退出向导&lt;/strong&gt; 现在退出向导</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to attach to resource to policies.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>连接资源的政策失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Exit Wizard</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>退出向导</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Run Again</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>再次运行</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Extension Store</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::Extension 商店</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Extension Store</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Extension 商店</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Here you can manage your currently installed extensions.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在这里你可以管理你当前加载的extensions.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Licence</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>许可</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Install</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>装载</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Reload</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>重新导入</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Reload All</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>重新导入全部l</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Upload</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>更新</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Update</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>更新</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Version</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>版本</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Configure</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>设置</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to contact store.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>连接商店失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Extension '{0}' installed.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Extension '{0}' 装载了.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Connect</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>连接</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Languages</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>语言</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Updateable</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>可更新的</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Installed</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>已装载</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Remote Access</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>远程控制</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Reporting</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>报告</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>User Interface</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户接口</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Access Control</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>接入管理</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Resources</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>资源</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Articles</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>文章</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Install Manually</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>手动装载</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Locate the archive using the &lt;strong&gt;Browse&lt;/strong&gt; button and click on &lt;strong&gt;Upload&lt;/strong&gt; to upload and install the application.&lt;br/&gt;&lt;br/&gt;If you have made changes any application.xml files, you may use the &lt;strong&gt;Reload&lt;/strong&gt; button to apply these changes without restarting Adito.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>定为Archive用 &lt;strong&gt;浏览器&lt;/strong&gt; button and click on &lt;strong&gt;Upload&lt;/strong&gt; to upload and install the application.&lt;br/&gt;&lt;br/&gt;If you have made changes any application.xml files, you may use the &lt;strong&gt;Reload&lt;/strong&gt; button to apply these changes without restarting Adito.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Changes</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>变化</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Delete</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>删除</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Information</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>信息</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Are you sure?</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你确定？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>File {0} uploaded ({1} bytes).</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>文件 {0} 已更新({1} bytes).</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to upload file {0}.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>更新文件失败 {0}.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No filename provided.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>文件名没有提供.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Files of type {0} may not be uploaded to this location.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>文件的格式 {0} 可能不能在此处更新</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Summary</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>总结</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Type:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>类型:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Menu</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>菜单</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Select</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>选择</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>One or more fields contain errors, please review the fields below and try again.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>一个或多个字段包含错误，请检查下面的字段，然后再试一次。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Preferences</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>偏好</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>{0} requires an integer value.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>{0} 需要一个整数值</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The default profile may not be deleted.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>默认的配置文件可能不会被删除。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to validate profile.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>无法验证的个人资料。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The default profile may not be edited.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>默认的配置文件可能不会被编辑。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Configuration saved.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>设置已保存..</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Profile deleted.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>配置已删除</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Selected profile is now '{0}'.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>被选配置是现在'{0}'</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Profile saved.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>配置已保存.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>My Profiles</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>我的配置文件</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>System</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>系统</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Profiles</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>配置文件</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Reset</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>重置</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please complete all required fields!</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请填写所有必填字段！</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Required Fields</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>必填字段！</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The * denotes a required field.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg> * 代表必填字段</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Port</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>端口</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Username</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户名</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Password</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You cannot name custom profiles 'Default'.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你不能命名自订的设定为‘默认’。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Automatic</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>自动的</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>List</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>列表</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Icons</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>图标</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Confirm remove</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>确认删除</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Step 3 - Summary</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>步骤 3 - 总结</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Personal</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>个人</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Change</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>改变</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Properties and Profiles</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>属性和配置文件</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Message resources for Adito system configuration, profiles and profile properties.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito系统配置，配置文件和配置文件属性的信息资源</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>User Attribute</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户属性</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Policy Attribute</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>政策属性</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Resource Attribute</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>资源属性</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Text</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>文档</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Number</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>数字</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Checkbox</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>复选框</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Multiple Entry</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>多入口</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Text Area</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>文本区</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Time</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>时间</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Color</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>颜色</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Multiple Selection</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>多重选择</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>User or admin may use, view or change</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户或管理员可以使用，查看或更改</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>User may use or view, administrator may change</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户可以使用或查看，管理员可能会改变</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>User may use, administrator may view or change</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户可以使用，管理员可以查看或更改</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>User confidential</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户保密</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Startup Profile</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>启动配置文件</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Choose the profile you wish to use upon startup.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>选择在启动时要使用的配置文件。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If &lt;i&gt;Select At Login&lt;/i&gt; is chosen, you will be given the oppurtunity to select your profile upon login.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果 &lt;i&gt;选择登录&lt;/i&gt;选定后，您将被给予机会选择登录后您的个人资料</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Select on Login</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>选择登入</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Global Preferences</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::全局偏好</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Global Preferences</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>全局偏好</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Here you can configure global Adito preferences that will become the default settings for each connecting user.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在这里您可以配置全球Adito偏好将成为默认设置每个连接用户</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Note that users may have the ability to override some of these properties.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请注意，用户可以有能力覆盖其中的一些属性。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You can may create different profiles for different environments that your users may find themselves in (at home, at the office etc).</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您可以创建不同的配置文件对于不同的环境中，您的用户可能会发现自己（在家里，办公室等） 。
+</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If given the right to do so, a user may either simply use the profile or create new profiles based on them.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果有权这样做，用户可以简单地使用配置文件或创建新的配置文件的在他们的基础上。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>They may not edit them.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>他们可能不能编辑它们</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Profiles</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::属性</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Here you can configure &lt;strong&gt;profiles&lt;/strong&gt; that are used for storing various preferences for your users accounts.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在这里你可以配置 &lt;strong&gt;配置文件&lt;/strong&gt; 	这是用于为您的用户帐户存储不同的偏好。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create Profile</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建个人档案</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Configure profiles for your users</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>为你的用户配置配置文件</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::My Profiles</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::我的配置文件</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Here you can configure profiles that may be used to store preferences for your individual user account.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在这里您可以设定配置档，可用于储存您的个人喜好，用户帐户。.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This is useful especially when connecting from different environments where your connection settings may be different (e.g. at home, at the office).</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这是非常有用特别是当连接不同环境下的连接设置可能会有所不同（例如在家里，办公室） 。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The administrator will already have configured one default profile which you may view here but not edit.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>管理员将已设置一个默认的配置文件，您可能可以浏览，但不能进行编辑。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create Personal Profile</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建个人档案</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Preferences</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::偏好</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This page allows you to view or change the preferences for your current selected profile.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>此网页可让您查看或更改您的喜好，目前选定的配置文件</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If you are currently using a default profile you will not be able to change anything, only the adminstrator may do this.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果您目前使用的是默认的配置文件，你将不能改变任何东西，只有管理员可以做到这一点。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>For easier navigation, all preferences are divided up into categories.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>为了方便导航，所有偏好分为不同的类。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Drill down through the sections to find the required setting and click &lt;strong&gt;Apply&lt;/strong&gt; to save.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>浏览不同的部分，以找到所需的设置，并点击 &lt;strong&gt;应用&lt;/strong&gt; 保存</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Scope:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>范围：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Global</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>全球</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>To create a new profile, click on the button to the right.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建新的配置，点击右边的按钮</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>&lt;strong&gt;This profile is attached to multiple policies :-&lt;/strong&gt;</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>&lt;strong&gt;这个个人档案连接到多政策:-&lt;/strong&gt;</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The are no global profiles configured for you to use or manage.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有全球配置的配置文件供您使用或管理。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You have no personal profiles configured.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您还没有设置个人资料配置。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click on &lt;strong&gt;Create Personal Profile&lt;/strong&gt; in the Actions bar if it is available to create one.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击 &lt;strong&gt;创建个人档案&lt;/strong&gt; 在行为条如果可以有效的创建一个</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Remove this profile</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>删除这个配置档案</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit this profile's name and description.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>修改此配置文件的名称和说明。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Copy this profile.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>复制这个配置档案</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Configure this profile's properties</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>设置此配置文件的属性</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit this profile</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑这个配置文件</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Clone</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>克隆</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Clone this profile</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>克隆这个配置文件</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Configure this profiles properties</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>设置这个配置文件的属性</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>View information about this profile</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>浏览这个配置文件的信息</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Value</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>取值</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Default</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>默认情况下</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>OK</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>好</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Done</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>做完</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Sub-categories</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>子类别</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This category of preferences contains sub-categories.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这一类的偏好包含子类别</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click on the category icon to display and edit these preferences.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击分类图标来显示和编辑这些偏好。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Configure Profiles</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>设置配置文件</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Profile to Edit:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑配置文件</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Create Profile</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::创建配置文件</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create a profile.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建个人档案</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Base on</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>基于</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Create Global Profile</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::创建全局配置文件</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create Global Profile</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建全局配置文件</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create a global profile.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建全局配置文件</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Edit Profile</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::编辑配制</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit Profile</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑配置</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit a profile</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑一个配置</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Edit Global Profile</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::编辑全局配制</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit Global Profile</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑全局配制</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit a global profile</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑一个全局配制</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Attribute Definitions</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::属性定义</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Attribute Definitions</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>属性定义</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Use this page to view and configure &lt;i&gt;Attributes Definitions&lt;/i&gt;.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用这一页来浏览和设置&lt;i&gt;属性定义&lt;/i&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>These may be used any for replacement values anywhere that supports them (Application shortcuts for example may use one of these values).</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这些可用于任何地方的重置取值，在支持这些取值的前提下（应用程序的快捷方式，例如可以使用其中的一个值） 。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Remove this attribute definition</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>删除此属性定义</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit this attribute  definition</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑此属性定义</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Label</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>标签</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Category</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>类</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Visibility</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>可见</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Overridable</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>可覆盖的</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Viewable</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>可浏览的</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Hidden</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>隐藏</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Confidential</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>保密的</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Attribute {0} removed.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>属性 {0} 已删除.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>There are currently no attribute definitions defined.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>目前没有定义任何属性</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click on &lt;strong&gt;Create Attribute&lt;/strong&gt; to create one.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击 &lt;strong&gt;创建属性&lt;/strong&gt;创建一个</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Your filter did not match any sdsditems.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您的过滤器没有任何符合sdsd的项目</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create Attribute</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建属性</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click here if you wish to create a new &lt;b&gt;User Attribute&lt;/b&gt; definition.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击这里如果你想要创建属性&lt;b&gt;用户属性 &lt;/b&gt; 定义</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Remove Attribute Definition</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::删除属性定义</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Confirm Attribute Definition Deletion</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>确认删除属性定义</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The selected attribute definition will be removed.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>选定的属性定义将被删除。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Create Attribute Definition</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::创建属性定义</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create Attribute Definition</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建属性定义</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This page allows to you create a new attribute definition.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>此网页可让您创建一个新的属性定义。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Edit Attribute Definition</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::编辑属性定义</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit Attribute Definition</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑属性定义</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This page allows to you edit a attribute definition.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>此网页可让您编辑一个属性定义。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Class:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>类别：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Label:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>标签:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Category:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>类:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Weight:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>重量：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Visibility:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>可见:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>User or admin.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户或管理员</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>may use, view and overide</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>可以使用，查看或更改</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>User may use or view, admin.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户可以使用或查看，管理员</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>can change</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>可以改变</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>User may use, admin can view or change</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户可以使用，管理员可以查看或更改</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Default Value:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>默认值</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Validator</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>验证</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Type Options</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>类型选项</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must provide a name for the user attribute.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您必须提供一个名称为用户属性。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must provide a description for the user attribute.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您必须提供描述为用户属性。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>An attribute definition with the name &lt;strong&gt;{0}&lt;/strong&gt; already exists</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>定义属性的名称 &lt;strong&gt;{0}&lt;/strong&gt;已经存在</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The name may only contain word characters ([a-zA-Z_0-9])</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这个名字可能只包含文字字符 ([a-zA-Z_0-9])</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No such validator {0}.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有这样的验证 {0}.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito::::Create Attribute Definition</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::创建属性定义</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The following wizard will guide you through the stages of create a new attribute definition and configuring it.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg> 下面的向导将引导您完成各阶段的创建一个新的属性定义和配置它</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Step 1 - Attribute Definition Details</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>步骤1 - 属性定义详情</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please choose the class of attribute and provide a name and description for this attribute definition.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请选择类别的属性，并提供一个名称和说明此属性的定义。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Step 2 - Attribute Definition Options</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>步骤2-属性定义选项</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You may further configure this attribute definition using the optional fields below.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您可以进一步设定这个属性定义使用以下可选字段。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Validation:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>验证:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Type Options:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>类型选项:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Review the information below before clicking on &lt;strong&gt;Finish&lt;/strong&gt; to create the attribute.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>检查以下信息，在点击前&lt;strong&gt;完成&lt;/strong&gt; 创建属性</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>bundle=&quot;properties&quot; /&gt;</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>束= “属性” /&gt;</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Attribute Created</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>属性已创建</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The attribute creation wizard is now complete.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>属性创建向导现已完成。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The creation of the attribute has failed.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>建立属性失败。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The creation of the attribute is complete, but some warnings occured.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>已完成创建属性，但一些警告发生。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Attribute created</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>属性已创建</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to create attribute.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建属性失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Attributes</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::属性</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit Attributes</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑属性</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This page allows to you to edit your personal &lt;i&gt;Attributes&lt;/i&gt;.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>此网页可让您编辑个人的&lt;i&gt;属性&lt;/i&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Attributes are pieces of information personal to you, and required by the various applications and features Adito provides you with.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>属性是你的个人信息，被Adito为您提供各种应用和功能所要求。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>&lt;p&gt;Note, your administrator may require that you keep some of these details up-to-date yourself.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>&lt;p&gt;请注意，您的管理员可能要求您保持更新的你个人信息。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Validator:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>验证:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>{0} requires a value but is empty.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>{0} 需要的价值，但是是空的</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Global profiles may not be deleted here.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>全局配置文件可以在这里被删除</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Global profiles may not be edited here.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>全局配置文件可以在这里被编辑</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Remove Profile</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::删除配置</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>All configuration data stored in the profile will be deleted.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>储存在个人资料所有配置数据将被删除。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The configuration has changed and Adito now requires a &lt;a class=&quot;plaintText&quot; href=&quot;/showShutdown.do&quot;&gt;restart&lt;/a&gt; before these settings can take effect.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>配置已发生变化，现在Adito需要&lt;a class=&quot;plaintText&quot; href=&quot;/showShutdown.do&quot;&gt;重新启动&lt;/a&gt; 在这些设置生效之前</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito::::Create Profile</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito::::创建配置</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The following wizard will guide you through the stages of configuring a new profile and assigning it to one or more policies.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>下面的向导将引导您完成配置阶段的一个新的配置文件，并指派给一个或一个以上的政策。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Profile Details</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>配置详情</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Step 1 - Profile Details</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>步骤1 - 配置详情</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please provide a name and description for this profile and choose a profile to use as the basis for this new profile.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请为这个配置提供的名称和描述信息，并选择一个配置文件为使用的基础对于这个新的配置</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Base on profile:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>基于配置:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No profile name has been provided.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有提供文件名.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must provide a description for this profile.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你必须为这个配置提供描述</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Profile name must be {0} characters or less.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>配置名必须是 {0} 多个字母或者更少</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to check for resource by name.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用名字检查资源失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Profile named &lt;strong&gt;{0}&lt;/strong&gt; already exists.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>配置已命名 &lt;strong&gt;{0}&lt;/strong&gt; 已存在</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Step 2 - Policy Selection</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>步骤 2 - 政策选择</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Choose the policies you wish to attach this resource to.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>选择你愿意连接这个资源的政策</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must select at least one policy to attach this resource to.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你必须至少选择一个政策连接这个资源选择你愿意连接这个资源的政策</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Review the information below before clicking on &lt;strong&gt;Finish&lt;/strong&gt; to create the profile.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>检查以下信息，在点击前&lt;strong&gt;完成&lt;/strong&gt; 创建配置</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Profile Name:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>配置名字:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Based On Profile:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>基于的配置::</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Profile Created</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>配置已创建</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The profile creation wizard is now complete.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>配置创建向导现已完成。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The creation of the profile failed.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>建立配置失败。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The creaton of the profile is complete, but some warnings occured.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>已完成创建配置，但一些警告发生。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Profile created.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>配置已创建.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Attached profile to policies.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>连接配置和政策.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to create new profile.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建配置失败.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Keep-Alive interval (seconds)</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>保持激活时间间隔（秒）</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The interval between keep-alive requests.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在保持激活请求之间的时间间隔</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Shutdown interval (seconds)</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>关机时间间隔（秒）</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Interval in seconds to wait for before exiting the client after receiving a shutdown request</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在退出客户端之前等待数秒，收到关机请求之后</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Registration sync.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>注册 sync.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>timeout (seconds)</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>超时 (秒)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Registration timeout in seconds</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>注册超时以秒计算</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Start automatically on logon</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>自动启动到登录界面</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Start the Adito Agent automatically upon logon.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>自动启动Adito代理根据登录</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Browser command</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>浏览器命令</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Command to launch browser, leave blank for automatic.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>打开浏览器命令，自动加载空白页</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Temporary tunnel inactivity timeout (secs)</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>临时隧道闲置超时(秒）</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Interval in seconds to wait before offering to close a web forward tunnel, a value of 0 meant no timeout.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>时间间隔用秒计算，用以等待提供关闭传输网页隧道，值为0意味着没有超时。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Debug</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>调试</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Enabled debugging / logging</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>启用调试/日志</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Display information popups</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>显示弹除信息</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>For most operations, the agent will display information message popups information the user as to what actions the agent is performing.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>对于大多数业务，代理将会显示弹除信息告诉用户代理执行了什么业务</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Deselect this option if you do want these messages.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>取消选择这个选项如果你需要这些消息</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Remote tunnels require confirmation</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>远程隧道需要确认</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Enable this option to require that the user accept remote tunnel connections.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>启用此选项，要求用户接受远程隧道连接。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Automatically detect proxy</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>自动检测代理服务器</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If selected, an attempt will be made to automatically determine the proxy server in use from the browsers settings.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果选择了，代理服务器将从浏览器中尝试使用，</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Note, this will only work when using the Java2 plugin.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>注意, 只有使用 Java2 plugin的时候才工作.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Type of proxy server.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>代理服务器的类型.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>None</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Use Browser Settings</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>使用浏览器的设置</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Hostname or IP address of proxy server.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>主机名或IP地址的代理服务器。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Note, this address is as from the clients perspective.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请注意，此地址是从客户角度。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The port on which the proxy servier is listening.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>代理服务器监听的端口</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If the proxy server requires authentication, this value is supplied as the username.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果代理服务器需要验证，此值提供的用户名。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If no username is entered here the user may be prompted for authentication when they connect.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果用户没有在此输入用户名，提示进行身份验证时当连接的时候</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If the proxy server requires authentication, this value is supplied as the password.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果代理服务器需要验证，提供的做为密码。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If no password is entered here the user may be prompted for authentication when they connect.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果用户没有在此输入密码，提示进行身份验证时当连接的时候</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If your proxy uses Windows authentication you can set the authenticating domain here.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果您的代理使用Windows身份验证您可以在这里设置身份验证域</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Preferred Authentication</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>推荐认证</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If the proxy server supports different authentication methods - this setting allows you to choose which one will be attempted first.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果代理服务器的支持不同的验证方法-此设置允许您选择哪一个将是第一次尝试</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Basic</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>基本的</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Digest</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>诊断的</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Permanent tunnel inactivity timeout (secs)</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>永久隧道闲置超时(秒）</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Interval in seconds to wait before offering to close an idle tunnel, a value of 0 means no timeout.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>时间间隔用秒计算，用以等待提供关闭一个闲置隧道，值为0意味着没有超时。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Clear cache directory on exit</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>当退出的时清除缓存目录</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>When enabled, the Agent will be removed from the clients computer upon shutdown.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>当启用时，代理将被删除在客户关闭程序的时候</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>When disabled, the Agent's program files will be left inside a hidden directory, enabling a faster start up time on next use.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>当关闭时，代理人的程序文件将被一个隐藏的目录内，从而使更快的启动时间在下次使用。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Cache directory</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>缓存目录</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The name of the directory where the Agent will store downloaded applications and other resources.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>代理下载应用程序和其他资源的目录名.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This directory will be stored in the users home (the actual location of which will vary from platform to platform).</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这个目录会被存储在用户的主页（实际位置将因不相同的平台而不同）</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Localhost address</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>本地地址</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The address to use when Adito needs to connect to the loopback address on the client.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>当Adito需要在客户端连接环回地址的时使用的地址</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>For example, this may be set to 127.0.0.2 as a work-around for connection problems when using the RDP extension on Windows XP SP1.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>例如，设置127.0.0.2作为工作环境的连接问题时，当使用RDP扩展在Windows XP SP1的时候 </seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Agent Type</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>代理类型</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The type of Agent that will be downloaded on the client machine.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>代理的类型将会下载到客户端</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Auto will select the best appropriated Agent.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>自动选择最佳的代理</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Auto Select</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>自动选择</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Enable tool tips.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>启用工具提示.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This option will enable tool tips in various places in the Adito user interface.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>此选项将启用工具提示在不同地方的Adito用户界面。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Theme</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>主题</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The theme that will be selected upon login.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>根据登录主题将会被选择</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Special effects</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>特别效果</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Enable or disable special window effects.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>启用或禁用特殊的窗口作用。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Default management console resource view</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>默认的管理控制台资源视图</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The default view type to use when listing resources in the management console</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>使用默认视图类型当在管理控制台罗列资源的时候</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Default user console resource view</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>默认的用户控制台资源视图</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The default view type to use when listing resources in the user console</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>使用默认视图类型当在用户控制台罗列资源的时候</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Date format</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>日期格式</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Format used for entry of dates</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>格式用于输入日期</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>DD/MM/YY</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>日/月/年</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>DD/MM/YYYY</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>日/月/年</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>MM/DD/YYYY</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>月/日/年</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>DD-MMM-YYYY</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>日-月-年</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>DD-MMM-YY</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>日-月-年</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>MMM-DD-YYYY</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>月-日-年</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>MMM-DD-YY</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>月-日-年</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Time format</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>时间格式</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Format used for entry of times</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>格式用于输入时间</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Allow user to select language</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>允许用户选择语言</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>When enabled, users may choose the language for their session.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>当启用时，用户可以为他们的使用段选择语言</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Note, to be able to change their language during the session the user must also have the &lt;i&gt;Change Language&lt;/i&gt; access right.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请注意，为了能够改变他们的语言在使用段期间，用户还必须有 &lt;i&gt;改变语言&lt;/i&gt; 权限.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Default language</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>默认语言</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The default language for the server itself and all users sessions.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>默认语言对于服务器自己和所有的用户的使用段</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Retrieve Online Resources</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>检索在线资源</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>When enabled, context sensitive links to online resources will be displayed during on Adito pages.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>当启用时，带链接的上下文将连接到在线资源并显示在Adito网页上 </seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Updates for this help is retrieved daily from &lt;a href=&quot;http://localhost&quot;&gt;3SP&lt;/a&gt;.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>每天检索更新帮助从&lt;a href=&quot;http://localhost&quot;&gt;3SP&lt;/a&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Maximum number of retrieved Users</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>最大数量的用户检索</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>User databases can contain a large number of users.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户数据库可以包含大量的用户。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This property limits the number of users retrieved and displayed for the provided search criteria.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>此属性限制用户检索的数量和显示所提供的搜索标准。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Maximum number of retrieved Groups</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>最大数量的用户组检索</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>User databases can contain a large number of groups.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户数据库可以包含大量的用户组。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This property limits the number of groups retrieved and displayed for the provided search criteria.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>此属性限制用户组检索的数量和显示所提供的搜索标准。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>User database</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户数据库</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Select where information for authenticating users is obtained.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>选择什么授权信息用户需要拥有</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If you select 'Bullt-in', no further configuration is necessary.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果你选择'Bullt-in', 不需要更多的设置</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If you choose 'Active directory', you should ensure the Active directory options such as Domain are configured correctly.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果您选择'当前目录' ，你应该确认当前目录选项，如域的配置正确无误。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito will use its own internal database of users and groups.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito将使用自己的内部的用户和组数据库。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If you use this User Database, you will also be able to create, edit and remove users and groups.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果您使用此用户数据库，您也可以创建，修改和删除用户和组。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Max.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>最大.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>logon attempts before lock</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在锁定前，尝试登录</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The maximum number of logon attempts before the logon is temporarily locked.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在暂时锁定前的最大尝试登录数</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Use a value of zero to disable all account locking features.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>使用0值禁用所有账户的锁定功能</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Verify Client Address</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>核实用户地址</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>When checking logon state, verify the remote address of the request against the address recorded at logon.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>当在检查登录状态，核实远端需求地址与纪录的登录地址</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This prevents re-use of logon cookies from other clients.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这可以防止其他用户重复使用的登录Cookie</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>locks attempts before disable</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>禁用前尝试锁定l</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The maximum number of temporary locks before the account is permanently disabled.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在永久禁用账户前的最大暂时锁定数</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Use a value of zero to never lock accounts.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>使用0值禁止锁定账户</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Lock duration (secs)</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>锁定时间 (秒)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>How long (in seconds) a temporary lock should last before the user can attempt authentication again.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>多长时间（秒）一个暂时的锁定应该持续在用户得到暂时授权之前</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Password pattern</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>密码模式</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>A regular expression describing the requirements for a user password.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>正规的表达式描述用户的密码的要求</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Password pattern description</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>密码模式描述</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The text that will be displayed to the user describing the requirements for a password.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>显示给用户的描述密码要求的文档</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Days before expiry warning</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在警告过期前的天数</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The number of days after the last password change that a warning should be displayed telling the user they should change their password soon.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>天数在上次更改密码之后，警告用户他们要尽快改变密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If you do not want users to receive a warning you should set this value to zero.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果您不希望用户能够收到警告您应该将此值设置为零。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Days before expiry</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在过期前的天数</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The number of days after the last password change that the user will be forced to change the password.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>天数在上次更改密码之后，强制用户他们改变密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If you do not want the users to change their password you should set this value to zero.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果您不希望用户改变密码，您应该将此值设置为零。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Maximum logon cookie age (secs)</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>最大的登录 cookie 时间 (秒)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Maximum age of the cookie that is used persist the logon if the browser is closed.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>最大的登录 cookie 时间 如果浏览器关闭了</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>A value of -1 will mean that the user will have to logon everytime the browser is opened.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>值-1将意味着用户将不得不每次登录浏览器打开。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Lock session on browser close.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>锁定使用段在浏览器关闭的时候</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Enabling this option will force the user to provide their password upon opening a new browser and returning to the site.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>启用此选项将迫使，当打开一个新的浏览器或者返回网站，用户提供他们的密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Administrator user(s) / group(s)</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>管理员，用户/用户组</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This field can contain a list of users (or groups) that have administrative privileges by default.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这个字段可以包含一个默认管理权限的用户列表（或团体</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Once you have an administrative account, you may use the Accounts page to assign administrative rights to other users.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>一旦你有一个管理员帐户，您可以使用帐户页面的管理权限转让给其他用户。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You may also use regular expressions.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您也可以使用正规的表达式。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>User / Role</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户/角色</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Administrators</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>管理员</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Multiple sessions</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>多个会话</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This option allows you to place restrictions on users logging on more than once.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>此选项，您可以限制用户登录一次以上</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No restriction</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有限制</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Single session per user</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>单次每用户</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Single IP address</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>单IP地址</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Mask Personal Answers</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>比较个人回答</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>When enabled, any answers to &lt;b&gt;Personal Questions&lt;/b&gt; that the user may provide will be hidden using the * character in the same way as passwords are hidden.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>当启用时，任何答案 &lt;b&gt;个人问题&lt;/b&gt; 用户可能会将被隐藏，使用＊号和隐藏的密码相同方式。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Confidential Mode</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>保密模式</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This option determines how the passphrase for the user's private key is determined.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>此选项决定用户私人密匙是怎么决定密码的</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Attributes are stored by encrypting them with a user's public key so that they can only be decrypted by the corresponding private key.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>属性是通过加密存储与用户的公用钥匙，使他们只能解密对应的私人钥匙。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Tasks</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>任务</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Downloading extension {0}, please wait</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>下载 extension {0}, 请等待</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Downloaded {0}K of extension {1}, please wait</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>下载 {0}K of extension {1}, 请等待</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>
