@@ -193,7 +193,7 @@
         <seg>Adito requires a dedicated Active Directory account to retreive user and group details.</seg>
       </tuv>
       <tuv lang="ZH-CN">
-        <seg>Adito要求一个有效的当前目录账户去审核用户和用户组的详细信</seg>
+        <seg>Adito要求一个有效的当前目录账户去审核用户和用户组的详细信息</seg>
       </tuv>
     </tu>
     <tu>
@@ -225,7 +225,7 @@
         <seg>Adito requires a dedicated Active Directoryaccount to retreive user and group details.</seg>
       </tuv>
       <tuv lang="ZH-CN">
-        <seg>Adito要求一个有效的当前目录账户去审核用户和用户组的详细信</seg>
+        <seg>Adito要求一个有效的当前目录账户去审核用户和用户组的详细信息</seg>
       </tuv>
     </tu>
     <tu>
@@ -353,7 +353,7 @@
         <seg>If you do not include these you will have to manually add your own user base string to the the 'Additional user bases' list.</seg>
       </tuv>
       <tuv lang="ZH-CN">
-        <seg>如果你不包含这些，你将需要手动的添加你自己的组基于字母串到‘额外的基础组’列表</seg>
+        <seg>如果你不包含这些，你将需要手动的添加你自己的组基于字母串到‘额外的用户基础组’列表</seg>
       </tuv>
     </tu>
     <tu>
@@ -422,6 +422,318 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Authentication Maximum Retries</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>验证最大重试</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Maximum number of retries to apply to each Domain Controller</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>验证最大重试将应用于每个域的控制器</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Connection Timeout</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>连接超时</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Number of seconds before a connection to the Active Directory is considered timed out.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Number of seconds before a connection to the Active Directory is considered timed out.多少秒在连接到当先目录之前被视为超时</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Cache Objects In Memory</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在内存中的缓存对象</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Should in-memory caching be used or file based.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>应该使用缓存或者文件依据。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>For larger user populations, a file based cache is recommended.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>对于较大的用户群，建议使用文件依据缓存</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Max User Cache Objects</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>最大用户缓存对象</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The maximum number of users stored in the cache.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>最大存储在缓存中的用户数量。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Max Group Cache Objects</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>最大组缓存对象</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The maximum number of groups stored in the cache.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>最大存储在缓存中的组的数量。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>User/Group Cache TTL</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户/组缓存的TTL</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The amount of time (in minutes) that user and group information will be cached for.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户和组将信息缓存的所需的时间（分钟）</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Any changes to your active directory (new users, groups etc) will not appear in Adito until this time has elapsed.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>任何更改，在你的当前目录中（新用户，组等）将不会出现在Adito直到这个时候已经过去了</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Page Size</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>页面的大小</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Number of results to return in a single query to the Active Directory (multiple requests are made to receive all required objects).</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>返回在当前目录单一查询的结果数量（为了得到所有需要的对象，多个请求将会执行</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>A setting of 0 turns off paging.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>设置0将会关闭页面</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Member Of Supported</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>会员支持</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If the memberOf attribute supported on the user account, the groups are inspected to find the user's group associations.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果成员属性受用户帐户的支持，检查组找到用户的组协会</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Note: Microsoft Small Business Server requires this to be unticked.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>注意： Microsoft Small Business Server需要，这是unticked 。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Enforce username case sensitivity.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>使用户名区分大小写.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Windows normally allows logon when the case of a username is incorrect.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在登录窗口，通常大小写不区分</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Enable this option to force users to enter the correct case for their usernames</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>启用此选项，迫使用户在输入正确用户名区分大小写</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Follow Referrals</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>后续推介</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Child domains require this value to be selected.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>子域要求选择这个值</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The Active Directory user cache is full.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>当前目录缓存是满的</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>There may be more accounts on the Active Directory which are not currently visible from Adito.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在当前目录下，可能有更多的账户，Adito是看不到的</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>It is recommended that the cache size is increased from it's current value: {0}.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>推荐增加缓存的数量，在现在值的基础上: {0}.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The Active Directory group cache is full.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>当前目录组缓存是满的</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>There may be more groups on the Active Directory which are not currently visible from Adito.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在当前目录下，可能有更多的组，Adito是看不到的</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Agent (Server resources)</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>代理 (服务器资源)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Message resources for the Agent server components.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>信息资源的代理服务器组件</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Invalid VPN session.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>无效的VPN会话.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>A pending VPN session ticket is required.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>待审批的VPN会话票是被要求的</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The agent registered successfully.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>代理注册成功</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The agent failed to register within the allowed time period.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>代理注册失败在允许的时间下</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Agent shutdown failed because the agent was not active.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>代理关闭失败因为代理是不活动</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Agent (Client)</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>代理(客户)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Message resources for the Adito Agent Client components.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>信息资源的Adito代理客户端组件</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Adito Agent</seg>
       </tuv>
       <tuv lang="ZH-CN">
@@ -430,10 +742,283 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Launching {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>正在打开 {0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>{0} launcher.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>{0} 正在打开.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Processing {0} descriptor.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>处理{0} 描述.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Launching.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>正在打开</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Downloading.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>下载中.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Download Complete.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>下载完成.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Closing application tunnel to {0}.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>正在关闭应用隧道 {0}.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>An error occurred launching {0}: {1}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>错误出现在打开过程中{0}: {1}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Error Launching Application</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>打开应用程序错误</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>TxRx Monitor</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>TxRx 监控</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The Tx/Rx thread was interrupted</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Tx/Rx 线程被打断 </seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The TXRX thread failed</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>The TXRX 线程失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito Agent is now running</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito代理现在运行</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Error</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>错误</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Close</seg>
       </tuv>
       <tuv lang="ZH-CN">
         <seg>关闭</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The Adito Agent failed connect.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito代理连接失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Agent has {0} tunnel(s) open but no active connections.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Agent有 {0} 隧道打开没有激活连接</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Agent has {0} tunnel(s) open with {1} active connection(s).</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Agent 有 {0} 隧道打开包含{1} 激活连接</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>There are no open tunnels but {0} active connections remain.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>目前没有开放的隧道但{0} 激活的连接存在</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The Adito Agent is Idle</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>The Adito代理是空闲的</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Channel opened.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>频道开放了.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Registration failed.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>注册失败.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Error code {0}.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>错误码{0}.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Too many redirects.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>过多的重定向</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Agent is shutting down</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>代理正在关闭</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Setting user specified local proxy URL to {0}.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>设置用户指定的本地代理网址到 {0}.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito Agent debug mode is not enabled,
+only serious errors will be displayed.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito代理调试模式没有启用，只有严重的错误才会显示出来</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Expected hostname, port, username and ticket command line arguments</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>期望的主机名，端口，用户名和票的命令行参数</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The server did not respond within the keep-alive time period.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>该服务器没有响应在保活时间期限内</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The server responded with an error.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>服务器错误响。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito Message</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito消息</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Received: {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>接受: {0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Looking up registry value: scope={0} key={1} value={2}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>查找注册值: 范围={0} 钥匙={1} 值={2}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Agent (AWT Client)</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>代理 (AWT客户端)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Message resources for the AWT version of the Adito Agent Client components.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito代理客户端组件的AWT版本信息资源</seg>
       </tuv>
     </tu>
     <tu>
@@ -534,6 +1119,14 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Realm:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>领域:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Domain:</seg>
       </tuv>
       <tuv lang="ZH-CN">
@@ -554,6 +1147,14 @@
       </tuv>
       <tuv lang="ZH-CN">
         <seg>密码:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Proxy Server Authentication</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>代理服务器授权</seg>
       </tuv>
     </tu>
     <tu>
@@ -586,6 +1187,270 @@
       </tuv>
       <tuv lang="ZH-CN">
         <seg>Adito控制台</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to launch.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>打开失败。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Exception during process monitoring.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在监视过程中出现异常.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Opening browser to {0}.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>打开浏览器到 {0}.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Heartbeat</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg> heartbeat </seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito server is not available</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito服务器不可用</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The heartbeat thread failed</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>The heartbeat 线程失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Heartbeat thread exited, starting shutdown procedure.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Heartbeat 线程已退出, 开始关闭步骤</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Sending client heartbeat</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>传送客户端heartbeat</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Received response from server</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>从服务器收到的回应</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Server is alive</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>服务器正在运行</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Unrecognised element {0} in heartbeat response.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>无法识别元素 {0} 在heartbeat回应中.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Received shutdown instruction during heartbeat</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>接受关闭指示在heartbeat过程中</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Server responded with error</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Server错误响应</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Heartbeat failed.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Heartbeat 线程失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adding request listener</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>增加请求监听</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Waiting for a client connection on port {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>等待用户连接到端口 {0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Got connection from {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>有连接从 {0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to accept a client connection</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>允许客户端连接失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Request failed</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请求失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>HTTP Server</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>HTTP服务器</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Processing request {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>处理请求{0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>HTTP version {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>HTTP 版本 {0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Unsupported request {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>不支持的请求{0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>HTTP Header: {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>HTTP 头标题: {0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Request contains some content of type {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请求包含某些类型的内容 {0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Reading {0} bytes of form data</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>读 {0} 表格数据的字节</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Extracting parameters from form data {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>从表格数据提取参数{0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>HTTP Encoded Parameter: {0} = {1}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>HTTP 加密参数: {0} = {1}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>HTTP Parameter: {0} = {1}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>HTTP 参数: {0} = {1}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>HTTP Encoded Parameter: {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>HTTP 加密参数: {0} </seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>HTTP Parameter: {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>HTTP 参数: {0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Unhandled request for {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>为处理的请求 {0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Redirecting browser to {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>重定向浏览器到 {0}</seg>
       </tuv>
     </tu>
     <tu>
@@ -626,6 +1491,598 @@
       </tuv>
       <tuv lang="ZH-CN">
         <seg>最新的数据</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The HTTP server is redirecting the user agent</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>HTTP服务器重定向用户代理</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Getting application descriptor using Maverick HTTP client</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>得到应用程序描述使用MaverickHTTP客户端</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Downloading application file using Maverick HTTP client</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>下载应用程序描述使用MaverickHTTP客户端</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Allow untrusted hosts is set to {0}.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>允许不受信任的主机被设置为 {0}.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to retrieve tunnels.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>无法撷取隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>An unexpected error has occured.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>不被期望的错误出现</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito Agent must now exit</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito代理必需现在关闭</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Critical failure</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>决定性的失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Starting {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>启动中 {0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Critical error, shutting down.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>决定性的错误，正在关闭.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Unable to start extension {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>不能启动extension {0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Attempting to detect proxy settings using platform specific methods</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>试图检测代理设置使用平台的对应的方法</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to get IE proxy settings, trying Firefox.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>无法取得IE浏览器的代理设置，试图Firefox的</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to get Firefox proxy settings.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>无法取得Firefox的代理设置。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Found some proxy settings.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>发现了一些代理设置。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No useragent supplied, automatic proxy could not check for browse type.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有用户代理提供了，自动代理不能检查浏览器类型。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Using plugin supplied proxy settings.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>利用插件提供的代理设置</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Installing Maverick SSL support for HTTPSURLStreamHandler</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>安装Maverick的SSL为了支持HTTPSURLStreamHandler</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Configured logging</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>配置记录</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Looking for Firefox</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>寻找Firefox</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Starting HTTPD</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>正在启动HTTPD</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>HTTPD created on port {0}.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>HTTPD 在端口上创建  {0}.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to start HTTPD.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>启动HTTPD失败.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Looking for IE</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>寻找IE</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Invalid tunnel type {0}.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>无效隧道类型 {0}.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Only local forwards can start a local listening socket.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>只有本地推送可以启动一个本地侦听socket</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Opened local tunnel &quot;{0}&quot; on port {1} to {2}.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>打开本地隧道&quot;{0}&quot; 在端口 {1} to {2}.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Opened remote tunnel &quot;{0}&quot; on port {1} to {2}.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>打开远程的隧道 &quot;{0}&quot; 在端口 {1} to {2}.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Stopping listening socket {0}.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>停止监听socket {0}.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Closing local tunnel &quot;{0}&quot; on port {1} to {2}.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>正在关闭本地隧道&quot;{0}&quot; 在端口 {1} to {2}.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Closing remote tunnel &quot;{0}&quot; on port {1} to {2}.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>关闭远程隧道&quot;{0}&quot; 在端口 {1} to {2}.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Channel closed.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>频道关闭.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Registering with the Adito server</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在Adito服务器上注册</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Server is {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>服务器是 {0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Got response from server.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>从服务器得到响应.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Got ticket: {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>得到票: {0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>De-registering from the Adito server</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在Adito服务器上注销</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>De-registration failed.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>注销失败..</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Starting agent shutdown procedure.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>开始代理关闭步骤.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Stopping extension {0}.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>正在关闭 extension {0}.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Exiting JVM.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>正在退出 JVM.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Checking if {0} is suitable.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>正在检查是否 {0} 合适.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Setting local proxy URL to {0}.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>设置本地代理网址到 {0}.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Setting browse to {0}.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>设置浏览器到 {0}.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Processing HTTP request {0}.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>处理 HTTP请求 {0}.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Application launched.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>应用程序已启动.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to launch application.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>应用程序启动失败.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito Agent shutdown.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito代理关闭.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Requesting tunnel for {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请求隧道为 {0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to register local tunnel with the server.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>向服务器注册本地隧道失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Registered local tunnel with ID of {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>已注册的本地隧道，用ID{0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to register remote tunnel with the server.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>向服务器注册远端隧道失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Registered remote tunnel with ID of {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>已注册的远端隧道，用ID {0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Invalid tunnel type {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>无效隧道类型 {0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to start tunnel.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>启动隧道失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to start tunnel {0}.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>启动隧道失败{0}.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Request to open {0} via a temporary tunnel</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>打开请求 {0} 通过一个零时的隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Could not create temporary tunnel.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>无法创建临时隧道。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Tunnel closed.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>隧道关闭.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Request not found</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有发现请求</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must select at least one tunnel to remove.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你必需选择删除至少一个隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Removing tunnels with username of  {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>删除用户名使用的隧道 {0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Cannot remove global tunnels.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>不能删除全局隧道.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Only administrators can remove global tunnels.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>只有管理员才可以删除全局隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No tunnel with id of {0}, probably a temporary tunnel</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有用ID的隧道{0}, 可能是零时的隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to remove tunnels.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>删除隧道失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to remove tunnel.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>删除隧道失败。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adding ticket {0} to request parameters</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>添加票 {0} 请求参数</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Starting application {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>正在开始应用程序{0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Launching application &quot;{0}&quot;</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>正在打开应用程序&quot;{0}&quot;</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must select at least one tunnel to close.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你必需选择关闭至少一个隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must select at least one tunnel to open.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你必需选择打开至少一个隧道.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No forwarding tunnel with id {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有拥有ID的推送隧道 {0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No forwarding tunnel with id of {0}.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有拥有ID的推送隧道 {0}。</seg>
       </tuv>
     </tu>
     <tu>
@@ -1238,6 +2695,78 @@
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Available Interfaces</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>可用的接口</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Selected Interfaces</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>已选的接口</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Valid Hostnames</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>有效的主机</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Invalid hostname action</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>无效的主机行为</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Allow connection</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>准许</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Redirect to valid hostname</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>重新导航到有效主机</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Refuse all requests using invalid hostname.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>拒绝所有请求，当使用无效主机的时候.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Close connection immediately</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>立刻断开连接</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Disabled</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>禁用</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Create</seg>
       </tuv>
       <tuv lang="ZH-CN">
@@ -1346,6 +2875,14 @@
       </tuv>
       <tuv lang="ZH-CN">
         <seg>我的配置文件</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Configuration</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>设置</seg>
       </tuv>
     </tu>
     <tu>
@@ -3995,6 +5532,1568 @@
       </tuv>
       <tuv lang="ZH-CN">
         <seg>属性是通过加密存储与用户的公用钥匙，使他们只能解密对应的私人钥匙。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>When set to &lt;b&gt;Automatic&lt;/b&gt; the passphrase for the private key will be automatically configured as the user's account password.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>当设置&lt;b&gt;自动的时候&lt;/b&gt; 私匙的密码将自动配置用户的帐户密码。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If no account password has been provided then it will be prompted for instead.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果没有提供帐户密码，那么它会提示代替。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>When set to &lt;b&gt;Prompt&lt;/i&gt; the user will be prompted for the passphrase upon logon, meaning that the passphrase will be independent of the users password.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>当设置 &lt;b&gt;提示的时候&lt;/i&gt; 用户将被提示输入私匙密码在登录的时候，即私匙密码将是独立的账户密码。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>&lt;b&gt;Disabled&lt;/b&gt; will prevent the key being used at all, meaning confidential user attributes will not be available.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>&lt;b&gt;禁用&lt;/b&gt; 将会完全阻止使用私匙，即用户的保密属性将不可用</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Prompt</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>提示</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Restrict policies to signed on authentication scheme.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用以认证计划的限制政策</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This option restricts the available resources to those which are attached to the policies assigned to the authentication scheme used at login.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这个选项限制了在登入时使用这个限制政策认证的可用资源</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>WebDAV without cookies</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>不包含cookies的WebDAV  </seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Allow WebDAV access from clients that do not support cookies.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>允许客户接入不支持cookies的WebDAV</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This would include Nautilus in Gnome, Finder in OS X and other WebDAV clients.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这包含 Nautilus在Gnome系统, Finder苹果系统和其他的WebDAV 客户端.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Behaviour is much the same, except it is not possible to mount unauthenticated Network Places (i.e. those that would normally pop up a secondary authentication dialog).</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>对于行为也是相同的，除了使用没被授权的网络（比如那些会跳出第2级授权对话框）</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>It may also have an affect on performance as authentication is performed on every request.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这可能对表现也有影响，因为没个要求都包含授权</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Public Key Algorithm</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>公开密钥算法</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Public key algorithm used to encrypt confidential user attributes.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>公开密钥算法用来加密机密的用户属性。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Bit Length</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>位长</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Bit length of public/private keys used to encrypt confidential user attributes.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>位长的公共/私人密钥用来加密机密的用户属性。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Protocol</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>协议</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You can disable Adito's native SSL server and listen for plain HTTP connections instead of HTTPS.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您可以禁用Adito本地SSL服务器，并听取普通HTTP连接而不是HTTPS的</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This is useful for some types of SSL accelerator cards.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这是非常有用的某些类型的SSL加速器卡</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Keystore password</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Keystore的密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>SSL Certificate password</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>SSL证书密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The password to use for the main SSL certificate.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>主要SSL证书密码的使用密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Port on which the webserver will listen for HTTPS requests.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Web服务器侦听HTTPS请求的端口</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Minimum threads</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>最少线程数</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The mimimum number of threads to reserver for the web server.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>保持Web服务器的最小线程数</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Maximum threads</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>最多线程数</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The maximum number of threads to reserver for the web server.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>保持Web服务器的最大线程数</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Session inactivity timeout (mins.)</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>会话不活动超时（分钟）</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The number of minutes of inactivity before a session will automatically invalidated and the user logged out.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在一个会话自动无效和用户取消登录前的会话不活动时间</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Bind address</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>绑定地址</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The IP address of the interface to listen for connection on.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>监听连接的接口的IP地址</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Leave blank to listen on all interfaces.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>不填，监听所有接口</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>All Interfaces</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>所有接口</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Valid external hostnames</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>有效的外部主机名</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If a value if provided here, the hostname that the client uses to access Adito must match one of those below.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果这里提供了一个值，那么这个值必须是用于连接Adito的下面的一个</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If it does not, the browser will be redirected to the first hostname in the list.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果不是，浏览器将会重新导航到在列表中的第一个主机</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Sets the action to take if a client tries to connect using an invalid hostname.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>设置执行的行为，如果一个客户使用一个无效主机连接</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>HTTP Port</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>HTTP端口</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The port number on which to listen for HTTP requests.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>监听HTTP请求的端口号</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Users cannot access the main SSL VPN over HTTP, this service is available to extensions to add HTTP services and to redirect users to the HTTPS server.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户不能使用主要的SSL VPN基于HTTP, 这项服务是可用的当在extensions 中添加tHTTP服务和重新导航用户到HTTPS 服务器。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Max idle time (minutes)</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>最长闲置时间(分钟)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Set the maximum thread idle time (minutes).</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>设置最长闲置时间线程(分钟)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Threads that are idle for longer than this period may be stopped.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>线程闲置长与这个时间将停止</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Delegated to the named or anonymous Pool.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>下放给记名或不记名投票.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Resource persist time (seconds)</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>资源持续的时间（秒）</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Set the low resource persistence time (seconds).</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>设置低资源持续时间（秒）</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>When the server is low on resources, this timeout is used for idle persistent connections.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>当服务器资源不足时，这个超时将用于管理持续闲置连接。 </seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>It is desirable to have this set to a short period of time so that idle persistent connections do not consume resources on a busy server.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>为闲置的持续连接设置一小段时间是可取的，因为这样不消耗服务器资源</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Buffer size</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>缓存大小</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Set the size of the buffers used by connections from this listener.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>设置用于监听这个连接的缓存的大小</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Buffer reserve</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>
+缓冲储备</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The header reserve area within the buffers used by connections from this listener.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>缓冲中标题储备区将会用于这个监听的连接</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The header reserve is space reserved in the first buffer of a response to allow a HTTP header to be written in the same packet.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>标题储备是在第一个缓存中的空间储备用于允许 HTTP标题写进同一个包</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The reserve should be large enough to avoid moving data to fit the header, but not too large as to waste memory.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>储备要足够大用于装入标题所需的数据，但也不要过大而浪费内存</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Requests per GC</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请求／GC</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The number of requests that should be processed before Java garbage collection is scheduled.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在Java的垃圾收集计划前，要处理请求的数量</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Set to &lt;strong&gt;0&lt;/strong&gt; (zero) to let the virtual machine handle this automatically.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>设置&lt;strong&gt;0&lt;/strong&gt; (0)让虚拟机自动处理</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Enable statistics log</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>启用统计日志</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>When enabled, generates a CSV log (logs/stats.csv) containing web server statistics.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>当启用时，生成的CSV日志（日志/ stats.csv ） ，其中载有Web服务器的统计数据。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This log is update periodically.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这个日志是定期更新。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The server must be restarted for this option to take affect.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>服务器必须重新启动这项操作才能生效</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Statistics log update (seconds)</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>更新统计日志(秒)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>How often the statistics log file is updated in seconds.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>多少秒统计日志文件要更新</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Compression</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>压缩</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>When enabled all data returned to the client browser will be compressed.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>启用后的所有数据返回到客户端浏览器将被压缩。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This saves bandwidth at the expense of some processor time.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这样可以节省带宽以处理器时间代价。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Enable request log</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>启用请求日志</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Enable the request log and every request will be logged in the file [adito-installation]/logs/[yyyy-mm-dd].request.log.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>启用请求日志，每个请求将会写入文件[adito-installation]/logs/[yyyy-mm-dd].request.log.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This file is in NCSA format.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这个文件是NCSA格式.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Disable Certificate Warning</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>禁用证书警告</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Disables the untrusted SSL certificate warning</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>禁用不可信的证书警告</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>TCP/IP No Delay</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>TCP/IP没延时</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Turn on TCP/IP No Delay option to force all data to be flushed to network and not buffered.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>打开TCP/IP没延时选项，强制所有的数据进入网络不加缓存</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Thread Priority</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>线程优先级</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Web server thread priority</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Web服务器线程优先级 </seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Maximum</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>最大</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Normal</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>一般</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>HTTP Proxy Hostname</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>HTTP代理服务器主机名</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If your network configuration requires use of a proxy server outgoing HTTP / HTTPS connections, provide the hostname or IP address here.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果你的网络设置要求使用代理服务器发送 HTTP / HTTPS 连接,在这里提供一个主机名或者IP地址.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>HTTP proxy port</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>HTTP代理服务器端口</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If your network configuration requires use of a proxy server outgoing HTTP / HTTPS connections, provide the port number on which the proxy server is running here.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果你的网络设置要求使用代理服务器发送 HTTP / HTTPS 连接,在这里提供代理服务器运行的端口号</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>HTTP proxy user</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>HTTP代理服务器用户</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If you have configured Adito to use an HTTP proxy server that requires authentication, provide the user here.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果你设置Adito使用HTTP代理服务器，这需要授权，在这里提供用户</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>HTTP proxy password</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>HTTP代理服务器密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If you have configured Adito to use an HTTP proxy server that requires authentication, provide the password here.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果你设置Adito使用HTTP代理服务器，这需要授权，在这里提供密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Non-proxied hosts</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>不用代理的主机</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If you have configured Adito to use an HTTP proxy server, there may be a need to specify hosts that are not proxied.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果你设置Adito使用HTTP代理服务器，这需要授权，这可能需要确定不用代理的主机</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Enter one host or IP address per line, with no termination character.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在每一行输入一个主机或者IP地址，不要结束符</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Wildcards are permitted, e.g. *.foo.com.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg> ＊号是允许的, 例如 *.foo.com.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Hostname / Address</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>主机名/ 地址</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Non-proxies hosts</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>不用代理的主机</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>SOCKS hostname</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>SOCKS主机名</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If your network configuration requires use of a SOCKS proxy, provide the hostname here.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果你的网络设置要求使用代理服务器发送 SOCKS连接,在这里提供一个主机名或者IP地址.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>SOCKS port</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>SOCKS端口</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If your network configuration requires use of a SOCKS proxy, provide the port here.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果你的网络设置要求使用代理服务器发送 SOCKS连接,在这里提供端口号.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>SOCKS username</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>SOCKS用户名</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If you SOCKS server requires authentication, provide the user here.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果SOCKS服务器需要授权，在这里提供用户</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>SOCKS password</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>SOCKS密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If you SOCKS server requires authentication, provide the password here.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果SOCKS服务器需要授权，在这里提供密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Automatically connect to Extension Store</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>自动连接Extension 商店</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>With this option enabled, Adito will automatically attempt to connect to 3SP Extension Store when the Extension Manager page is loaded.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果这个选项启用了，Adito将自动尝试连接3SP Extension商店，当读取Extension管理页的时候.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This authentication module requests a username and password using a web based form.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这验证模块要求用户名和密码使用的是基于网络的形式。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The submitted details are then passed to the currently active &lt;b&gt;User Database&lt;/b&gt; for verification.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>提交的资料，将传递到目前活跃 &lt;b&gt;用户数局库&lt;/b&gt;核查</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Personal Questions</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>个人问题</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This authentication module asks the user for the answer to a random personal question (e.g. Your favorite color).</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这验证模块要求用户给出个人随机问题的答案（例如，您最喜欢的颜色） 。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Password (HTTP BASIC)</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>密码 (HTTP BASIC)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This authentication module requests a username and password using the HTTP BASIC mechanism.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这验证模块要求用户名和密码使用 HTTP BASIC 机制。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The browser will be sent an &lt;b&gt;Un-authorized&lt;/b&gt; response code, which will cause an authentication dialog to be shown.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>浏览器将发送&lt;b&gt;不授权&lt;/b&gt; 响应代码，这将造成一个验证对话框显示。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Note, some browser may have the ability to cache these details - Adito is not in control of this.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请注意，一些浏览器可能有能力缓存这些细节- Adito是无法控制了这一点。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The user details supplied will be verified by the currently active &lt;b&gt;User Database&lt;/b&gt;.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户提供的详细资料将被验证使用当前活动
+ &lt;b&gt;用户数据库&lt;/b&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The submitted details are then passed to the configured &lt;b&gt;RADIUS&lt;/b&gt; server for verification.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>提交的资料，将传递到设置 &lt;b&gt;RADIUS&lt;/b&gt; 服务器用以核实</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This system authentication module allows users to logon via WebDAV using username and password only.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>该系统认证模块，用户可以只通过登录的WebDAV使用的用户名和密码。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>It must be the only module in a scheme.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>它必须是唯一的模块的计划。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Embedded Client</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>嵌入式客户端</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This system authentication module allows users to logon via the embedded client using username and password only.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>该系统认证模块允许用户登录的嵌入式客户端只通过使用用户名和密码。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Enable on startup</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>启用启动</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Start the SMTP delivery system when Adito starts</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>开始的SMTP服务系统当Adito启动时</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>SMTP Server</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>SMTP服务器</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The host name or IP address of the SMTP mail server.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>主机名称或SMTP邮件服务器的IP地址。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The port number on which the SMTP service is running.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>正在运行的SMTP服务的端口号</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Sender address</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>发送者地址</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The email address to use as the sender.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>电子邮件地址用于发送者地址</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Login (HELO)</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>登录 (HELO)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The hostname to provide when logging in with HELO.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>提供主机名当登录 HELO的时候.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Leave blank to use the default hostname.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>不填，使用默认的主机名</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Site name</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>网站名称</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>A short name for this Adito installation.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>为Adito安装的简短名称</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If this is not blank, it will appear just after the &lt;strong&gt;Title&lt;/strong&gt;</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果填写了，它将显示在 &lt;strong&gt;标题&lt;/strong&gt;</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Welcome Text</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>欢迎语</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You can configure a custom title for the logon page.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你可以设置标题在登录页</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Leave this blank to use the default internationalised Adito title.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>不填，将使用默认的国际化的Adito标题.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Logo</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>标志</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You can configure a custom logo for the logon page by copying an image file to &lt;i&gt;[adito]/conf/site/icons&lt;/i&gt; and then choosing it here.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你可以设置一个个性话的标志在登录页使用拷贝一个图片文档到 &lt;i&gt;[adito]/conf/site/icons&lt;/i&gt;然后在这里选择</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Message</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>消息</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Here you may provide any message you wish displayed to all users when they logon.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在这里，您可以提供您想要的任何信息显示给所有用户登录时</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You may not use &lt;b&gt;not&lt;/b&gt; HTML here.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你可能不用&lt;b&gt;不&lt;/b&gt; HTML这里.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Message Type</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>消息格式</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If set to anything other than &lt;b&gt;No Message&lt;/b&gt;, a message will be displayed to all users when they logon.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果你设置不是&lt;b&gt;空消息&lt;/b&gt;, 信息将显示给所有在用户登录时</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This setting determines the icon that will be displayed next to the message.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>此设置确定的图标将显示消息旁边。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No Message</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>空消息</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No Icon</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>空图标</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Broadcast</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>广播</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Warning</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>警告</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Message Align</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>消息对齐</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Set's the alignment of the message text, options available are justify and center.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>设置消息对齐，自动和中心对齐选项可用</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Justify</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>自动</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Center</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>中心</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Supported Protocols</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>支持的协议</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The list of SSL protocols supported by Adito</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito支持SSL的协议列表</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Available Protocols</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>可用的协议</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Selected Protocols</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>已选的协议</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Supported Ciphers</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>支持的加密</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The list of SSL ciphers supported by Adito.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito支持SSL的加密的列表</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If the selected cipher list is empty then all available ciphers are supported, if you edit this list then ensure that SSL_RSA_WITH_RC4_128_MD5 is selected as this is required by the Adito Agent.&lt;br&gt;&lt;br&gt;WARNING: Editing these properties may cause compatibility problems with some older browsers.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果已选的加密的列表是空，那么所有可用的加密将被支持，如果编辑了列表，请确保SSL_RSA_WITH_RC4_128_MD5被选中，因为这是Adito代理要求的.&lt;br&gt;&lt;br&gt;警告：编辑这些属性可能导致旧的浏览器兼容性问题</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Available Ciphers</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>可用的加密</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Selected Ciphers</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>已选的加密</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Enforce strict SSL trust mode</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>执行严格的SSL信任模式</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This option enforces strict security requirements on outgoing SSL connections.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>此选项对上行的SSL连线。强制执行严格的安全要求</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>All outgoing SSL connections should have a trusted SSL certificate, either trusted by the default Java CA trust store or by the Adito trust store.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>所有上行的SSL连线应该有一个信任的SSL证书，被默认的Java信托商店或Adito信托商店信任</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If a server presents an untrusted certificate the connection will be terminated.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果服务器提供了一个不受信任的证书连接将被终止。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Agent Configuration</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>代理设置</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Agent Proxy Server</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>代理代理服务器</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>AgentProxy Server</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>AgentProxy 服务器</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Policy Options</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>政策选项</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Password Options</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>密码选项</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Session Options</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>会话选项</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Security Options</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>安全选项</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Use this link to access options to configure various security options used by Adito.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>使用此链接访问选项来配置各种Adito使用的安全选项</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Confidential Attributes</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>保密属性</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Here you can configure options that relate to how Adito treats confidential user attributes.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在这里您可以配置选项涉及如何对待机密Adito用户属性</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Web server</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Web服务器</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Performance</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>表现</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Proxies</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>代理服务器</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>HTTP and Socks Proxies</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>HTTP and Socks 代理服务器</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Logon Page</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>登录页面</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Configure how the logon page looks</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>设置你的登录页面外观</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Access Control Attributes</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>接入管理属性</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>All of the settings in this category affect the behaviour of the Adito Agent.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>所有设置在这个类别中影响Adito代理的行为。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Settings included timeouts and proxy servers.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>设置包括超时和代理服务器。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Session</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>会话</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Session settings affect how your Adito login session looks and behaves.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>会话设置影响您Adito登录会话的外观和行为。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Here you may configure things such as your session timeout and home page.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在这里，您可以配置，例如您的会话超时和主页 </seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>System Settings</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>系统设置</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Server</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>服务器</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Use this link to configure options such as web server settings, network proxy settings and automatic update settings.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>使用此链接配置选项，如Web服务器设置，网络代理设置和自动更新设置</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You can also set security settings here such as password lengths, maximum connection attempts and timeouts.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您还可以设置安全设置，如密码长度，最大连接尝试和超时。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The resources section allows you control over settings concerning Network Places, Profiles and Web forwarding settings.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>资源区段可让您控制设置有关，网上邻居，概况和网络转发设置。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Windows Integration</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Windows集成</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Here you can configure many properties relating to how Adito integrates with your Microsoft Windows file shares and other Windows resources.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在这里您可以配置许多性能有关如何Adito结合您的Microsoft Windows文件共享和其他Windows的资源。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Options are available that can assist with troubleshooting sharing problems on Windows.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>此选项可用于帮助分担问题与故障排除的Windows 。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Messaging</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>传送消息</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito can use a number of different methods to communicate messages to administrative and normal users.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito可以提供许多不同的方法，用以管理员和普通用户之间沟通信息</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Here you can configure settings relating to these message delivery methods.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在这里您可以配置设置有关这些消息传递方法</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Options for the Secure Sockets Layer.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Secure Sockets Layer选项</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No profiles are available.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有配置文件可用</seg>
       </tuv>
     </tu>
     <tu>
