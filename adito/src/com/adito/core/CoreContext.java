@@ -341,8 +341,8 @@ public class CoreContext implements Context {
      */
     public int getPort()
     {
-    	return 0;
     	log.info("NOT IMPLEMENTED");
+    	return 0;
     }
 
     /**
@@ -602,8 +602,8 @@ public class CoreContext implements Context {
      */
     public HttpServletResponse createServletResponse(RequestHandlerResponse response, HttpServletRequest request)
     {
-    	return null;
     	log.info("NOT IMPLEMENTED");
+    	return null;
     }
 
     
