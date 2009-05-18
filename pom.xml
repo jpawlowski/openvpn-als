@@ -8,6 +8,7 @@
     <name>adito</name>
     <modules>
         <module>ui</module>
+        <module>maverick-util</module>
     </modules>
 
     <build>
