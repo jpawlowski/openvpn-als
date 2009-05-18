@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="adito-build" default="start-using-java">
-	
+    <!-- If you want to use alternative mirror for downloading 3rd. party
+    libraries - create file called local.properties which contains line:
+        repository.url=[your url here]
+
+    For maven users also good alternative is:
+        repository.url=file://${user.home}/.m2/repository/
+    -->
+    <property file="./local.properties"/>
+    <property name="repository.url" value="http://repo1.maven.org/maven2/"/>
 	<property name="adito.home" value="adito"/>
 	<property name="agent.home" value="adito-agent"/>
 	
@@ -102,7 +110,15 @@ For a list of Ant targets, use "ant -projecthelp"
 
 	<target name="dist" description="Create an executable, ready to distribute version of Adito">
 		<ant inheritall="false" dir="${adito.home}" target="dist"/>
-	</target>
+    </target>
 
-
+    <target name="dowload-dependencies">
+        <mkdir dir="lib"/>
+        <get src="${repository.url}/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar"
+            dest="./lib/commons-logging.jar"/>
+    </target>
+    
+    <target name="clean-dependencies">
+        <delete dir="lib"/>
+    </target>
 </project>
