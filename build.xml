@@ -64,7 +64,7 @@ For a list of Ant targets, use "ant -projecthelp"
 		<ant dir="adito-community-web-forwards" target="javadoc"/>
 		<ant dir="maverick-crypto" target="javadoc"/>
 		<ant dir="maverick-multiplex" target="javadoc"/>
-		<ant dir="maverick-ssl" target="javadoc"/>
+        <!-- <ant dir="maverick-ssl" target="javadoc"/>-->
 		<ant dir="maverick-util" target="javadoc"/>
 
 		<!-- Javadoc target for Agent is not yet finished -->
@@ -116,6 +116,8 @@ For a list of Ant targets, use "ant -projecthelp"
         <mkdir dir="lib"/>
         <get src="${repository.url}/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar"
             dest="./lib/commons-logging.jar"/>
+        <!-- maverick-ssl depends on nanoxml which is not available on maven repository --> 
+        <copy file="maverick-ssl/lib/nanoxml-2.2.3.jar" tofile="lib/nanoxml.jar"/>
     </target>
     
     <target name="clean-dependencies">
