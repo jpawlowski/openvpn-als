@@ -39,9 +39,9 @@
     <target name="javadoc" depends="build">
         <mkdir dir="${dir.build.docs}"/>
         <javadoc packagenames="com.sshtools.ui.awt,com.sshtools.awt.util,com.sshtools.ui.swing,com.sshtools.ui.swing.util,com.sshtools.ui.swing.icons"
-            sourcepath="${build.src}"
+            sourcepath="${dir.src}"
             defaultexcludes="yes"
-            destdir="${build.docs}"
+            destdir="${dir.build.docs}"
             author="true"
             version="true"
             use="true"
