@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="maverick-crypto" default="dist">
-	<property file="build.properties" />
-	<property file="${user.home}/.3sp.build.properties" />
-	
-	<!-- Standard build locations -->
-	<property name="build.dir" value="build" />
-	<property name="build.compiler" value="modern" />
-	<property name="build.lib" value="lib" />
-	<property name="build.output" value="${build.dir}/classes" />
-	<property name="build.dist" value="${build.dir}/dist" />
-	<property name="build.docs" value="${build.dir}/docs" />
-	<property name="build.src" value="src" />
+    <property file="../build.properties" />
 	
 	<!-- Clean -->
 	<target name="clean-dist" depends="clean,dist" />
@@ -23,51 +13,34 @@
     <path id="maverick-crypto.class.path">
     	<pathelement path="${maverick-util.classes}"/>
     </path>
-	
+
 	<!-- Build the library jar files -->
-	<target name="dist" depends="compile">
-		<mkdir dir="${build.dist}" />
-		<jar jarfile="${build.dist}/maverick-crypto.jar">
-			<fileset dir="${build.output}">
+    <target name="dist" depends="compile">
+        <mkdir dir="${dir.build.dist}" />
+		<jar jarfile="${dir.build.dist}/maverick-crypto.jar">
+			<fileset dir="${dir.build.classes}">
 				<include name="**/*" />
 			</fileset>
 		</jar>
 	</target>
 	
 	<!-- Compile the library  -->
-	<target name="compile">
-		<mkdir dir="${build.output}" />
-		<javac target="1.2" source="1.2" classpathref="maverick-crypto.class.path" compiler="${build.compiler}" destdir="${build.output}" srcdir="${build.src}" includeantruntime="false" includes="**/*.java"></javac>
+    <target name="compile">
+		<mkdir dir="${dir.build.classes}" />
+        <javac target="1.5" source="1.5" 
+            classpathref="maverick-crypto.class.path" 
+            destdir="${dir.build.classes}" 
+            srcdir="${dir.src}" 
+            includeantruntime="false" 
+            includes="**/*.java">
+        </javac>
 	</target>
 
 	<!-- Clean up all built files -->
-
 	<target name="clean">
-		<delete>
-		<fileset dir="${build.output}" />
-		<fileset dir="${build.dist}" />
-		</delete>
+        <delete dir="${dir.build}"/>
+        <!-- Cleans up maven stuff too -->
+        <delete dir="target"/>
 	</target>
-
-	<!-- Create API documentation -->
-
-	<target name="javadoc">
-		<mkdir dir="${build.docs}/api" />
-		<javadoc sourcepath="src" defaultexcludes="yes" destdir="${build.docs}/api" author="true" version="true" use="true" windowtitle="Maverick Crypto" notree="true">
-			<doctitle>
-				<![CDATA[<h1>Maverick Crypto</h1>
-                        <br>
-                                <p>General purpose cryptography library.</p>]]>
-			</doctitle>
-			<bottom>
-				<![CDATA[<i>Copyright &#169; 2003-2006 3SP LTD. All Rights Reserved.<
-/i>]]>
-			</bottom>
-			<packageset dir="src" defaultexcludes="yes">
-				<include name="com/maverick/crypto/**" />
-			</packageset>
-		</javadoc>
-	</target>
-
 
 </project>
