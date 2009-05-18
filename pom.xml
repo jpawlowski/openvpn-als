@@ -10,6 +10,7 @@
         <module>ui</module>
         <module>maverick-util</module>
         <module>maverick-crypto</module>
+        <module>maverick-ssl</module>
     </modules>
     <build>
         <sourceDirectory>src</sourceDirectory>
