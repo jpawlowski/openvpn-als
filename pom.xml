@@ -12,19 +12,23 @@
         <module>maverick-crypto</module>
         <module>maverick-ssl</module>
         <module>maverick-multiplex</module>
+        <module>agent-common</module>
     </modules>
     <build>
         <sourceDirectory>src</sourceDirectory>
+        <testSourceDirectory>test</testSourceDirectory>
         <resources>
             <resource>
                 <directory>src</directory>
                 <includes>
                     <include>**/*.properties</include>
                     <include>**/*.png</include>
+                    <include>**/*.xml</include>
                 </includes>
             </resource>
         </resources>
         <outputDirectory>build/classes</outputDirectory>
+        <testOutputDirectory>build/test-classes</testOutputDirectory>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
