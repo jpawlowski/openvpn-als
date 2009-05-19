@@ -1,45 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="maverick-crypto" default="dist">
     <property file="../build.properties" />
-	
-	<!-- Clean -->
-	<target name="clean-dist" depends="clean,dist" />
-	
-	<!-- Dependencies -->
-	<property name="maverick-util.home" value="../maverick-util"/>
-	<property name="maverick-util.classes" value="${maverick-util.home}/build/classes"/>
-
-	<!-- Class path -->
-    <path id="maverick-crypto.class.path">
-    	<pathelement path="${maverick-util.classes}"/>
+    
+    <path id="class.path">
+        <fileset dir="${dir.lib}">
+            <include name="maverick-util.jar"/>
+        </fileset>
     </path>
 
-	<!-- Build the library jar files -->
-    <target name="dist" depends="compile">
-        <mkdir dir="${dir.build.dist}" />
-		<jar jarfile="${dir.build.dist}/maverick-crypto.jar">
-			<fileset dir="${dir.build.classes}">
-				<include name="**/*" />
-			</fileset>
-		</jar>
-	</target>
-	
-	<!-- Compile the library  -->
-    <target name="compile">
-		<mkdir dir="${dir.build.classes}" />
-        <javac target="1.5" source="1.5" 
-            classpathref="maverick-crypto.class.path" 
-            destdir="${dir.build.classes}" 
-            srcdir="${dir.src}" 
-            includeantruntime="false" 
-            includes="**/*.java">
-        </javac>
-	</target>
+    <target name="prepare">
+        <mkdir dir="${dir.build.classes}" />
+        <mkdir dir="${dir.lib}"/>
+    </target>
 
-	<!-- Clean up all built files -->
+    <target name="compile" depends="prepare">
+        <javac 
+            srcdir="${dir.src}" 
+            destdir="${dir.build.classes}" 
+            classpathref="class.path"/>
+    </target>
+
+    <target name="dist" depends="compile">
+        <jar 
+            destfile="${dir.lib}/${ant.project.name}.jar"
+            basedir="${dir.build.classes}"/>
+    </target>
+
 	<target name="clean">
         <delete dir="${dir.build}"/>
-        <!-- Cleans up maven stuff too -->
         <delete dir="target"/>
 	</target>
 

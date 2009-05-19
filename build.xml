@@ -118,9 +118,14 @@ For a list of Ant targets, use "ant -projecthelp"
             dest="./lib/commons-logging.jar"/>
         <!-- maverick-ssl depends on nanoxml which is not available on maven repository --> 
         <copy file="maverick-ssl/lib/nanoxml-2.2.3.jar" tofile="lib/nanoxml.jar"/>
+        <get src="${repository.url}/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar"
+            dest="./lib/servlet-api.jar"/>
+        <get src="${repository.url}/org/jdom/jdom/1.1/jdom-1.1.jar"
+            dest="./lib/jdom.jar"/>
     </target>
     
-    <target name="clean-dependencies">
+    <target name="clean-all" depends="clean">
         <delete dir="lib"/>
     </target>
+
 </project>

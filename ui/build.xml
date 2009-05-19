@@ -1,66 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="ui" default="build" basedir=".">
-
-    <property file="../build.properties"/>
-
-   <!-- COMPILE TARGET -->
-    <target name="compile">
-        <mkdir dir="${dir.build.classes}"/>
-        <javac
-            target="1.5" 
-            source="1.5" 
-            srcdir="src" 
-            destdir="${dir.build.classes}" 
-            includes="**/*.java">
-        </javac>
+<project name="adito-ui" default="dist">
+    <property file="../build.properties" />
+    
+    <target name="prepare">
+        <mkdir dir="${dir.build.classes}" />
+        <mkdir dir="${dir.lib}"/>
     </target>
 
-    <!-- JAR BUILDING TARGET -->
-    <target name="build" depends="compile">
-        <mkdir dir="${dir.build.dist}"/>
-        <jar jarfile="${dir.build.dist}/ui-common.jar" basedir="${dir.build.classes}">
-            <fileset dir="src">
+    <target name="compile" depends="prepare">
+        <javac 
+            srcdir="${dir.src}" 
+            destdir="${dir.build.classes}" />
+
+        <copy todir="${dir.build.classes}">
+            <fileset dir="${dir.src}">
                 <include name="**/*.png"/>
             </fileset>
-            <include name="com/sshtools/**/*.class"/>
-            <include name="com/sshtools/**/*.properties"/>
-            <exclude name="com/sshtools/ui/awt/**"/>
-            <exclude name="com/sshtools/ui/swing/**"/>
-        </jar>
-        <jar jarfile="${dir.build.dist}/ui-awt.jar" basedir="${dir.build.classes}">
-            <include name="com/sshtools/ui/awt/**"/>
-        </jar>
-        <jar jarfile="${dir.build.dist}/ui-swing.jar" basedir="${dir.build.classes}">
-            <include name="com/sshtools/ui/swing/**"/>
-        </jar>
+        </copy>
     </target>
 
-    <!-- JAVADOCS TARGET -->
-    <target name="javadoc" depends="build">
-        <mkdir dir="${dir.build.docs}"/>
-        <javadoc packagenames="com.sshtools.ui.awt,com.sshtools.awt.util,com.sshtools.ui.swing,com.sshtools.ui.swing.util,com.sshtools.ui.swing.icons"
-            sourcepath="${dir.src}"
-            defaultexcludes="yes"
-            destdir="${dir.build.docs}"
-            author="true"
-            version="true"
-            use="true"
-            windowtitle="UI API Documentation"
-            notree="true">
-            <doctitle><![CDATA[<h1>J2UI</h1><br>
-      <p>The package provides a suite of basic user interface components and utilities for both
-      Swing and AWT. These components are used througout 3SP's products to provide
-      a consitent look and feel.</p>
-      <p>A number of commonly used images and icons are also included.</p>]]>
-            </doctitle>
-            <bottom><![CDATA[<i>Copyright &#169; 2003-2006 3SP LTD. All Rights Reserved.</i>]]>
-            </bottom>
-        </javadoc>
+    <target name="dist" depends="compile">
+        <jar 
+            destfile="${dir.lib}/${ant.project.name}.jar"
+            basedir="${dir.build.classes}"/>
     </target>
 
-    <!-- Clean up all the generated files -->
-    <target name="clean">
+	<target name="clean">
         <delete dir="${dir.build}"/>
         <delete dir="target"/>
-    </target>
+	</target>
+
 </project>

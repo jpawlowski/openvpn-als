@@ -1,50 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="maverick-multiplex" default="dist">
     <property file="../build.properties" />
-	
-	<!-- Dependencies -->
-	<property name="maverick-crypto.home" value="../maverick-crypto" />
-	<property name="maverick-crypto.classes" value="${maverick-crypto.home}/build/classes" />
-	<property name="maverick-util.home" value="../maverick-util" />
-	<property name="maverick-util.classes" value="${maverick-util.home}/build/classes" />
-	
-	<!-- Class path -->
-	<path id="maverick-multiplex.class.path">
-		<pathelement path="${maverick-crypto.classes}" />
-		<pathelement path="${maverick-util.classes}" />
-        <fileset dir="../lib">
-			<include name="commons-logging.jar" />
-		</fileset>
-	</path>
+    
+    <path id="class.path">
+        <fileset dir="${dir.lib}">
+            <include name="maverick-util.jar"/>
+            <include name="maverick-crypto.jar"/>
+            <include name="commons-logging.jar"/>
+        </fileset>
+    </path>
 
-	<!-- Clean -->
-	<target name="clean-dist" depends="clean,dist" />
+    <target name="prepare">
+        <mkdir dir="${dir.build.classes}" />
+        <mkdir dir="${dir.lib}"/>
+    </target>
 
-	<!-- Build the library jar files -->
-	<target name="dist" depends="compile">
-		<mkdir dir="${dir.build.dist}" />
-		<jar jarfile="${dir.build.dist}/maverick-multiplex.jar">
-			<fileset dir="${dir.build.classes}">
-				<include name="**/*" />
-			</fileset>
-		</jar>
-	</target>
-
-	<!-- Compile the library  -->
-
-	<target name="compile">
-		<mkdir dir="${dir.build.classes}" />
+    <target name="compile" depends="prepare">
         <javac 
-            target="1.5" 
-            destdir="${dir.build.classes}" 
             srcdir="${dir.src}" 
-            includeantruntime="false" 
-            includes="**/*.java" 
-            classpathref="maverick-multiplex.class.path">
-		</javac>
-	</target>
+            destdir="${dir.build.classes}" 
+            classpathref="class.path"/>
+    </target>
 
-	<!-- Clean up all built files -->
+    <target name="dist" depends="compile">
+        <jar 
+            destfile="${dir.lib}/${ant.project.name}.jar"
+            basedir="${dir.build.classes}"/>
+    </target>
+
 	<target name="clean">
         <delete dir="${dir.build}"/>
         <delete dir="target"/>

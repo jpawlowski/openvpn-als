@@ -1,56 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="maverick-ssl" default="dist">
-
-    <property file="../build.properties"/>
-	
-	<!-- Dependencies -->
-	<property name="maverick-crypto.home" value="../maverick-crypto"/>
-	<property name="maverick-crypto.classes" value="${maverick-crypto.home}/build/classes"/>
-	<property name="maverick-util.home" value="../maverick-util"/>
-	<property name="maverick-util.classes" value="${maverick-util.home}/build/classes"/>
-
-	<!-- Class path -->
-    <path id="maverick-ssl.class.path">
-    	<pathelement path="${maverick-crypto.classes}"/>
-        <pathelement path="${maverick-util.classes}"/>
-        <fileset dir="../lib">
-			<include name="commons-logging.jar"/>
-			<include name="nanoxml.jar"/>
-		</fileset>
+    <property file="../build.properties" />
+    
+    <path id="class.path">
+        <fileset dir="${dir.lib}">
+            <include name="maverick-util.jar"/>
+            <include name="maverick-crypto.jar"/>
+            <include name="nanoxml.jar"/>
+            <include name="commons-logging.jar"/>
+        </fileset>
     </path>
-        	
-	<target name="dist" depends="compile">
-		<mkdir dir="${dir.build.dist}"/>
-    	<jar jarfile="${dir.build.dist}/maverick-ssl.jar">
-    		<fileset dir="${dir.build.classes}">
-        		<include name="**/*"/>
-            </fileset>
-    	</jar>	
-	</target>
 
-	<target name="compile">
-		<mkdir dir="${dir.build.classes}"/>
-        <javac 
-            target="1.5" 
-            source="1.5" 
-            destdir="${dir.build.classes}"
-            srcdir="${dir.src}"
-            includeantruntime="false" 
-            includes="**/*.java" 
-            classpathref="maverick-ssl.class.path">
-		</javac>
-		<copy todir="${dir.build.classes}">
-			<fileset dir="${dir.src}">
-				<include name="**/*.properties"/>
-			</fileset>
-		</copy>
+    <target name="prepare">
+        <mkdir dir="${dir.build.classes}" />
+        <mkdir dir="${dir.lib}"/>
     </target>
 
-	<!-- Clean up all built files -->
+    <target name="compile" depends="prepare">
+        <javac 
+            srcdir="${dir.src}" 
+            destdir="${dir.build.classes}" 
+            classpathref="class.path"/>
+    </target>
+
+    <target name="dist" depends="compile">
+        <jar 
+            destfile="${dir.lib}/${ant.project.name}.jar"
+            basedir="${dir.build.classes}"/>
+    </target>
+
 	<target name="clean">
         <delete dir="${dir.build}"/>
-        <!-- Cleans also maven trash -->
         <delete dir="target"/>
 	</target>
-	
+
 </project>

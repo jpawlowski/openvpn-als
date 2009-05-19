@@ -1,71 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="maverick-util" default="dist">
     <property file="../build.properties" />
-	
-	<!-- Class path -->
-    <path id="maverick-util.class.path">
-        <fileset dir="../lib">
-            <include name="commons-logging.jar" />
+
+    <path id="class.path">
+        <fileset dir="${dir.lib}">
+            <include name="commons-logging.jar"/>
         </fileset>
     </path>
 
-	<!-- Clean -->
-    <target name="clean-dist" depends="clean,dist" />
-
-	<!-- Build the library jar files -->
-    <target name="dist" depends="compile">
-        <mkdir dir="${dir.build.dist}" />
-        <jar jarfile="${dir.build.dist}/maverick-util.jar">
-            <fileset dir="${dir.build.classes}">
-                <include name="**/*" />
-            </fileset>
-        </jar>
-    </target>
-
-	<!-- Compile the library  -->
-    <target name="compile">
+    <target name="prepare">
         <mkdir dir="${dir.build.classes}" />
-        <javac
-            target="1.5" 
-            source="1.5" 
-            destdir="${dir.build.classes}" 
-            srcdir="${dir.src}" 
-            includeantruntime="false" 
-            includes="**/*.java" 
-            classpathref="maverick-util.class.path">
-        </javac>
+        <mkdir dir="${dir.lib}"/>
     </target>
 
-	<!-- Clean up all built files -->
+    <target name="compile" depends="prepare">
+        <javac 
+            srcdir="${dir.src}" 
+            destdir="${dir.build.classes}" 
+            classpathref="class.path"/>
+    </target>
+
+    <target name="dist" depends="compile">
+        <jar 
+            destfile="${dir.lib}/${ant.project.name}.jar"
+            basedir="${dir.build.classes}"/>
+    </target>
+
     <target name="clean">
         <delete dir="${dir.build}"/>
         <delete dir="target"/>
     </target>
 
-    <!-- Create API documentation -->
-    <target name="javadoc">
-        <mkdir dir="${dir.build.docs}/api" />
-        <javadoc sourcepath="${dir.src}"
-                defaultexcludes="yes"
-                destdir="${dir.build.docs}/api"
-                author="true"
-                version="true"
-                use="true"
-                windowtitle="Maverick Multiplex"
-                notree="true"
-                classpathref="maverick-util.class.path">
-            <doctitle>
-                <![CDATA[<h1>Maverick Util</h1>
-                <br>
-                <p>Common utilities.</p>]]>
-            </doctitle>
-            <bottom>
-                <![CDATA[<i>Copyright &#169; 2003-2007 3SP LTD. All Rights Reserved.<
-                /i>]]>
-            </bottom>
-            <packageset dir="src" defaultexcludes="yes">
-                <include name="com/maverick/util/**" />
-            </packageset>
-        </javadoc>
-    </target>
 </project>
