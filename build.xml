@@ -122,6 +122,8 @@ For a list of Ant targets, use "ant -projecthelp"
             dest="./lib/servlet-api.jar"/>
         <get src="${repository.url}/org/jdom/jdom/1.1/jdom-1.1.jar"
             dest="./lib/jdom.jar"/>
+        <get src="${repository.url}/log4j/log4j/1.2.9/log4j-1.2.9.jar"
+            dest="./lib/log4j.jar"/>
     </target>
     
     <target name="clean-all" depends="clean">

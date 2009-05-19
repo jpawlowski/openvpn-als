@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="agent-client" default="dist">
+    <property file="../build.properties" />
+    
+    <path id="class.path">
+        <fileset dir="${dir.lib}">
+            <include name="maverick-util.jar"/>
+            <include name="maverick-ssl.jar"/>
+            <include name="maverick-multiplex.jar"/>
+            <include name="log4j.jar"/>
+            <include name="commons-logging.jar"/>
+            <include name="agent-common.jar"/>
+        </fileset>
+    </path>
+
+    <target name="prepare">
+        <mkdir dir="${dir.build.classes}" />
+        <mkdir dir="${dir.lib}"/>
+    </target>
+
+    <target name="compile" depends="prepare">
+        <javac 
+            srcdir="${dir.src}" 
+            destdir="${dir.build.classes}" 
+            classpathref="class.path"/>
+    </target>
+
+    <target name="dist" depends="compile">
+        <jar 
+            destfile="${dir.lib}/${ant.project.name}.jar"
+            basedir="${dir.build.classes}"/>
+    </target>
+
+	<target name="clean">
+        <delete dir="${dir.build}"/>
+        <delete dir="target"/>
+	</target>
+
+</project>
