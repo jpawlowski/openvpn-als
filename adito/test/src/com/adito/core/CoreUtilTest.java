@@ -20,7 +20,7 @@
 			
 package com.adito.core;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -49,5 +49,14 @@ public class CoreUtilTest {
     	assertEquals("ok.do", CoreUtil.filterSafeURI("ok.do", "/error.jsp"));
     	assertEquals("http://localhost/ok.do", CoreUtil.filterSafeURI("http://localhost/ok.do", "/error.jsp"));
     	assertEquals("https://localhost/ok.do", CoreUtil.filterSafeURI("https://localhost/ok.do", "/error.jsp"));
+    }
+
+    @Test
+    public void testReplaceAllTokens() {
+        String s1 = "/foo/bar/%tmp%/doo/%tmp%";
+        String t1 = "%tmp%";
+        String r1 = "temproary";
+        assertTrue(CoreUtil.replaceAllTokens(s1,t1,r1).equals(s1.replace(t1,r1)));
+        assertFalse(CoreUtil.replaceAllTokens(s1,t1,r1).equals(s1));
     }
 }
