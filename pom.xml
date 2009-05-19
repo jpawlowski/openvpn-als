@@ -11,6 +11,7 @@
         <module>maverick-util</module>
         <module>maverick-crypto</module>
         <module>maverick-ssl</module>
+        <module>maverick-multiplex</module>
     </modules>
     <build>
         <sourceDirectory>src</sourceDirectory>
