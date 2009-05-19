@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="maverick-multiplex" default="dist">
-	<property file="build.properties" />
-	<property file="${user.home}/.3sp.build.properties" />
-	
-	<!-- Standard build locations -->
-	
-	<property name="build.dir" value="build" />
-	<property name="build.compiler" value="modern" />
-	<property name="build.lib" value="lib" />
-	<property name="build.output" value="${build.dir}/classes" />
-	<property name="build.dist" value="${build.dir}/dist" />
-	<property name="build.docs" value="${build.dir}/docs" />
-	<property name="build.src" value="src" />
-	<property name="build.debug" value="true" />
-	<property name="build.tmp.src" value="${build.dir}/src"/>
+    <property file="../build.properties" />
 	
 	<!-- Dependencies -->
 	<property name="maverick-crypto.home" value="../maverick-crypto" />
@@ -25,21 +12,19 @@
 	<path id="maverick-multiplex.class.path">
 		<pathelement path="${maverick-crypto.classes}" />
 		<pathelement path="${maverick-util.classes}" />
-		<fileset dir="${build.lib}">
-			<include name="*.jar" />
+        <fileset dir="../lib">
+			<include name="commons-logging.jar" />
 		</fileset>
 	</path>
 
 	<!-- Clean -->
-
 	<target name="clean-dist" depends="clean,dist" />
 
 	<!-- Build the library jar files -->
-
 	<target name="dist" depends="compile">
-		<mkdir dir="${build.dist}" />
-		<jar jarfile="${build.dist}/maverick-multiplex.jar">
-			<fileset dir="${build.output}">
+		<mkdir dir="${dir.build.dist}" />
+		<jar jarfile="${dir.build.dist}/maverick-multiplex.jar">
+			<fileset dir="${dir.build.classes}">
 				<include name="**/*" />
 			</fileset>
 		</jar>
@@ -48,53 +33,21 @@
 	<!-- Compile the library  -->
 
 	<target name="compile">
-		<mkdir dir="${build.output}" />
-		<mkdir dir="${build.tmp.src}"/>
-		
-		<copy todir="${build.tmp.src}">
-			<fileset dir="${build.src}">
-				<include name="**/*.java"/>
-			</fileset>
-		</copy>
-			
-		<!-- Multiplex must be 1.1 compliant -->
-		
-		<javac debug="${build.debug}" target="1.1" compiler="${build.compiler}" destdir="${build.output}" srcdir="${build.tmp.src}" includeantruntime="false" includes="**/*.java" classpathref="maverick-multiplex.class.path">
-			<classpath>
-				<fileset dir="lib">
-					<include name="*.jar"/>
-				</fileset>
-			</classpath>
+		<mkdir dir="${dir.build.classes}" />
+        <javac 
+            target="1.5" 
+            destdir="${dir.build.classes}" 
+            srcdir="${dir.src}" 
+            includeantruntime="false" 
+            includes="**/*.java" 
+            classpathref="maverick-multiplex.class.path">
 		</javac>
 	</target>
 
 	<!-- Clean up all built files -->
-
 	<target name="clean">
-		<delete>
-			<fileset dir="${build.output}" />
-			<fileset dir="${build.dist}" />
-		</delete>
+        <delete dir="${dir.build}"/>
+        <delete dir="target"/>
 	</target>
 
-	<!-- Create API documentation -->
-
-	<target name="javadoc">
-		<mkdir dir="${build.docs}/api" />
-		<javadoc sourcepath="src" defaultexcludes="yes" destdir="${build.docs}/api" author="true" version="true" use="true" windowtitle="Maverick Multiplex" notree="true" 
-				classpathref="maverick-multiplex.class.path">
-			<doctitle>
-				<![CDATA[<h1>Maverick Multiplex</h1>
-                        <br>
-                                <p>An stream multiplexing library.</p>]]>
-			</doctitle>
-			<bottom>
-				<![CDATA[<i>Copyright &#169; 2003-2006 3SP LTD. All Rights Reserved.<
-/i>]]>
-			</bottom>
-			<packageset dir="src" defaultexcludes="yes">
-				<include name="com/maverick/multiplex/**" />
-			</packageset>
-		</javadoc>
-	</target>
 </project>

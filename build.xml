@@ -63,7 +63,7 @@ For a list of Ant targets, use "ant -projecthelp"
 		<ant dir="adito-community-unix" target="javadoc"/>
 		<ant dir="adito-community-web-forwards" target="javadoc"/>
 		<ant dir="maverick-crypto" target="javadoc"/>
-		<ant dir="maverick-multiplex" target="javadoc"/>
+        <!-- <ant dir="maverick-multiplex" target="javadoc"/> -->
         <!-- <ant dir="maverick-ssl" target="javadoc"/>-->
 		<ant dir="maverick-util" target="javadoc"/>
 
