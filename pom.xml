@@ -13,6 +13,7 @@
         <module>maverick-ssl</module>
         <module>maverick-multiplex</module>
         <module>agent-common</module>
+        <module>agent-client</module>
     </modules>
     <build>
         <sourceDirectory>src</sourceDirectory>
@@ -23,6 +24,7 @@
                 <includes>
                     <include>**/*.properties</include>
                     <include>**/*.png</include>
+                    <include>**/*.gif</include>
                     <include>**/*.xml</include>
                 </includes>
             </resource>
@@ -42,7 +44,7 @@
                 <configuration>
                     <finalName>${pom.artifactId}</finalName>
                     <classesDirectory>build/classes</classesDirectory>
-                    <outputDirectory>build/dist</outputDirectory>
+                    <outputDirectory>../lib</outputDirectory>
                 </configuration>
             </plugin>
             <plugin>
