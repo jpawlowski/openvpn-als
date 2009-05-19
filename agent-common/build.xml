@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="adito-agent-common" default="dist">
+    <property file="../build.properties" />
+	
+    <target name="compile">
+        <mkdir dir="${dir.build.classes}" />
+        <javac
+            destdir="${dir.build.classes}" 
+            srcdir="${dir.src}" 
+            includes="**/*.java"/>
+    </target>
+
+    <target name="dist" depends="compile">
+        <mkdir dir="${dir.build.dist}" />
+        <jar jarfile="${dir.build.dist}/${ant.project.name}.jar">
+            <fileset dir="${dir.build.classes}">
+                <include name="**/*" />
+            </fileset>
+        </jar>
+    </target>
+
+    <target name="clean">
+        <delete dir="${dir.build}"/>
+        <delete dir="target"/>
+    </target>
+
+</project>
