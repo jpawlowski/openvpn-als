@@ -14,6 +14,7 @@
         <module>maverick-multiplex</module>
         <module>agent-common</module>
         <module>agent-client</module>
+        <module>agent-launcher</module>
     </modules>
     <build>
         <sourceDirectory>src</sourceDirectory>
