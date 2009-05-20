@@ -1,96 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="adito-agent-awt" default="dist">
-	<property file="build.properties" />
-	<property file="${user.home}/.3sp.build.properties" />
+<project name="agent-awt" default="dist">
+    <property file="../build.properties" />
+    
+    <path id="class.path">
+        <fileset dir="${dir.lib}">
+            <include name="maverick-util.jar"/>
+            <include name="maverick-ssl.jar"/>
+            <include name="maverick-crypto.jar"/>
+            <include name="log4j.jar"/>
+            <include name="commons-logging.jar"/>
+            <include name="agent-common.jar"/>
+            <include name="agent-client.jar"/>
+            <include name="adito-ui.jar"/>
+        </fileset>
+    </path>
 
-	<!-- Standard build locations -->
+    <target name="prepare">
+        <mkdir dir="${dir.build.classes}" />
+        <mkdir dir="${dir.lib}"/>
+    </target>
 
-	<property name="build.dir" value="build" />
-	<property name="build.compiler" value="modern" />
-	<property name="build.lib" value="lib" />
-	<property name="build.output" value="${build.dir}/classes" />
-	<property name="build.dist" value="${build.dir}/dist" />
-	<property name="build.docs" value="${build.dir}/docs" />
-	<property name="build.src" value="src" />
+    <target name="compile" depends="prepare">
+        <javac 
+            srcdir="${dir.src}" 
+            destdir="${dir.build.classes}" 
+            classpathref="class.path"/>
+        <copy todir="${dir.build.classes}">
+            <fileset dir="${dir.src}">
+                <include name="**/*.properties"/>
+                <include name="**/*.gif"/>
+            </fileset>
+        </copy>
+    </target>
 
-	<!-- Dependencies -->
-	<property name="maverick-crypto.home" value="../maverick-crypto" />
-	<property name="maverick-crypto.classes" value="${maverick-crypto.home}/build/classes" />
-	<property name="maverick-util.home" value="../maverick-util" />
-	<property name="maverick-util.classes" value="${maverick-util.home}/build/classes" />
-	<property name="maverick-ssl.home" value="../maverick-ssl" />
-	<property name="maverick-ssl.classes" value="${maverick-ssl.home}/build/classes" />
-	<property name="adito-agent.home" value="../adito-agent" />
-	<property name="adito-agent.classes" value="${adito-agent.home}/build/classes" />
-
-	<!-- Class path -->
-	<path id="adito-agent-awt.class.path">
-		<pathelement path="${maverick-crypto.classes}" />
-		<pathelement path="${maverick-util.classes}" />
-		<pathelement path="${maverick-ssl.classes}" />
-		<pathelement path="${adito-agent.classes}" />
-
-		<!-- Compiling against Win32 AWT should be fine -->
-		<fileset dir="${build.lib}/win32">
-			<include name="*.jar" />
-		</fileset>
-	</path>
-
-	<!-- Clean -->
-
-	<target name="clean-dist" depends="clean,dist" />
-
-	<!-- Build the library jar files -->
-
-	<target name="dist" depends="compile">
-		<mkdir dir="${build.dist}" />
-		<jar jarfile="${build.dist}/agent-awt.jar">
-			<fileset dir="${build.output}">
-				<include name="**/*" />
-			</fileset>
-		</jar>
-	</target>
-
-	<!-- Compile the library  -->
-
-	<target name="compile">
-		<mkdir dir="${build.output}" />
-		<javac compiler="${build.compiler}" destdir="${build.output}" srcdir="${build.src}" includeantruntime="false" includes="**/*.java" classpathref="adito-agent-awt.class.path">
-		</javac>
-		<copy todir="${build.output}">
-			<fileset dir="${build.src}">
-				<include name="**/*.gif" />
-				<include name="**/*.properties" />
-			</fileset>
-		</copy>
-	</target>
-
-	<!-- Clean up all built files -->
+    <target name="dist" depends="compile">
+        <jar 
+            destfile="${dir.lib}/${ant.project.name}.jar"
+            basedir="${dir.build.classes}"/>
+    </target>
 
 	<target name="clean">
-		<delete>
-			<fileset dir="${build.output}"/>
-			<fileset dir="${build.dist}"/>
-		</delete>
+        <delete dir="${dir.build}"/>
+        <delete dir="target"/>
 	</target>
 
-	<!-- Create API documentation -->
-
-	<target name="javadoc">
-		<mkdir dir="${build.docs}/api" />
-		<javadoc sourcepath="src" defaultexcludes="yes" destdir="${build.docs}/api" author="true" version="true" use="true" windowtitle="Adito Agent AWT Front End" notree="true" classpathref="adito-agent-awt.class.path">
-			<doctitle>
-				<![CDATA[<h1>Adito Agent AWT Front End</h1>
-			<br>
-				<p>A Java AWT implementation of the Adito Agent front end (the GUI).</p>]]>
-			</doctitle>
-			<bottom>
-				<![CDATA[<i>Copyright &#169; 2003-2007 3SP LTD. All Rights Reserved.<
-/i>]]>
-			</bottom>
-				<packageset dir="src" defaultexcludes="yes">
-					<include name="com/adito/agent/**" />
-				</packageset>
-			</javadoc>
-		</target>
-	</project>
+</project>
