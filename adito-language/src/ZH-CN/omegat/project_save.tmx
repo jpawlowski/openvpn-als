@@ -12636,7 +12636,7 @@ management page.</seg>
         <seg>You must provide a path for this network place.</seg>
       </tuv>
       <tuv lang="ZH-CN">
-        <seg>Y您必须提供路径为该网络邻居</seg>
+        <seg>您必须提供路径为该网络邻居</seg>
       </tuv>
     </tu>
     <tu>
@@ -14132,7 +14132,7 @@ management page.</seg>
         <seg>Review the information below before clicking on &lt;strong&gt;Finish&lt;/strong&gt; to create the policy.</seg>
       </tuv>
       <tuv lang="ZH-CN">
-        <seg>修改以下信息，然后单击 &lt;strong&gt;完成&lt;/strong&gt; t来创建政策.</seg>
+        <seg>检查以下信息，然后单击 &lt;strong&gt;完成&lt;/strong&gt; 来创建政策.</seg>
       </tuv>
     </tu>
     <tu>
@@ -14489,6 +14489,86 @@ management page.</seg>
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>The access right creation wizard is now complete.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>权限的创建向导现在已经完成</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The creation of access right failed.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>权限的创建失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The creaton of the access right is complete, but some warnings occured.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>权限的创建现在已经完成，但一些警告发生。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Access right created.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>访问权限创建</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Delegated to policies.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>下放给政策</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Attached access right to policies.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>附加访问权利的政策</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to attach to access right to policies.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>附加访问权利的政策失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to create new access right.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建新的访问权限失败.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Access Rights</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::访问权限</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Class</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>类</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Personal</seg>
       </tuv>
       <tuv lang="ZH-CN">
@@ -14497,10 +14577,442 @@ management page.</seg>
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Delegate</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>代表</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>&lt;strong&gt;This access right is attached to multiple policies :-&lt;/strong&gt;</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>&lt;strong&gt;此访问权限连接到多个政策 :-&lt;/strong&gt;</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>There are currently no existing access rights or none that you are allowed to edit.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>目前没有任何现有的访问权限或没有，你可以修改。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If allowed, you will be able to create a new access right by selected on one of the &lt;b&gt;Create Right&lt;/b&gt; action.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果允许，您将能够创建一个新的访问权利，选择&lt;b&gt;创建权限&lt;/b&gt; 行为.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Remove access right</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>删除访问权限</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit access right</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑访问权限</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Copy access right</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>拷贝访问权限</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create Resource Right</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建资源权限t</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click here if you wish to create a new resource right to allow other policies to maintain global resources.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击这里如果您想创建一个新的资源的权利，允许其他政策，以维护全局的资源。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create System Right</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建系统资源</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click here if you wish to create a new system right to allow other policies to configure the Adito system.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击这里如果您想创建一个新的系统的权利，允许其他政策来配置Adito系统。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create Personal Right</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建个人权限</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click here if you wish to create a personal right to allow other policies to create their own personal resources.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击这里如果您想创建一个个人权利，允许其他政策，以创建自己的个人资源。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito::Edit Access Right</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito::编辑访问权限</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Here you may edit an access right.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这里你可以编辑访问权限</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit Access Right</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑访问权限</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You are now editing a &lt;strong&gt;Resource Access Right&lt;/strong&gt;.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你现在创建一个新的 &lt;strong&gt;资源访问权限&lt;/strong&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You are now editing a &lt;strong&gt;System Access Right&lt;/strong&gt;.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你现在创建一个新的 &lt;strong&gt;系统访问权限&lt;/strong&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You are now editing a new &lt;strong&gt;Personal Access Right&lt;/strong&gt;.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你现在创建一个新的 &lt;strong&gt;个人访问权限&lt;/strong&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You have selected no rights for this access right.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你选择了没有权利对于访问权限</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please select at least one access right.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请选择至少一个访问权限</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Access rights &lt;b&gt;{0}&lt;/b&gt; saved.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>访问权限&lt;b&gt;{0}&lt;/b&gt;保存了.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito::View Resource Access Rights</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito::查看资源的访问权限</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Here you may view the details of a resource access right.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在这里你可以查看资源访问权限更多的信息</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>View Resource Access Right</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>查看资源的访问权限</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Remove Resource Access Right</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito::::删除访问权限</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Are you sure you wish to remove this access right?</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你确定你想要删除这个访问权限?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Access right &lt;b&gt;{0}&lt;/b&gt; deleted.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>访问权限&lt;b&gt;{0}&lt;/b&gt;删除了</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Add to favorites</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>添加到收藏</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>A resource of this type with the name &lt;strong&gt;{0}&lt;/strong&gt; already exists.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这种类型的资源名称 &lt;strong&gt;{0}&lt;/strong&gt;已经存在</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must supply a name for this resource.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你必须提供名字为这个资源</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must supply a description for this resource.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你必须提供表述为这个资源</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Resource name must be {0} characters or less.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>政策名必须是 {0} 字符.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to determine if resource exists.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>决定失败如果资源已存在</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>SSL-Tunnels</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>SSL-隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Service</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>服务</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Accounts and Groups</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>账户和组</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Replacements</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>代替</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Personal Web Forward</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>个人Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Personal Profile</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>个人配置档案</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Favorites</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>收藏</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create, Edit and Assign</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建，编辑和委派</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit and Assign</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑和委派</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Assign</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>委派</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Change</seg>
       </tuv>
       <tuv lang="ZH-CN">
         <seg>改变</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Perform</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>表现</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Maintain</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>维护</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Use</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>使用 </seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Control</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>控制</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Send</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>发送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Restart</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>重新启动</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>There are {0} users attached to the policy.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>总共有 {0} 用户连接到这个政策.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>There are {0} groups attached to the policy.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>总共有 {0} 组连接到这个政策.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The Resource is not attached to any policies.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这个资源没有委派任何政策.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You need to attach this resource to at least one policy to be able to launch it.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你必须委派至少一个政策到这个资源并启动它</seg>
       </tuv>
     </tu>
     <tu>
@@ -18580,6 +19092,4310 @@ management page.</seg>
     </tu>
     <tu>
       <tuv lang="EN-US">
+        <seg>Message resources Adito for security and user management.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito 安全和管理的信息资源</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Login</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::登录</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Welcome to &lt;strong&gt;Adito!&lt;/strong&gt; A secure gateway to your network.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>欢迎到&lt;strong&gt;Adito&lt;/strong&gt;一个你的网络的安全方案</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Login</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>登录</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Your logon ticket is invalid.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你的登录票无效.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>It is likely that your session has timed-out.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>好像你的会话超时了.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Invalid credentials.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>无效的全权证书</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>An error occurred authenticating, please consult your Administrator.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>验证发生错误，请咨询您的系统管理员。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Your IP address is not authorized to access the system!</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您的IP地址是未授权访问系统</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to login.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>登录失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Your account has been disabled.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您的帐户已被禁用。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please contact your administrator.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请与管理员联系。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Your account has been temporarily locked.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您的帐户已被暂时锁定。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please try again in {0} minute(s).</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请再试一次在 {0} 分钟。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Your browser was closed, so the session has been locked.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您的浏览器被关闭，因此，会议已被锁住。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Access not allowed at this time.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>访问不允许在这个时候。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This site makes use of cookies.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>本网站使用的Cookie</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please ensure that they are enabled before logging on.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请确保它们被启用了在登录前 。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>There are other methods of authentication available.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>还有其他的认证方法可用。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click &lt;a class=&quot;externalLink&quot; href=&quot;/showSelectAuthenticationScheme.do?username={0}&quot;&gt;here&lt;/a&gt; to choose a different scheme.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击&lt;a class=&quot;externalLink&quot; href=&quot;/showSelectAuthenticationScheme.do?username={0}&quot;&gt;这里&lt;/a&gt; 选择一个不通的主题</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Unauthorized</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::没被授权</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Unauthorized</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没被授权</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>JavaScript Disabled</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>JavaScript禁用</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>JavaScript is disabled, you cannot use this application, enable JavaScript or contact your administrator.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>JavaScript被禁用, 你不能使用这个应用程序，启用JavaScript 联系你的管理员</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Authentication Schemes</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::授权计划</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Here you may change the authentication schemes available to your users at logon.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在这里你可以改变认证计划，在您的用户登录时.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Each scheme consists of an ordered set of &lt;b&gt;Authentication Modules&lt;/b&gt; with a priority setting assigned to each scheme.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>每个方案包括一个命令集 &lt;b&gt;认证模块&lt;/b&gt; 用优先的配置委派到这个计划.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The highest priority scheme assigned to a user will then be presented as their initial scheme, if a user has multiple schemes assigned they may alternatively select a different scheme at the login prompt.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>最高的优先计划，分配给用户，然后将提交他们的初步计划，如果用户有多个计划分配他们还可选择不同的计划，在登录提示。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Enabled</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>启用</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Scheme &lt;b&gt;{0}&lt;/b&gt; deleted.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>计划 &lt;b&gt;{0}&lt;/b&gt; 删除.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Scheme &lt;b&gt;{0}&lt;/b&gt; disabled.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>计划 &lt;b&gt;{0}&lt;/b&gt; 删除.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Scheme &lt;b&gt;{0}&lt;/b&gt; enabled.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>计划 &lt;b&gt;{0}&lt;/b&gt;启用.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Deleting the last enabled scheme would leave no enabled schemes.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>删去最后启用计划，没有留下任何启用计划。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This is not allowed.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这是不允许的</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This action would stop the Super User from logging on!</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这一行动将停止超级用户登录!</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Ensure that there is at least one policy assigned to an authentication scheme which contains the Super User.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>确保至少有一个政策，分配到一个认证计划，载有超级用户</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must always have at least one scheme enabled.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您必须始终至少有一个计划启用。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You cannot set this scheme as the default as it contains only &lt;i&gt;System Authentication Modules&lt;/i&gt;.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>不能将其设置为默认方案，因为它仅包含 &lt;i&gt;系统认证模块&lt;/i&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The Authentication Scheme is already the highest priority.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>该认证方案已经是最高优先级了</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Authentication Scheme &lt;b&gt;{0}&lt;/b&gt; moved up.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>认证方案 &lt;b&gt;{0}&lt;/b&gt; 向上移了.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The Authentication Scheme is already the lowest priority.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>该认证方案已经是最低优先级了</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Authentication Scheme &lt;b&gt;{0}&lt;/b&gt; moved down.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>认证方案 &lt;b&gt;{0}&lt;/b&gt; 向下移了.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>System cannot validate whether the action can be performed.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>系统无法验证的行为，是否可以已执行.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>A</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>一个</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create Scheme</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建计划</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click here if you wish to create a new authentication scheme.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击这里如果您想创建一个新的认证计划。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit this authentication scheme and change the authentication modules it uses.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑此认证方案，并改变身份验证模块使用。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Copy this authentication scheme.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>复制这个认证计划。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Delete this authentication scheme.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>删除此认证方案。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Users will no longer be able to logon using the sequence the scheme defines.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户将无法再登录，使用该计划确定的顺序。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If this is the default scheme the next available scheme will be made the default.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果这是预设的计划下一个可用的计划将默认。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must have at least one scheme configured.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你必须至少有一个计划配置。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Disable this authentication scheme</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>禁用此认证方案</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Enable this authentication scheme</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>启用此认证方案禁用此认证方案</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Increase Priority</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>增加优先级</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Increase the priority of this Authentication Scheme</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>增加的优先级对这一认证方案</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Decrease Priority</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>降低优先级</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Decrease the priority of this Authentication Scheme</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>降低的优先级对这一认证方案</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Delete authentication scheme</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::删除优先计划</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Confirm Authentication Scheme Deletion</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>确定优先级删除</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The selected authentication scheme will be deleted and users will no longer be able to use the authentication sequence it defines.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>选定的认证方案将被删除，用户将不再能够使用的身份验证序列界定</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Are you sure you wish to delete this scheme?</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您确定要删除此计划?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Select Authentication Scheme</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::选择授权计划</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Select Authentication Scheme</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>选择授权计划</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Here you may choose an alternative authentication scheme.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在这里，您可以选择另一种身份验证计划。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>An error has occurred.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>发生错误.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Authentication Scheme:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>授权计划:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Primary</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>主选的</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Primary if Secondary Exists</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>主选的如果的存在被选的</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Secondary</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>被选的</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Create Authentication Scheme</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::创建授权计划</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create Authentication Scheme</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建授权计划</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This page allows to you create a new authentication scheme and add, delete and re-order authentication modules that make up this scheme.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>此网页可让您创建一个新的认证计划，并添加，删除和重新排序认证模块，来设定这一计划</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Modules</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>模块 </seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Edit Authentication Scheme</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::编辑授权计划</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit Authentication Scheme</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑认证方案</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This page allows to you add, delete and re-order authentication modules that make up this scheme.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>此网页可让您添加，删除和重新排序认证模块，来设定这一计划。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Priority:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>优先级:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must select at least one module to use for this scheme.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您必须至少选择一个模块，用于这项计划。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The first module must be capable of primary authentication.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>第一个模块必须能够主要验证</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Available modules</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>可用的模块</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Selected modules</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>已选的模块</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Authentication Scheme has been modified.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>认证方案已被修改.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Principal Information</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::原则信息</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Here you may view a principal in more detail.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在这里您可以查看一个原则的更多细节</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Principal</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>原则</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Realm</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>界限</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Full Name</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>全名</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Email</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>电子邮件</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Accounts</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::账户</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The accounts page allows you to configure which users supplied by the underlying database may access Adito.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>该帐户页面，可配置的用户从Adito数据库所提供的基本资料。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If the database supports it, then you may also add, edit or delete users.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果数据库支持的话，那么你也可以添加，修改或删除用户。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Mark</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>打分</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Show All</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>显示所有</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Show Authorized</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>显示授权的</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Show Unauthorized</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>显示没授权的</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Show Locked</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>显示锁定的</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Show Disabled</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>显示禁用</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Admin</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>系统管理员</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>User</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户 </seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Grant</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>给于</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Revoke</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>撤消</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Locked</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>锁定</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Online</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在线</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Inactive</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>不活动</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No Groups are available.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有组可用</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This account is attached to multiple groups:-</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这个帐户是连接到多个组:-</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please select a single account.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请选择一个帐户.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Review the fields below and try again.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>修改以下字段，然后再试一次.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The underlying database does not support changing of passwords.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>基础数据库不支持更改密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The underlying database does not support updating of user accounts.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>基础数据库不支持更新的用户帐户。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You may only change passwords.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你可能只更该密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The underlying database does not support updating of user accounts or changing of passwords.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>基础数据库不支持更新或改变用户帐户的密码。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You cannot delete the account you are currently logged on as!</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您不能删除该帐户，用您目前登录的身份！</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This user database contains no accounts.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>此用户数据库不包含任何账户。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The list of accounts could not be retrieved.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>帐户清单无法检索。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This may be due to mis-configuration of your current user database.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这可能是由于错误的配置您当前的用户数据库。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The list of accounts exceeded the configured limit, only {0} accounts will be displayed.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>帐户列表超过了配置的限制，只有 {0} 的帐户将显示。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Login granted to {0} accounts of {1} selected.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>登录{0} 账户{1} 已选择的.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Login revoked from {0} accounts of {1} selected.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>登入撤消从{0} 账户{1} 已选择的.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>User cannot delete their own account!</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户不能删除自己的帐户!</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Groups</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::组</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The Groups page allows you to configure which groups supplied by the underlying database may access Adito.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>该组页面，可配置的组从Adito数据库所提供的基本资料。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If the database supports it, then you may also add, edit or delete groups.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果数据库支持的话，那么你也可以添加，修改或删除组。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>&lt;strong&gt;This group has multiple accounts attached :-&lt;/strong&gt;</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>&lt;strong&gt;这个组连接到多个账户:-&lt;/strong&gt;</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The underlying database does not support creation or deletion of groups.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>基础数据库不支持创建或删除组</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The list of groups could not be retrieved.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>组列表无法检索</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The list of groups exceeded the configured limit, only {0} groups will be displayed.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>组列表超过了配置的限制，只有 {0} 的组将显示。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The user database cannot be reached.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户数据库不能达成。.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>&quot;No group name supplied&quot;</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>&quot;目前还没有任何组织名称供应&quot;</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>&quot;Role name must be 75 characters or less&quot;</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>&quot;角色名必须少于或等于75个字符&quot;</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Group '{0}' already exists.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>组'{0}' 已存在.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The account '{0}' doesn't exist.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>账户 '{0}' 不存在.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create Account</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建账户 </seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click here if you wish to create a new account.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击这里如果您想创建一个新帐户。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create Group</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建组</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click here if you wish to create a new group.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击这里如果您想创建一个新的组。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Reset Personal Details</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>重置个人详情</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click here to reset the value of all your personal details.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击这里重置所有个人详情的值.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Reset User Attributes</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>重置用户属性</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click here to reset the value of all user attributes to their defaults</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击这里重置所有用户的属性到缺省值。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Reset Personal Questions</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>重置个人问题</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click here if you wish to reset the accounts personal questions.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击这里如果您要重置帐户的个人问题。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please select a single account to modify.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请选择一个帐户来修改。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>There are no personal questions set for this account.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有个人的问题可用来确定此帐户。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Super User</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>超级用户</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit this account.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>修改此帐户。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Delete this account.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>删除此帐户</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Set Password</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>配置此账户</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Set a new password for this account.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>配置新的密码为这个账户.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Disable this account.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>禁用这个账户.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Enable this account.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>启用这个账户.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Reset Private Key</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>重置私匙</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Reset this users private key</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>重置这个用户私匙</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Send message</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>发送消息</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Send a message to this user</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>发送消息到用户</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Delete this Group.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>删除这个组.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit this Group.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑这个组.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Edit Group</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::编辑这个组</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit Group</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑这个组</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit an existing group.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑这个已存在的组.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Groups allow you to separate your VPN users into distinct categories to make bulk administration easier and more effective.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>组让您分别您的VPN用户的到不同类别进行批量管理更轻松，更有效</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Create Group</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::创建组</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Creates a new group.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建新的组.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The group was not unassigned from the following users(s) as it was required '{0}'</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>该组并没有未分配从以下用户 ，因为它需要 '{0}'</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Group Saved</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>组已保存</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You have disabled the super user.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你禁用了超级用户.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>To re-enable either logon to an account that has been delegated the right to administer accounts, or re-run the Installation Wizard.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>要重新启用或者登录帐户，并下放授予的权利到管理员，或重新运行安装向导。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>At the end of the installation the selected super user will be re-enabled.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在结束安装时，选定的超级用户将被重新启用。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Create Account</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::创建账户</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The currently selected user database allows for the creation of new user accounts.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>当前选定的用户数据库允许创建新的用户帐户。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please enter their details on this page.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请输入他们的详细资料在此网页上。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Fullname</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>全名</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Is Administrator</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>是管理员</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Reset password</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>重置密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You cannot delete administrator privileges from the user you are logged on as.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您不能删除管理员权限，用您目前登录的身份！</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You cannot disable the user you are logged on as.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您不能禁用该帐户，用您目前登录的身份！</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must assign one or more groups to the user.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你必需委派至少一个组到用户</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Account saved.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>账户已保存</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No full name supplied.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有全名被提供.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No username supplied.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有名字被提供.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Full name must be 75 characters or less.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>全名必须小于等于75个字母.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>User name must be 75 characters or less.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户名必须小于等于75个字母.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>User {0} already exists.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户 {0} 已存在.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>{0} is an invalid group.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>{0} 是无效的组.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Group Name</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>组名</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>User Attributes</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户属性</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>*Confidential*</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>*保密的*</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Edit Account</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::编辑账户</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit Account</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑账户</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit a user account</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑一个用户账户</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This account is the Super User account.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这个帐户是超级用户的帐户。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Reset Users Private Key</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito::重置用户私匙y</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Reset Users Private Key</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>重置用户私匙</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The selected user's private key and the values of all of his confidential attributes will be reset.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>所选用户的私钥和他所有的机密属性值将被重置。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Are you sure you wish to do this?</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你确定要这么做?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Your private key and all of the confidential attributes values had to be reset.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您的私钥和所有的机密属性值重置</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Security Questions</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>安全问题</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Father's First Name</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>父亲的名</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Enter your father's first name e.g. William.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>输入父亲的名例如. William.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Mother's Maiden Name</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>母亲的本姓</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Enter your mother's maiden name e.g. Smith.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>输入母亲的本姓例如. William. Smith.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Place of Birth</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>出生地</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Enter your place of birth e.g. London.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>输入出生地例如 London.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Favorite Book</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>我最喜爱的书</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Enter you favorite book e.g. Gone With The Wind.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请输入您最喜爱的书，例如:Gone With The Wind.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Favorite TV Show</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>最喜欢的电视节目</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Enter your favorite TV show e.g. The West Wing.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>输入最喜欢的电视节目，例如The West Wing.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::IP Address Restriction Rules</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::IP地址限制规则</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Grant or deny access to the Adito VPN server by specifying restriction rules based upon the clients IP Address.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>授予或拒绝访问Adito VPN服务器指定限制规则根据客户的IP地址。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Wildcards may be use to grant/deny access by subnet e.g. 192.168.1.*.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Wildcards 可以使用通配符授予/拒绝访问的子网如192.168.1 .*.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Allow Access</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>允许访问</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Deny Access</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>拒绝访问</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>IP Address</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>IP地址</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Access</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>访问</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Allowed</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>允许</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Denied</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>拒绝</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You currently have no IP restrictions defined.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您目前没有IP限制的规定。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This will allow all hosts to attempt access to the system.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这将允许所有主机接入该系统</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Create IP Restriction</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::创建IP限制</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create IP Restriction</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建IP限制</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This screen allows for the creation of a new IP Restriction.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>此页，可建立一个新的IP限制。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Edit IP Restriction</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::编辑IP限制</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit IP Restriction</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑IP限制</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This screen allows you to edit an existing IP Restriction.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这个画面让您可以修改现有的IP限制。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>An invalid IP Address was entered.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>一个无效的IP地址输入。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You cannot enter the localhost interface as an IP restriction.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您无法进入本地接口的IP限制。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No IP Address was entered.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有IP地址输入。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You cannot enter your own IP restriction for &lt;strong&gt;*&lt;/strong&gt; as this is reserved for default.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您不能输入自己的IP限制为 &lt;strong&gt;*&lt;/strong&gt; 因为这是保留的默认。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>IP restriction for {0} saved.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>IP 限制 {0} 已保存.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click here if you wish to create a new IP Restriction rule.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击这里如果您希望创建一个新的IP限制。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Remove IP Restriction.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>删除IP限制</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Removes the selected IP Restriction.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>删除已选的IP限制</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Increase the priority of this IP restriction</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>增加的优先级对此IP限制</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Decrease the priority of this IP restriction</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>降低的优先级对此IP限制</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit this IP restriction</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑这个IP限制</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Confirm IP Restriction Change</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::确认IP限制变更</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Confirm IP Restriction Change</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>确认IP限制变更</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The address used for this IP Restriction will prevent you accessing the system from your current IP Address.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>地址用于此IP限制将阻止您访问系统从您目前的IP地址。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Delete IP Restriction</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::删除IP限制</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Confirm IP Restriction Deletion</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>确认删除IP限制</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The selected IP Restriction will be deleted.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>选定的知识产权限制将被删除。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Deleting this IP Restriction will prevent you accessing the system from your current IP Address.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>删除此IP限制将阻止您访问系统从您目前的IP地址。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Change password</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::改变密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Change your logon password.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>改变你登录密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Old password:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>旧密码:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>New password:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>新密码:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Confirm new password:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>确认新密码:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must supply your old password.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您必须提供您的旧密码.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The new password can not be the same as the old password.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>新的密必须和旧密码不一样</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>'New password' and 'Confirm New Password' do not match.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>'新密码'和'确认新密码'不匹配。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Old password is incorrect.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>旧密码不正确</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No new password has been supplied.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有新的密码已提供。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Password changed.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>密码已更改</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to validate form.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>验证形式失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Password does not match the current policy.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>密码不符的现行政策。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Your password does not match the current policy for this system.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您的密码不相符的现行政策,在这个系统里面。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Your password has expired.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你的密码过期了</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Your password has been reset and the administrator has requested that you provide a new one.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您的密码已重置和管理员已经要求您提供一个新的。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Set password</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::设定密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Set password</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>设定密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Set a users password.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>设定一个用户密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Force user to change password at next logon.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>强制用户更改密码下次登录时。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The New and Old passwords match.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>T新，旧的密码匹配。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Account saved, now set the password.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>帐户储存，现在设定密码。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Delete Account</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::删除帐户</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Confirm Account Deletion</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>确定删除账户</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The selected Account will no longer be able to access the system, are you sure you wish to delete this Account?</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>选定的帐户将无法再进入系统，是您确定要删除这个帐户吗？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Delete Group</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::删除组</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Confirm Group Deletion</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>确认组删除</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The selected Group will no longer be held in the system, are you sure you wish to delete this Group?</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>选定的组将不再存储于系统，您确定要删除此组吗？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Reset Personal Questions</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::重置个人问题</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Confirm Reset of Personal Questions</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>确认重置个人问题</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The selected users will have their Personal Questions reset, are you sure you wish to reset the answers to the questions?</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>选定的用户将有自己的个人问题重置，您确定要重置答案？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Fathers First name</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>父亲的名</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Mothers Maiden Name</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>母亲的本姓</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Personal Answers</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::个人答案</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Personal Answers</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>个人答案</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Here you may set the answers to the &lt;b&gt;Personal Questions&lt;/b&gt; you may be asked for authentication.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在这里，您可以设定的答案对于 &lt;b&gt;个人问题&lt;/b&gt; 你可能被要求授权</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must provide answers to every question.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你必须回答每一个问题</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Your answers to the personal questions have not been set.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你回答的问题没有被设置</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Private Key Reset Required</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::私匙重置被请求</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Private Key Reset Required</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>私匙重置被请求</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Your password has changed and as such your private key is no now longer readable.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您的密码已更改，因此，您的私人钥匙没有现在不再可读。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please provide your &lt;i&gt;old&lt;/i&gt; password to reset this.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请提供你的 &lt;i&gt;旧&lt;/i&gt; 密码来重置</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You will not be asked this question again until your password changes.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您将不会问我这个问题，直到您再次更改密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Forgotten your old password?</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>忘记您的旧密码？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Check to reset your private key.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>检查重置您的私人钥匙。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must supply your old passphrase.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您必须提供您的旧密码。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Incorrect passphrase.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>不正确的密码。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Confirm Reset Private Key</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::确定重置用户私匙</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Confirm Reset Private Key</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>确定重置用户私匙</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click OK to reset your private key.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>单击确定以重设您的私人钥匙。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Any confidential attribute values will be lost and will require configuration before use.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>任何机密属性值都将丢失，并且将需要的配置后才能使用。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Private Key Passphrase Required</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::私钥密码要求</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Private Key Passphrase Required</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>私钥密码要求</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito encrypts your confidential data using a public/private key pair.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito加密你的机密数据使用公钥/私钥对</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This key is held on the server and is protected by a passphrase which you must now enter.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这主要是在服务器上举行，是由一个密码保护你现在必须进入。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If you have never set this passphrase before then whatever you enter now will be used.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果你在此之前从来没有设置密码，那么你现在输入的将被使用。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This passphrase is independent of your password and it is recommended that you set it to a memorable phrase as you may be asked to enter it again at login.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这个密码是独立于你的密码，并建议您设置成好记的的短语，因为你可能会要求您再次输入在登录。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Confirm Passphrase:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>确定密码:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must supply your private key passphrase.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您必须提供您的私匙密码。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>'Passphrase' and 'Confirm Passphrase' do not match.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>密码和确定密码不匹配.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Password Required</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::需要密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Password Required</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>需要密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This key is held on the server and is protected by your current Adito password.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>服务器掌管这个钥匙并保护您的当前Adito密码。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please enter your password now.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请现在输入你的密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Session Password Required.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::会议需要密码。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Session password required for resource launch.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>启动资源需要会话密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The resource attempted to launch requires a session password, please provide it below.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>资源尝试启动，需要会话密码，请在下面提供</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Confirm Password</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>确认密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Password incorrect, retry or click cancel to exit.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>密码不正确，重试或取消退出</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::New Key Password Required.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::新的密匙密码要求.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>New key password required to secure it.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>新的密钥密码，以确保它。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The key needs a new password.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>新的密钥需要一个新的密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito::::Create Authentication Scheme</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito::::创建授权计划</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The following wizard will guide you through the stages of configuring a new Authentication Scheme and assigning it to one or more policies.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>下面的向导将引导您完成配置阶段的一个新的认证计划，并指派给一个或一个以上的政策。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Scheme Selection</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>计划选择</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Scheme Summary</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>计划总结</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Step 1 - Authentication Scheme Resource Details</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>步骤1 - 授权计划资源详情</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please provide a name and description for this Authentication Scheme.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请提供的名称和描述为这一认证方案。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No Authentication Scheme name has been provided.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有验证计划的名字提供。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must provide a description for this Authentication Scheme.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你必须提供授权计划的描述.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Authentication scheme name must be {0} characters or less.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>验证计划的名称必须是 {0} 个字符或更少。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to check for Authentication Scheme by name.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用名字检查授权计划失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Authentication Scheme named &lt;strong&gt;{0}&lt;/strong&gt; already exists.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>授权计划的名字&lt;strong&gt;{0}&lt;/strong&gt; 已存在.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Step 2 - Authentication Scheme Selection</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>步骤 2 - 授权计划选择</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please provide modules for the Authentication Scheme.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请提供模式为这个授权计划</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Step 3 - Authentication Scheme Policy Selection</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>步骤 3 - 授权计划政策选择</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Choose the policies you wish to attach this Authentication Scheme to.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>选择你愿意连接这个授权计划的政策.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must select at least one policy to attach this Authentication Scheme.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您必须至少选择一个政策，连接此授权计划</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Step 4 - Authentication Scheme Summary</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>步骤 4 - 授权计划总结</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Review the information below before clicking on &lt;strong&gt;Finish&lt;/strong&gt; to create the Authentication Scheme.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>检查以下信息，在点击前&lt;strong&gt;完成&lt;/strong&gt; 创建授权计划</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Authentication Scheme Name:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>授权计划名字:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Authentication Scheme Created</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>授权计划创建了</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The Authentication Scheme creation wizard is now complete.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>授权计划创建向导现已完成.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The creation of the Authentication Scheme failed.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>授权计划创建失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The creation of the Authentication Scheme is complete, but some warnings occurred.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>建立了授权计划完成，但一些警告发生.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Authentication Scheme created.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>授权计划创建了</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Attached Authentication Scheme to policies.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>连接授权计划的政策.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to attach Authentication Scheme to policies.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>连接授权计划的政策失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to create new Authentication Scheme.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建新的授权计划失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The system was unable to change your password.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>系统不能更改你的密码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The password policy does not allow you to change your password until {0}.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>密码政策不允许你更改你的密码直到 {0}.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Most number of users ever online</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>最大的用户在线数</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The most users that have ever been online at any one time.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>最大的用户在线数，从开始使用此软件起。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Current number of users online</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>当前的用户在线数</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The current number of users online.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>当前的用户在线数</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>IP Restriction</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>IP 限制</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>IP Address is: {0}</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>IP 地址是: {0}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>IP Status is: Allowed</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>IP状态是: 允许</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>IP Status is: Denied</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>IP状态: 拒绝</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Message resources for the various Adito services</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito各个服务的信息资源</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Replacement Proxy Settings</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::更换代理设置</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Replacement Proxy Settings</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>更换代理设置</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Here you can configure new regular expressions for replacing content retrieved by the Replacement Proxy feature.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这里，你可以配置新的表达式用来代替内容检索该更换代理功能。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>These regular expressions effectively hunt out URL's within HTML, Javascript or other web content and replace them with a special URL point to the Adito server (encoding the original URL as a part of the query).</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这些规则表达式寻找出有效的URL在HTML ， Javascript或其他Web内容种，取代它们用以一个特殊的URL指向Adito服务器（编码的原始URL是查询的一部分）。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Site</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>网站</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>All</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>所有</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Mime / Header</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Mime / 头标题</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Replace</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>代替</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>content</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>内容</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Sent content</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>发送内容</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>header</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>头标题</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Sent header</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>发送头标题</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Match</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>匹配</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No replacements have been defined.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有替代品被确定</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click on &lt;strong&gt;Create&lt;/strong&gt; to create a new one.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击 &lt;strong&gt;创建&lt;/strong&gt; 创建一个新的</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must select at least one replacement to delete.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您必须至少选择一个替换来删除。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must select a single replacement to edit.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您必须选择一个替换来编辑。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>{0} replacement(s) deleted.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>{0} 替换被删除.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Global Replacement Proxy Content Replacement</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::全局替换代理内容替换</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Global Replacement Proxy Content Replacement</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>全局替换代理内容替换</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This advanced feature allows you to configure regular expressions for replacing web content retrieved by the Replacement Proxy feature.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这种先进的功能，可配置的规则表达式来取代Web内容检索该更换代理功能。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>These regular expressions will be used for &lt;strong&gt;all&lt;/strong&gt; users and will replace URLs within HTML, Javascript or other web content with a special URL pointing to the Adito server.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这些规则表达式将被用来&lt;strong&gt;全部&lt;/strong&gt;用户和将取代网址在HTML ， Javascript或其他Web内容，用一种特殊的URL指向Adito服务器。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please see the documentation for more details.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请参阅文件的更多细节。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Create Replacement Proxy Content Replacement</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::创建替换代理内容替换</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create Replacement Proxy Content Replacement</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建替换代理内容替换</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create a Replacement proxy content replacement.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建替换代理内容替换</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Site Pattern</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>网站模式</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Mime Type / Header</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Mime Type / 头标题</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Match Pattern</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>匹配模式</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Replace Pattern</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>替代模式</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This replacement type requires a mime type.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这个替代类型要求一个mime类型</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must supply a match pattern.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您必须提供一个匹配模式</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The Match Pattern must be a valid regular expression.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>匹配模式必须是一个有效的规则表达式</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The Site Pattern, if supplied, must be a valid regular expression.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>网站模式，如果提供了，必须是一个有效的表达式</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Replacement saved.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>替代保存了</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Received content</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>收到内容</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Received header</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>收到头标题</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Edit Replacement Proxy Content Replacement</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::编辑替换代理内容替换</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit Replacement Proxy Content Replacement</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑替换代理内容替换</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit a Replacement proxy content replacement.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑替换代理内容替换</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Create Global Replacement Proxy Content Replacement</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::创建全局替代代理内容替换</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create Global Replacement Proxy Content Replacement</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建全局替代代理内容替换</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create a global Replacement proxy content replacement expression.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建替换代理内容替换表达式</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Edit Global Replacement Proxy Content Replacement</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::编辑全局替代代理内容替换</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit Global Replacement Proxy Content Replacement</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑全局替代代理内容替换</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit a global Replacement proxy content replacement expression.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑一个全局替换代理内容替换表达式</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Delete this replacement.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>删除此替代</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit this replacement.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑此替代。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Move Up</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>上移</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Move this replacement up.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>上移这个替代</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Move Down</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>下移</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Move this replacement down.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>下移这个替代</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Delete Replacement</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::删除替代</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Are you sure you wish to delete this replacement.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您确定要删除此替代。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create Replacement</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建替代</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click here if you wish to create a new replacement.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击这里如果您想创建一个新的替代。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>General message resources for setting up Adito.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>配置Adito的一般信息</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Message Queue</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::消息列队</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito queues up messages for delivery using various different mechanisms.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito排队消息来发送用不同的机制</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This page displays all messages currently in the queue and shows the state of the delivery systems.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>此网页显示的所有消息目前在队列中，并显示运载系统的状态。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Delivery</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>传送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Subject</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>主题</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>User Recipients</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>使用者收件人</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Group Recipients</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>组收件人</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Policy Recipients</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>政策收件人</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Urgent</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>紧急</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Attempts</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>尝试</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Last</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>最新</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>All Administrators</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>所有管理员</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Delivery Systems Available</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>运载系统可用</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Delivery system {0} is now disabled.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>运载系统可用 {0} 现在禁用了</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Delivery system {0} is now enabled.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>运载系统可用 {0} 现在启用了</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>There are no messages queued.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有消息在列队</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Clear Message Queue</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>清空消息列队</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click here to clear down the message queue.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击这里清空消息列队</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Send Message</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>发送消息</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Send messages to your users</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>发送消息到你的用户</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click here to upload or update an extension.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击这里来上载或更新一个extension</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Send Message</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::发送消息</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Send a message to one or more users using one or more delivery systems</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>发送消息到一个或多个用户用传送系统</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Subject:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>主题:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Recipients</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>收件人</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Delivery:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>传送:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must supply a subject</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你必须提供一个主题。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must select at least one recipient (a policy, account or group)</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您必须选择至少一个收件人（政策，帐户或组）</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>First</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>第一</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>{0} is not a valid account name.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>{0} 不是有效账户名</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>{0} is not a valid group name.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>{0} 不是有效组名.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>{0} is not a valid policy name.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>{0} 不是有效政策名</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to validate recipients.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>验证收件人失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Clear Message Queue</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::清空消息列队</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If you continue, &lt;strong&gt;ALL&lt;/strong&gt; queued messages will be deleted.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果继续 , &lt;strong&gt;所有&lt;/strong&gt; 列队消息将删除</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>There may be important messages waiting.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>可能有更多的等待消息</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Clear Messages</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>清空消息</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Status</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::状态</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Details the current status of Adito including logged-on users, memory allocation and other information on your hardware.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito现状细节包括登录的用户，内存分配和其他信息包括硬件。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Ticket</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>票</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Date / Time</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>日期/时间</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Address</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>地址</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>VPN Sessions</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>VPN 会话</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Client environment</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>客户环境</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Free</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>免费</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Used</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>已用的</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>OS Architecture</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>OS 结构</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>OS Name</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>OS 名字</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>OS Version</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>OS 版本</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Java Version</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Java 版本</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Server Port</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>服务器端口</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Active Threads</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>活动线程</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Available Processors</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>可用的进程</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Network Interfaces</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>网络接口</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Thread dump</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>线程转储</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Sessions</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>会话</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>System Information</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>系统信息</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You cannot log yourself off.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你不能注销你自己.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Log off user</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>注销用户</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Log user off</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>注销用户</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>User name</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户名</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Full name</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>全名</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Email Address</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>电子邮件地址</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Client</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>客户</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Host name</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>主机名</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Session type</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>S会话类型</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>User Agent</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户代理</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Logon time</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>登入时间</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Embedded</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>嵌入式</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to upload keystore {0}.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>上载钥匙失败 {0}.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Key store uploaded.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Key store 已上载.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Key store exists.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Key store 存在.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please delete before uploading a new one.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请删除在你上载一个新的之前.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::System Configuration</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::系统配置</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Here you may configure various system preferences and options to customize the behaviour of your Adito VPN server.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在这里，您可以设定不同的系统预置和选择自定义的行为，为您的Adito VPN服务器。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please ensure that Automatic Updates are enabled to ensure you have the latest and most secure version of the software.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请确保已启用自动更新，以确保您拥有最新和最安全的版本的软件。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Shutdown</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::关闭</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Are you sure you want to shutdown Adito?</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您确定要关闭Adito ？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>There may be users currently connected.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户当前可能连接</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If Adito is running as a service, you will also have the option to restart the server.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果Adito正在运行的服务，您也可以选择重新启动服务器。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Shutdown Adito</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>关闭Adito</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Shutdown or Restart</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>关闭或重新启动</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Already Shutting Down</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>已经关闭</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>A shutdown or restart is already scheduled for &lt;strong&gt;{0}&lt;/strong&gt;.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>关闭或重新启动已经计划在 &lt;strong&gt;{0}&lt;/strong&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If you wish to cancel it, please click on the Cancel button below.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果您想取消它，请单击取消按钮。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>WARNING!</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>警告!</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>There are currently {0} users logged on.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>当前 {0} 登录用户.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Restart Adito</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>重新启动Adito</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Delay in minutes</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>延迟分钟</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Cancel Shutdown / Restart</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>取消关机/重新启动</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The Shutdown/Restart delay must not be less than 0 minutes.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>关机/重新启动拖延不得少于0分钟。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The Shutdown/Restart delay must be in whole minutes, no decimals.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>关机/重新启动拖延，必须在整个分钟，没有小数。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The system will Shutdown/Restart at &lt;strong&gt;{0}&lt;/strong&gt;.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>该系统将关机/重新启动在 &lt;strong&gt;{0}&lt;/strong&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please ensure that you logout before this time.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请确保您在这个时间前注销</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Server Shut Down</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>服务器关闭</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The system has been shut down, no actions are available at the moment.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>该系统已被关闭，没有任何行动可用在现在。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Server Restarted</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>服务器重新启动</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The system has been started, you will be redirected to the logon page.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>该系统已开始使用，您将被重定向到登录页</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Send Message To All Users</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>发送消息到所以用户</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Send a message to all users, warning them of the shutdown.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>将消息发送给所有用户，警告他们关闭。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Immediate shutdown/restart</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::立即关机/重新启动</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Confirm Immediate shutdown/restart</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>确认立即关机/重新启动</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The system will shutdown/restart in 10 seconds, Are you sure?</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>该系统将关机/重新启动在10秒，是真的吗？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Timed shutdown/restart</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::定时关机/重新启动</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Timed Immediate shutdown/restart</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>定时立即关机/重新启动</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>They system will shutdown/restart at &lt;strong&gt;{0}&lt;/strong&gt;, Are you sure?</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这些系统将关机/重新启动在&lt;strong&gt;{0}&lt;/strong&gt;,是真的吗?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Cancel Shutdown</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::取消关闭</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Confirm Cancel Shutdown</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>确认取消关闭</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Cancel the currently scheduled shutdown, Are you sure?</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>取消目前预定关机，您确定吗？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Restarting</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::重新启动</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Restarting</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>正在重新启动</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito will restart in 10 seconds.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito将重新启动在10秒后</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This page contains an error.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>此页面包含了一个错误。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Shutting Down</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::正在关闭</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Shutting Down</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>正在关闭</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito will shutdown in 10 seconds.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito将关闭在10秒后</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Server is not running as a service.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>服务器不是作为服务在运行</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Restart is not possible.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>重新启动不可行</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Configuration Changed - Restart Required</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::配置更改了 - 需要重新启动</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Configuration Changed - Restart Required</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>配置更改了 - 需要重新启动</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The configuration has changed and Adito now requires a restart before these settings can take effect.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>配置已发生变化， Adito现在需要重新启动之后，这些设置才能生效。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Do you wish to do this now?</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你愿意这样做吗？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>A general error has occured.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>一般错误出现。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This delivery system sends emails to recipients using the SMTP protocol.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这种运载系统的收件人发送电子邮件使用SMTP协议。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If you have not already done so, you will need to configure the SMTP server to use in the &lt;strong&gt;System Configuration&lt;/strong&gt; pages.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果你还没有这样做，您将需要配置SMTP服务器使用的&lt;strong&gt;系统配置&lt;/strong&gt; 页.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Agent</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>代理</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This delivery system sends messages to users who are running the Adito Agent.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这种运载系统发送信息的正在运行Adito代理的用户。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Due to the nature of the agent, the message will probably take slightly longer to be delivered than by other methods.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>由于代理人的性质，该邮件可能需要稍长的交付，而不是其他方法。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
         <seg>Tasks</seg>
       </tuv>
       <tuv lang="ZH-CN">
@@ -18600,6 +23416,2406 @@ management page.</seg>
       </tuv>
       <tuv lang="ZH-CN">
         <seg>下载 {0}K of extension {1}, 请等待</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Message resources for SSL Tunnels.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>SSL隧道的信息资源.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Configure SSL Tunnels to securely connect to remote TCP/IP based services on your Adito network.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>配置SSL隧道安全地连接到远程TCP / IP服务在您的Adito网络。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>View SSL Tunnels that have been configured for you to use.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>检视的SSL隧道，已配置供您使用。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create Tunnel</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click here if you wish to create a new Tunnel.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击这里如果您想创建一个新的隧道。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create Personal Tunnel</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建个人隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click here if you wish to create a new Personal Tunnel.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击这里如果您想创建一个新的个人隧道。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You have already opened the remote tunnel on port {0}.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你已经打开了远程隧道端口{0}.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If this problem persists, try logging out and back in again.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果此问题仍然存在，尝试注销，并再一次登入。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Someone else has already opened a remote tunnel using port {0}.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>已经有人开了一个用远程隧道使用这个端口 {0}.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please try again later.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请稍候尝试.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If the problem persists, contact your administrator</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果问题仍然存在，请与管理员联系</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The requested port is already in use.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>所要求的端口已被使用。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This usually suggests that another application is already running on port {0} on the server.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这通常意味着另一个应用程序已经运行于端口{0} 的服务器上。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Agent refused to start the local tunnel.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>代理拒绝启动当地隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Agent refused to stop the local tunnel.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>代理拒绝停止当地隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to auto-start {0} tunnel(s).</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>自动启动{0} 隧道失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Delete Tunnel</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::删除隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Are you sure you wish to delete this tunnel.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您是否确实要删除这条隧道。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Source:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>源:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Auto.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>自动.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Start:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>启动:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::SSL-Tunneling</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::SSL－隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Here you can configure SSL tunnels from your client to ports on machines inside your network.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在这里您可以配置SSL隧道从客户端到机器上得端口在您的网络。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Many TCP protocols can be tunneled using SSL, including the SMTP and POP protocols used by your email client.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>许多TCP协议可以使用SSL隧道，包含SMTP和POP协议所使用的电子邮件客户端。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Here you can start and stop SSL Tunnels from your computer to machines inside your network.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在这里，您可以启动和停止的SSL隧道在您的计算机网络内的机器。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please contact your network administrator if the SSL Tunnel to which you require access is missing.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请联系您的网络管理员如果你没有访问权限到你想要的隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Source Port</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>源端口</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Source Interface</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>源接口</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Destination</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>目标</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Destination Host</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>目标主机</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Destination Port</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>目标端口</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Allow External Hosts</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>允许外部主机</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>start</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>开始</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Transport</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>交通</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The &lt;strong&gt;SSL-Tunneling&lt;/strong&gt; feature allows you to tunnel many of your existing insecure applications over a secure SSL connection.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>The &lt;strong&gt;SSL-Tunneling&lt;/strong&gt; 功能可让您的许多不安全的您现有的应用程序能够有一个安全SSL连接。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This feature requires the Adito Agent which can be launched by pressing the button below.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>此功能需要Adito代理可按下启动按钮。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please select at least one tunnel to delete.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请至少选择一个隧来删除</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>{0} tunnel(s) deleted.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>{0} 隧道已删除</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You cannot delete global tunnels.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您不能删除全局隧道。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You cannot edit global tunnels here.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您不能编辑全局隧道，在这里。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You may only edit one tunnel at a time.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您只能一次修改一个隧道。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Cannot edit open tunnel.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>无法编辑打开隧道。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must select at least one tunnel to add as a favorite.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您必须至少选择一个隧道添加到收藏夹。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The tunnel {0} already exists as a favorite.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>隧道 {0} 已经存在的喜爱。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Favorites added.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>收藏已添加</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>This feature requires the Adito Agent which you do not currently have permission to use.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>此功能需要Adito代理，但您目前没有使用它的许可。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Tunnel Type</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>隧道类型</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Tunnel &lt;strong&gt;{0}&lt;/strong&gt; started.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>隧道 &lt;strong&gt;{0}&lt;/strong&gt; 启动了.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Tunnel &lt;strong&gt;{0}&lt;/strong&gt; stopped.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>隧道 &lt;strong&gt;{0}&lt;/strong&gt; 停止了.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The agent reported that the tunnel could not be started.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>代理报告，隧道无法启动。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The agent reported that the tunnel could not be stopped.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>代理报告，隧道无法停止。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You do not have permission to use the tunnel &lt;strong&gt;{0}&lt;/strong&gt;.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您没有权限使用隧道 &lt;strong&gt;{0}&lt;/strong&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>There are currently no tunnel or none that you are allowed to edit.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>目前没有任何隧道或根本没有，你可以修改</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If allowed, you will be able to create a new tunnel by selecting the &lt;b&gt;Create Tunnel&lt;/b&gt; action.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果允许，您将能够创建一个新的隧道通过选择 &lt;b&gt;创建隧道&lt;/b&gt; 行为.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Remove this tunnel</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>删除这条隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit this tunnel</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑这个隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Copy this tunnel</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>拷贝这个隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Switch On</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>打开</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Switch On the Tunnel.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>打开隧道.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Switch Off</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>关闭</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Switch Off the Tunnel.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>关闭隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Global Tunnels</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::全局隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You may define global tunnels here that will be made available to every Adito user that logs on and starts a Adito Agent.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您可以定义全球隧道，在这里，将提供给每一个Adito用户登录并启动一个Adito代理。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The source port should be a number between 1 and 65535.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>源端口必须有一个号码在1和65535之间，包含头尾.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The destination port should be a number between 1 and 65535.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>目标端口必须有一个号码在1和65535之间，包含头尾.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The destination host should be entered.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>目标主机应该进入。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>UDP is for local tunnels only.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>UDP 只能用于本地隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Invalid source interface.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>无效的源接口</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Must either be blank for all interfaces, 127.0.0.1 for localhost, 127.0.0.2 for the localhost workaround (see knowledge base) or a valid IP address on the clients computer.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>必须是空白的所有接口， 127.0.0.1为本地主机， 127.0.0.2的本地方法（请参阅知识库）或有效的IP地址的客户端计算机。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Must either be blank for all interfaces, 127.0.0.1 for localhost, 127.0.0.2 for the localhost workaround (see knowledge base) or the IP address of a network interface on this server.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>必须是空白的所有接口， 127.0.0.1为本地主机， 127.0.0.2的本地方法（请参阅知识库）或IP地址的网络接口在此服务器上。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Edit Tunnel</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::编辑隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit Tunnel</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit a tunnel</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑一个隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Tunnel has been changed.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>隧道已变更.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Tunnel</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito::::Create SSL Tunnel</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito::::创建SSL隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The following wizard will guide you through the stages of configuring a new SSL Tunnel and assigning it to one or more policies.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>下面的向导将引导您完成配置阶段的一个新的隧道，并指派给一个或一个以上的政策。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create SSL Tunnel</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建 SSL 隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Tunnel Details</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>隧道详情</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Step 1 - SSL Tunnel Resource Details</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>步骤 1 - SSL隧道资源详情</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please provide a name and description for this tunnel.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请提供名字和描述为这个隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No tunnel name has been provided.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有隧道名字提供</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must provide a description for this tunnel.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你必须提供表述为这个隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Tunnel name must be {0} characters or less.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>隧道名必须是 {0} 字符.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to check for tunnel by name.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用名字检查隧道失败.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Tunnel named &lt;strong&gt;{0}&lt;/strong&gt; already exists.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>隧道命名 &lt;strong&gt;{0}&lt;/strong&gt; 已存在 exists.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Step 2 - SSL Tunnel Other Details</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>步骤 2 - SSL隧道其他详情</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please provide the other information for this tunnel.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请提供其他信息为这个隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Step 3 - SSL Tunnel Policies Selection</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>步骤 3 - SSL隧道政策详情</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Choose the policies you wish to attach this tunnel to.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>选择你愿意连接这个隧道的政策</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must select at least one policy to attach this tunnel.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您必须至少选择一个政策，连接此隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Step 3 - SSL Personal Tunnel Policy</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>步骤 3 - SSL隧道隧道政策</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Your personal Tunnel is going to be attached to your personal policy: &quot;{0}&quot;&lt;br/&gt;Please know that an admin may, at everytime, see, edit and deleted your personal resource and policy.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你的个人隧道将连接到你个人的政策： &quot;{0}&quot;&lt;br/&gt;你知道系统管理员可以查看，编辑和删除你个人资源和政策</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Step 4 - SSL Tunnel Summary</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>步骤 4 - SSL隧道总结</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Review the information below before clicking on &lt;strong&gt;Finish&lt;/strong&gt; to create the tunnel.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>修改以下信息，然后单击 &lt;strong&gt;完成&lt;/strong&gt; 来创建隧道.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Tunnel Name:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>隧道名字:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>SSL Tunnel Created</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>SSL 隧道已创建</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The tunnel creation wizard is now complete.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>隧道创建向导现已完成。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The creation of the tunnel failed.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>建立隧道失败。.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The creaton of the tunnel is complete, but some warnings occured.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>已完成创建隧道，但一些警告发生。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Tunnel created.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>隧道已创建</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Attached tunnel to policies.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>连接隧道和政策.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to create new tunnel.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>无法创建新的隧道</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Tunnel Opened</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>隧道打开了</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Tunnel Closed</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>隧道关闭了</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Tunnel Created</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>隧道已创建</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Tunnel Edited</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>隧道已编辑</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Tunnel Deleted</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>隧道已删除</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Message resources for Aditos VFS framework including Network Places.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>AditoVFS框架包含网络邻居的信息资源</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The path you entered '{0}' is not valid.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你键入的路径 {0} 无效.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::File Upload</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::文件上传</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>File Upload</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>文件上传</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Here you may upload multiple files.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>这里你可以上传多个文件</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Either type the filename or click on &lt;strong&gt;Browser&lt;/strong&gt; to select your file, then click on &lt;strong&gt;Upload&lt;/strong&gt; to upload the file.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>两种文件名类型中的一种或点击&lt;strong&gt;浏览器&lt;/strong&gt;来选择文件, 然后点击 &lt;strong&gt;上传&lt;/strong&gt;来上传文件</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You may then repeat the process as many times as you wish.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你现在可以随便重复操作</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>When complete, click on the &lt;strong&gt;Exit&lt;/strong&gt; button.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>完成后，单击 &lt;strong&gt;退出&lt;/strong&gt; 按钮.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If you do not wish to upload any files at this time, simply click on &lt;strong&gt;Exit&lt;/strong&gt; now.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果您不想上载任何文件在这个时候，只要按一下&lt;strong&gt;退出&lt;/strong&gt; 现在.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The file &lt;strong&gt;{0}&lt;/strong&gt; has successfully been uploaded to &lt;strong&gt;{1}&lt;/strong&gt;.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>文件 &lt;strong&gt;{0}&lt;/strong&gt; 已经上传成功到&lt;strong&gt;{1}&lt;/strong&gt;.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The file &lt;strong&gt;{0}&lt;/strong&gt; has successfully been uploaded.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>文件 &lt;strong&gt;{0}&lt;/strong&gt; 已经上传成功</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The file has not been uploaded: &lt;strong&gt;{0}&lt;/strong&gt;</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>文件没有被上传: &lt;strong&gt;{0}&lt;/strong&gt;</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>There is no file name.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有文件名.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Vfs Lock Information</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Vfs 锁定信息</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Unlock</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>解锁</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>There are currently no existing Vfs Locks or none that you are allowed to edit.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>目前没有任何现有的VFS锁定或没有，你可以修改。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Unlock file.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>解锁文件.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>File &lt;b&gt;{0}&lt;/b&gt; unlocked.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>文件 &lt;b&gt;{0}&lt;/b&gt; 已解锁.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>VFS provider for application extensions</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>VFS 提供应用程序 extensions</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Temporary Downloads</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>零时下载</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>VFS provider for the temporary download store</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>VFS提供零时下载商店</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Site Files</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>网站文件</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>VFS provider for the site customisation directory</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>VFS 提供网站自定义路径</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Web Forwarding</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Web 推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Message resources for Adito's Web Forwards feature.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito Web推送特点信息资源</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>A list of the users Web Forwards.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用户Web推送列表</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Configure access to internal web applications.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>配置访问内部Web应用程序</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Web Forwards</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Here you may configure your web forwards.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>在这里，您可以设定您的Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito provides three methods of forwarding intranet websites.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito提供三种方法转发内部网站。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please see the help file for more information on which is the most appropriate in your environment.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请参阅帮助文件提供更多的资料，这是最适合您的环境。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>A Web Forward is a link to an intranet website within your network.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>一种基于Web推送的链接是一个内部网站在您的网络内。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click on the links to access your preconfigured Web Forwards.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击链接访问您预先Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please contact your network administrator if the web forward resource to which you require access is missing.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请联系您的网络管理员如果你没有访问权限到你想要的Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Web forward type:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Web 推送类型:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Destination URL:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>目标URL:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Tunneled proxy</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>隧道代理</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Replacement proxy</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>替代代理</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Path-Based Reverse proxy</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>基于路径的反向代理</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Host-Based Reverse proxy</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>基于主机的反向代理</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Remove this web forward</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>删除这个Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit this web forward</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑这个Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Copy this web forward</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>拷贝这个Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>&lt;strong&gt;This web forward is attached to multiple policies :-&lt;/strong&gt;</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>&lt;strong&gt;此Web推送连接到多个政策 :-&lt;/strong&gt;</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>There are currently no existing web forwards or none that you are allowed to edit.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>目前没有任何现有的Web推送或没有，你可以修改。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If allowed, you will be able to create a new web forward by selecting the &lt;b&gt;Create Web Forward&lt;/b&gt; action.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果被允许的,你将可以创建一个新的Web推送，用选择&lt;b&gt;创建Web推送&lt;/b&gt; 行为 .</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit this web forward.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑这个Web推送.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Remove this web forward.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>删除这个Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create Web Forward</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click here if you wish to create a new Web Forward.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击这里如果您希望创建一个新的Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create Personal Web Forward</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建个人Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click here if you wish to create a new Peronal Web Forward.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击这里如果您希望创建一个新的个人Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Customise the behaviour of the Replacement Proxy.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>自定义的行为更换代理。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Web Forward</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Confirm remove Web Forward</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>确定删除这个Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Are you sure you wish to remove this Web Forward.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你确定你想要删除这个Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Destination URL</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>目标URL:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Active DNS</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>活动的DNS</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Host Header</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>主机头标题</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Paths</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>路径</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Encoding</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编码</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Restrict to hosts</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>限制主机</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Use Browser Cookies</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>使用浏览器Cookies</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Preferred scheme</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编号计划</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Authentication Type</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>授权类型</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Form-Based</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>基于表单的</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>New Path</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>新的路径</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Parameter</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>参数</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Form Parameters</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>表单参数</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Authentication</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>授权</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito:::Edit Web Forward</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito:::编辑Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit Web Forward</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Edit a Web Forward</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>编辑这个Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No category provided.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有提供类型.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must provide an existing or new category name for this web forward.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您必须提供现有的或新的类别名称为此Web向前发展。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Web forward saved.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Web推送保存了.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Adito::::Create Web Forward</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Adito::::创建Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The following wizard will guide you through the stages of configuring a new Web Forward and assigning it to one or more policies.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>下面的向导将引导您完成配置阶段的一个新的Web推送，并指派给一个或一个以上的政策。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Web Forward Type</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Web推送类型</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Step 1 - Web Forward Type</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>步骤 1 - Web推送类型</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please select the type of web forward you would like to create</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请选择你希望的创建的Web推送的类型</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create Tunneled Web</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建隧道Web</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click here if you wish to create a new Tunneled Web Forward.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击这里如果您希望创建一个新的隧道Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create Replacement Proxy</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建替代代理</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click here if you wish to create a new Replacement Web Forward.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击这里如果您希望创建一个新的替代Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create Path-Based Reverse Proxy</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建基于路径的反向代理</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click here if you wish to create a new Path-Based Reverse Proxy Web Forward.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击这里如果您希望创建一个新的基于路径的反向代理Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create Host-Based Reverse Proxy</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建基于主机的反向代理</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Click here if you wish to create a new Host-Based Reverse Proxy Web Forward.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>点击这里如果您希望创建一个新的基于主机的反向代理Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No Web Forward Type selected.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有Web推送类型被选择.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Step 2 - Web Forward Resource Details</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>步骤 2 - Web推送资源详情</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please provide a name and description for this Web Forward.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请提供的名称和说明为这个Web推送.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No Web Forward name has been provided.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有提供Web推送的名字.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must provide a description for this Web Forward.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你必须提供Web推送的描述.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Web Forward name must be {0} characters or less.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Web推送名字必须是{0} 字符</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to check for Web Forward by name.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用名字检查Web推送失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Web Forward named &lt;strong&gt;{0}&lt;/strong&gt; already exists.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Web推送的名字&lt;strong&gt;{0}&lt;/strong&gt; 已存在.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Step 3 - Web Forward Specific Details</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>步骤 3 - Web推送详情</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please provide the other information for this Web Forward.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请提供其他信息为这个Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Malformed URL, should be in the form http://localhost</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>网址格式不正确，应为 http://localhost</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Path {0} is already in use by another web forward.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>路径{0} 已存在另一个Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to contact database.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>链接数据库失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Path part {0} should start with a '/'.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>路径部分{0} 要以 '/'开始.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No path provided.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有提供路径.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must provide a path for this web forward.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您必须提供路径为该Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Both Active DNS and Hosts Header were supplied.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>动态DNS和主机头标题供应。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Only one of these options may be supplied.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>只有其中一个选项，可提供。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Neither Active DNS nor Hosts Header was supplied.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>主动的DNS和主机头标题都没供应。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>One of these options must be supplied.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>其中一个选项必须提供。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Step 4 - Web Forward Authentication Details</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>步骤 4 - Web推送授权详情</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Please provide the authentication information for this Web Forward.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>请提供认证信息，为这个Web推送。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Step 5 - Web Forward Policy Selection</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>步骤 5 - Web推送政策选择</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Choose the policies you wish to attach this Web Forward to.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>选择你愿意连接这个Web推送的政策.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>You must select at least one policy to attach this Web Forward.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您必须至少选择一个政策，连接此Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Step 5 - Personal Web Forward Policy</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>步骤 5 - Web推送政策</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Your personal Web Forward is going to be attached to your personal policy: &quot;{0}&quot;&lt;br/&gt;Please know that an admin may, at everytime, see, edit and deleted your personal resource and policy.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>您的Web推送将是附加到您的个人的政策: &quot;{0}&quot;&lt;br/&gt;请注意，管理员可以在每次看见，修改和删除您的个人资源和政策</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Step 6 - Web Forward Summary</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>步骤 6 - Web推送总结</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Review the information below before clicking on &lt;strong&gt;Finish&lt;/strong&gt; to create the Web Forward.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>检查以下信息，在点击前&lt;strong&gt;完成&lt;/strong&gt; 创建Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Web Forward</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Web Forward Name:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Web 推送名:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No user will be able to access this Web Forward.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有用户可以使用这个Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Web Forward Created</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Web推送创建了</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The Web Forward creation wizard is now complete.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Web推送创建向导现已完成.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The creation of the Web Forward failed.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>建立Web推送失败。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The creation of the Web Forward is complete, but some warnings occurred.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>建立了Web推送完成，但一些警告发生.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Web Forward created.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Web推送创建了</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Attached Web Forward to policies.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>连接Web推送的政策.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to attach to Web Forward to policies.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>附加Web推送的政策失败</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to create new Web Forward.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>未能创造新的Web推送.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Form Type</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>表单类型</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Directory</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>路径</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Directory of cached files.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>目录的快取档案.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>size per user (MB)</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>大小／用户 (MB)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The maximum size of each users cache in MB.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>每个用户最大缓存（MB）.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>objects per user</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>目标／用户</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The maximum number of objects in each users cache.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>最大存储在用户缓存中的目标的数量。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>age</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>年龄</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The maximum number of minutes each cached item will be stored for.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>用于缓存项目的最长的分钟数</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>A value of 0 means store forever (or until logout).</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>值为0表示永远存储 (直到注销).</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Clear on logout</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>注销并清空</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>If selected, the users cache will be cleared when either they logout.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>如果选择了，缓存将清空当用户注销时</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Active DNS Host Format</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>活动的DNS主机格式</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>The format of the unique Active DNS hostname used to access reverse proxy web forwards.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>独特的主动DNS主机名格式用来访问反向代理的Web推送</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Child Domain</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>子域</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Same Domain</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>相同的域</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Web Forward Edited</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Web 推送编辑</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Web Forward Deleted</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Web 推送删除了</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Web Forward Launched</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Web推送启动了</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Web Forward Resource Loaded</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>Web推送资源读取了</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Replacement Deleted</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>替代删除了</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Replacement Edited</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>替代编辑了</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Replacement Created</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>替换创建了</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Replacement Priority Changed</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>替换优先级更改了</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Message resources for the UI library base classes.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>UI库基类的信息资源</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>All files (*)</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>所有文件 (*)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Bad color string format.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>坏颜色字符串格式</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Should be #rrggbb</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>应该是#rrggbb</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Number too big for padded hex string</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>数量太大对于十六进制字符串</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Message resources for the UI library AWT base classes.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>UI AWT库基类的信息资源</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Select a file</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>选择一个文件</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Browse</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>浏览器</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>TabWrapper for [{0}] could not be found</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>TabWrapper for [{0}] 没有发现</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Test Tab 2</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>测试表2</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Test Tab 3</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>测试表3</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Test Tab 1</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>测试表1</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Navigate to your home directory</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>浏览到你的主页目录</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Navigate to the parent folder</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>导航到上一级文件夹</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>New</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>新建</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Create a new folder</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>创建一个新的文件夹</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Delete the selected file</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>删除已选文件.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Hidden files</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>隐藏文件夹</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>File name:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>文件名:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Go</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>走</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Navigate to the selected folder</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>浏览到你的所选文件夹</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Files of type:</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>文件类型:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Are you sure you want to delete {0}?</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>你确定你要删除 {0}?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Failed to delete file.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>删除文件失败.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>New folder</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>新文件夹</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Could not create directory.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>不能创建目录.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Image did not load.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>图像没有加载.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>No image???</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>没有图像???</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Could not locate image</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>不能地位图像</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>parent must have a GridBagLayout</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>父类必须有 GridBagLayout</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Message resources for the UI library AWT grid classes.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>UI AWT库基网格类的信息资源</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Image</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>图像</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Message resources for the UI library AWT options classes.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>UI AWT库类的信息资源</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Show</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>显示</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Hide</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>隐藏</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Yes to All</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>所有的都是</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>Message resources for the UI library Swing base classes.</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>UI Swing库基类的信息资源</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="EN-US">
+        <seg>null image?</seg>
+      </tuv>
+      <tuv lang="ZH-CN">
+        <seg>空图像?</seg>
       </tuv>
     </tu>
   </body>
