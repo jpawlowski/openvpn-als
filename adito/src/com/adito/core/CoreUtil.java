@@ -59,7 +59,6 @@ import javax.servlet.jsp.tagext.Tag;
 
 import org.apache.commons.cache.Cache;
 import org.apache.commons.cache.CacheStat;
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts.Globals;
@@ -1054,9 +1053,11 @@ public class CoreUtil {
      * @param token string to search for
      * @param value value to replace occurences of <i>token</i> with
      * @return processed string
+     * @deprecated Use java.lang.String.replace instead
      */
+    @Deprecated
     public static String replaceAllTokens(String source, String token, String value) {
-        return StringUtils.replace(source, token, value);
+        return source.replace(token, value);
     }
 
     /**
@@ -1383,3 +1384,4 @@ public class CoreUtil {
         return stringWriter.toString();
     }
 }
+
