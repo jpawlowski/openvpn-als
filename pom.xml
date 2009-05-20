@@ -15,6 +15,7 @@
         <module>agent-common</module>
         <module>agent-client</module>
         <module>agent-launcher</module>
+        <module>adito-agent-awt</module>
     </modules>
     <build>
         <sourceDirectory>src</sourceDirectory>
