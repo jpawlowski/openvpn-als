@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.sourceforge.adito</groupId>
+        <artifactId>adito</artifactId>
+        <version>0.9.2-SNAPSHOT</version>
+    </parent>
+    <artifactId>agent-swt</artifactId>
+    <name>adito-agent-swt</name>
+    <dependencies>
+        <dependency>
+            <groupId>${pom.groupId}</groupId>
+            <artifactId>agent-client</artifactId>
+            <version>${pom.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${pom.groupId}</groupId>
+            <artifactId>ui</artifactId>
+            <version>${pom.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.swt.win32.win32</groupId>
+            <artifactId>x86</artifactId>
+            <version>3.3.0-v3346</version>
+        </dependency>
+    </dependencies>
+</project>
