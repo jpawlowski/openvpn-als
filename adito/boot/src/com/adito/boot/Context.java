@@ -232,7 +232,7 @@ public interface Context {
      * @param trustManager trust manager to set
      * @param require required
      */
-    public void setTrustMananger(TrustManager trustManager, boolean require);
+    public void setTrustManager(TrustManager trustManager, boolean require);
 
     /**
      * Add a new web application

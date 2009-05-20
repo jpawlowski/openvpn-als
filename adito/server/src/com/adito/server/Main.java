@@ -1563,9 +1563,9 @@ public class Main implements WrapperListener, Context {
     /*
      * (non-Javadoc)
      * 
-     * @see com.adito.boot.Context#setTrustMananger(javax.net.ssl.TrustManager)
+     * @see com.adito.boot.Context#setTrustManager(javax.net.ssl.TrustManager)
      */
-    public void setTrustMananger(TrustManager trustManager, boolean require) {
+    public void setTrustManager(TrustManager trustManager, boolean require) {
         if (listeners == null || listeners.size() == 0) {
             log.warn("Not setting trust managers there are no SSL listeners configured.");
         } else {
