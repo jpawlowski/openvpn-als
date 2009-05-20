@@ -23,6 +23,12 @@
             srcdir="${dir.src}" 
             destdir="${dir.build.classes}" 
             classpathref="class.path"/>
+        <copy todir="${dir.build.classes}">
+            <fileset dir="${dir.src}">
+                <include name="**/*.properties"/>
+                <include name="**/*.gif"/>
+            </fileset>
+        </copy>
     </target>
 
     <target name="dist" depends="compile">
