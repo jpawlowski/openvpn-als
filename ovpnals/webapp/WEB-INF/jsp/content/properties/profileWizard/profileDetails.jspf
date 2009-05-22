@@ -1,0 +1,35 @@
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %> 
+ 
+<table class="resourceDetails">
+	<tr class="formText">
+		<td class="label">
+			<div class="required">
+				<bean:message key="profileWizard.profileDetails.resourceName" bundle="properties"/>
+			</div>
+		</td>
+		<td class="value">
+    	    <html:text property="resourceName" size="20"/>
+		</td>
+	</tr>
+	<tr class="formTextArea">
+		<td class="label">
+			<div class="required">
+				<bean:message key="profileWizard.profileDetails.resourceDescription" bundle="properties"/>
+			</div>
+		</td>
+		<td class="value">		
+    	    <html:textarea property="resourceDescription"/>
+		</td>
+	</tr>
+	<tr class="formEditableList">
+		<td class="label">
+			<bean:message key="profileWizard.profileDetails.baseOn" bundle="properties"/>
+		</td>
+		<td class="value">			                        
+			<html:select property="baseOn">
+				<html:optionsCollection value="resourceId" label="label" property="availableProfiles" />
+			</html:select>
+		</td>
+	</tr>
+</table>

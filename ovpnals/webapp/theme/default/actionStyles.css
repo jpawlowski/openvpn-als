@@ -1,0 +1,370 @@
+/*
+
+   WARNING - Please Do not change these styles lightly. They affect a *lot*.
+   It may be more approriate for you to overide your individual page styles
+   in pageStyles.css and wizardStyles.ss
+
+*/
+
+/* Actions */
+
+.actions {
+	text-align: center;
+}
+
+/* -------------- Blank ---------------- */
+
+a.action_blank, a.action_blank:visited, a.action_blank:link, a.action_blank:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+	margin: 2px 2px 2px 2px;
+}
+
+a.action_blank img, a.action_blank:visited img, a.action_blank:link img, a.action_blank:hover img {
+	border: 0;
+}
+
+/* -------------- Edit ---------------- */
+
+a.action_edit, a.action_edit:visited, a.action_edit:link, a.action_edit:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+	margin: 2px 2px 2px 2px;
+}
+
+a.action_edit img, a.action_edit:visited img, a.action_edit:link img, a.action_edit:hover img {
+	border: 0;
+}
+
+/* -------------- Remove ---------------- */
+
+a.action_remove, a.action_remove:visited, a.action_remove:link, a.action_remove:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+	margin: 2px 2px 2px 2px;
+}
+
+a.action_remove img, a.action_remove:visited img, a.action_remove:link img, a.action_remove:hover img {
+	border: 0;
+}
+
+
+/* -------------- Information ---------------- */
+
+a.action_information, a.action_information:visited, a.action_information:link, a.action_information:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+	margin: 2px 2px 2px 2px;
+}
+
+a.action_information img, a.action_information:visited img, a.action_information:link img, a.action_information:hover img {
+	border: 0;
+}
+
+
+/* -------------- Extension Information ---------------- */
+
+a.action_extensionInformation, a.action_extensionInformation:visited, a.action_extensionInformation:link, a.action_extensionInformation:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+	margin: 2px 2px 2px 2px;
+}
+
+a.action_extensionInformation img, a.action_extensionInformation:visited img, a.action_extensionInformation:link img, a.action_extensionInformation:hover img {
+	border: 0;
+}
+
+
+/* -------------- Page options ---------------- */
+
+a.action_pageOptions, a.action_pageOptions:visited, a.action_pageOptions:link, a.action_pageOptions:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+	margin: 2px 2px 2px 2px;
+}
+
+a.action_pageOptions img, a.action_pageOptions:visited img, a.action_pageOptions:link img, a.action_pageOptions:hover img {
+	border: 0;
+}
+
+
+/* -------------- View as icons ---------------- */
+
+a.action_viewIcons, a.action_viewIcons:visited, a.action_viewIcons:link, a.action_viewIcons:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+	margin: 2px 2px 2px 2px;
+}
+
+a.action_viewIcons img, a.action_viewIcons:visited img, a.action_viewIcons:link img, a.action_viewIcons:hover img {
+	border: 0;
+}
+
+/* -------------- View as list ---------------- */
+
+a.action_viewList, a.action_viewList:visited, a.action_viewList:link, a.action_viewList:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+	margin: 2px 2px 2px 2px;
+}
+
+a.action_viewList img, a.action_viewList:visited img, a.action_viewList img, a.action_viewList:hover img {
+	border: 0;
+}
+
+/* -------------- Properties ---------------- */
+
+a.action_properties, a.action_properties:visited, a.action_properties:link, a.action_properties:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+	margin: 2px 2px 2px 2px;
+}
+
+a.action_properties img, a.action_properties:visited img, a.action_properties:link img, a.action_properties:hover img {
+	border: 0;
+}
+
+/* -------------- Select ---------------- */
+
+a.action_select, a.action_select:visited, a.action_select:link, a.action_select:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+	margin: 2px 2px 2px 2px;
+}
+
+a.action_select img, a.action_select:visited img, a.action_select:link img, a.action_select:hover img {
+	border: 0;
+}
+
+/* -------------- SetPassword ---------------- */
+
+a.action_setPassword, a.action_setPassword:visited, a.action_setPassword:link, a.action_setPassword:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+	margin: 2px 2px 2px 2px;
+}
+
+a.action_setPassword img, a.action_setPassword:visited img, a.action_setPassword:link img, a.action_setPassword:hover img {
+	border: 0;
+}
+
+/* -------------- resetPersonalQuestions ---------------- */
+
+a.action_resetPersonalQuestions, a.action_resetPersonalQuestions:visited, a.action_resetPersonalQuestions:link, a.action_resetPersonalQuestions:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+	margin: 2px 2px 2px 2px;
+}
+
+a.action_resetPersonalQuestions img, a.action_resetPersonalQuestions:visited img, a.action_resetPersonalQuestions:link img, a.action_resetPersonalQuestions:hover img {
+	border: 0;
+}
+
+/* -------------- Enable ---------------- */
+
+a.action_enable, a.action_enable:visited, a.action_enable:link, a.action_enable:hover {
+	text-decoration: none;
+	font-weight: normal;
+}
+
+a.action_enable img, a.action_enable:visited img, a.action_enable:link img, a.action_enable:hover img {
+	border: 0;
+}
+
+/* -------------- Start ---------------- */
+
+a.action_start, a.action_start:visited, a.action_start:link, a.action_start:hover {
+	text-decoration: none;
+	font-weight: normal;
+}
+
+a.action_start img, a.action_start:visited img, a.action_start:link img, a.action_start:hover img {
+	border: 0;
+}
+
+/* -------------- Stop ---------------- */
+
+a.action_stop, a.action_stop:visited, a.action_stop:link, a.action_stop:hover {
+	text-decoration: none;
+	font-weight: normal;
+}
+
+a.action_stop img, a.action_stop:visited img, a.action_stop:link img, a.action_stop:hover img {
+	border: 0;
+}
+
+/* -------------- Disable ---------------- */
+
+a.action_disable, a.action_disable:visited, a.action_disable:link, a.action_disable:hover {
+	text-decoration: none;
+	font-weight: normal;
+}
+
+a.action_disable img, a.action_disable:visited img, a.action_disable:link img, a.action_disable:hover img {
+	border: 0;
+}
+
+/* -------------- Network Actions---------------- */
+
+a.action_addToFavorites, a.action_addToFavorites:visited, a.action_addToFavorites:link, a.action_addToFavorites:hover {
+	text-decoration: none;
+}
+
+a.action_addToFavorites img, a.action_addToFavorites:visited img, a.action_addToFavorites:link img, a.action_addToFavorites:hover img {
+	border: 0;
+}
+
+a.action_removeFromToFavorites, a.action_removeFromFavorites:visited, a.action_removeFromFavorites:link, a.action_removeFromFavorites:hover {
+	text-decoration: none;
+}
+
+a.action_removeFromFavorites img, a.action_removeFromFavorites:visited img, a.action_removeFromFavorites:link img, a.action_removeFromFavorites:hover img {
+	border: 0;
+}
+
+/* -------------- Logoff User Actions---------------- */
+
+a.action_logoff, a.action_logoff:visited, a.action_logoff:link, a.action_logoff:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+	margin: 2px 2px 2px 2px;
+}
+
+a.action_logoff img, a.action_logoff:visited img, a.action_logoff:link img, a.action_logoff:hover img {
+	border: 0;
+}
+
+/* -------------- Extension Actions---------------- */
+
+a.action_updateExtension, a.action_updateExtension:visited, a.action_updateExtension:link, a.action_updateExtension:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+	margin: 2px 2px 2px 2px;
+}
+
+a.action_updateExtension img, a.action_updateExtension:visited img, a.action_updateExtension:link img, a.action_updateExtension:hover img {
+	border: 0;
+}
+
+a.action_removeExtension, a.action_removeExtension:visited, a.action_removeExtension:link, a.action_removeExtension:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+	margin: 2px 2px 2px 2px;
+}
+
+a.action_removeExtension img, a.action_removeExtension:visited img, a.action_removeExtension:link img, a.action_removeExtension:hover img {
+	border: 0;
+}
+
+a.action_installExtension, a.action_installExtension:visited, a.action_installExtension:link, a.action_installExtension:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+	margin: 2px 2px 2px 2px;
+}
+
+a.action_installExtension img, a.action_installExtension:visited img, a.action_installExtension:link img, a.action_installExtension:hover img {
+	border: 0;
+}
+
+a.action_configureExtension, a.action_configureExtension:visited, a.action_configureExtension:link, a.action_configureExtension:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+	margin: 2px 2px 2px 2px;
+}
+
+a.action_configureExtension img, a.action_configureExtension:visited img, a.action_configureExtension:link img, a.action_configureExtension:hover img {
+	border: 0;
+}
+
+/* -------------- Tunnels Actions---------------- */
+
+a.action_switchOn, a.action_switchOn:visited, a.action_switchOn:link, a.action_switchOn:hover {
+	text-decoration: none;
+}
+
+a.action_switchOn img, a.action_switchOn:visited img, a.action_switchOn:link img, a.action_switchOn:hover img {
+	border: 0;
+}
+
+a.action_switchOff, a.action_switchOff:visited, a.action_switchOff:link, a.action_switchOff:hover {
+	text-decoration: none;
+}
+
+a.action_switchOff img, a.action_switchOff:visited img, a.action_switchOff:link img, a.action_switchOff:hover img {
+	border: 0;
+}
+
+/* -------------- Replacement Actions---------------- */
+
+a.action_moveDown, a.action_moveDown:visited, a.action_moveDown:link, a.action_moveDown:hover {
+	text-decoration: none;
+	font-weight: normal;
+	margin: 1px 1px 1px 1px;
+}
+
+a.action_moveDown img, a.action_moveDown:visited img, a.action_moveDown:link img, a.action_moveDown:hover img {
+	border: 0;
+}
+
+a.action_moveUp, a.action_moveUp:visited, a.action_moveUp:link, a.action_moveUp:hover {
+	text-decoration: none;
+	font-weight: normal;
+	margin: 1px 1px 1px 1px;
+}
+
+a.action_moveUp img, a.action_moveUp:visited img, a.action_moveUpf:link img, a.action_moveUp:hover img {
+	border: 0;
+}
+
+/* -------------- Search ---------------- */
+
+a.action_search, a.action_search:visited, a.action_search:link, a.action_search:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+	margin: 2px 2px 2px 2px;
+}
+
+a.action_search img, a.action_search:visited img, a.action_search:link img, a.action_search:hover img {
+	border: 0;
+}
+
+/* -------------- Export Private Key ---------------- */
+a.action_exportPrivate, a.action_exportPrivate:visited, a.action_exportPrivate:link, a.action_exportPrivate:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+	margin: 2px 2px 2px 2px;
+}
+
+a.action_exportPrivate img, a.action_exportPrivate:visited img, a.action_exportPrivate:link img, a.action_exportPrivate:hover img {
+	border: 0;
+}
+
+a.action_exportCertificate, a.action_exportCertificate:visited, a.action_exportCertificate:link, a.action_exportCertificate:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+	margin: 2px 2px 2px 2px;
+}
+
+a.action_exportCertificate img, a.action_exportCertificate:visited img, a.action_exportCertificate:link img, a.action_exportCertificate:hover img {
+	border: 0;
+}

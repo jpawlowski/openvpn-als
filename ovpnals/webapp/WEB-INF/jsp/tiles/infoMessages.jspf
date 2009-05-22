@@ -1,0 +1,18 @@
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+
+<tiles:useAttribute ignore="true" name="resourceBundle" classname="java.lang.String"/>
+<logic:messagesPresent message="true">
+	<input:frame panelId="infoMessages" titleKey="messages.information" bundle="navigation" styleClass="component_messageBox">
+		<div id="info_messages" class="messages">
+			<core:messages bundle="<%= resourceBundle %>" id="msg"  message="true">
+				<div class="text">
+					<bean:write filter="false" name="msg" />
+				</div>
+			</core:messages>
+		</div>
+	</input:frame>	
+</logic:messagesPresent>

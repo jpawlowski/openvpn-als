@@ -1,0 +1,14 @@
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+	
+<input:multiSelectListBox 
+	tabindex="1" 
+	sourceTitleKey="policyWizard.policyNesting.availablePolicies.title" 
+	targetTitleKey="policyWizard.policyNesting.selectedPolicies.title" 
+	addKey="policyWizard.policyNesting.addPolicy" 
+	removeKey="policyWizard.policyNesting.removePolicy" 
+	bundle="policyframework" 
+	styleClass="multiSelect" 
+	modelName="policyNestingForm" 
+	modelProperty="policyModel" 
+	name="policyNestingForm" 
+	property="nestedPolicies"/>

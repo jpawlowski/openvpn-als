@@ -1,0 +1,5 @@
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+
+<input:frame titleKey="messages.about" bundle="navigation" panelId="about" styleClass="component_messageBox">				
+	<%@ include file="/WEB-INF/jsp/tiles/footerInfo.jspf" %>
+</input:frame>

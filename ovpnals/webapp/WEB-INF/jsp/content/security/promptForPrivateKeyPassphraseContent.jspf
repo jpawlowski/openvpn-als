@@ -1,0 +1,58 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/security" prefix="security" %>
+<%@ taglib uri="/server/taglibs/table" prefix="table" %>
+
+<core:form autocomplete="OFF" method="post" onsubmit="setActionTarget('commit'); return true" focus="passphrase" action="/promptForPrivateKeyPassphrase.do?actionTarget=commit" focus="passphrase">   
+	<div id="page_prompt_for_private_key_passphrase">     
+		<div class="dialog_content">    
+			<html:hidden property="referer"/>
+			<html:hidden property="actionTarget"/>
+			<table class="dialog_form_table">
+				<tbody>
+					<tr class="formPassword">
+						<td class="label">						
+							<core:checkPropertyEquals propertyValue="automatic" propertyName="security.privateKeyMode" regExp="false">
+								<bean:message key="promptForPrivateKeyPassphraseAuto.passphrase.text" bundle="security" />
+							</core:checkPropertyEquals>						
+							<core:checkPropertyNotEquals propertyValue="automatic" propertyName="security.privateKeyMode" regExp="false">
+								<bean:message key="promptForPrivateKeyPassphrase.passphrase.text" bundle="security" />
+							</core:checkPropertyNotEquals>
+						</td>
+						<td class="value"> 
+							<html:password tabindex="1" property="passphrase" size="15"/>
+						</td>
+					</tr>    
+					<logic:equal name="promptForPrivateKeyPassphraseForm" property="newKey" value="true">
+						<tr class="formPassword">
+							<td class="label">
+								<bean:message key="promptForPrivateKeyPassphrase.confirmPassphrase.text" bundle="security" />
+							</td>
+							<td class="value">     
+								<html:password tabindex="1" property="confirmPassphrase" size="15"/>
+							</td>
+						</tr>    
+					</logic:equal>           
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="2">							
+							<div class="button_bar">
+								<div class="formButton">
+									<html:submit styleClass="save"><bean:message key="promptForPrivateKeyPassphrase.save" bundle="security"/></html:submit>
+								</div>
+								<div class="formButton">
+									<input class="cancel" type="button" onclick="javascript: setActionTarget('cancel'); document.forms[0].submit()" value="<bean:message key='promptForPrivateKeyPassphrase.cancel' bundle='security' />"/>
+								</div>
+							</div>
+						</td>						                        
+					</tr>
+				</tfoot>
+			</table>		 
+		</div>		
+	</div>
+</core:form>

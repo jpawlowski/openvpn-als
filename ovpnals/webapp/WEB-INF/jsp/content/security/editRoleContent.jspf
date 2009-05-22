@@ -1,0 +1,7 @@
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+
+<div id="page_role">
+	<core:form focus="rolename" action="/editRole.do">
+		<%@ include file="/WEB-INF/jsp/content/security/roleContent.jspf" %>
+	</core:form>
+</div>
