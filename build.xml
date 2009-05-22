@@ -126,6 +126,10 @@ For a list of Ant targets, use "ant -projecthelp"
             dest="./lib/log4j.jar"/>
         <get src="${repository.url}/org/eclipse/swt/win32/win32/x86/3.3.0-v3346/x86-3.3.0-v3346.jar"
             dest="./lib/swt-win32.jar"/>
+        <get src="${repository.url}/org/mortbay/jetty/org.mortbay.jetty/5.1.12/org.mortbay.jetty-5.1.12.jar"
+            dest="./lib/org.mortbay.jetty.jar"/>
+        <get src="${repository.url}/tanukisoft/wrapper/3.2.3/wrapper-3.2.3.jar"
+            dest="./lib/wrapper.jar"/>
     </target>
     
     <target name="clean-all" depends="clean">
