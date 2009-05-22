@@ -1,0 +1,10 @@
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="/server/taglibs/core" prefix="core"%>
+
+<bean:define id="applicationShortcutsForm" name="applicationShortcutsForm" type="com.ovpnals.applications.forms.ApplicationShortcutsForm"></bean:define>
+
+<div id="page_applicationShortcuts">
+	<core:form method="post" action="/showApplicationShortcuts.do"  onsubmit="setActionTarget('filter')">
+		<%@ include file="/WEB-INF/jsp/content/applications/applicationShortcutsForm.jspf" %>
+	</core:form>
+</div>

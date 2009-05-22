@@ -1,0 +1,103 @@
+<%@ page import="com.ovpnals.security.Constants"%>
+<%@ page import="com.ovpnals.extensions.ShortcutParameterItem" %>
+<jsp:directive.page import="com.ovpnals.applications.ApplicationsPlugin"/>
+<jsp:directive.page import="com.ovpnals.security.SessionInfo"/>
+<jsp:directive.page import="com.ovpnals.security.LogonControllerFactory"/>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="/server/taglibs/core" prefix="core"%>
+<%@ taglib uri="/server/taglibs/navigation" prefix="navigation"%>
+<%@ taglib uri="/server/taglibs/security" prefix="security"%>
+<%@ taglib uri="/server/taglibs/input" prefix="input"%>
+<%@ taglib uri="/server/taglibs/tabs" prefix="tabs"%>
+
+<div id="page_applicationShortcut" class="tabbedForm">
+		<html:hidden property="referer" />
+		<html:hidden property="actionTarget" />
+		<html:hidden property="_charset_" />
+		<html:hidden property="editing" />
+		<html:hidden property="resourceId" />
+		<html:hidden property="selectedTab" />
+		<bean:define id="applicationShortcutForm" name="applicationShortcutForm" type="com.ovpnals.applications.forms.ApplicationShortcutForm"></bean:define>
+		<tabs:tabSet name="applicationShortcutForm" bundle="<%= ApplicationsPlugin.MESSAGE_RESOURCES_KEY %>" resourcePrefix="editApplicationShortcut.tab">
+			<tabs:tabHeadings />
+			<tabs:tab tabName="details">
+				<table class="dialog_form_table">
+					<tbody>
+						<tr class="formText">
+							<td class="label">
+								<div class="required">
+									<bean:message key="editApplicationShortcut.shortName.label" bundle="<%= ApplicationsPlugin.MESSAGE_RESOURCES_KEY %>" />
+								</div>
+							</td>
+							<td class="value">
+								<html:text tabindex="1" disabled="<%= applicationShortcutForm.isAssignOnly() %>" property="resourceName"/>
+							</td>
+						</tr>
+						<tr class="formTextArea">
+							<td class="label">
+								<div class="required">
+									<bean:message key="editApplicationShortcut.description.label" bundle="<%= ApplicationsPlugin.MESSAGE_RESOURCES_KEY %>" />
+								</div>
+							</td>
+							<td class="value">
+								<html:textarea tabindex="2" disabled="<%= applicationShortcutForm.isAssignOnly() %>" property="resourceDescription" cols="25" rows="5" />
+							</td>
+						</tr>
+						<tr class="formCheckbox">
+							<td class="label">
+								<bean:message key="editResource.addToFavorites" bundle="policyframework" />
+							</td>
+							<td class="value">
+								<html:checkbox tabindex="3" disabled="<%= applicationShortcutForm.isAssignOnly() %>" property="favorite"/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</tabs:tab>
+			<tabs:tab tabName="policies">
+				<input:multiSelectPoliciesListBox tabindex="3" sourceTitleKey="policySelection.availablePolicies.title" targetTitleKey="policySelection.selectedPolicies.title" addKey="policySelection.addPolicy" removeKey="policySelection.removePolicy"
+					allowReordering="true"  upKey="policySelection.moveUp" downKey="policySelection.moveDown" configureKey="policySelection.configurePolicies" configureOnClick="window.location = '/configurePolicies.do?referer=/editApplicationShortcut.do'" 
+					bundle="policyframework" styleClass="multiSelect" modelName="applicationShortcutForm" modelProperty="policyModel" name="applicationShortcutForm" property="selectedPolicies" 
+					showPersonalPoliciesKey="policySelection.showPersonalPolicies.title" showPersonalPolicies="<%= applicationShortcutForm.isShowPersonalPolicies() %>" />
+			</tabs:tab>
+			<logic:iterate name="applicationShortcutForm" property="categories" id="category" indexId="c" type="java.lang.String">
+				<tabs:tab tabName="<%= category %>">
+					<table class="resourceDetails">
+						<%	int lastCategory = 0;
+						 	int idx = 0;
+						%>
+						<logic:iterate name="applicationShortcutForm" property="parameterItems" id="parameterItem" indexId="i"
+										type="com.ovpnals.extensions.ShortcutParameterItem">	
+							<%	int thisCategory = ((ShortcutParameterItem) parameterItem).getCategory();
+								if(!applicationShortcutForm.isAssignOnly() && thisCategory == Integer.parseInt(category)) {
+									if (thisCategory != -1 && (lastCategory == -1 || thisCategory != lastCategory)) {
+										lastCategory = thisCategory;
+									}
+							%>							
+								<%@ include file="/WEB-INF/jsp/content/applications/parameterItem.jspf" %>		        
+							<% 
+							}
+							idx++ ; 
+							%>
+						</logic:iterate>
+					</table>
+				</tabs:tab>
+			</logic:iterate>
+		</tabs:tabSet>
+		<div class="button_bar">
+			<div class="formButton">
+				<html:submit styleClass="save" onclick="setActionTarget('commit'); return true">
+					<bean:message key="editApplicationShortcut.commit" bundle="<%= ApplicationsPlugin.MESSAGE_RESOURCES_KEY %>" />
+				</html:submit>
+			</div>
+			<logic:notEmpty name="applicationShortcutForm" property="referer">
+				<div class="formButton">
+					<html:submit styleClass="cancel" onclick="setActionTarget('cancel'); return true">
+						<bean:message key="editApplicationShortcut.cancel" bundle="<%= ApplicationsPlugin.MESSAGE_RESOURCES_KEY %>" />
+					</html:submit>
+				</div>
+			</logic:notEmpty>
+		</div>
+</div>

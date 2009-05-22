@@ -1,0 +1,40 @@
+
+<jsp:directive.page import="com.ovpnals.applications.ApplicationsPlugin"/><%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="/server/taglibs/core" prefix="core"%>
+<%@ taglib uri="/server/taglibs/input" prefix="input"%>
+
+<bean:define id="themePath"><core:themePath/></bean:define>
+<table class="resourceDetails">
+	<logic:empty name="applicationShortcutApplicationForm" property="availableApplications">
+		<br/>
+		<br/>
+		<bean:message key="applicationShortcutWizard.applicationShortcutApplication.noApplication" bundle="<%= ApplicationsPlugin.MESSAGE_RESOURCES_KEY %>" />
+	</logic:empty>
+	<logic:iterate name="applicationShortcutApplicationForm" property="availableApplications"
+		id="extension" type="com.ovpnals.extensions.ExtensionDescriptor">
+		<tr class="formRadio">
+			<td class="label">
+				<html:radio styleId="<%= "check" + extension.getId() %>" name="applicationShortcutApplicationForm" property="selectedApplication" value="<%= extension.getId() %>"/>
+			</td>
+			<td class="icon">
+				<input:toolTip value="<%= extension.getDescription() %>"
+								href="<%= "javascript: setCheckedValue(document.getElementById('check" + extension.getId() + "'), '" + extension.getId() + "')" %>">
+					<logic:empty name="extension" property="largeIcon">
+						<img border="0" src="<%= themePath %>/images/actions/runApplicationLarge.gif"/>
+					</logic:empty>
+					<logic:notEmpty name="extension" property="largeIcon">
+						<img border="0" src="<%= "/fs/apps/" + extension.getApplicationBundle().getId() + "/" + extension.getLargeIcon() %>"/>
+					</logic:notEmpty>
+				</input:toolTip>
+			</td>
+			<td class="value">
+				<input:toolTip value="<%= extension.getDescription() %>"
+								href="<%= "javascript: setCheckedValue(document.getElementById('check" + extension.getId() + "'), '" + extension.getId() + "')" %>">
+					<bean:write name="extension" property="name"/>
+				</input:toolTip>
+			</td>
+		</tr>
+	</logic:iterate>
+</table>
