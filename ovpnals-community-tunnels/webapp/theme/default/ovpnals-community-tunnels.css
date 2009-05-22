@@ -1,0 +1,36 @@
+div#page_tunnel {
+	margin: 0 auto;
+	text-align: left;
+	width: 38em;
+}
+
+div#page_tunnel .dialog_form_table td.label {
+	width: 25%;
+}
+
+div#page_tunnel .dialog_form_table td.value {
+	width: 75%;
+}
+
+div#page_tunnel .tabPanel .tabContent {
+	min-height: 20em;
+}
+
+div#page_tunnel .multiSelect select {
+	height: 17em;
+}
+
+/* Tunnel Creation */
+
+div#wizard_tunnelWizard {
+	min-height: 24em;
+}
+
+div#wizard_tunnelWizard .formTextArea textarea {
+	height: 9em;
+}
+
+div#wizardPage_tunnelPolicySelection select {
+	height: 14em;
+}
+

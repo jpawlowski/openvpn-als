@@ -1,0 +1,81 @@
+<!DOCTYPE tiles-definitions PUBLIC 
+	"-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" 
+	"webapp/WEB-INF/tiles-config_1_1.dtd"> 
+
+<tiles-definitions>	
+	
+	<!--  Web Forwards -->
+	<definition name=".site.WebForwards" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/webforward/showWebForwards.jspf" />
+		<put name="resourcePrefix" value="webForwards" />
+		<put name="resourceBundle" value="webForwards" />
+		<put name="menuItem" value="managementWebForwards" />
+		<put name="infoImage" value="webForward.gif" />
+		<put name="rssFeed" value="webForwards"/>
+	</definition>
+
+	<definition name=".site.UserWebForwards" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/webforward/showUserWebForwards.jspf" />
+		<put name="resourcePrefix" value="userWebForwards" />
+		<put name="resourceBundle" value="webForwards" />
+		<put name="menuItem" value="userWebForwards" />
+		<put name="infoImage" value="webForward.gif" />
+	</definition>
+	
+	<definition name=".site.EditWebForward" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/webforward/webForwardContent.jspf" />
+		<put name="resourcePrefix" value="editWebForward" />
+		<put name="resourceBundle" value="webForwards" />
+		<put name="menuItem" value="" />
+		<put name="infoImage" value="webForwardEdit.gif" />
+		<put name="rssFeed" value="editWebForward"/>
+	</definition>
+	
+	<definition name=".site.UserEditWebForward" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/webforward/userWebForwardContent.jspf"/>
+		<put name="resourcePrefix" value="editWebForward"/>
+		<put name="resourceBundle" value="webForwards"/>
+		<put name="menuItem" value=""/>
+		<put name="infoImage" value="webForwardEdit.gif"/>
+		<put name="rssFeed" value="editWebForward"/>
+	</definition>
+	
+	<!--  Web Forward Import Wizard --> 
+	<definition name=".site.WebForwardWizardPage" extends=".site.Layout">
+		<put name="resourcePrefix" value="webForwardWizard" />
+		<put name="resourceBundle" value="webForwards" />
+		<put name="content" value="/WEB-INF/jsp/tiles/wizardPage.jspf" />
+		<put name="infoImage" value="webForwardAdd.gif" />
+		<put name="rssFeed" value="webForwardsWizard"/>
+	</definition>
+
+	<!--  Replacements -->
+
+	<definition name=".site.Replacements" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/services/replacementsContent.jspf"/>
+		<put name="resourcePrefix" value="replacements"/>
+		<put name="resourceBundle" value="services"/>
+		<put name="menuItem" value="managementWebForwards"/>
+		<put name="infoImage" value="replacements.gif"/>
+		<put name="rssFeed" value="replacements"/>
+	</definition>
+
+	<definition name=".site.EditReplacement" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/services/replacementContent.jspf"/>
+		<put name="resourcePrefix" value="editReplacement"/>
+		<put name="resourceBundle" value="services"/>
+		<put name="menuItem" value=""/>
+		<put name="infoImage" value="replacements.gif"/>
+		<put name="rssFeed" value="editReplacement"/>
+	</definition>
+	
+	<definition name=".site.CreateReplacement" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/services/replacementContent.jspf"/>
+		<put name="resourcePrefix" value="createReplacement"/>
+		<put name="resourceBundle" value="services"/>
+		<put name="menuItem" value=""/>
+		<put name="infoImage" value="replacements.gif"/>
+		<put name="rssFeed" value="createReplacement"/>
+	</definition>
+</tiles-definitions>
+

@@ -1,0 +1,45 @@
+<bundle version="0.3.0" 
+	requiredHostVersion="0.9.0"
+	id="ovpnals-community-pam"
+	name="OpenVPN-ALS PAM" 
+	license="GPL"
+	productURL="http://localhost"
+	order="50"
+	startOnSetupMode="true">
+	<description>
+		This extension contains a user database that uses PAM as authenticate method.
+	</description>
+
+	<install when="start" />
+	<extension type="plugin"
+		extension="ovpnals-community-pam"
+		name="OpenVPN-ALS Community PAM">
+		<description>
+			This extension adds the 'PAM' feature to OpenVPN-ALS.
+		</description>
+
+		<plugin name="ovpnals-community-pam"
+			class="com.ovpnals.pam.PAMCommunityPlugin">
+			<classpath>
+				private/ovpnals-community-pam.jar
+			</classpath>
+			<resources>webapp</resources>
+		</plugin>
+		
+		<!-- This section allows to specifie the PAM Service Name to be used. -->
+		<!-- see startPlugin method in PAMCommunityPlugin -->
+
+		<propertyDefinitions>
+			<realmProperties>
+				<category id="2010" bundle="pam" parent="65"/>
+				<category id="2011" bundle="pam" parent="2010" />
+				<definition type="0"
+					name="pam.serviceName" typeMeta="" category="2011"
+					defaultValue="ovpnals" sortOrder="10" 
+					validation="com.ovpnals.install.validators.PAMServiceNameValidator"
+					messageResourcesKey="pam" />					
+			</realmProperties>
+		</propertyDefinitions>
+	</extension>
+	
+</bundle>
