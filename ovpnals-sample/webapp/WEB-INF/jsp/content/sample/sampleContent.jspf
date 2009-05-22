@@ -1,0 +1,90 @@
+<%@ page import="com.ovpnals.security.Constants"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="/ovpnals/taglibs/explorer" prefix="explorer"%>
+<%@ taglib uri="/ovpnals/taglibs/navigation" prefix="navigation"%>
+<%@ taglib uri="/ovpnals/taglibs/security" prefix="security"%>
+<%@ taglib uri="/ovpnals/taglibs/input" prefix="input"%>
+<%@ taglib uri="/ovpnals/taglibs/tabs" prefix="tabs"%>
+
+<div id="page_sample" class="tabbedForm">
+	<html:form action="/editSample.do">
+		<html:hidden property="referer" />
+		<html:hidden property="actionTarget" />
+		<html:hidden property="_charset_" />
+		<html:hidden property="editing" />
+		<html:hidden property="resourceId" />
+		<tabs:tabSet name="sampleForm" bundle="sample" resourcePrefix="createSample.tab">
+			<tabs:tabHeadings />
+			<tabs:tab tabName="details">
+				<table class="dialog_form_table">
+					<tbody>
+						<tr class="formText">
+							<td class="label">
+								<div class="required">
+									<bean:message key="editSample.shortName.label" bundle="sample" />
+								</div>
+							</td>
+							<td class="value">
+								<html:text tabindex="1" disabled="false" property="resourceName" maxlength="32" />
+							</td>
+						</tr>
+						<tr class="formTextArea">
+							<td class="label">
+								<div class="required">
+									<bean:message key="editSample.description.label" bundle="sample" />
+								</div>
+							</td>
+							<td class="value">
+								<html:textarea tabindex="2" property="resourceDescription" cols="25" rows="5" />
+							</td>
+						</tr>
+						<tr class="formCheckbox">
+							<td class="label">
+								<bean:message key="editResource.addToFavorites" bundle="policyframework" />
+							</td>
+							<td class="value">
+								<html:checkbox tabindex="3" property="favorite"/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</tabs:tab>
+			<tabs:tab tabName="other">
+				<table class="dialog_form_table">
+					<tbody>
+						<tr class="formTextArea">
+							<td class="label">
+								<div class="required">
+									Guess What
+								</div>
+							</td>
+							<td class="value">
+								No More Attributes
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</tabs:tab>
+			<tabs:tab tabName="policies">
+				<input:multiSelectListBox tabindex="3" sourceTitleKey="policySelection.availablePolicies.title" targetTitleKey="policySelection.selectedPolicies.title" addKey="policySelection.addPolicy" removeKey="policySelection.removePolicy"
+					bundle="policyframework" styleClass="multiSelect" modelName="sampleForm" modelProperty="policyModel" name="sampleForm" property="selectedPolicies" />
+			</tabs:tab>
+		</tabs:tabSet>
+		<div class="button_bar">
+			<div class="formButton">
+				<html:submit styleClass="save" onclick="setActionTarget('commit'); return true">
+					<bean:message key="editSample.commit" bundle="sample" />
+				</html:submit>
+			</div>
+			<logic:notEmpty name="sampleForm" property="referer">
+				<div class="formButton">
+					<html:submit styleClass="cancel" onclick="setActionTarget('cancel'); return true">
+						<bean:message key="editSample.cancel" bundle="sample" />
+					</html:submit>
+				</div>
+			</logic:notEmpty>
+		</div>
+	</html:form>
+</div>

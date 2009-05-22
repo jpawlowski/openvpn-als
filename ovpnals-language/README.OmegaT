@@ -1,0 +1,3 @@
+The translations under src/xx_XX are provided as OmegaT translation databases (TMX). This is a industry 
+standard used by many (most?) translation tools. See wiki for details on how to use OmegaT to create the 
+actual translated files. 

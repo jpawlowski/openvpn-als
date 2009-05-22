@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bundle version="1.0.0" requiredHostVersion="0.9.0" id="ovpnals-language-@LANG@-22082008" type="languagePack" name="@LANGNAME@" license="@LICENSE@" productURL="http://sourceforge.net/projects/ovpnals/" startOnSetupMode="true">
+  <description />
+  <extension type="languagePack" extension="ovpnals-language-@LANG@-22082008-core" name="@NAME_SHORT_LANG@">
+    <description>for the core</description>
+    <languagePack name="ovpnals-language-@LANG@-22082008">
+     <date>1219431167906</date>
+      <language code="@LANG2@_22082008">@LANGNAME@</language>
+      <classpath>ovpnals-language-@LANG@-22082008.jar</classpath>
+      <classpath>ovpnals-language-@LANG@-22082008-agent.jar</classpath>
+    </languagePack>
+  </extension>
+  <extension type="agent" extension="ovpnals-language-@LANG@-22082008-agent" name="@NAME_SHORT_LANG@">
+    <description>for the agent</description>
+    <agent name="ovpnals-language-@LANG@-22082008" hostVersion="0.9.0" order="10" plugin="ovpnals-language-@LANG@-22082008-agent">
+      <classpath>
+        <jar>ovpnals-language-@LANG@-22082008-agent.jar</jar>
+      </classpath>
+    </agent>
+  </extension>
+</bundle>
+
