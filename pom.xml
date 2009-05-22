@@ -17,6 +17,7 @@
         <module>agent-launcher</module>
         <module>adito-agent-awt</module>
         <module>adito-agent-swt</module>
+        <module>boot</module>
     </modules>
     <build>
         <sourceDirectory>src</sourceDirectory>
