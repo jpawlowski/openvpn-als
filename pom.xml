@@ -18,6 +18,7 @@
         <module>adito-agent-awt</module>
         <module>adito-agent-swt</module>
         <module>boot</module>
+        <module>server</module>
     </modules>
     <build>
         <sourceDirectory>src</sourceDirectory>
