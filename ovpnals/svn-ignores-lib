@@ -1,0 +1,8 @@
+*.log
+*.log.?
+*~
+*.class
+*.backup
+*.data
+tools.jar
+classes.jar

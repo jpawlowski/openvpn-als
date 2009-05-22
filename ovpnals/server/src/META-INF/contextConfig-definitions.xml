@@ -1,0 +1,103 @@
+<definitions>
+	<definition type="0" name="proxies.http.proxyHost" typeMeta=""
+		category="100" defaultValue="" visibility="3" sortOrder="10"
+		validation="com.ovpnals.input.validators.HostnameOrIPAddressValidator(minLength=0)"  restartRequired="true" />
+	<definition type="1" name="proxies.http.proxyPort" typeMeta=""
+		category="100" defaultValue="3128" visibility="3" sortOrder="20"
+		validation="com.ovpnals.input.validators.PortValidator"  restartRequired="true" />
+	<definition type="0" name="proxies.http.proxyUser" typeMeta=""
+		category="100" defaultValue="" visibility="3" sortOrder="30"  restartRequired="true" />
+	<definition type="4" name="proxies.http.proxyPassword" typeMeta=""
+		category="100" defaultValue="" visibility="3" sortOrder="40"  restartRequired="true" />
+	<definition type="5" name="proxies.http.nonProxyHosts"
+		typeMeta="30x5" category="100" defaultValue="localhost" visibility="3"
+		sortOrder="50"  restartRequired="true" />
+	<definition type="4"
+		name="webServer.keystore.sslCertificate.password" typeMeta=""
+		category="70" defaultValue="" visibility="3" sortOrder="0"
+		hidden="true" restartRequired="true"  />
+	<definition type="1" name="webServer.alias" typeMeta=""
+		category="70" defaultValue="server-certificate" visibility="3"
+		sortOrder="0" hidden="true"  restartRequired="true" />
+	<definition type="1" name="webServer.keyStoreType" typeMeta=""
+		category="70" defaultValue="JKS" visibility="3" sortOrder="0"
+		hidden="true"  restartRequired="true" />
+	<definition type="3" name="webServer.protocol" typeMeta="http,https"
+		category="70" defaultValue="https" visibility="3" sortOrder="10"
+		hidden="true" restartRequired="true" />
+	<definition type="1" name="webServer.port" typeMeta="true" category="70"
+		defaultValue="443" visibility="3" sortOrder="20"
+		validation="com.ovpnals.input.validators.PortValidator"  restartRequired="true" />
+	<definition type="9" name="webServer.bindAddress"
+		typeMeta="com.ovpnals.core.InterfacesMultiSelectListDataSource"
+		category="70" defaultValue="0.0.0.0" visibility="3" sortOrder="30"  restartRequired="true" />
+
+	<definition type="1" name="webServer.httpRedirectPort" typeMeta=""
+		category="70" defaultValue="80" visibility="3" sortOrder="120"  restartRequired="true" />
+	<definition type="2" name="webServer.disableCertificateWarning"
+		typeMeta="" category="70" defaultValue="false" visibility="3"
+		sortOrder="99999" />
+
+	<!--  Performance -->
+	<definition type="1" name="webServer.minThreads" typeMeta=""
+		category="71" defaultValue="5" visibility="3" sortOrder="40"  restartRequired="true" />
+	<definition type="1" name="webServer.maxThreads" typeMeta=""
+		category="71" defaultValue="500" visibility="3" sortOrder="50"  restartRequired="true" />
+	<definition type="7" name="webServer.maxIdleTimeMs" typeMeta="M"
+		category="71" defaultValue="0" visibility="3" sortOrder="60" hidden="true" restartRequired="true" 
+		validation="com.ovpnals.input.validators.TimeCounterValidator(minValue=0,maxValue=120)"/>
+	<definition type="7" name="webServer.lowResourcePersistTimeMs"
+		typeMeta="s" category="71" defaultValue="2000" visibility="3"
+		sortOrder="70"  restartRequired="true" hidden="true"
+		validation="com.ovpnals.input.validators.TimeCounterValidator(minValue=0,maxValue=60)"/>
+	<definition type="3" name="webServer.threadPriority" typeMeta="10,5"
+		category="71" defaultValue="5" visibility="3" sortOrder="75"  restartRequired="true" />
+
+	<definition type="1" name="webServer.bufferSize" typeMeta=""
+		category="71" defaultValue="8192" visibility="3" sortOrder="80"  restartRequired="true" />
+	<definition type="1" name="webServer.bufferReserve" typeMeta=""
+		category="71" defaultValue="512" visibility="3" sortOrder="90"  restartRequired="true" />
+
+	<definition type="1" name="webServer.requestsPerGC" typeMeta=""
+		category="71" defaultValue="0" visibility="3" sortOrder="95"  restartRequired="true" />
+	<definition type="2" name="webServer.tcpNoDelay" typeMeta=""
+		category="71" defaultValue="false" visibility="3" sortOrder="100"  restartRequired="true" />
+		
+	<definition type="2" name="webServer.requestLog" typeMeta=""
+		category="71" defaultValue="true" visibility="3" sortOrder="110"  restartRequired="true" />
+	<definition type="2" name="webServer.stats" typeMeta=""
+		category="71" defaultValue="false" visibility="3" sortOrder="112" restartRequired="true" />
+	<definition type="7" name="webServer.statsUpdate" typeMeta="S"
+		category="71" defaultValue="5000" visibility="3" sortOrder="114"  restartRequired="true" 
+		validation="com.ovpnals.input.validators.TimeCounterValidator(minValue=0,maxValue=480)" />
+		
+	<!--  SSL -->
+	<definition type="2" name="ssl.strictSSLTrustMode" typeMeta=""
+		category="191" defaultValue="false" sortOrder="10" validation=""
+		messageResourcesKey="properties" restartRequired="true"  />
+	<definition type="9" name="ssl.supportedProtocols"
+		typeMeta="com.ovpnals.core.SSLProtocolDataSource" category="191"
+		defaultValue="SSLv2Hello!SSLv3!TLSv1" sortOrder="10"
+		validation="com.ovpnals.core.SSLProtocolValidator"
+		messageResourcesKey="properties"  restartRequired="true" />
+	<definition type="9" name="ssl.supportedCiphers"
+		typeMeta="com.ovpnals.core.SSLCipherSuitesDataSource"
+		category="191" defaultValue="SSL_RSA_WITH_RC4_128_MD5!SSL_RSA_WITH_RC4_128_SHA!TLS_RSA_WITH_AES_128_CBC_SHA!TLS_DHE_RSA_WITH_AES_128_CBC_SHA!TLS_DHE_DSS_WITH_AES_128_CBC_SHA!SSL_RSA_WITH_3DES_EDE_CBC_SHA!SSL_DHE_RSA_WITH_3DES_EDE_CBC_SHA!SSL_DHE_DSS_WITH_3DES_EDE_CBC_SHA!SSL_DH_anon_WITH_RC4_128_MD5!TLS_DH_anon_WITH_AES_128_CBC_SHA!SSL_DH_anon_WITH_3DES_EDE_CBC_SHA!TLS_KRB5_WITH_RC4_128_SHA!TLS_KRB5_WITH_RC4_128_MD5!TLS_KRB5_WITH_3DES_EDE_CBC_SHA!TLS_KRB5_WITH_3DES_EDE_CBC_MD5" sortOrder="20"
+		validation="com.ovpnals.core.SSLCipherSuiteValidator"
+		messageResourcesKey="properties" restartRequired="true"  />
+
+	<!--  SOCKS properties are now hidden until we support them properly in Maverick HTTP -->
+	<definition hidden="true" type="0" name="proxies.socksProxyHost"
+		typeMeta="" category="100" defaultValue="" visibility="3"
+		sortOrder="60" restartRequired="true" />
+	<definition hidden="true" type="1" name="proxies.socksProxyPort"
+		typeMeta="" category="100" defaultValue="3128" visibility="3"
+		sortOrder="70"
+		validation="com.ovpnals.input.validators.PortValidator" restartRequired="true" />
+	<definition hidden="true" type="0" name="proxies.socksProxyUser"
+		typeMeta="" category="100" defaultValue="" visibility="3"
+		sortOrder="80" restartRequired="true" />
+	<definition hidden="true" type="4" name="proxies.socksProxyPassword"
+		typeMeta="" category="100" defaultValue="" visibility="3"
+		sortOrder="90" restartRequired="true" />
+</definitions>

@@ -1,0 +1,1192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ovpnals" default="start">
+
+	<property file="../build.properties" />
+	<property file="release.properties" />
+
+	<!-- Options for running OpenVPN-ALS -->
+	<property name="ovpnals.conf" value="${basedir}/conf" />
+
+	<!-- Standard build locations -->
+
+	<property name="build.compiler" value="modern" />
+	<property name="dir.build" value="build" />
+	<property name="dist.dir" value="dist" />
+	<property name="dir.lib" value="lib" />
+	<property name="build.serverlib" value="serverlib" />
+	<property name="build.doc" value="${dir.build}/doc" />
+	<property name="build.webapp.lib" value="webapp/WEB-INF/lib" />
+	<property name="build.boot.output" value="${dir.build}/boot" />
+	<property name="build.jsp.output" value="${dir.build}/jsp" />
+	<property name="build.jsp.classes.output" value="${dir.build}/jspclasses" />
+	<property name="build.jsp.mappings.output" value="${dir.build}/gen" />
+	<property name="build.jsp.mappings.file" value="${build.jsp.mappings.output}/mappings.xml" />
+	<property name="build.tools.output" value="${dir.build}/tools" />
+	<property name="build.server.output" value="${dir.build}/server" />
+	<property name="build.webapp.output" value="${dir.build}/webapp" />
+	<property name="build.output.instrumented" value="${dir.build}/instrumented" />
+	<property name="build.output.test" value="${dir.build}/test" />
+	<property name="build.webapp.deploy" value="webapp/WEB-INF/classes" />
+	<property name="build.boot.src" value="boot/src" />
+	<property name="build.server.src" value="server/src" />
+	<property name="build.webapp.src" value="src" />
+	<property name="build.test.src" value="test/src" />
+	<property name="build.tools.home" value="tools" />
+	<property name="build.test" value="test" />
+	<property name="build.debug" value="on" />
+	<property name="dir.build.reports" value="${dir.build}/reports" />
+	<property name="tmpdir" value="tmp" />
+
+	<!-- Reports -->
+	<!-- build.reports is overridden when running the suite of tests -->
+	<property name="dir.build.reports" value="${basedir}/${dir.build}/reports" />
+	<property name="dir.build.reports.junit" value="junit" />
+	<property name="dir.build.reports.junit.xml" value="${dir.build.reports.junit}/xml" />
+	<property name="dir.build.reports.junit.html" value="${dir.build.reports.junit}/html" />
+	<property name="dir.build.reports.emma" value="emma" />
+	<property name="dir.build.reports.emma.coverage" value="${dir.build.reports.emma}/coverage" />
+	<property name="dir.build.reports.emma.html" value="${dir.build.reports.emma}/html" />
+	<property name="dir.build.reports.findbugs" value="findbugs" />
+	<property name="dir.build.reports.findbugs.xml" value="${dir.build.reports.findbugs}/xml" />
+	<property name="dir.build.reports.findbugs.html" value="${dir.build.reports.findbugs}/html" />
+	<property name="dir.build.reports.cpd" value="cpd" />
+	<property name="dir.build.reports.cpd.xml" value="${dir.build.reports.cpd}/xml" />
+	<property name="dir.build.reports.cpd.html" value="${dir.build.reports.cpd}/html" />
+	<property name="dir.build.reports.pmd" value="pmd" />
+	<property name="dir.build.reports.pmd.xml" value="${dir.build.reports.pmd}/xml" />
+	<property name="dir.build.reports.pmd.html" value="${dir.build.reports.pmd}/html" />
+
+	<!-- Dependencies -->
+	<property name="dir.build-tools" value="${basedir}/../build-tools" />
+	<property name="unit-testing.home" value="${dir.build-tools}/unit-testing" />
+	<property name="dir.maverick-util" value="../maverick-util" />
+	<property name="dir.maverick-util.classes" value="${dir.maverick-util}/build/classes" />
+	<property name="dir.maverick-crypto" value="../maverick-crypto" />
+	<property name="dir.maverick-crypto.classes" value="${dir.maverick-crypto}/build/classes" />
+	<property name="dir.maverick-ssl" value="../maverick-ssl" />
+	<property name="dir.maverick-ssl.classes" value="${dir.maverick-ssl}/build/classes" />
+	<property name="dir.maverick-multiplex" value="../maverick-multiplex" />
+	<property name="dir.maverick-multiplex.classes" value="${dir.maverick-multiplex}/build/classes" />
+
+	<!-- emma code coverage task definition -->
+	<taskdef name="emma" classname="com.vladium.emma.emmaTask">
+		<classpath location="${unit-testing.home}/emma/emma.jar" />
+		<classpath location="${unit-testing.home}/emma/emma_ant.jar" />
+	</taskdef>
+
+	<!-- Copy and paste detector task definition -->
+	<taskdef name="cpd" classname="net.sourceforge.pmd.cpd.CPDTask">
+		<classpath location="${unit-testing.home}/pmd/pmd-4.0rc1.jar" />
+	</taskdef>
+
+	<!-- FindBugs code quality task definition -->
+	<taskdef name="findbugs" classname="edu.umd.cs.findbugs.anttask.FindBugsTask">
+		<classpath location="${unit-testing.home}/findbugs/findbugs-ant.jar" />
+	</taskdef>
+
+	<!-- PMD code quaility task definition -->
+	<taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask">
+		<classpath location="${unit-testing.home}/pmd/pmd-4.0rc1.jar" />
+	</taskdef>
+
+	<!-- NOTE These should not be here, they place a ciruclar dependency on the following community extensions. -->
+	
+	<!-- NOTE This Code use Old Apache Commons VFS. This is not required for new Apache Commons VFS -->
+	<!--
+	<property name="ovpnals-commons-vfs.home" value="../ovpnals-commons-vfs" />
+	<property name="ovpnals-commons-vfs.classes" value="../ovpnals-commons-vfs/build/classes" />
+	-->
+	<property name="ovpnals-community-tunnels.home" value="../ovpnals-community-tunnels" />
+	<property name="ovpnals-community-applications.home" value="../ovpnals-community-applications" />
+	<property name="ovpnals-community-web-forwards.home" value="../ovpnals-community-web-forwards" />
+	<property name="ovpnals-community-network-places.home" value="../ovpnals-community-network-places" />
+	<property name="ovpnals-community-unix.home" value="../ovpnals-community-unix" />
+	<property name="ovpnals-community-activedirectory.home" value="../ovpnals-community-activedirectory" />
+
+	<property name="agent.home" value="../ovpnals-agent" />
+
+	<!-- Classpath -->
+	<path id="jsp.precompile.path">
+		<pathelement location="${build.boot.output}" />
+		<pathelement location="${build.server.output}" />
+		<pathelement location="${build.webapp.output}" />
+		<pathelement path="${dir.maverick-ssl.classes}" />
+		<pathelement path="${dir.maverick-crypto.classes}" />
+		<pathelement path="${dir.maverick-util.classes}" />
+		<pathelement path="${dir.maverick-multiplex.classes}" />
+		<fileset dir="${build.webapp.lib}">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${dir.build-tools}">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${dir.lib}">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${build.serverlib}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<path id="build.classpath">
+		<pathelement path="${build.boot.output}" />
+		<pathelement path="${build.server.output}" />
+		<pathelement path="${dir.lib}" />
+		<pathelement path="${build.serverlib}" />
+		<pathelement path="${build.webapp.output}" />
+		<pathelement path="${dir.maverick-ssl.classes}" />
+		<pathelement path="${dir.maverick-multiplex.classes}" />
+		<pathelement path="${dir.maverick-crypto.classes}" />
+		<pathelement path="${dir.maverick-util.classes}" />
+
+		<fileset dir="${dir.lib}" includes="*.jar" />
+		<fileset dir="${build.serverlib}" includes="**/*.jar" />
+		<fileset dir="${build.webapp.lib}" includes="**/*.jar" />
+		<pathelement path="webapp" />
+	</path>
+
+	<path id="test.classpath">
+		<path refid="build.classpath" />
+		<fileset dir="${dir.build-tools}" includes="**/*.jar" />
+	</path>
+
+	<target name="test" description="Run the various tests for this extension" depends="clean">
+		<mkdir dir="${dir.build.reports}" />
+		<antcall target="test-junit" />
+		<antcall target="test-findbugs" />
+		<antcall target="test-cpd" />
+		<antcall target="test-pmd" />
+		<antcall target="test-report" />
+		<fail if="junit.test.failure" unless="run.all.tests" message="One or more JUnit tests failed, please consult the report for more information" />
+	</target>
+
+	<target name="test-junit" description="Run the JUnit tests for this extension" depends="compile-test">
+		<mkdir dir="${dir.build.reports}/${dir.build.reports.junit.xml}" />
+
+		<junit fork="yes" printsummary="yes" failureproperty="junit.test.failure" dir=".">
+			<classpath>
+				<pathelement path="${build.output.test}" />
+				<pathelement path="${build.output.instrumented}" />
+			</classpath>
+			<classpath refid="test.classpath" />
+
+			<jvmarg value="-Demma.coverage.out.file=${dir.build.reports}/${dir.build.reports.emma.coverage}/${ant.project.name}-coverage.emma" />
+			<jvmarg value="-Demma.coverage.out.merge=true" />
+
+			<formatter type="xml" />
+			<batchtest todir="${dir.build.reports}/${dir.build.reports.junit.xml}">
+				<fileset dir="${build.output.test}">
+					<include name="**/*Test*.class" />
+					<exclude name="**/*Abstract*.class" />
+					<exclude name="**/*$*.class" />
+					<exclude name="com/ovpnals/httpunit/*" />
+					<exclude name="com/ovpnals/testcontainer/*" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+
+	<target name="compile-test" description="Compile the tests" depends="compile,compile-test-dependencies">
+		<antcall target="compile">
+			<param name="build.debug" value="on" />
+		</antcall>
+		<antcall target="compile-emma" />
+
+		<mkdir dir="${build.output.test}" />
+		<javac destdir="${build.output.test}" srcdir="${build.test.src}" debug="true" includeantruntime="false" includes="**/*.java">
+			<classpath refid="test.classpath" />
+		</javac>
+		<copy todir="${build.output.test}">
+			<fileset dir="${build.test.src}">
+				<include name="**/*.properties" />
+				<include name="**/*.txt" />
+				<include name="**/*.xml" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- TODO: these might also require the maverick-* JAR-files. In that case the target should be "dist",
+             not compile (see target compile-dependencies -->
+	<target name="compile-test-dependencies" description="Compile the test dependencies for this project">
+		<ant inheritall="false" dir="${dir.maverick-crypto}" target="compile" />
+		<ant inheritall="false" dir="${dir.maverick-multiplex}" target="compile" />
+		<ant inheritall="false" dir="${dir.maverick-ssl}" target="compile" />
+		<ant inheritall="false" dir="${dir.maverick-util}" target="compile" />
+	</target>
+
+	<target name="compile-emma" description="Instrument the classes to provide emma code coverage">
+		<mkdir dir="${build.output.instrumented}" />
+		<mkdir dir="${dir.build.reports}/${dir.build.reports.emma.coverage}" />
+		<!-- shouldn't have to do this, but it it doesn't seem to work with multiple instrpaths set -->
+		<emma>
+			<instr instrpath="${build.boot.output}" mode="copy" outdir="${build.output.instrumented}" metadatafile="${dir.build.reports}/${dir.build.reports.emma.coverage}/${ant.project.name}-metadata.emma" merge="true">
+			</instr>
+		</emma>
+		<emma>
+			<instr instrpath="${build.server.output}" mode="copy" outdir="${build.output.instrumented}" metadatafile="${dir.build.reports}/${dir.build.reports.emma.coverage}/${ant.project.name}-metadata.emma" merge="true">
+			</instr>
+		</emma>
+		<emma>
+			<instr instrpath="${build.webapp.output}" mode="copy" outdir="${build.output.instrumented}" metadatafile="${dir.build.reports}/${dir.build.reports.emma.coverage}/${ant.project.name}-metadata.emma" merge="true">
+			</instr>
+		</emma>
+	</target>
+
+	<target name="test-emma" description="Test the code coverage against the JUnit tests" depends="test-junit" />
+
+	<target name="test-findbugs" description="Test the extension against FindBugs">
+		<mkdir dir="${dir.build.reports}/${dir.build.reports.findbugs.xml}" />
+
+		<findbugs projectname="${ant.project.name}" home="${unit-testing.home}/findbugs" output="xml:withMessages" outputFile="${dir.build.reports}/${dir.build.reports.findbugs.xml}/${ant.project.name}-findbugs-report.xml" reportLevel="low" jvmargs="-Xms128m -Xmx512m -XX:+UseParallelGC">
+			<sourcePath path="${build.boot.src}" />
+			<sourcePath path="${build.server.src}" />
+			<sourcePath path="${build.webapp.src}" />
+			<class location="${build.boot.output}" />
+			<class location="${build.server.output}" />
+			<class location="${build.webapp.output}" />
+			<auxclasspath refid="test.classpath" />
+		</findbugs>
+	</target>
+
+	<target name="test-cpd" description="Test the extension against the Copy and Paste Detector">
+		<mkdir dir="${dir.build.reports}/${dir.build.reports.cpd.xml}" />
+
+		<cpd minimumTokenCount="50" outputFile="${dir.build.reports}/${dir.build.reports.cpd.xml}/${ant.project.name}-cpd-report.txt">
+			<fileset dir="${build.webapp.src}" includes="**/*.java" />
+		</cpd>
+	</target>
+
+	<target name="test-pmd" description="Test the extension against the PMD rules">
+		<mkdir dir="${dir.build.reports}/${dir.build.reports.pmd.xml}" />
+
+		<pmd shortFilenames="true" targetjdk="1.5" rulesetfiles="${unit-testing.home}/pmd/pmd-report-all.xml">
+			<fileset dir="${build.webapp.src}" includes="**/*.java" />
+			<formatter type="xml" toFile="${dir.build.reports}/${dir.build.reports.pmd.xml}/${ant.project.name}-pmd-report.xml" />
+		</pmd>
+	</target>
+
+	<target name="test-report" description="Generate the HTML reports">
+		<antcall target="test-junit-report" />
+		<antcall target="test-emma-report" />
+		<antcall target="test-findbugs-report" />
+		<!-- antcall target="test-cpd-report"/ -->
+		<antcall target="test-pmd-report" />
+		<antcall target="test-report-cleanup" />
+	</target>
+
+	<target name="test-junit-report" description="Generate the JUnit HTML report" unless="run.all.tests">
+		<mkdir dir="${dir.build.reports}/${dir.build.reports.junit.html}" />
+		<junitreport todir="${dir.build.reports}/${dir.build.reports.junit}">
+			<fileset dir="${dir.build.reports}/${dir.build.reports.junit.xml}" includes="TEST-*.xml" />
+			<report format="frames" todir="${dir.build.reports}/${dir.build.reports.junit.html}" />
+		</junitreport>
+	</target>
+
+	<target name="test-emma-report" description="Creates a code coverage report using emma stats gathered whilst running junit tests" unless="run.all.tests">
+		<mkdir dir="${dir.build.reports}/${dir.build.reports.emma.html}" />
+		<emma>
+			<report sourcepath="${build.webapp.src}" sort="+block,+name,+method,+class" metrics="method:70,block:80,line:80,class:100">
+				<fileset dir="${dir.build.reports}/${dir.build.reports.emma.coverage}" includes="${ant.project.name}-*.emma" />
+				<html outfile="${dir.build.reports}/${dir.build.reports.emma.html}/${ant.project.name}-coverage.html" depth="method" columns="name,class,method,block,line" />
+			</report>
+		</emma>
+	</target>
+
+	<target name="test-findbugs-report" description="Generate the FindBugs HTML report">
+		<mkdir dir="${dir.build.reports}/${dir.build.reports.findbugs.html}" />
+		<xslt in="${dir.build.reports}/${dir.build.reports.findbugs.xml}/${ant.project.name}-findbugs-report.xml" style="${unit-testing.home}/findbugs/fancy.xsl" out="${dir.build.reports}/${dir.build.reports.findbugs.html}/${ant.project.name}-findbugs-report.html" />
+	</target>
+
+	<target name="test-cpd-report" description="Generate the Copy and Paste detector HTML report">
+		<mkdir dir="${dir.build.reports}/${dir.build.reports.cpd.html}" />
+		<xslt in="${dir.build.reports}/${dir.build.reports.cpd.xml}/${ant.project.name}-cpd-report.txt" style="${unit-testing.home}/pmd/cpdhtml.xslt" out="${dir.build.reports}/${dir.build.reports.cpd.html}/${ant.project.name}-cpd-report.html" />
+	</target>
+
+	<target name="test-pmd-report" description="Generate the PMD HTML report">
+		<mkdir dir="${dir.build.reports}/${dir.build.reports.pmd.html}" />
+		<xslt in="${dir.build.reports}/${dir.build.reports.pmd.xml}/${ant.project.name}-pmd-report.xml" style="${unit-testing.home}/pmd/wz-pmd-report.xslt" out="${dir.build.reports}/${dir.build.reports.pmd.html}/${ant.project.name}-pmd-report.html" />
+	</target>
+
+	<target name="test-report-cleanup" description="Removes all the generated report meta-data, leaving behind the useful reports" unless="run.all.tests">
+		<delete dir="${dir.build.reports}/${dir.build.reports.junit}" includes="*.*" />
+		<delete dir="${dir.build.reports}/${dir.build.reports.junit.xml}" />
+		<delete dir="${dir.build.reports}/${dir.build.reports.emma.coverage}" />
+		<delete dir="${dir.build.reports}/${dir.build.reports.findbugs.xml}" />
+		<delete dir="${dir.build.reports}/${dir.build.reports.pmd.xml}" />
+
+		<copy todir="${dir.build.reports}/${dir.build.reports.junit}">
+			<fileset dir="${dir.build.reports}/${dir.build.reports.junit.html}" includes="**/*" />
+		</copy>
+		<copy todir="${dir.build.reports}/${dir.build.reports.emma}">
+			<fileset dir="${dir.build.reports}/${dir.build.reports.emma.html}" includes="**/*" />
+		</copy>
+		<copy todir="${dir.build.reports}/${dir.build.reports.findbugs}">
+			<fileset dir="${dir.build.reports}/${dir.build.reports.findbugs.html}" includes="**/*" />
+		</copy>
+		<copy todir="${dir.build.reports}/${dir.build.reports.pmd}">
+			<fileset dir="${dir.build.reports}/${dir.build.reports.pmd.html}" includes="**/*" />
+		</copy>
+
+		<delete dir="${dir.build.reports}/${dir.build.reports.junit.html}" />
+		<delete dir="${dir.build.reports}/${dir.build.reports.emma.html}" />
+		<delete dir="${dir.build.reports}/${dir.build.reports.findbugs.html}" />
+		<delete dir="${dir.build.reports}/${dir.build.reports.pmd.html}" />
+	</target>
+
+	<target name="clean-reports" unless="run.all.tests">
+		<delete dir="${dir.build.reports}" />
+	</target>
+
+	<!-- Ant Contrib is required -->
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+		<classpath>
+			<pathelement location="${dir.build-tools}/ant/ant-contrib.jar" />
+		</classpath>
+	</taskdef>
+
+
+
+	<target name="console" depends="create-wrapper-conf,check-tools,check-permissions" description="Run OpenVPN-ALS server in the foreground">
+		<!-- Launch on Linux -->
+		<if>
+			<equals arg1="${os.name}" arg2="Linux" />
+			<then>
+				<exec executable="${basedir}/install/platforms/linux/ovpnals">
+					<arg value="console" />
+					<env key="WRAPPER_CONF" value="${ovpnals.conf}/wrapper.conf" />
+					<env key="PIDDIR" value="${basedir}/ovpnals/tmp" />
+				</exec>
+			</then>
+			<else>
+				<!-- Launch on Windows -->
+				<if>
+					<os family="windows" />
+					<then>
+						<exec executable="${basedir}/install/platforms/windows/wrapper">
+							<arg value="-c" />
+							<arg value="../../../${ovpnals.conf}/wrapper.conf" />
+							<arg value="wrapper.working.dir=../../.." />
+							<arg value="wrapper.java.library.path.1=install/platforms/windows" />
+						</exec>
+					</then>
+					<else>
+						<!-- Fall back to manually executing -->
+						<echo>
+							Service wrapper not currently supported on this platform (${os.name}), so falling back to 
+							generic method. You will not have restart ability from the user interface and
+							beware of using CTRL+C, it may leave processes running
+						</echo>
+						<antcall target="start-using-java" />
+					</else>
+				</if>
+			</else>
+		</if>
+	</target>
+
+	<target name="start-using-java" depends="check-tools" description="Launch OpenVPN-ALS server using Java-only method, avoiding the wrapper.">
+		<java fork="true" classname="com.ovpnals.boot.Bootstrap">
+			<classpath>
+				<pathelement path="${build.boot.output}" />
+			</classpath>
+			<arg value="--conf=${ovpnals.conf}" />
+		</java>
+	</target>
+
+	<target name="start" depends="create-wrapper-conf,check-tools,check-permissions" description="Start OpenVPN-ALS server in the background">
+		<!-- Launch on Linux -->
+		<if>
+			<equals arg1="${os.name}" arg2="Linux" />
+			<then>
+				<exec executable="${basedir}/install/platforms/linux/ovpnals">
+					<arg value="start" />
+					<env key="WRAPPER_CONF" value="${ovpnals.conf}/wrapper.conf" />
+				</exec>
+				<echo>OpenVPN-ALS started</echo>
+			</then>
+			<else>
+				<!-- Launch on Windows -->
+				<if>
+					<os family="windows" />
+					<then>
+						<exec spawn="true" executable="${basedir}/install/platforms/windows/wrapper">
+							<arg value="-c" />
+							<arg value="../../../${ovpnals.conf}/wrapper.conf" />
+							<arg value="wrapper.working.dir=../../.." />
+							<arg value="wrapper.java.library.path.1=install/platforms/windows" />
+						</exec>
+						<echo>OpenVPN-ALS started</echo>
+					</then>
+					<else>
+						<!-- Fall back to manually executing -->
+						<echo>
+							Service wrapper not currently supported on this platform (${os.name}), so falling back to 
+							generic method. You will not have restart ability from the user interface and
+							beware of using CTRL+C, it may leave processes running
+						</echo>
+						<java spawn="true" fork="true" classname="com.ovpnals.boot.Bootstrap">
+							<classpath>
+								<pathelement path="${build.boot.output}" />
+							</classpath>
+							<arg value="--conf=${ovpnals.conf}" />
+						</java>
+						<echo>OpenVPN-ALS started</echo>
+					</else>
+				</if>
+			</else>
+		</if>
+	</target>
+
+	<!-- Stop tun running OpenVPN-ALS server -->
+	<target name="stop" depends="create-wrapper-conf,check-permissions">
+		<!-- Stop on Linux -->
+		<if>
+			<equals arg1="${os.name}" arg2="Linux" />
+			<then>
+				<exec executable="${basedir}/install/platforms/linux/ovpnals">
+					<arg value="stop" />
+					<env key="WRAPPER_CONF" value="${ovpnals.conf}/wrapper.conf" />
+				</exec>
+			</then>
+			<else>
+				<antcall target="stop-using-signal" />
+			</else>
+		</if>
+	</target>
+
+	<!-- Stop the running OpenVPN-ALS using signal via run file -->
+	<target name="stop-using-signal">
+		<echo file="tmp/server.run">shutdown</echo>
+		<echo>Shutdown signal sent. This may take a few seconds to take effect.</echo>
+	</target>
+
+	<!-- Restart the running OpenVPN-ALS server -->
+	<target name="restart" depends="compile,local-deploy,deploy-community-extensions,create-wrapper-conf,check-tools,check-permissions">
+		<!-- Restart on Linux -->
+		<if>
+			<equals arg1="${os.name}" arg2="Linux" />
+			<then>
+				<exec executable="${basedir}/install/platforms/linux/ovpnals">
+					<arg value="restart" />
+					<env key="WRAPPER_CONF" value="${ovpnals.conf}/wrapper.conf" />
+				</exec>
+			</then>
+			<else>
+				<if>
+					<os family="windows" />
+					<then>
+						<echo file="tmp/server.run">restart</echo>
+						<echo>Restart signal sent. This may take a few seconds to take effect.</echo>
+					</then>
+					<else>
+						<!-- Fall back to manually executing -->
+						<echo>Restart not implemented on this platform</echo>
+					</else>
+				</if>
+			</else>
+		</if>
+	</target>
+
+	<!-- Create wrapper.conf dynamically from wrapper.conf.base -->
+	<target name="create-wrapper-conf" >
+
+		<!-- Select the correct wrapper directory based on the OS name -->
+
+		<!-- Overriding property value from within <if> statement does not seem to work,
+		     so we're have to do this the ugly way. -->
+
+		<if><equals arg1="${os.name}" arg2="Linux" />
+			<then><property name="wrapper.java.library.path" value="install/platforms/linux/x86" /></then>
+		<else>
+			<if><os family="windows" />
+				<then><property name="wrapper.java.library.path" value="install/platforms/windows" /></then>
+			<else>
+					<echo>The wrapper directory for your OS (${os.name}) is not automatically detected!</echo>
+					<echo>Please send mail to the OpenVPN-ALS mailinglists, file a bug report or post to the forums.</echo>
+					<echo>Meanwhile you can create the wrapper.conf manually or add an entry to "create-wrapper-conf"</echo>
+					<echo>in ovpnals/build.xml for your OS.</echo>
+					<property name="wrapper.java.library.path" value="install/platforms/undetected" />
+			</else>
+			</if>
+		</else>
+		</if>
+
+		<!-- Overwrite existing wrapper.conf. Useful if the user changes Java version. -->
+		<!-- Do not overwrite if the OS was undetected. -->
+
+		<if><equals arg1="${wrapper.java.library.path}" arg2="install/platforms/undetected" />
+			<then><copy failonerror="false" file="${ovpnals.conf}/wrapper.conf.base" tofile="${ovpnals.conf}/wrapper.conf" /></then>
+		<else>
+			<copy overwrite="true" failonerror="false" file="${ovpnals.conf}/wrapper.conf.base" tofile="${ovpnals.conf}/wrapper.conf" />
+		</else>
+		</if>
+		
+
+		<echo>Creating wrapper configuration dynamically</echo>
+		<echo></echo>
+		<echo>   Java executable: ${java.home}/bin/java</echo>
+		<echo>   Wrapper directory: ${wrapper.java.library.path}</echo>
+
+                <replace file="${ovpnals.conf}/wrapper.conf">
+                        <replacefilter token="@WRAPPER.JAVA.COMMAND@" value="${java.home}/bin/java" />
+                        <replacefilter token="@WRAPPER.JAVA.LIBRARY.PATH@" value="${wrapper.java.library.path}" />
+                </replace>
+
+
+	</target>
+
+	<!-- Start the install wizard  -->
+	<target name="install" depends="compile,local-deploy,deploy-community-extensions,create-wrapper-conf,check-tools,check-permissions">
+
+		<!-- Just in case -->
+		<mkdir dir="logs" />
+		<mkdir dir="tmp" />
+
+		<java fork="true" classname="com.ovpnals.boot.Bootstrap">
+			<arg value="--install" />
+			<classpath>
+				<pathelement path="${build.boot.output}" />
+			</classpath>
+			<arg value="--conf=${ovpnals.conf}" />
+		</java>
+	</target>
+
+
+	<!-- Start the install wizard  -->
+	<target name="install-without-compiling" depends="check-tools,check-permissions">
+
+		<!-- Just in case -->
+		<mkdir dir="logs" />
+		<mkdir dir="tmp" />
+
+		<java fork="true" classname="com.ovpnals.boot.Bootstrap">
+			<arg value="--install" />
+			<classpath>
+				<pathelement path="${build.boot.output}" />
+			</classpath>
+			<arg value="--conf=${ovpnals.conf}" />
+		</java>
+	</target>
+
+
+
+	<!-- Install OpenVPN-ALS as a service  -->
+	<target name="install-service" depends="compile,local-deploy,deploy-community-extensions,create-wrapper-conf,check-tools,check-permissions">
+		<if>
+			<equals arg1="${os.name}" arg2="Linux" />
+			<then>
+				<!-- Install on Linux -->
+				<echo>Installing OpenVPN-ALS as Linux service</echo>
+				<exec executable="${basedir}/install/platforms/linux/install-service">
+					<arg value="-j" />
+					<arg value="${java.home}" />
+				</exec>
+				<echo>OpenVPN-ALS installed as Linux service</echo>
+			</then>
+			<else>
+				<!-- Install on Windows -->
+				<if>
+					<os family="windows" />
+					<then>
+						<!-- Install on Windows -->
+						<echo>Installing OpenVPN-ALS as Windows service</echo>
+						<exec spawn="true" executable="${basedir}/install/platforms/windows/wrapper">
+							<arg value="-i" />
+							<arg value="../../../${ovpnals.conf}/wrapper.conf" />
+							<arg value="wrapper.working.dir=../../.." />
+							<arg value="wrapper.java.library.path.1=install/platforms/windows" />
+						</exec>
+						<echo>OpenVPN-ALS installed as Windows service</echo>
+					</then>
+					<else>
+						<!-- Fall back to manually executing -->
+						<echo level="error">
+							Service wrapper not currently supported on this platform (${os.name}), service cannot be installed.
+						</echo>
+					</else>
+				</if>
+			</else>
+		</if>
+	</target>
+
+	<!-- Uninstall OpenVPN-ALS as a services  -->
+	<target name="uninstall-service" depends="compile,local-deploy,deploy-community-extensions,check-permissions">
+		<if>
+			<equals arg1="${os.name}" arg2="Linux" />
+			<then>
+				<!-- Install on Linux -->
+				<echo>Uninstalling OpenVPN-ALS Linux service</echo>
+				<exec executable="${basedir}/install/platforms/linux/install-service">
+					<arg value="-u" />
+				</exec>
+				<echo>Uinstalled OpenVPN-ALS Linux service</echo>
+			</then>
+			<else>
+				<!-- Install on Windows -->
+				<if>
+					<os family="windows" />
+					<then>
+						<!-- Install on Linux -->
+						<echo>Uinstallign OpenVPN-ALS Windows service</echo>
+						<exec spawn="true" executable="${basedir}/install/platforms/windows/wrapper">
+							<arg value="-r" />
+							<arg value="../../../${ovpnals.conf}/wrapper.conf" />
+							<arg value="wrapper.working.dir=../../.." />
+							<arg value="wrapper.java.library.path.1=install/platforms/windows" />
+						</exec>
+						<echo>Uinstalled OpenVPN-ALS Windows server</echo>
+					</then>
+					<else>
+						<!-- Fall back to manually executing -->
+						<echo level="error">
+							Service wrapper not currently supported on this platform (${os.name}), service cannot be uninstalled.
+						</echo>
+					</else>
+				</if>
+			</else>
+		</if>
+	</target>
+
+	<!-- Run the upgrader utility -->
+	<target name="upgrader" depends="compile-upgrader">
+		<!-- Fall back to manually executing -->
+		<input message="Enter the directory where the old OpenVPN-ALS 0.1.15+ installation is (or just hit ENTER to attempt to run GUI front end)" addproperty="upgrader.old">
+		</input>
+		<if>
+			<equals arg1="${upgrader.old}" arg2="" />
+			<then>
+				<java spawn="true" fork="true" classname="com.ovpnals.upgrade.Upgrade">
+					<classpath>
+						<pathelement path="${build.tools.output}" />
+						<fileset dir="${dir.lib}">
+							<include name="commons-logging.jar" />
+						</fileset>
+						<fileset dir="${build.webapp.lib}">
+							<include name="hsqldb.jar" />
+						</fileset>
+					</classpath>
+				</java>
+			</then>
+			<else>
+				<java logerror="true" classname="com.ovpnals.upgrade.Upgrade">
+					<arg value="${upgrader.old}" />
+					<arg value="${basedir}" />
+					<classpath>
+						<pathelement path="${build.tools.output}" />
+						<fileset dir="${dir.lib}">
+							<include name="commons-logging.jar" />
+						</fileset>
+						<fileset dir="${build.webapp.lib}">
+							<include name="hsqldb.jar" />
+						</fileset>
+					</classpath>
+				</java>
+			</else>
+		</if>
+	</target>
+
+	<!-- Run the HSQLDB manager -->
+	<target name="hsqldb-manager">
+		<java logerror="true" fork="true" classname="org.hsqldb.util.DatabaseManagerSwing">
+			<classpath>
+				<pathelement path="${build.boot.output}" />
+				<pathelement path="${build.server.output}" />
+				<pathelement path="${build.webapp.output}" />
+				<pathelement path="${dir.maverick-crypto.classes}" />
+				<pathelement path="${dir.maverick-ssl.classes}" />
+				<pathelement location="${tools.jar}" />
+				<fileset dir="${dir.lib}">
+					<include name="*.jar" />
+				</fileset>
+				<fileset dir="${build.webapp.lib}">
+					<include name="*.jar" />
+				</fileset>
+			</classpath>
+		</java>
+	</target>
+
+	<!-- Run the HSQLDB dump -->
+	<target name="hsqldb-dump">
+		<java fork="true" classname="org.hsqldb.util.Transfer">
+			<arg value="--dump" />
+			<classpath>
+				<pathelement path="${build.boot.output}" />
+				<pathelement path="${build.server.output}" />
+				<pathelement path="${build.webapp.output}" />
+				<pathelement path="${dir.maverick-crypto.classes}" />
+				<pathelement path="${dir.maverick-ssl.classes}" />
+				<pathelement location="${tools.jar}" />
+				<fileset dir="${dir.lib}">
+					<include name="*.jar" />
+				</fileset>
+				<fileset dir="${build.webapp.lib}">
+					<include name="*.jar" />
+				</fileset>
+			</classpath>
+		</java>
+	</target>
+
+	<!-- Compile everything, build and deploy community plugins -->
+
+	<target name="deploy-community-extensions" depends="compile">
+
+		<!-- Run the release targets on all of the community plugins and copy the extensions
+		     to the repository -->
+
+		<ant inheritall="false" dir="${ovpnals-community-tunnels.home}" target="release">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+		<copy file="${ovpnals-community-tunnels.home}/build/release/ovpnals-community-tunnels.zip" todir="${ovpnals.conf}/repository/archives" />
+
+		<ant inheritall="false" dir="${ovpnals-community-applications.home}" target="release">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+		<copy file="${ovpnals-community-applications.home}/build/release/ovpnals-community-applications.zip" todir="${ovpnals.conf}/repository/archives" />
+
+		<ant inheritall="false" dir="${ovpnals-community-web-forwards.home}" target="release">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+		<copy file="${ovpnals-community-web-forwards.home}/build/release/ovpnals-community-web-forwards.zip" todir="${ovpnals.conf}/repository/archives" />
+
+		<ant inheritall="false" dir="${ovpnals-community-network-places.home}" target="release">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+		<copy file="${ovpnals-community-network-places.home}/build/release/ovpnals-community-network-places.zip" todir="${ovpnals.conf}/repository/archives" />
+
+		<ant inheritall="false" dir="${ovpnals-community-unix.home}" target="release">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+		<copy file="${ovpnals-community-unix.home}/build/release/ovpnals-community-unix.zip" todir="${ovpnals.conf}/repository/archives" />
+
+		<ant inheritall="false" dir="${ovpnals-community-activedirectory.home}" target="release">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+		<copy file="${ovpnals-community-activedirectory.home}/build/release/ovpnals-community-activedirectory.zip" todir="${ovpnals.conf}/repository/archives" />
+	</target>
+
+	<!-- Compile everything -->
+	<target name="compile" depends="compile-dependencies,compile-boot,compile-server,compile-webapp">
+	</target>
+
+
+
+	<!-- Compile everything to distribute ovpnals -->
+	<target name="compile-for-dist" depends="dist-dependencies,compile-boot,compile-server,compile-webapp,local-deploy">
+	</target>
+
+	<!-- Compile everything for distribute ovpnals -->
+	<target name="dist" depends="deploy-community-extensions,install-agent,clean-dist">
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${dist.dir}/tmp" />
+		<mkdir dir="${dist.dir}/logs" />
+
+		<copy todir="${dist.dir}/notes">
+			<fileset dir="notes" />
+		</copy>
+
+		<copy todir="${dist.dir}/install">
+			<fileset dir="install" />
+		</copy>
+
+		<copy todir="${dist.dir}/conf">
+			<fileset dir="conf" />
+		</copy>
+
+		<copy todir="${dist.dir}/serverlib">
+			<fileset dir="serverlib" />
+		</copy>
+
+		<copy todir="${dist.dir}/lib">
+			<fileset dir="lib" />
+		</copy>
+
+		<copy todir="${dist.dir}/webapp">
+			<fileset dir="webapp" />
+		</copy>
+		<copy todir="${dist.dir}/db">
+			<fileset dir="db" />
+		</copy>
+
+
+		<!-- Compile ovpnals server and put jar in serverlib -->
+		<jar jarfile="${dist.dir}/serverlib/ovpnals-server.jar">
+			<fileset dir="${build.server.output}">
+				<include name="**/*" />
+			</fileset>
+		</jar>
+
+		<copy todir="${dist.dir}/lib" file="${dir.maverick-util}/build/dist/maverick-util.jar" />
+		<copy todir="${dist.dir}/lib" file="${dir.maverick-crypto}/build/dist/maverick-crypto.jar" />
+		<copy todir="${dist.dir}/lib" file="${dir.maverick-ssl}/build/dist/maverick-ssl.jar" />
+		<copy todir="${dist.dir}/lib" file="${dir.maverick-multiplex}/build/dist/maverick-multiplex.jar" />
+		<copy todir="${dist.dir}/lib" file="${dir.build-tools}/ant/ant-contrib.jar" />
+
+		<!-- Compile ovpnals boot and put jar in lib -->
+		<jar jarfile="${dist.dir}/lib/ovpnals-boot.jar">
+			<fileset dir="${build.boot.output}">
+				<include name="**/*" />
+			</fileset>
+		</jar>
+
+
+		<!-- Compile ovpnals boot and put jar in lib -->
+		<jar jarfile="${dist.dir}/webapp/WEB-INF/lib/ovpnals-webapp.jar">
+			<fileset dir="${build.webapp.output}">
+				<include name="**/*" />
+			</fileset>
+		</jar>
+		<delete dir="${dist.dir}/webapp/WEB-INF/classes" />
+
+		<!-- We need to use a minimal build file instead of this one --> 
+		<copy failonerror="true" file="build-dist.xml" tofile="${dist.dir}/build.xml" />
+
+		<zip destfile="ovpnals-${version.number}-bin.zip">
+			<zipfileset dir="${dist.dir}" prefix="ovpnals-${version.number}">
+				<exclude name="**/svn-*" />
+				<exclude name="**/*.log" />
+			</zipfileset>
+		</zip>
+		
+		<tar destfile="ovpnals-${version.number}-bin.tar.bz2" compression="bzip2" >
+                        <tarfileset dir="${dist.dir}" prefix="ovpnals-${version.number}">
+                                <exclude name="**/svn-*" />
+                                <exclude name="**/*.log" />
+                        </tarfileset>
+                </tar>
+
+	</target>
+
+	<target name="clean-dist">
+		<delete dir="${dist.dir}" />
+	</target>
+
+	<!-- Dist server dependencies, TODO remove from svn ovpnals-commons-vfs.jar under 
+	webapp/WEB-INF/lib/ and rebuild this jar from project ovpnals-commons-vfs
+	  -->
+	<target name="dist-dependencies">
+		<ant inheritall="false" dir="${dir.maverick-util}" target="dist">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+		<ant inheritall="false" dir="${dir.maverick-crypto}" target="dist">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+		<ant inheritall="false" dir="${dir.maverick-ssl}" target="dist">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+		<ant inheritall="false" dir="${dir.maverick-multiplex}" target="dist">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+
+		<!-- NOTE This Code use Old Apache Commons VFS. This is not required for new Apache Commons VFS -->
+		<!--
+		<ant inheritall="false" dir="${ovpnals-commons-vfs.home}" target="compile">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+		-->
+	</target>
+
+	<!-- Compile server dependencies. Also generate the necessary JAR-files for
+             the "dist" target. -->
+	<target name="compile-dependencies">
+		<ant inheritall="false" dir="${dir.maverick-util}" target="dist">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+		<ant inheritall="false" dir="${dir.maverick-crypto}" target="dist">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+		<ant inheritall="false" dir="${dir.maverick-ssl}" target="dist">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+		<ant inheritall="false" dir="${dir.maverick-multiplex}" target="dist">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+
+		<!-- NOTE This Code use Old Apache Commons VFS. This is not required for new Apache Commons VFS -->
+		<!--
+		<ant inheritall="false" dir="${ovpnals-commons-vfs.home}" target="dist">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+		-->
+
+	</target>
+
+	<!-- Compile the boot classes  -->
+
+	<target name="compile-boot">
+		<mkdir dir="${build.boot.output}" />
+		<javac compiler="${build.compiler}" destdir="${build.boot.output}" srcdir="${build.boot.src}" includeantruntime="false" includes="**/*.java" debug="${build.debug}">
+			<classpath>
+				<pathelement path="${dir.maverick-crypto.classes}" />
+				<pathelement path="${dir.maverick-ssl.classes}" />
+				<fileset dir="${dir.lib}">
+					<include name="commons-logging.jar" />
+					<include name="javax.servlet.jar" />
+					<include name="jdom.jar" />
+				</fileset>
+			</classpath>
+		</javac>
+		<copy todir="${build.boot.output}">
+			<fileset dir="${build.boot.src}">
+				<include name="**/*.xml" />
+				<include name="**/*.properties" />
+			</fileset>
+			<fileset dir="${build.boot.src}">
+				<include name="**/*.xml" />
+				<include name="**/*.properties" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- Compile the upgrader utility  -->
+
+	<target name="compile-upgrader">
+		<mkdir dir="${build.tools.output}" />
+		<javac compiler="${build.compiler}" destdir="${build.tools.output}" srcdir="${build.tools.home}/upgrader/src" includeantruntime="false" includes="**/*.java" debug="${build.debug}">
+			<classpath>
+				<fileset dir="${dir.lib}">
+					<include name="commons-logging.jar" />
+				</fileset>
+				<fileset dir="${build.webapp.lib}">
+					<include name="hsqldb.jar" />
+				</fileset>
+			</classpath>
+		</javac>
+		<copy todir="${build.tools.output}">
+			<fileset dir="${build.tools.home}/upgrader/src">
+				<include name="**/*.png" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- Compile the server classes  -->
+
+	<target name="compile-server">
+		<mkdir dir="${build.server.output}" />
+		<javac compiler="${build.compiler}" destdir="${build.server.output}" srcdir="${build.server.src}" includeantruntime="false" debug="${build.debug}" includes="**/*.java">
+			<classpath>
+				<pathelement path="${build.boot.output}" />
+				<fileset dir="${build.serverlib}">
+					<include name="org.mortbay.jetty.jar" />
+					<include name="wrapper.jar" />
+				</fileset>
+				<fileset dir="${dir.lib}">
+					<include name="javax.servlet.jar" />
+					<include name="commons-logging.jar" />
+					<include name="jdom.jar" />
+					<include name="ant.jar" />
+					<include name="ant-nodeps.jar" />
+					<include name="jasper-compiler.jar" />
+					<include name="jasper-runtime.jar" />
+				</fileset>
+			</classpath>
+		</javac>
+		<copy todir="${build.server.output}">
+			<fileset dir="${build.server.src}">
+				<include name="**/*.xml" />
+				<include name="**/*.properties" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- Compile the webapp classes  -->
+
+	<target name="compile-webapp">
+		<mkdir dir="${build.webapp.output}" />
+		<javac compiler="${build.compiler}" destdir="${build.webapp.output}" srcdir="${build.webapp.src}" includeantruntime="false" debug="${build.debug}" includes="**/*.java">
+			<classpath>
+				<pathelement path="${build.boot.output}" />
+				<pathelement path="${dir.maverick-crypto.classes}" />
+				<pathelement path="${dir.maverick-ssl.classes}" />
+				<pathelement path="${dir.maverick-multiplex.classes}" />
+				<pathelement path="${dir.maverick-util.classes}" />
+				<!-- NOTE This Code use Old Apache Commons VFS. This is not required for new Apache Commons VFS -->
+				<!--
+				<pathelement path="${ovpnals-commons-vfs.classes}" />
+				-->
+				<fileset dir="${build.webapp.lib}">
+					<include name="*.jar" />
+				</fileset>
+				<fileset dir="${dir.lib}">
+					<include name="*.jar" />
+				</fileset>
+			</classpath>
+		</javac>
+		<copy todir="${build.webapp.output}">
+			<fileset dir="${build.webapp.src}">
+				<include name="**/*.xml" />
+				<include name="**/*.properties" />
+				<include name="**/*.types" />
+				<include name="**/*.props" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- Precompile JSPs -->
+
+	<target name="precompile-jsp">
+		<mkdir dir="${build.jsp.classes.output}" />
+		<mkdir dir="${build.jsp.mappings.output}" />
+		<mkdir dir="${build.jsp.output}" />
+		<echo message="Precompiling JSP to Java code..." />
+		<java fork="true" classname="org.apache.jasper.JspC" classpathref="jsp.precompile.path">
+			<arg value="-die" />
+			<arg value="-d" />
+			<arg value="${build.jsp.output}" />
+			<arg value="-p" />
+			<arg value="org.apache.jsp" />
+			<arg value="-webinc" />
+			<arg value="${build.jsp.mappings.file}" />
+			<arg value="-webapp" />
+			<arg value="${basedir}/webapp" />
+			<arg value="-uriroot" />
+			<arg value="${basedir}/webapp" />
+		</java>
+		<echo message="Compiling translated JSP code..." />
+		<javac srcdir="${build.jsp.output}" destdir="${build.jsp.classes.output}" classpathref="jsp.precompile.path" debug="${build.debug}" />
+		<loadfile property="jsp.servlets.text" srcFile="${build.jsp.mappings.file}" />
+		<echo file="webapp/WEB-INF/jsp-mappings.xml">
+			<![CDATA[<?xml version="1.0" encoding="ISO-8859-1"?>
+
+			<!DOCTYPE jsp-mappings
+	  PUBLIC "-//3SP//JSP Mappings//EN"
+	  "webapp/WEB-INF/jsp-mappings.dtd">
+			<jsp-mappings>
+${jsp.servlets.text}
+</jsp-mappings>			
+]]></echo>
+	</target>
+
+	<!-- Build an install the agent. Note for this to work you must
+	     have performed some configuration. See the documentation for
+	     details -->
+
+	<target name="install-agent">
+		<ant inheritall="false" dir="${agent.home}" target="clean" />
+		<ant inheritall="false" dir="${agent.home}" target="release" />
+		<copy file="${agent.home}/build/release/ovpnals-agent.zip" todir="${ovpnals.conf}/repository/archives" />
+	</target>
+
+	<!-- Copy the generated webapp files to the local webapp/WEB-INF/classes
+	     directory so it is picked up by jetty when running -->
+	<target name="local-deploy">
+		<mkdir dir="${build.webapp.deploy}" />
+		<copy todir="${build.webapp.deploy}">
+			<fileset dir="${build.webapp.output}">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- Clean up all built files -->
+
+	<target name="clean">
+		<delete dir="${dir.build}" includes="*.*" failonerror="false" />
+		<delete dir="${build.boot.output}" />
+		<delete dir="${build.server.output}" />
+		<delete dir="${build.webapp.output}" />
+		<delete dir="${build.webapp.deploy}" />
+		<delete dir="${build.test.output}" />
+		<delete dir="${build.jsp.output}" />
+		<delete dir="${build.jsp.classes.output}" />
+		<delete dir="${build.jsp.mappings.output}" />
+		<delete dir="${build.doc}" />
+		<delete dir="${build.output.test}" />
+		<delete dir="${build.output.instrumented}" />
+		<delete dir="${tmpdir}" />
+		<delete dir="${dist.dir}" />
+		<antcall target="clean-reports" />
+	</target>
+
+	<!-- Create API documentation -->
+
+<!--
+	<target name="javadoc">
+		<mkdir dir="${build.doc}/api" />
+		<javadoc sourcepath="src" defaultexcludes="yes" destdir="${build.doc}/api" author="true" version="true" use="true" windowtitle="OpenVPN-ALS" notree="true">
+			<doctitle>
+				<![CDATA[<h1>OpenVPN-ALS</h1>
+			<br>
+				<p>The OpenVPN-ALS gateway.</p>]]></doctitle>
+			<bottom>
+				<![CDATA[<i>Copyright &#169; 2003-2006 3SP LTD. All Rights Reserved.</i>]]></bottom>
+		<packageset dir="src" defaultexcludes="yes">
+			<include name="com/ovpnals/**" />
+		</packageset>
+		<classpath>
+			<pathelement path="${build.boot.output}" />
+			<pathelement path="${dir.maverick-crypto.classes}" />
+			<pathelement path="${dir.maverick-ssl.classes}" />
+			<pathelement path="${dir.maverick-multiplex.classes}" />
+			<fileset dir="${build.webapp.lib}">
+				<include name="*.jar" />
+			</fileset>
+			<fileset dir="${dir.lib}">
+				<include name="*.jar" />
+			</fileset>
+			<fileset dir="${build.serverlib}">
+				<include name="*.jar" />
+			</fileset>
+		</classpath>
+	</javadoc>
+</target>
+
+-->
+
+	<target name="set-tools" description="Set the location of tools.jar or classes.jar.">
+		<!-- We need to do this because properties are immutable and <if> statements
+		     are not allowed outside target definitions. -->
+
+		<!-- Mac OS X is different and needs to be treated as such: -->
+		<!-- there's no Tools.jar in Mac OS X Java -->
+		<if><equals arg1="${os.name}" arg2="Mac OS X" /><then>
+			<property name="tools.jar.jdk" location="${java.home}/../classes/classes.jar" />
+			<property name="tools.jar" value="lib/classes.jar" />
+		</then>
+
+		<!-- Most other OS'es with Sun's JDK have tools.jar in the same place -->
+		<else>
+			<!-- Location of tools.jar once copied in place (Java compiler) -->
+			<property name="tools.jar" value="lib/tools.jar" />
+		
+			<!-- Tools.jar location on Windows, Linux and others using Sun's JDK -->
+			<property name="tools.jar.jdk" location="${java.home}/../lib/tools.jar" />
+		</else>
+		</if>	
+	</target>
+
+        <target name="check-tools" description="Test that tools.jar exists. OpenVPN-ALS won't launch without it" depends="set-tools">
+		<if>
+			<!-- Check if a tools.jar is available already in $OVPNALS_HOME/ovpnals/lib -->
+			<not><available file="${tools.jar}"/></not>
+
+			<!-- Was not available, copy it from JDK's lib directory -->
+			<then>
+				<echo message="Couldn't find tools.jar from $OVPNALS_HOME/ovpnals/lib"/>
+
+				<!-- Was not available, copy it from JDK's lib directory. Fail on error. -->
+			 	<echo message="Copying the tools.jar from your JDK"/>
+
+				<fail message="Could not find tools.jar from your JDK. Check the output of ant sysinfo.">
+				<condition><not><available file="${tools.jar.jdk}"/></not></condition>
+				</fail>
+
+				<copy todir="${dir.lib}" file="${tools.jar.jdk}" failonerror="True"/>
+			</then>
+		</if>
+        </target>
+
+	<target name="check-permissions" description="Checks and fixes wrapper file permissions on Linux">
+	<!-- Needed because ant's tar task can't understand file permissions and removes the executable flag -->
+		<if>
+			<equals arg1="${os.name}" arg2="Linux" />
+			<then>
+				<chmod perm="a+x" type="file" file="install/platforms/linux/ovpnals" />
+				<chmod perm="a+x" type="file" file="install/platforms/linux/x86/wrapper" />
+				<chmod perm="a+x" type="file" file="install/platforms/linux/x86-64/wrapper" />
+				<chmod perm="a+x" type="file" file="install/platforms/linux/install-service" />
+			</then>
+		</if>
+	</target>
+
+
+</project>
+
