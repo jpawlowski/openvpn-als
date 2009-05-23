@@ -1,0 +1,8 @@
+To install the OpenVPN-ALS LDAP authentication module, do the following:
+
+* Run "ant install" in $OVPNALS_HOME
+* Run "ant install" in this directory.
+* Copy the build/release/ovpnals-community-ldap.zip to $OVPNALS_HOME/ovpnals/conf/repository/archives
+* Re-run "ant install" in $OVPNALS_HOME
+* Select LDAP for the user database in the install phase (see Installing and running OpenVPN-ALS server in 
+Wiki)
