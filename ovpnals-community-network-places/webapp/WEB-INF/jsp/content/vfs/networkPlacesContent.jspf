@@ -1,0 +1,8 @@
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="/server/taglibs/core" prefix="core"%>
+
+<div id="page_networkPlaces">
+	<core:form  onsubmit="setActionTarget('filter')" method="post" action="/showNetworkPlaces.do">
+		<%@ include file="/WEB-INF/jsp/content/vfs/networkPlacesForm.jspf" %>
+	</core:form>
+</div>
