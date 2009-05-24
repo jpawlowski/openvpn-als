@@ -58,7 +58,7 @@ public class AgentApplicationLauncher extends AbstractApplicationLauncher {
      * @param events events callback
      */
     public AgentApplicationLauncher(Agent vpn, String name, Hashtable parameters, String descriptor, ApplicationLauncherEvents events) {
-        super(vpn.getConfiguration().getCacheDir(), "https", vpn.getUsername(), vpn.getOpenVPN-ALSHost(), vpn.getOpenVPN-ALSPort(), parameters, events);
+        super(vpn.getConfiguration().getCacheDir(), "https", vpn.getUsername(), vpn.getOpenVPNALSHost(), vpn.getOpenVPNALSPort(), parameters, events);
         this.agent = vpn;
         this.name = name;
         this.descriptor = descriptor;

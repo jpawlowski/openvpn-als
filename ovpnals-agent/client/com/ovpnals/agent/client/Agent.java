@@ -273,7 +273,7 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 	 * 
 	 * @return hostname
 	 */
-	public String getOpenVPN-ALSHost() {
+	public String getOpenVPNALSHost() {
 		return ovpnalsHostname;
 	}
 
@@ -286,7 +286,7 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 	 * 
 	 * @return port
 	 */
-	public int getOpenVPN-ALSPort() {
+	public int getOpenVPNALSPort() {
 		return ovpnalsPort;
 	}
 	
@@ -807,7 +807,7 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 			new URL(path);
 			return path;
 		} catch (Exception e) {
-			return "https://" + getOpenVPN-ALSHost() + ":" + getOpenVPN-ALSPort() + path; //$NON-NLS-1$  //$NON-NLS-2$
+			return "https://" + getOpenVPNALSHost() + ":" + getOpenVPNALSPort() + path; //$NON-NLS-1$  //$NON-NLS-2$
 		}
 	}
 
@@ -858,8 +858,8 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 
 				// #ifdef DEBUG
 				log.info("Registering with the server"); //$NON-NLS-1$
-				log.info("Server is " + (isSecure ? "https://" : "http://") + getOpenVPN-ALSHost() //$NON-NLS-1$
-						+ ":" + getOpenVPN-ALSPort()); //$NON-NLS-1$
+				log.info("Server is " + (isSecure ? "https://" : "http://") + getOpenVPNALSHost() //$NON-NLS-1$
+						+ ":" + getOpenVPNALSPort()); //$NON-NLS-1$
 				// #endif
 				GetMethod post = new GetMethod("/agent"); //$NON-NLS-1$
 

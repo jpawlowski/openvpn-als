@@ -199,7 +199,7 @@ public abstract class AbstractAWTGUI implements AgentClientGUI {
      */
     public void openBrowser(String path) {
         try {
-        	String browserPath = "https://" + agent.getOpenVPN-ALSHost() + ":" + agent.getOpenVPN-ALSPort() + //$NON-NLS-1$ //$NON-NLS-2$ 
+        	String browserPath = "https://" + agent.getOpenVPNALSHost() + ":" + agent.getOpenVPNALSPort() + //$NON-NLS-1$ //$NON-NLS-2$ 
         	( path == null ? "" : ( "/" + path ));
             // #ifdef DEBUG
             log.info("Opening browser to " + browserPath);

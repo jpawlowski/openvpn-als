@@ -266,7 +266,7 @@ public class SWTSystemTrayGUI implements AgentClientGUI {
 			c.setLayout(gridLayout);
 
 			Label host = new Label(c, SWT.WRAP);
-			host.setText(MessageFormat.format(Messages.getString("About.host"), new Object[] { agent.getOpenVPN-ALSHost() }));
+			host.setText(MessageFormat.format(Messages.getString("About.host"), new Object[] { agent.getOpenVPNALSHost() }));
 			GridData data = new GridData();
 			data.horizontalAlignment = GridData.BEGINNING;
 			data.grabExcessHorizontalSpace = true;
@@ -274,7 +274,7 @@ public class SWTSystemTrayGUI implements AgentClientGUI {
 
 			Label port = new Label(c, SWT.WRAP);
 			port.setText(MessageFormat.format(Messages.getString("About.port"),
-				new Object[] { String.valueOf(agent.getOpenVPN-ALSPort()) }));
+				new Object[] { String.valueOf(agent.getOpenVPNALSPort()) }));
 			data = new GridData();
 			data.horizontalAlignment = GridData.BEGINNING;
 			data.grabExcessHorizontalSpace = true;
@@ -314,7 +314,7 @@ public class SWTSystemTrayGUI implements AgentClientGUI {
 	 */
 	public void openBrowser(String path) {
 		try {
-			String browserPath = "https://" + agent.getOpenVPN-ALSHost() + ":" + agent.getOpenVPN-ALSPort() + //$NON-NLS-1$ //$NON-NLS-2$ 
+			String browserPath = "https://" + agent.getOpenVPNALSHost() + ":" + agent.getOpenVPNALSPort() + //$NON-NLS-1$ //$NON-NLS-2$ 
 				(path == null ? "" : ("/" + path));
 			// #ifdef DEBUG
 			log.info("Opening browser to " + browserPath);
