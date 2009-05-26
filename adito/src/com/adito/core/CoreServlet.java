@@ -21,7 +21,9 @@
 package com.adito.core;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -30,7 +32,10 @@ import java.security.Provider;
 import java.security.Security;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 import java.util.StringTokenizer;
 
 import javax.security.auth.login.Configuration;
@@ -53,9 +58,12 @@ import com.maverick.ssl.SSLTransportFactory;
 import com.maverick.ssl.SSLTransportImpl;
 import com.adito.agent.AgentRequestHandler;
 import com.adito.boot.BootProgressMonitor;
+import com.adito.boot.ContextKey;
+import com.adito.boot.KeyStoreManager;
 import com.adito.boot.LogBootProgressMonitor;
 import com.adito.boot.ContextHolder;
 import com.adito.boot.ContextListener;
+import com.adito.boot.ContextConfig;
 import com.adito.boot.PropertyClassManager;
 import com.adito.boot.PropertyDefinitionCategory;
 import com.adito.boot.SystemProperties;
@@ -155,7 +163,9 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
     private boolean pastInitialisation;
 
     private BootProgressMonitor bootProgressMonitor;
-
+    
+    private ContextConfig contextConfiguration;
+    
     /**
      * Constructor
      */
@@ -171,7 +181,7 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
         NavigationManager.addMenuTree(new TableItemActionMenuTree());
         Configuration.setConfiguration(new CoreJAASConfiguration());
         addTileConfigurationFile("/WEB-INF/tiles-defs.xml");
-
+        
         // Make sure that Http redirects are followed in places where we use URL
         // to connect to our website
         HttpURLConnection.setFollowRedirects(true);
@@ -549,6 +559,8 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
         	ContextHolder.setContext(new CoreContext());
         	// end change
         	
+			
+			
             if (SystemProperties.get("adito.disableNewSSLEngine", "false").equals("true"))
                 SSLTransportFactory.setTransportImpl(SSLTransportImpl.class);
 
@@ -569,7 +581,9 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
             PropertyClassManager.getInstance().registerPropertyClass(new RealmProperties());
             PropertyClassManager.getInstance().registerPropertyClass(new ApplicationParameters());
             PropertyClassManager.getInstance().registerPropertyClass(new ResourceAttributes());
+			PropertyClassManager.getInstance().registerPropertyClass(contextConfiguration = new ContextConfig(getClass().getClassLoader()));			
 
+			registerKeyStores();
             // Load the property database and categories
             // Use the default system database if no other has been registered
             try {
@@ -698,7 +712,57 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
         this.parseModuleConfigFile(digester, "/WEB-INF/wizard-struts-config.xml");
         digester.push(moduleConfig);
         this.parseModuleConfigFile(digester, "/WEB-INF/ajax-struts-config.xml");
+		
+		
+		//!! test code
+		 //getBootProgressMonitor().updateMessage("Loading system properties");
+         //getBootProgressMonitor().updateProgress(1);
 
+        /*
+         * Read in system properties from a resource, more a debugging aid than
+         * anything else
+         */
+        InputStream in = null;
+        try {
+            File f = new File(new File("conf"), "system.properties");
+            in = new FileInputStream(f);
+            Properties p = new Properties();
+            p.load(in);
+            for (Enumeration e = p.keys(); e.hasMoreElements();) {
+                String k = (String) e.nextElement();
+                System.getProperties().setProperty(k, p.getProperty(k).trim());
+            }
+        } catch (IOException e) {
+            // Dont care
+        } finally {
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException ioe) {
+
+                }
+            }
+        }
+        
+        /**
+         * Set the prefix if any. 
+         */
+        SystemProperties.setPrefix(System.getProperty("boot.propertyPrefix"));
+
+        /**
+         * Are we in development mode?
+         */
+        
+        
+       
+		log.info("&&" + SystemProperties.get("adito.cookie", "JSESSIONID"));
+	
+		System.setProperty("org.mortbay.jetty.servlet.SessionCookie", "SSLX_SSESHID");
+		System.setProperty("org.mortbay.jetty.servlet.SessionURL", "SSLX_SSESHID".toLowerCase());
+	
+		log.info("session created");
+		//!!test code
+		
         /**
          * Install Maverick SSL support
          */
@@ -860,6 +924,7 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
             if (!siteDir.exists()) {
                 siteDir.mkdirs();
             }
+            
             ContextHolder.getContext().addResourceBase(siteDir.toURL());
         } catch (Exception e) {
             log.error("Failed to add " + siteDir.getPath()
@@ -1050,5 +1115,22 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
             log.error("Failed to add to classpath.", e);
         }
     }
+    
+    private void registerKeyStores() throws Exception {
+        //getBootProgressMonitor().updateMessage("Registering key stores");
+        //getBootProgressMonitor().updateProgress(7);
+        
+    	String defaultKeyStorePassword = contextConfiguration.retrieveProperty(new ContextKey(
+                        "webServer.keystore.sslCertificate.password"));
+        KeyStoreManager.registerKeyStore(KeyStoreManager.DEFAULT_KEY_STORE, "keystore", true, defaultKeyStorePassword,
+            KeyStoreManager.getKeyStoreType(contextConfiguration.retrieveProperty(new ContextKey("webServer.keyStoreType"))));
+
+        KeyStoreManager.registerKeyStore(KeyStoreManager.SERVER_AUTHENTICATION_CERTIFICATES_KEY_STORE, "keystore", true,
+            "adito", KeyStoreManager.TYPE_JKS);
+        KeyStoreManager.registerKeyStore(KeyStoreManager.TRUSTED_SERVER_CERTIFICATES_KEY_STORE, "keystore", true, "adito",
+            KeyStoreManager.TYPE_JKS);
+
+    }
+    
     
 }
