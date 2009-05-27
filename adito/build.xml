@@ -5,7 +5,7 @@
 	<property file="release.properties" />
 
 	<!-- Options for running Adito -->
-	<property name="adito.conf" value="${basedir}/conf" />
+	<property name="adito.conf" value="${basedir}/webapp/WEB-INF/conf" />
 
 	<!-- Standard build locations -->
 
