@@ -695,6 +695,9 @@
 	        <fileset dir="${adito-agent-swt.home}/lib/linux">
 	            <include name="*.so" />
 	        </fileset>
+            <fileset dir="${adito-agent-swt.home}/lib/linux64">
+	            <include name="*.so" />
+	        </fileset>
 	        <fileset dir="${adito-agent-swt.home}/lib/macosx">
 	            <include name="*.jnilib" />
 	        </fileset>
@@ -704,6 +707,8 @@
 	    </copy>
 		<copy file="${adito-agent-swt.home}/lib/linux/swt.jar"
 			tofile="${build.extension}/swt-linux.jar"/>
+        <copy file="${adito-agent-swt.home}/lib/linux/swt.jar"
+			tofile="${build.extension}/swt-linux64.jar"/>
 		<copy file="${adito-agent-swt.home}/lib/win32/swt.jar"
 			tofile="${build.extension}/swt-win32.jar"/>
 		<copy file="${adito-agent-swt.home}/lib/macosx/swt.jar"
