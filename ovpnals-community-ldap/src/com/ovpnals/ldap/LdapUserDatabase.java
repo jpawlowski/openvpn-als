@@ -58,14 +58,7 @@ import javax.naming.directory.Attributes;
 import javax.naming.directory.BasicAttribute;
 import javax.naming.directory.DirContext;
 import javax.naming.directory.ModificationItem;
-import java.util.Collection;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 import java.security.cert.X509Certificate;
 import java.security.cert.CertificateFactory;
 import java.io.ByteArrayInputStream;
@@ -108,8 +101,8 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
     private String serviceAccountName;
     private String serviceAccountPassword;
     private String baseDn;
-    private String rdnUsers;
-    private String rdnGroups;
+    private List<String> rdnUsers;
+    private List<String> rdnGroups;
     private int userCacheSize;
     private int groupCacheSize;
     private boolean inMemoryCache;
@@ -135,6 +128,8 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
      */
     public LdapUserDatabase(boolean supportsAccountCreation, boolean supportsPasswordChange) {
         super("Ldap", supportsAccountCreation, supportsPasswordChange);
+        rdnUsers = new ArrayList<String>();
+        rdnGroups = new ArrayList<String>();
 
     }
 
@@ -281,7 +276,7 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
         LdapTemplate ldapTemplate = new LdapTemplate();
         ldapTemplate.setContextSource(ldapContextSource);
 
-        String rdn = COMMON_NAME_ATTRIBUTE + "=" + rolename + "," + rdnGroups;
+        String rdn = COMMON_NAME_ATTRIBUTE + "=" + rolename + "," + rdnGroups.get(0);
         DirContextAdapter context = new DirContextAdapter(rdn);
         context.setUpdateMode(false);
         context.setAttributeValues(OBJECT_CLASS_ATTRIBUTE, new String[]{TOP_CLASS, GROUPS_CLASS});
@@ -442,7 +437,7 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
         }
         LdapTemplate ldapTemplate = new LdapTemplate();
         ldapTemplate.setContextSource(ldapContextSource);
-        DirContextAdapter context = new DirContextAdapter(UID_ATTRIBUTE + "=" + username + "," + rdnUsers);
+        DirContextAdapter context = new DirContextAdapter(UID_ATTRIBUTE + "=" + username + "," + rdnUsers.get(0));
         context.setUpdateMode(false);
         context.setAttributeValues(OBJECT_CLASS_ATTRIBUTE, new String[]{TOP_CLASS, USERS_CLASS});
         context.setAttributeValue(COMMON_NAME_ATTRIBUTE, fullname);
@@ -452,10 +447,14 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
         context.setAttributeValue(UID_ATTRIBUTE, username);
         ldapTemplate.bind(context);
 
-        String originalDn = UID_ATTRIBUTE + "=" + username + "," + rdnUsers + "," + baseDn;
+        String originalDn = UID_ATTRIBUTE + "=" + username + "," + rdnUsers.get(0) + "," + baseDn;
 
         for (Role role : roles) {
-            DirContextOperations context2 = ldapTemplate.lookupContext(COMMON_NAME_ATTRIBUTE + "=" + role.getPrincipalName() + "," + rdnGroups);
+            LdapGroup group = (LdapGroup) role;
+            String dnGroup = group.getDn();
+            int ind = dnGroup.indexOf(baseDn);
+            String rdnGroup = dnGroup.substring(0,ind - 1);
+            DirContextOperations context2 = ldapTemplate.lookupContext(rdnGroup);
             context2.addAttributeValue(MEMBER_ATTRIBUTE, originalDn);
             ldapTemplate.modifyAttributes(context2);
         }
@@ -589,55 +588,58 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
         AndFilter filterS = new AndFilter();
         filterS.and(new EqualsFilter(OBJECT_CLASS_ATTRIBUTE, USERS_CLASS));
         filterS.and(new LikeFilter(UID_ATTRIBUTE, filter));
-        List users = ldapTemplate.search(
-                rdnUsers, filterS.encode(),
-                new AbstractContextMapper() {
-                    protected Object doMapFromContext(DirContextOperations ctx) {
+        for (String rdn : rdnUsers){
+            List users = ldapTemplate.search(
+                    rdn, filterS.encode(),
+                    new AbstractContextMapper() {
+                        protected Object doMapFromContext(DirContextOperations ctx) {
 
-                        if (ctx.getStringAttribute(MAIL_ATTRIBUTE) == null)
-                            ctx.setAttributeValue(MAIL_ATTRIBUTE, "");
-                        if (ctx.getStringAttribute(COMMON_NAME_ATTRIBUTE) == null)
-                            ctx.setAttributeValue(COMMON_NAME_ATTRIBUTE, "");
+                            if (ctx.getStringAttribute(MAIL_ATTRIBUTE) == null)
+                                ctx.setAttributeValue(MAIL_ATTRIBUTE, "");
+                            if (ctx.getStringAttribute(COMMON_NAME_ATTRIBUTE) == null)
+                                ctx.setAttributeValue(COMMON_NAME_ATTRIBUTE, "");
 
-                        String uid = ctx.getStringAttribute(UID_ATTRIBUTE);
+                            String uid = ctx.getStringAttribute(UID_ATTRIBUTE);
 
-                        //get the date of last modify of this user
-                        LdapTemplate tmp = new LdapTemplate();
-                        tmp.setContextSource(ldapContextSource);
-                        final String[] attrOp = {MODIFY_TIMESTAMP_ATTRIBUTE};
-                        Object o = tmp.lookup(ctx.getDn(), attrOp,
-                                new ContextMapper() {
-                                    public Object mapFromContext(Object ctx) {
-                                        DirContextAdapter adapter = (DirContextAdapter) ctx;
-                                        return adapter.getStringAttribute(attrOp[0]);
+                            //get the date of last modify of this user
+                            LdapTemplate tmp = new LdapTemplate();
+                            tmp.setContextSource(ldapContextSource);
+                            final String[] attrOp = {MODIFY_TIMESTAMP_ATTRIBUTE};
+                            Object o = tmp.lookup(ctx.getDn(), attrOp,
+                                    new ContextMapper() {
+                                        public Object mapFromContext(Object ctx) {
+                                            DirContextAdapter adapter = (DirContextAdapter) ctx;
+                                            return adapter.getStringAttribute(attrOp[0]);
+                                        }
                                     }
-                                }
 
-                        );
+                            );
 
-                        Date lastPasswordChange; //the time of last change for the entry
-                        if (o != null) {
-                            String modifyTimestamp = o.toString();
-                            lastPasswordChange = getDate(modifyTimestamp);
-                        } else {
-                            //if the modifyTimeStamp is null
-                            lastPasswordChange = new Date();
+                            Date lastPasswordChange; //the time of last change for the entry
+                            if (o != null) {
+                                String modifyTimestamp = o.toString();
+                                lastPasswordChange = getDate(modifyTimestamp);
+                            } else {
+                                //if the modifyTimeStamp is null
+                                lastPasswordChange = new Date();
+                            }
+
+                            return new LdapUser(uid, ctx.getNameInNamespace(), ctx.getStringAttribute(MAIL_ATTRIBUTE), ctx.getStringAttribute(COMMON_NAME_ATTRIBUTE), lastPasswordChange, getRealm());
+
                         }
+                    });
 
-                        return new LdapUser(uid, ctx.getNameInNamespace(), ctx.getStringAttribute(MAIL_ATTRIBUTE), ctx.getStringAttribute(COMMON_NAME_ATTRIBUTE), lastPasswordChange, getRealm());
-
-                    }
-                });
-
-        if (removeMissingEntries) {
-            userContainer.updateRemovedPrincipals(usernames);
-        }
+            if (removeMissingEntries) {
+                userContainer.updateRemovedPrincipals(usernames);
+            }
 
 
-        for (Object user : users) {
-            LdapUser u = (LdapUser) user;
-            u.setRoles(getGroupsForUser(u.getDn()));
-            userContainer.storePrincipal(u);
+            for (Object user : users) {
+                LdapUser u = (LdapUser) user;
+                logger.info("user: "+u);
+                u.setRoles(getGroupsForUser(u.getDn()));
+                userContainer.storePrincipal(u);
+            }
         }
 
     }
@@ -663,21 +665,23 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
         AndFilter filterS = new AndFilter();
         filterS.and(new EqualsFilter(OBJECT_CLASS_ATTRIBUTE, GROUPS_CLASS));
         filterS.and(new LikeFilter(COMMON_NAME_ATTRIBUTE, filter));
-        List groups = ldapTemplate.search(
-                rdnGroups, filterS.encode(),
-                new AbstractContextMapper() {
-                    protected Object doMapFromContext(DirContextOperations ctx) {
-                        String cn = ctx.getStringAttribute(COMMON_NAME_ATTRIBUTE);
-                        return new LdapGroup(cn, ctx.getNameInNamespace(), getRealm());
-                    }
-                });
+        for (String rdn : rdnGroups){
+            List groups = ldapTemplate.search(
+                    rdn, filterS.encode(),
+                    new AbstractContextMapper() {
+                        protected Object doMapFromContext(DirContextOperations ctx) {
+                            String cn = ctx.getStringAttribute(COMMON_NAME_ATTRIBUTE);
+                            return new LdapGroup(cn, ctx.getNameInNamespace(), getRealm());
+                        }
+                    });
 
-        if (removeMissingEntries) {
-            groupContainer.updateRemovedGroups(groupNames);
-        }
+            if (removeMissingEntries) {
+                groupContainer.updateRemovedGroups(groupNames);
+            }
 
-        for (final Object group : groups) {
-            groupContainer.storeGroup((LdapGroup) group);
+            for (final Object group : groups) {
+                groupContainer.storeGroup((LdapGroup) group);
+            }
         }
 
     }
@@ -760,32 +764,41 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
      * @return array of user's role
      */
     private Role[] getGroupsForUser(final String dn) {
-
+        logger.info("getGroupForUser: "+dn);
         LdapTemplate ldapTemplate = new LdapTemplate();
         ldapTemplate.setContextSource(ldapContextSource);
 
         AndFilter filterS = new AndFilter();
         filterS.and(new EqualsFilter(OBJECT_CLASS_ATTRIBUTE, GROUPS_CLASS));
         filterS.and(new EqualsFilter(MEMBER_ATTRIBUTE, dn));
-        List groups = ldapTemplate.search(
-                rdnGroups, filterS.encode(),
-                new AttributesMapper() {
-                    public Object mapFromAttributes(Attributes attrs)
-                            throws NamingException {
-                        try {
-                            return getRole(attrs.get(COMMON_NAME_ATTRIBUTE).get().toString());
+        List allGroups = new ArrayList();
+        for(String rdn : rdnGroups){
+            logger.info("rdnGroups: "+rdn);
+            List groups = ldapTemplate.search(
+                    rdn, filterS.encode(),
+                    new AttributesMapper() {
+                        public Object mapFromAttributes(Attributes attrs)
+                                throws NamingException {
+                            try {
+                                return getRole(attrs.get(COMMON_NAME_ATTRIBUTE).get().toString());
+                            }
+                            catch (UserDatabaseException e) {
+                                logger.error("UserDatabaseException :" + e);
+                                return null;
+                            }
+                            catch (RoleNotFoundException e) {
+                                logger.error("RoleNotFoundException :" + e);
+                                return null;
+                            }
                         }
-                        catch (UserDatabaseException e) {
-                            logger.error("UserDatabaseException :" + e);
-                            return null;
-                        }
-                        catch (RoleNotFoundException e) {
-                            logger.error("RoleNotFoundException :" + e);
-                            return null;
-                        }
-                    }
-                });
-        return (LdapGroup[]) groups.toArray(new LdapGroup[groups.size()]);
+                    });
+
+            for (Object o : groups){
+                allGroups.add(o);
+            }
+                //return (LdapGroup[]) groups.toArray(new LdapGroup[groups.size()]);
+        }
+        return (LdapGroup[]) allGroups.toArray(new LdapGroup[allGroups.size()]);
 
     }
 
@@ -841,10 +854,13 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
         ldapTemplate.setContextSource(ldapContextSource);
 
         AndFilter filterS = new AndFilter();
+        String dn = ((LdapUser)user).getDn();
+        int ind = dn.indexOf(baseDn);
+        String rdn = dn.substring(0,ind - 1);
         filterS.and(new EqualsFilter(OBJECT_CLASS_ATTRIBUTE, USERS_CLASS));
         filterS.and(new LikeFilter(UID_ATTRIBUTE,user.getPrincipalName()));
         List certificats = ldapTemplate.search(
-                rdnUsers, filterS.encode(),
+                rdn, filterS.encode(),
                 new AttributesMapper() {
                     public Object mapFromAttributes(Attributes attrs)
                             throws NamingException{
@@ -890,69 +906,71 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
         AndFilter filterS = new AndFilter();
         filterS.and(new EqualsFilter(OBJECT_CLASS_ATTRIBUTE, USERS_CLASS));
         filterS.and(new LikeFilter("userCertificate","*"));
-        List serialNumbers = ldapTemplate.search(
-                rdnUsers, filterS.encode(),
-                new AbstractContextMapper() {
-                    public Object doMapFromContext(DirContextOperations ctx){
+        for (String rdn : rdnUsers){
+            List serialNumbers = ldapTemplate.search(
+                    rdn, filterS.encode(),
+                    new AbstractContextMapper() {
+                        public Object doMapFromContext(DirContextOperations ctx){
 
-                        try{
-                            CertificateFactory certificateFactory=CertificateFactory.getInstance("X.509");
+                            try{
+                                CertificateFactory certificateFactory=CertificateFactory.getInstance("X.509");
 
-                            X509Certificate x509Certificate = (X509Certificate)certificateFactory.generateCertificate(new ByteArrayInputStream((byte[])ctx.getObjectAttribute(CERTIFICATE_ATTRIBUTE)));
+                                X509Certificate x509Certificate = (X509Certificate)certificateFactory.generateCertificate(new ByteArrayInputStream((byte[])ctx.getObjectAttribute(CERTIFICATE_ATTRIBUTE)));
 
-                            if (ctx.getStringAttribute(MAIL_ATTRIBUTE) == null)
-                                ctx.setAttributeValue(MAIL_ATTRIBUTE, "");
-                            if (ctx.getStringAttribute(COMMON_NAME_ATTRIBUTE) == null)
-                                ctx.setAttributeValue(COMMON_NAME_ATTRIBUTE, "");
+                                if (ctx.getStringAttribute(MAIL_ATTRIBUTE) == null)
+                                    ctx.setAttributeValue(MAIL_ATTRIBUTE, "");
+                                if (ctx.getStringAttribute(COMMON_NAME_ATTRIBUTE) == null)
+                                    ctx.setAttributeValue(COMMON_NAME_ATTRIBUTE, "");
 
-                            String uid = ctx.getStringAttribute(UID_ATTRIBUTE);
+                                String uid = ctx.getStringAttribute(UID_ATTRIBUTE);
 
-                            //get the date of last modify of this user                            
-                            LdapTemplate tmp = new LdapTemplate();
-                            tmp.setContextSource(ldapContextSource);
-                            final String[] attrOp = {MODIFY_TIMESTAMP_ATTRIBUTE};
-                            Object o = tmp.lookup(ctx.getDn(), attrOp,
-                                    new ContextMapper() {
-                                        public Object mapFromContext(Object ctx) {
-                                            DirContextAdapter adapter = (DirContextAdapter) ctx;
-                                            return adapter.getStringAttribute(attrOp[0]);
+                                //get the date of last modify of this user
+                                LdapTemplate tmp = new LdapTemplate();
+                                tmp.setContextSource(ldapContextSource);
+                                final String[] attrOp = {MODIFY_TIMESTAMP_ATTRIBUTE};
+                                Object o = tmp.lookup(ctx.getDn(), attrOp,
+                                        new ContextMapper() {
+                                            public Object mapFromContext(Object ctx) {
+                                                DirContextAdapter adapter = (DirContextAdapter) ctx;
+                                                return adapter.getStringAttribute(attrOp[0]);
 
+                                            }
                                         }
-                                    }
 
-                            );
+                                );
 
-                            Date lastPasswordChange; //the time of last change for the entry
-                            if (o != null) {
-                                String modifyTimestamp = o.toString();
-                                lastPasswordChange = getDate(modifyTimestamp);
-                            } else {
-                                //if the modifyTimeStamp is null
-                                lastPasswordChange = new Date();
+                                Date lastPasswordChange; //the time of last change for the entry
+                                if (o != null) {
+                                    String modifyTimestamp = o.toString();
+                                    lastPasswordChange = getDate(modifyTimestamp);
+                                } else {
+                                    //if the modifyTimeStamp is null
+                                    lastPasswordChange = new Date();
+                                }
+
+                                LdapUser user= new LdapUser(uid, ctx.getNameInNamespace(), ctx.getStringAttribute(MAIL_ATTRIBUTE), ctx.getStringAttribute(COMMON_NAME_ATTRIBUTE), lastPasswordChange, getRealm());
+
+                                Object[] tab = {x509Certificate.getSerialNumber(),user};
+
+                                return tab;
+
+                            }catch(Exception e){
+
+                                logger.error(e);
+                                return null;
                             }
-
-                            LdapUser user= new LdapUser(uid, ctx.getNameInNamespace(), ctx.getStringAttribute(MAIL_ATTRIBUTE), ctx.getStringAttribute(COMMON_NAME_ATTRIBUTE), lastPasswordChange, getRealm());
-
-                            Object[] tab = {x509Certificate.getSerialNumber(),user};
-
-                            return tab;
-
-                        }catch(Exception e){
-
-                            logger.error(e);
-                            return null;
                         }
-                    }
-                });
+                    });
 
-        if( serialNumbers != null){
-            for(Object o: serialNumbers){
+            if( serialNumbers != null){
+                for(Object o: serialNumbers){
 
-                Object[] tab=(Object[])o;
-                BigInteger serialNumber=(BigInteger) tab[0];
-                LdapUser user=(LdapUser)tab[1];
-                if(serialNumber.equals(x509Certificate.getSerialNumber()))
-                    return user;
+                    Object[] tab=(Object[])o;
+                    BigInteger serialNumber=(BigInteger) tab[0];
+                    LdapUser user=(LdapUser)tab[1];
+                    if(serialNumber.equals(x509Certificate.getSerialNumber()))
+                        return user;
+                }
             }
         }
 
@@ -1046,8 +1064,22 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
         setBaseDN(getProperty("ldap.baseDN", propertyNames));
         setServiceAccountName(getProperty("ldap.serviceAccountUsername", propertyNames));
         setServiceAccountPassword(getProperty("ldap.serviceAccountPassword", propertyNames));
-        setDomainUsers(getProperty("ldap.domainUsers", propertyNames));
-        setDomainGroups(getProperty("ldap.domainGroups", propertyNames));
+        logger.info("set domain User");
+        setDomainUsers(getProperty("ldap.domainUsers1", propertyNames));
+        setDomainUsers(getProperty("ldap.domainUsers2", propertyNames));
+        setDomainUsers(getProperty("ldap.domainUsers3", propertyNames));
+        logger.info("set domain group");
+        setDomainGroups(getProperty("ldap.domainGroups1", propertyNames));
+        setDomainGroups(getProperty("ldap.domainGroups2", propertyNames));
+        setDomainGroups(getProperty("ldap.domainGroups3", propertyNames));
+
+        for (int i = 0; i <  rdnUsers.size(); i++){
+            logger.info("rdnUsers "+ i +" :" + rdnUsers.get(i));
+        }
+
+        for (int i = 0; i <  rdnGroups.size(); i++){
+            logger.info("rdnGroups "+ i +" :" + rdnGroups.get(i));
+        }
 
         setUseSSL(getPropertyBoolean("ldap.useSSL", propertyNames));
         setFollowReferrals(getPropertyBoolean("ldap.followReferrals", propertyNames));
@@ -1203,8 +1235,9 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
      * @throws Exception if distinguish name is empty
      */
     private void setDomainUsers(String rdnUsers) throws Exception {
-        this.rdnUsers = rdnUsers.trim();
-        if (this.rdnUsers.equals("")) {
+        if(! rdnUsers.trim().equals(""))
+            this.rdnUsers.add(rdnUsers.trim());
+        if (this.rdnUsers.size() == 1 && this.rdnUsers.equals("")) {
             throw new IllegalArgumentException("No ldap domain of user configured.");
         }
     }
@@ -1216,8 +1249,9 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
      * @throws Exception if distinguish name is empty
      */
     private void setDomainGroups(String rdnGroups) throws Exception {
-        this.rdnGroups = rdnGroups.trim();
-        if (this.rdnGroups.equals("")) {
+        if(!this.rdnGroups.equals(""))
+            this.rdnGroups.add(rdnGroups.trim());
+        if (this.rdnGroups.size() == 1 && this.rdnGroups.equals("")) {
             throw new IllegalArgumentException("No ldap domain of group configured.");
         }
     }
