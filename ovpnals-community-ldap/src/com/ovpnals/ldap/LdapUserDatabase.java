@@ -308,7 +308,11 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
         LdapTemplate ldapTemplate = new LdapTemplate();
         ldapTemplate.setContextSource(ldapContextSource);
 
-        String rdn = COMMON_NAME_ATTRIBUTE + "=" + rolename + "," + rdnGroups;
+        String dn = ((LdapGroup) getRole(rolename)).getDn();
+
+        int ind = dn.indexOf(baseDn);
+
+        String rdn = dn.substring(0,ind - 1);
 
         //take the name of user'member of this group
         NamingEnumeration e = (NamingEnumeration) ldapTemplate.lookup(rdn, new AttributesMapper() {
@@ -328,7 +332,7 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
         // delete the group in Ldapuser
         for (; e.hasMore();) {
             LdapUser u = getAccountFromDN(e.next().toString());
-            u.setRoles(getGroupsForUser(u.getPrincipalName()));
+            u.setRoles(getGroupsForUser(u.getDn()));
             userContainer.storePrincipal(u);
         }
 
@@ -369,13 +373,15 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
             else
                 getAccount(username).setLastPasswordChange(new Date());
 
-            ctx = ldapContextSource.getContext(getAccount(username).getDn(), oldPassword);
+            String dn = getAccount(username).getDn();
+            int ind = dn.indexOf(baseDn);
+            String rdn = dn.substring(0,ind - 1);
+            ctx = ldapContextSource.getContext(dn, oldPassword);
             LdapTemplate ldapTemplate = new LdapTemplate();
             ldapTemplate.setContextSource(ldapContextSource);
-            DirContextOperations context = ldapTemplate.lookupContext(UID_ATTRIBUTE + "=" + username + "," + rdnUsers);
+            DirContextOperations context = ldapTemplate.lookupContext(rdn);
             context.setAttributeValue(PASSWORD_ATTRIBUTE, password);
             ldapTemplate.modifyAttributes(context);
-
         } catch (Exception e) {
             // Context creation failed - authentication did not succeed
             logger.error("Login failed", e);
@@ -413,7 +419,15 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
         ldapTemplate.setContextSource(ldapContextSource);
         Attribute attr = new BasicAttribute(PASSWORD_ATTRIBUTE, password);
         ModificationItem item = new ModificationItem(DirContext.REPLACE_ATTRIBUTE, attr);
-        ldapTemplate.modifyAttributes(UID_ATTRIBUTE + "=" + username + "," + rdnUsers, new ModificationItem[]{item});
+        try{
+            String dn = getAccount(username).getDn();
+            int ind = dn.indexOf(baseDn);
+            String rdn = dn.substring(0,ind - 1);
+            ldapTemplate.modifyAttributes(rdn, new ModificationItem[]{item});
+        }catch(Exception e){
+            throw new UserDatabaseException("Error in LDAP server");
+        }
+
 
     }
 
@@ -473,7 +487,9 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
         LdapTemplate ldapTemplate = new LdapTemplate();
         ldapTemplate.setContextSource(ldapContextSource);
 
-        String rdn = UID_ATTRIBUTE + "=" + user.getPrincipalName() + "," + rdnUsers;
+        String originalDn = ((LdapUser) user).getDn();
+        int ind = originalDn.indexOf(baseDn);
+        String rdn = originalDn.substring(0,ind - 1);
 
         //update email and fullname
         DirContextOperations context = ldapTemplate.lookupContext(rdn);
@@ -485,23 +501,32 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
 
         Role[] rolesOld = user.getRoles();
 
-        String originalDn = rdn + "," + baseDn;
+        //String originalDn = rdn + "," + baseDn;
 
         /* delete old roles*/
         for (Role aRolesOld : rolesOld) {
-            logger.info("delete in: " + COMMON_NAME_ATTRIBUTE + "=" + aRolesOld.getPrincipalName() + "," + rdnGroups);
-            DirContextOperations context2 = ldapTemplate.lookupContext(COMMON_NAME_ATTRIBUTE + "=" + aRolesOld.getPrincipalName() + "," + rdnGroups);
+            LdapGroup group = (LdapGroup) aRolesOld;
+            String dn = group.getDn();
+            int ind1 = dn.indexOf(baseDn);
+            String rdn1 = dn.substring(0,ind1 - 1);
+            logger.debug("delete in:  " + rdn1);
+            DirContextOperations context2 = ldapTemplate.lookupContext(rdn1);
             context2.removeAttributeValue(MEMBER_ATTRIBUTE, originalDn);
             ldapTemplate.modifyAttributes(context2);
-            logger.info("attribut remove: " + originalDn);
+            logger.debug("attribut remove: " + originalDn);
 
         }
 
         /* add new roles */
         int i = 0;
         while (i < roles.length) {
-            logger.info("add: " + COMMON_NAME_ATTRIBUTE + "=" + roles[i].getPrincipalName() + "," + rdnGroups);
-            DirContextOperations context3 = ldapTemplate.lookupContext(COMMON_NAME_ATTRIBUTE + "=" + roles[i].getPrincipalName() + "," + rdnGroups);
+            LdapGroup group = (LdapGroup) roles[i];
+            String dn = group.getDn();
+            int ind1 = dn.indexOf(baseDn);
+            String rdn1 = dn.substring(0,ind1 - 1);
+
+            logger.debug("add: " + rdn1);
+            DirContextOperations context3 = ldapTemplate.lookupContext(rdn1);
             context3.addAttributeValue(MEMBER_ATTRIBUTE, originalDn);
             ldapTemplate.modifyAttributes(context3);
             i++;
@@ -523,11 +548,18 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
         //delete the name of user in groups
         Role[] roles = user.getRoles();
 
-        String rdn = UID_ATTRIBUTE + "=" + user.getPrincipalName() + "," + rdnUsers;
+        String dn = ((LdapUser) user).getDn();
+        int ind = dn.indexOf(baseDn);
+        String rdn = dn.substring(0,ind - 1);
+
 
         for (Role role : roles) {
-            DirContextOperations context = ldapTemplate.lookupContext(COMMON_NAME_ATTRIBUTE + "=" + role.getPrincipalName() + "," + rdnGroups);
-            context.removeAttributeValue(MEMBER_ATTRIBUTE, rdn + "," + baseDn);
+            LdapGroup group = (LdapGroup) role;
+            String dnGroup = group.getDn();
+            int ind1 = dnGroup.indexOf(baseDn);
+            String rdnGroup = dnGroup.substring(0,ind1 - 1);
+            DirContextOperations context = ldapTemplate.lookupContext(rdnGroup);
+            context.removeAttributeValue(MEMBER_ATTRIBUTE, dn);
             ldapTemplate.modifyAttributes(context);
         }
 
@@ -601,9 +633,10 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
             userContainer.updateRemovedPrincipals(usernames);
         }
 
+
         for (Object user : users) {
             LdapUser u = (LdapUser) user;
-            u.setRoles(getGroupsForUser(u.getPrincipalName()));
+            u.setRoles(getGroupsForUser(u.getDn()));
             userContainer.storePrincipal(u);
         }
 
@@ -672,30 +705,25 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
             int indx = dn.indexOf("," + baseDn);
             final String rdn = dn.substring(0, indx);
             Object user = ldapTemplate.lookup(rdn,
-                    new AttributesMapper() {
-                        public Object mapFromAttributes(Attributes attrs) throws NamingException {
+                    new AbstractContextMapper() {
+                        protected Object doMapFromContext(DirContextOperations ctx){
 
+                            if (ctx.getStringAttribute(MAIL_ATTRIBUTE) == null)
+                                ctx.setAttributeValue(MAIL_ATTRIBUTE, "");
+                            if (ctx.getStringAttribute(COMMON_NAME_ATTRIBUTE) == null)
+                                ctx.setAttributeValue(COMMON_NAME_ATTRIBUTE, "");
 
-                            if (attrs.get(MAIL_ATTRIBUTE) == null)
-                                attrs.put(MAIL_ATTRIBUTE, "");
-                            if (attrs.get(COMMON_NAME_ATTRIBUTE) == null)
-                                attrs.put(COMMON_NAME_ATTRIBUTE, "");
-
-                            String uid = attrs.get(UID_ATTRIBUTE).get().toString();
-                            String orginalDn = UID_ATTRIBUTE + "=" + uid + "," + rdnUsers + "," + baseDn;
+                            String uid = ctx.getStringAttribute(UID_ATTRIBUTE);
 
                             //get the date of last modify of this user
                             LdapTemplate tmp = new LdapTemplate();
                             tmp.setContextSource(ldapContextSource);
                             final String[] attrOp = {MODIFY_TIMESTAMP_ATTRIBUTE};
-                            Object o = tmp.lookup(rdn, attrOp,
+                            Object o = tmp.lookup(ctx.getDn(), attrOp,
                                     new ContextMapper() {
                                         public Object mapFromContext(Object ctx) {
                                             DirContextAdapter adapter = (DirContextAdapter) ctx;
-                                            String value = adapter.getStringAttribute(attrOp[0]);
-                                            return value;
-
-
+                                            return adapter.getStringAttribute(attrOp[0]);
                                         }
                                     }
 
@@ -710,13 +738,7 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
                                 lastPasswordChange = new Date();
                             }
 
-                            return new LdapUser(uid,
-                                    orginalDn,
-                                    attrs.get(MAIL_ATTRIBUTE).get().toString(),
-                                    attrs.get(COMMON_NAME_ATTRIBUTE).get().toString(),
-                                    lastPasswordChange,
-                                    getRealm()
-                            );
+                            return new LdapUser(uid, ctx.getNameInNamespace(), ctx.getStringAttribute(MAIL_ATTRIBUTE), ctx.getStringAttribute(COMMON_NAME_ATTRIBUTE), lastPasswordChange, getRealm());
 
 
                         }
@@ -734,17 +756,17 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
     /**
      * Return all the roles(groupes) for one user
      *
-     * @param username name of the user
+     * @param dn distinguished name of the user
      * @return array of user's role
      */
-    private Role[] getGroupsForUser(final String username) {
+    private Role[] getGroupsForUser(final String dn) {
 
         LdapTemplate ldapTemplate = new LdapTemplate();
         ldapTemplate.setContextSource(ldapContextSource);
 
         AndFilter filterS = new AndFilter();
         filterS.and(new EqualsFilter(OBJECT_CLASS_ATTRIBUTE, GROUPS_CLASS));
-        filterS.and(new EqualsFilter(MEMBER_ATTRIBUTE, UID_ATTRIBUTE + "=" + username + "," + rdnUsers + "," + baseDn));
+        filterS.and(new EqualsFilter(MEMBER_ATTRIBUTE, dn));
         List groups = ldapTemplate.search(
                 rdnGroups, filterS.encode(),
                 new AttributesMapper() {
