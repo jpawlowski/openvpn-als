@@ -1,1 +1,1 @@
-Please take a look at http://ovpnals.wiki.sourceforge.net/installing_and_running_the_ovpnals_server
+Please take a look at http://adito.wiki.sourceforge.net/installing_and_running_the_adito_server

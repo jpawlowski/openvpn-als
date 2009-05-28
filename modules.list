@@ -11,19 +11,19 @@ maverick-crypto[headok]
 maverick-multiplex[headok]
 maverick-ssl[headok]
 maverick-util[headok]
-ovpnals-commons-vfs
-ovpnals
-ovpnals-agent
-ovpnals-agent-swt
-ovpnals-agent-awt
+adito-commons-vfs
+adito
+adito-agent
+adito-agent-swt
+adito-agent-awt
 ui
 commons-logging-java1[headok]
-ovpnals-community-activedirectory
-ovpnals-community-applications
-ovpnals-community-tunnels
-ovpnals-community-web-forwards
-ovpnals-community-network-places
-ovpnals-community-unix
+adito-community-activedirectory
+adito-community-applications
+adito-community-tunnels
+adito-community-web-forwards
+adito-community-network-places
+adito-community-unix
 
 # Broken as from 0.2.10
-ovpnals-sample[headok]
+adito-sample[headok]

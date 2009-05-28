@@ -1,1 +1,1 @@
-Take a look at http://ovpnals.wiki.sourceforge.net/what_is_ovpnals
+Take a look at http://adito.wiki.sourceforge.net/what_is_adito

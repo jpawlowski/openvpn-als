@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="ovpnals-build" default="start-using-java">
+<project name="adito-build" default="start-using-java">
 	
-	<property name="ovpnals.home" value="ovpnals"/>
-	<property name="agent.home" value="ovpnals-agent"/>
+	<property name="adito.home" value="adito"/>
+	<property name="agent.home" value="adito-agent"/>
 	
 	<!-- Display some help -->
 	<target name="help" description="Displays some help.">
 		<echo>
 You must have run the 'install' target at least once which compiles
-all source starts OpenVPN-ALS's installation wizard. You also should
+all source starts Adito's installation wizard. You also should
 configure the Agent certificate and run 'install-agent' target.
 Otherwise resources based on SSL-tunnels will not work.
 			
@@ -24,18 +24,18 @@ For a list of Ant targets, use "ant -projecthelp"
 
 
 	<target name="clean" description="Removes compiled files">
-		<ant dir="${ovpnals.home}" target="clean"/>
+		<ant dir="${adito.home}" target="clean"/>
 		<!-- NOTE This Code use Old Apache Commons VFS. This is not required for new Apache Commons VFS -->
 		<!--
-		<ant dir="ovpnals-commons-vfs" target="clean"/>
+		<ant dir="adito-commons-vfs" target="clean"/>
 		-->
-		<ant dir="ovpnals-community-activedirectory" target="clean"/>
-		<ant dir="ovpnals-community-applications" target="clean"/>
-		<ant dir="ovpnals-community-network-places" target="clean"/>
-		<ant dir="ovpnals-community-pam" target="clean"/>
-		<ant dir="ovpnals-community-tunnels" target="clean"/>
-		<ant dir="ovpnals-community-unix" target="clean"/>
-		<ant dir="ovpnals-community-web-forwards" target="clean"/>
+		<ant dir="adito-community-activedirectory" target="clean"/>
+		<ant dir="adito-community-applications" target="clean"/>
+		<ant dir="adito-community-network-places" target="clean"/>
+		<ant dir="adito-community-pam" target="clean"/>
+		<ant dir="adito-community-tunnels" target="clean"/>
+		<ant dir="adito-community-unix" target="clean"/>
+		<ant dir="adito-community-web-forwards" target="clean"/>
 		<ant dir="maverick-crypto" target="clean"/>
 		<ant dir="maverick-multiplex" target="clean"/>
 		<ant dir="maverick-ssl" target="clean"/>
@@ -45,15 +45,15 @@ For a list of Ant targets, use "ant -projecthelp"
 
 	<!-- Warning: there's no target to remove the generated HTML files yet -->
 	<target name="javadoc" description="Generate javadocs for everything">
-		<ant dir="${ovpnals.home}" target="javadoc"/>
+		<ant dir="${adito.home}" target="javadoc"/>
 		<!-- NOTE This Code use Old Apache Commons VFS. This is not required for new Apache Commons VFS -->
-		<!--<ant dir="ovpnals-commons-vfs" target="javadoc"/>-->
-		<ant dir="ovpnals-community-activedirectory" target="javadoc"/>
-		<ant dir="ovpnals-community-applications" target="javadoc"/>
-		<ant dir="ovpnals-community-network-places" target="javadoc"/>
-		<ant dir="ovpnals-community-tunnels" target="javadoc"/>
-		<ant dir="ovpnals-community-unix" target="javadoc"/>
-		<ant dir="ovpnals-community-web-forwards" target="javadoc"/>
+		<!--<ant dir="adito-commons-vfs" target="javadoc"/>-->
+		<ant dir="adito-community-activedirectory" target="javadoc"/>
+		<ant dir="adito-community-applications" target="javadoc"/>
+		<ant dir="adito-community-network-places" target="javadoc"/>
+		<ant dir="adito-community-tunnels" target="javadoc"/>
+		<ant dir="adito-community-unix" target="javadoc"/>
+		<ant dir="adito-community-web-forwards" target="javadoc"/>
 		<ant dir="maverick-crypto" target="javadoc"/>
 		<ant dir="maverick-multiplex" target="javadoc"/>
 		<ant dir="maverick-ssl" target="javadoc"/>
@@ -64,44 +64,44 @@ For a list of Ant targets, use "ant -projecthelp"
 	</target>
 
 
-	<target name="console" description="Starts the OpenVPN-ALS server in the foreground display all output to the console">
-		<ant dir="${ovpnals.home}" target="console"/>
+	<target name="console" description="Starts the Adito server in the foreground display all output to the console">
+		<ant dir="${adito.home}" target="console"/>
 	</target>
 	
-	<target name="start" description="Starts the OpenVPN-ALS in the background">
-		<ant dir="${ovpnals.home}" target="start"/>
+	<target name="start" description="Starts the Adito in the background">
+		<ant dir="${adito.home}" target="start"/>
 	</target>
 
-	<target name="start-using-java" description="Starts the OpenVPN-ALS in the foreground without the OS-dependent wrapper">
-		<ant dir="${ovpnals.home}" target="start-using-java"/>
+	<target name="start-using-java" description="Starts the Adito in the foreground without the OS-dependent wrapper">
+		<ant dir="${adito.home}" target="start-using-java"/>
 	</target>
 	
-	<target name="stop" description="Stops the running OpenVPN-ALS. Note, this currently does not work on all platforms.">
-		<ant dir="${ovpnals.home}" target="stop"/>
+	<target name="stop" description="Stops the running Adito. Note, this currently does not work on all platforms.">
+		<ant dir="${adito.home}" target="stop"/>
 	</target>
 
-	<target name="install" description="Run the OpenVPN-ALS installation wizard. The server must not be running.">
-		<ant dir="${ovpnals.home}" target="install"/>
+	<target name="install" description="Run the Adito installation wizard. The server must not be running.">
+		<ant dir="${adito.home}" target="install"/>
 	</target>
 
-	<target name="install-agent" description="Install OpenVPN-ALS Agent.">
-		<ant inheritall="false" dir="${ovpnals.home}" target="install-agent" />
+	<target name="install-agent" description="Install Adito Agent.">
+		<ant inheritall="false" dir="${adito.home}" target="install-agent" />
 	</target>
 
-	<target name="install-service" description="Install OpenVPN-ALS as a service.">
-		<ant dir="${ovpnals.home}" target="install-service"/>
+	<target name="install-service" description="Install Adito as a service.">
+		<ant dir="${adito.home}" target="install-service"/>
 	</target>
 
-	<target name="uninstall-service" description="Uninstall OpenVPN-ALS service.">
-		<ant dir="${ovpnals.home}" target="uninstall-service"/>
+	<target name="uninstall-service" description="Uninstall Adito service.">
+		<ant dir="${adito.home}" target="uninstall-service"/>
 	</target>
 
-	<target name="compile" description="Compile OpenVPN-ALS.">
-		<ant dir="${ovpnals.home}" target="deploy-community-extensions"/>
+	<target name="compile" description="Compile Adito.">
+		<ant dir="${adito.home}" target="deploy-community-extensions"/>
 	</target>
 
-	<target name="dist" description="Create an executable, ready to distribute version of OpenVPN-ALS">
-		<ant inheritall="false" dir="${ovpnals.home}" target="dist"/>
+	<target name="dist" description="Create an executable, ready to distribute version of Adito">
+		<ant inheritall="false" dir="${adito.home}" target="dist"/>
 	</target>
 
 
