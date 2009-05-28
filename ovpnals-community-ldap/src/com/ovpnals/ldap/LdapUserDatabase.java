@@ -636,7 +636,6 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
 
             for (Object user : users) {
                 LdapUser u = (LdapUser) user;
-                logger.info("user: "+u);
                 u.setRoles(getGroupsForUser(u.getDn()));
                 userContainer.storePrincipal(u);
             }
@@ -764,7 +763,6 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
      * @return array of user's role
      */
     private Role[] getGroupsForUser(final String dn) {
-        logger.info("getGroupForUser: "+dn);
         LdapTemplate ldapTemplate = new LdapTemplate();
         ldapTemplate.setContextSource(ldapContextSource);
 
@@ -773,7 +771,6 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
         filterS.and(new EqualsFilter(MEMBER_ATTRIBUTE, dn));
         List allGroups = new ArrayList();
         for(String rdn : rdnGroups){
-            logger.info("rdnGroups: "+rdn);
             List groups = ldapTemplate.search(
                     rdn, filterS.encode(),
                     new AttributesMapper() {
@@ -796,8 +793,8 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
             for (Object o : groups){
                 allGroups.add(o);
             }
-                //return (LdapGroup[]) groups.toArray(new LdapGroup[groups.size()]);
         }
+
         return (LdapGroup[]) allGroups.toArray(new LdapGroup[allGroups.size()]);
 
     }
@@ -1064,22 +1061,12 @@ public class LdapUserDatabase extends DefaultUserDatabase implements CoreListene
         setBaseDN(getProperty("ldap.baseDN", propertyNames));
         setServiceAccountName(getProperty("ldap.serviceAccountUsername", propertyNames));
         setServiceAccountPassword(getProperty("ldap.serviceAccountPassword", propertyNames));
-        logger.info("set domain User");
         setDomainUsers(getProperty("ldap.domainUsers1", propertyNames));
         setDomainUsers(getProperty("ldap.domainUsers2", propertyNames));
         setDomainUsers(getProperty("ldap.domainUsers3", propertyNames));
-        logger.info("set domain group");
         setDomainGroups(getProperty("ldap.domainGroups1", propertyNames));
         setDomainGroups(getProperty("ldap.domainGroups2", propertyNames));
         setDomainGroups(getProperty("ldap.domainGroups3", propertyNames));
-
-        for (int i = 0; i <  rdnUsers.size(); i++){
-            logger.info("rdnUsers "+ i +" :" + rdnUsers.get(i));
-        }
-
-        for (int i = 0; i <  rdnGroups.size(); i++){
-            logger.info("rdnGroups "+ i +" :" + rdnGroups.get(i));
-        }
 
         setUseSSL(getPropertyBoolean("ldap.useSSL", propertyNames));
         setFollowReferrals(getPropertyBoolean("ldap.followReferrals", propertyNames));
