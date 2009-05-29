@@ -1,0 +1,115 @@
+*** NOTE ***
+
+Most unit tests don't work yet. In fact the build may fail if they're used. To skip them, use 
+-Dmaven.test.skip=true:
+
+mvn -Dmaven.test.skip=true clean install 
+
+==The big picture==
+
+Current (29th May 2009) this is the master plan... Firstly "nonembedded" will eventually become the new 
+trunk. Modules in "nonembedded" will be converted to maven2 one-by-one. The ant build should be kept 
+functional at all times, so that
+
+  mvn install
+
+followed by
+
+  ant install/whatever
+
+will create an usable Adito installation. The ant build.xml files need to be adapted to utilize maven's 
+output (see "Build order", below). Also, the stuff created by maven2 should not be cleaned by "ant 
+clean". So the correct "clean" procedure would be
+
+  ant clean
+  mvn clean
+
+== Modules not available from public Maven2 repositories ==
+
+There are some jars that Adito requires which are not yet in public Maven repositories. These
+modules are currently hosted in a custom Maven2 repository (http://adito.pcdog.ch/maven2).
+
+== Build order ==
+
+Check the build order from branches/maven2/pom.xml. In a nutshell, due to dependencies modules have 
+to be mavenized in the following order:
+
+* maverick-*
+* webapp
+* extensions (tunnels, agent, webforwards, etc.)
+
+Most of the directories contain ant build stuff. It's best if old ant directories are renamed as 
+they are migrated to Maven2. This should reduce unnecessary confusion. Many extensions depend on
+the Agent at runtime, but not during compilation.
+
+== New module names ==
+
+For historic reasons modules have long names and are being converted to shorter names thusly:
+
+ adito-community-applications -> applications
+ adito-agent -> agent
+ 
+In some cases this affects the Maven src/main/java directory structure. All references in the java, xml, 
+property etc. files have to be converted, too. For this reason there is a Bash script 
+(tools/convert_variables.sh) that can help in the conversion process.
+
+== Basic techniques ==
+
+- Duplicate ("svn copy") the "maven-template-module" directory
+- Copy ("svn copy") the source (and resources) files to the new Maven2 module.Note that at some point
+  during the copying process SVN will start complaining and refuse to operate. At this point it's best
+  to remove the offending files/dirs and commit your changes. Then you can continue working.
+- Try building and fix any dependency problems that arise
+- Follow the original module's build.xml to see what it does, if necessary.
+- Compare Maven's output to the output of the original build (see below) to see if it's identical
+
+You can use the jar's and zip-files in the "comparison" directory to see if output Maven creates is 
+correct. The directory contains fully functional JAR's and ZIP-files created by the original "ant" build 
+process.
+
+To peek inside a JAR, you can use
+
+ jar tf filename.jar
+
+For ZIP-files you can (on Linux) use
+
+ zipinfo filename.zip
+
+If contents of the Ant/Maven JAR/ZIP differs a lot, you've probably got a problem. Note that we probably
+have to use the Assembly plugin to create a fully functional, runnable version of Adito. Another option
+is to call "ant" to build the actual extension ZIP-file.
+
+== Mavenizing the Adito Agent ==
+
+Adito Agent is not mavenized yet (18th Feb 2009). In "trunk", Agent is built from several components:
+
+adito-agent
+adito-agent-awt
+adito-agent-swt
+ui
+
+The Agent also needs a SSL-certificate for proper operation. The files required for
+the Agent's SSL certificate are these:
+
+agent-keystore.p12
+- the certificate container, created with Java keytool (see "Installing Adito..." in Wiki)
+
+certificate.properties
+- File that specifies the Agent's keystore password. It's used to sign the Agent Java applet.
+
+== Misc notes ==
+
+Adito originally contained a patched version of Apache commons vfs. The patches themselves are available
+in directory adito-commons-vfs/patches and are _probably_ the only modifications to the original
+commons-vfs code. To reduce unnecessary work and confusion Mavenized Adito now uses standard commons-vfs.
+
+---
+
+It is possible to convert Adito into a standard Java web application. Currently Maven creates a WAR
+out of Adito's server component. The format of a WAR archive is documented here:
+
+http://java.sun.com/j2ee/tutorial/1_3-fcs/doc/WebComponents3.html
+
+Adito is being converted into a standard webapp in branches/nonembedded. Code from the nonembedded branch
+will eventually be merged with this Maven2 branch. Current server WAR produced by Adito does not run on
+anything, but that's not an issue for now.

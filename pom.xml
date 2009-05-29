@@ -130,8 +130,7 @@
 	<module>maverick-crypto</module>
 	-->
 	<!--
-	<module>boot</module>
-	<module>server</module>
+	<module>webapp</module>
 	<module>unix</module>
 	<module>activedirectory</module>
 	<module>applications</module>
