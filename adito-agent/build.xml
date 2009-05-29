@@ -707,10 +707,12 @@
 	    </copy>
 		<copy file="${adito-agent-swt.home}/lib/linux/swt.jar"
 			tofile="${build.extension}/swt-linux.jar"/>
-        <copy file="${adito-agent-swt.home}/lib/linux/swt.jar"
+		<copy file="${adito-agent-swt.home}/lib/linux64/swt.jar"
 			tofile="${build.extension}/swt-linux64.jar"/>
 		<copy file="${adito-agent-swt.home}/lib/win32/swt.jar"
 			tofile="${build.extension}/swt-win32.jar"/>
+		<copy file="${adito-agent-swt.home}/lib/win64/swt.jar"
+			tofile="${build.extension}/swt-win64.jar"/>
 		<copy file="${adito-agent-swt.home}/lib/macosx/swt.jar"
 			tofile="${build.extension}/swt-macosx.jar"/>
 
