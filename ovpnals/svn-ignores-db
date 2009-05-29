@@ -1,8 +1,0 @@
-*.log
-*.log.?
-*~
-*.class
-*.backup
-*.data
-*.script
-explorer_configuration.properties
