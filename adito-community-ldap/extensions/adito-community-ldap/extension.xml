@@ -64,13 +64,25 @@
 					name="ldap.serviceAccountPassword" typeMeta=""
 					category="91" defaultValue="" sortOrder="50" validation=""
 					messageResourcesKey="ldap" />
-                 <definition type="0" name="ldap.domainUsers"
+                 <definition type="0" name="ldap.domainUsers1"
 					typeMeta="" category="91" defaultValue="ou=People" sortOrder="60"
 					validation="com.adito.input.validators.NonBlankStringValidator"
 					messageResourcesKey="ldap" />
-                <definition type="0" name="ldap.domainGroups"
+                <definition type="0" name="ldap.domainUsers2"
+					typeMeta="" category="91" defaultValue="" sortOrder="61"
+					messageResourcesKey="ldap" />
+                <definition type="0" name="ldap.domainUsers3"
+					typeMeta="" category="91" defaultValue="" sortOrder="62"
+					messageResourcesKey="ldap" />               
+                <definition type="0" name="ldap.domainGroups1"
 					typeMeta="" category="91" defaultValue="ou=Groups" sortOrder="70"
 					validation="com.adito.input.validators.NonBlankStringValidator"
+					messageResourcesKey="ldap" />
+                <definition type="0" name="ldap.domainGroups2"
+					typeMeta="" category="91" defaultValue="" sortOrder="71"
+					messageResourcesKey="ldap" />
+                <definition type="0" name="ldap.domainGroups3"
+					typeMeta="" category="91" defaultValue="" sortOrder="72"
 					messageResourcesKey="ldap" />
 
 
