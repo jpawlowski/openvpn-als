@@ -148,7 +148,7 @@
 			</classpath>
 		</java>			
 		<javac target="1.5" source="1.5" destdir="${build.output}"
-				srcdir="${build.src1.5}"
+				srcdir="${build.tmp}"
 				includeantruntime="false" includes="**/*.java" classpathref="maverick-ssl.class.path"
 				debug="true">
 			<classpath location="${build.output}"/>
