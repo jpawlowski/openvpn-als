@@ -7,13 +7,13 @@
     
     <groupId>com.adito</groupId>
     <artifactId>adito</artifactId>
-		<name>Adito</name>
+    <name>Adito</name>
 
     <version>0.9.2</version>
     
     <packaging>pom</packaging>
     
-    <inceptionYear>2007</inceptionYear> <!-- What should this be? -->
+    <inceptionYear>2008</inceptionYear>
     
     <description>
 			Adito is a web-based SSL VPN server.
@@ -49,10 +49,11 @@
         <name>Adito Open Source Team</name>
         <url>http://adito.sourceforge.net/</url>
     </organization>
+
+<!-- Who were the original developers on this project? Current developers? People should
+     be added below. -->
     
     <developers>
-				<!-- Who were the original developers on this project? Current developers? People should
-				     be added below. -->
         <developer>
             <id>svetzal</id>
             <name>Steven Vetzal</name>
@@ -61,23 +62,47 @@
             <roles>
                 <role>Developer</role>
             </roles>
-            <timezone>+5</timezone>
+            <timezone>-5</timezone>
+        </developer>
+
+        <developer>
+            <id>mattock</id>
+            <name>Samuli Seppänen</name>
+            <email>samuli.seppanen@gmail.com</email>
+            <organization>Tietoteema Oy</organization>
+            <roles>
+                <role>Developer</role>
+		<role>Coordinator</role>
+		<role>Translator</role>
+            </roles>
+            <timezone>+2</timezone>
+        </developer>
+
+        <developer>
+            <id>plunden</id>
+            <name>Pasi Lunden</name>
+            <email>pasi.lunden@tietoteema.fi</email>
+            <organization>Tietoteema.fi</organization>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <timezone>+2</timezone>
         </developer>
     </developers>
 
-		<contributors>
-			<contributor>
-				<name>Samuli Seppänen</name>
-				<email>mmattson1980@yahoo.com</email>
-				<organization>Tietoteema Oy</organization>
-				<roles>
-					<role>Coordinator</role>
-					<role>Translator</role>
-				</roles>
-				<timezone>+2</timezone>
-			</contributor>
-		</contributors>
-    
+    <!--
+	<contributors>
+		<contributor>
+			<name></name>
+			<email></email>
+			<organization></organization>
+			<roles>
+			</roles>
+			<timezone></timezone>
+		</contributor>
+	</contributors>
+    -->
+
 		<issueManagement>
 			<system>SourceForge</system>
 			<url>https://sourceforge.net/tracker2/?group_id=228294</url>
@@ -95,21 +120,27 @@
 		</mailingLists>
 
     <modules>
-				<module>maverick-util</module>
-				<module>maverick-ssl</module>
-				<module>maverick-multiplex</module>
-				<module>maverick-crypto</module>
-				<module>boot</module>
-				<module>server</module>
-				<module>unix</module>
-				<module>activedirectory</module>
-				<module>applications</module>
-				<module>webforwards</module>
-				<module>tunnels</module>
-				<module>networkplaces</module>
-    
-    				<!--<module>console</module-->
-        			<!--<module>agent</module-->
+
+	<!-- Enable modules as conversion proceeds -->
+	<module>maverick-util</module>
+
+	<!--
+	<module>maverick-ssl</module>
+	<module>maverick-multiplex</module>
+	<module>maverick-crypto</module>
+	-->
+	<!--
+	<module>boot</module>
+	<module>server</module>
+	<module>unix</module>
+	<module>activedirectory</module>
+	<module>applications</module>
+	<module>webforwards</module>
+	<module>tunnels</module>
+	<module>networkplaces</module>
+	-->
+	<!--<module>console</module-->
+	<!--<module>agent</module-->
     </modules>
     
     <repositories>
