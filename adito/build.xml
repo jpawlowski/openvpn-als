@@ -60,7 +60,7 @@
 	<property name="dir.build-tools" value="${basedir}/../build-tools" />
 	<property name="unit-testing.home" value="${dir.build-tools}/unit-testing" />
 	<property name="dir.maverick-util" value="../maverick-util" />
-	<property name="dir.maverick-util.classes" value="${dir.maverick-util}/build/classes" />
+	<property name="dir.maverick-util.classes" value="${dir.maverick-util}/target/classes" />
 	<property name="dir.maverick-crypto" value="../maverick-crypto" />
 	<property name="dir.maverick-crypto.classes" value="${dir.maverick-crypto}/build/classes" />
 	<property name="dir.maverick-ssl" value="../maverick-ssl" />
@@ -208,7 +208,9 @@
 		<ant inheritall="false" dir="${dir.maverick-crypto}" target="compile" />
 		<ant inheritall="false" dir="${dir.maverick-multiplex}" target="compile" />
 		<ant inheritall="false" dir="${dir.maverick-ssl}" target="compile" />
+		<!-- Build mavenized, hence disabled
 		<ant inheritall="false" dir="${dir.maverick-util}" target="compile" />
+		-->
 	</target>
 
 	<target name="compile-emma" description="Instrument the classes to provide emma code coverage">
@@ -774,7 +776,7 @@
 			</fileset>
 		</jar>
 
-		<copy todir="${dist.dir}/lib" file="${dir.maverick-util}/build/dist/maverick-util.jar" />
+		<copy todir="${dist.dir}/lib" file="${dir.maverick-util}/target/maverick-util.jar" />
 		<copy todir="${dist.dir}/lib" file="${dir.maverick-crypto}/build/dist/maverick-crypto.jar" />
 		<copy todir="${dist.dir}/lib" file="${dir.maverick-ssl}/build/dist/maverick-ssl.jar" />
 		<copy todir="${dist.dir}/lib" file="${dir.maverick-multiplex}/build/dist/maverick-multiplex.jar" />
