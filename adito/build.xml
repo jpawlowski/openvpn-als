@@ -62,11 +62,11 @@
 	<property name="dir.maverick-util" value="../maverick-util" />
 	<property name="dir.maverick-util.classes" value="${dir.maverick-util}/target/classes" />
 	<property name="dir.maverick-crypto" value="../maverick-crypto" />
-	<property name="dir.maverick-crypto.classes" value="${dir.maverick-crypto}/build/classes" />
+	<property name="dir.maverick-crypto.classes" value="${dir.maverick-crypto}/target/classes" />
 	<property name="dir.maverick-ssl" value="../maverick-ssl" />
-	<property name="dir.maverick-ssl.classes" value="${dir.maverick-ssl}/build/classes" />
+	<property name="dir.maverick-ssl.classes" value="${dir.maverick-ssl}/target/classes" />
 	<property name="dir.maverick-multiplex" value="../maverick-multiplex" />
-	<property name="dir.maverick-multiplex.classes" value="${dir.maverick-multiplex}/build/classes" />
+	<property name="dir.maverick-multiplex.classes" value="${dir.maverick-multiplex}/target/classes" />
 
 	<!-- emma code coverage task definition -->
 	<taskdef name="emma" classname="com.vladium.emma.emmaTask">
@@ -205,10 +205,10 @@
 	<!-- TODO: these might also require the maverick-* JAR-files. In that case the target should be "dist",
              not compile (see target compile-dependencies -->
 	<target name="compile-test-dependencies" description="Compile the test dependencies for this project">
+		<!-- Build mavenized, hence disabled
 		<ant inheritall="false" dir="${dir.maverick-crypto}" target="compile" />
 		<ant inheritall="false" dir="${dir.maverick-multiplex}" target="compile" />
 		<ant inheritall="false" dir="${dir.maverick-ssl}" target="compile" />
-		<!-- Build mavenized, hence disabled
 		<ant inheritall="false" dir="${dir.maverick-util}" target="compile" />
 		-->
 	</target>
@@ -768,7 +768,6 @@
 			<fileset dir="db" />
 		</copy>
 
-
 		<!-- Compile adito server and put jar in serverlib -->
 		<jar jarfile="${dist.dir}/serverlib/adito-server.jar">
 			<fileset dir="${build.server.output}">
@@ -777,9 +776,9 @@
 		</jar>
 
 		<copy todir="${dist.dir}/lib" file="${dir.maverick-util}/target/maverick-util.jar" />
-		<copy todir="${dist.dir}/lib" file="${dir.maverick-crypto}/build/dist/maverick-crypto.jar" />
-		<copy todir="${dist.dir}/lib" file="${dir.maverick-ssl}/build/dist/maverick-ssl.jar" />
-		<copy todir="${dist.dir}/lib" file="${dir.maverick-multiplex}/build/dist/maverick-multiplex.jar" />
+		<copy todir="${dist.dir}/lib" file="${dir.maverick-crypto}/target/maverick-crypto.jar" />
+		<copy todir="${dist.dir}/lib" file="${dir.maverick-ssl}/target/maverick-ssl.jar" />
+		<copy todir="${dist.dir}/lib" file="${dir.maverick-multiplex}/target/maverick-multiplex.jar" />
 		<copy todir="${dist.dir}/lib" file="${dir.build-tools}/ant/ant-contrib.jar" />
 
 		<!-- Compile adito boot and put jar in lib -->
@@ -825,9 +824,11 @@
 	webapp/WEB-INF/lib/ and rebuild this jar from project adito-commons-vfs
 	  -->
 	<target name="dist-dependencies">
+		<!-- Build mavenized, hence disabled
 		<ant inheritall="false" dir="${dir.maverick-util}" target="dist">
 			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
+
 		<ant inheritall="false" dir="${dir.maverick-crypto}" target="dist">
 			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
@@ -840,14 +841,19 @@
 		<ant inheritall="false" dir="${adito-commons-vfs.home}" target="compile">
 			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
+		-->
+
+
 	</target>
 
 	<!-- Compile server dependencies. Also generate the necessary JAR-files for
              the "dist" target. -->
 	<target name="compile-dependencies">
+		<!-- Disabled due to mavenizing
 		<ant inheritall="false" dir="${dir.maverick-util}" target="dist">
 			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
+
 		<ant inheritall="false" dir="${dir.maverick-crypto}" target="dist">
 			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
@@ -860,6 +866,7 @@
 		<ant inheritall="false" dir="${adito-commons-vfs.home}" target="dist">
 			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
+		-->
 
 	</target>
 
