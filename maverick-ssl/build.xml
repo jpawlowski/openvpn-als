@@ -21,7 +21,7 @@
 	<property name="maverick-crypto.home" value="../maverick-crypto"/>
 	<property name="maverick-crypto.classes" value="${maverick-crypto.home}/build/classes"/>
 	<property name="maverick-util.home" value="../maverick-util"/>
-	<property name="maverick-util.classes" value="${maverick-util.home}/build/classes"/>
+	<property name="maverick-util.classes" value="${maverick-util.home}/target/classes"/>
 
 	<!-- Class path -->
     <path id="maverick-ssl.class.path">
@@ -60,7 +60,9 @@
 	
 	<target name="compile-debug">
 
+		<!-- Disabled due to mavenizing
 		<ant dir="${maverick-util.home}" target="compile"/>
+		-->
 		<ant dir="${maverick-crypto.home}" target="compile"/>
 
 		
@@ -95,11 +97,15 @@
 
 	<target name="compile-release">
 
+		<!-- Disabled due to mavenizing 
 		<ant dir="${maverick-util.home}" target="compile"/>
+		-->
 		<ant dir="${maverick-crypto.home}" target="compile"/>
+		<!--
 		<delete>
 			<fileset dir="${build.tmp}"/>
 		</delete>
+		-->
 		<mkdir dir="${build.tmp}"/>
 		<copy todir="${build.tmp}">
 			<fileset dir="${build.src}">
@@ -107,9 +113,12 @@
 				<exclude name="**/CVS/**/*"/>
 			</fileset>
 		</copy>
+
+		<!--
 		<delete>
 			<fileset dir="${build.output}"/>
 		</delete>
+		-->
 		<mkdir dir="${build.output}"/>
 		<copy todir="${build.output}">
 			<fileset dir="trustedcacerts">
