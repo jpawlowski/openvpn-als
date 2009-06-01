@@ -1,0 +1,7 @@
+#Database versions
+#Wed May 20 15:08:28 EEST 2009
+policyDatabase=0.9.1
+networkPlacesDatabase=1.0.18
+propertyDatabase=0.9.1
+systemDatabase=0.9.1
+userDatabase=0.9.1
