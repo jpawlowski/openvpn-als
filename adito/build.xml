@@ -564,6 +564,13 @@
 			</fileset>
 		</copy>
 
+		<mkdir dir="${dir.deploy}/WEB-INF/classes" />
+		<copy todir="${dir.deploy}/WEB-INF/classes" >
+			<fileset dir="${dir.build}">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+
 		<!-- Just in case?-->
 		<mkdir dir="${dir.deploy}/WEB-INF/tmp" />
 		<mkdir dir="${dir.deploy}/WEB-INF/logs" />
@@ -980,6 +987,13 @@
 		<copy todir="${dir.deploy}/WEB-INF/lib" file="${dir.maverick-ssl}/target/maverick-ssl.jar" />
 		<copy todir="${dir.deploy}/WEB-INF/lib" file="${dir.maverick-multiplex}/target/maverick-multiplex.jar" />
 		<copy todir="${dir.deploy}/WEB-INF/lib" file="${dir.build-tools}/ant/ant-contrib.jar" />
+
+		<copy todir="lib" file="${dir.maverick-util}/target/maverick-util.jar" />
+		<copy todir="lib" file="${dir.maverick-crypto}/target/maverick-crypto.jar" />
+		<copy todir="lib" file="${dir.maverick-ssl}/target/maverick-ssl.jar" />
+		<copy todir="lib" file="${dir.maverick-multiplex}/target/maverick-multiplex.jar" />
+		<copy todir="lib" file="${dir.build-tools}/ant/ant-contrib.jar" />
+
 
 		<!-- Disabled due to mavenizing
 		<ant inheritall="false" dir="${dir.maverick-util}" target="dist">
