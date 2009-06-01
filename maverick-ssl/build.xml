@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="maverick-ssl" default="dist">
+
+	<property file="build.properties"/>
+	<property file="${user.home}/.3sp.build.properties"/>	
+	
+	<!-- Standard build locations -->
+	
+	<property name="build.dir" value="build"/>	
+	<property name="build.compiler" value="modern" />
+	<property name="build.lib" value="lib"/>	
+	<property name="build.output" value="${build.dir}/classes"/>	
+	<property name="build.dist" value="${build.dir}/dist"/>	
+	<property name="build.docs" value="${build.dir}/docs"/>	
+	<property name="build.src" value="src"/>
+	<property name="build.src1.5" value="src1.5"/>
+	<property name="build.tmp" value="${build.dir}/src"/>
+	<property name="build-tools.home" value="../build-tools"/>
+	
+	<!-- Dependencies -->
+	<property name="maverick-crypto.home" value="../maverick-crypto"/>
+	<property name="maverick-crypto.classes" value="${maverick-crypto.home}/build/classes"/>
+	<property name="maverick-util.home" value="../maverick-util"/>
+	<property name="maverick-util.classes" value="${maverick-util.home}/build/classes"/>
+
+	<!-- Class path -->
+    <path id="maverick-ssl.class.path">
+    	<pathelement path="${maverick-crypto.classes}"/>
+    	<pathelement path="${maverick-util.classes}"/>
+    	<fileset dir="${build.lib}">
+			<include name="*.jar"/>
+		</fileset>
+    </path>
+        	
+	<!-- Build the library jar files -->
+	<target name="dist" depends="dist-release,dist-debug"/>
+	
+	<target name="dist-release" depends="compile-release">
+		<mkdir dir="${build.dist}"/>
+    	<jar jarfile="${build.dist}/maverick-ssl.jar">
+    		<fileset dir="${build.output}">
+        		<include name="**/*"/>
+    		</fileset>
+    	</jar>	
+	</target>
+
+	<target name="dist-debug" depends="compile-debug">
+		<mkdir dir="${build.dist}"/>
+    	<jar jarfile="${build.dist}/maverick-ssl-debug.jar">
+    		<fileset dir="${build.output}">
+        		<include name="**/*"/>
+    		</fileset>
+    	</jar>	
+	</target>
+	
+	<!-- Old compile task -->
+	<target name="compile" depends="compile-release"/>
+	
+	<!-- Compile the library  -->
+	
+	<target name="compile-debug">
+
+		<ant dir="${maverick-util.home}" target="compile"/>
+		<ant dir="${maverick-crypto.home}" target="compile"/>
+
+		
+		<delete>
+			<fileset dir="${build.output}"/>
+		</delete>
+		<mkdir dir="${build.output}"/>
+		<copy todir="${build.output}">
+			<fileset dir="trustedcacerts">
+				<include name="**/*"/>
+				<exclude name="**/CVS/**/*"/>
+			</fileset>
+		</copy>	
+		<javac target="1.1" source="1.2" compiler="${build.compiler}" destdir="${build.output}"
+				srcdir="${build.src}"
+				includeantruntime="false" includes="**/*.java" classpathref="maverick-ssl.class.path"
+			    debug="true">
+		</javac>
+
+		<javac target="1.5" source="1.5" destdir="${build.output}"
+				srcdir="${build.src1.5}"
+				includeantruntime="false" includes="**/*.java" classpathref="maverick-ssl.class.path"
+				debug="true">
+		</javac>
+		
+		<copy todir="${build.output}">
+			<fileset dir="${build.src}">
+				<include name="**/*.properties"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="compile-release">
+
+		<ant dir="${maverick-util.home}" target="compile"/>
+		<ant dir="${maverick-crypto.home}" target="compile"/>
+		<delete>
+			<fileset dir="${build.tmp}"/>
+		</delete>
+		<mkdir dir="${build.tmp}"/>
+		<copy todir="${build.tmp}">
+			<fileset dir="${build.src}">
+				<include name="**/*"/>
+				<exclude name="**/CVS/**/*"/>
+			</fileset>
+		</copy>
+		<delete>
+			<fileset dir="${build.output}"/>
+		</delete>
+		<mkdir dir="${build.output}"/>
+		<copy todir="${build.output}">
+			<fileset dir="trustedcacerts">
+				<include name="**/*"/>
+				<exclude name="**/CVS/**/*"/>
+			</fileset>
+		</copy>	
+		<java classname="codeswitcher.CodeSwitcher" fork="true">
+			<arg value="${build.tmp}"/>
+			<arg value="-DEBUG"/>
+			<arg value="#STRIP"/>
+			<classpath>
+				<pathelement path="${build-tools.home}/codeswitcher/codeswitcher.jar"/>
+			</classpath>
+		</java>
+		<javac target="1.1" source="1.2" compiler="${build.compiler}" destdir="${build.output}"
+				srcdir="${build.tmp}"
+				includeantruntime="false" includes="**/*.java" classpathref="maverick-ssl.class.path"
+			    debug="true">
+		</javac>
+		<delete>
+			<fileset dir="${build.tmp}"/>
+		</delete>		
+		<copy todir="${build.tmp}">
+			<fileset dir="${build.src1.5}">
+				<include name="**/*"/>
+				<exclude name="**/CVS/**/*"/>
+			</fileset>
+		</copy>	
+		<java classname="codeswitcher.CodeSwitcher" fork="true">
+			<arg value="${build.tmp}"/>
+			<arg value="-DEBUG"/>
+			<arg value="#STRIP"/>
+			<classpath>
+				<pathelement path="${build-tools.home}/codeswitcher/codeswitcher.jar"/>
+			</classpath>
+		</java>			
+		<javac target="1.5" source="1.5" destdir="${build.output}"
+				srcdir="${build.tmp}"
+				includeantruntime="false" includes="**/*.java" classpathref="maverick-ssl.class.path"
+				debug="true">
+			<classpath location="${build.output}"/>
+		</javac>
+		
+		<copy todir="${build.output}">
+			<fileset dir="${build.src}">
+				<include name="**/*.properties"/>
+			</fileset>
+		</copy>
+	</target>
+	<!-- Clean up all built files -->
+
+	<target name="clean">
+		<delete>
+			<fileset dir="${build.dir}"/>
+		</delete>	
+	</target>
+	
+	<!-- Create API documentation -->
+	
+    <target name="javadoc">
+        <mkdir dir="${build.docs}/api" />
+        <javadoc sourcepath="src" defaultexcludes="yes" destdir="${build.docs}/api" author="true" version="true" use="true" windowtitle="Maverick SSL" notree="true" classpathref="maverick-ssl.class.path">
+            <doctitle>
+				<![CDATA[<h1>Maverick SSL / HTTPS</h1>
+			<br>
+				<p>An SSL,HTTPS and HTTP library.</p>]]></doctitle>
+            <bottom>
+				<![CDATA[<i>Copyright &#169; 2003-2006 3SP LTD. All Rights Reserved.</i>]]></bottom>
+            <packageset dir="src" defaultexcludes="yes">
+                <include name="com/maverick/ssl/**" />
+                <include name="com/maverick/https/**" />
+            </packageset>
+        </javadoc>
+    </target>
+
+
+</project>
