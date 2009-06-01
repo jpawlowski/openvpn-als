@@ -20,6 +20,10 @@
       	Maverick util library
     </description>
 
+    <build>
+	<finalName>maverick-util</finalName>
+    </build>
+
     <profiles>
     </profiles>
 
