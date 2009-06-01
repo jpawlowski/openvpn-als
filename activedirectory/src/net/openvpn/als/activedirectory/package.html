@@ -1,0 +1,20 @@
+<body>
+<p>Classes used for the Microsoft Active Directory Server implementation of an OpenVPNALS User Database.</p>
+
+<p>This implementation uses JAAS (the Java Authentication and Authorization Service) to access
+an Active Directory Server for authenticating OpenVPNALS users and retrieving user
+information. </p>
+
+<p>Active Directory makes use of LDAP and Kerberos for authentication.</p>
+
+<p>OpenVPNALS Users are loaded from the Windows Accounts available and OpenVPNALS 
+roles are loaded from the Windows Groups.</p>
+
+<p>This is currently a read-only user database. Accounts may <b>NOT</b> be created, 
+edited or deleted and passwords may <b>NOT</b> be changed from within the web
+interface.</p>
+
+<p>An amount of configuration is required such as the domain and the domain controller
+to connect to.</p>
+
+</body>

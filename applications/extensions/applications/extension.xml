@@ -1,0 +1,48 @@
+<bundle version="1.0.11" requiredHostVersion="0.9.0"
+	id="applications"
+	name="OpenVPN-ALS Applications" license="GPL"
+	productURL="http://localhost"
+	order="200"
+	depends="tunnels,agent">
+	<description>
+		This extension adds the 'Applications' feature to OpenVPN-ALS.
+		By itself, this extension does not do much, you must download
+		the 'Application Extension' for the application you wish to use.
+		3SP Provide a number of pre-built extensions (e.g. RDP Client,
+		VNC Viewer, Terminal Emulator etc) from the 3SP Extension Store.
+		Alternatively you may create your own extension. See
+		documentation for more information on how to do this. Once you
+		have an installed Application Extension, you may then create
+		'Application Shortcuts'. Application Shortcuts are used to
+		configure and launch instances of any installed and supported
+		Application.
+	</description>
+	<extension type="plugin"
+		extension="applications"
+		name="OpenVPN-ALS Applications">
+		<description>
+			This extension adds the 'Applications' feature to
+			OpenVPN-ALS. By itself, this extension does not do much,
+			you must download the 'Application Extension' for the
+			application you wish to use. 3SP Provide a number of
+			pre-built extensions (e.g. RDP Client, VNC Viewer, Terminal
+			Emulator etc) from the 3SP Extension Store. Alternatively
+			you may create your own extension. See documentation for
+			more information on how to do this. Once you have an
+			installed Application Extension, you may then create
+			'Application Shortcuts'. Application Shortcuts are used to
+			configure and launch instances of any installed and
+			supported Application.
+		</description>
+		<plugin name="applications"
+			class="net.openvpn.als.applications.ApplicationsPlugin">
+			<classpath>
+				private/applications.jar
+			</classpath>
+			<resources>webapp</resources>
+		</plugin>
+		<propertyDefinitions>
+			<systemConfig></systemConfig>
+		</propertyDefinitions>
+	</extension>
+</bundle>

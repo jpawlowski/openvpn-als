@@ -1,0 +1,53 @@
+<body>
+<h1>
+	The OpenVPNALS Agent
+</h1>
+<p>
+	The OpenVPNALS Agent is a standalone component that is launched on a
+	clients machine via the OpenVPNALS web interface.
+</p>
+<p>
+	It is responsible for the following :-
+</p>
+<ul>
+	<li>
+		Setting up and controlling tunnels created in OpenVPNALSs
+		<em>SSL-Tunnels</em> feature. Both remote and local listeners may be
+		created each supporting multiple tunneled connections.
+	</li>
+	<li>
+		Download and launching application extensions configured using
+		OpenVPNALSs
+		<em>Network Places</em> feature. This may involve setting up a
+		temporary SSL-Tunnel for use by the application.
+	</li>
+	<li>
+		Setting up and controlling temporary tunnels for use by
+		<em>Tunnel Web Forwards</em>.
+		<br>
+	</li>
+</ul>
+It has the following features :-
+<br>
+<ul>
+	<li>
+		Extendable. Agent extensions may be defined in the extension
+		descriptor and download when the Agent starts up. Extensions may
+		contain a Java class that is invoked at this time. This is currently
+		for example by the
+		<em>Drives</em> extensions that adds drive mapping capabilities to the
+		agent.
+	</li>
+	<li>
+		Debug console may be launched by user to monitor System.out and log
+		output. This is helpful when troubleshooting. It must be enabled by
+		passing the debug option when launching the agent.
+	</li>
+	<li>
+		Port monitor may be launched by user to monitor currently active
+		listeners and the tunnels that are travelling over them.
+	</li>
+</ul>
+<br>
+<br>
+</body>

@@ -1,0 +1,25 @@
+
+<jsp:directive.page import="net.openvpn.als.applications.ApplicationsPlugin"/>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %> 
+
+<bean:define id="applicationShortcutPersonalPolicyForm" name="applicationShortcutPersonalPolicyForm" type="net.openvpn.als.applications.wizards.forms.ApplicationShortcutWizardPersonalPolicyForm"></bean:define>
+<table>
+	<tr>
+		<td>
+			<image src="<core:themePath/>/images/dialog/warning.gif" />
+		</td>
+		<td>
+			<bean:message key="applicationShortcutWizard.applicationShortcutPersonalPolicy.personalPolicy"
+			  	arg0="<%=applicationShortcutPersonalPolicyForm.getPersonalPolicyName() %>" 
+			  	bundle="<%= ApplicationsPlugin.MESSAGE_RESOURCES_KEY %>"/>
+		</td>	
+	</tr>
+</table>
+
+
+
+
+
+	

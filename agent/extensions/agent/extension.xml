@@ -1,0 +1,184 @@
+<bundle version="1.0.17" 
+	requiredHostVersion="0.9.0" type="plugin"
+	id="agent" name="OpenVPN-ALS Agent"
+	license="GPL" productURL="http://localhost"
+	order="1">
+	<description>
+		This java application provides
+		application launching and socket tunneling operations.
+	</description>
+	<extension smallIcon="agent-16x16.gif" largeIcon="agent-32x32.gif" type="defaultAgent" extension="agent" name="OpenVPN-ALS Agent" hidden="true">
+	
+		<description>
+			This java application to provide
+			application launching and socket tunneling operations.
+		</description>
+	
+	
+		<parameter type="2" name="debug" default="false"
+			value="${property:client.debug}" />
+	
+		<messages />
+		
+		<!--  TODO make use of the new 'arch' attribute in all appropriate conditions -->
+	
+		<files>
+			<!--  Matthias Jansen, No longer needed as of SWT >= 3.3
+			<file jre="+1.3" os="Linux">libswt-gtk-3235.so</file>
+			<file jre="+1.3" os="Linux">libswt-pi-gtk-3235.so</file>
+			<file jre="+1.3" os="Windows" arch="!AMD64">swt-win32-3235.dll</file>						
+			-->
+			<!-- 
+			<file jre="+1.5" os="MAC OS X">libswt-carbon-3235.jnilib</file>			
+			<file jre="+1.5" os="MAC OS X">libswt-pi-carbon-3235.jnilib</file>
+			 -->
+	
+			<file>log4j.properties</file>
+	        <file os="Windows">key.exe</file>
+		</files>
+	
+		<defaultAgent jre="1.1">
+			<classpath>
+			
+				<!-- AWT JAVA -->
+				<if string="${property:client.agent.type}" value="awt">			
+					<if parameter="debug" value="false">
+						<jar>agent.jar</jar>
+						<jar shared="true">maverick-ssl.jar</jar>
+						<jar>ui.jar</jar>
+						<jar shared="true">maverick-util.jar</jar>
+						<jar>agent.jar</jar>
+						<jar>agent-awt.jar</jar>
+					</if>
+					<if parameter="debug" value="true">
+						<jar>agent-debug.jar</jar>
+						<jar>ui-debug.jar</jar>
+						<jar shared="true">commons-logging-java1.1.jar</jar>
+						<jar shared="true">maverick-ssl-debug.jar</jar>							
+						<jar>agent-awt-debug.jar</jar>
+						<jar shared="true">maverick-util-debug.jar</jar>
+					</if>
+				</if>
+				<!-- SWT JAVA -->
+				<if string="${property:client.agent.type}" value="swt">			
+					<if parameter="debug" value="false">
+						<jar>agent.jar</jar>
+						<jar shared="true">maverick-ssl.jar</jar>
+						<jar>ui.jar</jar>
+						<if jre="+1.3">
+							<jar os="Windows" arch="!AMD64">agent-swt.jar</jar>
+							<jar os="Linux">agent-swt.jar</jar>
+						</if>
+						<jar shared="true">maverick-util.jar</jar>
+					</if>
+					<if parameter="debug" value="true">
+						<jar>agent-debug.jar</jar>
+						<jar>ui-debug.jar</jar>
+						<jar shared="true">commons-logging-java1.1.jar</jar>
+						<jar shared="true">maverick-ssl-debug.jar</jar>
+						<if jre="+1.3">
+							<jar os="Windows" arch="!AMD64">agent-swt-debug.jar</jar>
+							<jar os="Linux">agent-swt-debug.jar</jar>
+							<!-- TODO provide an easy way to say which jar to use if no os match -->
+						</if>
+						<jar shared="true">maverick-util-debug.jar</jar>
+					</if>
+					<if jre="+1.3">
+						<jar os="Windows" arch="!AMD64">swt-win32.jar</jar>
+						<jar os="Windows" arch="!AMD64">agent-swt-en.jar</jar>
+						<jar os="Linux" arch="!AMD64">swt-linux.jar</jar>
+						<!-- jar os="Linux" arch="AMD64">swt-linux64.jar</jar -->
+						<jar os="Linux">agent-swt-en.jar</jar>
+						<!-- 
+						<jar os="MAC OS X">swt-macosx.jar</jar>
+						 -->
+					</if>
+				</if>
+			
+				<!-- AUTO SELECT -->
+				<if string="${property:client.agent.type}" value="auto">			
+					<if parameter="debug" value="false">
+						<jar>agent.jar</jar>
+						<jar shared="true">maverick-ssl.jar</jar>
+						<jar>ui.jar</jar>
+						<if jre="+1.3">
+							<jar os="Windows" arch="!AMD64">agent-swt.jar</jar>
+							<jar os="Windows" arch="AMD64">agent-awt.jar</jar>							
+							<jar os="Windows" arch="AMD64">agent-awt-en.jar</jar>		
+							<jar os="Linux">agent-swt.jar</jar>
+							<jar os="MAC OS X">agent-awt.jar</jar>
+							<jar os="MAC OS X">agent-awt-en.jar</jar>
+						</if>
+						<if jre="-1.3">
+							<jar>agent-awt.jar</jar>
+							<jar>agent-awt-en.jar</jar>
+						</if>
+						<jar shared="true">maverick-util.jar</jar>
+					</if>
+					<if parameter="debug" value="true">
+						<jar>agent-debug.jar</jar>
+						<jar>ui-debug.jar</jar>
+						<jar shared="true">commons-logging-java1.1.jar</jar>
+						<jar shared="true">maverick-ssl-debug.jar</jar>
+						<if jre="+1.3">
+							<jar os="Windows" arch="!AMD64">agent-swt-debug.jar</jar>
+							<jar os="Windows" arch="AMD64">agent-awt-debug.jar</jar>							
+							<jar os="Windows" arch="AMD64">agent-awt-en.jar</jar>	
+							<jar os="Linux">agent-swt-debug.jar</jar>
+							<jar os="MAC OS X">agent-awt-debug.jar</jar>
+							<jar os="MAC OS X">agent-awt-en.jar</jar>
+							<!-- TODO provide an easy way to say which jar to use if no os match -->
+						</if>
+						<if jre="-1.3">
+							<jar>agent-awt-debug.jar</jar>
+							<jar>agent-awt-en.jar</jar>
+						</if>
+						<jar shared="true">maverick-util-debug.jar</jar>
+					</if>
+					<if jre="+1.3">
+						<jar os="Windows" arch="!AMD64">swt-win32.jar</jar>
+						<jar os="Windows" arch="!AMD64">agent-swt-en.jar</jar>
+						<jar os="Linux" arch="!AMD64">swt-linux.jar</jar>
+						<!-- jar os="Linux" arch="AMD64">swt-linux64.jar</jar -->
+						<jar os="Linux">agent-swt-en.jar</jar>
+						<!-- 
+						<jar os="MAC OS X">swt-macosx.jar</jar>
+						 -->
+					</if>
+				</if>
+	
+				<jar shared="true">maverick-crypto.jar</jar>
+				<jar shared="true">log4j-java1.1.jar</jar>
+				<jar>agent-en.jar</jar>
+			</classpath>
+	
+			<main class="net.openvpn.als.agent.client.Agent">
+				<jvm os="Windows">java.library.path=${client:installDir}</jvm>
+				<jvm>com.maverick.ssl.allowUntrustedCertificates=${server:untrustedCertificate}</jvm>
+				<jvm>com.maverick.ssl.allowInvalidCertificates=${server:untrustedCertificate}</jvm>
+				<jvm>com.maverick.ssl.preferredCiphers=TLS_RSA_WITH_AES_128_CBC_SHA,SSL_RSA_WITH_RC4_128_MD5,SSL_RSA_WITH_RC4_128_SHA</jvm>
+				<arg>host=${request:hostHeader}</arg>
+				<arg>protocol=${request:protocol}</arg>
+				<arg>localProxyURL=${client:localProxyURL}</arg>
+				<arg>username=${session:username}</arg>
+				<arg>ticket=${request:param.ticket}</arg>
+				<arg>shutdown=${property:client.shutdown.wait}</arg>
+				<arg>browserCommand=${property:client.browserCommand}</arg>
+				<arg>webforward.inactivity=${property:client.webforward.inactivity}</arg>
+				<arg>tunnel.inactivity=${property:client.tunnel.inactivity}</arg>
+				<arg>displayInformationPopups=${property:client.displayInformationPopups}</arg>
+				<arg>remoteTunnelsRequireConfirmation=${property:client.remoteTunnelsRequireConfirmation}</arg>
+				<arg>log4j=${client:installDir}/log4j.properties</arg>
+				<arg>userAgent=${request:param.userAgent}</arg>
+				<arg>pluginProxyURL=${request:param.pluginProxyURL}</arg>
+				<arg>cleanOnExit=${request:param.cleanOnExit}</arg>
+				<arg>localhostAddress=${property:client.localhostAddress}</arg>
+				<arg>locale=${session:locale}</arg>
+				<arg>dir=${property:client.cacheDirectory}</arg>
+				<arg>keepAlivePeriod=${property:client.heartbeat.interval}</arg>
+				<arg>extensionId=agent</arg>
+				<arg>disableNewSSLEngine=${server:disableNewSSLEngine}</arg>
+			</main>
+		</defaultAgent>
+	</extension>
+</bundle>
