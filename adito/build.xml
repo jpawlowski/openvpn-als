@@ -13,6 +13,10 @@
 	<property name="dir.build" value="build" />
 	<property name="dist.dir" value="dist" />
 	<property name="dir.lib" value="lib" />
+	<property name="dir.pseudo-install" value="pseudo-install-files" />
+	<property name="dir.webapp" value="webapp" />
+	<property name="dir.deploy" value="deploy" />
+	<property name="dir.deploy.conf" value="deploy/WEB-INF/conf" />
 	<property name="build.serverlib" value="lib" />
 	<property name="build.doc" value="${dir.build}/doc" />
 	<property name="build.webapp.lib" value="webapp/WEB-INF/lib" />
@@ -534,7 +538,7 @@
 	</target>
 
 	<!-- Start the install wizard  -->
-	<target name="install" depends="compile,local-deploy,deploy-community-extensions,create-wrapper-conf,check-tools,check-permissions">
+	<target name="install-old" depends="compile,local-deploy,deploy-community-extensions,create-wrapper-conf,check-tools,check-permissions">
 
 		<!-- Just in case -->
 		<mkdir dir="logs" />
@@ -549,6 +553,126 @@
 		</java>
 	</target>
 
+	<!-- Compile everything for distribute adito in nonembedded way-->
+	<target name="install" description="Deploys the web application" depends="deploy-community-extensions,clean-deploy">
+
+		<!-- Copy the webapp dir to deploy dir-->
+		<mkdir dir="${dir.deploy}" />
+		<copy todir="${dir.deploy}" >
+			<fileset dir="${dir.webapp}">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+
+		<!-- Just in case?-->
+		<mkdir dir="${dir.deploy}/WEB-INF/tmp" />
+		<mkdir dir="${dir.deploy}/WEB-INF/logs" />
+
+		<!-- Run the release targets on all of the community plugins and copy the extensions
+				     to the repository -->
+
+		<ant inheritall="false" dir="${adito-community-tunnels.home}" target="release">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+		<copy file="${adito-community-tunnels.home}/build/release/adito-community-tunnels.zip" todir="${dir.deploy.conf}/repository/archives" />
+
+		<ant inheritall="false" dir="${adito-community-applications.home}" target="release">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+		<copy file="${adito-community-applications.home}/build/release/adito-community-applications.zip" todir="${dir.deploy.conf}/repository/archives" />
+
+		<ant inheritall="false" dir="${adito-community-web-forwards.home}" target="release">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+		<copy file="${adito-community-web-forwards.home}/build/release/adito-community-web-forwards.zip" todir="${dir.deploy.conf}/repository/archives" />
+
+		<ant inheritall="false" dir="${adito-community-network-places.home}" target="release">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+		<copy file="${adito-community-network-places.home}/build/release/adito-community-network-places.zip" todir="${dir.deploy.conf}/repository/archives" />
+
+		<ant inheritall="false" dir="${adito-community-unix.home}" target="release">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+		<copy file="${adito-community-unix.home}/build/release/adito-community-unix.zip" todir="${dir.deploy.conf}/repository/archives" />
+
+		<ant inheritall="false" dir="${adito-community-activedirectory.home}" target="release">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+		<copy file="${adito-community-activedirectory.home}/build/release/adito-community-activedirectory.zip" todir="${dir.deploy.conf}/repository/archives" />
+		
+		<!-- This is a HACK. Merge the extensions' webapp dirs into the main webapp -->
+		
+		<mkdir dir="tmp/extensions" />
+		
+		<unzip src="${adito-community-tunnels.home}/build/release/adito-community-tunnels.zip" dest="tmp/extensions" />
+		<unzip src="${adito-community-applications.home}/build/release/adito-community-applications.zip" dest="tmp/extensions" />
+		<unzip src="${adito-community-web-forwards.home}/build/release/adito-community-web-forwards.zip" dest="tmp/extensions" />
+		<unzip src="${adito-community-network-places.home}/build/release/adito-community-network-places.zip" dest="tmp/extensions" />
+		<unzip src="${adito-community-unix.home}/build/release/adito-community-unix.zip" dest="tmp/extensions" />
+		<unzip src="${adito-community-activedirectory.home}/build/release/adito-community-activedirectory.zip" dest="tmp/extensions" />
+		
+		<copy todir="${dir.deploy}">
+			<fileset dir="tmp/extensions/adito-community-activedirectory/webapp">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+		<copy todir="${dir.deploy}">
+			<fileset dir="tmp/extensions/adito-community-applications/webapp">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+		<copy todir="${dir.deploy}">
+			<fileset dir="tmp/extensions/adito-community-network-places/webapp">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+		<copy todir="${dir.deploy}">
+			<fileset dir="tmp/extensions/adito-community-tunnels/webapp">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+		<copy todir="${dir.deploy}">
+			<fileset dir="tmp/extensions/adito-community-unix/webapp">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+		<copy todir="${dir.deploy}">
+			<fileset dir="tmp/extensions/adito-community-web-forwards/webapp">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+
+		<!-- Copy all the files created by ant install phase in trunk. Eventually we should get rid of those after this line. -->
+
+		<copy todir="${dir.deploy}/WEB-INF/conf" file="${dir.pseudo-install}/webserver.properties" />
+		<copy todir="${dir.deploy}/WEB-INF/conf" file="${dir.pseudo-install}/wrapper.conf" />
+		<copy todir="${dir.deploy}/WEB-INF/conf" file="${dir.pseudo-install}/default.keystore.jks" />
+		<copy todir="${dir.deploy}/WEB-INF/repository/keystore" file="${dir.pseudo-install}/default.keystore.jks" />
+		<copy todir="${dir.deploy}/WEB-INF/conf/prefs/system" file="${dir.pseudo-install}/prefs.properties" />
+		<copy todir="${dir.deploy}/WEB-INF/conf/prefs/system/extensions" file="${dir.pseudo-install}/prefs.properties" />
+		<copy todir="${dir.deploy}/WEB-INF/conf/prefs/system/extensions/versions" file="${dir.pseudo-install}/prefs.properties" />
+
+		<mkdir dir="${dir.deploy}/WEB-INF/tmp" />
+		<copy todir="${dir.deploy}/WEB-INF/tmp">
+			<fileset dir="${dir.pseudo-install}/tmp">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+
+		<mkdir dir="${dir.deploy}/WEB-INF/db" />
+		<copy todir="${dir.deploy}/WEB-INF/db">
+			<fileset dir="${dir.pseudo-install}/db">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+
+	</target>
+
+
+	<target name="clean-deploy" description="Cleans the deployment">
+		<delete dir="${dir.deploy}" />
+	</target>
 
 	<!-- Start the install wizard  -->
 	<target name="install-without-compiling" depends="check-tools,check-permissions">
@@ -849,6 +973,14 @@
 	<!-- Compile server dependencies. Also generate the necessary JAR-files for
              the "dist" target. -->
 	<target name="compile-dependencies">
+
+		<!-- Copy the 3rd party libs -->
+		<copy todir="${dir.deploy}/WEB-INF/lib" file="${dir.maverick-util}/target/maverick-util.jar" />
+		<copy todir="${dir.deploy}/WEB-INF/lib" file="${dir.maverick-crypto}/target/maverick-crypto.jar" />
+		<copy todir="${dir.deploy}/WEB-INF/lib" file="${dir.maverick-ssl}/target/maverick-ssl.jar" />
+		<copy todir="${dir.deploy}/WEB-INF/lib" file="${dir.maverick-multiplex}/target/maverick-multiplex.jar" />
+		<copy todir="${dir.deploy}/WEB-INF/lib" file="${dir.build-tools}/ant/ant-contrib.jar" />
+
 		<!-- Disabled due to mavenizing
 		<ant inheritall="false" dir="${dir.maverick-util}" target="dist">
 			<property name="build.compiler" value="${build.compiler}" />
@@ -877,10 +1009,12 @@
 		<mkdir dir="${build.webapp.output}" />
 		<javac compiler="${build.compiler}" destdir="${build.webapp.output}" srcdir="${build.webapp.src}" includeantruntime="false" debug="${build.debug}" includes="**/*.java">
 			<classpath>
+				<!-- Disabled due to mavenization & nonembedded
 				<pathelement path="${dir.maverick-crypto.classes}" />
 				<pathelement path="${dir.maverick-ssl.classes}" />
 				<pathelement path="${dir.maverick-multiplex.classes}" />
 				<pathelement path="${dir.maverick-util.classes}" />
+				-->
 				<pathelement path="${adito-commons-vfs.classes}" />
 				<fileset dir="${build.webapp.lib}">
 					<include name="*.jar" />
