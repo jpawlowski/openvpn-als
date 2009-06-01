@@ -20,6 +20,10 @@
       	Maverick crypto library
     </description>
 
+    <build>
+        <finalName>maverick-crypto</finalName>
+    </build>
+
     <profiles>
     </profiles>
 

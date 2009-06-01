@@ -17,7 +17,7 @@
 	
 	<!-- Dependencies -->
 	<property name="maverick-util.home" value="../maverick-util"/>
-	<property name="maverick-util.classes" value="${maverick-util.home}/build/classes"/>
+	<property name="maverick-util.classes" value="${maverick-util.home}/target/classes"/>
 
 	<!-- Class path -->
     <path id="maverick-crypto.class.path">
