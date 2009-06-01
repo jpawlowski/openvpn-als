@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+
+<ruleset name="dogfood" 
+    xmlns="http://pmd.sf.net/ruleset/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd"
+    xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+
+	<description>
+		Rules to check OpenVPNALS
+  	</description>   
+    
+	<rule ref="rulesets/basic.xml">
+		<exclude name="EmptyCatchBlock"/>
+	</rule>
+
+	<rule ref="rulesets/basic.xml/EmptyCatchBlock">
+	    <properties>
+	        <property name="allowCommentedBlocks" value="true"/>
+	    </properties>
+	</rule>
+	
+	<rule ref="rulesets/braces.xml"/>
+   	<rule ref="rulesets/clone.xml"/>
+   	<rule ref="rulesets/codesize.xml"/>
+   	
+   	<rule ref="rulesets/controversial.xml">
+   		<exclude name="AtLeastOneConstructor"/>
+   		<exclude name="CallSuperInConstructor"/>
+		<exclude name="DefaultPackage"/>
+   		<exclude name="NullAssignment"/>
+   		<exclude name="OnlyOneReturn"/>
+   		<exclude name="SingularField"/>
+   	</rule>
+   	
+   	<rule ref="rulesets/coupling.xml"/>
+   	
+   	<rule ref="rulesets/design.xml">
+   		<!-- due to the way we close stuff this doesn't work -->
+   		<exclude name="CloseResource"/>
+   	</rule>
+   	
+   	<rule ref="rulesets/finalizers.xml"/>
+   	<rule ref="rulesets/imports.xml"/>
+   	<rule ref="rulesets/j2ee.xml"/>
+   	
+   	<rule ref="rulesets/javabeans.xml">
+   		<exclude name="BeanMembersShouldSerialize"/>
+   	</rule>
+   	
+   	<rule ref="rulesets/junit.xml"/>
+   	<rule ref="rulesets/logging-jakarta-commons.xml"/>
+   	<rule ref="rulesets/logging-java.xml"/>
+   	<rule ref="rulesets/migrating_to_13.xml"/>
+   	<rule ref="rulesets/migrating_to_14.xml"/>
+   	<rule ref="rulesets/migrating_to_15.xml"/>
+   	<rule ref="rulesets/migrating_to_junit4.xml"/>
+   	
+   	<rule ref="rulesets/naming.xml">
+   		<exclude name="LongVariable"/>
+   	</rule>
+
+   	<rule ref="rulesets/naming.xml/LongVariable">
+   		<properties>
+   			<property name="minimum" value="30"/>
+   		</properties>
+   	</rule>
+   	    	
+   	<rule ref="rulesets/optimizations.xml">
+   		<exclude name="LocalVariableCouldBeFinal"/>
+   		<exclude name="MethodArgumentCouldBeFinal"/>
+   	</rule>
+   	
+   	<!-- these are experimental -->
+   	<!-- <rule ref="rulesets/scratchpad.xml"/> -->
+   	
+   	<rule ref="rulesets/strictexception.xml">
+   		<!-- existing framework throws Exception everywhere, so report becomes pretty much useless -->
+   		<exclude name="SignatureDeclareThrowsException"/>
+   	</rule>
+   	
+   	<rule ref="rulesets/strings.xml"/>
+   	<rule ref="rulesets/sunsecure.xml"/>
+   	<rule ref="rulesets/typeresolution.xml"/>
+   	<rule ref="rulesets/unusedcode.xml"/>
+
+</ruleset>
