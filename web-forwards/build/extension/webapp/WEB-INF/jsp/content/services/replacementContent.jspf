@@ -1,0 +1,94 @@
+<%@ page import="net.openvpn.als.security.Constants"%>
+<jsp:directive.page import="net.openvpn.als.replacementproxy.Replacement"/>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="/server/taglibs/security" prefix="security"%>
+<%@ taglib uri="/server/taglibs/core" prefix="core"%>
+
+<bean:define id="targetUpdateAction" name="replacementForm" property="updateAction" />
+
+<div id="page_replacement">
+	<core:form autocomplete="OFF" method="post" action="<%= String.valueOf(targetUpdateAction) %>">
+		<div class="dialog_content">
+			<html:hidden property="actionTarget" />
+			<html:hidden property="editing" />
+			<html:hidden property="referer" />
+
+			<table class="dialog_form_table" id="form">
+				<tbody>
+					<tr class="formCombo">
+						<td class="label">
+							<bean:message key="createReplacement.replaceType" bundle="services" />
+						</td>
+						<td class="value">
+							<html:select name="replacementForm" property="replaceType">
+								<html:option value="<%= String.valueOf(Replacement.REPLACEMENT_TYPE_RECEIVED_CONTENT) %>"><bean:message key="createReplacement.replacementType.receivedContent" bundle="services"/></html:option>
+								<%--
+								<html:option value="<%= String.valueOf(Replacement.REPLACEMENT_TYPE_SENT_CONTENT) %>"><bean:message key="createReplacement.replacementType.sentContent" bundle="services"/></html:option>
+								<html:option value="<%= String.valueOf(Replacement.REPLACEMENT_TYPE_RECEIVED_HEADER) %>"><bean:message key="createReplacement.replacementType.receivedHeader" bundle="services"/></html:option>
+								 --%>
+								<html:option value="<%= String.valueOf(Replacement.REPLACEMENT_TYPE_SENT_HEADER) %>"><bean:message key="createReplacement.replacementType.sent" bundle="services"/> </html:option>
+							</html:select>
+						</td>
+					</tr>
+					<tr class="formText">
+						<td class="label">
+							<bean:message key="createReplacement.sitePattern" bundle="services" />
+						</td>
+						<td class="value">
+							<html:text name="replacementForm" property="replacement.sitePattern" />
+						</td>
+					</tr>
+					<tr class="formText">
+						<td class="label">
+							<bean:message key="createReplacement.mimeType" bundle="services" />
+						</td>
+						<td class="value">
+							<html:text size="20" name="replacementForm" property="replacement.mimeType" />
+						</td>
+					</tr>
+					<tr class="formTextArea">
+						<td class="label">
+							<div class="required">
+								<bean:message key="createReplacement.matchPattern" bundle="services" />
+							</div>
+						</td>
+						<td class="value">
+							<html:textarea cols="30" rows="5" name="replacementForm" property="replacement.matchPattern" />
+						</td>
+					</tr>
+					<tr class="formTextArea">
+						<td class="label">
+							<bean:message key="createReplacement.replacePattern" bundle="services" />
+						</td>
+						<td class="value">
+							<html:textarea cols="30" rows="5" name="replacementForm" property="replacement.replacePattern" />
+						</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="3">
+							<div class="button_bar">
+								<div class="formButton">
+									<html:submit styleClass="save" onclick="setActionTarget('commit'); return true">
+										<bean:message key="createReplacement.commit" bundle="services" />
+									</html:submit>
+								</div>
+								<logic:notEmpty name="replacementForm" property="referer">
+									<div class="formButton">
+										<html:submit styleClass="cancel" onclick="setActionTarget('cancel'); return true">
+											<bean:message key="createReplacement.cancel" bundle="services" />
+										</html:submit>
+									</div>
+								</logic:notEmpty>
+							</div>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+
+	</core:form>
+</div>

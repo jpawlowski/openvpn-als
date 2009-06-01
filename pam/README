@@ -1,0 +1,63 @@
+OpenVPN-ALS-PAM
+PAM Authentication Plugin for OpenVPN-ALS
+Version 0.3.0
+
+This distribution is licensed under the GNU General Public License.
+This is a license that allows the free use of the software for
+commercial/non-commercial usage, however you must not incorporate code from
+this software into a commercial product, unless your commercial product is
+also to be licensed under the terms of the GPL.
+
+OpenVPN-ALS-PAM also includes other components under licenses other than the GPL.
+See notes.
+
+This plugin is essentially the SSL-Explorer PAM module converted for OpenVPN-ALS.
+See https://sourceforge.net/search/?type_of_search=soft&words=sslexplorer-pam
+for the original code.
+
+
+CHANGELOG
+---------
+0.3.0
+* Now work with OpenVPN-ALS
+* Updated JPAM to 1.1 for both amd64 and i386 architectures
+
+0.1.0
+* Initial release (unusable)  from sslexplorer-community-pam
+
+REQUIREMENTS
+------------
+* UN*X Platform
+* OpenVPN-ALS 0.9 or a version from SVN
+* OpenVPN-ALS requirements (java 1.5+, ant 1.6+, etc.)
+* PAM
+
+INCLUDES
+--------
+* JPAM 1.1 for both i386 and amd64 architectures
+* Apache Commons Logging
+* Three simples pam configs
+
+
+DEVELOPMENT PLATFORM
+--------------------
+* Ubuntu 8.04
+  * kernel 2.6.24-21-generic (ubuntu)
+  * java 1.5.0.15
+  * ant 1.7.0
+
+OTHER TESTED PLATFORMS
+----------------------
+* Debian Lenny
+  * Java 1.5.0.16
+  * ant 1.7.0
+
+* Gentoo Linux
+  * Java 1.6.0.x
+  * ant 1.7.0
+
+
+INSTALLATION AND USAGE
+----------------------
+
+Please read the instructions at http://openvpnals.wiki.sourceforge.net/openvpnals_pam.

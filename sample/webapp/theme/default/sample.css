@@ -1,0 +1,86 @@
+/* The list of samples styles. */
+
+div#page_samples {
+}
+
+div#page_samples .dialog_content {
+	width: 75%;
+	margin-bottom: 16px;
+}
+
+div#page_samples .dialog_content_table {
+	width: 75%;
+	table-layout: fixed;
+	overflow: hidden;
+}
+
+div#page_samples .dialog_content table  {
+	width: 75%;
+	padding: 4px 4px 4px 4px;
+}
+
+div#page_samples #view td.filter {
+	width: 50%;
+}
+
+div#page_samples .resource_table {
+	margin-bottom: 16px;
+}	
+
+div#page_samples .resource_table thead td.name {
+	width: 20%;
+	text-align: center;
+}
+
+div#page_samples .resource_table thead td.policies {
+	width: 20%;
+	text-align: center;
+}
+
+div#page_samples .resource_table thead td.actions {
+	width: 20%;
+	text-align: center;
+}
+
+div#page_samples .resource_table tbody td.name {
+	width: 20%;
+	text-align: left;
+}
+
+div#page_samples .resource_table tbody td.policies {
+	width: 20%;
+	text-align: left;
+}
+
+div#page_samples .resource_table tbody td.actions {
+	text-align: left;
+	width: 20%;
+}
+
+div#page_samples .filtered_resources td.actions {
+	width: 20%;
+}
+
+div#page_sample {
+	margin: 0 auto;
+	text-align: left;
+	width: 38em;
+}
+
+div#page_sample .dialog_form_table td.label {
+	width: 25%;
+}
+
+div#page_sample .dialog_form_table td.value {
+	width: 75%;
+}
+
+div#page_sample .tabPanel .tabContent {
+	height: 18em;
+}
+
+div#page_sample .multiSelect select {
+	height: 15em;
+}
+
+

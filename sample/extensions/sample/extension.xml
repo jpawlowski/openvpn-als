@@ -1,0 +1,22 @@
+<bundle version="1.3.0" requiredHostVersion="0.9.0" type="html" id="sample" licenseAgreement="LICENSE.html" name="OpenVPN-ALS Sample" license="Evaluation" productURL="http://localhost">
+	<description>This extension contains a sample extension.</description>
+
+	<!--  Run when the extension is first installed (upon restart if the extension contains plugins) 
+	<install>
+	</install>
+	-->
+	
+	<!--  Run when the extension is uninstalled 
+		<uninstall>
+		</uninstall>    	
+	-->
+
+	<extension type="plugin" extension="sample" name="Sample Plugin">
+		<description>This plugin is used by the OpenVPN-ALS to show how plugins are created..</description>
+		<plugin name="sample" class="net.openvpn.als.sample.SamplePlugin" hostVersion="0.1.13" order="0">
+			<classpath>classes</classpath>
+			<resources>sample</resources>
+		</plugin>
+	</extension>
+
+</bundle>

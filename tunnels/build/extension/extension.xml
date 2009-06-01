@@ -1,0 +1,23 @@
+<bundle order="100" version="1.0.11" requiredHostVersion="0.9.0"
+	id="tunnels" name="OpenVPN-ALS Tunnels"
+	license="GPL" productURL="http://localhost" depends="agent">
+	<description>
+		This extension adds the 'Tunnels' feature to OpenVPN-ALS.
+		Tunnels allow an administrator to create secure tunnels.
+	</description>
+	<extension type="plugin" extension="tunnels"
+		name="OpenVPN-ALS Tunnels">
+		<description>
+			This extension adds the 'Tunnels' feature to OpenVPN-ALS.
+			Tunnels allow an administrator to create secure tunnels.
+		</description>
+		<plugin name="tunnels"
+			class="net.openvpn.als.tunnels.TunnelPlugin">
+			<classpath>
+				private/tunnels.jar
+			</classpath>
+			<resources>webapp</resources>
+		</plugin>
+		<propertyDefinitions></propertyDefinitions>
+	</extension>
+</bundle>

@@ -1,0 +1,17 @@
+<%@ taglib uri="/openvpnals/taglibs/input" prefix="input" %> 
+ 										
+<input:multiSelectListBox 
+	tabindex="1" 
+	sourceTitleKey="policySelection.availablePolicies.title" 
+	targetTitleKey="policySelection.selectedPolicies.title" 
+	addKey="policySelection.addPolicy" 
+	removeKey="policySelection.removePolicy" 
+	configureKey="policySelection.configurePolicies" 
+	configureOnClick="window.location = '/configurePolicies.do'" 
+	bundle="policyframework" 
+	styleClass="multiSelect" 
+	modelName="samplePolicySelectionForm" 
+	modelProperty="policyModel" 
+	name="samplePolicySelectionForm" 
+	property="selectedPolicies"/>
+	

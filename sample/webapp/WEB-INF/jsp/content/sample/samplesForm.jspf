@@ -1,0 +1,154 @@
+<%@ page import="net.openvpn.als.sample.Sample" %>
+<%@ page import="net.openvpn.als.sample.forms.SamplesForm" %>
+<%@ page import="net.openvpn.als.security.Constants"%>
+<%@ page import="net.openvpn.als.policyframework.PolicyConstants"%>
+<%@ page import="net.openvpn.als.navigation.AbstractFavoriteItem" %>
+<%@ page import="net.openvpn.als.policyframework.Permission" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="/openvpnals/taglibs/input" prefix="input"%>
+<%@ taglib uri="/openvpnals/taglibs/explorer" prefix="explorer"%>
+<%@ taglib uri="/openvpnals/taglibs/navigation" prefix="navigation"%>
+<%@ taglib uri="/openvpnals/taglibs/table" prefix="table"%>
+<%@ taglib uri="/openvpnals/taglibs/security" prefix="security"%>
+
+<html:hidden name="samplesForm" property="selectedResource" />
+<html:hidden name="samplesForm" property="actionTarget" />
+<div id="view">
+	<div class="dialog_content">
+		<table class="dialog_content_table">
+			<tbody>
+				<tr>
+					<td class="filter">
+						<%@ include file="/WEB-INF/jsp/tiles/filter.jspf" %>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>			
+</div>				
+<div id="filtered_resources">
+		<table class="resource_table">
+			<thead>
+				<tr>
+					<td class="name">
+						<table:columnHeader page="" pagerName="samplesForm" pagerProperty="pager" columnIndex="0" styleClass="columnHeader">
+							<bean:message key="samples.name" bundle="sample" />
+						</table:columnHeader>
+					</td>
+					<td class="policies">
+						<table:columnHeader page="" pagerName="samplesForm" pagerProperty="pager" columnIndex="1" styleClass="columnHeader">
+							<bean:message key="samples.policies" bundle="sample" />
+						</table:columnHeader>
+					</td>
+					<td class="actions">
+						<bean:message key="samples.action" bundle="sample" />
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<%boolean flag = true;%>
+			<logic:equal name="samplesForm" property="model.empty" value="true">
+				<tr class="<%= flag ? "highlight" : "lowlight" %>">
+					<td class="tableMessage" colspan="3">
+						<bean:message key="samples.noSamples" bundle="sample"/>
+					</td>
+				</tr>
+			</logic:equal>
+			<logic:equal name="samplesForm" property="model.empty" value="false">
+				<logic:equal name="samplesForm" property="pager.empty" value="true">											
+					<tr class="<%= flag ? "highlight" : "lowlight" %>">
+				  		<td class="tableMessage" colspan="3">		   
+						  	<bean:message key="samples.noMatch" bundle="sample"/>
+						</td>
+					</tr>
+				</logic:equal>
+			</logic:equal>
+			<logic:equal name="samplesForm" property="pager.empty" value="false">
+				<logic:iterate name="samplesForm" property="pager.pageItems" id="sampleItem" type="net.openvpn.als.sample.SampleItem" indexId="i">
+					<tr class="<%= flag ? "highlight" : "lowlight" %>">
+						<td class="name">
+							<input:toolTip value="<%= sampleItem.getResource().getResourceDescription() %>">
+								<bean:write name="sampleItem" property="resource.resourceName" />
+							</input:toolTip>
+						</td>
+						<td class="policies">
+							<logic:notEqual name="sampleItem" property="multiplePolicies" value="true">
+								<bean:write name="sampleItem" property="firstPolicyName" />
+							</logic:notEqual>
+							<logic:equal name="sampleItem" property="multiplePolicies" value="true">
+								<input:toolTip text="<%= sampleItem.getFirstPolicyName() + "...." %>">
+									<bean:message key="sample.multiplePolicies" bundle="sample" />
+									<logic:iterate name="sampleItem" property="policies" id="policy">
+										<bean:write name="policy" property="resourceName" />
+										<br />
+									</logic:iterate>
+								</input:toolTip>
+							</logic:equal>
+						</td>
+						<td class="actions">
+							<navigation:inUserConsole>										
+								<security:permission resourceType="<%= PolicyConstants.FAVORITES_RESOURCE_TYPE_ID %>" permissionList="<%= String.valueOf(PolicyConstants.PERM_USE_ID) %>">
+									<logic:equal name="sampleItem" property="favoriteType" value="<%= AbstractFavoriteItem.USER_FAVORITE %>">
+										<tiles:insert flush="false" attribute="actionLink">
+											<tiles:put name="actionName" value="removeFromFavorites" />
+											<tiles:put name="bundle" value="sample" />
+											<tiles:put name="nameKey" value="samples.removeFromFavorites.name" />
+											<tiles:put name="descriptionKey" value="samples.removeFromFavorites.description" />
+											<tiles:put name="actionPath" value="<%= "javascript: removeFavoriteResource('" + sampleItem.getResource().getResourceId() + "');" %>" />
+										</tiles:insert>
+									</logic:equal>
+									<logic:equal name="sampleItem" property="favoriteType" value="<%= AbstractFavoriteItem.NO_FAVORITE %>">
+										<tiles:insert flush="false" attribute="actionLink">
+											<tiles:put name="actionName" value="addToFavorites" />
+											<tiles:put name="bundle" value="sample" />
+											<tiles:put name="nameKey" value="samples.addToFavorites.name" />
+											<tiles:put name="descriptionKey" value="samples.addToFavorites.description" />
+											<tiles:put name="actionPath" value="<%= "javascript: favoriteResource('" + sampleItem.getResource().getResourceId() + "');" %>" />
+										</tiles:insert>
+									</logic:equal>
+								</security:permission>
+							</navigation:inUserConsole>
+							<navigation:inManagementConsole>
+								<security:checkManageResource permissions="<%= new Permission[] {  PolicyConstants.PERM_CREATE_EDIT_AND_ASSIGN,  PolicyConstants.PERM_EDIT_AND_ASSIGN,  PolicyConstants.PERM_ASSIGN } %>" resource="<%= sampleItem.getResource() %>" >
+									<tiles:insert flush="false" attribute="actionLink">
+										<tiles:put name="actionName" value="edit" />
+										<tiles:put name="bundle" value="sample" />
+										<tiles:put name="nameKey" value="samples.editSample.name" />
+										<tiles:put name="descriptionKey" value="samples.editSample.description" />
+										<tiles:put name="actionPath" value="<%= "javascript: editResource('" + sampleItem.getResource().getResourceId() + "');" %>" />
+									</tiles:insert>
+								</security:checkManageResource>
+								<security:checkManageResource permission="<%= PolicyConstants.PERM_DELETE %>" resource="<%= sampleItem.getResource() %>" >
+									<tiles:insert flush="false" attribute="actionLink">
+										<tiles:put name="actionName" value="remove" />
+										<tiles:put name="bundle" value="sample" />
+										<tiles:put name="nameKey" value="samples.removeSample.name" />
+										<tiles:put name="descriptionKey" value="samples.removeSample.description" />
+										<tiles:put name="actionPath" value="<%= "javascript: confirmRemoveResource('" + sampleItem.getResource().getResourceId() + "');" %>" />
+									</tiles:insert>
+								</security:checkManageResource>
+							</navigation:inManagementConsole>
+						</td>
+					</tr>
+					<%flag = !flag;%>
+				</logic:iterate>
+			</logic:equal>
+		</tbody>
+		<tfoot>			
+			<tr>
+				<td colspan="3">
+					<div class="pager_navigation">
+						<table:navigation pagerName="samplesForm" pagerProperty="pager" styleClass="pagerEnabled" disabledStyleClass="pagerDisabled"/>
+					</div>
+					<div class="pager_pages">
+						<table:pageSize pagerName="samplesForm" pagerProperty="pager" styleClass="pagerEnabled"/>
+					</div>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+</div>
+	
