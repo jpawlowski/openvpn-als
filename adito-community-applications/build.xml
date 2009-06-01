@@ -82,10 +82,14 @@
 
 	<target name="compile-dependencies">
 		<ant inheritall="false" dir="${dir.adito-server}" target="compile"/>
+
+		<!-- Disabled due to mavenizing
 		<ant inheritall="false" dir="${dir.maverick-crypto}" target="compile"/>
 		<ant inheritall="false" dir="${dir.maverick-multiplex}" target="compile"/>
 		<ant inheritall="false" dir="${dir.maverick-ssl}" target="compile"/>
 		<ant inheritall="false" dir="${maverick-util.home}" target="compile"/>
+		-->
+
 	</target>
 			
 	<target name="release" description="Create the extension archive" depends="clean,dist">
