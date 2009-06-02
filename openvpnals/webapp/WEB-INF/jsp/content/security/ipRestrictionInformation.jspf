@@ -1,0 +1,51 @@
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="/server/taglibs/core" prefix="core"%>
+<%@ taglib uri="/server/taglibs/input" prefix="input"%>
+
+<%
+try {
+%>
+<div>
+	<bean:define id="allowed" name="ipRestrictionInformationForm" property="allowed" type="java.lang.Boolean"/>
+	<bean:define id="ip" name="ipRestrictionInformationForm" property="ip" type="java.lang.String"/>
+	<core:form method="post" action="/ipRestrictionInformation.do">	
+	<div class="description">
+		<tr class="formText">
+			<td class="label">
+				<h3><bean:message key="ipRestriction.title" bundle="security"/></h3>
+			</td>
+		</tr>
+	</div>	
+		<table class="dialog_form_table">
+			<tbody>
+				<tr class="formText">
+					<td class="label">
+						<bean:message key="ipRestriction.address" bundle="security" arg0="<%= ip %>"/>							
+					</td>
+				</tr>
+				<tr class="formText">
+					<logic:equal parameter="allowed" value="true">
+						<td class="value">	
+							<bean:message key="ipRestriction.status.allowed" bundle="security"/>							
+						</td>
+					</logic:equal>
+					<logic:equal parameter="allowed" value="false">
+						<td class="value">	
+							<bean:message key="ipRestriction.status.denied" bundle="security"/>							
+						</td>
+					</logic:equal>
+				</tr>
+				
+			</tbody>
+		</table>
+	</core:form>
+</div>
+
+<%
+                } catch (Exception e) {
+                e.printStackTrace();
+            }
+%>

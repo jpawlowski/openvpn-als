@@ -1,0 +1,6 @@
+<!ELEMENT jsp-mappings (servlet*,servlet-mapping*)>
+<!ELEMENT servlet (servlet-name, servlet-class)>
+<!ELEMENT servlet-class (#PCDATA)>
+<!ELEMENT servlet-mapping (servlet-name, url-pattern)>
+<!ELEMENT servlet-name (#PCDATA)>
+<!ELEMENT url-pattern (#PCDATA)>

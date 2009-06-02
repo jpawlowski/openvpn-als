@@ -1,0 +1,7 @@
+<div id="component_pageFooter">
+	<div id="component_pageFooterInner">
+		<div class="separator"><hr/>
+		</div> 
+		<%@ include file="/WEB-INF/jsp/tiles/aboutInfo.jspf" %>
+	</div>
+</div>

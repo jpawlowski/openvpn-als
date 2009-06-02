@@ -1,0 +1,110 @@
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+
+<div class="options">
+	<div class="toggles">
+		<html:checkbox onclick="setActionTarget('toggle'); document.forms[0].submit(); return false" property="useHTTPProxy"></html:checkbox>
+		<bean:message key="installation.configureProxies.useHTTPProxy" bundle="install"/>
+	</div>
+	<div class="details">
+		<table class="dialog_form_table">				
+			<logic:equal name="configureProxiesForm" property="useHTTPProxy" value="true">
+				<tr class="formText">
+					<td class="label">
+						<div class="required"><bean:message key="installation.configureProxies.httpProxyHostname" bundle="install"/></div>
+					</td>
+					<td class="value">
+						<html:text property="httpProxyHostname" size="30"/>
+					</td>
+				</tr>
+				<tr class="formText">
+					<td class="label">
+						<div class="required"><bean:message key="installation.configureProxies.httpProxyPort" bundle="install"/></div>
+					</td>
+					<td class="value">
+						<html:text property="httpProxyPort" size="6"/>
+					</td>
+				</tr>
+				<tr class="formText">
+					<td class="label">
+						<bean:message key="installation.configureProxies.httpProxyUsername" bundle="install"/>
+					</td>
+					<td class="value">
+						<html:text property="httpProxyUsername" size="20"/>
+					</td>
+				</tr>
+				<tr class="formPassword">
+					<td class="label">
+						<bean:message key="installation.configureProxies.httpProxyPassword" bundle="install"/>
+					</td>
+					<td class="value">
+						<input:password autocomplete="false" property="httpProxyPassword" size="20"/>
+					</td>
+				</tr>
+				<tr class="formMultiEntry">
+					<td class="label">
+						<bean:message key="installation.configureProxies.httpNonProxyHosts" bundle="install"/>
+					</td>
+					<td class="value">
+						<input:multiEntryListBox addKey="installation.configureProxies.httpNonProxyHosts.add" 
+									removeKey="installation.configureProxies.httpNonProxyHosts.remove" 
+									entryTitleKey="installation.configureProxies.httpNonProxyHosts.hostname" 
+									targetTitleKey="installation.configureProxies.httpNonProxyHosts.selected" 
+									name="configureProxiesForm" styleClass="multiEntry" entrySize="16" 
+									property="httpNonProxyHosts" bundle="install"/>
+					</td>
+				</tr>
+			</logic:equal>
+			<logic:equal name="configureProxiesForm" property="useHTTPProxy" value="false">
+				<tr class="formText">
+					<td class="label">
+						<bean:message key="installation.configureProxies.httpProxyHostname" bundle="install"/>
+					</td>
+					<td class="value">
+						<html:text disabled="true" property="httpProxyHostname" size="30"/>
+					</td>
+				</tr>
+				<tr class="formText">
+					<td class="label">
+						<bean:message key="installation.configureProxies.httpProxyPort" bundle="install"/>
+					</td>
+					<td class="value">
+						<html:text disabled="true" property="httpProxyPort" size="6"/>
+					</td>
+				</tr>
+				<tr class="formText">
+					<td class="label">
+						<bean:message key="installation.configureProxies.httpProxyUsername" bundle="install"/>
+					</td>
+					<td class="value">
+						<html:text disabled="true" property="httpProxyUsername" size="20"/>
+					</td>
+				</tr>
+				<tr class="formPassword">
+					<td class="label">
+						<bean:message key="installation.configureProxies.httpProxyPassword" bundle="install"/>
+					</td>
+					<td class="value">
+						<html:password disabled="true" property="httpProxyPassword" size="20"/>
+					</td>
+				</tr>
+				<tr class="formMultiEntry">
+					<td class="label">
+						<bean:message key="installation.configureProxies.httpNonProxyHosts" bundle="install"/>
+					</td>
+					<td class="value">
+						<input:multiEntryListBox disabled="true" addKey="installation.configureProxies.httpNonProxyHosts.add" 
+									removeKey="installation.configureProxies.httpNonProxyHosts.remove" 
+									entryTitleKey="installation.configureProxies.httpNonProxyHosts.hostname" 
+									targetTitleKey="installation.configureProxies.httpNonProxyHosts.selected" 
+									name="configureProxiesForm" styleClass="multiEntry" entrySize="16" 
+									property="httpNonProxyHosts" bundle="install"/>
+					</td>
+				</tr>
+			</logic:equal>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,25 @@
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %> 
+ 
+<table class="resourceDetails">	
+	<tr class="formText">
+		<td class="label">
+			<div class="required">
+				<bean:message key="policyWizard.policyDetails.resourceName" bundle="policyframework"/>
+			</div>
+		</td>
+		<td class="value">
+		    <html:text property="resourceName" size="20"/>
+		</td>
+	</tr>
+	<tr class="formTextArea">
+		<td class="label">
+			<div class="required">
+				<bean:message key="policyWizard.policyDetails.resourceDescription" bundle="policyframework"/>
+			</div>
+		</td>
+		<td class="value">		
+		    <html:textarea property="resourceDescription"/>
+		</td>
+	</tr>	
+</table>

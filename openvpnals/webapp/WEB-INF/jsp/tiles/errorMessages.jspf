@@ -1,0 +1,27 @@
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+<tiles:useAttribute ignore="true" name="resourceBundle" classname="java.lang.String"/>    
+<logic:messagesPresent>
+	<script type="text/javascript">
+	  Event.observe(window, 'load', function() { // this binds the function() to the event window.onload
+		if(fx) { new Effect.Highlight('component_errorMessagesContent', { duration: 3.0 }); } // create first Effect
+	  });
+	</script>
+	<input:frame titleKey="messages.errors" bundle="navigation" styleClass="component_messageBox" panelId="errorMessages">
+		<div id="error_messages" class="messages">
+			<core:messages bundle="<%= resourceBundle %>" id="error">			
+				<div class="text">
+					<% try { %>
+					<bean:write filter="false" name="error" />
+					<% } catch(Exception e) { 
+						e.printStackTrace(); %>
+					Failed to get message. <%= e.getMessage() %>
+					<% } %>
+				</div>
+	      	</core:messages>
+      	</div>
+	</input:frame>	
+</logic:messagesPresent>
