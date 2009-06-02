@@ -13,13 +13,17 @@
 	<global-forwards />
 	<action-mappings>
 
+		<!-- will not display anything but just checks and redirects -->
 		<action path="/checkClientCert"
 			type="com.adito.clientcerts.CheckClientCertAction"
 			name="checkClientCerts" scope="session">
 		</action>
+
+		<!-- the create client cert wizard -->
 		<action path="/createClientCert" parameter="actionTarget"
 			type="com.adito.clientcerts.wizards.actions.CreateClientCertAction" input=".site.ClientCertWizardPage"
 			name="createClientCerts" scope="session">
+			<forward name="display" path=".site.ClientCertWizardPage" />
 			<forward name="finish" path="/createClientCertFinish.do" redirect="true" />
 		</action>
 		<action path="/createClientCertFinish" parameter="actionTarget"
