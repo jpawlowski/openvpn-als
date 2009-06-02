@@ -1,0 +1,48 @@
+<%@ page import="net.openvpn.als.install.forms.InstallationSummaryForm"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="/server/taglibs/core" prefix="core"%>
+
+<div id="wizardSummary">
+	<bean:define id="webForwardSummaryForm" name="webForwardSummaryForm" type="net.openvpn.als.webforwards.webforwardwizard.forms.WebForwardSummaryForm" />
+
+	<table border="0" cellspacing="0" border="0">
+		<tr class="formBlock">
+			<td class="label" colspan="2">
+				<bean:message key="webForwardWizard.webForwardSummary.resource" bundle="webForwards" />
+			</td>
+		</tr>
+		<tr class="formLabel">
+			<td class="label">
+				<bean:message key="webForwardWizard.webForwardSummary.resource.name" bundle="webForwards" />
+			</td>
+			<td class="value">
+				<bean:write name="webForwardSummaryForm" property="resourceName" />
+			</td>
+		</tr>
+		<tr class="formBlock">
+			<td class="label" colspan="2">
+				<bean:message key="webForwardWizard.webForwardSummary.selectedPolicies" bundle="webForwards" />
+			</td>
+		</tr>
+		<tr class="formLabel">
+			<logic:empty name="webForwardSummaryForm" property="selectedPolicies">
+				<td class="value" colspan="2">
+					<bean:message key="webForwardWizard.webForwardSummary.selectedPolicies.none" bundle="webForwards" />
+				</td>
+			</logic:empty>
+			<logic:notEmpty name="webForwardSummaryForm" property="selectedPolicies">
+				<td class="label">
+					<bean:message key="webForwardWizard.webForwardSummary.selectedPolicies.names" bundle="webForwards" />
+				</td>
+				<td class="value">
+					<logic:iterate name="webForwardSummaryForm" property="selectedPolicies" id="webForwardSelectedPolicies">
+						<bean:write name="webForwardSelectedPolicies" />
+						<br />
+					</logic:iterate>
+				</td>
+			</logic:notEmpty>
+		</tr>
+	</table>
+</div>

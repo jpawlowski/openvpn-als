@@ -1,0 +1,230 @@
+/* Network Place */
+div#page_networkPlace {
+	margin: 0 auto;
+	text-align: left;
+	width: 38em;
+}
+
+div#page_networkPlace .dialog_form_table td.label {
+	width: 25%;
+}
+
+div#page_networkPlace .dialog_form_table td.value {
+	width: 75%;
+}
+
+div#page_networkPlace .tabPanel .tabContent {
+	height: 23em;
+}
+
+div#page_networkPlace .multiSelect select {
+	height: 21em;
+}
+
+div#page_networkPlace #tab_panel_details textarea {
+	height: 17em;
+}
+
+/* File System */
+div#page_fileSystem div#paths {
+	text-align: left;
+	margin-bottom: 12px;
+}
+
+div#page_fileSystem div.path {
+	padding: 4px;
+}
+
+div#page_fileSystem div.path span {
+	font-size: 1em;
+}
+
+div#page_fileSystem span.file {
+	background-image: url(images/file.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	padding-left: 20px;
+}
+
+div#page_fileSystem span.folder {
+	background-image: url(images/folder.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	padding-left: 20px;
+}
+
+div#page_fileSystem table.resource_table {
+	table-layout: fixed;
+}
+
+div#page_fileSystem .resource_table thead td.name {
+	text-align: left;
+}
+
+div#page_fileSystem .resource_table thead td.size {
+	text-align: left;
+	width: 5.6em;
+	max-width: 5.6em;
+}
+
+div#page_fileSystem .resource_table thead td.modified {
+	text-align: left;
+	width: 8.2em;
+	max-width: 8.2em;
+}
+
+div#page_fileSystem .resource_table thead td.actions {
+	text-align: left;	
+	width: 180px;
+	max-width: 180px;
+}
+
+div#page_fileSystem .resource_table thead td.select {
+	text-align: center;
+	width: 1.4em;
+}
+
+div#page_fileSystem .resource_table tbody td.name {
+	overflow: hidden;
+	text-align: left;
+	white-space: nowrap;
+}
+
+div#page_fileSystem .resource_table tbody td.size {
+	text-align: right;
+}
+
+div#page_fileSystem .resource_table tbody td.modified {
+	text-align: left;
+}
+
+div#page_fileSystem .resource_table tbody td.actions {
+	text-align: left;
+}
+
+div#page_fileSystem .resource_table tbody td.select {
+	text-align: center;
+}
+
+/* Create folder */
+div#page_createFolder {
+	width: 38em;
+	margin-left: auto;
+	margin-right: auto;
+	vertical-align: middle;
+}
+
+div#page_createFolder tr.formText input {
+	width: 100%;
+}
+
+/* Rename file */
+div#page_renameFile {
+	width: 38em;
+	margin-left: auto;
+	margin-right: auto;
+	vertical-align: middle;
+}
+
+div#page_renameFile tr.formText input {
+	width: 100%;
+}
+
+
+/* -------------- File Actions---------------- */
+a.action_deleteFile, a.action_deleteFile:visited, a.action_deleteFile:link, a.action_deleteFile:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+	margin: 2px 2px 2px 2px;
+}
+
+a.action_deleteFile img, a.action_deleteFile:visited img, a.action_deleteFile:link img, a.action_deleteFile:hover img {
+	border: 0;
+}
+
+a.action_renameFile, a.action_renameFile:visited, a.action_renameFile:link, a.action_renameFile:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+	margin: 2px 2px 2px 2px;
+}
+
+a.action_renameFile img, a.action_renameFile:visited img, a.action_renameFile:link img, a.action_renameFile:hover img {
+	border: 0;
+}
+
+a.action_copyFile, a.action_copyFile:visited, a.action_copyFile:link, a.action_copyFile:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+	margin: 2px 2px 2px 2px;
+}
+
+a.action_copyFile img, a.action_copyFile:visited img, a.action_copyFile:link img, a.action_copyFile:hover img {
+	border: 0;
+}
+
+a.action_cutFile, a.action_cutFile:visited, a.action_cutFile:link, a.action_cutFile:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+	margin: 2px 2px 2px 2px;
+}
+
+a.action_cutFile img, a.action_cutFile:visited img, a.action_cutFile:link img, a.action_cutFile:hover img {
+	border: 0;
+}
+
+a.action_pasteFile, a.action_pasteFile:visited, a.action_pasteFile:link, a.action_pasteFile:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+	margin: 2px 2px 2px 2px;
+}
+
+a.action_pasteFile img, a.action_pasteFile:visited img, a.action_pasteFile:link img, a.action_pasteFile:hover img {
+	border: 0;
+}
+
+a.action_zipFile, a.action_zipFile:visited, a.action_zipFile:link, a.action_zipFile:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+	margin: 2px 2px 2px 2px;
+}
+
+a.action_zipFile img, a.action_zipFile:visited img, a.action_zipFile:link img, a.action_zipFile:hover img {
+	border: 0;
+}
+
+
+
+a.action_editNetworkPlace, a.action_editNetworkPlace:visited, a.action_editNetworkPlace:link, a.action_editNetworkPlace:hover {
+	text-decoration: none;
+	color: black;
+	font-weight: normal;
+	margin: 2px 2px 2px 2px;
+}
+
+a.action_editNetworkPlace img, a.action_editNetworkPlace:visited img, a.action_editNetworkPlace:link img, a.action_editNetworkPlace:hover img {
+	border: 0;
+}
+
+/* Wizard */
+
+div#wizard_networkPlaceWizard {
+	height: 37em;
+}
+
+div#wizardPage_defaultNetworkPlaceDetails .formText input {
+	width: 100%;
+}
+
+div#wizardPage_defaultNetworkPlaceDetails textarea {
+	height: 23em;
+}
+
+div#wizardPage_networkPlacePolicySelection select {
+	height: 26em;
+}

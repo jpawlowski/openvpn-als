@@ -1,0 +1,64 @@
+<bundle version="1.0.18" requiredHostVersion="0.9.0"
+	id="web-forwards"
+	name="OpenVPN-ALS Web Forwards" license="GPL"
+	productURL="http://localhost"
+	order="400"
+	depends="tunnels,agent">
+	<description>
+		This extension adds the 'Web Forwards' feature to OpenVPN-ALS.
+		Web forwards allow an administrator to create links to web sites
+		through different types.
+	</description>
+	
+	<install when="activate">
+		<custom>net.openvpn.als.webforwards.WebForwardsInstall</custom>
+	</install>
+	
+	<extension type="plugin"
+		extension="web-forwards"
+		name="OpenVPN-ALS Web Forwards">
+		<description>
+			This extension adds the 'Web Forwards' feature to
+			OpenVPN-ALS. Web Forwards allow an administrator to create
+			links to web sites through different types.
+		</description>
+		<plugin name="web-forwards"
+			class="net.openvpn.als.webforwards.WebForwardPlugin">
+			<classpath>
+				private/web-forwards.jar
+			</classpath>
+			<resources>webapp</resources>
+		</plugin>
+		<propertyDefinitions>
+			<systemConfig>
+				<category id="90" bundle="webForwards"
+					image="categories/web-forwards.gif" parent="1020" />
+
+				<definition type="0" name="webForwards.cache.directory"
+					typeMeta="" category="90" defaultValue="%TMP%/webcache"
+					sortOrder="10" validation="" messageResourcesKey="webForwards" />
+				<definition type="1"
+					name="webForwards.cache.maxUserSize" typeMeta="" category="90"
+					defaultValue="10" sortOrder="20"
+					validation="net.openvpn.als.input.validators.IntegerValidator"
+					messageResourcesKey="webForwards" />
+				<definition type="1"
+					name="webForwards.cache.maxUserObjects" typeMeta="" category="90"
+					defaultValue="10000" sortOrder="30"
+					validation="net.openvpn.als.input.validators.IntegerValidator"
+					messageResourcesKey="webForwards" />
+				<definition type="1" name="webForwards.cache.maxUserAge"
+					typeMeta="" category="90" defaultValue="0" sortOrder="40"
+					validation="net.openvpn.als.input.validators.IntegerValidator"
+					messageResourcesKey="webForwards" />
+				<definition type="2"
+					name="webForwards.cache.clearOnLogout" typeMeta="" category="90"
+					defaultValue="true" sortOrder="50" validation=""
+					messageResourcesKey="webForwards" />
+				<definition type="3" name="webforward.activeDNSFormat"
+					typeMeta="1,2" category="90" defaultValue="1" sortOrder="100"
+					validation="" messageResourcesKey="webForwards" />
+			</systemConfig>
+		</propertyDefinitions>
+	</extension>
+</bundle>
