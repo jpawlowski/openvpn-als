@@ -1,0 +1,31 @@
+<!--                           ***************
+                               * Information *
+                               ***************
+When adding / removing new categories, remember to also add the message resources
+in openvpnals/src/net.openvpn.als/properties/ApplicationResources.properties.
+
+Images are relative to the theme image directory
+-->
+
+<categories>
+	<category id="1010" bundle="properties" image="categories/server-settings.gif">
+		<category id="70" bundle="properties" image="categories/web-server.gif"/>
+		<category id="71" bundle="properties" image="categories/web-server.gif"/>
+		<category id="100" bundle="properties" image="categories/proxies.gif"/>
+		<category id="30" bundle="properties" image="categories/ui.gif"/>
+        <category id="191" bundle="properties" image="categories/security.gif"/>
+	</category>
+	<category id="1020" bundle="properties" image="categories/resources.gif"/>
+	<category id="1030" bundle="properties" image="categories/windows.gif">
+	</category>
+	<category id="65" bundle="properties" image="categories/authentication.gif">
+		<category id="60" bundle="properties" image="categories/security.gif"/>
+		<category id="61" bundle="properties" image="categories/security.gif"/>
+		<category id="67" bundle="properties" image="categories/security.gif"/>
+		<category id="55" bundle="properties" image="categories/security.gif"/>
+		<category id="190" bundle="properties" image="categories/security.gif"/>
+	</category>
+	<category id="210" bundle="properties" image="categories/messaging.gif">
+		<category id="220" bundle="properties" image="categories/smtp.gif"/>
+	</category>	
+</categories>
