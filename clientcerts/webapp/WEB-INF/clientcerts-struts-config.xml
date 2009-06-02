@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="createClientCerts"
+			type="com.adito.clientcerts.wizards.forms.CreateClientCertDetailForm">
+		</form-bean>
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+
+		<action path="/checkClientCert"
+			type="com.adito.clientcerts.CheckClientCertAction"
+			name="checkClientCerts" scope="session">
+		</action>
+		<action path="/createClientCert" parameter="actionTarget"
+			type="com.adito.clientcerts.wizards.actions.CreateClientCertAction" input=".site.ClientCertWizardPage"
+			name="createClientCerts" scope="session">
+			<forward name="finish" path="/createClientCertFinish.do" redirect="true" />
+		</action>
+		<action path="/createClientCertFinish" parameter="actionTarget"
+			type="com.adito.clientcerts.wizards.actions.CreateClientCertAction" input=".site.ClientCertWizardPage"
+			name="createClientCerts" scope="session">
+		</action>
+	</action-mappings>
+	<message-resources parameter="com.adito.clientcerts.ApplicationResources" key="accounts" />
+	<message-resources parameter="com.adito.clientcerts.ApplicationWizardsResources" key="clientCerts" />
+</struts-config>
+
