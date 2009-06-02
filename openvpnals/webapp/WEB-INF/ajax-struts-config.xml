@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+       "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+       "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+	<form-beans/>
+	<global-exceptions/>
+	<global-forwards/>
+	<action-mappings>	
+		<action path="/ajaxListAccounts" 
+				type="net.openvpn.als.ajax.ListAccountsAction"/>
+		<action path="/ajaxListRoles" 
+				type="net.openvpn.als.ajax.ListRolesAction"/>
+		<action path="/ajaxListAttributeCategories" 
+				type="net.openvpn.als.ajax.ListAttributeCategoriesAction"/>
+		<action path="/ajaxListValidationStrings" 
+				type="net.openvpn.als.ajax.ListValidationStringsAction"/>
+		<action path="/ajaxDismissGlobalWarning" 
+				type="net.openvpn.als.ajax.DismissGlobalWarningAction"/>
+		<action path="/serverRunning" 
+				type="net.openvpn.als.ajax.ServerRunningAction"/>
+	</action-mappings>
+</struts-config>
+

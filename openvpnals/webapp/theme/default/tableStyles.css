@@ -1,0 +1,210 @@
+/*
+
+   WARNING - Please Do not change these styles lightly. They affect a *lot*.
+   It may be more approriate for you to overide your individual page styles
+   in pageStyles.css and wizardStyles.ss
+
+*/
+
+
+/* Dialog form tables often used for entry of data. Has a table of form elements and
+   Ok / Cancel styles button at the bottom */
+   
+.dialog_form_table {
+	margin: 0 auto;
+	width: 100%;
+	text-align: center;
+}
+
+.dialog_form_table#form {
+	margin: 4px 8px 4px 8px;
+}
+
+.dialog_form_table#centered {
+	table-layout: inherit;
+	width: auto;
+	margin: auto;
+}
+
+.dialog_form_table td {
+	text-align: left;
+	vertical-align: middle;
+	padding-top: 4px;
+}
+
+.dialog_form_table tfoot td {
+	text-align: center;
+	padding-bottom: 4px;
+}
+
+.dialog_form_table tfoot .button_bar {
+	padding-top: 4px;
+}
+
+/* 'dialog_content_table' for simply tables in a dialog */
+
+.dialog_content_table {
+	width: 100%;
+	table-layout: fixed;
+	overflow: hidden;
+}
+
+/* The 'resource_table' styles apply to the alternating	table rows used in a number of places such as network places, web forwards */	
+
+.resource_table {
+	table-layout: fixed;	
+	margin: 0;
+	width: 100%;
+	padding: 0;
+	border-collapse: collapse;
+}
+
+.resource_table thead tr {
+	background-color: #3d649e;
+	color: white;
+	font-weight: bold;
+	height: 1.8em;
+}
+
+#personal .resource_table thead tr   {
+	background-color: gray;
+	color: white;
+	font-weight: bold;
+}
+
+.resource_table td {
+	margin: 0;
+	padding: 2px 2px 2px 2px;
+	text-align: left;
+}
+
+.resource_table tr.highlight {
+	background-color: #f4f4f4;
+}
+
+.resource_table tr.selected {
+	background-color: #feffe3;
+}
+
+.resource_table tr.lowlight {
+}
+
+.resource_table tfoot tr {
+	vertical-align: middle;
+	background-color: #3d649e;
+	color: white;
+	font-weight: bold;
+}
+
+.resource_table tr a.columnHeader, .resource_table tr a.pagerEnabled, .resource_table tr a.pagerSelected {
+	color: white;
+}
+
+.resource_table tr a.columnHeader {
+	vertical-align: bottom;
+}
+
+.resource_table tr a.columnHeader img {
+	vertical-align: top;
+}
+
+.resource_table tr a.pagerDisabled {
+	color: #e6e6e6
+}
+
+.resource_table td.tableMessage {
+	text-align: center;
+	overflow: visible;
+	white-space: normal;
+}
+
+/* Categorized tables are generally for the tables that do not have 
+   alternating rows and / or are categorised,e.g. Applications,  Web Forwards */   
+
+
+.categorized_table {
+	width: 100%;
+    font-family: Tahoma, Arial, Helvetica, sans-serif; 
+   	font-size: 1em;
+}
+
+.categorized_table td {
+	padding: 2px 2px 2px 2px;
+}
+
+.categorized_table tr.categorized_table_header  {
+	background-color: #f7f7f7;
+	color: white;
+	font-weight: bold;
+}
+
+.categorized_table tr.highlight {
+	background-color: #f7f7f7;
+}
+
+.categorized_table tr.lowlight {
+
+}
+
+/* View switcher */
+
+#view td.filter {
+}
+
+#view td.view {
+	text-align: right;
+	width: 44px;
+}
+
+/* Icons view */
+
+.icons {	
+}
+
+.icons ul,.icons ul li {
+	list-style-type: none;
+	float: left;
+	margin: 0;
+	padding: 0
+}
+
+.icons ul li {
+	text-align: center;
+	clear: none;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	padding-right: 1em;
+}
+
+.icons li {
+	height: 96px;
+}
+
+.icons .icon {
+	display: block;
+	height: 96px;
+	width: 96px;
+	clear: none;
+	background-color: #ffffff;
+	border-style: solid;
+	border-width: 0px;
+	text-align: center;
+	vertical-align: middle;
+	padding: 4px;
+}
+
+.icons .icon .image {
+	height: 44%;
+	vertical-align: bottom;
+}
+
+.icons .icon .text {
+	height: 31%;
+	vertical-align: middle;
+}
+
+.icons .icon .other {
+	text-align: right;
+	vertical-align: bottom;
+	height: 25%;
+}

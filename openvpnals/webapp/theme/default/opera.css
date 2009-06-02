@@ -1,0 +1,11 @@
+/* Extend the navigation menu component to get rid of the white space problem when scrolling */
+
+#component_navmenu, #component_wizardSequenceInfoContainer, #component_editingResourceInfoContainer {
+	padding-bottom: 128em;
+	background-color: #3d649e;
+}
+
+/* Stop the width of the exception going to 100% with big traces */
+div#page_confirm .traceMessage pre {
+	width: 37em;
+}

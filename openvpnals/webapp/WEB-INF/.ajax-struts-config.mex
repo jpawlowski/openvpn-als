@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/ajaxListAccounts.do" location="0,0" dimension="279,100" />
+  <StrutsActivity path="/ajaxListRoles.do" location="0,145" dimension="259,100" />
+  <StrutsActivity path="/ajaxListAttributeCategories.do" location="650,50" dimension="284,88" />
+  <StrutsActivity path="/ajaxListValidationStrings.do" location="350,250" dimension="268,88" />
+  <StrutsActivity path="/ajaxDismissGlobalWarning.do" location="950,250" dimension="276,88" />
+  <StrutsActivity path="/serverRunning.do" />
+</FlowViewLayout>
+
