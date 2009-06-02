@@ -1,0 +1,29 @@
+# This files contains the list of what modules should be checked out
+# for the GPL build. These modules will also be checked out for the
+# commercial build. 
+#
+# Any modules in this list will be distributed with the 
+# community edition.
+
+build-tools[headok]
+private-build-tools[headok]
+maverick-crypto[headok]
+maverick-multiplex[headok]
+maverick-ssl[headok]
+maverick-util[headok]
+openvpnals-commons-vfs
+openvpnals
+agent
+agent-swt
+agent-awt
+ui
+commons-logging-java1[headok]
+activedirectory
+applications
+tunnels
+web-forwards
+network-places
+unix
+
+# Broken as from 0.2.10
+sample[headok]

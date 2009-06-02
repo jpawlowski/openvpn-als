@@ -1,0 +1,39 @@
+v0.9.1 (19.12.2008):
+
+Major new features:
+
+* Nearly all existing SSL-Explorer applications have been converted to OpenVPN-ALS
+* Extension Store available and enabled by default
+* Source and binary releases
+* Localization support using language module
+* Finnish translation
+* Most wrapper problems now fixed for good
+* SSL-Explorer PAM converted to OpenVPN-ALS
+
+Lots of fixes to build files:
+
+* Building OpenVPN-ALS is much simpler and less error-prone
+* Better SVN compatibility
+* Building on Mac OS X (10.4/10.5) now works
+* Moved most property definitions to a global build.properties-file
+* Lots of other small improvements to the build files
+
+Other changes:
+
+* A couple of graphical fixes
+* Removed most references to "Enterprise Edition"
+* Removed some references to 3sp where appropriate
+* Allowed use of longer username (e.g. email addresses)
+* Added some SSL-Explorer -> OpenVPN-ALS conversion scripts to "tools" directory
+* Lots and lots of documentation written to OpenVPN-ALS Wiki (http://openvpnals.wiki.sourceforge.net/)
+* Lots of infrastructure and community building work
+
+
+v0.9.0 (18.5.2008):
+
+* Due to trademark issues all references to SSL-Explorer have been replaced with references to OpenVPN-ALS. This includes Java variable names.
+* Most references to 3sp - with the exception of copyright notices - have been removed.
+* User-interface icons, which 3sp had licensed from a third party have been replaced with freely distributable Tango icons and icons derived from them.
+* OpenVPN-ALS Agent Java1 compilation has been disabled in $OpenVPN-ALS_HOME/agent/build.xml. Otherwise the building the OpenVPN-ALS Agent would fail.
+* Fixed permission problems in $OpenVPN-ALS_HOME/openvpnals/install/platforms. The necessary files were not executable and thus starting OpenVPN-ALS would fail.
+* Removed supportOptions.html.

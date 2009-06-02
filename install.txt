@@ -1,0 +1,1 @@
+Please take a look at http://openvpnals.wiki.sourceforge.net/installing_and_running_the_openvpnals_server

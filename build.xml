@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="openvpnals-build" default="start-using-java">
+	
+	<property name="openvpnals.home" value="openvpnals"/>
+	<property name="agent.home" value="agent"/>
+	
+	<!-- Display some help -->
+	<target name="help" description="Displays some help.">
+		<echo>
+You must have run the 'install' target at least once which compiles
+all source starts OpenVPN-ALS's installation wizard. You also should
+configure the Agent certificate and run 'install-agent' target.
+Otherwise resources based on SSL-tunnels will not work.
+			
+For a list of Ant targets, use "ant -projecthelp"   
+			
+		</echo>
+	</target>
+
+        <target name="sysinfo" description="Display some system information">
+                <echo>Operating system: ${os.name}</echo>
+                <echo>Java home: ${java.home}</echo>
+        </target>
+
+
+	<target name="clean" description="Removes compiled files">
+		<ant dir="${openvpnals.home}" target="clean"/>
+		<!-- NOTE This Code use Old Apache Commons VFS. This is not required for new Apache Commons VFS -->
+		<!--
+		<ant dir="openvpnals-commons-vfs" target="clean"/>
+		-->
+		<ant dir="activedirectory" target="clean"/>
+		<ant dir="applications" target="clean"/>
+		<ant dir="network-places" target="clean"/>
+		<ant dir="pam" target="clean"/>
+		<ant dir="tunnels" target="clean"/>
+		<ant dir="unix" target="clean"/>
+		<ant dir="web-forwards" target="clean"/>
+		<ant dir="maverick-crypto" target="clean"/>
+		<ant dir="maverick-multiplex" target="clean"/>
+		<ant dir="maverick-ssl" target="clean"/>
+		<ant dir="maverick-util" target="clean"/>
+		<ant dir="${agent.home}" target="clean"/>
+	</target>
+
+	<!-- Warning: there's no target to remove the generated HTML files yet -->
+	<target name="javadoc" description="Generate javadocs for everything">
+		<ant dir="${openvpnals.home}" target="javadoc"/>
+		<!-- NOTE This Code use Old Apache Commons VFS. This is not required for new Apache Commons VFS -->
+		<!--<ant dir="openvpnals-commons-vfs" target="javadoc"/>-->
+		<ant dir="activedirectory" target="javadoc"/>
+		<ant dir="applications" target="javadoc"/>
+		<ant dir="network-places" target="javadoc"/>
+		<ant dir="tunnels" target="javadoc"/>
+		<ant dir="unix" target="javadoc"/>
+		<ant dir="web-forwards" target="javadoc"/>
+		<ant dir="maverick-crypto" target="javadoc"/>
+		<ant dir="maverick-multiplex" target="javadoc"/>
+		<ant dir="maverick-ssl" target="javadoc"/>
+		<ant dir="maverick-util" target="javadoc"/>
+
+		<!-- Javadoc target for Agent is not yet finished -->
+		<!-- <ant dir="${agent.home}" target="javadoc"/> -->
+	</target>
+
+
+	<target name="console" description="Starts the OpenVPN-ALS server in the foreground display all output to the console">
+		<ant dir="${openvpnals.home}" target="console"/>
+	</target>
+	
+	<target name="start" description="Starts the OpenVPN-ALS in the background">
+		<ant dir="${openvpnals.home}" target="start"/>
+	</target>
+
+	<target name="start-using-java" description="Starts the OpenVPN-ALS in the foreground without the OS-dependent wrapper">
+		<ant dir="${openvpnals.home}" target="start-using-java"/>
+	</target>
+	
+	<target name="stop" description="Stops the running OpenVPN-ALS. Note, this currently does not work on all platforms.">
+		<ant dir="${openvpnals.home}" target="stop"/>
+	</target>
+
+	<target name="install" description="Run the OpenVPN-ALS installation wizard. The server must not be running.">
+		<ant dir="${openvpnals.home}" target="install"/>
+	</target>
+
+	<target name="install-agent" description="Install OpenVPN-ALS Agent.">
+		<ant inheritall="false" dir="${openvpnals.home}" target="install-agent" />
+	</target>
+
+	<target name="install-service" description="Install OpenVPN-ALS as a service.">
+		<ant dir="${openvpnals.home}" target="install-service"/>
+	</target>
+
+	<target name="uninstall-service" description="Uninstall OpenVPN-ALS service.">
+		<ant dir="${openvpnals.home}" target="uninstall-service"/>
+	</target>
+
+	<target name="compile" description="Compile OpenVPN-ALS.">
+		<ant dir="${openvpnals.home}" target="deploy-community-extensions"/>
+	</target>
+
+	<target name="dist" description="Create an executable, ready to distribute version of OpenVPN-ALS">
+		<ant inheritall="false" dir="${openvpnals.home}" target="dist"/>
+	</target>
+
+
+</project>
