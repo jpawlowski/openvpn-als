@@ -1,0 +1,93 @@
+/*
+
+   WARNING - Please Do not change these styles lightly. They affect a *lot*.
+   It may be more approriate for you to overide your individual page styles
+   in pageStyles.css and wizardStyles.ss
+
+*/
+
+/* Help */
+
+#help_page {	
+    font-family: Tahoma, Arial, Helvetica, sans-serif; 
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	text-align:left;
+}
+
+#help_banner_image {
+	background-color: black;
+	width: 100%;
+	height: 50px;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	background-image: url(images/banner.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+}
+
+#help_banner_text {
+	position: relative;
+	background-color: #CCCCCC;
+	font-weight: bold;
+	color: #3D649E;
+	vertical-align: middle;
+	width: 100%;
+	text-align: left;
+	padding: 3px 0px 3px 8px;
+}
+
+#help_content {
+	display: block;
+	position: relative;
+	top: 0px;
+	margin-top: 8px;
+	margin-left: 8px;
+	margin-right: 8px;
+}
+
+#propertyHelp {
+}
+
+#propertyHelp h3 {
+	font-size: 1.2em;
+	color: #3D649E;
+}	
+
+#propertyHelp p {
+}
+
+
+#help_index div.group {
+	display: block;
+	font-weight: bold;
+	font-size: 1.1em;
+	border-width: 0px;
+	padding: 20px 0px 4px 16px; 
+	margin: 0px 0px 0px 0px;
+	text-align: left;
+	
+}
+
+#help_index div.item {
+	display: block;
+	font-size: 1.0em;
+	font-weight: normal;
+	border-width: 0px;
+	padding: 0px 0px 0px 32px;
+	margin: 0px 0px 0px 0px;
+}
+
+#help_index a, #help_index a:visited, #help_index a:link, #help_index a:hover {			
+	font-size: 1.0em;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+div#help_index a.selected:visited, div#help_index a.selected:link, div#help_index a.selected:hover {
+	color: #f8f09a;
+}
+
+div#help_index a:hover {
+	text-decoration: underline;
+}

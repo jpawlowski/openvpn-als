@@ -1,0 +1,1433 @@
+/*
+
+   WARNING - Please Do not change these styles lightly. They affect a *lot*.
+   It may be more approriate for you to overide your individual page styles
+   in pageStyles.css and wizardStyles.ss
+
+*/
+
+/* Page info */
+
+div#component_pageInfo {
+    font-family: Tahoma, Arial, Helvetica, sans-serif; 
+	width: 100%;
+	margin: 0px 0px 8px 0px;
+	padding: 0px 0px 0px 0px;
+	text-align: left;
+}
+
+.centeredSpaced #component_pageInfo {
+	width: 40em;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 1.5em;
+}
+
+div#login_page_info #component_pageInfo {
+	width: auto;
+}
+
+div#component_pageInfo img {
+	padding-right: 8px;
+}
+
+div#component_pageInfo img.customLoginInfoImage  {
+	padding-right: 0px;
+}
+
+div#component_pageInfo h1 { 
+	margin: 0;
+	padding: 0px 0px 8px 0px;
+	font-size: 1.2em;
+	vertical-align: middle;
+}
+
+/* Page info (in popup pages) */
+
+.popup div#component_pageInfo {
+    font-family: Tahoma, Arial, Helvetica, sans-serif; 
+	width: 100%;
+	margin: 0px 0px 8px 0px;
+	padding: 0px 0px 0px 0px;
+	text-align: left;
+}
+
+/* Tool bar */
+
+div#component_toolBar {
+    font-family: Tahoma, Arial, Helvetica, sans-serif; 
+	width: 100%;
+	margin: 0px 0px 8px 0px;
+	padding: 0px 0px 0px 0px;
+	text-align: left;
+}
+
+div#component_toolBar .frameContent {
+	padding: 0;
+	background-color: #e6e6e6;
+	color: black;
+	border: 1px solid #dcdcdc;
+	height: 1.7em;
+	padding: 4px;
+	vertical-align: middle;
+}
+
+div#component_toolBar ul {
+	list-style-type: none;
+	margin: 0;
+	background-color: red;
+	padding: 0;
+	width: 100%;
+	clear: both;
+}
+
+div#component_toolBar li {
+	float: left;
+}
+
+div#component_toolBar .button {
+	display: block;
+	float: left;
+	background-color: rgb(244,244,244);
+	border: 1px solid #dcdcdc;
+	text-align: center;
+	vertical-align: middle;
+	padding: 2px;
+	margin-left: 4px;
+}
+
+
+/* Page header */
+
+div#component_pageHeader h1 { 	
+	display: none;
+	margin: 0;
+	padding: 0;
+	height: 50px;
+	vertical-align: middle;
+}
+	
+
+div#component_pageHeader { 
+    font-family: Tahoma, Arial, Helvetica, sans-serif; 
+	width: 100%;
+	height: 50px;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	background-image: url(images/banner.gif);
+	background-repeat: no-repeat;
+	background-color: black;
+	color: white;
+	vertical-align: middle;
+}
+
+/* Small Page header */
+
+div#component_smallPageHeader h1 { 	
+	display: none;
+	margin: 0;
+	padding: 0;
+	height: 35px;
+	vertical-align: middle;
+}
+	
+
+div#component_smallPageHeader { 
+    font-family: Tahoma, Arial, Helvetica, sans-serif; 
+	width: 100%;
+	height: 35px;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	background-image: url(images/banner-small.gif);
+	background-repeat: no-repeat;
+	background-color: black;
+	color: white;
+	vertical-align: middle;
+}
+
+
+/* Page footer */
+
+#component_pageFooter { 	
+	position: fixed;
+	background-color: #3d649e;
+	bottom: 0px;
+	height: 7em;
+	padding: 0px 0px 0px 0px;
+    width:14.8em;
+    color: white;
+}
+
+body > #component_pageFooter {
+  /* used by Opera 5+, Netscape6+/Mozilla, Konqueror, Safari, OmniWeb 4.5+, iCab, ICEbrowser */
+  	position: fixed;
+}
+
+#component_pageFooterInner {
+	margin: 4px;
+}	
+
+#component_pageFooter .separator {
+	margin: 0px 0px 0px 0px;
+	width: 100%;	
+	clear: both;
+}
+
+#component_pageFooter .separator hr {
+	color: #2c538d;
+	background-color: #2c538d;
+	border : 0 solid #2c538d;
+	border-top-width : thin;
+	height: 1px;
+}
+
+
+/* Message sidebars - General */
+
+.component_messageBox {
+	margin: 8px 0px 0px 0px;
+	padding: 0;
+	vertical-align: top;
+	display: block;
+}
+
+#layout_leftbar .component_messageBox {
+	min-width: 14.8em;
+	max-width: 14.8em;
+    width:14.8em;
+	background-color: #3d649e;
+}
+
+#layout_rightbar .component_messageBox {
+	min-width: 15.8em;
+	max-width: 15.8em;
+    width:15.8em;
+}
+
+.component_messageBox .titleBar {
+	height: 20px;
+}
+
+.component_messageBox .titleBar .titleInner {
+	padding-top: 2px;
+	height: 16px;
+	width: 100%;
+}
+
+.component_messageBox .titleBar .titleText {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.component_messageBox .titleBar img {
+	margin-left: 1px;
+	margin-right: 1px;	
+	cursor: pointer;
+}
+
+.component_messageBox .titleBar .title {
+	float: left;
+	font-weight: bold;
+}
+
+.component_messageBox .titleBar .actions {
+	padding-top: 2px;
+	float: right;
+	width: 40px;
+}
+
+.component_messageBox .titleBar .expander {
+	width: 12px;
+	vertical-align: middle;
+	font-weight: bold;
+	float: left;
+	clear: none;
+}
+	
+.component_messageBox .messages {
+    overflow: auto;
+}
+
+.component_messageBox .frameContentContainer {
+	padding: 4px 0px 4px 0px;
+}
+
+.component_messageBox .frameContent {
+	padding: 0;
+	/* RGB color used so fade effect correctly fades back to grey instead of white */
+	background-color: rgb(244,244,244);
+	color: black;
+	border-left: 1px solid #dcdcdc;
+	border-right: 1px solid #dcdcdc;
+	border-bottom: 1px solid #dcdcdc;
+}
+
+.component_messageBox .text {	
+	background-image: url(images/dot.gif);
+	background-repeat: no-repeat;
+	color: black;
+	background-position: 4px 4px;
+	text-align: left;
+	padding: 0px 0px 0px 15px;
+}
+
+/* Policy selection */
+
+#component_policySelection {
+	background-color: #aaaaaa;
+	padding: 8px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	color: white;
+	overflow: hidden;
+}
+#component_policySelection td {
+	padding: 0px;
+	margin: 0px;
+}
+
+#component_policySelection thead {
+	font-size: 1.4em;
+	font-weight: bold;
+}
+
+
+/* Wizard pages */
+#component_wizardPage {
+	max-width: 56em;
+}
+
+#component_wizardPage .dialog_content {
+}
+
+#component_wizardPage #header {
+	padding: 8px;
+	text-align: left;
+	vertical-align: middle;
+}
+
+#component_wizardPage #body {
+	text-align: center;
+	margin: 8px;
+	overflow: hidden;
+}
+
+#component_wizardPage #footer {
+	position: relative;
+	bottom: 0em;
+	padding: 8px;
+	vertical-align: middle;
+	height: 2em;
+	text-align: right;
+}
+
+/* Navigation  */
+
+#component_navigationBar {
+	margin: 0px 0px 0px 0px;
+	padding: 8px 0px 0px 0px;
+	height: 34px;
+	text-align: right;
+	vertical-align: middle;
+}
+
+#component_navigationBar {
+	display: inline;
+	padding: 9px 0px 0px 0px;
+	text-align: right;
+	float: right;
+}
+
+#component_navigationBar ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+}
+
+#component_navigationBar li {
+    margin: 0;
+    padding: 0;
+	float: left;
+	padding-right: 1em;
+}
+
+#component_navigationBar a,#component_navigationBar a:hover,#component_navigationBar a:visited,#component_navigationBar a:active {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+#component_navigationBar a div.launchAgentImage {
+	background-image: url(images/vpn-off.gif);
+	background-position: center;
+}
+
+#component_navigationBar a div.shutdownAgentImage {
+	background-image: url(images/vpn-on.gif);
+	background-position: center;                
+}
+
+#component_navigationBar a div.homeImage {
+	background-image: url(images/home.gif);
+	background-position: center;                
+}
+
+#component_navigationBar a div.logoffImage {
+	background-image: url(images/exit.gif);
+	background-position: center;                
+}
+
+#component_navigationBar a div.helpImage {
+	background-image: url(images/help.gif);
+	background-position: center;                
+}
+
+#component_navigationBar a div.userConsoleImage {
+	background-image: url(images/user-console.gif);
+	background-position: center;                
+}
+
+#component_navigationBar a div.managementConsoleImage {
+	background-image: url(images/management-console.gif);
+	background-position: center;                
+}
+
+#component_navigationBar a div.togglePanelOptionsImage {
+	background-image: url(images/panel-options.gif);
+	background-position: center;                
+}
+	
+#component_navigationBar a div {
+	border: 0px;
+	vertical-align: middle;
+	display: block;
+	height: 32px;
+	width: 32px;
+	min-height: 32px;
+	min-width: 32px;
+}
+
+#component_navigationBar a div.navigationBarText {
+	display: none;
+}
+
+/* Navigation menu styles */
+
+#component_menuContainer {	
+	background-color: #3d649e;
+}
+
+#component_menu {	
+	background-color: #3d649e;
+}
+
+#component_menu .frameContent, #component_menu .frameContentContainer {	
+	background-color: #3d649e;
+}
+
+
+#component_menu .titleBar {
+	text-align: center;
+	color: #3D649E;
+	width: 100%;
+	background-color: #cccccc;
+}
+
+#component_menu .titleBar .actions {	
+	text-align: center;
+	width: 1.2em;
+}
+
+#component_menu .title {
+	width: 13.5em;
+	text-align: center;
+}
+
+#component_navmenu  {
+	background-color: inherit;
+    font-size: 0.92em;
+	color: white;
+	padding-bottom: 7em;
+}
+
+#component_navmenu #resourceDetails .title {
+	padding-top: 16px;
+	padding-left: 8px;
+	text-align: left;
+	font-weight: bold;
+}
+
+#component_navmenu #resourceDetails .detail {
+	padding-top: 4px;
+	padding-left: 16px;
+}
+
+#component_navmenu div.group {
+	display: block;
+	font-weight: bold;
+	font-size: 1.2em;
+	border-width: 0px;
+	padding: 12px 0px 4px 16px; 
+	margin: 0px 0px 0px 0px;
+	text-align: left;
+	
+}
+
+#component_navmenu div.item {
+	display: block;
+	font-size: 1.1em;
+	font-weight: normal;
+	border-width: 0px;
+	padding: 0px 0px 0px 30px;
+	margin: 0px 0px 0px 0px;
+}
+
+#component_navmenu div.information {
+	display: block;
+	color: white;
+	border-width: 0px;
+	padding: 20px 8px 20px 8px;
+	margin: 0px 0px 0px 0px;
+}
+
+#component_navmenu div.toolbar {
+	display: block;
+	color: white;
+	text-align: center;
+	border-width: 0px;
+	padding: 0;
+	margin: 0;
+}
+
+#component_navmenu a, div#component_navmenu a:visited, div#component_navmenu a:link, div#component_navmenu a:hover {			
+	font-size: 0.9em;
+	color: white;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+#component_navmenu a.selected:visited, div#component_navmenu a.selected:link, div#component_navmenu a.selected:hover {
+	font-size: 0.9em;
+	color: #f8f09a;
+}
+
+#component_navmenu span.disabled {
+	font-size: 0.9em;	
+	color: #aaaaaa;
+}
+
+#component_navmenu a:hover {
+	text-decoration: underline;
+}
+
+/* Wizard Sequence styles */
+
+#component_wizardSequenceInfo .frameContent {	
+	background-color: #3d649e;
+	color: white;
+}
+
+#component_wizardSequenceInfo .titleBar {
+	color: #3D649E;
+	background-color: #cccccc;
+}
+
+#component_wizardSequenceInfo .titleBar .title {	
+	color: #3d649e;
+	text-align: right;
+	width: 60%;
+}
+
+#component_wizardSequenceInfo .titleBar .actions {	
+	text-align: right;
+}
+
+div#component_wizardSequenceInfo div.group {
+	display: block;
+	font-weight: bold;
+	font-size: 1.2em;
+	border-width: 0px;
+	padding: 12px 0px 4px 16px; 
+	margin: 0px 0px 0px 0px;
+	text-align: left;
+	
+}
+
+div#component_wizardSequenceInfo div.item {
+	display: block;
+	font-size: 1em;	
+	font-weight: normal;
+	border-width: 0px;
+	padding: 0px 0px 0px 30px;
+	margin: 0px 0px 0px 0px;
+}
+
+div#component_wizardSequenceInfo div.information {
+	display: block;
+	border-width: 0px;
+	font-size: 0.9em;
+	padding: 20px 8px 20px 8px;
+	margin: 0px 0px 0px 0px;
+}
+
+div#component_wizardSequenceInfo div.toolbar {
+	display: block;
+	text-align: center;
+	border-width: 0px;
+	padding: 0;
+	margin: 0;
+}
+
+div#component_wizardSequenceInfo a, div#component_wizardSequenceInfo a:visited, div#component_wizardSequenceInfo a:link, div#component_wizardSequenceInfo a:hover {			
+	font-weight: normal;
+	text-decoration: none;
+}
+
+div#component_wizardSequenceInfo a {
+	color: #f8f09a;
+}
+
+div#component_wizardSequenceInfo a.deselected {
+	color: white;
+}
+
+div#component_wizardSequenceInfo span.disabled {
+	font-family: Tahoma,Arial,Helvetica,sans-serif;
+	color: #aaaaaa;
+}
+
+div#component_wizardSequenceInfo a:hover {
+	text-decoration: underline;
+}
+
+/* Editing Resource Information */
+
+#component_editingResourceInfo .frameContent {	
+	background-color: #3D649E;
+	color: white;
+}
+
+#component_editingResourceInfo .titleBar {
+	color: #3D649E;
+	background-color: #cccccc;
+}
+
+#component_editingResourceInfo .titleBar .title {	
+	color: #3d649e;
+	text-align: right;
+	width: 60%;
+}
+
+#component_editingResourceInfo .titleBar .actions {	
+	text-align: right;
+}
+
+div#component_editingResourceInfo #resourceDetails .title {
+	padding-top: 4px;
+	padding-left: 8px;
+	text-align: left;
+	font-weight: bold;
+}
+
+div#component_editingResourceInfo #resourceDetails .detail {
+	padding-top: 4px;
+	padding-left: 16px;
+}
+
+/* Message sidebars - Tasks */
+
+#component_pageTasks .titleBar {
+	background-color: #cc4d00;
+}
+
+#component_pageTasks .frameContent {
+	width: 100%;
+}
+
+#component_pageTasks .frameContent a {
+	color: black;
+}
+
+#component_pageTasks .titleBar .title {
+	background-image: url(images/messagebar_pageTask.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	padding-left: 18px;
+	color: white;
+}
+
+/* Message sidebars - Warnings */
+
+#component_warnings .titleBar {
+	background-color: black;
+}
+
+#component_warnings .titleBar .title {
+	background-image: url(images/messagebar_warning.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	padding-left: 18px;
+	color: white;
+}
+
+#component_warnings .dismiss {
+	font-size: smaller;
+	text-align: right;
+	width: 100%;
+}
+#component_warnings .dismiss img {
+	padding: 0em 0.5em 0em 0.5em;
+}
+
+/* Message sidebars - Errors */
+
+#component_errorMessages .titleBar {
+	background-color: #cc0000;
+}
+
+#component_errorMessages .titleBar .title {
+	padding-left: 18px;
+	background-image: url(images/messagebar_error.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	color: white;
+}
+
+#component_errorMessages .text {
+	float: left;
+}
+
+/* Message sidebars - Information */
+	
+#component_infoMessages .titleBar {
+	background-color: #3d649e;
+}
+
+#component_infoMessages .titleBar .title {
+	background-image: url(images/messagebar_info.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	padding-left: 18px;
+	color: white;
+}
+
+/* Message sidebars - Clipboard */
+
+#component_clipboard .titleBar {
+	background-color: #e6b601;
+}
+
+#component_clipboard .titleBar .title {
+	background-image: url(images/messagebar_clipboard.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	padding-left: 18px;
+	color: white;
+}
+
+/* Message sidebars - Feed */
+
+#component_rssFeeds  .titleBar {
+	background-color: #006633;
+}
+
+#component_rssFeeds  .titleBar .title {
+	background-image: url(images/messagebar_feed.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	padding-left: 18px;
+	color: white;
+}
+
+#component_rssFeeds .frameContent a {
+	color: black;
+}
+
+/* About frame */
+
+div#component_about {
+	padding: 8px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	vertical-align: top;
+}
+
+div#component_about .frameContent {
+	background-color: #3d649e;
+	color: white;
+}
+
+div#component_about .titleBar {
+	color: #3D649E;
+	background-color: #cccccc;
+}
+
+div#component_about .titleBar .title {
+	color: #cccccc;
+}
+
+/* About information */
+
+div#component_logonStatus, div#component_sslx_copyright, div#component_sslx_trademark,
+	div#component_sslx_version {
+	font-size: smaller;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	text-align: left;
+}
+
+div#component_logonStatus {
+	color: #f8f09a;
+	font-size: 1em;
+	margin-bottom: 8px;
+}
+
+div#component_sslx_copyright {
+	font-size: smaller;
+}
+
+div#component_sslx_version {
+	font-size: smaller;
+ 	font-weight: bold;
+}
+
+div#component_sslx_edition {
+	font-size: smaller;
+}
+
+/* Required field indicator */
+
+div.required {
+	position: relative;
+	left: -18px;
+	background-image: url(images/required.gif);
+	background-repeat: no-repeat;
+	background-position: left center;
+	margin-left: 9px;
+	padding-left: 9px;
+}
+
+/* Medium sized progress indicator */
+
+div.mediumProgressIndicator {
+	position: relative;
+	left: -32px;
+	background-image: url(images/indicator-medium.gif);
+	background-repeat: no-repeat;
+	background-position: left center;
+	margin-left: 40px;
+	padding-left: 40px;
+}
+
+
+/* Help field indicator */
+
+div.helpIndicator {
+	color: black;
+	position: relative;
+	left: -18px;
+	background-image: url(images/help-dot.gif);
+	background-repeat: no-repeat;
+	background-position: left center;
+	margin-left: 9px;
+	padding-left: 9px;
+}
+
+/* Filter and view */
+
+.filtered_resources {
+	padding-top: 12px;
+}
+
+.filter {
+	float: left;
+	clear: none;
+	width: 100%;
+	vertical-align: middle;
+	text-align: left;
+}
+
+.filterCriteria {
+	padding: 4px;
+}
+
+.filterText {
+	width: 10em;
+	vertical-align: bottom;
+}
+
+.filter .search {
+	vertical-align: bottom;
+}
+
+.filter .reset {
+	vertical-align: bottom;
+}
+
+/* Account status */
+
+.accountRevokedText {
+   color: #FF0000;
+   font-weight: bold;
+}
+
+.accountDisabledText {
+   color: #FF0000;
+   font-weight: bold;
+}
+
+.accountLockedText {
+   color: #FF6900;
+   font-weight: bold;
+}
+
+.accountActiveText {
+   color: #00AA00;
+   font-weight: bold;
+
+}
+
+.accountGrantedText {
+   color: #0000DD;
+   font-weight: bold;;
+}
+
+/* Replacment variable select */
+
+.component_replacementVariablesToggle * {
+}
+
+.component_replacementVariablesToggle {
+	vertical-align: middle;
+	display: inline;
+	vertical-align: top;
+	overflow: visible;
+}
+
+.component_replacementVariablesToggle img {
+	padding-left: 4px;
+	vertical-align: middle;
+	border: 0;
+	overflow: visible;
+}
+
+.replacementVariablesMain {
+	border: 1px solid #3d649e;
+    background-color: #eeeeee;
+	color: #000000;
+	width: 240px;
+}
+
+.replacementVariablesMain .title {
+	vertical-align: middle;
+}
+
+.replacementVariablesMain tr {
+	vertical-align: middle;
+}
+
+.replacementVariablesMain td.title {
+	vertical-align: text-top;
+	text-align: center;
+}
+
+.replacementVariablesMain td.close {
+	width: 40px;
+}
+
+.replacementVariablesMain img {
+	cursor: pointer;
+}
+
+.replacementVariablesTitleBar {
+	background-color: #3d649e;
+	color: white;
+	font-weight: bold;
+	vertical-align: middle;
+	width:  inherit;
+}
+
+.replacementVariablesContent {
+	padding: 4px;
+	border-left: 1px solid #dcdcdc;
+	border-right: 1px solid #dcdcdc;
+	border-bottom: 1px solid #dcdcdc;
+}
+
+.replacementVariablesMain ul {
+    margin: 0;
+    padding: 0;
+	list-style: none;
+}
+
+/* Policy launch  */
+
+.policyLaunch {
+	position:absolute;
+	top:4px;
+	left:4px;
+	z-index:1000; 
+}
+
+.policyLaunchInner {
+	width: 220px;
+	background-color: #f4f4f4;
+	border: 1px solid #dcdcdc;
+	color: #000000;
+}
+
+.policyLaunchInner .text {
+	width: 100%;
+	text-align: center;
+	font-size: smaller;	
+}
+
+.policyLaunchInner .text img {
+	text-align: right;
+	cursor: pointer;
+	padding: 2px;
+	vertical-align: text-top;
+}
+
+.policyLaunchItem .policyName {
+	display: block;
+	padding: 4px;
+}
+
+.policyLaunchItem a, .policyLaunchItem a:visited, .policyLaunchItem a:link, .policyLaunchItem a:hover {
+	text-decoration: none;
+	color: black;
+	display: block;
+	font-weight: normal;
+	width: 100%;
+	background-color: #f4f4f4;
+	color: #000000;
+	margin: 0;
+}
+
+.policyLaunchItem a:hover {
+	background-color: #3d649e;
+	color: #ffffff;
+}
+
+/* Table item action bar */
+
+.tableItemActionBar img.blankAction {
+	border: 0;
+	margin-right: 4px;
+}
+
+.importantAction img {
+	vertical-align: top;
+}
+
+
+.unimportantActionsTrigger {
+	font-size: smaller;
+}
+
+.unimportantActions {
+	position:absolute;
+	overflow:visible;
+	top:4px;
+	left:4px;
+	z-index:1000; 
+}
+
+.unimportantActionsInner {
+	width: 220px;
+	background-color: #f4f4f4;
+	border: 1px solid #dcdcdc;	
+	color: #000000;	
+}
+
+.unimportantActionsInner .text {
+	width: 100%;
+	text-align: center;
+	font-size: smaller;	
+}
+
+.unimportantActionsInner .text img {
+	text-align: right;
+	cursor: pointer;
+	padding: 2px;
+	vertical-align: text-top;
+}
+
+.unimportantAction {
+}
+
+.unimportantAction a, .unimportantAction a:visited, .unimportantAction a:link, .unimportantAction a:hover {
+	text-decoration: none;
+	color: black;
+	display: block;
+	font-weight: normal;
+	width: 100%;
+	background-color: #f4f4f4;
+	color: #000000;
+	margin: 0;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.unimportantAction a:hover {
+	background-color: #3d649e;
+	color: #ffffff;
+}
+
+.unimportantAction a img {
+	padding-left: 4px;
+	vertical-align: top;
+	border: 0;
+}
+
+/* Page options */
+
+.pageOptions {
+	position:absolute;
+	top:4px;
+	left:4px;
+	z-index:1000; 
+}
+
+.pageOptionsInner {
+	width: 220px;
+	background-color: #f4f4f4;
+	border: 1px solid #dcdcdc;
+	color: #000000;
+}
+
+.pageOptionsInner .text {
+	width: 100%;
+	text-align: center;
+	font-size: smaller;	
+}
+
+.pageOptionsInner .text img {
+	text-align: right;
+	cursor: pointer;
+	padding: 2px;
+	vertical-align: text-top;
+}
+
+/* Panel options */
+
+#component_panelOptions .titleBar {
+	background-color: black;
+}
+
+#component_panelOptions .titleBar .title {
+	background-image: url(images/messagebar_panelOptions.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	padding-left: 18px;
+	color: white;
+}
+
+#component_panelOptions ul {
+    margin: 0;
+    padding: 0;
+	list-style: none;
+}
+
+#component_panelOptions .profile {
+	padding: 4px;
+	font-size: smaller;
+}
+
+#component_panelOptions .language {
+	padding: 4px;
+	font-size: smaller;
+}
+
+#component_panelOptions select {
+	width: 100%;
+}
+
+/* Extension Bundle Information */
+
+.component_extensionBundleInformation .extensions {
+	font-size: smaller;	
+	padding: 4px;
+}
+
+.component_extensionBundleInformation h3 {
+	margin: 0;
+	padding: 4px 0px 4px 0px;
+}
+
+.component_extensionBundleInformation h4 {
+	margin: 0;
+	padding: 4px 0px 4px 0px;
+}
+
+.component_extensionBundleInformation .productURL {
+	padding: 4px 0px 4px 0px;
+	font-size: smaller;	
+}
+
+.component_extensionBundleInformation .versions {
+	font-size: smaller;	
+	padding-top: 8px;
+}
+
+.component_extensionBundleInformation thead td {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.component_extensionBundleInformation .extensionBundleError {
+	margin: 1em;	
+	background-image: url(images/error.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	padding-left: 20px;
+}
+
+/* Intersecting marker */
+.intersectingMarker {
+	overflow: hidden; 
+	z-index: 3000; 
+	display: block; 
+	background: #ff0000; 
+	height: 3px;
+}
+
+/* Confirm container */
+
+#confirmContainer {
+	left: 0px;
+	top: 0px;
+	z-index: 1200;
+	position: absolute;
+}
+
+/* Resource list */
+
+.component_resourceList .name {
+	text-align: left;
+	overflow: hidden;
+	white-space: nowrap;
+	min-width: 10em;
+}
+
+.component_resourceList .actions {
+	text-align: left;
+	width: 110px;
+	max-width: 110px;
+}
+
+.component_resourceList .tableMessage {
+	text-align: center;
+}
+
+
+/* Session Information */
+
+.component_sessionInformation h3 {
+	margin: 0;
+	padding: 4px 0px 4px 0px;
+}
+
+.component_sessionInformation .label {
+	width: 30%;
+}
+
+.component_sessionInformation .value {
+	width: 70%;
+
+}
+
+/* Styles used for the confirmation / error message  / warning / information 'dialog' */
+
+.confirmTable {
+	background-color: #DAE1EC;
+    font-family: Tahoma, Arial, Helvetica, sans-serif; 
+   	font-size: 10pt;
+   	border-bottom-style: solid;
+   	border-bottom-width: 1px;
+   	border-bottom-color: #00447C;
+   	border-right-style: solid;
+   	border-right-width: 1px;
+   	border-right-color: #00447C;
+   	max-width: 420px;
+}
+
+.confirmMessage {
+    font-family: Tahoma, Arial, Helvetica, sans-serif; 
+   font-size: 10pt; 
+   	max-width: 420px;
+}
+
+/* Date time picker */
+
+.component_dateTimePicker {
+    font-family: Tahoma, Arial, Helvetica, sans-serif; 
+	width: 18em;
+/*    font-size: 9pt;  */
+}
+
+.component_dateTimePicker .dateTimeView {
+	background-color: #3d649e;
+	color: #ffffff;
+}
+
+.component_dateTimePicker .monthMenu {
+	padding: 4px 4px 4px 4px;
+	float: left;	
+}
+
+.component_dateTimePicker .year {
+	float: left;
+	padding: 8px 4px 4px 4px;
+	text-align: center;
+}
+
+.component_dateTimePicker .yearNumber {
+	font-weight: bold;
+	vertical-align: top;
+}
+
+.component_dateTimePicker .toolbar {
+	padding: 10px 4px 4px 0px;
+	background-color: black;
+	height: 100%;
+	color: black;
+	float: right;
+}
+
+.component_dateTimePicker img { 
+	border: 0;
+	padding-right: 4px;
+}
+
+.component_dateTimePicker select {
+	z-index: 1000;
+	line-height: 1em;
+}
+
+.component_dateTimePicker input {
+	font-size: smaller;
+	width: 1.5em;
+}
+.component_dateTimePicker thead tr {
+	width: 18em;
+}
+
+.component_dateTimePicker thead td {
+	background-color: black;
+	color: white;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+.component_dateTimePicker tr.weekHeader td {
+	background-color: gray;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+}
+.component_dateTimePicker tr.week td {
+	text-align: center;
+	padding: 1px;
+}
+
+.component_dateTimePicker a, .component_dateTimePicker a:visited, .component_dateTimePicker a:link, .component_dateTimePicker a:hover {			
+	font-size: 0.9em;
+	cursor: pointer;
+	color: white;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+.component_dateTimePicker a.selected:visited, .component_dateTimePicker a.selected:link, .component_dateTimePicker a.selected:hover {
+	font-size: 0.9em;
+	color: white;
+}
+
+.component_dateTimePicker a.selected:hover {
+	color: yellow;
+	font-weight: bold;
+}
+
+.component_dateTimePicker a:hover {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.component_dateTimePicker .selected {
+	border: 1px dashed yellow;
+}
+
+.component_dateTimePicker .sunday, .component_dateTimePicker .saturday {
+	color: #ccffff;
+}
+
+.component_dateTimePicker .today {
+	color: yellow;
+	font-weight: bold;
+}
+
+.component_dateTimePicker .highlight {
+	font-style: italic;
+	font-weight: bold;
+}
+
+.component_dateTimePicker tfoot {
+	width: 100%;
+	background-color: gray;
+	color: white;
+	text-align: center;
+}
+
+.component_dateTimePicker a {
+	margin-left: 4px;
+}
+
+.component_dateTimePicker .timePickerBlock {
+	text-align: center;
+}
+
+.component_dateTimePicker .timePicker td {
+	text-align: center;
+	padding: 4px;
+}
+
+/* Task progress */
+
+#component_taskProgress {
+	width: 100%;
+}
+
+#progressBarContainer {
+	width: 100%;
+	text-align: center;
+}
+
+#progressBarTable {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.progressBar {
+	display: block;
+	border: 1px solid #eeeeee;
+}
+
+.progressBarPercentage {
+	display: block;
+	position: relative;
+	top: -1.6em;
+	color: black;
+	z-index: 20000;
+	font-weight: bold;
+}
+
+.progressCellOn {
+	background-color: #fff;
+	color: #fff;
+}
+
+.progressCellOff {
+	background-color: grey;
+	color: grey;
+}
