@@ -100,7 +100,7 @@ public class CreateNewCertificateForm extends DefaultWizardForm {
         if (countryCode.equals("")) {
             countryCode = Locale.getDefault().getCountry();
         }
-        organisationalUnit = (String)sequence.getAttribute(ATTR_COUNTRY_CODE, PREF_NODE.get("organisationalUnit", ""));
+        organisationalUnit = (String)sequence.getAttribute(ATTR_ORGANISATIONAL_UNIT, PREF_NODE.get("organisationalUnit", ""));
         company = (String)sequence.getAttribute(ATTR_COMPANY, PREF_NODE.get("company", ""));
         city =  (String)sequence.getAttribute(ATTR_CITY, PREF_NODE.get("city", ""));
         state =  (String)sequence.getAttribute(ATTR_STATE, PREF_NODE.get("state", ""));
