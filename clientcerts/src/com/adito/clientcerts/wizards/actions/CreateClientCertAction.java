@@ -26,6 +26,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import com.adito.core.CoreUtil;
 import com.adito.security.LogonControllerFactory;
@@ -40,6 +42,7 @@ import com.adito.wizard.actions.AbstractWizardAction;
 public class CreateClientCertAction extends AbstractWizardAction {
 
     public final static String ATTR_USER = "user";
+    private static final Log LOG = LogFactory.getLog(CreateClientCertAction.class);
 
     /* (non-Javadoc)
      * @see com.adito.core.actions.CoreAction#getNavigationContext(org.apache.struts.action.ActionMapping, org.apache.struts.action.ActionForm, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
@@ -53,6 +56,7 @@ public class CreateClientCertAction extends AbstractWizardAction {
      */
     public ActionForward unspecified(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         CoreUtil.addRequiredFieldMessage(this, request);
+	LOG.info("unspecified called");
         return super.unspecified(mapping, form, request, response);
     }
     
@@ -68,6 +72,7 @@ public class CreateClientCertAction extends AbstractWizardAction {
      * @see com.adito.wizard.actions.AbstractWizardAction#createWizardSequence(org.apache.struts.action.ActionMapping, org.apache.struts.action.ActionForm, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
      */
     protected AbstractWizardSequence createWizardSequence(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	LOG.info("createWizardSequence called");
         ActionForward fwd = mapping.findForward("finish");
         SessionInfo session = LogonControllerFactory.getInstance().getSessionInfo(request);
         DefaultWizardSequence seq = new DefaultWizardSequence(fwd, "clientCerts", "clientCertWizard", CoreUtil.getReferer(request), "clientCertWizard", session);
@@ -79,6 +84,7 @@ public class CreateClientCertAction extends AbstractWizardAction {
         boolean isUserConsole = getSessionInfo(request).isUserConsoleContext();
         seq.addStep(new WizardStep( isUserConsole ? "/webForwardPersonalPolicy.do" : "/webForwardPolicySelection.do"));
         seq.addStep(new WizardStep("/webForwardSummary.do")); */
+	LOG.info("createWizardSequence finished");
         return seq;
     }
 }

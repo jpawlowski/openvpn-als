@@ -5,7 +5,19 @@
           "struts-config_1_1.dtd">
 <struts-config>
 	<form-beans>
-		<form-bean name="createClientCerts"
+		<form-bean name="checkClientCerts"
+			type="com.adito.clientcerts.wizards.forms.CreateClientCertDetailForm">
+		</form-bean>
+		
+		<form-bean name="createClientCertDetailForm"
+			type="com.adito.clientcerts.wizards.forms.CreateClientCertDetailForm">
+		</form-bean>
+		
+		<form-bean name="createClientCertForm"
+			type="com.adito.clientcerts.wizards.forms.CreateClientCertDetailForm">
+		</form-bean>
+		
+		<form-bean name="createClientCertFinishForm"
 			type="com.adito.clientcerts.wizards.forms.CreateClientCertDetailForm">
 		</form-bean>
 	</form-beans>
@@ -20,15 +32,24 @@
 		</action>
 
 		<!-- the create client cert wizard -->
+		<!-- <action path="/createClientCert" parameter="actionTarget"
+			type="com.adito.clientcerts.wizards.actions.CreateClientCertAction" input=".site.ClientCertWizardPage"
+			name="createClientCertDetailForm" scope="session">
+			<forward name="display" path=".site.ClientCertWizardPage" />
+			<forward name="finish" path="/createClientCertFinish.do" redirect="true" />
+		</action> -->
+		
 		<action path="/createClientCert" parameter="actionTarget"
 			type="com.adito.clientcerts.wizards.actions.CreateClientCertAction" input=".site.ClientCertWizardPage"
-			name="createClientCerts" scope="session">
+			name="createClientCertDetailForm" scope="session">
 			<forward name="display" path=".site.ClientCertWizardPage" />
 			<forward name="finish" path="/createClientCertFinish.do" redirect="true" />
 		</action>
+		
 		<action path="/createClientCertFinish" parameter="actionTarget"
 			type="com.adito.clientcerts.wizards.actions.CreateClientCertAction" input=".site.ClientCertWizardPage"
-			name="createClientCerts" scope="session">
+			name="createClientCertFinishForm" scope="session">
+			<forward name="display" path=".site.ClientCertWizardPage" />
 		</action>
 	</action-mappings>
 	<message-resources parameter="com.adito.clientcerts.ApplicationResources" key="accounts" />
