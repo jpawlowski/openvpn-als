@@ -9,13 +9,17 @@
 			type="com.adito.clientcerts.wizards.forms.CreateClientCertDetailForm">
 		</form-bean>
 		
-		<form-bean name="createClientCertDetailForm"
+		<!-- <form-bean name="createClientCertDetailForm"
 			type="com.adito.clientcerts.wizards.forms.CreateClientCertDetailForm">
-		</form-bean>
+		</form-bean> -->
 		
 		<form-bean name="createClientCertForm"
 			type="com.adito.clientcerts.wizards.forms.CreateClientCertDetailForm">
 		</form-bean>
+		
+		<!-- <form-bean name="createClientCert"
+			type="com.adito.clientcerts.wizards.forms.CreateClientCertDetailForm">
+		</form-bean> -->
 		
 		<form-bean name="createClientCertFinishForm"
 			type="com.adito.clientcerts.wizards.forms.CreateClientCertDetailForm">
@@ -41,7 +45,7 @@
 		
 		<action path="/createClientCert" parameter="actionTarget"
 			type="com.adito.clientcerts.wizards.actions.CreateClientCertAction" input=".site.ClientCertWizardPage"
-			name="createClientCertDetailForm" scope="session">
+			name="createClientCertForm" scope="session">
 			<forward name="display" path=".site.ClientCertWizardPage" />
 			<forward name="finish" path="/createClientCertFinish.do" redirect="true" />
 		</action>
