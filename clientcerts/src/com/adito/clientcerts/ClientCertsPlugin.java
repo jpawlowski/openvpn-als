@@ -37,6 +37,7 @@ import com.adito.extensions.types.PluginDefinition;
 import com.adito.security.UserDatabaseDefinition;
 import com.adito.boot.ContextHolder;
 import com.adito.boot.Context;
+import com.adito.boot.KeyStoreManager;
 import com.adito.navigation.MenuTree;
 import com.adito.navigation.NavigationManager;
 import com.adito.table.TableItemActionMenuTree;
@@ -44,10 +45,17 @@ import com.adito.clientcerts.itemactions.CreateCertAction;
 
 public class ClientCertsPlugin extends DefaultPlugin {
 	private static final Log LOG = LogFactory.getLog(ClientCertsPlugin.class);
+	public static final String KEYSTORE_NAME = "clientcerts";
+	public static final String KEYSTORE_PASSWORD = "aditoclientcerts";
 	private static ClientCertsPlugin instance = null;
 	private File keyStoreFile = null;
 	private KeyStore clientKS = null;
 	private char[] ClientKeystorePassword="testtest".toCharArray();
+	private ClientCertTrustManager clientCertTrustManager = null;
+
+	public ClientCertTrustManager getClientCertTrustManager() {
+		return clientCertTrustManager;
+	}
 
 	public static ClientCertsPlugin getInstance() {
 		return instance;
@@ -79,6 +87,7 @@ public class ClientCertsPlugin extends DefaultPlugin {
 		super.startPlugin(pluginDefinition, descriptor, element);
 		LOG.info("ClientCert plugin starting");
 
+		/*
 		// Initialise Keystore
 		this.keyStoreFile = new File(ContextHolder.getContext().getConfDirectory(), "clientCerts.jks");
 		
@@ -97,12 +106,20 @@ public class ClientCertsPlugin extends DefaultPlugin {
 		{System.out.println("3: "+e.getMessage());
 		}catch(java.security.cert.CertificateException e)
 		{System.out.println("4: "+e.getMessage());}
+		*/
+
+
+		// TODO: use the keystoremanager
+    		// public static void registerKeyStore(String name, String bundle, boolean removeable, String storePassword, KeyStoreType type) {
+    		KeyStoreManager.registerKeyStore(KEYSTORE_NAME, "clientCerts", true, KEYSTORE_PASSWORD, KeyStoreManager.TYPE_JKS);
+		KeyStoreManager km = KeyStoreManager.getInstance(KEYSTORE_NAME);
+		clientKS = km.getKeyStore();
 
 		
 		// add the TrustManager to the SSL Listener
-		ClientCertTrustManager ttm = new ClientCertTrustManager(clientKS);
+		clientCertTrustManager = new ClientCertTrustManager(clientKS);
 		Context main = ContextHolder.getContext();
-		main.setTrustManager((TrustManager)ttm, false);
+		main.setTrustManager((TrustManager)clientCertTrustManager, false);
 		LOG.info("ClientCert plugin added TestTrustManager");
 		ClientCertRequestHandler clientCertHandler = new ClientCertRequestHandler();
 		main.registerRequestHandler(clientCertHandler);
@@ -122,15 +139,6 @@ public class ClientCertsPlugin extends DefaultPlugin {
     
 	private void initTableItemActions() throws Exception {
 		MenuTree tree = NavigationManager.getMenuTree(TableItemActionMenuTree.MENU_TABLE_ITEM_ACTION_MENU_TREE);
-		// Tunnels
-		/* tree.addMenuItem(null, new MenuItem("tunnel", MESSAGE_RESOURCES_KEY, null, 100, false, SessionInfo.ALL_CONTEXTS));
-		tree.addMenuItem("tunnel", new AddToFavoritesAction(MESSAGE_RESOURCES_KEY));
-		tree.addMenuItem("tunnel", new RemoveFromFavoritesAction(MESSAGE_RESOURCES_KEY));
-		tree.addMenuItem("tunnel", new RemoveResourceAction(SessionInfo.ALL_CONTEXTS, MESSAGE_RESOURCES_KEY));
-		tree.addMenuItem("tunnel", new EditResourceAction(SessionInfo.ALL_CONTEXTS, MESSAGE_RESOURCES_KEY));
-		//tree.addMenuItem("tunnel", new SwitchOnAction());
-		tree.addMenuItem("tunnel", new CloneResourceAction(SessionInfo.MANAGEMENT_CONSOLE_CONTEXT, MESSAGE_RESOURCES_KEY));
-		tree.addMenuItem("tunnel", new SwitchOffAction()); */
 		tree.addMenuItem("accounts", new CreateCertAction());
 	}
 }

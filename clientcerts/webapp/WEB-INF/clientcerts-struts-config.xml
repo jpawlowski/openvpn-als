@@ -17,12 +17,16 @@
 			type="com.adito.clientcerts.wizards.forms.CreateClientCertDetailForm">
 		</form-bean>
 		
+		<form-bean name="createClientCertSummaryForm"
+			type="com.adito.clientcerts.wizards.forms.CreateClientCertSummaryForm">
+		</form-bean>
+		
 		<!-- <form-bean name="createClientCert"
 			type="com.adito.clientcerts.wizards.forms.CreateClientCertDetailForm">
 		</form-bean> -->
 		
 		<form-bean name="createClientCertFinishForm"
-			type="com.adito.clientcerts.wizards.forms.CreateClientCertDetailForm">
+			type="com.adito.clientcerts.wizards.forms.CreateClientCertFinishForm">
 		</form-bean>
 	</form-beans>
 	<global-exceptions />
@@ -48,10 +52,19 @@
 			name="createClientCertForm" scope="session">
 			<forward name="display" path=".site.ClientCertWizardPage" />
 			<forward name="finish" path="/createClientCertFinish.do" redirect="true" />
+			<forward name="next" path="/createClientCertSummary.do" redirect="true" />
+		</action>
+		
+		<action path="/createClientCertSummary" parameter="actionTarget"
+			type="com.adito.clientcerts.wizards.actions.CreateClientCertSummaryAction" input=".site.ClientCertWizardPage"
+			name="createClientCertSummaryForm" scope="session">
+			<forward name="display" path=".site.ClientCertWizardPage" />
+			<forward name="finish" path="/createClientCertFinish.do" redirect="true" />
+			<forward name="previous" path="/createClientCert.do" redirect="true" />
 		</action>
 		
 		<action path="/createClientCertFinish" parameter="actionTarget"
-			type="com.adito.clientcerts.wizards.actions.CreateClientCertAction" input=".site.ClientCertWizardPage"
+			type="com.adito.clientcerts.wizards.actions.CreateClientCertFinishAction" input=".site.ClientCertWizardPage"
 			name="createClientCertFinishForm" scope="session">
 			<forward name="display" path=".site.ClientCertWizardPage" />
 		</action>

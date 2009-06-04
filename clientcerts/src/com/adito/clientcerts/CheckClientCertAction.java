@@ -31,10 +31,13 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpSession;
 import java.security.cert.X509Certificate;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class CheckClientCertAction extends Action {
 
 	private static Log LOG = LogFactory.getLog(CheckClientCertAction.class);
+	private static final Pattern patCN = Pattern.compile("CN=([ \\w]+),");
 
 	public CheckClientCertAction() {
 		LOG.info("Constructor for checkClienCert");
@@ -68,10 +71,29 @@ public class CheckClientCertAction extends Action {
 					if (certs != null) {
 						X509Certificate cert = certs[0];
 						LOG.info("Found client cert: "+cert.getSubjectDN().getName());
+						Matcher m = patCN.matcher(cert.getSubjectDN().getName());
+						String username = "";
+
+						if (m.find()) {
+							// System.out.println("Found: "+m.group(1));
+							username = m.group(1);
+							LOG.info("Found user "+username+" in client cert");
+						}
+					
+						if (username.equals("")) {
+							LOG.warn("Couldn't find a username in the cert");
+							throw new Exception("Couldn't find a username in the cert");
+						}
 
 						UserDatabaseManager udm = UserDatabaseManager.getInstance();
 						UserDatabase ud = udm.getDefaultUserDatabase();
-						User user = ud.getAccount("admin");
+						User user = ud.getAccount(username);
+						
+						if (user == null) {
+							// TODO: add this check to the TrustManager
+							LOG.warn("Couldn't find a valid username in the cert");
+							throw new Exception("Couldn't find a valid username in the cert");
+						}
 	
 						AuthenticationScheme scheme = null;
 						try {

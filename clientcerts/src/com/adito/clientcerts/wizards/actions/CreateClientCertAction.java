@@ -74,10 +74,12 @@ public class CreateClientCertAction extends AbstractWizardAction {
     protected AbstractWizardSequence createWizardSequence(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 	LOG.info("createWizardSequence called");
         ActionForward fwd = mapping.findForward("finish");
+	LOG.info("Finish fwd: "+fwd);
         SessionInfo session = LogonControllerFactory.getInstance().getSessionInfo(request);
         DefaultWizardSequence seq = new DefaultWizardSequence(fwd, "clientCerts", "clientCertWizard", CoreUtil.getReferer(request), "clientCertWizard", session);
         seq.putAttribute(ATTR_USER, LogonControllerFactory.getInstance().getUser(request));
         seq.addStep(new WizardStep("/createClientCert.do", true));
+        seq.addStep(new WizardStep("/createClientCertSummary.do"));
         /* seq.addStep(new WizardStep("/webForwardResourceDetails.do"));
         seq.addStep(new WizardStep("/webForwardSpecificDetails.do"));
         seq.addStep(new WizardStep("/webForwardAuthenticationDetails.do"));

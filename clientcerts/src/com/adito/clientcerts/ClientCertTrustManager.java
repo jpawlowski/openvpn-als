@@ -30,9 +30,13 @@ public class ClientCertTrustManager implements X509TrustManager {
 	private static final Log logger = LogFactory.getLog(ClientCertTrustManager.class);
 
 
-
 	public ClientCertTrustManager(KeyStore ks) {
 		logger.info("ClientCertTrustManager: Constructor");
+		reloadKeyStore(ks);
+	}
+
+	public void reloadKeyStore(KeyStore ks) {
+		logger.info("reloading keystore");
 		//TrustManagerFactory of SunJSSE
 		try{
 			ClientTMF=TrustManagerFactory.getInstance("SunX509","SunJSSE");
@@ -45,25 +49,27 @@ public class ClientCertTrustManager implements X509TrustManager {
 
 
 		//call init method for ClientTMF
-		try{
+		try {
 			ClientTMF.init(ClientKS);
-		}catch(java.security.KeyStoreException e)
-		{System.out.println("7: "+e.getMessage());}
+		} catch(java.security.KeyStoreException e) {
+			System.out.println("7: "+e.getMessage());
+		}
 
 		//get all the TrustManagers
 		ClientTMs=ClientTMF.getTrustManagers();
 
 		//looking for a X509TrustManager instance
-		for(int i=0;i<ClientTMs.length;i++)
-		{
-			if(ClientTMs[i] instanceof X509TrustManager)
-			{
+		for(int i=0;i<ClientTMs.length;i++) {
+			if(ClientTMs[i] instanceof X509TrustManager) {
 				System.out.println("X509TrustManager certificate found...");
 				X509TM=(X509TrustManager)ClientTMs[i];
-				return;
+				break;
 			}
 		}
-
+		for (X509Certificate x : X509TM.getAcceptedIssuers()) {
+			logger.info("Will accept: "+x.getSerialNumber()+" -> "+x.getSubjectDN().getName());
+		}
+		logger.info("reloading keystore done");
 	}
 
 	public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
@@ -89,6 +95,9 @@ public class ClientCertTrustManager implements X509TrustManager {
 
 	public X509Certificate[] getAcceptedIssuers() {
 		logger.info("ClientTrustManager: getAcceptedIssuers");
+		for (X509Certificate x : X509TM.getAcceptedIssuers()) {
+			logger.info("Accepted: "+x.getSerialNumber()+" -> "+x.getSubjectDN().getName());
+		}
 		return X509TM.getAcceptedIssuers();
 		// return null;
 	}
