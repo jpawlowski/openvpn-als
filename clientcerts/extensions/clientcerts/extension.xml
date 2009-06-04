@@ -1,9 +1,9 @@
-<bundle version="1.0.5" 
+<bundle version="0.9.0" 
 	requiredHostVersion="0.9.0"
 	id="clientcerts"
 	name="Adito Client Certs" 
 	license="GPL"
-	productURL="http://localhost"
+	productURL="http://www.jansen-systems.de"
 	order="60"
 	startOnSetupMode="false">
 	<description>
