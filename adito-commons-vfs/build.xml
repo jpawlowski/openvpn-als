@@ -69,7 +69,7 @@
         </copy>
     </target>
     <target name="clean" description="Clean up the generated directories">
-        <delete>
+        <delete failonerror="false">
             <fileset dir="${dir.build}"/>
 	</delete>
     </target>
