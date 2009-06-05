@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="adito" default="start">
+<project name="adito" default="install">
 
 	<property file="../build.properties" />
 	<property file="release.properties" />
@@ -796,6 +796,15 @@
 	</target>
 
 
+	<target name="clean-dependencies">
+		<delete>
+    			<fileset dir="lib" includes="maverick-*.jar"/>
+			<fileset dir="lib" includes="ant-contrib*"/>
+			<fileset dir="${adito.conf}/repository/archives" includes="*.zip" />
+		</delete>
+	</target>
+
+
 	<!-- Precompile JSPs -->
 
 	<target name="precompile-jsp">
@@ -869,7 +878,9 @@ ${jsp.servlets.text}
 		<delete dir="${build.output.instrumented}" />
 		<delete dir="${tmpdir}" />
 		<delete dir="${dist.dir}" />
+		<delete dir="${dir.deploy}" />
 		<antcall target="clean-reports" />
+		<antcall target="clean-dependencies" />
 	</target>
 
 	<!-- Create API documentation -->
