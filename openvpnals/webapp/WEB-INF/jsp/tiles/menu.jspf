@@ -1,4 +1,4 @@
-<%@ page import="java.util.List1" %>
+<%@ page import="java.util.List" %>
 <%@ page import="java.util.Iterator" %>
 <%@ page import="net.openvpn.als.properties.PropertyProfile" %>
 <%@ page import="net.openvpn.als.security.Constants" %>
