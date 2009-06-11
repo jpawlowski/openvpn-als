@@ -49,7 +49,7 @@ public final class cookieDetect_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write(" */\r\n");
       out.write(" \r\n");
       out.write("if(!(document.cookie && document.cookie.indexOf(\"");
-      out.print( SystemProperties.get("cookie", "SSLX_SSESHID") );
+      out.print( SystemProperties.get("adito.cookie", "JSESSIONID") );
       out.write("\") > -1)) {\r\n");
       out.write("\twindow.location = '/noCookies.do';\r\n");
       out.write("}");

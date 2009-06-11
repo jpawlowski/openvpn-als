@@ -757,8 +757,8 @@ public class CoreServlet extends ActionServlet implements ContextListener, Messa
        
 		log.info("&&" + SystemProperties.get("adito.cookie", "JSESSIONID"));
 	
-		System.setProperty("org.mortbay.jetty.servlet.SessionCookie", "SSLX_SSESHID");
-		System.setProperty("org.mortbay.jetty.servlet.SessionURL", "SSLX_SSESHID".toLowerCase());
+		System.setProperty("org.mortbay.jetty.servlet.SessionCookie", "JSESSIONID");
+		System.setProperty("org.mortbay.jetty.servlet.SessionURL", "JSESSIONID".toLowerCase());
 	
 		log.info("session created");
 		//!!test code
