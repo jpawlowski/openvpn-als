@@ -6,6 +6,6 @@
  * information page if not.
  */
  
-if(!(document.cookie && document.cookie.indexOf("<%= SystemProperties.get("cookie", "SSLX_SSESHID") %>") > -1)) {
+if(!(document.cookie && document.cookie.indexOf("<%= SystemProperties.get("adito.cookie", "JSESSIONID") %>") > -1)) {
 	window.location = '/noCookies.do';
 }
