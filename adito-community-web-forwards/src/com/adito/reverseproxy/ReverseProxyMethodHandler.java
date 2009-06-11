@@ -345,7 +345,7 @@ public class ReverseProxyMethodHandler extends AbstractAuthenticatingWebForwardH
 						
 						// Ignore SSL-Exploer cookies
 						if (cn.equals(Constants.LOGON_TICKET) || cn.equals(Constants.DOMAIN_LOGON_TICKET)
-							|| cn.equals(SystemProperties.get("adito.cookie", "SSLX_SSESHID"))) {
+							|| cn.equals(SystemProperties.get("adito.cookie", "JSESSIONID"))) {
 							if (log.isDebugEnabled())
 								log.debug("  Omiting cookie " + cn + "=" + cv);
 						} else {
