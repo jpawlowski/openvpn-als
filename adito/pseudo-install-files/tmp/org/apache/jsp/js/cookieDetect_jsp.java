@@ -40,9 +40,19 @@ public final class cookieDetect_jsp extends org.apache.jasper.runtime.HttpJspBas
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\r\n\r\n\r\n/* The server absolutely requires cookies to be able to function correctly\r\n * This script fragment detects if they are available and directs to an \r\n * information page if not.\r\n */\r\n \r\nif(!(document.cookie && document.cookie.indexOf(\"");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("/* The server absolutely requires cookies to be able to function correctly\r\n");
+      out.write(" * This script fragment detects if they are available and directs to an \r\n");
+      out.write(" * information page if not.\r\n");
+      out.write(" */\r\n");
+      out.write(" \r\n");
+      out.write("if(!(document.cookie && document.cookie.indexOf(\"");
       out.print( SystemProperties.get("adito.cookie", "JSESSIONID") );
-      out.write("\") > -1)) {\r\n\twindow.location = '/noCookies.do';\r\n}\r\n");
+      out.write("\") > -1)) {\r\n");
+      out.write("\twindow.location = '/noCookies.do';\r\n");
+      out.write("}");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
