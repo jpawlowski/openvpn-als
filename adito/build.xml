@@ -41,7 +41,7 @@
 	<property name="build.test" value="test" />
 	<property name="build.debug" value="on" />
 	<property name="dir.build.reports" value="${dir.build}/reports" />
-	<property name="tmpdir" value="tmp" />
+	<property name="dir.tmp" value="tmp" />
 
 	<!-- Reports -->
 	<!-- build.reports is overridden when running the suite of tests -->
@@ -453,47 +453,49 @@
 		</ant>
 		<copy file="${adito-community-activedirectory.home}/build/release/adito-community-activedirectory.zip" todir="${dir.deploy.conf}/repository/archives" />
 		
-		<mkdir dir="${dir.deploy.tmp}/extensions" />
+		<mkdir dir="${dir.tmp}/extensions" />
 		
-		<unzip src="${adito-community-tunnels.home}/build/release/adito-community-tunnels.zip" dest="${dir.deploy.tmp}/extensions" />
-		<unzip src="${adito-community-applications.home}/build/release/adito-community-applications.zip" dest="${dir.deploy.tmp}/extensions" />
-		<unzip src="${adito-community-web-forwards.home}/build/release/adito-community-web-forwards.zip" dest="${dir.deploy.tmp}/extensions" />
-		<unzip src="${adito-community-network-places.home}/build/release/adito-community-network-places.zip" dest="${dir.deploy.tmp}/extensions" />
-		<unzip src="${adito-community-unix.home}/build/release/adito-community-unix.zip" dest="${dir.deploy.tmp}/extensions" />
-		<unzip src="${adito-community-activedirectory.home}/build/release/adito-community-activedirectory.zip" dest="${dir.deploy.tmp}/extensions" />
+		<unzip src="${adito-community-tunnels.home}/build/release/adito-community-tunnels.zip" dest="${dir.tmp}/extensions" />
+		<unzip src="${adito-community-applications.home}/build/release/adito-community-applications.zip" dest="${dir.tmp}/extensions" />
+		<unzip src="${adito-community-web-forwards.home}/build/release/adito-community-web-forwards.zip" dest="${dir.tmp}/extensions" />
+		<unzip src="${adito-community-network-places.home}/build/release/adito-community-network-places.zip" dest="${dir.tmp}/extensions" />
+		<unzip src="${adito-community-unix.home}/build/release/adito-community-unix.zip" dest="${dir.tmp}/extensions" />
+		<unzip src="${adito-community-activedirectory.home}/build/release/adito-community-activedirectory.zip" dest="${dir.tmp}/extensions" />
 		
-		<!-- This is a HACK. Merge the extensions' webapp dirs into the main webapp -->
+		
 
 		<copy todir="${dir.deploy}">
-			<fileset dir="${dir.deploy.tmp}/extensions/adito-community-activedirectory/webapp">
+			<fileset dir="${dir.tmp}/extensions/adito-community-activedirectory/webapp">
 				<include name="**/*" />
 			</fileset>
 		</copy>
 		<copy todir="${dir.deploy}">
-			<fileset dir="${dir.deploy.tmp}/extensions/adito-community-applications/webapp">
+			<fileset dir="${dir.tmp}/extensions/adito-community-applications/webapp">
 				<include name="**/*" />
 			</fileset>
 		</copy>
 		<copy todir="${dir.deploy}">
-			<fileset dir="${dir.deploy.tmp}/extensions/adito-community-network-places/webapp">
+			<fileset dir="${dir.tmp}/extensions/adito-community-network-places/webapp">
 				<include name="**/*" />
 			</fileset>
 		</copy>
 		<copy todir="${dir.deploy}">
-			<fileset dir="${dir.deploy.tmp}/extensions/adito-community-tunnels/webapp">
+			<fileset dir="${dir.tmp}/extensions/adito-community-tunnels/webapp">
 				<include name="**/*" />
 			</fileset>
 		</copy>
 		<copy todir="${dir.deploy}">
-			<fileset dir="${dir.deploy.tmp}/extensions/adito-community-unix/webapp">
+			<fileset dir="${dir.tmp}/extensions/adito-community-unix/webapp">
 				<include name="**/*" />
 			</fileset>
 		</copy>
 		<copy todir="${dir.deploy}">
-			<fileset dir="${dir.deploy.tmp}/extensions/adito-community-web-forwards/webapp">
+			<fileset dir="${dir.tmp}/extensions/adito-community-web-forwards/webapp">
 				<include name="**/*" />
 			</fileset>
 		</copy>
+
+		<rmdir dir="${dir.tmp}/extensions" />
 
 		<!-- Copy all the files created by ant install phase in trunk. Eventually we should get rid of those. -->
 
@@ -861,7 +863,7 @@ ${jsp.servlets.text}
 		<delete dir="${build.doc}" />
 		<delete dir="${build.output.test}" />
 		<delete dir="${build.output.instrumented}" />
-		<delete dir="${tmpdir}" />
+		<delete dir="${dir.tmp}" />
 		<delete dir="${dist.dir}" />
 		<delete dir="${dir.deploy}" />
 		<antcall target="clean-reports" />
