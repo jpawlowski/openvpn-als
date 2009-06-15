@@ -495,7 +495,7 @@
 			</fileset>
 		</copy>
 
-		<rmdir dir="${dir.tmp}/extensions" />
+		<delete dir="${dir.tmp}/extensions" />
 
 		<!-- Copy all the files created by ant install phase in trunk. Eventually we should get rid of those. -->
 
