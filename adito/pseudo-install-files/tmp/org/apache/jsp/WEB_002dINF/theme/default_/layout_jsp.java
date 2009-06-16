@@ -923,7 +923,7 @@ public final class layout_jsp extends org.apache.jasper.runtime.HttpJspBase
       org.apache.struts.taglib.tiles.InsertTag _jspx_th_tiles_insert_5 = (org.apache.struts.taglib.tiles.InsertTag) _jspx_tagPool_tiles_insert_page_nobody.get(org.apache.struts.taglib.tiles.InsertTag.class);
       _jspx_th_tiles_insert_5.setPageContext(_jspx_page_context);
       _jspx_th_tiles_insert_5.setParent(null);
-      _jspx_th_tiles_insert_5.setPage( "/WEB-INF/jsp/tiles/bodyend-" + bundle.getId() + ".jspf" );
+      //_jspx_th_tiles_insert_5.setPage( "/WEB-INF/jsp/tiles/bodyend-" + bundle.getId() + ".jspf" );
       int _jspx_eval_tiles_insert_5 = _jspx_th_tiles_insert_5.doStartTag();
       if (_jspx_th_tiles_insert_5.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE)
         return;
