@@ -19,6 +19,7 @@
 	<property name="dir.deploy.conf" value="${dir.deploy}/WEB-INF/conf" />
 	<property name="dir.deploy.tmp" value="${dir.deploy}/WEB-INF/tmp" />
 	<property name="dir.deploy.logs" value="${dir.deploy}/WEB-INF/logs" />
+	<property name="dir.deploy.lib" value="${dir.deploy}/WEB-INF/lib" />
 	<property name="build.serverlib" value="lib" />
 	<property name="build.doc" value="${dir.build}/doc" />
 	<property name="build.webapp.lib" value="webapp/WEB-INF/lib" />
@@ -453,49 +454,52 @@
 		</ant>
 		<copy file="${adito-community-activedirectory.home}/build/release/adito-community-activedirectory.zip" todir="${dir.deploy.conf}/repository/archives" />
 		
-		<mkdir dir="${dir.tmp}/extensions" />
+		<mkdir dir="${dir.deploy.tmp}/extensions" />
 		
-		<unzip src="${adito-community-tunnels.home}/build/release/adito-community-tunnels.zip" dest="${dir.tmp}/extensions" />
-		<unzip src="${adito-community-applications.home}/build/release/adito-community-applications.zip" dest="${dir.tmp}/extensions" />
-		<unzip src="${adito-community-web-forwards.home}/build/release/adito-community-web-forwards.zip" dest="${dir.tmp}/extensions" />
-		<unzip src="${adito-community-network-places.home}/build/release/adito-community-network-places.zip" dest="${dir.tmp}/extensions" />
-		<unzip src="${adito-community-unix.home}/build/release/adito-community-unix.zip" dest="${dir.tmp}/extensions" />
-		<unzip src="${adito-community-activedirectory.home}/build/release/adito-community-activedirectory.zip" dest="${dir.tmp}/extensions" />
+		<unzip src="${adito-community-tunnels.home}/build/release/adito-community-tunnels.zip" dest="${dir.deploy.tmp}/extensions" />
+		<unzip src="${adito-community-applications.home}/build/release/adito-community-applications.zip" dest="${dir.deploy.tmp}/extensions" />
+		<unzip src="${adito-community-web-forwards.home}/build/release/adito-community-web-forwards.zip" dest="${dir.deploy.tmp}/extensions" />
+		<unzip src="${adito-community-network-places.home}/build/release/adito-community-network-places.zip" dest="${dir.deploy.tmp}/extensions" />
+		<unzip src="${adito-community-unix.home}/build/release/adito-community-unix.zip" dest="${dir.deploy.tmp}/extensions" />
+		<unzip src="${adito-community-activedirectory.home}/build/release/adito-community-activedirectory.zip" dest="${dir.deploy.tmp}/extensions" />
 		
-		
-
 		<copy todir="${dir.deploy}">
-			<fileset dir="${dir.tmp}/extensions/adito-community-activedirectory/webapp">
+			<fileset dir="${dir.deploy.tmp}/extensions/adito-community-activedirectory/webapp">
 				<include name="**/*" />
 			</fileset>
 		</copy>
 		<copy todir="${dir.deploy}">
-			<fileset dir="${dir.tmp}/extensions/adito-community-applications/webapp">
+			<fileset dir="${dir.deploy.tmp}/extensions/adito-community-applications/webapp">
 				<include name="**/*" />
 			</fileset>
 		</copy>
 		<copy todir="${dir.deploy}">
-			<fileset dir="${dir.tmp}/extensions/adito-community-network-places/webapp">
+			<fileset dir="${dir.deploy.tmp}/extensions/adito-community-network-places/webapp">
 				<include name="**/*" />
 			</fileset>
 		</copy>
 		<copy todir="${dir.deploy}">
-			<fileset dir="${dir.tmp}/extensions/adito-community-tunnels/webapp">
+			<fileset dir="${dir.deploy.tmp}/extensions/adito-community-tunnels/webapp">
 				<include name="**/*" />
 			</fileset>
 		</copy>
 		<copy todir="${dir.deploy}">
-			<fileset dir="${dir.tmp}/extensions/adito-community-unix/webapp">
+			<fileset dir="${dir.deploy.tmp}/extensions/adito-community-unix/webapp">
 				<include name="**/*" />
 			</fileset>
 		</copy>
 		<copy todir="${dir.deploy}">
-			<fileset dir="${dir.tmp}/extensions/adito-community-web-forwards/webapp">
+			<fileset dir="${dir.deploy.tmp}/extensions/adito-community-web-forwards/webapp">
 				<include name="**/*" />
 			</fileset>
 		</copy>
 
-		<delete dir="${dir.tmp}/extensions" />
+		<copy file="${dir.deploy.tmp}/extensions/adito-community-activedirectory/private/adito-community-activedirectory.jar" todir="${dir.deploy.lib}" />
+		<copy file="${dir.deploy.tmp}/extensions/adito-community-applications/private/adito-community-applications.jar" todir="${dir.deploy.lib}" />
+		<copy file="${dir.deploy.tmp}/extensions/adito-community-network-places/private/adito-community-network-places.jar" todir="${dir.deploy.lib}" />
+		<copy file="${dir.deploy.tmp}/extensions/adito-community-tunnels/private/adito-community-tunnels.jar" todir="${dir.deploy.lib}" />
+		<copy file="${dir.deploy.tmp}/extensions/adito-community-unix/private/adito-community-unix.jar" todir="${dir.deploy.lib}" />
+		<copy file="${dir.deploy.tmp}/extensions/adito-community-web-forwards/private/adito-community-web-forwards.jar" todir="${dir.deploy.lib}" />
 
 		<!-- Copy all the files created by ant install phase in trunk. Eventually we should get rid of those. -->
 
