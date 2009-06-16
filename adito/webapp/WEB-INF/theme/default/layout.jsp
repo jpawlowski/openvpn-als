@@ -60,7 +60,7 @@
 			for(Iterator i = ExtensionStore.getInstance().getExtensionBundles().iterator(); i.hasNext(); ) {
 				ExtensionBundle bundle = (ExtensionBundle)i.next();
 			%>
-				<tiles:insert flush="false" page="<%= "/WEB-INF/jsp/tiles/bodystart-" + bundle.getId() + ".jspf" %>"/>
+			<!--	<tiles:insert flush="false" page="<%= "/WEB-INF/jsp/tiles/bodystart-" + bundle.getId() + ".jspf" %>"/> -->
 			<%
 			}
 			%>
