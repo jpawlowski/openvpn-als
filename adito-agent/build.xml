@@ -95,10 +95,7 @@
 		<fileset dir="lib">
 			<include name="*.jar"/>
 		</fileset>
-		<fileset dir="${maverick-multiplex.home}/lib">
-			<include name="*.jar"/>
-		</fileset>
-		<fileset dir="${maverick-ssl.home}/build/dist">
+		<fileset dir="${maverick-ssl.home}/target">
 			<include name="*.jar"/>
 		</fileset>
 	</path>
@@ -111,9 +108,9 @@
 		</delete>
 
 		<copy todir="${build.tmp}">
-			<fileset dir="${maverick-crypto.home}/src"/>
-			<fileset dir="${maverick-util.home}/src"/>
-			<fileset dir="${maverick-multiplex.home}/src"/>
+			<fileset dir="${maverick-crypto.home}/src/main/java"/>
+			<fileset dir="${maverick-util.home}/src/main/java"/>
+			<fileset dir="${maverick-multiplex.home}/src/main/java"/>
 			<fileset dir="${ui.home}/src">
 				<include name="com/sshtools/**/*.java"/>
 				<include name="com/sshtools/**/*.properties"/>
@@ -341,7 +338,7 @@
 		</jar>
 		
 		<copy todir="${build.dist}">
-			<fileset dir="${maverick-ssl.home}/build/dist">
+			<fileset dir="${maverick-ssl.home}/target">
 			   <include name="*.jar"/>
 			</fileset>
 		</copy>
@@ -680,13 +677,7 @@
 	        <fileset dir="${build.dist}">
 	            <include name="*.jar" />
 	        </fileset>
-			<fileset dir="${maverick-multiplex.home}/lib">
-				<include name="*.jar"/>
-			</fileset>
-			<fileset dir="${maverick-ssl.home}/build/dist">
-				<include name="*.jar"/>
-			</fileset>
-			<fileset dir="${maverick-ssl.home}/lib">
+			<fileset dir="${maverick-ssl.home}/target">
 				<include name="*.jar"/>
 			</fileset>
 	    	<fileset dir="${build.dist}">
