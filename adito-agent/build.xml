@@ -25,7 +25,7 @@
 	   build on a  Windows platform for MS JVM clients (Java 1) . -->
 	<property name="agent.build.target" value="1.1"/>
 	<property name="agent.build.source" value="1.2"/>
-	<property name="agent.build.debug" value="true"/>
+	<property name="agent.build.debug" value="false" />
         
         <!-- Agent build fails if Microsoft Java (Java 1) is enabled. -->
         <!-- Disabled in Adito 0.9.0. --> 
@@ -613,7 +613,7 @@
 			</fileset>
 		</jar>		
 
-		<jar jarfile="${build.dist}/maverick-util-debug.jar" basedir="${build.extension.output}">
+		<jar jarfile="${build.dist}/maverick-util.jar" basedir="${build.extension.output}">
 			<include name="com/maverick/util/**/*.class"/>
 		</jar>
 

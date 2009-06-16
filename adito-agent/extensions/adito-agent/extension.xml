@@ -53,9 +53,9 @@
 						<jar>agent-debug.jar</jar>
 						<jar>ui-debug.jar</jar>
 						<jar shared="true">commons-logging-java1.1.jar</jar>
-						<jar shared="true">maverick-ssl-debug.jar</jar>							
+						<jar shared="true">maverick-ssl.jar</jar>							
 						<jar>agent-awt-debug.jar</jar>
-						<jar shared="true">maverick-util-debug.jar</jar>
+						<jar shared="true">maverick-util.jar</jar>
 					</if>
 				</if>
 				<!-- SWT JAVA -->
@@ -74,13 +74,13 @@
 						<jar>agent-debug.jar</jar>
 						<jar>ui-debug.jar</jar>
 						<jar shared="true">commons-logging-java1.1.jar</jar>
-						<jar shared="true">maverick-ssl-debug.jar</jar>
+						<jar shared="true">maverick-ssl.jar</jar>
 						<if jre="+1.3">
 							<jar os="Windows" arch="!AMD64">agent-swt-debug.jar</jar>
 							<jar os="Linux">agent-swt-debug.jar</jar>
 							<!-- TODO provide an easy way to say which jar to use if no os match -->
 						</if>
-						<jar shared="true">maverick-util-debug.jar</jar>
+						<jar shared="true">maverick-util.jar</jar>
 					</if>
 					<if jre="+1.3">
 						<jar os="Windows" arch="!AMD64">swt-win32.jar</jar>
@@ -117,7 +117,7 @@
 						<jar>agent-debug.jar</jar>
 						<jar>ui-debug.jar</jar>
 						<jar shared="true">commons-logging-java1.1.jar</jar>
-						<jar shared="true">maverick-ssl-debug.jar</jar>
+						<jar shared="true">maverick-ssl.jar</jar>
 						<if jre="+1.3">
 							<jar os="Windows" arch="!AMD64">agent-swt-debug.jar</jar>
 							<jar os="Windows" arch="AMD64">agent-awt-debug.jar</jar>							
@@ -131,7 +131,7 @@
 							<jar>agent-awt-debug.jar</jar>
 							<jar>agent-awt-en.jar</jar>
 						</if>
-						<jar shared="true">maverick-util-debug.jar</jar>
+						<jar shared="true">maverick-util.jar</jar>
 					</if>
 					<if jre="+1.3">
 						<jar os="Windows" arch="!AMD64">swt-win32.jar</jar>
