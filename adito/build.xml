@@ -106,8 +106,7 @@
 	<property name="adito-community-network-places.home" value="../adito-community-network-places" />
 	<property name="adito-community-unix.home" value="../adito-community-unix" />
 	<property name="adito-community-activedirectory.home" value="../adito-community-activedirectory" />
-
-	<property name="agent.home" value="../adito-agent" />
+	<property name="adito-agent.home" value="../adito-agent" />
 
 	<!-- Classpath -->
 	<path id="jsp.precompile.path">
@@ -453,6 +452,10 @@
 			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
 		<copy file="${adito-community-activedirectory.home}/build/release/adito-community-activedirectory.zip" todir="${dir.deploy.conf}/repository/archives" />
+		<ant inheritall="false" dir="${adito-agent.home}" target="release">
+			<property name="build.compiler" value="${build.compiler}" />
+		</ant>
+		<copy file="${adito-agent.home}/build/release/adito-agent.zip" todir="${dir.deploy.conf}/repository/archives" />
 		
 		<mkdir dir="${dir.deploy.tmp}/extensions" />
 		
@@ -462,6 +465,7 @@
 		<unzip src="${adito-community-network-places.home}/build/release/adito-community-network-places.zip" dest="${dir.deploy.tmp}/extensions" />
 		<unzip src="${adito-community-unix.home}/build/release/adito-community-unix.zip" dest="${dir.deploy.tmp}/extensions" />
 		<unzip src="${adito-community-activedirectory.home}/build/release/adito-community-activedirectory.zip" dest="${dir.deploy.tmp}/extensions" />
+		<unzip src="${adito-agent.home}/build/release/adito-agent.zip" dest="${dir.deploy.tmp}/extensions" />
 		
 		<copy todir="${dir.deploy}">
 			<fileset dir="${dir.deploy.tmp}/extensions/adito-community-activedirectory/webapp">
@@ -836,9 +840,9 @@ ${jsp.servlets.text}
 	     details -->
 
 	<target name="install-agent">
-		<ant inheritall="false" dir="${agent.home}" target="clean" />
-		<ant inheritall="false" dir="${agent.home}" target="release" />
-		<copy file="${agent.home}/build/release/adito-agent.zip" todir="${adito.conf}/repository/archives" />
+		<ant inheritall="false" dir="${adito-agent.home}" target="clean" />
+		<ant inheritall="false" dir="${adito-agent.home}" target="release" />
+		<copy file="${adito-agent.home}/build/release/adito-agent.zip" todir="${adito.conf}/repository/archives" />
 	</target>
 
 	<!-- Copy the generated webapp files to the local webapp/WEB-INF/classes
