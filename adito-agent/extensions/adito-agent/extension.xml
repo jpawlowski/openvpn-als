@@ -146,6 +146,7 @@
 	
 				<jar shared="true">maverick-crypto.jar</jar>
 				<jar shared="true">log4j-java1.1.jar</jar>
+				<jar shared="true">commons-logging-java1.1.jar</jar>
 				<jar>agent-en.jar</jar>
 			</classpath>
 	
