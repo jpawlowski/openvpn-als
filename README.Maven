@@ -5,29 +5,34 @@ Most unit tests don't work yet. In fact the build may fail if they're used. To s
 
 mvn -Dmaven.test.skip=true clean install 
 
-==The big picture==
+==Status of the migration==
 
-Current (29th May 2009) this is the master plan... Firstly "nonembedded" will eventually become the new 
-trunk. Modules in "nonembedded" will be converted to maven2 one-by-one. The ant build should be kept 
-functional at all times, so that
+Current (29th May 2009) this is the master plan. Firstly "nonembedded" will eventually become the new 
+trunk. Modules in "nonembedded" will be converted to maven2 one-by-one. Ant build should be kept 
+functional at all times. This means that ant's build.xml files need to be adapted to utilize maven's 
+output.
+ 
+Changelog:
 
+   1st June 2009: maverick-* modules converted to maven2
+
+==Installing and running Adito in "nonembedded"==
+
+First build the modules that have been mavenized:
+
+  cd $ADITO_HOME
   mvn install
 
-followed by
+Then run ant to build the rest of the modules and create the deployable Adito "bundle":
 
-  ant install/whatever
+  cd $ADITO_HOME/adito
+  ant install
 
-will create an usable Adito installation. The ant build.xml files need to be adapted to utilize maven's 
-output (see "Build order", below). Also, the stuff created by maven2 should not be cleaned by "ant 
-clean". So the correct "clean" procedure would be
+To clean up, do 
 
   ant clean
   mvn clean
 
-== Modules not available from public Maven2 repositories ==
-
-There are some jars that Adito requires which are not yet in public Maven repositories. These
-modules are currently hosted in a custom Maven2 repository (http://adito.pcdog.ch/maven2).
 
 == Build order ==
 
@@ -42,6 +47,11 @@ Most of the directories contain ant build stuff. It's best if old ant directorie
 they are migrated to Maven2. This should reduce unnecessary confusion. Many extensions depend on
 the Agent at runtime, but not during compilation.
 
+== Modules not available from public Maven2 repositories ==
+
+There are some jars that Adito requires which are not yet in public Maven repositories. These
+modules are currently hosted in a custom Maven2 repository (http://adito.pcdog.ch/maven2).
+
 == New module names ==
 
 For historic reasons modules have long names and are being converted to shorter names thusly:
@@ -49,19 +59,20 @@ For historic reasons modules have long names and are being converted to shorter 
  adito-community-applications -> applications
  adito-agent -> agent
  
-In some cases this affects the Maven src/main/java directory structure. All references in the java, xml, 
-property etc. files have to be converted, too. For this reason there is a Bash script 
+In some rare cases this affects the Maven src/main/java directory structure. All references in the java, 
+xml, property etc. files have to be converted, too. For this reason there is a Bash script 
 (tools/convert_variables.sh) that can help in the conversion process.
 
 == Basic techniques ==
 
-- Duplicate ("svn copy") the "maven-template-module" directory
-- Copy ("svn copy") the source (and resources) files to the new Maven2 module.Note that at some point
-  during the copying process SVN will start complaining and refuse to operate. At this point it's best
-  to remove the offending files/dirs and commit your changes. Then you can continue working.
-- Try building and fix any dependency problems that arise
-- Follow the original module's build.xml to see what it does, if necessary.
-- Compare Maven's output to the output of the original build (see below) to see if it's identical
+- Merge changes from trunk to maven2, module by module. This is necessary because the directory structure 
+of some modules in maven2 has been changed.
+- Merge changes from maven2 to nonembedded, module by module.
+- Copy other stuff (e.g. pom.xml) from the module in maven2 branch to nonembedded
+- Add/activate the newly mavenized module in nonembedded's main pom.xml
+- Try building and fix any dependency problems that may arise (unlikely) 
+- modify the ant build.xml scripts and build.properties so that ant finds it's dependencies from the 
+correct places
 
 You can use the jar's and zip-files in the "comparison" directory to see if output Maven creates is 
 correct. The directory contains fully functional JAR's and ZIP-files created by the original "ant" build 
