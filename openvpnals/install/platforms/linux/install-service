@@ -10,7 +10,7 @@ usage() {
 }
 
 set_wrapper_property() {
-  CONFFILE="${WRAPPER_CONF:-$OpenVPN-ALS_HOME/conf/wrapper.conf}"
+  CONFFILE="${WRAPPER_CONF:-$OpenVPNALS_HOME/conf/wrapper.conf}"
   NAME="$1"
   shift
   VAL="$*"
@@ -49,7 +49,7 @@ help() {
 install_slackware_service() {
    RC_INSTALLED=n
    if [ -f /etc/rc.d/rc.openvpnals ]
-   then line=$(grep "exec ${OpenVPN-ALS_HOME}/install/platforms/linux/openvpnals" /etc/rc.d/rc.openvpnals)
+   then line=$(grep "exec ${OpenVPNALS_HOME}/install/platforms/linux/openvpnals" /etc/rc.d/rc.openvpnals)
         if [ -n "${line}" ]
         then RC_INSTALLED=y
         fi
@@ -64,13 +64,13 @@ if [ -f /etc/openvpnals/service.conf ]
 then source /etc/openvpnals/service.conf
 fi
 
-export WRAPPER_CONF=\"${OpenVPN-ALS_HOME}/conf/wrapper.conf\"
-exec ${OpenVPN-ALS_HOME}/install/platforms/linux/openvpnals \$*" > /etc/rc.d/rc.openvpnals
+export WRAPPER_CONF=\"${OpenVPNALS_HOME}/conf/wrapper.conf\"
+exec ${OpenVPNALS_HOME}/install/platforms/linux/openvpnals \$*" > /etc/rc.d/rc.openvpnals
    fi
    chmod a+rx /etc/rc.d/rc.openvpnals
    set_wrapper_property "wrapper.java.command" "${JAVA_HOME}/bin/java"
-   set_wrapper_property "wrapper.working.dir" ${OpenVPN-ALS_HOME}
-   set_wrapper_property "wrapper.java.library.path.1" ${OpenVPN-ALS_HOME}/install/platforms/linux/${OS_ARCH}
+   set_wrapper_property "wrapper.working.dir" ${OpenVPNALS_HOME}
+   set_wrapper_property "wrapper.java.library.path.1" ${OpenVPNALS_HOME}/install/platforms/linux/${OS_ARCH}
 
    if [ -f /etc/rc.d/rc.local ]
    then grep -v "\# Added by OpenVPN-ALS install-service" /etc/rc.d/rc.local > /tmp/rc.local.tmp 
@@ -112,8 +112,8 @@ install_suse_service() {
 # processname: wrapper 
 ### END INIT INFO 
  
-export WRAPPER_CONF=\"${OpenVPN-ALS_HOME}/conf/wrapper.conf\"
-exec ${OpenVPN-ALS_HOME}/install/platforms/linux/openvpnals \$*" > /etc/init.d/openvpnals 
+export WRAPPER_CONF=\"${OpenVPNALS_HOME}/conf/wrapper.conf\"
+exec ${OpenVPNALS_HOME}/install/platforms/linux/openvpnals \$*" > /etc/init.d/openvpnals 
     chmod a+rx /etc/init.d/openvpnals 
     if [ "${START_ON_BOOT}" = y ]  
     then if ! chkconfig -a openvpnals 
@@ -126,8 +126,8 @@ exec ${OpenVPN-ALS_HOME}/install/platforms/linux/openvpnals \$*" > /etc/init.d/o
          fi 
     fi  
     set_wrapper_property "wrapper.java.command" "${JAVA_HOME}/bin/java"
-    set_wrapper_property "wrapper.working.dir" ${OpenVPN-ALS_HOME} 
-    set_wrapper_property "wrapper.java.library.path.1" ${OpenVPN-ALS_HOME}/install/platforms/linux/${OS_ARCH} 
+    set_wrapper_property "wrapper.working.dir" ${OpenVPNALS_HOME} 
+    set_wrapper_property "wrapper.java.library.path.1" ${OpenVPNALS_HOME}/install/platforms/linux/${OS_ARCH} 
     echo "Service installed" 
 } 
  
@@ -146,8 +146,8 @@ install_debian_service() {
     echo "#!/bin/bash 
 # 
  
-export WRAPPER_CONF=\"${OpenVPN-ALS_HOME}/conf/wrapper.conf\"
-exec ${OpenVPN-ALS_HOME}/install/platforms/linux/openvpnals \$*" > /etc/init.d/openvpnals 
+export WRAPPER_CONF=\"${OpenVPNALS_HOME}/conf/wrapper.conf\"
+exec ${OpenVPNALS_HOME}/install/platforms/linux/openvpnals \$*" > /etc/init.d/openvpnals 
     chmod a+rx /etc/init.d/openvpnals 
     if [ "${START_ON_BOOT}" = y ]  
     then if ! update-rc.d openvpnals defaults
@@ -160,8 +160,8 @@ exec ${OpenVPN-ALS_HOME}/install/platforms/linux/openvpnals \$*" > /etc/init.d/o
          fi 
     fi  
     set_wrapper_property "wrapper.java.command" "${JAVA_HOME}/bin/java"
-    set_wrapper_property "wrapper.working.dir" ${OpenVPN-ALS_HOME} 
-    set_wrapper_property "wrapper.java.library.path.1" ${OpenVPN-ALS_HOME}/install/platforms/linux/${OS_ARCH} 
+    set_wrapper_property "wrapper.working.dir" ${OpenVPNALS_HOME} 
+    set_wrapper_property "wrapper.java.library.path.1" ${OpenVPNALS_HOME}/install/platforms/linux/${OS_ARCH} 
     echo "Service installed" 
 } 
  
@@ -180,7 +180,7 @@ install_gentoo_service() {
 # Copyright 2008 3SP
 # Distributed under the terms of the GNU General Public License v2
 
-export WRAPPER_CONF=\"${OpenVPN-ALS_HOME}/conf/wrapper.conf\"
+export WRAPPER_CONF=\"${OpenVPNALS_HOME}/conf/wrapper.conf\"
 
 depend() {
 	need net
@@ -192,11 +192,11 @@ checkconfig() {
 }
 
 start() {
-	exec ${OpenVPN-ALS_HOME}/install/platforms/linux/openvpnals start
+	exec ${OpenVPNALS_HOME}/install/platforms/linux/openvpnals start
 }
 
 stop() {
-	exec ${OpenVPN-ALS_HOME}/install/platforms/linux/openvpnals stop
+	exec ${OpenVPNALS_HOME}/install/platforms/linux/openvpnals stop
 }" > /etc/init.d/openvpnals 
     chmod a+rx /etc/init.d/openvpnals 
     if [ "${START_ON_BOOT}" = y ]  
@@ -210,8 +210,8 @@ stop() {
          fi 
     fi  
     set_wrapper_property "wrapper.java.command" "${JAVA_HOME}/bin/java"
-    set_wrapper_property "wrapper.working.dir" ${OpenVPN-ALS_HOME} 
-    set_wrapper_property "wrapper.java.library.path.1" ${OpenVPN-ALS_HOME}/install/platforms/linux/${OS_ARCH} 
+    set_wrapper_property "wrapper.working.dir" ${OpenVPNALS_HOME} 
+    set_wrapper_property "wrapper.java.library.path.1" ${OpenVPNALS_HOME}/install/platforms/linux/${OS_ARCH} 
     echo "Service installed" 
 } 
  
@@ -233,11 +233,11 @@ install_smoothwall_service() {
 # Init file for OpenVPN-ALS daemon
 #
 
-export WRAPPER_CONF=\"${OpenVPN-ALS_HOME}/conf/wrapper.conf\"
-exec ${OpenVPN-ALS_HOME}/install/platforms/linux/openvpnals \$*" > /etc/rc.d/rc.openvpnals
+export WRAPPER_CONF=\"${OpenVPNALS_HOME}/conf/wrapper.conf\"
+exec ${OpenVPNALS_HOME}/install/platforms/linux/openvpnals \$*" > /etc/rc.d/rc.openvpnals
    set_wrapper_property "wrapper.java.command" "${JAVA_HOME}/bin/java"
-   set_wrapper_property "wrapper.working.dir" ${OpenVPN-ALS_HOME}
-   set_wrapper_property "wrapper.java.library.path.1" ${OpenVPN-ALS_HOME}/install/platforms/linux/${OS_ARCH}
+   set_wrapper_property "wrapper.working.dir" ${OpenVPNALS_HOME}
+   set_wrapper_property "wrapper.java.library.path.1" ${OpenVPNALS_HOME}/install/platforms/linux/${OS_ARCH}
    
    if [ -f /etc/rc.d/rc.sysinit ]
    then grep -v "\# Added by OpenVPN-ALS install-service" /etc/rc.d/rc.sysinit > /tmp/rc.sysinit.tmp 
@@ -274,8 +274,8 @@ install_rh_service() {
 # pidfile: /var/lock/subsys/openvpnals.pid
 # processname: wrapper
 
-export WRAPPER_CONF=\"${OpenVPN-ALS_HOME}/conf/wrapper.conf\"
-exec ${OpenVPN-ALS_HOME}/install/platforms/linux/openvpnals \$*" > /etc/rc.d/init.d/openvpnals
+export WRAPPER_CONF=\"${OpenVPNALS_HOME}/conf/wrapper.conf\"
+exec ${OpenVPNALS_HOME}/install/platforms/linux/openvpnals \$*" > /etc/rc.d/init.d/openvpnals
     chmod a+rx /etc/rc.d/init.d/openvpnals
     if [ "${START_ON_BOOT}" = y ] 
     then if ! chkconfig --add openvpnals --levels 345
@@ -288,8 +288,8 @@ exec ${OpenVPN-ALS_HOME}/install/platforms/linux/openvpnals \$*" > /etc/rc.d/ini
          fi
     fi   
     set_wrapper_property "wrapper.java.command" "${JAVA_HOME}/bin/java"
-	set_wrapper_property "wrapper.working.dir" ${OpenVPN-ALS_HOME}
-	set_wrapper_property "wrapper.java.library.path.1" ${OpenVPN-ALS_HOME}/install/platforms/linux/${OS_ARCH}
+	set_wrapper_property "wrapper.working.dir" ${OpenVPNALS_HOME}
+	set_wrapper_property "wrapper.java.library.path.1" ${OpenVPNALS_HOME}/install/platforms/linux/${OS_ARCH}
     echo "Service installed"
 }
 
@@ -313,8 +313,8 @@ install_conary_service() {
 # pidfile: /var/lock/subsys/openvpnals.pid
 # processname: wrapper
 
-export WRAPPER_CONF=\"${OpenVPN-ALS_HOME}/conf/wrapper.conf\"
-exec ${OpenVPN-ALS_HOME}/install/platforms/linux/openvpnals \$*" > /etc/rc.d/init.d/openvpnals
+export WRAPPER_CONF=\"${OpenVPNALS_HOME}/conf/wrapper.conf\"
+exec ${OpenVPNALS_HOME}/install/platforms/linux/openvpnals \$*" > /etc/rc.d/init.d/openvpnals
     chmod a+rx /etc/rc.d/init.d/openvpnals
     if [ "${START_ON_BOOT}" = y ] 
     then if ! chkconfig --add openvpnals --levels 345
@@ -327,8 +327,8 @@ exec ${OpenVPN-ALS_HOME}/install/platforms/linux/openvpnals \$*" > /etc/rc.d/ini
          fi
     fi   
     set_wrapper_property "wrapper.java.command" "${JAVA_HOME}/bin/java"
-	set_wrapper_property "wrapper.working.dir" ${OpenVPN-ALS_HOME}
-	set_wrapper_property "wrapper.java.library.path.1" ${OpenVPN-ALS_HOME}/install/platforms/linux/${OS_ARCH}
+	set_wrapper_property "wrapper.working.dir" ${OpenVPNALS_HOME}
+	set_wrapper_property "wrapper.java.library.path.1" ${OpenVPNALS_HOME}/install/platforms/linux/${OS_ARCH}
     echo "Service installed"
 }
 
@@ -343,7 +343,7 @@ uninstall_conary_service() {
 
 # Determine the installed location of OpenVPN-ALS
 export DIR=$(dirname ${0})
-OpenVPN-ALS_HOME=$(cd ${DIR}; cd ../../.. ; pwd)
+OpenVPNALS_HOME=$(cd ${DIR}; cd ../../.. ; pwd)
 
 # Initialise other variables
 OS=
@@ -491,7 +491,7 @@ esac
 if [ -f "${WRAPPER_CONF}" ]
 then temp=$(grep "=--temp=" "${WRAPPER_CONF}"|awk -F= '{ print $3 }')
      if [ -z "${temp}" ]
-     then temp="${OpenVPN-ALS_HOME}/tmp"
+     then temp="${OpenVPNALS_HOME}/tmp"
      fi
      if [ -d "${temp}" ]
      then rm -fr "${temp}/*"
