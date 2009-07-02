@@ -151,11 +151,13 @@ div#component_smallPageHeader {
 #component_pageFooter { 	
 	position: fixed;
 	background-color: #3d649e;
-	bottom: 0px;
+	color: #fff;
+	bottom: 0;
 	height: 7em;
-	padding: 0px 0px 0px 0px;
-    width:14.8em;
-    color: white;
+	padding: 0;
+	width: 16.923em;
+	*width: 16.5em;
+	min-width: 220px; 
 }
 
 body > #component_pageFooter {
@@ -185,23 +187,25 @@ body > #component_pageFooter {
 /* Message sidebars - General */
 
 .component_messageBox {
-	margin: 8px 0px 0px 0px;
+	margin: 8px 0 0 0;
 	padding: 0;
 	vertical-align: top;
 	display: block;
 }
 
 #layout_leftbar .component_messageBox {
-	min-width: 14.8em;
-	max-width: 14.8em;
-    width:14.8em;
 	background-color: #3d649e;
+	margin-right: 10px;	
+	width: 16.923em;
+	*width: 16.5em;
+	min-width: 220px; 
 }
 
 #layout_rightbar .component_messageBox {
-	min-width: 15.8em;
-	max-width: 15.8em;
-    width:15.8em;
+	margin: 8px 10px 0;
+	width: 16.923em;
+	*width: 16.5em;
+	min-width: 220px;
 }
 
 .component_messageBox .titleBar {

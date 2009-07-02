@@ -62,17 +62,14 @@ html, body {
 	height: 100%;
 	vertical-align: top;
 	margin: 0;
-	padding: 8px 12px 0px 8px;
+	padding: 8px 10px 0;
 	width: 100%;
 	z-index:5;
 }
 
 #layout_rightbar {
 	height: 100%;
-	min-width: 14.2em;
-	max-width: 14.2em;
-    width:14.2em;
-	padding-right: 8px;
+	padding: 0;
 	margin: 0; 
 	vertical-align: top;
 }

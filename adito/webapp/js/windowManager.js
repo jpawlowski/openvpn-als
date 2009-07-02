@@ -1,5 +1,6 @@
-
 /*
+ * toggle_control error fixed by Kjel Delaey (trimentor) - 22/06/2009
+ * 
  * This library contains functions for managing 'Windows'. Windows are simply
  * <div>s that may be dragged around, minimized, closed, restored etc.
  *
@@ -1176,9 +1177,11 @@ function frameClose(frameId) {
 		}
 	}
 	toggle_control = $(frameId + "_toggle");
-	if (!isUndefined(toggle_control) && toggle_control.checked) {
-		toggle_control.checked = false;
-	}
+	if(!isNull(toggle_control)){
+		if (!isUndefined(toggle_control) && toggle_control.checked) {
+			toggle_control.checked = false;
+		}
+	}	
 }
 
 function frameVisible(frameId) {
