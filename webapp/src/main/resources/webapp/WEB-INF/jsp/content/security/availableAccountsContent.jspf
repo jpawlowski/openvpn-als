@@ -1,0 +1,125 @@
+<%@ page import="com.adito.boot.Util" %>
+<%@ page import="com.adito.policyframework.PolicyConstants" %>
+<%@ page import="com.adito.security.LogonController" %>
+<%@ page import="com.adito.security.forms.ShowAvailableAccountsForm;"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/table" prefix="table" %>
+<%@ taglib uri="/server/taglibs/security" prefix="security" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input"%>
+
+<bean:define id="showAvailableAccountsForm" name="showAvailableAccountsForm" type="com.adito.security.forms.ShowAvailableAccountsForm"/>
+<div id="page_accounts">
+	<core:form method="post" action="/showAvailableAccounts.do" onsubmit="setActionTarget('filter')">
+		<html:hidden name="showAvailableAccountsForm" property="_charset_"/>
+		<html:hidden name="showAvailableAccountsForm" property="actionTarget"/>
+		<html:hidden name="showAvailableAccountsForm" property="pager.startRow"/>
+		<html:hidden name="showAvailableAccountsForm" property="pager.sortName"/>
+		<html:hidden name="showAvailableAccountsForm" property="pager.sortReverse"/>
+		<html:hidden name="showAvailableAccountsForm" property="pager.pageSize"/>
+		<div class="dialog_content">				
+			<table class="dialog_content_table">
+				<tbody>
+					<tr>
+						<td class="filter">
+							<div class="filterCriteria">		
+								<html:text styleClass="filterText" property="filterText"/>	
+								<html:submit styleClass="search" onclick="setFormActionTarget('filter',this.form); return true"><bean:message key="filter.find" bundle="navigation"/></html:submit>
+								<html:submit styleClass="reset" onclick="this.form.filterText.value = ''; setFormActionTarget('filter',this.form); return true"><bean:message key="filter.reset" bundle="navigation"/></html:submit>                 
+							</div>
+						</td>
+						<td class="view" align="right">
+							<html:select property="showAccountsState" onchange="setFormActionTarget('displayFilterChanged',this.form); this.form.submit();">
+								<html:option value="<%= ShowAvailableAccountsForm.ShowAccountsState.ALL.getState() %>">
+									<bean:message key="availableAccounts.showAll" bundle="security"/>
+								</html:option>
+								<html:option value="<%= ShowAvailableAccountsForm.ShowAccountsState.AUTHORIZED.getState() %>">
+									<bean:message key="availableAccounts.showAuthorized" bundle="security"/>
+								</html:option>
+								<html:option value="<%= ShowAvailableAccountsForm.ShowAccountsState.UNAUTHORIZED.getState() %>">
+									<bean:message key="availableAccounts.showUnauthorized" bundle="security"/>
+								</html:option>
+								<html:option value="<%= ShowAvailableAccountsForm.ShowAccountsState.LOCKED.getState() %>">
+									<bean:message key="availableAccounts.showLocked" bundle="security"/>
+								</html:option>
+								<html:option value="<%= ShowAvailableAccountsForm.ShowAccountsState.DISABLED.getState() %>">
+									<bean:message key="availableAccounts.showDisabled" bundle="security"/>
+								</html:option>
+							</html:select>
+						</td>
+					</tr>
+				</tbody>
+			</table>	
+		</div>
+		<div class="filtered_resources">
+      		<table class="resource_table">
+      			<thead>	
+					<tr>
+				  		<td class="account"><table:columnHeader pagerName="showAvailableAccountsForm" pagerProperty="pager" columnIndex="0" action="showAvailableAccounts.do" styleClass="columnHeader"><bean:message key="availableAccounts.account" bundle="security"/></table:columnHeader></td>
+				  		<td class="action"><bean:message key="availableAccounts.action" bundle="security"/></td>
+					</tr>
+				</thead>
+				<tbody>					
+			    	<% boolean highlight= true; %>	
+					<logic:equal name="showAvailableAccountsForm" property="model.empty" value="true">						
+						<tr 
+	      					onmouseover="<%= "this.className = 'selected';" %>"
+	      					onmouseout="<%= "this.className = '" + ( highlight ? "highlight" : "lowlight" ) + "';" %>" class="<%= highlight ? "highlight" : "lowlight" %>">           
+					  		<td class="tableMessage" colspan="2">		   
+							  	<bean:message key="availableAccounts.noAccounts" bundle="security"/>
+							</td>
+						</tr>
+					</logic:equal>
+					<logic:equal name="showAvailableAccountsForm" property="model.empty" value="false">													
+						<logic:equal name="showAvailableAccountsForm" property="pager.empty" value="true">														
+							<tr 
+		      					onmouseover="<%= "this.className = 'selected';" %>"
+		      					onmouseout="<%= "this.className = '" + ( highlight ? "highlight" : "lowlight" ) + "';" %>" class="<%= highlight ? "highlight" : "lowlight" %>">           
+						  		<td class="tableMessage" colspan="2">		   
+								  	<bean:message key="availableAccounts.noMatch" bundle="security"/>
+								</td>
+							</tr>
+						</logic:equal>
+						<logic:equal name="showAvailableAccountsForm" property="pager.empty" value="false">						
+							<logic:iterate id="user" indexId="i" name="showAvailableAccountsForm" property="pager.pageItems" type="com.adito.security.UserItem">
+								<tr 
+			      					onmouseover="<%= "this.className = 'selected';" %>"
+			      					onmouseout="<%= "this.className = '" + ( highlight ? "highlight" : "lowlight" ) + "';" %>" class="<%= highlight ? "highlight" : "lowlight" %>">           
+				  		  			<td class="account">
+										<img border="0" align="absmiddle" src="<%= user.getSmallIconPath(request) %>"/>
+				  		  				<input:toolTip width="400" borderWidth="0" padding="0" onclick="<%= user.getOnClick() %>" href="<%= user.getLink() %>" contentLocation="<%= "/accountInformation.do?principalName=" + Util.urlEncode(user.getUser().getPrincipalName()) + "&principalType=account" %>"  value="<%= user.getUser().getPrincipalName() %>">
+											<bean:write name="user" property="user.principalName"/>
+										</input:toolTip>
+						  			</td>
+									<td class="actions">
+										<tiles:insert flush="false" page="/WEB-INF/jsp/tiles/tableItemActionBar.jspf">		
+											<tiles:put name="pager" beanName="showAvailableAccountsForm" beanProperty="pager"/>
+											<tiles:put name="rowIndex" beanName="i"/>
+											<tiles:put name="policyLaunching" value="false"/>
+										</tiles:insert>	
+							  		</td>
+								</tr>
+								<% highlight = !highlight; %>
+							</logic:iterate> 
+						</logic:equal>
+					</logic:equal>
+				</tbody>				
+				<tfoot>			
+					<tr>
+						<td colspan="2">
+							<div class="pager_navigation">
+								<table:navigation selectedStyleClass="pagerSelected" pagerName="showAvailableAccountsForm" pagerProperty="pager" styleClass="pagerEnabled" disabledStyleClass="pagerDisabled" requestAttributes="actionTarget=redisplay"/>
+							</div>
+							<div class="pager_pages">
+								<table:pageSize pagerName="showAvailableAccountsForm" pagerProperty="pager" styleClass="pagerEnabled" allowShowAll="false"/>
+							</div>
+						</td>
+					</tr>
+				</tfoot>
+		  	</table>		
+	    </div>
+	</core:form>	
+</div>

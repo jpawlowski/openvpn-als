@@ -1,0 +1,98 @@
+
+<jsp:directive.page import="com.adito.security.SessionInfo"/><%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/table" prefix="table" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+
+<div id="page_vfsLocks">
+	<core:form subFormName="vfsLocksForm" autocomplete="OFF" method="post" action="/status.do">  
+		<html:hidden property="subForm" value="vfsLocksForm"/>
+		<html:hidden property="_charset_"/> 
+		<html:hidden property="actionTarget"/>
+		<html:hidden property="pager.startRow"/>
+		<html:hidden property="pager.sortName"/>
+		<html:hidden property="pager.sortReverse"/>
+		<html:hidden property="pager.pageSize"/>		
+		<%@ include file="/WEB-INF/jsp/tiles/filter.jspf" %>	
+		<div class="filtered_resources">
+			<table class="resource_table">
+				<thead>
+					<tr>
+						<td class="file">
+							<table:columnHeader pagerName="vfsLocksForm" pagerProperty="pager" columnIndex="0" styleClass="columnHeader">
+								<bean:message key="status.vfslock.file" bundle="vfs" />
+							</table:columnHeader>
+						</td>
+						<td class="active">
+							<table:columnHeader pagerName="vfsLocksForm" pagerProperty="pager" columnIndex="1" styleClass="columnHeader">
+								<bean:message key="status.vfslock.status" bundle="vfs" />
+							</table:columnHeader>
+						</td>
+						<td class="actions">
+				            <bean:message key="status.vfslock.actions" bundle="vfs" />
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<% boolean shade = false ; %>													
+					<logic:equal name="vfsLocksForm" property="model.empty" value="true">
+						<tr class="<%= shade ? "highlight" : "lowlight" %>">
+							<td class="tableMessage" colspan="3"><bean:message key="status.vfslock.empty" bundle="vfs" /></td>
+						</tr>
+					</logic:equal>
+					<logic:equal name="vfsLocksForm" property="model.empty" value="false">
+						<logic:equal name="vfsLocksForm" property="pager.empty" value="true">
+							<tr class="<%= shade ? "highlight" : "lowlight" %>">
+								<td class="tableMessage" colspan="3"><bean:message key="status.vfslock.emptyfilter" bundle="vfs" /></td>
+							</tr>
+						</logic:equal>
+					</logic:equal>
+					<logic:equal name="vfsLocksForm" property="pager.empty" value="false">					
+						<logic:iterate name="vfsLocksForm" property="pager.pageItems" id="vfsLock" type="com.adito.vfs.forms.ShowVfsLocksForm.VfsLockTableItem">
+							<tr class="<%= shade ? "highlight" : "lowlight" %>">
+				               	<td class="file">
+									<input:toolTip name="vfsLock" property="VFSFileLock.fileURI" >
+				               			<bean:write name="vfsLock" property="VFSFileLock.fileName"/>
+									</input:toolTip>
+				               	</td>
+        					    <td class="active">
+        					    	<logic:equal name="vfsLock" property="VFSFileLock.active" value="true">	
+        					    		<bean:message key="status.vfslock.active" bundle="vfs" />
+		               				</logic:equal>
+        					    	<logic:equal name="vfsLock" property="VFSFileLock.active" value="false">	
+        					    		<bean:message key="status.vfslock.inactive" bundle="vfs" />
+		               				</logic:equal>
+				               	</td>
+				               	<td class="actions">
+								   	<tiles:insert flush="false" attribute="actionLink">
+										<tiles:put name="actionName" value="logoff"/>
+										<tiles:put name="bundle" value="vfs"/>
+										<tiles:put name="nameKey" value="action.unlock.name"/>
+										<tiles:put name="descriptionKey" value="action.unlock.description"/>
+										<tiles:put name="actionPath" value="<%= "/showVfsLocks.do?actionTarget=unlockFile&selectedResource=" +  vfsLock.getVFSFileLock().getHandle() %>"/>
+									</tiles:insert>
+								</td>                	
+							</tr>		
+							<% shade = !shade; %> 
+						</logic:iterate>
+					</logic:equal>
+				</tbody>				
+				<tfoot>			
+					<tr>
+						<td colspan="3">
+							<div class="pager_navigation">
+								<table:navigation selectedStyleClass="pagerSelected" pagerName="vfsLocksForm" pagerProperty="pager" styleClass="pagerEnabled" disabledStyleClass="pagerDisabled"/>
+							</div>
+							<div class="pager_pages">
+								<table:pageSize pagerName="vfsLocksForm" pagerProperty="pager" styleClass="pagerEnabled"/>
+							</div.
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</core:form>
+</div>

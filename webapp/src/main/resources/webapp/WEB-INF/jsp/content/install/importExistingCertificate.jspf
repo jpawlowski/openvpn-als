@@ -1,0 +1,50 @@
+<%@ page import="com.adito.install.forms.SelectCertificateSourceForm" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+
+<script language="JavaScript">
+<!--	
+	function uploadCertificate() {		   
+		var form = document.forms["importExistingCertificateForm"];
+		form.action = "/uploadExistingCertificate.do";
+		document.forms[0].submit();
+	}
+-->
+</script>
+<table cellpadding="0" cellspacing="0" border="0">
+	<tr class="formCombo">
+		<td class="label">
+			<bean:message key="installatiom.importExistingCertificate.type" bundle="install"/>
+		</td>
+		<td class="value">	                        
+			<html:select property="keyStoreType">
+				<html:optionsCollection value="name" label="name" property="availableKeyStoreTypes" />
+			</html:select>
+		</td>
+	</tr>
+	<tr class="formPassword">
+		<td class="label">
+			<bean:message key="installatiom.importExistingCertificate.password" bundle="install"/>
+		</td>
+		<td class="value">
+			<input type="password" name="password"/>
+		</td>
+	</tr>
+	<tr class="formText">
+		<td class="label">
+			<bean:message key="installatiom.importExistingCertificate.alias" bundle="install"/>
+		</td>
+		<td class="value">
+			<html:text property="alias"/>
+		</td>
+	</tr>
+	<tr class="formFile">  			
+		<td class="label">
+			<div class="required"><bean:message key="installatiom.importExistingCertificate.filename" bundle="install"/></div>
+		</td>
+		<td class="value">
+			<input type="file" size="40" name="uploadFile"/>
+		</td>                         
+	</tr>
+</table>

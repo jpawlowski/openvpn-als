@@ -1,0 +1,47 @@
+<%@ page import="com.adito.navigation.forms.FileDownloadForm"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+
+
+<div id="page_fileDownload"> 
+	<div class="titled_dialog_content">
+		<table>
+			<thead>
+				<tr>
+					<td>                         
+						<bean:message key="fileDownload.subtitle" bundle="navigation" />
+					</td>
+				</tr>                          
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<span class="confirmMessage">
+							<bean:message name="fileDownloadForm"
+			property="download.messageKey"
+			bundle="<%= ((FileDownloadForm)request.getAttribute("fileDownloadForm")).getDownload().getMessageResourcesKey() %>" 
+			arg0="<%= ((FileDownloadForm)request.getAttribute("fileDownloadForm")).getDownload().getMessageArg0() %>"
+			arg1="<%= ((FileDownloadForm)request.getAttribute("fileDownloadForm")).getDownload().getMessageArg1() %>"
+			arg2="<%= ((FileDownloadForm)request.getAttribute("fileDownloadForm")).getDownload().getMessageArg2() %>"
+			arg3="<%= ((FileDownloadForm)request.getAttribute("fileDownloadForm")).getDownload().getMessageArg3() %>"
+			arg4="<%= ((FileDownloadForm)request.getAttribute("fileDownloadForm")).getDownload().getMessageArg4() %>"/>
+						</span>
+					</td>
+				</tr>              
+				<tr>
+					<td class="downloadWarning">
+						<bean:message arg0="<%= ((FileDownloadForm)request.getAttribute("fileDownloadForm")).getLink() %>"
+								key="fileDownload.link" bundle="navigation" />
+					</td> 
+				</tr>      
+			</tbody>
+			<tfoot>
+				<tr>
+					<td>            
+						<input class="close" type="button" onclick="window.location = '/completeFileDownload.do?id=<%= String.valueOf(((FileDownloadForm)request.getAttribute("fileDownloadForm")).getDownload().getId()) %>'"
+								value="<bean:message key='fileDownload.close' bundle='navigation'/>" />
+					</td>
+				</tr>                  
+			</tfoot>
+		</table>
+	</div>
+</div>

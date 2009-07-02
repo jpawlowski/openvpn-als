@@ -1,0 +1,21 @@
+<%@ page import="com.adito.wizard.AbstractWizardSequence" %>
+<%@ page import="com.adito.security.Constants" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+
+ <% AbstractWizardSequence seq = (AbstractWizardSequence)request.getSession().getAttribute(Constants.WIZARD_SEQUENCE); %>			
+
+<input:multiSelectListBox 
+	tabindex="1" 
+	rows="14"
+	sourceTitleKey="accessRightsWizard.permissions.permissions" 
+	targetTitleKey="accessRightsWizard.permissions.selectedPermissions" 
+	addKey="accessRightsWizard.permissions.addSelected" 
+	removeKey="accessRightsWizard.permissions.removeSelected" 
+	addAllKey="accessRightsWizard.permissions.addAll" 
+	removeAllKey="accessRightsWizard.permissions.removeAll" 
+	bundle="policyframework" 
+	styleClass="multiSelect" 
+	modelName="<%= seq.getCurrentPageForm().getPageName() + "Form" %>" 
+	modelProperty="accessRightsModel" 
+	name="<%= seq.getCurrentPageForm().getPageName() + "Form" %>" 
+	property="selectedAccessRights"/>														

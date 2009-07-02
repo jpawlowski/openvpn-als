@@ -1,0 +1,39 @@
+<%@ page import="com.adito.navigation.forms.FileDownloadForm"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+
+
+<core:form action="/redirectToTempDownload.do">
+	<div id="page_redirect_temp_downloads">
+		<div class="titled_dialog_content">
+			<table class="titled_dialog_table">
+				<thead>
+					<tr>
+						<td colspan="2">                         
+							<bean:message key="redirectToDownload.subtitle" bundle="navigation" />
+						</td>
+					</tr>                          
+				</thead>
+				<tbody>
+					<tr>
+						<td class="text">
+								<div id="expired">
+									<bean:message key="redirectToDownload.expired.text" bundle="navigation" arg0="<%= ((FileDownloadForm)request.getAttribute("fileDownloadForm")).getTempDownloadLink(request) %>"/>
+								</div>
+							</td>
+					</tr>                          
+				</tbody>
+				<tfoot>
+					<tr>
+						<td>   
+							<div class="buttonBar">
+								<div class="formButton">         							
+									<input type="submit" value="<bean:message key='redirectToDownload.close' bundle='navigation' />" onclick="<%= ((FileDownloadForm)request.getAttribute("fileDownloadForm")).getReferer() %>" class="close">
+								</div>
+							</div>
+						</td>
+					</tr>                  
+				</tfoot>
+			</table>
+		</div>
+	</div>
+</core:form>

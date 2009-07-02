@@ -1,0 +1,40 @@
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="/server/taglibs/navigation" prefix="navigation"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+
+<div id="view">
+	<table class="dialog_content_table">
+		<tbody>
+			<tr>
+				<td class="filter">
+					<div class="filterCriteria">		
+						<html:text styleClass="filterText" property="filterText"/>
+						<html:submit styleClass="search" onclick="setFormActionTarget('filter',this.form); return true"><bean:message key="filter.find" bundle="navigation"/></html:submit>
+						<html:submit styleClass="reset" onclick="this.form.filterText.value = ''; setFormActionTarget('filter',this.form); return true"><bean:message key="filter.reset" bundle="navigation"/></html:submit>
+					</div>
+				</td>
+				<td class="view">	
+					<navigation:inUserConsole>
+						<tiles:insert flush="false" attribute="actionLink">
+							<tiles:put name="actionName" value="viewIcons" />
+							<tiles:put name="bundle" value="policyframework" />
+							<tiles:put name="nameKey" value="actions.viewIcons.name" />
+							<tiles:put name="descriptionKey" value="actions.viewIcons.description" />
+							<tiles:put name="actionPath" value="#" />
+							<tiles:put name="actionOnclick" value="viewAsIconsMultiForm($(this).up('form')); return true" />
+						</tiles:insert>						
+						<tiles:insert flush="false" attribute="actionLink">
+							<tiles:put name="actionName" value="viewList" />
+							<tiles:put name="bundle" value="policyframework" />
+							<tiles:put name="nameKey" value="actions.viewList.name" />
+							<tiles:put name="descriptionKey" value="actions.viewList.description" />
+							<tiles:put name="actionPath" value="#" />
+							<tiles:put name="actionOnclick" value="viewAsListMultiForm($(this).up('form')); return true" />
+						</tiles:insert>
+					</navigation:inUserConsole>					
+				</td>
+			</tr>
+		</tbody>
+	</table>		
+</div>				

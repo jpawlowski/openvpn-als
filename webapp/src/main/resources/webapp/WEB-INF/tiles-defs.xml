@@ -1,0 +1,862 @@
+<!DOCTYPE tiles-definitions PUBLIC 
+	"-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" 
+	"webapp/WEB-INF/tiles-config_1_1.dtd"> 
+<tiles-definitions>
+
+<!--  Because the rendering of the layout and some of the tiles is now delegated
+      to the theme, ensure any new attributes added here are also added to the
+      appropriate JSP tiles:insert tags - BPS -->
+      
+<!--  Ensure that whenever you add new attributes, you also add them to 
+      the tile definitions file of plugins that contribute new pages.
+      To date (5/11/05) this includes adito-license-manager 
+      and adito-xtra - BPS -->      
+      
+	<definition name=".site.Layout" path="/WEB-INF/jsp/layouts/layout.jsp">
+		<put name="pageHeader" value="/WEB-INF/jsp/tiles/pageHeader.jspf"/>
+		<put name="header" value="/WEB-INF/jsp/tiles/header.jspf"/>
+		<put name="footer" value="/WEB-INF/jsp/tiles/footer.jspf"/>
+		<put name="messageArea" value="true"/>
+		<put name="menu" value="/WEB-INF/jsp/tiles/menu.jspf"/>
+		<put name="profileSelector" value="/WEB-INF/jsp/tiles/profileSelector.jspf"/>
+		<put name="actionLink" value="/WEB-INF/jsp/tiles/actionLink.jspf"/>
+		<put name="info" value="/WEB-INF/jsp/tiles/info.jspf"/>
+		<put name="content" value="${content}"/>
+		<put name="resourcePrefix" value="${resourcePrefix}"/>
+		<put name="menuItem" value="${menuItem}"/>
+		<put name="resourceBundle" value="${resourceBundle}"/>
+		<put name="infoImage" value="${infoImage}"/>
+		<put name="noBodyStyle" value="false"/>
+		<put name="pageStyle" value="default"/>
+		<put name="displayGlobalWarnings" value="true"/>	
+		<put name="updateAction" value="${updateAction}"/>	
+		<put name="rssFeed" value=""/>
+	</definition>
+	<definition name=".site.ComponentLayout" path="/WEB-INF/jsp/layouts/componentLayout.jsp">
+		<put name="content" value="${content}"/>
+		<put name="actionLink" value="/WEB-INF/jsp/tiles/actionLink.jspf"/>
+	</definition>
+	<definition name=".site.HelpLayout" path="/WEB-INF/jsp/layouts/helpLayout.jsp">
+		<put name="pageHeader" value="/WEB-INF/jsp/tiles/pageHeader.jspf"/>
+		<put name="actionLink" value="/WEB-INF/jsp/tiles/actionLink.jspf"/>
+		<put name="content" value="${content}"/>
+	</definition>
+	<definition name=".site.PopupLayout"  extends=".site.Layout" path="/WEB-INF/jsp/layouts/popupLayout.jsp">
+		<put name="displayGlobalWarnings" value="false"/>	
+		<put name="pageStyle" value="popup"/>	
+	</definition>
+	<definition name=".site.PopupNoSidebarLayout"  extends=".site.PopupLayout">
+		<put name="messageArea" value="false"/>
+	</definition>	
+	
+	<!--  Profile Wizard --> 
+	
+	<definition name=".site.ProfileWizardPage" extends=".site.Layout">
+		<put name="resourcePrefix" value="profileWizard"/>
+		<put name="resourceBundle" value="properties"/>
+		<put name="content" value="/WEB-INF/jsp/tiles/wizardPage.jspf"/>
+		<put name="infoImage" value="newProfile.gif"/>
+		<put name="rssFeed" value="profileWizard"/>
+	</definition>
+	
+	<!--  Policy Wizard --> 
+	
+	<definition name=".site.PolicyWizardPage" extends=".site.Layout">
+		<put name="resourcePrefix" value="policyWizard"/>
+		<put name="resourceBundle" value="policyframework"/>
+		<put name="content" value="/WEB-INF/jsp/tiles/wizardPage.jspf"/>
+		<put name="infoImage" value="newPolicy.gif"/>
+		<put name="rssFeed" value="policyWizard"/>
+	</definition>
+	
+	<!--  Delegation Resource Wizard --> 
+	
+	<definition name=".site.AccessRightsWizardPage" extends=".site.Layout">
+		<put name="resourcePrefix" value="accessRightsWizard"/>
+		<put name="resourceBundle" value="policyframework"/>
+		<put name="content" value="/WEB-INF/jsp/tiles/wizardPage.jspf"/>
+		<put name="infoImage" value="newAccessRights.gif"/>
+		<put name="rssFeed" value="permissionsWizard"/>
+	</definition>
+	
+	<!--  Installation Wizard --> 
+		
+	<definition name=".site.InstallWizardPage" extends=".site.Layout">
+		<put name="resourcePrefix" value="installation"/>
+		<put name="resourceBundle" value="install"/>
+		<put name="content" value="/WEB-INF/jsp/tiles/wizardPage.jspf"/>
+		<put name="infoImage" value="install.gif"/>
+	</definition>	
+	<definition name=".site.SelectCertificateSource" extends=".site.InstallWizardPage">
+			<put name="rssFeed" value="installCertificate"/>
+	</definition>	
+	<definition name=".site.CreateNewCertificate" extends=".site.InstallWizardPage">
+				<put name="rssFeed" value="createCertificate"/>
+	</definition>	
+	<definition name=".site.SetKeyStorePassword" extends=".site.InstallWizardPage">
+				<put name="rssFeed" value="setCertificatePassword"/>
+	</definition>	
+	<definition name=".site.ImportExistingCertificate" extends=".site.InstallWizardPage">
+			<put name="rssFeed" value="importCertificate"/>
+	</definition>		
+	
+	<definition name=".site.SelectUserDatabase" extends=".site.InstallWizardPage">
+			<put name="rssFeed" value="selectUserDatabase"/>
+	</definition>	
+    
+    <definition name=".site.ConfigureUserDatabase" extends=".site.InstallWizardPage">
+            <put name="rssFeed" value="configureUserDatabase"/>
+    </definition>
+	
+	<definition name=".site.ConfigureSuperUser" extends=".site.InstallWizardPage">
+				<put name="rssFeed" value="configureSuperUser"/>
+	</definition>	
+	<definition name=".site.WebServer" extends=".site.InstallWizardPage">
+				<put name="rssFeed" value="setupWebServer"/>
+	</definition>	
+	<definition name=".site.ConfigureProxies" extends=".site.InstallWizardPage">
+				<put name="rssFeed" value="configureProxies"/>
+	</definition>	
+	<definition name=".site.InstallExtensions" extends=".site.InstallWizardPage">
+				<put name="rssFeed" value="installExtensions"/>
+	</definition>		
+	<definition name=".site.InstallationSummary" extends=".site.InstallWizardPage"/>	
+	<definition name=".site.Install" extends=".site.InstallWizardPage"/>
+	
+	<definition name=".site.InstallShutdown" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/install/shutdown.jspf"/>
+		<put name="resourcePrefix" value="installShutdown"/>
+		<put name="resourceBundle" value="install"/>
+		<put name="infoImage" value="installShutdown.gif"/>	
+		<put name="displayGlobalWarnings" value="false"/>	
+	</definition>
+	
+	<definition name=".site.ActiveDirectoryConfiguration" extends=".site.InstallWizardPage">
+		<put name="resourcePrefix" value="activeDirectoryConfiguration"/>
+		<put name="resourceBundle" value="install"/>
+		<put name="content" value="/WEB-INF/jsp/content/properties/propertyContent.jspf"/>
+	    <put name="rssFeed" value="installAD"/>
+	</definition>	
+	
+	<!--  Key Store Import Wizard --> 
+	
+	<definition name=".site.KeyStoreImportWizardPage" extends=".site.Layout">
+		<put name="resourcePrefix" value="keyStoreImportWizard"/>
+		<put name="resourceBundle" value="keystore"/>
+		<put name="content" value="/WEB-INF/jsp/tiles/wizardPage.jspf"/>
+		<put name="infoImage" value="keyStoreImport.gif"/>
+		<put name="rssFeed" value="keystoreWizard"/>
+	</definition>
+	
+	<!--  Authentication Scheme Import Wizard --> 
+	<definition name=".site.AthenticationSchemeWizardPage" extends=".site.Layout">
+		<put name="resourcePrefix" value="authwizard" />
+		<put name="resourceBundle" value="security" />
+		<put name="content" value="/WEB-INF/jsp/tiles/wizardPage.jspf" />
+		<put name="infoImage" value="authenticationSchemes.gif" />
+		<put name="rssFeed" value="authenticationSchemeWizard"/>
+	</definition>
+
+	<!--  Help -->
+	
+	<definition name=".site.PropertyHelp" extends=".site.HelpLayout">
+		<put name="resourcePrefix" value="help"/>
+		<put name="resourceBundle" value="navigation"/>
+		<put name="content" value="/WEB-INF/jsp/tiles/propertyHelp.jspf"/>
+	</definition>
+	
+	<definition name=".site.Help" extends=".site.HelpLayout">
+		<put name="resourcePrefix" value="help"/>
+		<put name="resourceBundle" value="navigation"/>
+		<put name="content" value="/WEB-INF/jsp/tiles/help.jspf"/>
+	</definition>
+	
+	<!--  Favorites -->
+	
+	<definition name=".site.Favorites" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/navigation/favoritesContent.jspf"/>
+		<put name="resourcePrefix" value="favorites"/>
+		<put name="menuItem" value="favorites"/>
+		<put name="resourceBundle" value="navigation"/>
+		<put name="infoImage" value="favorites.gif"/>
+	</definition>
+	
+	<!--  Home -->
+	
+	<definition name=".site.LaunchAgent" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/navigation/launchViaAgentAppletContent.jspf"/>
+		<put name="resourcePrefix" value="launchAgent"/>
+		<put name="menuItem" value=""/>
+		<put name="resourceBundle" value="navigation"/>
+		<put name="infoImage" value="launch.gif"/>
+	</definition>
+	
+	<!--  Task Progress -->
+	
+	<definition name=".site.TaskProgress" extends=".site.ComponentLayout">
+		<put name="content" value="/WEB-INF/jsp/tiles/taskProgress.jspf"/>
+	</definition>
+	
+	<!--  Resource Information -->
+	
+	<definition name=".site.ResourceInformation" extends=".site.ComponentLayout">
+		<put name="content" value="/WEB-INF/jsp/content/policyframework/resourceInformation.jspf"/>
+	</definition>
+	
+	<!--  Extension Bundle Information -->
+	
+	<definition name=".site.ExtensionBundleInformation" extends=".site.ComponentLayout">
+		<put name="content" value="/WEB-INF/jsp/content/extensions/extensionBundleInformation.jspf"/>
+	</definition>
+	
+	<!--  Show profiles -->
+	
+	<definition name=".site.UserProfiles" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/properties/userProfiles.jspf"/>
+		<put name="resourcePrefix" value="userProfiles"/>
+		<put name="menuItem" value="userProfiles"/>
+		<put name="resourceBundle" value="properties"/>
+		<put name="infoImage" value="profiles.gif"/>
+	</definition>
+	
+	<definition name=".site.GlobalProfiles" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/properties/globalProfiles.jspf"/>
+		<put name="resourcePrefix" value="globalProfiles"/>
+		<put name="menuItem" value="globalProfiles"/>
+		<put name="resourceBundle" value="properties"/>
+		<put name="infoImage" value="profiles.gif"/>
+   	    <put name="rssFeed" value="profiles"/>
+	</definition>
+	
+	<!--  Select Property Profile -->
+	
+	<definition name=".site.SelectPropertyProfile" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/navigation/selectPropertyProfileContent.jspf"/>
+		<put name="resourcePrefix" value="selectPropertyProfile"/>
+		<put name="menuItem" value=""/>
+		<put name="resourceBundle" value="navigation"/>
+		<put name="infoImage" value="selectProfile.gif"/>
+	</definition>
+	
+	<!--  About -->
+	<definition name=".site.About" extends=".site.HelpLayout">
+		<put name="content" value="/WEB-INF/jsp/content/navigation/aboutContent.jspf"/>
+		<put name="resourcePrefix" value="help"/>
+		<put name="resourceBundle" value="navigation"/>
+	</definition>
+	
+	<!--  Support -->
+	<definition name=".site.Support" extends=".site.HelpLayout">
+		<put name="content" value="/WEB-INF/jsp/content/navigation/supportContent.jspf"/>
+		<put name="resourcePrefix" value="support"/>
+		<put name="resourceBundle" value="navigation"/>
+	</definition>	
+	
+	<!--  License agreement page -->
+	
+	<definition name=".site.LicenseAgreement" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/navigation/licenseAgreementContent.jspf"/>
+		<put name="info" value=""/>
+		<put name="menuItem" value=""/>
+		<put name="resourceBundle" value="navigation"/>
+		<put name="resourcePrefix" value="licenseAgreement"/>
+		<put name="messageArea" value="false"/>
+	</definition>
+	
+	<!--  Confirmation pages -->
+	
+	<definition name=".site.Confirm" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/navigation/confirmContent.jspf"/>
+		<put name="info" value=""/>
+		<put name="menuItem" value=""/>
+		<put name="pageHeader" value="/WEB-INF/jsp/tiles/confirmPageHeader.jspf"/>
+		<put name="resourceBundle" value="navigation"/>
+		<put name="messageArea" value="false"/>
+	</definition>
+	
+	<definition name=".site.PopupConfirm" extends=".site.PopupLayout">
+		<put name="content" value="/WEB-INF/jsp/content/navigation/confirmContent.jspf"/>
+		<put name="info" value=""/>
+		<put name="menuItem" value=""/>
+		<put name="pageHeader" value="/WEB-INF/jsp/tiles/confirmPageHeader.jspf"/>
+		<put name="resourceBundle" value="navigation"/>
+		<put name="messageArea" value="false"/>
+	</definition>
+	
+	<definition name=".site.UndecoratedConfirm" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/navigation/confirmContent.jspf"/>
+		<put name="info" value=""/>
+		<put name="header" value=""/>
+		<put name="footer" value=""/>
+		<put name="menuItem" value=""/>
+		<put name="pageHeader" value="/WEB-INF/jsp/tiles/confirmPageHeader.jspf"/>
+	</definition>
+	
+	<definition name=".site.ComponentConfirm" extends=".site.ComponentLayout">
+		<put name="content" value="/WEB-INF/jsp/content/navigation/confirmContent.jspf"/>
+	</definition>
+	
+	<definition name=".site.FileDownload" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/navigation/fileDownloadContent.jspf"/>
+		<put name="info" value=""/>
+		<put name="menuItem" value=""/>
+		<put name="pageHeader" value="/WEB-INF/jsp/tiles/fileDownloadPageHeader.jspf"/>
+		<put name="resourcePrefix" value="fileDownload"/>
+		<put name="resourceBundle" value="navigation"/>
+	</definition>
+	
+	<definition name=".site.PopupFileDownload" extends=".site.PopupLayout">
+		<put name="content" value="/WEB-INF/jsp/content/navigation/fileDownloadContent.jspf"/>
+		<put name="info" value=""/>
+		<put name="menuItem" value=""/>
+		<put name="pageHeader" value="/WEB-INF/jsp/tiles/fileDownloadPageHeader.jspf"/>
+		<put name="resourcePrefix" value="fileDownload"/>
+		<put name="resourceBundle" value="navigation"/>
+	</definition>
+	
+	<definition name=".site.Redirect" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/navigation/redirectContent.jspf"/>
+		<put name="info" value=""/>
+		<put name="menuItem" value=""/>
+		<put name="messageArea" value="false"/>
+		<put name="pageHeader" value="/WEB-INF/jsp/tiles/redirectPageHeader.jspf"/>
+		<put name="resourcePrefix" value="redirect"/>
+		<put name="resourceBundle" value="navigation"/>
+	</definition>
+
+	<definition name=".site.RedirectToTempDownload" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/navigation/redirectToTempDownloadContent.jspf"/>
+		<put name="menuItem" value=""/>
+		<put name="resourcePrefix" value="redirectToDownload"/>
+		<put name="resourceBundle" value="navigation"/>
+		<put name="infoImage" value="downloadExpired.gif"/>
+	</definition>
+	
+	<!--  Login -->
+	
+	<definition name=".site.Login" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/security/loginContent.jspf"/>
+		<put name="resourcePrefix" value="login"/>
+		<put name="menuItem" value=""/>
+		<put name="resourceBundle" value="security"/>
+		<put name="infoImage" value="login.gif"/>
+		<put name="pageStyle" value="centeredSpaced"/>
+	</definition>
+	
+	<definition name=".site.SignOnUserName" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/auth/usernameAuth.jspf"/>
+		<put name="resourcePrefix" value="usernameLogin"/>
+		<put name="menuItem" value=""/>
+		<put name="resourceBundle" value="security"/>
+		<put name="infoImage" value="login.gif"/>
+		<put name="pageStyle" value="centeredSpaced"/>
+	</definition>
+	
+	<!-- Change password -->
+	
+	<definition name=".site.ChangePassword" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/security/changePasswordContent.jspf"/>
+		<put name="resourcePrefix" value="changePassword"/>
+		<put name="menuItem" value="changePassword"/>
+		<put name="resourceBundle" value="security"/>
+		<put name="infoImage" value="changePassword.gif"/>
+	</definition>	
+	
+	<!-- User attributes -->
+	
+	<definition name=".site.UserAttributes" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/properties/userAttributesContent.jspf"/>
+		<put name="resourcePrefix" value="userAttributes"/>
+		<put name="menuItem" value="userAttributes"/>
+		<put name="resourceBundle" value="properties"/>
+		<put name="infoImage" value="userAttributes.gif"/>
+	</definition>	
+	
+	<!-- Set password -->
+	
+	<definition name=".site.SetPassword" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/security/setPasswordContent.jspf"/>
+		<put name="resourcePrefix" value="setPassword"/>
+		<put name="menuItem" value="availableAccounts"/>
+		<put name="resourceBundle" value="security"/>
+		<put name="infoImage" value="setPassword.gif"/>
+	</definition>	
+	
+	<!--  Properties -->
+	
+	<definition name=".site.UserProperties" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/properties/profilePropertiesContent.jspf"/>
+		<put name="resourcePrefix" value="userPreferences"/>
+		<put name="menuItem" value=""/>
+		<put name="resourceBundle" value="properties"/>
+		<put name="infoImage" value="userPreferences.gif"/>
+	</definition>
+	
+	<definition name=".site.GlobalProperties" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/properties/profilePropertiesContent.jspf"/>
+		<put name="resourcePrefix" value="globalPreferences"/>
+		<put name="menuItem" value=""/>
+		<put name="resourceBundle" value="properties"/>
+		<put name="infoImage" value="globalPreferences.gif"/>
+		<put name="rssFeed" value="globalProperties"/>
+	</definition>
+	
+	<!--  Access Rights  -->
+	<definition name=".site.AccessRightsList" extends=".site.Layout">	
+		<put name="content" value="/WEB-INF/jsp/content/policyframework/accessRightsList.jspf"/>
+		<put name="resourcePrefix" value="accessRightsList"/>
+		<put name="resourceBundle" value="policyframework"/>
+		<put name="menuItem" value="accessRightsList"/>
+		<put name="infoImage" value="accessRightsList.gif"/>
+		<put name="updateAction" value="/accessRightsList.do"/>
+		<put name="rssFeed" value="accessRightsList"/>
+	</definition>
+	<definition name=".site.EditAccessRights" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/policyframework/accessRights.jspf"/>
+		<put name="resourcePrefix" value="editAccessRights"/>
+		<put name="resourceBundle" value="policyframework"/>
+		<put name="menuItem" value=""/>
+		<put name="infoImage" value="editAccessRights.gif"/>
+		<put name="updateAction" value="/editAccessRights.do"/>
+		<put name="rssFeed" value="editAccessRight"/>
+	</definition>
+	<definition name=".site.ViewAccessRights" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/policyframework/accessRights.jspf"/>
+		<put name="resourcePrefix" value="viewAccessRights"/>
+		<put name="resourceBundle" value="policyframework"/>
+		<put name="menuItem" value=""/>
+		<put name="infoImage" value="viewAccessRights.gif"/>
+		<put name="updateAction" value="/viewAccessRights.do"/>
+		<put name="rssFeed" value="viewAccessRight"/>
+	</definition>
+	
+	<!--  Policies -->
+	<definition name=".site.Policies" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/policyframework/policies.jspf"/>
+		<put name="resourcePrefix" value="policies"/>
+		<put name="resourceBundle" value="policyframework"/>
+		<put name="menuItem" value="policies"/>
+		<put name="infoImage" value="policies.gif"/>
+		<put name="updateAction" value="/policies.do"/>
+		<put name="rssFeed" value="policies"/>
+	</definition>
+	<definition name=".site.EditPolicy" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/policyframework/policy.jspf"/>
+		<put name="resourcePrefix" value="editPolicy"/>
+		<put name="resourceBundle" value="policyframework"/>
+		<put name="menuItem" value=""/>
+		<put name="infoImage" value="editPolicy.gif"/>
+		<put name="updateAction" value="/editPolicy.do"/>
+		<put name="rssFeed" value="editPolicy"/>
+	</definition>
+	<definition name=".site.ConfigurePolicies" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/policyframework/policies.jspf"/>
+		<put name="resourcePrefix" value="policies"/>
+		<put name="resourceBundle" value="policyframework"/>
+		<put name="menuItem" value=""/>
+		<put name="infoImage" value="policies.gif"/>
+		<put name="updateAction" value="/configurePolicies.do"/>
+		<put name="rssFeed" value="configurePolicies"/>
+	</definition>
+	<definition name=".site.ConfigureEditPolicy" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/policyframework/policy.jspf"/>
+		<put name="resourcePrefix" value="editPolicy"/>
+		<put name="resourceBundle" value="policyframework"/>
+		<put name="menuItem" value=""/>
+		<put name="infoImage" value="editPolicy.gif"/>
+		<put name="updateAction" value="/configureEditPolicy.do"/>
+		<put name="rssFeed" value="configureEditPolicy"/>
+	</definition>
+	
+	<!--  Property profiles -->
+	
+	<definition name=".site.CreateGlobalPropertyProfile" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/properties/propertyProfileContent.jspf"/>
+		<put name="resourcePrefix" value="createGlobalPropertyProfile"/>
+		<put name="resourceBundle" value="properties"/>
+		<put name="menuItem" value="properties"/>
+		<put name="infoImage" value="newProfile.gif"/>
+		<put name="rssFeed" value="createGlobalProfile"/>
+	</definition>
+	
+	<definition name=".site.EditGlobalPropertyProfile" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/properties/propertyProfileContent.jspf"/>
+		<put name="resourcePrefix" value="editGlobalPropertyProfile"/>
+		<put name="resourceBundle" value="properties"/>
+		<put name="menuItem" value="properties"/>
+		<put name="infoImage" value="editProfile.gif"/>
+		<put name="rssFeed" value="editGlobalProfile"/>
+	</definition>
+	
+	<definition name=".site.CreatePropertyProfile" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/properties/propertyProfileContent.jspf"/>
+		<put name="resourcePrefix" value="createPropertyProfile"/>
+		<put name="resourceBundle" value="properties"/>
+		<put name="menuItem" value="userProperties"/>
+		<put name="infoImage" value="newProfile.gif"/>
+	</definition>
+	
+	<definition name=".site.EditPropertyProfile" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/properties/propertyProfileContent.jspf"/>
+		<put name="resourcePrefix" value="editPropertyProfile"/>
+		<put name="resourceBundle" value="properties"/>
+		<put name="menuItem" value="userProperties"/>
+		<put name="infoImage" value="editProfile.gif"/>
+	</definition>
+	
+	<!--  Extensions -->
+	
+	<definition name=".site.ExtensionStore" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/extensions/configureExtensions.jspf"/>
+		<put name="resourcePrefix" value="extensionStore"/>
+		<put name="resourceBundle" value="extensions"/>
+		<put name="menuItem" value="extensionStore"/>
+		<put name="infoImage" value="extensions.gif"/>
+		<put name="rssFeed" value="extensionStore"/>
+	</definition>
+
+	<definition name=".site.AddExtensionStore" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/vfs/upload.jspf"/>
+		<put name="resourcePrefix" value="extensionStore"/>
+		<put name="resourceBundle" value="extensions"/>
+		<put name="menuItem" value="extensionStore"/>
+		<put name="infoImage" value="newExtension.gif"/>
+		<put name="rssFeed" value="uploadExtension"/>
+	</definition>
+	
+	<!--  Available roles -->
+	
+	<definition name=".site.AvailableRoles" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/security/availableRolesContent.jspf"/>
+		<put name="resourcePrefix" value="availableRoles"/>
+		<put name="resourceBundle" value="security"/>
+		<put name="menuItem" value="availableRoles"/>
+		<put name="infoImage" value="roles.gif"/>	
+		<put name="rssFeed" value="groups"/>
+	</definition>
+	
+	<definition name=".site.CreateRole" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/security/createRoleContent.jspf"/>
+		<put name="resourcePrefix" value="createRole"/>
+		<put name="resourceBundle" value="security"/>
+		<put name="menuItem" value=""/>
+		<put name="infoImage" value="createRole.gif"/>	
+		<put name="rssFeed" value="createGroup"/>	
+			
+	</definition>
+	
+	<definition name=".site.EditRole" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/security/editRoleContent.jspf"/>
+		<put name="resourcePrefix" value="editRole"/>
+		<put name="resourceBundle" value="security"/>
+		<put name="menuItem" value=""/>
+		<put name="infoImage" value="editRole.gif"/>		
+		<put name="rssFeed" value="editGroup"/>	
+	</definition>
+	
+	<definition name=".site.RoleInformation" extends=".site.ComponentLayout">
+		<put name="content" value="/WEB-INF/jsp/content/security/roleInformation.jspf"/>
+	</definition>
+	
+		<!--  IP Address Restrictions -->
+	
+	<definition name=".site.AvailableIpRestrictions" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/security/availableIpRestrictionsContent.jspf"/>
+		<put name="resourcePrefix" value="ipRestrictions"/>
+		<put name="resourceBundle" value="security"/>
+		<put name="menuItem" value="ipRestrictions"/>
+		<put name="infoImage" value="ipRestrictions.gif"/>
+		<put name="rssFeed" value="ipRestrictions"/>	
+	</definition>
+	
+	<definition name=".site.CreateIpRestriction" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/security/ipRestrictionContent.jspf"/>
+		<put name="resourcePrefix" value="createIpRestriction"/>
+		<put name="resourceBundle" value="security"/>
+		<put name="menuItem" value=""/>
+		<put name="infoImage" value="newIpRestriction.gif"/>
+		<put name="rssFeed" value="newIpRestriction"/>			
+	</definition>
+	
+	<definition name=".site.EditIpRestriction" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/security/ipRestrictionContent.jspf"/>
+		<put name="resourcePrefix" value="editIpRestriction"/>
+		<put name="resourceBundle" value="security"/>
+		<put name="menuItem" value=""/>
+		<put name="infoImage" value="editIpRestriction.gif"/>	
+		<put name="rssFeed" value="editIpRestriction"/>	
+	</definition>
+	
+	<definition name=".site.IpRestrictionInformation" extends=".site.ComponentLayout">
+		<put name="content" value="/WEB-INF/jsp/content/security/ipRestrictionInformation.jspf"/>
+	</definition>
+	
+	<!--  Available accounts -->
+	
+	<definition name=".site.AvailableAccounts" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/security/availableAccountsContent.jspf"/>
+		<put name="resourcePrefix" value="availableAccounts"/>
+		<put name="resourceBundle" value="security"/>
+		<put name="menuItem" value="authorizedPrincipals"/>
+		<put name="infoImage" value="accounts.gif"/>
+		<put name="rssFeed" value="accounts"/>		
+	</definition>
+	
+	<definition name=".site.EditAccount" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/security/accountContent.jspf"/>
+		<put name="resourcePrefix" value="editAccount"/>
+		<put name="resourceBundle" value="security"/>
+		<put name="menuItem" value="authorizedPrincipals"/>
+		<put name="infoImage" value="editAccount.gif"/>	
+		<put name="rssFeed" value="editAccount"/>		
+	</definition>
+	
+	<definition name=".site.AccountInformation" extends=".site.ComponentLayout">
+		<put name="content" value="/WEB-INF/jsp/content/security/accountInformation.jspf"/>
+	</definition>
+	
+	<definition name=".site.CreateAccount" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/security/accountContent.jspf"/>
+		<put name="resourcePrefix" value="createAccount"/>
+		<put name="resourceBundle" value="security"/>
+		<put name="menuItem" value="authorizedPrincipals"/>
+		<put name="infoImage" value="createAccount.gif"/>		
+		<put name="rssFeed" value="createAccount"/>	
+	</definition>
+	
+	<!--  Attribute Definitions -->
+	
+	<definition name=".site.AttributeDefinitions" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/properties/attributeDefinitionsContent.jspf"/>
+		<put name="resourcePrefix" value="attributeDefinitions"/>
+		<put name="resourceBundle" value="properties"/>
+		<put name="menuItem" value="attributeDefinitions"/>
+		<put name="infoImage" value="attributeDefinitions.gif"/>
+		<put name="rssFeed" value="attributes"/>	
+	</definition>
+	
+	<definition name=".site.EditAttributeDefinition" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/properties/editAttributeDefinitionContent.jspf"/>
+		<put name="resourcePrefix" value="editAttributeDefinition"/>
+		<put name="resourceBundle" value="properties"/>
+		<put name="menuItem" value=""/>
+		<put name="infoImage" value="editAttributeDefinition.gif"/>	
+		<put name="rssFeed" value="editAttribute"/>	
+	</definition>
+	
+	<definition name=".site.CreateAttributeDefinition" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/properties/editAttributeDefinitionContent.jspf"/>
+		<put name="resourcePrefix" value="createAttributeDefinition"/>
+		<put name="resourceBundle" value="properties"/>
+		<put name="menuItem" value=""/>
+		<put name="infoImage" value="newAttributeDefinition.gif"/>	
+		<put name="rssFeed" value="createAttribute"/>	
+	</definition>
+
+	<definition name=".site.AttributeDefinitionWizardPage" extends=".site.Layout">
+		<put name="resourcePrefix" value="attributeDefinitionWizard" />
+		<put name="resourceBundle" value="properties" />
+		<put name="content" value="/WEB-INF/jsp/tiles/wizardPage.jspf" />
+		<put name="infoImage" value="newAttributeDefinition.gif" />
+		<put name="rssFeed" value="attributeWizard"/>	
+	</definition>
+	
+	<definition name=".site.AttributeDefinitionInformation" extends=".site.ComponentLayout">
+		<put name="content" value="/WEB-INF/jsp/content/properties/attributeDefinitionInformation.jspf"/>
+	</definition>
+	
+	<!--  Authentication Schemes -->
+	
+	<definition name=".site.AuthenticationSchemes" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/security/authenticationSchemesContent.jspf"/>
+		<put name="resourcePrefix" value="authenticationSchemes"/>
+		<put name="resourceBundle" value="security"/>
+		<put name="menuItem" value="authenticationSchemes"/>
+		<put name="infoImage" value="authenticationSchemes.gif"/>
+		<put name="rssFeed" value="authenticationSchemes"/>				
+	</definition>
+	
+	<definition name=".site.SelectAuthenticationScheme" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/security/selectAuthSchemeContent.jspf"/>
+		<put name="resourcePrefix" value="selectAuthenticationScheme"/>
+		<put name="menuItem" value=""/>
+		<put name="resourceBundle" value="security"/>
+		<put name="infoImage" value="selectAuthenticationScheme.gif"/>
+		<put name="pageStyle" value="centeredSpaced"/>
+	</definition>
+	
+	<definition name=".site.EditAuthenticationScheme" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/security/editAuthenticationSchemeContent.jspf"/>
+		<put name="resourcePrefix" value="editAuthenticationScheme"/>
+		<put name="resourceBundle" value="security"/>
+		<put name="menuItem" value=""/>
+		<put name="infoImage" value="editAuthenticationScheme.gif"/>	
+		<put name="rssFeed" value="editAuthenticationScheme"/>	
+	</definition>
+	
+	<definition name=".site.CreateAuthenticationScheme" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/security/editAuthenticationSchemeContent.jspf"/>
+		<put name="resourcePrefix" value="createAuthenticationScheme"/>
+		<put name="resourceBundle" value="security"/>
+		<put name="menuItem" value=""/>
+		<put name="infoImage" value="createAuthenticationScheme.gif"/>	
+		<put name="rssFeed" value="createAuthenticationScheme"/>	
+	</definition>
+	
+	<!--  Key Store -->
+
+	<definition name=".site.KeyStore" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/keystore/keyStoreContent.jspf"/>
+		<put name="resourcePrefix" value="keyStore"/>
+		<put name="resourceBundle" value="keystore"/>
+		<put name="menuItem" value="keyStore"/>
+		<put name="infoImage" value="keystore.gif"/>	
+		<put name="rssFeed" value="keystore"/>	
+	</definition>
+	
+	<definition name=".site.KeyStoreInformation" extends=".site.ComponentLayout">
+		<put name="content" value="/WEB-INF/jsp/content/keystore/keyStoreInformation.jspf"/>
+	</definition>
+	
+	<!--  General configuration -->	
+	
+	<definition name=".site.SystemConfiguration" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/properties/propertiesContent.jspf"/>
+		<put name="resourcePrefix" value="systemConfiguration"/>
+		<put name="resourceBundle" value="setup"/>
+		<put name="menuItem" value="systemConfiguration"/>
+		<put name="infoImage" value="systemConfiguration.gif"/>	
+		<put name="rssFeed" value="systemConfiguration"/>
+	</definition>
+	
+	<!--  Shutdown -->
+	
+	<definition name=".site.Shutdown" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/setup/shutdownContent.jspf"/>
+		<put name="resourcePrefix" value="shutdown"/>
+		<put name="resourceBundle" value="setup"/>
+		<put name="menuItem" value="shutdown"/>
+		<put name="infoImage" value="shutdown.gif"/>	
+		<put name="rssFeed" value="shutdown"/>
+	</definition>
+	
+	<definition name=".site.ReStarting" extends=".site.Layout">
+		<put name="content" value=""/>
+		<put name="resourcePrefix" value="restarting"/>
+		<put name="resourceBundle" value="setup"/>
+		<put name="menuItem" value="system"/>
+		<put name="infoImage" value="restarting.gif"/>	
+	</definition>
+	
+	<!--  Password Entry -->
+	<definition name=".site.PasswordEntry">
+		<put name="textFieldId" value="password"/>
+		<put name="textFieldSize" value="10"/>
+		<put name="textFieldNumeric" value="false"/>
+	</definition>
+	
+	<!--  Personal Questions -->
+	<definition name=".site.PersonalAnswers" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/security/setPersonalAnswersContent.jspf"/>
+		<put name="resourcePrefix" value="setPersonalAnswers"/>
+		<put name="resourceBundle" value="security"/>
+		<put name="menuItem" value="setPersonalAnswers"/>
+		<put name="infoImage" value="personalAnswers.gif"/>	
+	</definition>
+	
+	<!--  Status -->
+	
+	<definition name=".site.Status" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/setup/statusContent.jspf"/>
+		<put name="resourcePrefix" value="status"/>
+		<put name="resourceBundle" value="setup"/>
+		<put name="menuItem" value="status"/>
+		<put name="infoImage" value="status.gif"/>	
+		<put name="rssFeed" value="status"/>
+	</definition>
+	
+	<definition name=".site.SessionInformation" extends=".site.ComponentLayout">
+		<put name="content" value="/WEB-INF/jsp/content/setup/sessionInformation.jspf"/>
+	</definition>
+	
+	<!--  Message Queue -->
+	
+	<definition name=".site.MessageQueue" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/setup/messageQueueContent.jspf"/>
+		<put name="resourcePrefix" value="messageQueue"/>
+		<put name="resourceBundle" value="setup"/>
+		<put name="menuItem" value="messageQueue"/>
+		<put name="infoImage" value="messageQueue.gif"/>
+		<put name="rssFeed" value="messageQueue"/>	
+	</definition>
+	
+	<definition name=".site.SendMessage" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/setup/sendMessage.jspf"/>
+		<put name="resourcePrefix" value="sendMessage"/>
+		<put name="resourceBundle" value="setup"/>
+		<put name="menuItem" value="sendMessage"/>
+		<put name="infoImage" value="sendMessage.gif"/>	
+	</definition>
+	
+	<definition name=".site.MessageQueueInformation" extends=".site.ComponentLayout">
+		<put name="content" value="/WEB-INF/jsp/content/setup/messageQueueInformation.jspf"/>
+	</definition>
+	
+	<!-- Upload -->
+	<definition name=".site.Upload" extends=".site.Layout">
+		<put name="resourcePrefix" value="upload"/>
+		<put name="resourceBundle" value="vfs"/>
+		<put name="content" value="/WEB-INF/jsp/content/vfs/upload.jspf"/>
+		<put name="infoImage" value="upload.gif"/>	
+	</definition>
+	
+	<definition name=".site.PopupUpload" extends=".site.PopupLayout">
+		<put name="resourcePrefix" value="upload"/>
+		<put name="resourceBundle" value="vfs"/>
+		<put name="content" value="/WEB-INF/jsp/content/vfs/upload.jspf"/>
+		<put name="infoImage" value="upload.gif"/>	
+	</definition>
+	
+	<!-- Private key passphrase -->
+	
+	<definition name=".site.UpdatePrivateKeyPassphrase" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/security/updatePrivateKeyPassphraseContent.jspf"/>
+		<put name="resourcePrefix" value="updatePrivateKeyPassphrase"/>
+		<put name="menuItem" value=""/>
+		<put name="resourceBundle" value="security"/>
+		<put name="infoImage" value="updatePrivateKeyPassphrase.gif"/>
+	</definition>	
+	
+	<definition name=".site.PromptForPrivateKeyPassphrase" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/security/promptForPrivateKeyPassphraseContent.jspf"/>
+		<put name="resourcePrefix" value="promptForPrivateKeyPassphrase"/>
+		<put name="menuItem" value=""/>
+		<put name="resourceBundle" value="security"/>
+		<put name="infoImage" value="promptForPrivateKeyPassphrase.gif"/>
+	</definition>		
+	
+	<definition name=".site.PromptForPrivateKeyPassphraseAuto" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/security/promptForPrivateKeyPassphraseContent.jspf"/>
+		<put name="resourcePrefix" value="promptForPrivateKeyPassphraseAuto"/>
+		<put name="menuItem" value=""/>
+		<put name="resourceBundle" value="security"/>
+		<put name="infoImage" value="promptForPrivateKeyPassphrase.gif"/>
+	</definition>	
+
+	<!-- Prompt for session password -->
+	<definition name=".site.PromptForSessionPassword" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/security/promptForSessionPasswordContent.jspf"/>
+		<put name="resourcePrefix" value="promptForSessionPassword"/>
+		<put name="resourceBundle" value="security"/>
+		<put name="infoImage" value="login.gif"/>
+	</definition>		
+
+	<definition name=".site.PromptForNewKeyPassword" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/security/promptForNewKeyPasswordContent.jspf"/>
+		<put name="resourcePrefix" value="promptForNewKeyPassword"/>
+		<put name="resourceBundle" value="security"/>
+		<put name="menuItem" value="keyStore"/>
+		<put name="infoImage" value="promptForPrivateKeyPassphrase.gif"/>
+	</definition>		
+	
+</tiles-definitions>

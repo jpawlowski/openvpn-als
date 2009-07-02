@@ -1,0 +1,46 @@
+<jsp:directive.page import="com.adito.core.DefaultPanel"/>
+<jsp:directive.page import="java.util.Iterator"/>
+<jsp:directive.page import="com.adito.core.PanelManager"/>
+<jsp:directive.page import="com.adito.core.Panel"/>
+<jsp:directive.page import="com.adito.extensions.forms.ConfigureExtensionsForm"/>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/tabs" prefix="tabs" %>
+
+<div id="page_configureExtensions">
+	<logic:empty name="configureExtensionsForm" property="descriptor">
+		<div id="notConnected" class="dialog">
+			<table>
+				<tr>
+					<td align="left">
+						<bean:message key="extensionStore.notConnected.text" bundle="extensions"/>
+					</td>
+					<td>    
+						<input type="button"
+								onclick="self.location = '/showExtensionStore.do?action=list&connect';"
+								value="<bean:message key='extensionStore.notConnected.connect' bundle='extensions'/>" 
+						/>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</logic:empty>
+		<tiles:useAttribute name="actionLink" scope="request" classname="java.lang.String"/> 	
+		<tabs:tabSet name="configureExtensionsForm" bundle="extensions" resourcePrefix="extensions.tab">
+			<tabs:tabHeadings/>
+			<% 
+			for(Iterator i = PanelManager.getInstance().getPanels(ConfigureExtensionsForm.EXTENSIONS_TAB_ID, request, response, DefaultPanel.MAIN_LAYOUT).iterator(); i.hasNext(); ) { 
+				Panel p = (Panel)i.next(); 
+			%>
+			<tabs:tab tabName="<%= p.getId() %>">
+				<tiles:insert flush="false" page="<%= p.getTileIncludePath(pageContext) %>"><tiles:put name="actionLink" beanName="actionLink"/>
+				</tiles:insert>
+			</tabs:tab>
+			<%	
+			} 
+			%>
+		</tabs:tabSet>	
+</div>

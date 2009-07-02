@@ -1,0 +1,40 @@
+/*
+
+   WARNING - Please Do not change these styles lightly. They affect a *lot*.
+   It may be more approriate for you to overide your individual page styles
+   in pageStyles.css and wizardStyles.ss
+
+*/
+
+#popup_content {
+    font-family: Tahoma, Arial, Helvetica, sans-serif; 
+    font-size: 10pt;
+	margin: 0px 8px 0px 8px;
+	padding: 0px 0px 0px 0px;
+	text-align:left;
+	display: block;
+	position: relative;
+	top: 0px;
+}
+
+/* Individual popup pages */
+
+div#popup_policyPopup .dialog {
+	margin-top: 8px;
+	margin-bottom: 8px;
+	width: 100%;
+}
+
+div#popup_policyPopup .dialog .dialog_content {
+	padding: 4px;
+}
+
+div#popup_policyPopup .dialog td.description  {
+	width: 80%;
+	text-align: left;
+}
+
+div#popup_policyPopup .dialog td.actions {
+	text-align: center;
+	width: 20%;
+}

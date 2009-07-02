@@ -1,0 +1,45 @@
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+<%@ taglib uri="http://ajaxtags.org/tags/ajax" prefix="ajax" %> 
+		
+<input:multiEntryListBox 
+	indicator="accountIndicator"
+	tabindex="1" 
+	entryTitleKey="policyWizard.policyPrincipalSelection.accountEntry.title" 
+	targetTitleKey="policyWizard.policyPrincipalSelection.accounts.title" 
+	addKey="policyWizard.policyPrincipalSelection.addPrincipal" 
+	removeKey="policyWizard.policyPrincipalSelection.removePrincipal" 
+	bundle="policyframework" 
+	styleClass="multiEntry" 
+	entryStyleClass="form-autocomplete"
+	entryName="account"
+	name="policyPrincipalSelectionForm" 
+	property="selectedAccounts"/>							
+<input:multiEntryListBox 
+	indicator="roleIndicator"
+	tabindex="2" 
+	entryTitleKey="policyWizard.policyPrincipalSelection.roleEntry.title" 
+	targetTitleKey="policyWizard.policyPrincipalSelection.roles.title" 
+	addKey="policyWizard.policyPrincipalSelection.addPrincipal" 
+	removeKey="policyWizard.policyPrincipalSelection.removePrincipal" 
+	bundle="policyframework" 
+	entryStyleClass="form-autocomplete"
+	styleClass="multiEntry" 
+	entryName="role"
+	name="policyPrincipalSelectionForm" 
+	property="selectedRoles"/>	
+<ajax:autocomplete source="entryValue_selectedAccounts"
+                   target="entryValue_selectedAccounts"
+                   baseUrl="${contextPath}/ajaxListAccounts.do"
+                   className="autocomplete"
+				   parser="new ResponseXmlParser()"
+                   parameters="account={entryValue_selectedAccounts}"
+                   indicator="accountIndicator"
+                   minimumCharacters="1"/>                   
+<ajax:autocomplete source="entryValue_selectedRoles"
+                   target="entryValue_selectedRoles"
+                   baseUrl="${contextPath}/ajaxListRoles.do"
+                   className="autocomplete"
+				   parser="new ResponseXmlParser()"
+                   parameters="account={entryValue_selectedRoles}"
+                   indicator="roleIndicator"
+                   minimumCharacters="1"/>

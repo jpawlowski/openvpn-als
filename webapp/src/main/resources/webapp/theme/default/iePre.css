@@ -1,0 +1,12 @@
+/* IE Specific styles that may be overidden later */
+
+/* Web Folder launch button */
+
+a.action_openWebFolder, a.action_openWebFolder:visited, a.action_openWebFolder:link, a.action_openWebFolder:hover {
+	text-decoration: none;
+	color: black;
+	margin: 2px;
+	font-weight: normal;
+	behavior: url(#default#AnchorClick);
+  	border: 0;    
+}

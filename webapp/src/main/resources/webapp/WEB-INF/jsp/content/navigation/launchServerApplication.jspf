@@ -1,0 +1,85 @@
+<%@ page import="com.adito.security.Constants" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/security" prefix="security" %>
+
+<% System.err.println("*** Showing launch Server Application **"); %>
+<div id="page_launchServerApplication">
+	<div class="dialog_content">
+								<!--"CONVERTED_APPLET"-->
+
+<IE:clientCaps ID="oClientCaps" />
+<script language="JavaScript" type="text/javascript"><!--
+    var _info = navigator.userAgent;
+    var _ns = false;
+    var _anyjvm = navigator.javaEnabled();
+    var _ns6 = false;
+    var _msjvm = true;
+    var _ie = (_info.indexOf("MSIE") > 0 && _info.indexOf("Win") > 0 && _info.indexOf("Windows 3.1") < 0);
+    if(_ie && _anyjvm) {
+	    try {
+		    if(java.lang.System.getProperty("java.vendor.url").indexOf("http://www.microsoft.com/") == -1) {
+		    	_msjvm = false;
+		    }
+		}
+		catch(e) { 
+		}
+    }
+    else {
+       _msjvm = false;
+    }
+    
+//--></script>
+    <comment>
+        <script language="JavaScript" type="text/javascript"><!--
+        var _ns = (navigator.appName.indexOf("Netscape") >= 0 && ((_info.indexOf("Win") > 0 && _info.indexOf("Win16") < 0 && java.lang.System.getProperty("os.version").indexOf("3.5") < 0) || (_info.indexOf("Sun") > 0) || (_info.indexOf("Linux") > 0) || (_info.indexOf("AIX") > 0) || (_info.indexOf("OS/2") > 0) || (_info.indexOf("IRIX") > 0)));
+        var _ns6 = ((_ns == true) && (_info.indexOf("Mozilla/5") >= 0));
+//--></script>
+    </comment>
+
+<script language="JavaScript" type="text/javascript"><!--
+    if(!_msjvm) {
+	    if (_ie == true) document.writeln('<object classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93" WIDTH="160" HEIGHT="30" NAME="Application" ALIGN="middle" VSPACE="0" HSPACE="0" codebase="http://java.sun.com/update/1.5.0/jinstall-1_5-windows-i586.cab#Version=5,0,0,9"><noembed><xmp>');
+	    else if (_ns == true && _ns6 == false) document.writeln('<embed ' +
+		    'type="application/x-java-applet;version=1.5" \
+	            CODE="com.adito.extensions.server.Application.class" \
+	            NAME="VPNLauncher" \
+	            WIDTH="250" \
+	            HEIGHT="64" \
+	            ALIGN="middle" \
+	            VSPACE="0" \
+	            HSPACE="0" \
+	            autoStart="true" \
+	            returnTo="<%= request.getAttribute(Constants.REQ_ATTR_LAUNCH_AGENT_REFERER) %> " \
+	            debug="<core:getProperty propertyName="client.debug"/>" \
+	            monitor="true" ' +
+	            'userAgent="' + _info + '" ' +
+		    'scriptable=false ' +
+		    'pluginspage="http://java.sun.com/products/plugin/index.html#download"><noembed><xmp>');
+    }
+//--></script>
+	<applet  CODE="com.adito.extensions.server.Application.class" WIDTH="250" HEIGHT="64" NAME="VPNLauncher" ALIGN="middle" VSPACE="0" HSPACE="0">
+	    <param name="CODE" value="com.adito.extensions.server.Application.class"/>
+	    <param name="NAME" value="ServerApplicationLauncher"/>
+	    <param name="type" value="application/x-java-applet;version=1.5"/>
+	    <param name="scriptable" value="false"/>
+	    <param name="autoStart" value="true"/>
+	    <param name="returnTo" value="<%= request.getAttribute(Constants.REQ_ATTR_LAUNCH_AGENT_REFERER) %> "/>
+	    <param name="debug" value="<core:getProperty propertyName="client.debug"/>"/>
+	    <param name="monitor" value="true"/>
+	    <param name="userAgent" value="<%= request.getHeader("User-Agent") %>"/>
+	    <param name="appName" value="CalculatorServer"/>
+	    <param name="extensionId" value="12"/>
+    </applet>
+</noembed>
+</embed>
+</object>    
+</div>
+
+<script language="JavaScript" type="text/javascript"><!--
+    if((_ie && !document.VPNLauncher) || (!_ie && !_anyjvm)) {
+	   document.writeln('<br/><table width="70%" border="0" cellpadding="0" cellspacing="0" align="center"><tr><td class="plainText" colspan="7"><bean:message key="launchAgent.noJVM" bundle="navigation"/></td></tr></table>');
+	}
+//-->
+</script>
+</div>

@@ -1,0 +1,94 @@
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="/server/taglibs/security" prefix="security" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/table" prefix="table" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+<%@ taglib uri="http://ajaxtags.org/tags/ajax" prefix="ajax" %> 
+
+<core:form focus="rolename" action="/createRole.do">
+	<div id="page_role">
+		<div class="dialog">
+			<div class="dialog_border">
+				<html:hidden property="actionTarget" />
+				<html:hidden property="referer" />
+				<html:hidden property="_charset_"/>		
+				<table class="dialog_form_table" id="form">
+					<tbody>
+						<tr class="formText">
+				  			<td class="label">
+				  				<div class="required">
+					  				<bean:message key="createRole.rolename" bundle="security"/>:&nbsp;
+					  			</div>
+				  			</td>
+				  			<td class="value">
+				  				<div>
+				  					<logic:equal name="roleForm" property="editing" value="true">
+					  					<html:text tabindex="1" disabled="true" property="rolename" size="20"/>		
+				  					</logic:equal>
+				  					<logic:notEqual name="roleForm" property="editing" value="true">
+					  					<html:text tabindex="2" property="rolename" size="20"/>		
+				  					</logic:notEqual>			  				
+								</div>
+				  			</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="accounts">
+					<security:databaseWriteEnabledTest databaseWriteEnabled="true">											
+						<input:multiEntryListBox 
+							tabindex="2" 
+							entryTitleKey="createRole.accountEntry.title" 
+		                			indicator="accountIndicator"
+							targetTitleKey="createRole.accounts.title" 
+							addKey="createRole.addAccount" 
+							removeKey="createRole.removeAccount" 
+							bundle="security" 
+							rows="10"
+							styleClass="multiEntry" 
+							entryName="account"
+							entryStyleClass="form-autocomplete"
+							name="roleForm" 
+							property="users"/> 
+					</security:databaseWriteEnabledTest>	
+					<security:databaseWriteEnabledTest databaseWriteEnabled="false">
+						<input:multiEntryListBox 
+							disabled="true"
+							tabindex="2" 
+							entryTitleKey="createRole.accountEntry.title" 
+		                			indicator="roleThrobber"
+							targetTitleKey="createRole.accounts.title" 
+							addKey="createRole.addAccount" 
+							removeKey="createRole.removeAccount" 
+							bundle="security" 
+							rows="10"
+							styleClass="multiEntry" 
+							entryName="account"
+							entryStyleClass="form-autocomplete"
+							name="roleForm" 
+							property="users"/>
+					</security:databaseWriteEnabledTest>
+				</div>
+				<div class="button_bar">
+					<div class="formButton">
+						<html:submit styleClass="save" onclick="setActionTarget('commit'); return true"><bean:message key="createRole.save" bundle="security"/></html:submit>
+					</div>
+					<div class="formButton">
+						<html:submit styleClass="cancel" onclick="setActionTarget('cancel'); return true"><bean:message key="createRole.cancel" bundle="security"/></html:submit>
+					</div>
+				</div>
+				<br/>
+			</div>
+		</div>
+	</div>
+</core:form> 
+<ajax:autocomplete source="entryValue_users"
+                   target="entryValue_users"
+                   baseUrl="${contextPath}/ajaxListAccounts.do"
+                   parser="new ResponseXmlParser()"
+                   className="autocomplete"
+				   indicator="accountIndicator"
+                   parameters="account={entryValue_users}"
+                   minimumCharacters="1"/>        

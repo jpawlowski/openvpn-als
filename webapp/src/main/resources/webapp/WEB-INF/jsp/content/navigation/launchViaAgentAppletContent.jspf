@@ -1,0 +1,87 @@
+<%@ page import="com.adito.security.Constants" %>
+<jsp:directive.page import="org.apache.struts.Globals"/>
+<jsp:directive.page import="java.util.Locale"/>
+<jsp:directive.page import="com.adito.policyframework.LaunchSession"/>
+<jsp:directive.page import="com.adito.extensions.ExtensionDescriptor"/>
+<jsp:directive.page import="com.adito.core.CoreUtil"/>
+<jsp:directive.page import="com.adito.boot.Util"/>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/security" prefix="security" %>
+
+<% LaunchSession launchSession = (LaunchSession)request.getAttribute(Constants.REQ_ATTR_LAUNCH_SESSION);
+   if(launchSession == null) {
+   	   throw new IllegalStateException("No launch session.");
+   }
+   String ticket = (String)launchSession.getAttribute(Constants.LAUNCH_ATTR_AGENT_TICKET);
+   ExtensionDescriptor ed = (ExtensionDescriptor)launchSession.getAttribute(Constants.LAUNCH_ATTR_AGENT_EXTENSION);
+   String returnTo = (String)launchSession.getAttribute(Constants.LAUNCH_ATTR_AGENT_RETURN_TO); %>
+<div class="page_launchViaAgentApplet" id="<%= "page_launchViaAgentApplet_" + ed.getId() %>">
+	<security:agentAvailability requiresClient="false">
+		<div class="dialog_content">
+			<IE:clientCaps ID="oClientCaps" />
+			<script language="JavaScript" type="text/javascript">
+			if(!navigator.javaEnabled()) {
+				document.writeln('<div class="noJava"><%= Util.escapeForJavascriptString(CoreUtil.getMessageResources(request.getSession(), "navigation").getMessage(((Locale)request.getSession().getAttribute(Globals.LOCALE_KEY)), "launchAgent.noJVM"))  %></div></applet>');
+			}
+			else if(ns == true && ns6 == false) {
+				document.writeln('<embed ' +
+				    'type="application/x-java-applet;version=1.5" \
+			        CODE="com.adito.agent.client.launcher.AgentLauncher" \
+			        ARCHIVE="/fs/apps/adito-agent/launcher.jar,/fs/apps/adito-agent/launcher-en.jar" \
+			        NAME="AgentLauncher" \
+			        WIDTH="250" \
+			        HEIGHT="64" \
+			        ALIGN="middle" \
+			        VSPACE="0" \
+			        HSPACE="0" \
+			        cabbase="/fs/apps/adito-agent/launcher.cab" \
+			        ticket="<%= ticket %>" \
+			        autoStart="true" \
+			        returnTo="<%= returnTo %> " \
+			        debug="<core:getProperty userProfile="true" propertyName="client.debug"/>" \
+			        cleanOnExit="<core:getProperty userProfile="true" propertyName="client.cleanOnExit"/>" \
+			        dir="<core:getProperty userProfile="true" propertyName="client.cacheDirectory"/>" \
+			        timeout="<core:getProperty userProfile="true" propertyName="client.registration.synchronization.timeout"/>" \
+			        proxyURL="<core:clientProxyURL/>" \
+					extensionId="<%= ed.getId() %>" \
+					userAgent="<%= request.getHeader("User-Agent") %>" \
+					launcherImage="<%= ed.getApplicationBundle().getId() +"/" + ed.getLargeIcon() %>" \
+			        locale="<%= ((Locale)request.getSession().getAttribute(Globals.LOCALE_KEY)).toString() %>" \
+			        monitor="true" \
+				    scriptable="false" \
+				    pluginspage="http://java.sun.com/products/plugin/index.html#download"><noembed><xmp>');
+		   	}
+		    else {
+		    	var t = '<applet CODE="com.adito.agent.client.launcher.AgentLauncher" ';
+		    	t += ' CODEBASE="/fs/apps/adito-agent" ';
+		    	t += ' ARCHIVE="launcher.jar,launcher-en.jar"';
+		    	t += ' WIDTH="250" HEIGHT="64" NAME="AgentLauncher" ALIGN="middle" VSPACE="0" HSPACE="0">';
+		    	t += '<param name="CODE" value="com.adito.agent.client.launcher.AgentLauncher"/>';
+			    t += '<param name="ARCHIVE" value="/fs/apps/adito-agent/launcher.jar,/fs/apps/adito-agent/launcher-en.jar"/>';
+			    t += '<param name="NAME" value="AgentLauncher"/>';
+			    t += '<param name="type" value="application/x-java-applet;version=1.5"/>';
+			    t += '<param name="scriptable" value="false"/>';
+			    t += '<param name="cabbase" value="/fs/apps/adito-agent/launcher.cab"/>';
+			    t += '<param name="ticket" value="<%= ticket %>"/>';
+			    t += '<param name="autoStart" value="true"/>';
+			    t += '<param name="returnTo" value="<%= returnTo %> "/>';
+			    t += '<param name="debug" value="<core:getProperty userProfile="true" propertyName="client.debug"/>"/>';
+			    t += '<param name="cleanOnExit" value="<core:getProperty userProfile="true" propertyName="client.cleanOnExit"/>"/>';
+			    t += '<param name="dir" value="<core:getProperty userProfile="true" propertyName="client.cacheDirectory"/>"/>';
+			    t += '<param name="timeout" value="<core:getProperty userProfile="true" propertyName="client.registration.synchronization.timeout"/>"/>';
+			    t += '<param name="proxyURL" value="<core:clientProxyURL/>"/>';
+			    t += '<param name="monitor" value="true"/>';
+			    t += '<param name="extensionId" value="<%= ed.getId() %>"/>';
+			    t += '<param name="userAgent" value="<%= request.getHeader("User-Agent") %>"/>';
+			    t += '<param name="launcherImage" value="<%= ed.getApplicationBundle().getId() +"/" + ed.getLargeIcon()  %>"/>';
+			    t += '<param name="locale" value="<%= ((Locale)request.getSession().getAttribute(Globals.LOCALE_KEY)).toString() %>"/>';
+		    	t += '<div class="noJava">';
+		    	t += '<%= Util.escapeForJavascriptString((CoreUtil.getMessageResources(request.getSession(), "navigation").getMessage(((Locale)request.getSession().getAttribute(Globals.LOCALE_KEY)), "launchAgent.noJVM")), true, false) %>';
+		    	t += '</div></applet>';
+		    	document.writeln(t);
+		   	}
+			</script>
+		</div>
+	</security:agentAvailability>
+</div>

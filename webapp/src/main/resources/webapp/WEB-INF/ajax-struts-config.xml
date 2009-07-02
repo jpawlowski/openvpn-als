@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+       "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+       "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+	<form-beans/>
+	<global-exceptions/>
+	<global-forwards/>
+	<action-mappings>	
+		<action path="/ajaxListAccounts" 
+				type="com.adito.ajax.ListAccountsAction"/>
+		<action path="/ajaxListRoles" 
+				type="com.adito.ajax.ListRolesAction"/>
+		<action path="/ajaxListAttributeCategories" 
+				type="com.adito.ajax.ListAttributeCategoriesAction"/>
+		<action path="/ajaxListValidationStrings" 
+				type="com.adito.ajax.ListValidationStringsAction"/>
+		<action path="/ajaxDismissGlobalWarning" 
+				type="com.adito.ajax.DismissGlobalWarningAction"/>
+		<action path="/serverRunning" 
+				type="com.adito.ajax.ServerRunningAction"/>
+	</action-mappings>
+</struts-config>
+

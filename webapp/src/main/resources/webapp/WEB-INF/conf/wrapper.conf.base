@@ -1,0 +1,154 @@
+#********************************************************************
+# Adito wrapper configuration
+#********************************************************************
+
+# NOTE: This file is created dynamically on every Adito startup.
+#       You should not need to edit it manually. If you do have to,
+#       please file a bug report.
+
+#################################################################
+# Variable "wrapper.java.command". This is the actual Java binary
+# (java). You should not need to modify this file, but in case you
+# do, you can use the below entries as examples.
+
+# Java 1.5.0 on Debian GNU/Linux compatible systems
+#wrapper.java.command=/usr/lib/jvm/java-1.5.0-sun/jre/bin/java
+
+# Java 1.6.0 on Debian GNU/Linux compatible systems
+#wrapper.java.command=/usr/lib/jvm/java-6-sun/jre/bin/java
+
+# Java 1.6.0 on CentOS5. Here /opt/jdk is linked to /opt/jdk1.6.0_07
+#wrapper.java.command=/opt/jdk/jre/bin/java
+
+# Java 1.6.0 on Gentoo Linux.
+#wrapper.java.command=/usr/lib/jvm/sun-jdk-1.6/bin/java
+
+# Java 1.6.0 on Windows-based systems. NOTE: not tested, please
+# drop a mail to adito-devel with your settings when you get this
+# working
+#wrapper.java.command=c:\Program files\path_to_your_jdk\jre\bin\java
+
+
+# This entry is replaced dynamically with the correct settings
+wrapper.java.command=@WRAPPER.JAVA.COMMAND@
+
+
+#################################################################
+# Variable "wrapper.java.library.path.1". This should point to
+# the directory where the wrapper executable is located.
+# 
+# Wrapper location for Linux-based systems
+#wrapper.java.library.path.1=install/platforms/linux/x86
+
+# Wrapper location for Windows-based systems (not tested but
+# should work)
+#wrapper.java.library.path.1=install/platforms/windows
+
+# This entry is replaced dynamically with the correct settings
+wrapper.java.library.path.1=@WRAPPER.JAVA.LIBRARY.PATH@
+
+#################################################################
+# Variable "wrapper.working.dir". This is the base directory for
+# adito server ($ADITO_HOME/adito)
+
+wrapper.working.dir=.
+
+
+# Java Main class.
+wrapper.java.mainclass=com.adito.boot.Bootstrap
+
+# Java Classpath.
+#
+# THIS PROPERTY SHOULD NOT BE CHANGED. ANY CHANGES TO
+# THE CLASSPATH SHOULD BE DONE THROUGH THE classpath.properties
+# FILE THAT ALSO EXISTS IN THIS DIRECTORY
+
+wrapper.java.classpath.1=build/boot
+wrapper.java.classpath.2=lib/adito-boot.jar
+
+# Jetty Paranoid setting
+wrapper.java.additional.1=-Dorg.mortbay.http.Version.paranoid=true
+
+# Java Additional Parameters
+# file.encoding forces the file encoding in java process in wrapper, 
+# but in adito when you launch server without wrapper (start-using-java)
+# the file.encoding is taken from java runtime, on windows it is cp1252.
+# encoding is use when you login and when you change password.
+# if you launch server using wrapper, you change your password.
+# you stop server, and start-using-java with different file.encoding, you cannot login. 
+# It cause some problems if encoding are different.
+#wrapper.java.additional.2=-Dfile.encoding=UTF-8
+
+# Initial Java Heap Size (in MB)
+wrapper.java.initmemory=64
+
+# Maximum Java Heap Size (in MB)
+wrapper.java.maxmemory=512
+
+# Application parameters.  Add parameters as needed starting from 1
+#wrapper.app.parameter.1=
+
+#********************************************************************
+# Wrapper Logging Properties
+#********************************************************************
+# Format of output for the console.  (See docs for formats)
+wrapper.console.format=PM
+
+# Log Level for console output.  (See docs for log levels)
+wrapper.console.loglevel=INFO
+
+# Log file to use for wrapper output logging.
+wrapper.logfile=logs/wrapper.log
+
+# Format of output for the log file.  (See docs for formats)
+wrapper.logfile.format=LPTM
+
+# Log Level for log file output.  (See docs for log levels)
+wrapper.logfile.loglevel=INFO
+
+# Maximum size that the log file will be allowed to grow to before
+#  the log is rolled. Size is specified in bytes.  The default value
+#  of 0, disables log rolling.  May abbreviate with the 'k' (kb) or
+#  'm' (mb) suffix.  For example: 10m = 10 megabytes.
+wrapper.logfile.maxsize=0
+
+# Maximum number of rolled log files which will be allowed before old
+#  files are deleted.  The default value of 0 implies no limit.
+wrapper.logfile.maxfiles=0
+
+# Log Level for sys/event log output.  (See docs for log levels)
+wrapper.syslog.loglevel=NONE
+
+#********************************************************************
+# Wrapper Windows Properties
+#********************************************************************
+# Title to use when running as a console
+wrapper.console.title=Adito
+
+#********************************************************************
+# Wrapper Windows NT/2000/XP Service Properties
+#********************************************************************
+# WARNING - Do not modify any of these properties when an application
+#  using this configuration file has been installed as a service.
+#  Please uninstall the service before modifying this section.  The
+#  service can then be reinstalled.
+
+# Name of the service
+wrapper.ntservice.name=Adito
+
+# Display name of the service
+wrapper.ntservice.displayname=Adito
+
+# Description of the service
+wrapper.ntservice.description=Adito SSL VPN
+
+# Service dependencies.  Add dependencies as needed starting from 1
+wrapper.ntservice.dependency.1=
+
+# Mode in which the service is installed.  AUTO_START or DEMAND_START
+wrapper.ntservice.starttype=AUTO_START
+
+# Allow the service to interact with the desktop.
+wrapper.ntservice.interactive=false
+
+

@@ -1,0 +1,15 @@
+<%@ page import="com.adito.boot.Util" %>
+<jsp:directive.page import="com.adito.extensions.ExtensionBundle.ExtensionBundleStatus"/>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/table" prefix="table"%>
+<%@ taglib uri="/server/taglibs/tabs" prefix="tabs"%>
+
+<tiles:insert flush="false" page="/WEB-INF/jsp/content/extensions/defaultExtensionStoreContent.jspf">		
+	<tiles:put name="extensionForm" beanName="installedExtensionsForm"/>
+</tiles:insert>	
+

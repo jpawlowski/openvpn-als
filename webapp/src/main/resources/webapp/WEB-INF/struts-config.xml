@@ -1,0 +1,1612 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+       "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+       "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+
+
+	<!-- ======================================== Form Bean Definitions -->
+	<form-beans>
+		<!-- Logon form bean -->
+		<form-bean name="logonForm"
+			type="com.adito.security.forms.LogonForm" />
+
+		<!--  Authentication scheme selection -->
+		<form-bean name="schemeSelectionForm"
+			type="com.adito.security.forms.SchemeSelectionForm">
+		</form-bean>
+
+		<!-- Extension store form bean -->
+
+		<form-bean name="configureExtensionsForm"
+			type="com.adito.extensions.forms.ConfigureExtensionsForm">
+		</form-bean>
+
+		<form-bean name="installedExtensionsForm"
+			type="com.adito.extensions.forms.InstalledExtensionsForm">
+		</form-bean>
+
+		<form-bean name="betaExtensionsForm"
+			type="com.adito.extensions.forms.BetaExtensionsForm">
+		</form-bean>
+
+		<form-bean name="remoteAccessExtensionsForm"
+			type="com.adito.extensions.forms.RemoteAccessExtensionsForm">
+		</form-bean>
+
+		<form-bean name="accessControlExtensionsForm"
+			type="com.adito.extensions.forms.AccessControlExtensionsForm">
+		</form-bean>
+
+		<form-bean name="resourcesExtensionsForm"
+			type="com.adito.extensions.forms.ResourcesExtensionsForm">
+		</form-bean>
+
+		<form-bean name="userInterfaceExtensionsForm"
+			type="com.adito.extensions.forms.UserInterfaceExtensionsForm">
+		</form-bean>
+
+		<form-bean name="miscExtensionsForm"
+			type="com.adito.extensions.forms.MiscExtensionsForm">
+		</form-bean>
+
+		<form-bean name="articlesExtensionsForm"
+			type="com.adito.extensions.forms.ArticlesExtensionsForm">
+		</form-bean>
+
+		<form-bean name="updateableExtensionsForm"
+			type="com.adito.extensions.forms.UpdateableExtensionsForm">
+		</form-bean>
+
+		<!-- Favorites form bean -->
+		<form-bean name="favoritesForm"
+			type="com.adito.navigation.forms.FavoritesForm">
+		</form-bean>
+
+		<!-- Port forwarding form bean -->
+		<form-bean name="tunnelsForm"
+			type="com.adito.tunnels.forms.TunnelsForm">
+		</form-bean>
+		<form-bean name="tunnelForm"
+			type="com.adito.tunnels.forms.TunnelForm">
+		</form-bean>
+
+		<form-bean name="showAvailableAccountsForm"
+			type="com.adito.security.forms.ShowAvailableAccountsForm">
+		</form-bean>
+
+		<form-bean name="showAvailableRolesForm"
+			type="com.adito.security.forms.ShowAvailableRolesForm">
+		</form-bean>
+
+		<form-bean name="roleForm"
+			type="com.adito.security.forms.RoleForm">
+		</form-bean>
+
+		<form-bean name="userAccountForm"
+			type="com.adito.security.forms.UserAccountForm">
+		</form-bean>
+
+		<form-bean name="setPasswordForm"
+			type="com.adito.security.forms.SetPasswordForm">
+		</form-bean>
+		
+		<form-bean name="principalInformationForm"
+			type="com.adito.policyframework.forms.PrincipalInformationForm">
+		</form-bean>
+
+		<form-bean name="ipRestrictionsForm"
+			type="com.adito.security.forms.ShowAvailableIpRestrictionsForm">
+		</form-bean>
+
+		<form-bean name="ipRestrictionForm"
+			type="com.adito.security.forms.IpRestrictionForm">
+		</form-bean>
+
+		<form-bean name="ipRestrictionInformationForm"
+			type="com.adito.security.forms.IpRestrictionInformationForm">
+		</form-bean>
+
+		<!-- Properties / Profiles forms -->
+		<form-bean name="profilesForm"
+			type="com.adito.properties.forms.ProfilesForm">
+		</form-bean>
+		<form-bean name="systemConfigurationPropertiesForm"
+			type="com.adito.properties.forms.SystemConfigurationPropertiesForm">
+		</form-bean>
+		<form-bean name="profilePropertiesForm"
+			type="com.adito.properties.forms.ProfilePropertiesForm">
+		</form-bean>
+		<form-bean name="propertyProfileForm"
+			type="com.adito.properties.forms.PropertyProfileForm">
+		</form-bean>
+		<form-bean name="profileSelectionForm"
+			type="com.adito.navigation.forms.ProfileSelectionForm">
+		</form-bean>
+
+		<!-- Change password form -->
+		<form-bean name="changePasswordForm"
+			type="com.adito.security.forms.ChangePasswordForm" />
+
+
+		<!-- File upload -->
+		<form-bean name="uploadForm"
+			type="com.adito.vfs.forms.UploadForm">
+		</form-bean>
+		<form-bean name="showUploadForm"
+			type="com.adito.vfs.forms.ShowUploadForm">
+		</form-bean>
+
+		<!-- Certificates and keystore -->
+		<form-bean name="showCertificateForm"
+			type="com.adito.setup.forms.ShowCertificateForm">
+		</form-bean>
+		<form-bean name="showKeyStoreForm"
+			type="com.adito.keystore.forms.ShowKeyStoreForm">
+		</form-bean>
+
+		<form-bean name="keyStoreInformationForm"
+			type="com.adito.keystore.forms.KeyStoreInformationForm">
+		</form-bean>
+		
+		<!-- Shutdown -->
+		<form-bean name="shutdownForm"
+			type="com.adito.setup.forms.ShutdownForm">
+		</form-bean>
+
+		<!-- Confirm -->
+		<form-bean name="confirmForm"
+			type="com.adito.navigation.forms.ConfirmForm">
+		</form-bean>
+
+		<!-- File download -->
+		<form-bean name="fileDownloadForm"
+			type="com.adito.navigation.forms.FileDownloadForm">
+		</form-bean>
+
+		<!-- Redirect -->
+		<form-bean name="redirectForm"
+			type="com.adito.navigation.forms.RedirectForm">
+		</form-bean>
+
+		<!--  License agreement -->
+		<form-bean name="licenseAgreementForm"
+			type="com.adito.core.forms.LicenseAgreementForm">
+		</form-bean>
+
+		<!--  Status -->
+		<form-bean name="statusForm"
+			type="com.adito.setup.forms.StatusForm">
+		</form-bean>
+		<form-bean name="userSessionsForm"
+			type="com.adito.setup.forms.UserSessionsForm">
+		</form-bean>		
+		<form-bean name="sessionInformationForm"
+			type="com.adito.setup.forms.SessionInformationForm">
+		</form-bean>
+		<form-bean name="vfsLocksForm"
+			type="com.adito.vfs.forms.ShowVfsLocksForm">
+		</form-bean>
+		<form-bean name="systemInfoForm"
+			type="com.adito.setup.forms.SystemInfoForm">
+		</form-bean>
+
+		<!--  Messages -->
+		<form-bean name="messageQueueForm"
+			type="com.adito.setup.forms.MessageQueueForm">
+		</form-bean>
+		<form-bean name="messageQueueInformationForm"
+			type="com.adito.setup.forms.MessageQueueInformationForm">
+		</form-bean>
+		<form-bean name="messageForm"
+			type="com.adito.setup.forms.MessageForm">
+		</form-bean>
+
+		<!--  Authentication Schemes -->
+		<form-bean name="authenticationSchemesForm"
+			type="com.adito.security.forms.AuthenticationSchemesForm">
+		</form-bean>
+
+		<form-bean name="authenticationSchemeForm"
+			type="com.adito.security.forms.AuthenticationSchemeForm">
+		</form-bean>
+
+		<!--  Set Personal Answers -->
+		<form-bean name="personalAnswersForm"
+			type="com.adito.security.forms.PersonalAnswersForm">
+		</form-bean>
+
+		<!--  Help -->
+		<form-bean name="helpForm"
+			type="com.adito.navigation.forms.HelpForm">
+		</form-bean>
+
+		<!-- Policy -->
+		<form-bean name="policiesForm"
+			type="com.adito.policyframework.forms.PoliciesForm">
+		</form-bean>
+		<form-bean name="policyForm"
+			type="com.adito.policyframework.forms.PolicyForm">
+		</form-bean>
+
+		<!--  Resource permissions -->
+		<form-bean name="accessRightsListForm"
+			type="com.adito.policyframework.forms.AccessRightsListForm">
+		</form-bean>
+		<form-bean name="accessRightsForm"
+			type="com.adito.policyframework.forms.AccessRightsForm">
+		</form-bean>
+
+		<!--  Attribute Definitions  -->
+		<form-bean name="attributeDefinitionsForm"
+			type="com.adito.properties.attributes.forms.AttributeDefinitionsForm">
+		</form-bean>
+		<form-bean name="attributeDefinitionForm"
+			type="com.adito.properties.attributes.forms.AttributeDefinitionForm">
+		</form-bean>
+		<form-bean name="attributeDefinitionInformationForm"
+			type="com.adito.properties.attributes.forms.AttributeDefinitionInformationForm">
+		</form-bean>
+
+		<!--  User Attribute Values  -->
+		<form-bean name="userAttributesForm"
+			type="com.adito.properties.attributes.forms.UserAttributesForm">
+		</form-bean>
+
+		<!--  Private key passphrase -->
+		<form-bean name="updatePrivateKeyPassphraseForm"
+			type="com.adito.security.forms.UpdatePrivateKeyPassphraseForm">
+		</form-bean>
+		<form-bean name="promptForPrivateKeyPassphraseForm"
+			type="com.adito.security.forms.PromptForPrivateKeyPassphraseForm">
+		</form-bean>
+
+		<form-bean name="promptForSessionPasswordForm"
+			type="com.adito.security.forms.PromptForSessionPasswordForm">
+		</form-bean>
+
+		<!--  Resource Information -->
+
+		<form-bean name="taskProgressForm"
+			type="com.adito.tasks.forms.TaskProgressForm">
+		</form-bean>
+
+		<!--  Resource Information -->
+
+		<form-bean name="resourceInformationForm"
+			type="com.adito.policyframework.forms.ResourceInformationForm">
+		</form-bean>
+
+		<!--  Extension bundle Information -->
+
+		<form-bean name="extensionBundleInformationForm"
+			type="com.adito.extensions.forms.ExtensionBundleInformationForm">
+		</form-bean>
+
+		<!--  RSS feeds -->
+
+		<form-bean name="getRSSFeedForm"
+			type="com.adito.core.forms.GetRSSFeedForm">
+		</form-bean>
+
+	</form-beans>
+
+
+	<!-- ================================= Global Exception Definitions -->
+
+	<global-exceptions>
+		<exception key="adito.exception"
+			type="java.lang.Exception"
+			handler="com.adito.navigation.ExceptionHandler" />
+		<exception key="adito.servletException"
+			type="java.lang.ServletException"
+			handler="com.adito.navigation.ExceptionHandler" />
+	</global-exceptions>
+
+
+
+
+
+	<!-- =================================== Global Forward Definitions -->
+
+
+
+	<global-forwards>
+		<forward name="logon" path="/showLogon.do" redirect="true" /> <!--  Really really must be a redirect.   -->
+		<forward name="changePassword" path="/showChangePassword.do" />
+		<forward name="success" path="/showHome.do" />
+		<forward name="home" path="/showHome.do" redirect="false" />
+		<forward name="homeRedirect" path="/showHome.do"
+			redirect="true" />
+		<forward name="setup" path="/selectCertificateSource.do"
+			redirect="true" />
+		<forward name="selectPropertyProfile"
+			path="/showSelectPropertyProfile.do" />
+		<forward name="launchAgent" path="/launchAgent.do" />
+		<forward name="exception" path="/showException.do" />
+		<forward name="popupException" path="/showPopupException.do" />
+		<forward name="resourceInformation"
+			path="/resourceInformation.do" />		
+		<forward name="redirect" path="/redirect.do"
+				redirect="false" />
+		<forward name="restartRequired" path="/restartRequired.do"
+				redirect="true" />
+
+	</global-forwards>
+
+
+
+
+
+	<!-- =================================== Action Mapping Definitions -->
+
+
+
+	<action-mappings>
+
+		<!--  Help -->
+		<action path="/help" name="helpForm" scope="session"
+			type="com.adito.navigation.actions.HelpAction">
+			<forward name="property" path=".site.PropertyHelp" />
+			<forward name="help" path=".site.Help" />
+		</action>
+
+		<!-- Process a user logon -->
+
+		<action path="/showLogon"
+			type="com.adito.security.actions.ShowLogonAction"
+			name="logonForm" scope="session" input=".site.SignOnUserName">
+			<forward name="display" path=".site.Login" />
+			<forward name="username" path=".site.SignOnUserName" />
+			<forward name="refresh" path="/showLogon.do" redirect="true" />
+		</action>
+
+		<action path="/logon"
+			type="com.adito.security.actions.LogonAction" name="logonForm"
+			scope="session" input="logon">
+		</action>
+
+		<action path="/logoff"
+			type="com.adito.security.actions.LogoffAction">
+			<forward name="success" path="/showHome.do" redirect="true" />
+			<forward name="shutdownAgent" redirect="true"
+				path="/shutdownAgent.do?path=/logoff.do" />
+		</action>
+
+		<action path="/showSelectAuthenticationScheme"
+			name="schemeSelectionForm" scope="request" validate="false"
+			type="com.adito.security.actions.ShowSelectAuthenticationSchemeAction">
+			<forward name="success"
+				path=".site.SelectAuthenticationScheme" />
+		</action>
+
+		<action path="/unauthorized" name="confirmForm"
+			parameter="align=left,question,true,security,unauthorized,cancel=/showLogon.do?reset"
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+		
+		<!--  Load RSS feed -->		
+		<action path="/getRSSFeed" 
+				scope="request" 
+				name="getRSSFeedForm"
+				validate="false"
+				type="com.adito.core.actions.GetRSSFeedAction">				
+			<forward name="display" path="/WEB-INF/jsp/tiles/getRSSFeed.jspf"/>
+		</action>
+
+		<!--  Task Progress -->
+
+		<action path="/taskProgress" scope="session"
+			name="taskProgressForm" parameter="actionTarget"
+			input=".site.TaskProgress" validate="false"
+			type="com.adito.tasks.actions.TaskProgressAction">
+			<forward name="display" path=".site.TaskProgress" />
+		</action>
+
+		<!--  Resource Information -->
+
+		<action path="/resourceInformation" scope="request"
+			name="resourceInformationForm" parameter="actionTarget"
+			input=".site.ResourceInformation" validate="false"
+			type="com.adito.policyframework.actions.ResourceInformationAction">
+			<forward name="display" path=".site.ResourceInformation" />
+		</action>
+
+		<!--  Extension Bundle Information -->
+
+		<action path="/extensionBundleInformation" scope="request"
+			name="extensionBundleInformationForm" parameter="actionTarget"
+			input=".site.ExtensionBundleInformation" validate="false"
+			type="com.adito.extensions.actions.ExtensionBundleInformationAction">
+			<forward name="display"
+				path=".site.ExtensionBundleInformation" />
+		</action>
+
+
+		<!-- Agent actions -->
+
+		<action path="/getExtensionDescriptor"
+			type="com.adito.extensions.actions.GetExtensionDescriptorAction" />
+
+		<action path="/registerClientSynchronization"
+			type="com.adito.agent.actions.RegisterClientSynchronizationAction" />
+
+		<action path="/launchAgent"
+			type="com.adito.agent.actions.LaunchAgentAction"
+			scope="request">
+			<forward name="launchViaAgentApplet" path=".site.LaunchAgent" />
+		</action>
+
+		<action path="/shutdownAgent"
+			type="com.adito.agent.actions.ShutdownAgentAction"
+			scope="request" />
+
+		<!-- Navigation Forwarding Actions -->
+		<action path="/showHome"
+			type="com.adito.navigation.actions.ShowHomeAction">
+			<forward name="userConsole" path="/userConsole.do"
+				redirect="true" />
+			<forward name="managementConsole"
+				path="/managementConsole.do" redirect="true" />
+		</action>
+
+		<action path="/showAbout"
+			type="com.adito.navigation.actions.AboutAction">
+			<forward name="success" path=".site.About" />
+		</action>
+
+		<action path="/showSupport"
+			type="com.adito.navigation.actions.SupportAction">
+			<forward name="success" path=".site.Support" />
+		</action>
+
+		<action path="/managementConsole"
+			type="com.adito.navigation.actions.ManagementConsoleAction"
+			scope="request" />
+
+		<action path="/userConsole"
+			type="com.adito.navigation.actions.UserConsoleAction"
+			scope="request" />
+
+
+		<!--  Favorites -->
+
+		<action path="/showFavorites"
+			type="com.adito.navigation.actions.ShowFavoritesAction"
+			name="favoritesForm" scope="session" parameter="actionTarget">
+			<forward name="display" path=".site.Favorites" />
+			<forward name="refresh" path="/showFavorites.do"
+				redirect="true" />
+			<forward name="confirmRemove"
+				path="/confirmRemoveFavorite.do" />
+		</action>
+
+		<action path="/confirmRemoveFavorite" name="confirmForm"
+			parameter="question,true,navigation,removeFavorite,yes=/showFavorites.do?actionTarget=remove,no=/showFavorites.do?actionTarget=unspecified"
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<!--  Policy framework actions -->
+		<action path="/policies"
+			type="com.adito.policyframework.actions.PoliciesDispatchAction"
+			name="policiesForm" scope="session" parameter="actionTarget"
+			validate="true" input=".site.Policies">
+			<forward name="display" path=".site.Policies" />
+			<forward name="confirmRemove" path="/removePolicy.do" />
+			<forward name="edit" path="/editPolicy.do" />
+			<forward name="clone" path="/editPolicy.do" />
+			<forward name="refresh" path="/policies.do" redirect="true" />
+		</action>
+
+		<action path="/removePolicy" name="confirmForm"
+			parameter="question,true,policyframework,removePolicy,yes=/policies.do?actionTarget=remove,no=/policies.do?actionTarget=unspecified"
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<action path="/editPolicy" name="policyForm" scope="session"
+			validate="true" parameter="actionTarget" input=".site.EditPolicy"
+			type="com.adito.policyframework.actions.ShowPolicyDispatchAction">
+			<forward name="display" path=".site.EditPolicy" />
+			<forward name="refresh" path="/policies.do"/>
+		</action>
+
+		<action path="/configureRemovePolicy" name="confirmForm"
+			parameter="question,true,policyframework,removePolicy,yes=/configurePolicies.do?actionTarget=remove,no=/configurePolicies.do?actionTarget=unspecified"
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<action path="/configurePolicies"
+			type="com.adito.policyframework.actions.ConfigurePoliciesDispatchAction"
+			name="policiesForm" scope="session" parameter="actionTarget"
+			input=".site.ConfigurePolicies">
+			<forward name="display" path=".site.ConfigurePolicies" />
+			<forward name="edit" path="/configureEditPolicy.do" />
+			<forward name="confirmRemove"
+				path="/configureRemovePolicy.do" />
+			<forward name="refresh" path="/configurePolicies.do"
+				redirect="true" />
+		</action>
+
+		<action path="/configureEditPolicy" name="policyForm"
+			scope="session" validate="true" parameter="actionTarget"
+			input=".site.ConfigureEditPolicy"
+			type="com.adito.policyframework.actions.ShowPolicyDispatchAction">
+			<forward name="display" path=".site.ConfigureEditPolicy" />
+			<forward name="success" path="/configurePolicies.do"
+				redirect="true" />
+		</action>
+
+		<action path="/accessRightsList"
+			type="com.adito.policyframework.actions.AccessRightsListDispatchAction"
+			name="accessRightsListForm" scope="session" parameter="actionTarget"
+			input=".site.AccessRightsList">
+			<forward name="display" path=".site.AccessRightsList" />
+			<forward name="refresh" path="/accessRightsList.do"
+				redirect="true" />
+			<forward name="edit" path="/editAccessRights.do" />
+			<forward name="clone" path="/editAccessRights.do" />
+			<forward name="view" path="/viewAccessRights.do" />
+			<forward name="confirmRemove"
+				path="/confirmRemoveAccessRights.do" />
+		</action>
+
+		<action path="/confirmRemoveAccessRights" name="confirmForm"
+			parameter="question,true,policyframework,removeAccessRights,yes=/accessRightsList.do?actionTarget=remove,no=/accessRightsList.do?actionTarget=unspecified"
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<action path="/editAccessRights" name="accessRightsForm"
+			scope="session" validate="true" parameter="actionTarget"
+			input=".site.EditAccessRights"
+			type="com.adito.policyframework.actions.AccessRightsDispatchAction">
+			<forward name="display" path=".site.EditAccessRights" />
+			<forward name="refresh" path="/accessRightsList.do" redirect="false"/>
+			<forward name="done" path="/accessRightsList.do?actionTarget=unspecified"/>
+		</action>
+
+		<action path="/viewAccessRights" name="accessRightsForm"
+			scope="session" validate="true" parameter="actionTarget"
+			input=".site.ViewAccessRights"
+			type="com.adito.policyframework.actions.AccessRightsDispatchAction">
+			<forward name="display" path=".site.ViewAccessRights" />
+		</action>
+
+
+		<!-- Application launching actions -->
+
+		<action path="/getApplicationFile"
+			type="com.adito.extensions.actions.GetApplicationFileAction" />
+
+		<!-- License agreement actions -->
+		<action path="/showLicenseAgreement"
+			type="com.adito.core.actions.LicenseAgreementDispatchAction"
+			name="licenseAgreementForm" scope="session" parameter="actionTarget"
+			input=".site.LicenseAgreement">
+			<forward name="display" path=".site.LicenseAgreement" />
+		</action>
+
+		<!-- Extension management actions -->
+
+		<action path="/showExtensionStore"
+			type="com.adito.extensions.actions.ConfigureExtensionsAction"
+			name="configureExtensionsForm" scope="session" parameter="actionTarget"
+			input=".site.ExtensionStore">
+			<forward name="display" path=".site.ExtensionStore" />
+			<forward name="agreement" path="/showExtensionStoreAgreement.do" />
+		</action>
+
+		<action path="/installed"
+			type="com.adito.extensions.actions.InstalledExtensionsAction"
+			name="installedExtensionsForm" scope="session" parameter="actionTarget">
+			<forward name="upload" path="/showUploadExtension.do" />
+			<forward name="list" path="/showExtensionStore.do?subForm=installedExtensionsForm&amp;actionTarget=unspecified" redirect="true" />
+			<forward name="refresh" path="/showExtensionStore.do?subForm=installedExtensionsForm&amp;actionTarget=unspecified&amp;refreshAll=true" redirect="true" />
+		</action>
+
+		<action path="/beta"
+			type="com.adito.extensions.actions.BetaExtensionsAction"
+			name="betaExtensionsForm" scope="session" parameter="actionTarget">
+			<forward name="upload" path="/showUploadExtension.do" />
+			<forward name="list" path="/showExtensionStore.do?subForm=betaExtensionsForm&amp;actionTarget=unspecified" redirect="true" />
+			<forward name="refresh" path="/showExtensionStore.do?subForm=betaExtensionsForm&amp;actionTarget=unspecified&amp;refreshAll=true" redirect="true" />
+		</action>
+
+		<action path="/remoteAccess"
+			type="com.adito.extensions.actions.RemoteAccessExtensionsAction"
+			name="remoteAccessExtensionsForm" scope="session" parameter="actionTarget">
+			<forward name="upload" path="/showUploadExtension.do" />
+			<forward name="list" path="/showExtensionStore.do?subForm=remoteAccessExtensionsForm&amp;actionTarget=unspecified" redirect="true" />
+			<forward name="refresh" path="/showExtensionStore.do?subForm=remoteAccessExtensionsForm&amp;actionTarget=unspecified&amp;refreshAll=true" redirect="true" />
+		</action>
+
+		<action path="/accessControl"
+			type="com.adito.extensions.actions.AccessControlExtensionsAction"
+			name="accessControlExtensionsForm" scope="session" parameter="actionTarget">
+			<forward name="upload" path="/showUploadExtension.do" />
+			<forward name="list" path="/showExtensionStore.do?subForm=accessControlExtensionsForm&amp;actionTarget=unspecified" redirect="true" />
+			<forward name="refresh" path="/showExtensionStore.do?subForm=accessControlExtensionsForm&amp;actionTarget=unspecified&amp;refreshAll=true" redirect="true" />
+		</action>
+
+		<action path="/resources"
+			type="com.adito.extensions.actions.ResourcesExtensionsAction"
+			name="resourcesExtensionsForm" scope="session" parameter="actionTarget">
+			<forward name="upload" path="/showUploadExtension.do" />
+			<forward name="list" path="/showExtensionStore.do?subForm=resourcesExtensionsForm&amp;actionTarget=unspecified" redirect="true" />
+			<forward name="refresh" path="/showExtensionStore.do?subForm=resourcesExtensionsForm&amp;actionTarget=unspecified&amp;refreshAll=true" redirect="true" />
+		</action>
+
+		<action path="/userInterface"
+			type="com.adito.extensions.actions.UserInterfaceExtensionsAction"
+			name="userInterfaceExtensionsForm" scope="session" parameter="actionTarget">
+			<forward name="upload" path="/showUploadExtension.do" />
+			<forward name="list" path="/showExtensionStore.do?subForm=userInterfaceExtensionsForm&amp;actionTarget=unspecified" redirect="true" />
+			<forward name="refresh" path="/showExtensionStore.do?subForm=userInterfaceExtensionsForm&amp;actionTarget=unspecified&amp;refreshAll=true" redirect="true" />
+		</action>
+
+		<action path="/misc"
+			type="com.adito.extensions.actions.MiscExtensionsAction"
+			name="miscExtensionsForm" scope="session" parameter="actionTarget">
+			<forward name="upload" path="/showUploadExtension.do" />
+			<forward name="list" path="/showExtensionStore.do?subForm=miscExtensionsForm&amp;actionTarget=unspecified" redirect="true" />
+			<forward name="refresh" path="/showExtensionStore.do?subForm=miscExtensionsForm&amp;actionTarget=unspecified&amp;refreshAll=true" redirect="true" />
+		</action>
+
+		<action path="/articles"
+			type="com.adito.extensions.actions.ArticlesExtensionsAction"
+			name="articlesExtensionsForm" scope="session" parameter="actionTarget">
+			<forward name="upload" path="/showUploadExtension.do" />
+			<forward name="list" path="/showExtensionStore.do?subForm=articlesExtensionsForm&amp;actionTarget=unspecified" redirect="true" />
+			<forward name="refresh" path="/showExtensionStore.do?subForm=articlesExtensionsForm&amp;actionTarget=unspecified&amp;refreshAll=true" redirect="true" />
+		</action>
+
+		<action path="/updateable"
+			type="com.adito.extensions.actions.UpdateableExtensionsAction"
+			name="updateableExtensionsForm" scope="session" parameter="actionTarget">
+			<forward name="upload" path="/showUploadExtension.do" />
+			<forward name="list" path="/showExtensionStore.do?subForm=updateableExtensionsForm&amp;actionTarget=unspecified" redirect="true" />
+			<forward name="refresh" path="/showExtensionStore.do?subForm=updateableExtensionsForm&amp;actionTarget=unspecified&amp;refreshAll=true" redirect="true" />
+		</action>
+
+		<action path="/showUploadExtension"
+			type="com.adito.vfs.actions.ShowUploadAction"
+			parameter="actionTarget" name="showUploadForm" scope="request"
+			input=".site.ExtensionStore">
+			<forward name="display" path=".site.AddExtensionStore" />
+			<forward name="success" path="/showExtensionStore.do?subForm=installedExtensionsForm&amp;actionTarget=unspecified" />
+		</action>
+
+		<action path="/removeExtension" name="confirmForm"
+			parameter="question,true,extensions,removeExtension,yes=/showExtensionStore.do?actionTarget=remove,no=/showExtensionStore.do"
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm"/>
+		</action>
+
+		<action path="/reloadExtensions"
+			type="com.adito.extensions.actions.ReloadExtensionsAction">
+			<forward name="success"
+				path="/showExtensionStore.do?actionTarget=list"/>
+		</action>
+
+		<action path="/showExtensionStoreAgreement" name="confirmForm"
+			parameter="align=left,question,true,extensions,extensionStoreAgreement,yes=/showExtensionStore.do?subForm=installedExtensionsForm&amp;actionTarget=list&amp;agree=true,no=/showExtensionStore.do?subForm=installedExtensionsForm&amp;actionTarget=list&amp;agree=false"
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm"/>
+		</action>
+
+		<!--  Properties -->
+
+		<action path="/showGlobalProperties"
+			type="com.adito.properties.actions.GlobalProfilePropertiesAction"
+			name="profilePropertiesForm" validate="true" parameter="actionTarget"
+			input=".site.GlobalProperties" scope="session">
+			<forward name="display" path=".site.GlobalProperties" />
+			<forward name="configureProfiles"
+				path="/showGlobalProfiles.do" redirect="true" />
+		</action>
+
+		<action path="/showUserProfiles"
+			type="com.adito.properties.actions.ShowProfilesDispatchAction"
+			name="profilesForm" validate="false" parameter="actionTarget"
+			input=".site.UserProfiles" scope="session">
+			<forward name="display" path=".site.UserProfiles" />
+			<forward name="edit" path="/editPropertyProfile.do" />
+			<forward name="clone" path="/editPropertyProfile.do" />
+			<forward name="create" path="/createPropertyProfile.do" />
+			<forward name="refresh" path="/showUserProfiles.do"
+				redirect="true" />
+			<forward name="selectOrDefault"
+				path="/showSelectPropertyProfile.do" redirect="true" />
+			<forward name="confirmRemove"
+				path="/confirmRemoveUserPropertyProfile.do" />
+		</action>
+
+		<action path="/showGlobalProfiles"
+			type="com.adito.properties.actions.ShowProfilesDispatchAction"
+			name="profilesForm" validate="false" parameter="actionTarget"
+			input=".site.GlobalProfiles" scope="session">
+			<forward name="display" path=".site.GlobalProfiles" />
+			<forward name="edit" path="/editGlobalPropertyProfile.do" />
+			<forward name="clone" path="/editGlobalPropertyProfile.do" />
+			<forward name="refresh"
+				path="/showGlobalProfiles.do?actionTarget=unspecified"
+				redirect="false" />
+			<forward name="create" path="/profileDetails.do" />
+			<forward name="confirmRemove"
+				path="/confirmRemoveGlobalPropertyProfile.do" />
+		</action>
+
+		<action path="/showUserProperties"
+			type="com.adito.properties.actions.UserProfilePropertiesAction"
+			name="profilePropertiesForm" validate="true" parameter="actionTarget"
+			input=".site.UserProperties" scope="session">
+			<forward name="display" path=".site.UserProperties" />
+			<forward name="configureProfiles"
+				path="/showUserProfiles.do" redirect="true" />
+		</action>
+
+		<action path="/createPropertyProfile" name="propertyProfileForm"
+			scope="session" validate="true" parameter="actionTarget"
+			input=".site.CreatePropertyProfile"
+			type="com.adito.properties.actions.ShowPropertyProfileDispatchAction">
+			<forward name="display" path=".site.CreatePropertyProfile" />
+		</action>
+
+		<action path="/editPropertyProfile" name="propertyProfileForm"
+			scope="session" validate="true" parameter="actionTarget"
+			input=".site.EditPropertyProfile"
+			type="com.adito.properties.actions.ShowPropertyProfileDispatchAction">
+			<forward name="display" path=".site.EditPropertyProfile" />
+			<forward name="done" path="/showUserProfiles.do"/>
+		</action>
+
+		<action path="/confirmRemoveUserPropertyProfile"
+			name="confirmForm"
+			parameter="question,true,properties,removePropertyProfile,yes=/showUserProfiles.do?actionTarget=remove,no="
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<action path="/confirmRemoveGlobalPropertyProfile"
+			name="confirmForm"
+			parameter="question,true,properties,removePropertyProfile,yes=/showGlobalProfiles.do?actionTarget=remove,no="
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<action path="/createGlobalPropertyProfile"
+			name="propertyProfileForm" scope="session" validate="true"
+			parameter="actionTarget" input=".site.CreateGlobalPropertyProfile"
+			type="com.adito.properties.actions.ShowPropertyProfileDispatchAction">
+			<forward name="display"
+				path=".site.CreateGlobalPropertyProfile" />
+		</action>
+
+		<action path="/editGlobalPropertyProfile"
+			name="propertyProfileForm" scope="session" validate="true"
+			parameter="actionTarget" input=".site.EditGlobalPropertyProfile"
+			type="com.adito.properties.actions.ShowPropertyProfileDispatchAction">
+			<forward name="display"
+				path=".site.EditGlobalPropertyProfile" />
+			<forward name="done" path="/showGlobalProfiles.do"/>
+			<forward name="refresh" path="/showGlobalProfiles.do" redirect="false" />
+		</action>
+
+		<action path="/showSelectPropertyProfile"
+			name="profileSelectionForm" scope="request" validate="false"
+			type="com.adito.navigation.actions.ShowSelectPropertyProfileAction">
+			<forward name="success" path=".site.SelectPropertyProfile" />
+		</action>
+		<action path="/selectPropertyProfile"
+			name="profileSelectionForm" scope="request" validate="true"
+			type="com.adito.navigation.actions.SelectPropertyProfileAction">
+			<forward name="success" path="/showHome.do" />
+		</action>
+
+		<!--  Language actions -->
+
+		<action path="/selectLanguage" scope="request" validate="true"
+			type="com.adito.language.actions.SelectLanguageAction" />
+
+		<action path="/getMessageResources" scope="request"
+			validate="false"
+			type="com.adito.agent.actions.GetMessageResourcesAction" />
+
+		<!-- Change password -->
+		<action path="/showChangePassword"
+			type="com.adito.security.actions.ShowChangePasswordAction"
+			name="changePasswordForm" scope="request" validate="false">
+			<forward name="success" path=".site.ChangePassword" />
+		</action>
+
+		<action path="/changePassword"
+			type="com.adito.security.actions.ChangePasswordAction"
+			name="changePasswordForm" input="/showChangePassword.do"
+			validate="true" scope="request">
+			<forward name="success" path="/showHome.do" redirect="true" />
+			<forward name="failure" path=".site.ChangePassword" />
+		</action>
+
+		<!-- Key Store -->
+
+		<action path="/generateServerCertificateCSR"
+			type="com.adito.keystore.actions.GenerateServerCertificateCSRAction"/>
+
+		<action path="/downloadServerCertificateCSR"
+			type="com.adito.keystore.actions.DownloadServerCertificateCSRAction">
+			<forward name="success" path="/showKeyStore.do"
+				redirect="true" />
+		</action>
+
+		<action path="/showKeyStore"
+			type="com.adito.keystore.actions.ShowKeyStoreDispatchAction"
+			name="showKeyStoreForm" parameter="actionTarget" scope="session"
+			input=".site.KeyStore">
+			<forward name="display" path=".site.KeyStore" />
+			<forward name="create" path="/showCertificate.do" />
+			<forward name="confirmRemoveCertificate"
+				path="/confirmRemoveCertificate.do" />
+			<forward name="edit" path="/showCertificate.do" />
+			<forward name="reload"
+				path="/showKeyStore.do?actionTarget=list" />
+			<forward name="displayPromptForPrivateKeyPassphrase"
+				path=".site.PromptForNewKeyPassword" />
+			<forward name="success" path="/showKeyStore.do"
+				redirect="true" />
+		</action>
+
+		<action path="/confirmRemoveCertificate" name="confirmForm"
+			parameter="question,true,keystore,confirmRemoveCertificate,yes=/showKeyStore.do?actionTarget=remove,no=/showKeyStore.do?actionTarget=list"
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<action path="/promptForNewKeyPassword" name="showKeyStoreForm"
+			scope="session" validate="true" input=".site.PromptForNewKeyPassword"
+			parameter="actionTarget"
+			type="com.adito.keystore.actions.ShowKeyStoreDispatchAction">
+			<forward name="display"
+				path=".site.PromptForPrivateKeyPassphrase" />
+			<forward name="cancel" path="/showKeyStore.do" redirect="true" />
+		</action>
+		
+		<action path="/keyStoreInformation"
+			type="com.adito.keystore.actions.KeyStoreInformationAction"
+			name="keyStoreInformationForm" scope="session" parameter="actionTarget"
+			input=".site.KeyStoreInformation">
+			<forward name="display" path=".site.KeyStoreInformation" />
+		</action>
+		
+		<!-- Setup -->
+
+		<action path="/showSystemConfiguration"
+			type="com.adito.properties.actions.SystemConfigurationPropertiesAction"
+			name="systemConfigurationPropertiesForm" validate="true"
+			parameter="actionTarget" input=".site.SystemConfiguration"
+			scope="session">
+			<forward name="display" path=".site.SystemConfiguration" />
+			<forward name="cancel" path="/showSystemConfiguration.do" redirect="true" />
+		</action>
+
+		<action path="/shutdown" name="shutdownForm" scope="session"
+			parameter="actionTarget"
+			input=".site.Shutdown"
+			type="com.adito.setup.actions.ShutdownAction">
+			<forward name="confirmImmediate" path="/confirmImmediateShutdown.do" />
+			<forward name="confirmTimed" path="/confirmTimedShutdown.do" />
+			<forward name="installShutdown" path=".site.InstallShutdown" />
+			<forward name="message"
+				path="/sendMessage.do?actionTarget=unspecified" redirect="true" />
+			<forward name="refresh" path="/showShutdown.do?actionTarget=unspecified" redirect="true"/>
+		</action>
+
+		<action path="/restart" name="shutdownForm" scope="session"
+			type="com.adito.setup.actions.ShutdownAction">
+			<forward name="success" path=".site.ReStarting" />
+			<forward name="refresh" path="/showShutdown.do?actionTarget=unspecified" redirect="true"/>
+		</action>
+
+		<action path="/showShutdown" name="shutdownForm" scope="session"
+			parameter="actionTarget" input=".site.Shutdown"
+			type="com.adito.setup.actions.ShowShutdownDispatchAction">
+			<forward name="display" path=".site.Shutdown" />
+			<forward name="shutdown" path="/shutdown.do" />
+			<forward name="restart" path="/restart.do" />
+		</action>
+
+		<action path="/confirmImmediateShutdown" name="confirmForm"
+			parameter="question,true,setup,immediate.shutdown,yes=/shutdown.do?actionTarget=confirmed,no="
+			scope="session"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<action path="/confirmTimedShutdown" name="confirmForm"
+			parameter="question,true,setup,timed.shutdown,yes=/shutdown.do?actionTarget=confirmed,no="
+			scope="session"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<action path="/confirmFileUpload" name="confirmForm"
+			parameter="question,true,vfs,confirmFileUpload,yes=/confirmUploadAction.do?confirm=yes,no=/confirmUploadAction.do?confirm=no"
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.PopupConfirm" />
+		</action>
+		
+		<action path="/confirmUploadAction"
+			parameter="actionTarget"
+			type="com.adito.vfs.actions.ConfirmUploadAction" name="uploadForm"
+			scope="request" />
+
+		<action parameter="actionTarget" path="/showPopupUpload"
+			type="com.adito.vfs.actions.ShowUploadAction"
+			name="showUploadForm" scope="request">
+			<forward name="display" path=".site.PopupUpload" />
+		</action>
+
+		<action parameter="actionTarget" path="/showUpload"
+			type="com.adito.vfs.actions.ShowUploadAction"
+			name="showUploadForm" scope="request">
+			<forward name="display" path=".site.Upload" />
+		</action>
+
+		<action path="/uploadFile"
+			type="com.adito.vfs.actions.UploadAction" name="uploadForm"
+			scope="request" />
+
+		<!-- Account actions -->
+		<action path="/showAvailableAccounts"
+			type="com.adito.security.actions.ShowAvailableAccountsDispatchAction"
+			name="showAvailableAccountsForm" scope="session"
+			parameter="actionTarget" input=".site.AvailableAccounts">
+			<forward name="display" path=".site.AvailableAccounts" />
+			<forward name="create" path="/createAccount.do" />
+			<forward name="edit" path="/editAccount.do" />
+			<forward name="refresh" path="/showAvailableAccounts.do?actionTarget=unspecified" redirect="false" />
+			<forward name="setPassword" path="/setPassword.do?action=unspecified" />
+			<forward name="confirmAccountDeletion" path="/confirmAccountDeletion.do" />
+			<forward name="confirmResetPersonalQuestions" path="/confirmResetPersonalQuestions.do" />
+			<forward name="confirmResetPrivateKey" path="/confirmResetPrivateKey.do" redirect="true" />
+			<forward name="sendMessage" path="/sendMessage.do?action=unspecified" redirect="true" />
+		</action>
+
+		<action path="/editAccount" name="userAccountForm"
+			scope="session" parameter="actionTarget" validate="true"
+			input=".site.EditAccount"
+			type="com.adito.security.actions.ShowAccountAction">
+			<forward name="refresh" path="/editAccount.do?actionTarget=refresh" redirect="true" />
+			<forward name="display" path=".site.EditAccount" />
+			<forward name="success" path="/showAvailableAccounts.do?actionTarget=list"/>
+			<forward name="setPassword" path="/setPassword.do?action=unspecified" redirect="true" />
+			<forward name="cancel" path="/showAvailableAccounts.do?actionTarget=unspecified"/>
+		</action>
+
+		<action path="/createAccount" name="userAccountForm"
+			scope="session" parameter="actionTarget" validate="true"
+			input=".site.CreateAccount"
+			type="com.adito.security.actions.ShowAccountAction">
+			<forward name="display" path=".site.CreateAccount" />
+			<forward name="refresh"
+				path="/createAccount.do?actionTarget=refresh" redirect="true" />
+			<forward name="success"
+				path="/showAvailableAccounts.do?actionTarget=list" redirect="true" />
+			<forward name="setPassword"
+				path="/setPassword.do?action=unspecified&amp;referer=/showAvailableAccounts.do&amp;action=unspecified" redirect="true" />
+			<forward name="cancel"
+				path="/showAvailableAccounts.do?actionTarget=unspecified" redirect="false" />
+		</action>
+
+		<action path="/deleteAccounts" scope="request"
+			parameter="actionTarget"
+			type="com.adito.security.actions.DeleteAccountsAction">
+			<forward name="success"
+				path="/showAvailableAccounts.do?actionTarget=list" />
+		</action>
+
+		<action path="/setPassword" name="setPasswordForm"
+			scope="session" parameter="action" validate="true"
+			input=".site.SetPassword"
+			type="com.adito.security.actions.SetPasswordAction">
+			<forward name="display" path=".site.SetPassword" />
+			<forward name="success"
+				path="/showAvailableAccounts.do?actionTarget=list" redirect="true"/>
+		</action>
+
+		<action path="/confirmResetPrivateKey" name="confirmForm"
+			parameter="question,true,security,confirmResetPrivateKey,yes=/showAvailableAccounts.do?actionTarget=resetPrivateKey,no=/showAvailableAccounts.do?actionTarget=unspecified"
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<action path="/accountInformation"
+			type="com.adito.policyframework.actions.PrincipalInformationAction"
+			name="principalInformationForm" scope="session" parameter="actionTarget"
+			input=".site.PrincipalInformation">
+			<forward name="display" path=".site.AccountInformation" />
+		</action>
+
+		<!-- Roles (a.k.a. Groups in gui context) -->
+
+		<action path="/showAvailableRoles"
+			type="com.adito.security.actions.ShowAvailableRolesDispatchAction"
+			name="showAvailableRolesForm" scope="session"
+			parameter="actionTarget" input=".site.AvailableRoles">
+			<forward name="display" path=".site.AvailableRoles" />
+			<forward name="success" path=".site.AvailableRoles" />
+			<forward name="create" path="/createRole.do" />
+			<forward name="edit" path="/editRole.do" />
+			<forward name="confirmRoleDeletion"
+				path="/confirmRoleDeletion.do" />
+			<forward name="refresh"
+				path="/showAvailableRoles.do?actionTarget=unspecified"
+				redirect="false" />
+		</action>
+
+		<action path="/createRole" name="roleForm" scope="session"
+			parameter="actionTarget" validate="true" input=".site.CreateRole"
+			type="com.adito.security.actions.ShowRoleDispatchAction">
+			<forward name="display" path=".site.CreateRole" />
+		</action>
+
+		<action path="/editRole" name="roleForm" scope="session"
+			parameter="actionTarget" validate="true" input=".site.EditRole"
+			type="com.adito.security.actions.ShowRoleDispatchAction">
+			<forward name="display" path=".site.EditRole" />
+		</action>
+
+		<action path="/deleteRoles" scope="request"
+			parameter="actionTarget"
+			type="com.adito.security.actions.DeleteRolesAction">
+			<forward name="success"
+				path="/showAvailableRoles.do?actionTarget=list" redirect="true" />
+		</action>
+
+		<action path="/roleInformation"
+			type="com.adito.policyframework.actions.PrincipalInformationAction"
+			name="principalInformationForm" scope="session" parameter="actionTarget"
+			input=".site.PrincipalInformation">
+			<forward name="display" path=".site.RoleInformation" />
+		</action>
+
+		<!-- IP Address restrictions -->
+
+		<action path="/showAvailableIpRestrictions"
+			type="com.adito.security.actions.ShowAvailableIpRestrictionsDispatchAction"
+			name="ipRestrictionsForm" scope="request" parameter="actionTarget"
+			input=".site.AvailableIpRestrictions">
+			<forward name="success"
+				path=".site.AvailableIpRestrictions" />
+			<forward name="create" path="/createIpRestriction.do" />
+			<forward name="edit" path="/editIpRestriction.do" />
+			<forward name="refresh"
+				path="/showAvailableIpRestrictions.do?actionTarget=unspecified"
+				redirect="true" />
+			<forward name="confirmDelete"
+				path="/confirmRemoveIpRestriction.do" />
+			<forward name="confirmDeleteWithLockout"
+				path="/confirmRemoveIpRestrictionWithLockout.do" />
+		</action>
+
+		<action path="/createIpRestriction" name="ipRestrictionForm"
+			scope="session" parameter="actionTarget" validate="true"
+			input=".site.CreateIpRestriction"
+			type="com.adito.security.actions.ShowIpRestrictionDispatchAction">
+			<forward name="display" path=".site.CreateIpRestriction" />
+			<forward name="confirmCreateWithLockout" path="/confirmCreateIpRestrictionWithLockout.do" />
+		</action>
+
+		<action path="/editIpRestriction" name="ipRestrictionForm"
+			scope="session" parameter="actionTarget" validate="true"
+			input=".site.EditIpRestriction"
+			type="com.adito.security.actions.ShowIpRestrictionDispatchAction">
+			<forward name="display" path=".site.EditIpRestriction" />
+			<forward name="confirmCreateWithLockout" path="/confirmCreateIpRestrictionWithLockout.do" />
+		</action>
+
+		<action path="/confirmCreateIpRestrictionWithLockout"
+			name="confirmForm"
+			parameter="question,true,security,confirmCreateIpRestrictionWithLockout,yes=/createIpRestriction.do?actionTarget=doCommit,no="
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<action path="/confirmRemoveIpRestriction" name="confirmForm"
+			parameter="question,true,security,confirmRemoveIpRestriction,yes=/showAvailableIpRestrictions.do?actionTarget=delete,no=/showAvailableIpRestrictions.do?actionTarget=list"
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<action path="/confirmRemoveIpRestrictionWithLockout"
+			name="confirmForm"
+			parameter="question,true,security,confirmRemoveIpRestrictionWithLockout,yes=/showAvailableIpRestrictions.do?actionTarget=delete,no=/showAvailableIpRestrictions.do?actionTarget=list"
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<action path="/ipRestrictionInformation" scope="request"
+			name="ipRestrictionInformationForm" parameter="actionTarget"
+			input=".site.UpdateInformation" validate="false"
+			type="com.adito.security.actions.IpRestrictionInformationAction">
+			<forward name="display"
+				path=".site.IpRestrictionInformation" />
+		</action>
+
+		<!--  Message Queue -->
+
+		<action path="/messageQueue"
+			type="com.adito.setup.actions.MessageQueueDispatchAction"
+			name="messageQueueForm" scope="session" parameter="actionTarget"
+			input=".site.MessageQueue">
+			<forward name="display" path=".site.MessageQueue" />
+			<forward name="confirmClearQueue"
+				path="/confirmClearQueue.do" />
+			<forward name="sendMessage" path="/sendMessage.do"
+				redirect="true" />
+			<forward name="refresh" path="/messageQueue.do"
+				redirect="true" />
+		</action>
+		<action path="/sendMessage"
+			type="com.adito.setup.actions.SendMessageDispatchAction"
+			name="messageForm" scope="session" parameter="actionTarget"
+			input=".site.SendMessage">
+			<forward name="display" path=".site.SendMessage" />
+		</action>
+
+		<action path="/confirmClearQueue" name="confirmForm"
+			parameter="warning,true,setup,confirmClearQueue,yes=/messageQueue.do?actionTarget=clearQueue,no=/messageQueue.do?actionTarget=unspecified"
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+		
+		<action path="/messageQueueInformation"
+			type="com.adito.setup.actions.MessageQueueInformationAction"
+			name="messageQueueInformationForm" scope="session" parameter="actionTarget"
+			input=".site.MessageQueueInformation">
+			<forward name="display" path=".site.MessageQueueInformation" />
+		</action>
+
+		<!--  Status -->
+
+		<action path="/status" name="statusForm"
+			parameter="actionTarget" scope="session"
+			type="com.adito.setup.actions.StatusAction">
+			<forward name="display" path=".site.Status" />
+		</action>
+
+		<action path="/userSessions" name="userSessionsForm"
+			parameter="actionTarget" scope="session"
+			type="com.adito.setup.actions.UserSessionsDispatchAction">
+			<forward name="display" path=".site.Status" />
+		</action>
+
+		<action path="/sessionInformation"
+			type="com.adito.setup.actions.SessionInformationAction"
+			name="sessionInformationForm" scope="session" parameter="actionTarget"
+			input=".site.SessionInformation">
+			<forward name="display" path=".site.SessionInformation" />
+		</action>
+
+		<action path="/systemInfo" name="systemInfoForm"
+			parameter="actionTarget" scope="session"
+			type="com.adito.setup.actions.SystemInfoDispatchAction" />
+
+		<action path="/showVfsLocks" name="vfsLocksForm"
+			parameter="actionTarget" scope="session"
+			type="com.adito.vfs.actions.ShowVfsLocksDispatchAction">
+			<forward name="display" path=".site.Status" />
+		</action>
+
+		<action path="/logoffSession"
+			type="com.adito.setup.actions.LogoffSessionAction">
+			<forward name="success"
+				path="/status.do?actionTarget=unspecified&amp;subForm=userSessionsForm" redirect="true"/>
+		</action>
+
+		<!-- Tunneled site proxy -->
+
+		<action path="/launchWebForward"
+			type="com.adito.webforwards.actions.LaunchWebForwardAction"/>	
+			
+		<action path="/launchTunneledSite"
+			type="com.adito.webforwards.actions.LaunchTunneledSiteAction" />
+
+		<!-- Reverse proxy -->
+		<action path="/launchReverseProxy"
+			type="com.adito.reverseproxy.actions.LaunchReverseProxyAction" />
+
+		<!-- Exceptions and messages -->
+		<!-- This one is wrong -->
+		<action path="/confirmAccountDeletion" name="confirmForm"
+			parameter="question,true,security,confirmAccountDeletion,yes=/showAvailableAccounts.do?actionTarget=accountDeletion,no="
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<action path="/confirmResetPersonalQuestions" name="confirmForm"
+			parameter="question,true,security,confirmResetPersonalQuestions,yes=/showAvailableAccounts.do?actionTarget=resetPersonalQuestions,no="
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<action path="/confirmRoleDeletion" name="confirmForm"
+			parameter="question,true,security,confirmDeleteRole,yes=/showAvailableRoles.do?actionTarget=delete,no="
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<action path="/showMessage" name="confirmForm" scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<action path="/showException" name="confirmForm"
+			parameter="exception,true,navigation,exception,close="
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<action path="/showPopupException" name="confirmForm"
+			parameter="exception,true,navigation,exception,close="
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.PopupConfirm" />
+		</action>
+
+		<action path="/showUndecoratedException" name="confirmForm"
+			parameter="exception,false,navigation,exception,close="
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.UndecoratedConfirm" />
+		</action>
+
+		<!--  Redirect -->
+
+		<action path="/redirect" name="redirectForm" scope="request"
+			type="com.adito.navigation.actions.RedirectAction">
+			<forward name="display" path=".site.Redirect" />
+		</action>
+
+		<!--  No cookies -->
+
+		<action path="/noCookies" name="confirmForm"
+			parameter="align=left,question,true,navigation,noCookies,retry=@"
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<!--  Download -->
+
+		<action path="/showFileDownload" name="fileDownloadForm"
+			scope="request"
+			type="com.adito.navigation.actions.ShowFileDownloadAction">
+			<forward name="success" path=".site.FileDownload" />
+		</action>
+
+		<action path="/popupFileDownload" name="fileDownloadForm"
+			scope="request"
+			type="com.adito.navigation.actions.ShowFileDownloadAction">
+			<forward name="success" path=".site.FileDownload" />
+		</action>
+
+		<action path="/fileDownload" name="fileDownloadForm"
+			scope="request"
+			type="com.adito.navigation.actions.FileDownloadAction">
+			<forward name="failed" path="/redirectToTempDownload.do" />
+		</action>
+
+		<action path="/completeFileDownload" name="fileDownloadForm"
+			scope="request"
+			type="com.adito.navigation.actions.CompleteFileDownloadAction">
+			<forward name="success" path="/showHome.do" />
+			<forward name="failed" path="/redirectToTempDownload.do" />
+		</action>
+
+		<action path="/redirectToTempDownload" name="fileDownloadForm"
+			scope="request"
+			type="com.adito.navigation.actions.FailedFileDownloadAction">
+			<forward name="display" path=".site.RedirectToTempDownload" />
+		</action>
+
+		<!--  Authentication schemes -->
+		<action path="/showAuthenticationSchemes"
+			name="authenticationSchemesForm" scope="session"
+			parameter="actionTarget" input=".site.AuthenticationSchemes"
+			type="com.adito.security.actions.ShowAuthenticationSchemesDispatchAction">
+
+			<forward name="display" path=".site.AuthenticationSchemes" />
+			<forward name="confirmRemove"
+				path="/confirmRemoveAuthenticationScheme.do" />
+			<forward name="refresh" path="/showAuthenticationSchemes.do"
+				redirect="true" />
+			<forward name="edit" path="/editAuthenticationScheme.do" />
+			<forward name="clone" path="/editAuthenticationScheme.do" />
+			<forward name="create"
+				path="/createAuthenticationScheme.do" />
+		</action>
+
+		<action path="/confirmRemoveAuthenticationScheme"
+			name="confirmForm"
+			parameter="question,true,security,confirmRemoveAuthenticationScheme,yes=/showAuthenticationSchemes.do?actionTarget=remove,no=/showAuthenticationSchemes.do?actionTarget=unspecified"
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<action path="/editAuthenticationScheme"
+			name="authenticationSchemeForm" scope="session"
+			parameter="actionTarget" validate="true"
+			input=".site.EditAuthenticationScheme"
+			type="com.adito.security.actions.EditAuthenticationSchemeDispatchAction">
+			<forward name="display"
+				path=".site.EditAuthenticationScheme" />
+			<forward name="done" path="/showAuthenticationSchemes.do" />
+		</action>
+
+		<action path="/createAuthenticationScheme"
+			name="authenticationSchemeForm" scope="session"
+			parameter="actionTarget" validate="true"
+			input=".site.CreateAuthenticationScheme"
+			type="com.adito.security.actions.EditAuthenticationSchemeDispatchAction">
+			<forward name="display"
+				path=".site.CreateAuthenticationScheme" />
+			<forward name="success" path="/showAuthenticationSchemes.do"
+				redirect="true" />
+		</action>
+
+		<!--  Attribute Definitions -->
+		
+		<action path="/showAttributeDefinitions"
+			name="attributeDefinitionsForm" scope="session"
+			parameter="actionTarget" input=".site.AttributeDefinitions"
+			type="com.adito.properties.attributes.actions.ShowAttributeDefinitionsDispatchAction">
+			<forward name="display" path=".site.AttributeDefinitions" />
+			<forward name="confirmRemove"
+				path="/confirmRemoveAttributeDefinition.do" />
+			<forward name="refresh" path="/showAttributeDefinitions.do"
+				redirect="true" />
+			<forward name="edit" path="/editAttributeDefinition.do" />
+			<forward name="create" path="/attributeDefinitionDetails.do"
+				redirect="true" />
+		</action>
+
+		<action path="/confirmRemoveAttributeDefinition"
+			name="confirmForm"
+			parameter="question,true,properties,confirmRemoveAttributeDefinition,yes=/showAttributeDefinitions.do?actionTarget=remove,no=/showAttributeDefinitions.do?actionTarget=unspecified"
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<action path="/editAttributeDefinition"
+			name="attributeDefinitionForm" scope="session"
+			parameter="actionTarget" validate="true"
+			input=".site.EditAttributeDefinition"
+			type="com.adito.properties.attributes.actions.EditAttributeDefinitionDispatchAction">
+
+			<forward name="display"
+				path=".site.EditAttributeDefinition" />
+			<forward name="success" path="/showAttributeDefinitions.do"
+				redirect="true" />
+		</action>
+
+		<action path="/createAttributeDefinition"
+			name="attributeDefinitionForm" scope="session"
+			parameter="actionTarget" validate="true"
+			input=".site.CreateAttributeDefinition"
+			type="com.adito.properties.attributes.actions.EditAttributeDefinitionDispatchAction">
+			<forward name="display"
+				path=".site.CreateAttributeDefinition" />
+			<forward name="success" path="/showAttributeDefinitions.do"
+				redirect="true" />
+		</action>
+
+		<action path="/attributeDefinitionInformation" scope="request"
+			name="attributeDefinitionInformationForm" parameter="actionTarget"
+			input=".site.AttributeDefinitionInformation" validate="false"
+			type="com.adito.properties.attributes.actions.AttributeDefinitionInformationAction">
+			<forward name="display"
+				path=".site.AttributeDefinitionInformation" />
+		</action>
+
+		<!--  Attributes -->
+
+		<action path="/userAttributes" name="userAttributesForm"
+			scope="session" parameter="actionTarget" validate="true"
+			input=".site.UserAttributes"
+			type="com.adito.properties.attributes.actions.UserAttributesDispatchAction">
+			<forward name="display" path=".site.UserAttributes" />
+		</action>
+
+		<!--  Personal Answers -->
+		<action path="/showSetPersonalAnswers"
+			name="personalAnswersForm" scope="session" validate="false"
+			type="com.adito.security.actions.ShowSetPersonalAnswersAction">
+			<forward name="display" path=".site.PersonalAnswers" />
+		</action>
+
+		<action path="/setPersonalAnswers" name="personalAnswersForm"
+			scope="session" validate="true" input=".site.PersonalAnswers"
+			type="com.adito.security.actions.SetPersonalAnswersAction">
+			<forward name="success" path="/showHome.do" />
+		</action>
+
+		<!--  Private key passphrase -->
+
+		<action path="/updatePrivateKeyPassphrase"
+			name="updatePrivateKeyPassphraseForm" scope="session" validate="true"
+			input=".site.UpdatePrivateKeyPassphrase" parameter="actionTarget"
+			type="com.adito.security.actions.UpdatePrivateKeyPassphraseDispatchAction">
+			<forward name="success" path="/showHome.do" redirect="true" />
+			<forward name="display"
+				path=".site.UpdatePrivateKeyPassphrase" />
+			<forward name="cancel" path="/logoff.do" />
+			<forward name="confirmReset" path="/confirmReset.do" />
+		</action>
+
+		<action path="/confirmReset" name="confirmForm"
+			parameter="question,true,security,confirmReset,yes=/showHome.do,no=/updatePrivateKeyPassphrase.do?actionTarget=unspecified"
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<action path="/restartRequired" name="confirmForm"
+			parameter="question,true,setup,restartRequired,yes=/showShutdown.do,no=${request:param.no}"
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<action path="/promptForPrivateKeyPassphrase"
+			name="promptForPrivateKeyPassphraseForm" scope="session"
+			validate="true" input=".site.PromptForPrivateKeyPassphrase"
+			parameter="actionTarget"
+			type="com.adito.security.actions.PromptForPrivateKeyPassphraseDispatchAction">
+			<forward name="success" path="/showHome.do" redirect="true" />
+			<forward name="display"
+				path=".site.PromptForPrivateKeyPassphrase" />
+			<forward name="cancel" path="/logoff.do" />
+		</action>
+
+		<action path="/promptForPrivateKeyPassphraseAuto"
+			name="promptForPrivateKeyPassphraseForm" scope="session"
+			validate="true" input=".site.PromptForPrivateKeyPassphraseAuto"
+			parameter="actionTarget"
+			type="com.adito.security.actions.PromptForPrivateKeyPassphraseDispatchAction">
+			<forward name="success" path="/showHome.do" redirect="true" />
+			<forward name="display"
+				path=".site.PromptForPrivateKeyPassphraseAuto" />
+			<forward name="cancel" path="/logoff.do" />
+		</action>
+
+		<action path="/promptForSessionPassword"
+			name="promptForSessionPasswordForm" scope="request"
+			input=".site.PromptForSessionPassword" parameter="actionTarget"
+			type="com.adito.security.actions.PromptForSessionPasswordDispatchAction">
+			<forward name="display"
+				path=".site.PromptForSessionPassword" />
+		</action>
+
+	</action-mappings>
+
+	<controller maxFileSize="1G" />
+
+
+
+	<!-- ===================================== Controller Configuration -->
+
+
+	<!-- ================================ Message Resources Definitions -->
+
+
+	<message-resources
+		parameter="com.adito.security.ApplicationResources"
+		key="security" />
+
+	<message-resources
+		parameter="com.adito.services.ApplicationResources"
+		key="services" />
+
+	<message-resources
+		parameter="com.adito.navigation.ApplicationResources"
+		key="navigation" />
+
+	<message-resources
+		parameter="com.adito.extensions.ApplicationResources"
+		key="extensions" />
+
+	<message-resources
+		parameter="com.adito.applications.ApplicationResources"
+		key="applications" />
+
+	<message-resources
+		parameter="com.adito.setup.ApplicationResources" key="setup" />
+
+	<message-resources
+		parameter="com.adito.unixauth.ApplicationResources"
+		key="unixauth" />
+
+	<message-resources
+		parameter="com.adito.properties.ApplicationResources"
+		key="properties" />
+
+	<message-resources
+		parameter="com.adito.install.ApplicationResources"
+		key="install" />
+
+	<message-resources
+		parameter="com.adito.policyframework.ApplicationResources"
+		key="policyframework" />
+
+	<message-resources
+		parameter="com.adito.vfs.ApplicationResources" key="vfs" />
+
+	<message-resources
+		parameter="com.adito.keystore.ApplicationResources"
+		key="keystore" />
+
+	<message-resources
+		parameter="com.adito.errors.ApplicationResources" key="errors" />
+
+	<message-resources
+		parameter="com.adito.agent.ApplicationResources" key="agent" />
+
+	<message-resources
+		parameter="com.adito.input.validators.ApplicationResources"
+		key="validators" />
+
+	<message-resources
+		parameter="com.adito.realms.ApplicationResources"
+		key="realms" />
+
+	<message-resources
+		parameter="com.adito.tasks.ApplicationResources"
+		key="tasks" />
+
+	<!-- ======================================= Plug Ins Configuration -->
+
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" />
+	</plug-in>
+
+	<plug-in className="com.adito.core.CoreTilesPlugin">
+		<set-property property="definitions-config"
+			value="/WEB-INF/tiles-defs.xml" />
+		<set-property property="definitions-factory-class"
+			value="com.adito.core.CoreDefinitionsFactory" />
+		<set-property property="definitions-debug" value="1" />
+		<set-property property="definitions-parser-details" value="0" />
+		<set-property property="definitions-parser-validate"
+			value="false" />
+	</plug-in>
+
+</struts-config>

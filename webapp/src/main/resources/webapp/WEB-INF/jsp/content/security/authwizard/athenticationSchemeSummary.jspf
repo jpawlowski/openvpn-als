@@ -1,0 +1,48 @@
+<%@ page import="com.adito.install.forms.InstallationSummaryForm"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="/server/taglibs/core" prefix="core"%>
+
+
+<div id="wizardSummary">
+	<bean:define id="athenticationSchemeSummaryForm" name="athenticationSchemeSummaryForm" type="com.adito.security.authwizard.forms.AthenticationSchemeSummaryForm" />
+	<table border="0" cellspacing="0" border="0">
+		<tr class="formBlock">
+			<td class="label" colspan="2">
+				<bean:message key="authwizard.athenticationSchemeSummary.resource" bundle="security" />
+			</td>
+		</tr>
+		<tr class="formLabel">
+			<td class="label">
+				<bean:message key="authwizard.athenticationSchemeSummary.resource.name" bundle="security" />
+			</td>
+			<td class="value">
+				<bean:write name="athenticationSchemeSummaryForm" property="resourceName" />
+			</td>
+		</tr>
+		<tr class="formBlock">
+			<td class="label" colspan="2">
+				<bean:message key="authwizard.athenticationSchemeSummary.selectedPolicies" bundle="security" />
+			</td>
+		</tr>
+		<tr class="formLabel">
+			<logic:empty name="athenticationSchemeSummaryForm" property="selectedPolicies">
+				<td class="value" colspan="2">
+					<bean:message key="authwizard.athenticationSchemeSummary.selectedPolicies.none" bundle="security" />
+				</td>
+			</logic:empty>
+			<logic:notEmpty name="athenticationSchemeSummaryForm" property="selectedPolicies">
+				<td class="label">
+					<bean:message key="authwizard.athenticationSchemeSummary.selectedPolicies.names" bundle="security" />
+				</td>
+				<td class="value">
+					<logic:iterate name="athenticationSchemeSummaryForm" property="selectedPolicies" id="athenticationScheme">
+						<bean:write name="athenticationScheme" />
+						<br />
+					</logic:iterate>
+				</td>
+			</logic:notEmpty>
+		</tr>
+	</table>
+</div>

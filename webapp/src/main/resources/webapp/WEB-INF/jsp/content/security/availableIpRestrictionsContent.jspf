@@ -1,0 +1,129 @@
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+<jsp:directive.page import="com.adito.security.IpRestriction"/>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="/server/taglibs/security" prefix="security" %>
+<%@ taglib uri="/server/taglibs/table" prefix="table" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ page import="com.adito.policyframework.PolicyConstants" %>
+
+
+<div id="page_ip_restrictions" />
+	<core:form method="post" action="/showAvailableIpRestrictions.do">
+		<html:hidden property="actionTarget"/>	
+		<div class="dialog_content">
+			<tiles:insert flush="false" page="/WEB-INF/jsp/tiles/filter.jspf"/>		
+		</div>				
+		<div class="filtered_resources">
+			<table class="resource_table">
+				<thead>
+					<tr>
+						<td class="address">
+							<bean:message key="ipRestrictions.ipAddress" bundle="security" />
+						</td>
+				  		<td class="actions">
+				  			<bean:message key="availableIpRestrictions.action" bundle="security"/>
+				  		</td>
+					</tr>
+				</thead>
+				<tbody>
+					<% boolean highlight = true; %>
+					<logic:equal name="ipRestrictionsForm" property="model.empty" value="true">
+						<tr class="<%= highlight ? "highlight" : "lowlight" %>">
+					  		<td class="tableMessage" colspan="2">		   
+							  	<bean:message key="availableIpRestrictions.noIpRestrictions" bundle="security"/>
+							</td>
+						</tr>
+					</logic:equal>
+					<logic:equal name="ipRestrictionsForm" property="model.empty" value="false">													
+						<logic:equal name="ipRestrictionsForm" property="pager.empty" value="true">						
+							<tr class="<%= highlight ? "highlight" : "lowlight" %>">
+						  		<td class="tableMessage" colspan="2">		   
+								  	<bean:message key="availableIpRestrictions.noMatch" bundle="security"/>
+								</td>
+							</tr>
+						</logic:equal>
+						<logic:equal name="ipRestrictionsForm" property="pager.empty" value="false">
+							<logic:iterate id="ipRestriction" name="ipRestrictionsForm"	property="pager.pageItems"	type="com.adito.security.IpRestrictionItem">
+								<tr onmouseover="<%= "this.className = 'selected';" %>"
+			      					onmouseout="<%= "this.className = '" + ( highlight ? "highlight" : "lowlight" ) + "';" %>" class="<%= highlight ? "highlight" : "lowlight" %>">           
+									<td class="address">
+										<img border="0" align="absmiddle" src="<%= ipRestriction.getSmallIconPath(request) %>"/>
+			  		  				<input:toolTip width="400" borderWidth="0" padding="4" href="javascript: void(0);" contentLocation="<%= "/ipRestrictionInformation.do?allowed=" + ipRestriction.getIpRestriction().getAllowed() + "&ip=" + ipRestriction.getIpRestriction().getAddress() %>">
+										<bean:write name="ipRestriction" property="ipRestriction.address" />
+									</input:toolTip>
+									</td>
+									<td class="actions">
+										<core:blankActionFill>		
+									   		<logic:equal name="ipRestriction" property="canDelete" value="true">
+											 	<security:permission resourceType="<%= PolicyConstants.IP_RESTRICTIONS_RESOURCE_TYPE_ID %>" permissionList="<%= PolicyConstants.PERM_DELETE_ID %>">
+											   		<tiles:insert flush="false" attribute="actionLink">
+														<tiles:put name="actionName" value="remove"/>
+														<tiles:put name="bundle" value="security"/>
+														<tiles:put name="nameKey" value="action.deleteIpRestriction.name"/>
+														<tiles:put name="descriptionKey" value="action.deleteIpRestriction.description"/>
+														<tiles:put name="actionPath" value="<%= "/showAvailableIpRestrictions.do?actionTarget=confirmDelete&id=" + String.valueOf(ipRestriction.getIpRestriction().getID()) %>"/>
+													</tiles:insert>
+												</security:permission>
+											</logic:equal>
+										</core:blankActionFill>
+									 	<security:permission resourceType="<%= PolicyConstants.IP_RESTRICTIONS_RESOURCE_TYPE_ID %>" permissionList="<%= PolicyConstants.PERM_EDIT_ID %>">
+									   		<tiles:insert flush="false" attribute="actionLink">
+												<tiles:put name="actionName" value="edit"/>
+												<tiles:put name="bundle" value="security"/>
+												<tiles:put name="nameKey" value="action.editIpRestriction.name"/>
+												<tiles:put name="descriptionKey" value="action.editIpRestriction.description"/>
+												<tiles:put name="actionPath" value="<%= "/showAvailableIpRestrictions.do?actionTarget=edit&id=" + String.valueOf(ipRestriction.getIpRestriction().getID()) %>"/>
+											</tiles:insert>
+										</security:permission>										
+										<core:blankActionFill>
+									 		<security:permission resourceType="<%= PolicyConstants.IP_RESTRICTIONS_RESOURCE_TYPE_ID %>" permissionList="<%= PolicyConstants.PERM_EDIT_ID %>">
+										   		<logic:equal name="ipRestriction" property="canMoveUp" value="true">
+										   			<tiles:insert flush="false" attribute="actionLink">
+														<tiles:put name="actionName" value="moveUp" />
+														<tiles:put name="bundle" value="security" />
+														<tiles:put name="nameKey" value="action.moveIpRestrictionUp.name" />
+														<tiles:put name="descriptionKey" value="action.moveIpRestrictionUp.description" />
+														<tiles:put name="actionPath" value="<%= "/showAvailableIpRestrictions.do?actionTarget=moveUp&id=" +  ipRestriction.getIpRestriction().getID() %>"/>
+													</tiles:insert>
+												</logic:equal>
+											</security:permission>
+										</core:blankActionFill>		
+										<core:blankActionFill>
+									 		<security:permission resourceType="<%= PolicyConstants.IP_RESTRICTIONS_RESOURCE_TYPE_ID %>" permissionList="<%= PolicyConstants.PERM_EDIT_ID %>">
+										   		<logic:equal name="ipRestriction" property="canMoveDown" value="true">
+										   			<tiles:insert flush="false" attribute="actionLink">
+														<tiles:put name="actionName" value="moveDown" />
+														<tiles:put name="bundle" value="security" />
+														<tiles:put name="nameKey" value="action.moveIpRestrictionDown.name" />
+														<tiles:put name="descriptionKey" value="action.moveIpRestrictionDown.description" />
+														<tiles:put name="actionPath" value="<%= "/showAvailableIpRestrictions.do?actionTarget=moveDown&id=" +  ipRestriction.getIpRestriction().getID() %>"/>
+													</tiles:insert>
+												</logic:equal>
+											</security:permission>
+										</core:blankActionFill>										
+									</td>
+								</tr>
+								<% highlight = !highlight; %>
+							</logic:iterate>
+						</logic:equal>
+					</logic:equal>
+				</tbody>
+				<tfoot>			
+					<tr>
+						<td colspan="2">
+							<div class="pager_navigation">
+								<table:navigation selectedStyleClass="pagerSelected" pagerName="ipRestrictionsForm" pagerProperty="pager" styleClass="pagerEnabled" disabledStyleClass="pagerDisabled"/>
+							</div>
+							<div class="pager_pages">
+								<table:pageSize pagerName="ipRestrictionsForm" pagerProperty="pager" styleClass="pagerEnabled"/>
+							</div.
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</core:form>
+</div>

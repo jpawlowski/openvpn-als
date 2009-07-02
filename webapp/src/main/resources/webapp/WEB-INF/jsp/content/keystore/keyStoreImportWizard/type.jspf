@@ -1,0 +1,24 @@
+<%@ page import="java.util.Iterator" %>
+<%@ page import="com.adito.keystore.wizards.KeyStoreImportTypeManager" %>
+<%@ page import="com.adito.keystore.wizards.AbstractKeyStoreImportType" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<% 
+	for(Iterator i = KeyStoreImportTypeManager.getInstance().getTypes().iterator(); i.hasNext(); ) {
+		AbstractKeyStoreImportType type = (AbstractKeyStoreImportType)i.next();
+	%>	
+		<tr class="formRadio">
+			<td class="value"">
+				<html:radio styleId="<%= "check" + type.getName() %>" name="keyStoreImportTypeForm" property="type" value="<%= type.getName() %>"/>
+				<input:toolTip width="240" href="<%= "javascript: setCheckedValue(document.getElementById('check" + type.getName() + "'), '" + type.getName() + "')" %>" key="<%= "keyStoreImportType." + type.getName() + ".description" %>" bundle="<%= type.getBundle() %>">
+					<bean:message key="<%= "keyStoreImportType." + type.getName() + ".title" %>" bundle="<%= type.getBundle() %>"/>
+				</input:toolTip>
+			</td>
+		</tr>
+	<%
+	} %>
+</table>

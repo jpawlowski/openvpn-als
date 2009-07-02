@@ -1,0 +1,13 @@
+<%@ page import="com.adito.boot.PropertyDefinition" %>
+<%@ page import="com.adito.security.Constants" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+
+<div id="propertyHelp">
+	<h3>
+		<%= ((PropertyDefinition)request.getAttribute(Constants.REQ_ATTR_PROPERTY_DEFINITION)).getLabel() %>
+	</h3>
+	<p>
+		<%= ((PropertyDefinition)request.getAttribute(Constants.REQ_ATTR_PROPERTY_DEFINITION)).getDescription() %>
+	</p>
+</div>

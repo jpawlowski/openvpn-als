@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+       "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+       "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+
+
+	<!-- ======================================== Form Bean Definitions -->
+	<form-beans>
+	
+		<!--  Installation Wizard -->
+		
+		<form-bean name="selectCertificateSourceForm" type="com.adito.install.forms.SelectCertificateSourceForm"></form-bean>
+		<form-bean name="createNewCertificateForm" type="com.adito.install.forms.CreateNewCertificateForm"></form-bean>
+		<form-bean name="setKeyStorePasswordForm" type="com.adito.install.forms.SetKeyStorePasswordForm"></form-bean>
+		<form-bean name="importExistingCertificateForm" type="com.adito.install.forms.ImportExistingCertificateForm"></form-bean>
+		<form-bean name="uploadExistingCertificateForm" type="com.adito.vfs.forms.UploadForm"></form-bean>
+		<form-bean name="configureUserDatabaseForm" type="com.adito.install.forms.ConfigureUserDatabaseForm"></form-bean>
+		<form-bean name="selectUserDatabaseForm" type="com.adito.install.forms.SelectUserDatabaseForm"></form-bean>
+		<form-bean name="configureSuperUserForm" type="com.adito.install.forms.ConfigureSuperUserForm"></form-bean>
+		<form-bean name="webServerForm" type="com.adito.install.forms.WebServerForm"></form-bean>
+		<form-bean name="configureProxiesForm" type="com.adito.install.forms.ConfigureProxiesForm"></form-bean>
+		<form-bean name="installationSummaryForm" type="com.adito.install.forms.InstallationSummaryForm"></form-bean>
+		<form-bean name="installForm" type="com.adito.install.forms.InstallForm"></form-bean>
+		
+		<!--  Profile Wizard -->
+		
+		<form-bean name="profileDetailsForm" type="com.adito.properties.wizards.forms.ProfileDetailsForm"></form-bean>
+		<form-bean name="profilePolicySelectionForm" type="com.adito.properties.wizards.forms.ProfilePolicySelectionForm"></form-bean>
+		<form-bean name="profileSummaryForm" type="com.adito.properties.wizards.forms.ProfileSummaryForm"></form-bean>
+		<form-bean name="profileFinishForm" type="com.adito.properties.wizards.forms.ProfileFinishForm"></form-bean>
+
+		<!--  Policy Wizard -->
+		
+		<form-bean name="policyDetailsForm" type="com.adito.policyframework.wizards.forms.PolicyDetailsForm"></form-bean>
+		<form-bean name="policyPrincipalSelectionForm" type="com.adito.policyframework.wizards.forms.PolicyPrincipalSelectionForm"></form-bean>
+		<form-bean name="policyNestingForm" type="com.adito.policyframework.wizards.forms.PolicyNestingForm"></form-bean>
+		<form-bean name="policySummaryForm" type="com.adito.policyframework.wizards.forms.PolicySummaryForm"></form-bean>
+		<form-bean name="policyFinishForm" type="com.adito.policyframework.wizards.forms.PolicyFinishForm"></form-bean>
+		
+		<!--  Access Rights Wizard -->
+		
+		<form-bean name="accessRightsDetailsForm" type="com.adito.policyframework.wizards.forms.AccessRightsDetailsForm"></form-bean>
+		<form-bean name="accessRightsPermissionsForm" type="com.adito.policyframework.wizards.forms.AccessRightsPermissionsForm"></form-bean>
+		<form-bean name="accessRightsPolicySelectionForm" type="com.adito.policyframework.wizards.forms.AccessRightsPolicySelectionForm"></form-bean>
+		<form-bean name="accessRightsSummaryForm" type="com.adito.policyframework.wizards.forms.AccessRightsSummaryForm"></form-bean>
+		<form-bean name="accessRightsFinishForm" type="com.adito.policyframework.wizards.forms.AccessRightsFinishForm"></form-bean>
+		
+ 		<!--  Key Store Import -->
+		
+		<form-bean name="keyStoreImportTypeForm" type="com.adito.keystore.wizards.forms.KeyStoreImportTypeForm"></form-bean>
+		<form-bean name="keyStoreImportFileForm" type="com.adito.keystore.wizards.forms.KeyStoreImportFileForm"></form-bean>
+		<form-bean name="keyStoreImportUploadForm" type="com.adito.vfs.forms.UploadForm"></form-bean>
+		<form-bean name="keyStoreImportSummaryForm" type="com.adito.keystore.wizards.forms.KeyStoreImportSummaryForm"></form-bean>
+		<form-bean name="keyStoreImportFinishForm" type="com.adito.keystore.wizards.forms.KeyStoreImportFinishForm"></form-bean>
+		
+		<form-bean name="athenticationSchemeDetailsForm" type="com.adito.security.authwizard.forms.AthenticationSchemeDetailsForm"></form-bean>
+		<form-bean name="athenticationSchemeSelectionForm" type="com.adito.security.authwizard.forms.AthenticationSchemeSelectionForm"></form-bean>
+		<form-bean name="athenticationSchemePolicySelectionForm" type="com.adito.security.authwizard.forms.AthenticationSchemePolicySelectionForm"></form-bean>
+		<form-bean name="athenticationSchemeSummaryForm" type="com.adito.security.authwizard.forms.AthenticationSchemeSummaryForm"></form-bean>
+		<form-bean name="athenticationSchemeFinishForm" type="com.adito.security.authwizard.forms.AthenticationSchemeFinishForm"></form-bean>
+		
+		<!--  Attribute definition wizard -->
+		
+		<form-bean name="attributeDefinitionDetailsForm" type="com.adito.properties.attributes.wizards.forms.AttributeDefinitionDetailsForm"></form-bean>
+		<form-bean name="attributeDefinitionOptionsForm" type="com.adito.properties.attributes.wizards.forms.AttributeDefinitionOptionsForm"></form-bean>
+		<form-bean name="attributeDefinitionSummaryForm" type="com.adito.properties.attributes.wizards.forms.AttributeDefinitionSummaryForm"></form-bean>
+		<form-bean name="attributeDefinitionFinishForm" type="com.adito.properties.attributes.wizards.forms.AttributeDefinitionFinishForm"></form-bean>
+		
+	</form-beans>
+	
+	
+	<global-exceptions/>
+	
+	<global-forwards>
+		<forward name="restartInstallWizard" path="/selectCertificateSource.do" redirect="false"/>	
+		<forward name="exitInstaller" path="/shutdown.do?actionTarget=installShutdown" redirect="true"/>	
+	</global-forwards>
+	
+	<action-mappings>
+	
+		<!--  Polizy Wizard -->
+		<action path="/policyDetails" 
+				name="policyDetailsForm" 
+				scope="session" 
+				type="com.adito.policyframework.wizards.actions.PolicyDetailsAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.PolicyWizardPage">				
+			<forward name="finish" path="/policyFinish.do" redirect="true"/>
+			<forward name="display" path=".site.PolicyWizardPage" />
+			<forward name="next" path="/policyPrincipalSelection.do" redirect="true"/>
+		</action>
+		<action path="/policyPrincipalSelection" 
+				name="policyPrincipalSelectionForm" 
+				scope="session" 
+				type="com.adito.policyframework.wizards.actions.PolicyPrincipalSelectionAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.PolicyWizardPage">				
+			<forward name="display" path=".site.PolicyWizardPage" />
+			<forward name="previous" path="/policyDetails.do"  redirect="true"/>
+			<forward name="next" path="/policySummary.do"  redirect="true"/>
+		</action>
+		<action path="/policyNesting" 
+				name="policyNestingForm" 
+				scope="session" 
+				type="com.adito.policyframework.wizards.actions.PolicyNestingAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.PolicyWizardPage">				
+			<forward name="display" path=".site.PolicyWizardPage" />
+			<forward name="previous" path="/policyPrincipalSelection.do"  redirect="true"/>
+			<forward name="next" path="/policySummary.do"  redirect="true"/>
+		</action>
+		<action path="/policySummary" 
+				name="policySummaryForm" 
+				scope="session" 
+				type="com.adito.policyframework.wizards.actions.PolicySummaryAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.PolicyWizardPage">				
+			<forward name="display" path=".site.PolicyWizardPage" />
+			<forward name="previous" path="/policyPrincipalSelection.do" redirect="true" />
+		</action>
+		<action path="/policyFinish" 
+				name="policyFinishForm" 
+				scope="session" 
+				type="com.adito.policyframework.wizards.actions.PolicyFinishAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.PolicyWizardPage">
+			<forward name="display" path=".site.PolicyWizardPage" />
+		</action>
+	
+		<!--  Profile Wizard -->
+		<action path="/profileDetails" 
+				name="profileDetailsForm" 
+				scope="session" 
+				type="com.adito.properties.wizards.actions.ProfileDetailsAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.ProfileWizardPage">				
+			<forward name="finish" path="/profileFinish.do" redirect="true"/>
+			<forward name="display" path=".site.ProfileWizardPage" />
+			<forward name="next" path="/profilePolicySelection.do" redirect="true"/>
+		</action>
+		<action path="/profilePolicySelection" 
+				name="profilePolicySelectionForm" 
+				scope="session" 
+				type="com.adito.properties.wizards.actions.ProfilePolicySelectionAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.ProfileWizardPage">				
+			<forward name="display" path=".site.ProfileWizardPage" />
+			<forward name="previous" path="/profileDetails.do"  redirect="true"/>
+			<forward name="next" path="/profileSummary.do"  redirect="true"/>
+		</action>
+		<action path="/profileSummary" 
+				name="profileSummaryForm" 
+				scope="session" 
+				type="com.adito.properties.wizards.actions.ProfileSummaryAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.ProfileWizardPage">				
+			<forward name="display" path=".site.ProfileWizardPage" />
+			<forward name="previous" path="/profilePolicySelection.do" redirect="true" />
+		</action>
+		<action path="/profileFinish" 
+				name="profileFinishForm" 
+				scope="session" 
+				type="com.adito.properties.wizards.actions.ProfileFinishAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.ProfileWizardPage">
+			<forward name="display" path=".site.ProfileWizardPage" />
+		</action>
+	
+		<!--  Installation Wizard -->
+		<action path="/selectCertificateSource" 
+				name="selectCertificateSourceForm" 
+				scope="session" 
+				type="com.adito.install.actions.SelectCertificateSourceAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.SelectCertificateSource">				
+			<forward name="finish" path="/install.do" redirect="true"/>
+			<forward name="display" path=".site.SelectCertificateSource" />
+			<forward name="createNewCertificate" path="/createNewCertificate.do" redirect="true"/>
+			<forward name="setKeyStorePassword" path="/setKeyStorePassword.do" redirect="true"/>
+			<forward name="importExistingCertificate" path="/importExistingCertificate.do" redirect="true"/>
+			<forward name="useCurrentCertificate" path="/selectUserDatabase.do" redirect="true"/>
+		</action>
+		<action path="/createNewCertificate" 
+				name="createNewCertificateForm" 
+				scope="session" 
+				type="com.adito.install.actions.CreateNewCertificateAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.CreateNewCertificate">
+			<forward name="display" path=".site.CreateNewCertificate" />
+			<forward name="setKeyStorePassword" path="/setKeyStorePassword.do" redirect="true"/>
+			<forward name="selectCertificateSource" path="/selectCertificateSource.do" redirect="true"/>
+			<forward name="next" path="/selectUserDatabase.do" redirect="true"/>
+		</action>
+		<action path="/importExistingCertificate" 
+				name="importExistingCertificateForm" 
+				scope="session" 
+				type="com.adito.install.actions.ImportExistingCertificateAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.ImportExistingCertificate">
+			<forward name="display" path=".site.ImportExistingCertificate" />
+			<forward name="setKeyStorePassword" path="/setKeyStorePassword.do" redirect="true"/>
+			<forward name="selectCertificateSource" path="/selectCertificateSource.do" redirect="true"/>
+		</action>
+		<action path="/uploadExistingCertificate" 
+			type="com.adito.install.actions.UploadExistingCertificateAction" 
+			scope="session"
+			input=".site.ImportExistingCertificate"
+			name="uploadExistingCertificateForm">
+			<forward name="success" path="/selectUserDatabase.do" redirect="true"/>
+		</action>
+		<action path="/setKeyStorePassword" 
+				name="setKeyStorePasswordForm" 
+				scope="session" 
+				type="com.adito.install.actions.SetKeyStorePasswordAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.SetKeyStorePassword">
+			<forward name="display" path=".site.SetKeyStorePassword" />
+			<forward name="previous" path="/selectCertificateSource.do" redirect="true"/>
+			<forward name="createNewCertificate" path="/createNewCertificate.do" redirect="true"/>
+		</action>
+		<action path="/selectUserDatabase" 
+				name="selectUserDatabaseForm" 
+				scope="session" 
+				type="com.adito.install.actions.SelectUserDatabaseAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.SelectUserDatabase">
+			<forward name="createNewCertificate" path="/createNewCertificate.do" redirect="true"/>
+			<forward name="display" path=".site.SelectUserDatabase" />
+			<forward name="importExistingCertificate" path="/importExistingCertificate.do" redirect="true"/>
+			<forward name="selectCertificateSource" path="/selectCertificateSource.do" redirect="true"/>
+			<forward name="configureUserDatabase" path="/configureUserDatabase.do" redirect="true"/>
+			<forward name="next" path="/configureSuperUser.do" redirect="true"/>
+		</action>
+		<action path="/configureUserDatabase" 
+				name="configureUserDatabaseForm" 
+				scope="session" 
+				type="com.adito.install.actions.ConfigureUserDatabaseAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.ConfigureUserDatabase">
+			<forward name="createNewCertificate" path="/createNewCertificate.do" redirect="true"/>
+			<forward name="display" path=".site.ConfigureUserDatabase" />
+			<forward name="previous" path="/selectUserDatabase.do" redirect="true"/>
+			<forward name="next" path="/configureSuperUser.do" redirect="true"/>
+		</action>
+		<action path="/configureSuperUser" 
+				name="configureSuperUserForm" 
+				scope="session" 
+				type="com.adito.install.actions.ConfigureSuperUserAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.ConfigureSuperUser">
+			<forward name="display" path=".site.ConfigureSuperUser" />
+			<forward name="configureUserDatabase" path="/configureUserDatabase.do" redirect="true"/>
+			<forward name="previous" path="/selectUserDatabase.do" redirect="true"/>
+			<forward name="next" path="/webServer.do" redirect="true"/>
+		</action>
+		<action path="/webServer" 
+				name="webServerForm" 
+				scope="session" 
+				type="com.adito.install.actions.WebServerAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.WebServer">
+			<forward name="display" path=".site.WebServer" />
+			<forward name="previous" path="/configureSuperUser.do" redirect="true"/>
+			<forward name="next" path="/configureProxies.do" redirect="true"/>
+		</action>
+		<action path="/configureProxies" 
+				name="configureProxiesForm" 
+				scope="session" 
+				type="com.adito.install.actions.ConfigureProxiesAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.ConfigureProxies">
+			<forward name="display" path=".site.ConfigureProxies" />
+			<forward name="previous" path="/webServer.do" redirect="true"/>
+			<forward name="next" path="/installationSummary.do" redirect="true"/>
+		</action>
+		<action path="/installationSummary" 
+				name="installationSummaryForm" 
+				scope="session" 
+				type="com.adito.install.actions.InstallationSummaryAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.InstallationSummary">
+			<forward name="display" path=".site.InstallationSummary" />
+			<forward name="previous" path="/configureProxies.do" redirect="true"/>
+		</action>
+		<action path="/install" 
+				name="installForm" 
+				scope="session" 
+				type="com.adito.install.actions.InstallAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.Install">
+			<forward name="display" path=".site.Install" />
+			<forward name="rerun" path="/selectCertificateSource.do" redirect="true"/>
+			<forward name="redisplay" path="/install.do?actionTarget=redisplay" redirect="true"/>
+			<forward name="installDone" path="/install.do?actionTarget=installDone" redirect="true"/>
+			<forward name="licenseAgreement" path="/showLicenseAgreement.do" redirect="true"/>
+		</action>
+		<action path="/showActiveDirectoryConfiguration"
+		        type="com.adito.properties.actions.CategoryPropertiesAction"
+    			name="propertiesForm" 
+    			validate="false" 
+    			parameter="setup,80,/showHome.do,true,0" 
+    			input=".site.ActiveDirectoryConfiguration" 
+    			scope="session">
+			<forward name="display" path=".site.ActiveDirectoryConfiguration" />
+		</action>
+		
+		<!--  Access Rights Wizard -->
+		<action path="/accessRightsDetails" 
+				name="accessRightsDetailsForm" 
+				scope="session" 
+				type="com.adito.policyframework.wizards.actions.AccessRightsDetailsAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.AccessRightsWizardPage">				
+			<forward name="finish" path="/accessRightsFinish.do" redirect="true"/>
+			<forward name="display" path=".site.AccessRightsWizardPage" />
+			<forward name="next" path="/accessRightsPermissions.do" redirect="true"/>
+		</action>
+		<action path="/accessRightsPermissions" 
+				name="accessRightsPermissionsForm" 
+				scope="session" 
+				type="com.adito.policyframework.wizards.actions.AccessRightsPermissionsAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.AccessRightsWizardPage">		
+			<forward name="display" path=".site.AccessRightsWizardPage" />
+			<forward name="previous" path="/accessRightsDetails.do" redirect="true"/>
+			<forward name="next" path="/accessRightsPolicySelection.do" redirect="true"/>
+		</action>
+		<action path="/accessRightsPolicySelection" 
+				name="accessRightsPolicySelectionForm" 
+				scope="session" 
+				type="com.adito.policyframework.wizards.actions.AccessRightsPolicySelectionAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.AccessRightsWizardPage">		
+			<forward name="display" path=".site.AccessRightsWizardPage" />
+			<forward name="previous" path="/accessRightsPermissions.do" redirect="true"/>
+			<forward name="next" path="/accessRightsSummary.do" redirect="true"/>
+		</action>
+		<action path="/accessRightsSummary" 
+				name="accessRightsSummaryForm" 
+				scope="session" 
+				type="com.adito.policyframework.wizards.actions.AccessRightsSummaryAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.AccessRightsWizardPage">		
+			<forward name="display" path=".site.AccessRightsWizardPage" />
+			<forward name="previous" path="/accessRightsPolicySelection.do" redirect="true"/>
+		</action>
+		<action path="/accessRightsFinish" 
+				name="accessRightsFinishForm" 
+				scope="session" 
+				type="com.adito.policyframework.wizards.actions.AccessRightsFinishAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.AccessRightsWizardPage">		
+			<forward name="display" path=".site.AccessRightsWizardPage" />
+			<forward name="exit" path="/showHome.do" redirect="true"/>
+			<forward name="rerun" path="/accessRightsDetails.do" redirect="true"/>
+		</action>
+		
+		<!--  Key Store Import -->
+		<action path="/keyStoreImportType" 
+				name="keyStoreImportTypeForm" 
+				scope="session" 
+				type="com.adito.keystore.wizards.actions.KeyStoreImportTypeAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.KeyStoreImportWizardPage">				
+			<forward name="finish" path="/keyStoreImportFinish.do" redirect="true"/>
+			<forward name="display" path=".site.KeyStoreImportWizardPage" />
+			<forward name="next" path="/keyStoreImportFile.do" redirect="true"/>
+		</action>
+		<action path="/keyStoreImportFile" 
+				name="keyStoreImportFileForm" 
+				scope="session" 
+				type="com.adito.keystore.wizards.actions.KeyStoreImportFileAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.KeyStoreImportWizardPage">				
+			<forward name="display" path=".site.KeyStoreImportWizardPage" />
+			<forward name="previous" path="/keyStoreImportType.do" redirect="true" />
+		</action>
+		<action path="/keyStoreImportUpload" 
+			type="com.adito.keystore.wizards.actions.KeyStoreImportUploadAction"
+			scope="session"
+			name="keyStoreImportUploadForm"
+			input="/keyStoreImportFile.do">
+			<forward name="success" path="/keyStoreImportSummary.do" redirect="true"/>
+		</action>
+		<action path="/keyStoreImportSummary" 
+				name="keyStoreImportSummaryForm" 
+				scope="session" 
+				type="com.adito.keystore.wizards.actions.KeyStoreImportSummaryAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.KeyStoreImportWizardPage">				
+			<forward name="display" path=".site.KeyStoreImportWizardPage" />
+			<forward name="previous" path="/keyStoreImportFile.do" redirect="true" />
+		</action>
+		<action path="/keyStoreImportFinish" 
+				name="keyStoreImportFinishForm" 
+				scope="session" 
+				type="com.adito.keystore.wizards.actions.KeyStoreImportFinishAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.KeyStoreImportWizardPage">
+			<forward name="display" path=".site.KeyStoreImportWizardPage" />
+			<forward name="rerun" path="/keyStoreImportType.do" redirect="true"/>
+			<forward name="exit" path="/showHome.do" redirect="true"/>
+		</action>		
+		
+		<!--  Authentication Scheme Wizard -->
+		<action path="/athenticationSchemeDetails" name="athenticationSchemeDetailsForm" scope="session"
+			type="com.adito.security.authwizard.actions.AthenticationSchemeDetailsAction" parameter="actionTarget" validate="true"
+			input=".site.AthenticationSchemeWizardPage">
+			<forward name="finish" path="/athenticationSchemeFinish.do" redirect="true" />
+			<forward name="display" path=".site.AthenticationSchemeWizardPage" />
+			<forward name="next" path="/athenticationSchemeSelection.do" redirect="true" />
+		</action>
+		<action path="/athenticationSchemeSelection" name="athenticationSchemeSelectionForm" scope="session"
+			type="com.adito.security.authwizard.actions.AthenticationSchemeSelectionAction" parameter="actionTarget" validate="true"
+			input=".site.AthenticationSchemeWizardPage">
+			<forward name="finish" path="/athenticationSchemeFinish.do" redirect="true" />
+			<forward name="display" path=".site.AthenticationSchemeWizardPage" />
+			<forward name="previous" path="/athenticationSchemeDetails.do" redirect="true" />
+			<forward name="next" path="/athenticationSchemePolicySelection.do" redirect="true" />
+		</action>
+		<action path="/athenticationSchemePolicySelection" name="athenticationSchemePolicySelectionForm" scope="session"
+			type="com.adito.security.authwizard.actions.AthenticationSchemePolicySelectionAction" parameter="actionTarget" validate="true"
+			input=".site.AthenticationSchemeWizardPage">
+			<forward name="display" path=".site.AthenticationSchemeWizardPage" />
+			<forward name="previous" path="/athenticationSchemeSelection.do" redirect="true" />
+			<forward name="next" path="/athenticationSchemeSummary.do" redirect="true" />
+		</action>
+		<action path="/athenticationSchemeSummary" name="athenticationSchemeSummaryForm" scope="session"
+			type="com.adito.security.authwizard.actions.AthenticationSchemeSummaryAction" parameter="actionTarget" validate="true"
+			input=".site.AthenticationSchemeWizardPage">
+			<forward name="display" path=".site.AthenticationSchemeWizardPage" />
+			<forward name="previous" path="/athenticationSchemePolicySelection.do" redirect="true" />
+		</action>
+		<action path="/athenticationSchemeFinish" name="athenticationSchemeFinishForm" scope="session"
+			type="com.adito.security.authwizard.actions.AthenticationSchemeFinishAction" parameter="actionTarget" validate="true"
+			input=".site.AthenticationSchemeWizardPage">
+			<forward name="display" path=".site.AthenticationSchemeWizardPage" />
+			<forward name="rerun" path="/athenticationSchemeDetails.do" redirect="true" />
+		</action>
+		
+		<!--  Attribute definition wizard  -->
+
+		<action path="/attributeDefinitionDetails" name="attributeDefinitionDetailsForm" scope="session"
+			type="com.adito.properties.attributes.wizards.actions.AttributeDefinitionDetailsAction" parameter="actionTarget" validate="true"
+			input=".site.AttributeDefinitionWizardPage">
+			<forward name="finish" path="/attributeDefinitionFinish.do" redirect="true" />
+			<forward name="display" path=".site.AttributeDefinitionWizardPage" />
+			<forward name="next" path="/attributeDefinitionOptions.do" redirect="true" />
+		</action>
+		<action path="/attributeDefinitionOptions" name="attributeDefinitionOptionsForm" scope="session"
+			type="com.adito.properties.attributes.wizards.actions.AttributeDefinitionOptionsAction" parameter="actionTarget" validate="true"
+			input=".site.AttributeDefinitionWizardPage">
+			<forward name="finish" path="/attributeDefinitionFinish.do" redirect="true" />
+			<forward name="display" path=".site.AttributeDefinitionWizardPage" />
+			<forward name="previous" path="/attributeDefinitionDetails.do" redirect="true" />
+			<forward name="next" path="/attributeDefinitionSummary.do" redirect="true" />
+		</action>
+		<action path="/attributeDefinitionSummary" name="attributeDefinitionSummaryForm" scope="session"
+			type="com.adito.properties.attributes.wizards.actions.AttributeDefinitionSummaryAction" parameter="actionTarget" validate="true"
+			input=".site.AttributeDefinitionWizardPage">
+			<forward name="display" path=".site.AttributeDefinitionWizardPage" />
+			<forward name="previous" path="/attributeDefinitionOptions.do" redirect="true" />
+		</action>		
+		<action path="/attributeDefinitionFinish" name="attributeDefinitionFinishForm" scope="session"
+			type="com.adito.properties.attributes.wizards.actions.AttributeDefinitionFinishAction" parameter="actionTarget" validate="true"
+			input=".site.AttributeDefinitionWizardPage">
+			<forward name="display" path=".site.AttributeDefinitionWizardPage" />
+			<forward name="rerun" path="/attributeDefinitionDetails.do" redirect="true" />
+		</action>
+		
+	</action-mappings>
+</struts-config>
+

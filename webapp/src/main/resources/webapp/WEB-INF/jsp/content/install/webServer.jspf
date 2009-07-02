@@ -1,0 +1,55 @@
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+ 
+<table width="100%" border="0" cellspacing="0" border="0">
+	<tr class="formPassword">
+		<td class="label">
+			<div class="required"><bean:message key="installation.webServer.port" bundle="install"/></div>
+		</td>
+		<td class="value">
+    	    <html:text property="port" size="6"/>
+		</td>
+	</tr>
+	<tr class="formList">
+		<td class="label">
+			<bean:message key="installation.webServer.protocol" bundle="install"/>
+		</td>
+		<td class="value">
+			<html:select property="protocol">
+				<html:optionsCollection value="value" label="label" property="protocolList" />
+			</html:select>
+		</td>
+	</tr>		
+	<tr class="formMultiSelect">
+		<td class="label">
+			<bean:message key="installation.webServer.listeningInterfaces" bundle="install"/>
+		</td>
+		<td class="value">		
+			<input:multiSelectListBox addKey="installation.webServer.add" removeKey="installation.webServer.remove" sourceTitleKey="installation.webServer.availableInterfaces" targetTitleKey="installation.webServer.selectedInterfaces" name="webServerForm" modelName="webServerForm" styleClass="multiSelect" modelProperty="model" property="listeningInterfaces"  bundle="install"/>
+		</td>
+	</tr>
+	<tr class="formMultiEntry">
+		<td class="label">
+			<bean:message key="installation.webServer.validExternalHostnames" bundle="install"/>
+		</td>
+		<td class="value">
+			<input:multiEntryListBox addKey="installation.webServer.add" removeKey="installation.webServer.remove" entryTitleKey="installation.webServer.hostname" targetTitleKey="installation.webServer.validHostnames" name="webServerForm" styleClass="multiEntry" entrySize="16" property="validExternalHostnames" bundle="install"/>
+		</td>
+	</tr>
+	<tr class="formList">
+		<td class="label">
+			<bean:message key="installation.webServer.invalidHostnameAction" bundle="install"/>
+		</td>
+		<td class="value">
+			<html:select property="invalidHostnameAction">
+				<html:option value="none"><bean:message key="installation.webServer.invalidHostnameAction.value.none" bundle="install"/></html:option>
+				<html:option value="redirect"><bean:message  key="installation.webServer.invalidHostnameAction.value.redirect" bundle="install"/></html:option>
+				<html:option value="error"><bean:message key="installation.webServer.invalidHostnameAction.value.error" bundle="install"/></html:option>
+				<html:option value="disconnect"><bean:message  key="installation.webServer.invalidHostnameAction.value.disconnect" bundle="install"/></html:option>
+			</html:select>
+		</td>
+	</tr>
+</table>

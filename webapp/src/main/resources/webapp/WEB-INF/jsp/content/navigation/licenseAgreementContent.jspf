@@ -1,0 +1,52 @@
+<%@ page import="com.adito.security.Constants" %>
+<%@ page import="com.adito.core.forms.LicenseAgreementForm" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+    
+    
+<core:form action="/showLicenseAgreement.do">
+	<html:hidden property="actionTarget"/>
+	<div id="page_licenseAgreement"> 
+		<div class="titled_dialog_content">
+			<div>
+				<table class="titled_dialog_table">
+					<thead>
+						<tr>
+							<td colspan="2">                         
+								<bean:message key="licenseAgreement.agreementTitle" bundle="navigation" arg0="<%= ((LicenseAgreementForm)session.getAttribute("licenseAgreementForm")).getAgreement().getTitle() %>"/>
+							</td>
+						</tr>                          
+					</thead>
+					<tbody>
+						<tr>
+							<td class="icon">
+								<bean:define id="themePath"><core:themePath/></bean:define>
+								<img src="<%= themePath + "/images/dialog/license.gif" %>"/>
+							</td>
+							<td class="text">
+								<div id="licenseAgreement">
+									<bean:write filter="false" name="licenseAgreementForm" property="agreementText"/>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="2">   
+								<div class="buttonBar">
+									<div class="formButton">         							
+										<html:submit styleClass="ok" onclick="setActionTarget('accept'); return true" ><bean:message key='licenseAgreement.accept' bundle='navigation'/></html:submit>&nbsp;
+									</div>
+									<div class="formButton">         							
+										<html:submit styleClass="cancel" onclick="setActionTarget('reject'); return true" ><bean:message key='licenseAgreement.reject' bundle='navigation'/></html:submit>
+									</div>
+								</div>
+							</td>
+						</tr>                  
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+</core:form>

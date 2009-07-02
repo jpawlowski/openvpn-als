@@ -1,0 +1,167 @@
+<%@ page import="java.util.StringTokenizer" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>	
+
+<tiles:useAttribute name="rowIdx" classname="java.lang.Integer"/> 
+<tiles:useAttribute name="form" classname="com.adito.properties.forms.PropertiesForm"/> 
+<tiles:useAttribute name="propertyDisabled" classname="java.lang.Boolean"/> 
+<tiles:useAttribute name="propertyItem" classname="com.adito.properties.PropertyItemImpl"/> 
+
+<%-- This iterator fools the html tags into using the correct index --%>
+<logic:iterate id="p" name="form" property="propertyItems" offset="<%= rowIdx.toString() %>" length="1" type="com.adito.properties.PropertyItemImpl">												
+	<logic:equal value="0" name="propertyItem" property="type">
+		<tr class="formText">			
+			<td class="label">		
+				<tiles:insert page="/WEB-INF/jsp/content/properties/propertyLabel.jspf"
+					flush="false">
+					<tiles:put name="propertyItem" beanName="propertyItem"/>
+				</tiles:insert>
+			</td>
+			<td class="value">
+				<html:text tabindex="<%= String.valueOf(rowIdx.intValue() + 1) %>" styleId="<%= "f_" + rowIdx.toString() %>" disabled="<%= propertyDisabled.booleanValue() %>"
+				indexed="true" name="propertyItem" property="value" />
+				<logic:equal name="propertyItem" property="definition.propertyClass.supportsReplacementVariablesInValues" value="true">
+					<input:variables includeRequest="true" includeUserAttributes="true" inputId="<%= "f_" + rowIdx.toString() %>"/>
+				</logic:equal>
+			</td>
+		</tr>					
+	</logic:equal>
+	<logic:equal value="1" name="propertyItem" property="type">
+		<tr class="formInteger">
+			<td class="label">	
+				<tiles:insert page="/WEB-INF/jsp/content/properties/propertyLabel.jspf"
+					flush="false">
+					<tiles:put name="propertyItem" beanName="propertyItem"/>
+				</tiles:insert>
+			</td>
+			<td class="value">
+				<html:text styleId="<%= "f_" + rowIdx.toString() %>" tabindex="<%= String.valueOf(rowIdx.intValue() + 1) %>" disabled="<%= propertyDisabled.booleanValue() %>" indexed="true"
+			name="propertyItem" property="value" />
+				<logic:equal name="propertyItem" property="definition.propertyClass.supportsReplacementVariablesInValues" value="true">
+					<input:variables includeRequest="true" includeUserAttributes="true" inputId="<%= "f_" + rowIdx.toString() %>"/>
+				</logic:equal>
+			</td>
+		</tr>					
+	</logic:equal>
+	<logic:equal value="2" name="propertyItem" property="type">
+		<tr class="formCheckbox">
+			<td class="label">	
+				<tiles:insert page="/WEB-INF/jsp/content/properties/propertyLabel.jspf"
+					flush="false">
+					<tiles:put name="propertyItem" beanName="propertyItem"/>
+				</tiles:insert>
+			</td>
+			<td class="value">
+				<logic:equal name="propertyDisabled" value="true">
+					<html:hidden indexed="true" name="propertyItem" property="selected"/>
+				</logic:equal>
+				<html:checkbox tabindex="<%= String.valueOf(rowIdx.intValue() + 1) %>" styleId="selected" disabled="<%= propertyDisabled.booleanValue() %>"
+						indexed="true" name="propertyItem" property="selected" />
+			</td>
+		</tr>					
+	</logic:equal>
+	<logic:equal value="3" name="propertyItem" property="type">
+		<tr class="formList">
+			<td class="label">	
+				<tiles:insert page="/WEB-INF/jsp/content/properties/propertyLabel.jspf"
+					flush="false">
+					<tiles:put name="propertyItem" beanName="propertyItem"/>
+				</tiles:insert>
+			</td>
+			<td class="value">
+				<html:select tabindex="<%= String.valueOf(rowIdx.intValue() + 1) %>" styleId="value" disabled="<%= propertyDisabled.booleanValue() %>"
+		 					 indexed="true" name="propertyItem" property="value">
+					<html:optionsCollection name="propertyItem" property="listItems" />
+				</html:select>
+			</td>
+		</tr>					
+	</logic:equal>
+	<logic:equal value="4" name="propertyItem" property="type">
+		<tr class="formPassword">
+			<td class="label">	
+				<tiles:insert page="/WEB-INF/jsp/content/properties/propertyLabel.jspf"
+					flush="false">
+					<tiles:put name="propertyItem" beanName="propertyItem"/>
+				</tiles:insert>
+			</td>
+			<td class="value">
+				<html:password tabindex="<%= String.valueOf(rowIdx.intValue() + 1) %>" styleId="<%= "f_" + rowIdx.toString() %>" disabled="<%= propertyDisabled.booleanValue() %>"
+			indexed="true" name="propertyItem" property="value" />
+				<logic:equal name="propertyItem" property="definition.propertyClass.supportsReplacementVariablesInValues" value="true">
+					<input:variables includeRequest="true" includeUserAttributes="true" inputId="<%= "f_" + rowIdx.toString() %>"/>
+				</logic:equal>
+			</td>
+		</tr>					
+	</logic:equal>
+	<logic:equal value="5" name="propertyItem" property="type">
+		<tr class="formMultiEntry">
+			<td class="label" >	
+				<tiles:insert page="/WEB-INF/jsp/content/properties/propertyLabel.jspf"
+					flush="false">
+					<tiles:put name="propertyItem" beanName="propertyItem"/>
+				</tiles:insert>
+			</td>
+			<td class="value">
+				<logic:equal name="propertyItem" property="definition.propertyClass.supportsReplacementVariablesInValues" value="false">
+					<input:multiEntryListBox tabindex="<%= String.valueOf(rowIdx.intValue() + 1) %>" entryTitleKey="<%= propertyItem.getName() + ".entryTitle" %>" targetTitleKey="<%= propertyItem.getName() + ".targetTitle" %>" addKey="<%= propertyItem.getName() + ".add" %>" removeKey="<%= propertyItem.getName() + ".remove" %>" bundle="<%= propertyItem.getMessageResourcesKey() %>" styleClass="multiEntry" entrySize="16" indexed="true" name="propertyItem" property="value"/>
+				</logic:equal>
+				<logic:equal name="propertyItem" property="definition.propertyClass.supportsReplacementVariablesInValues" value="true">
+					<input:multiEntryListBox includeSession="false" includeUserAttributes="true" showReplacementVariables="true" tabindex="<%= String.valueOf(rowIdx.intValue() + 1) %>" entryTitleKey="<%= propertyItem.getName() + ".entryTitle" %>" targetTitleKey="<%= propertyItem.getName() + ".targetTitle" %>" addKey="<%= propertyItem.getName() + ".add" %>" removeKey="<%= propertyItem.getName() + ".remove" %>" bundle="<%= propertyItem.getMessageResourcesKey() %>" styleClass="multiEntry" entrySize="16" indexed="true" name="propertyItem" property="value"/>
+				</logic:equal>
+			</td>
+		</tr>
+	</logic:equal>
+	<logic:equal value="6" name="propertyItem" property="type">
+		<tr class="formTextArea">
+			<td class="label">	
+				<tiles:insert page="/WEB-INF/jsp/content/properties/propertyLabel.jspf"
+					flush="false">
+					<tiles:put name="propertyItem" beanName="propertyItem"/>
+				</tiles:insert>
+			</td>
+			<td class="value">
+				<html:textarea tabindex="<%= String.valueOf(rowIdx.intValue() + 1) %>" styleId="<%= "f_" + rowIdx.toString() %>" disabled="<%= propertyDisabled.booleanValue() %>"
+			indexed="true" name="propertyItem" property="value"
+			cols="<%= String.valueOf(propertyItem.getColumns()) %>"
+			rows="<%= String.valueOf(propertyItem.getRows()) %>" />
+				<logic:equal name="propertyItem" property="definition.propertyClass.supportsReplacementVariablesInValues" value="true">
+					<input:variables includeRequest="true" includeUserAttributes="true" inputId="<%= "f_" + rowIdx.toString() %>"/>
+				</logic:equal>
+			</td>
+		</tr>					
+	</logic:equal>
+	<logic:equal value="7" name="propertyItem" property="type">
+		<tr class="formTime">
+			<td class="label">	
+				<tiles:insert page="/WEB-INF/jsp/content/properties/propertyLabel.jspf"
+					flush="false">
+					<tiles:put name="propertyItem" beanName="propertyItem"/>
+				</tiles:insert>
+			</td>
+			<td class="value">
+				<html:text tabindex="<%= String.valueOf(rowIdx.intValue() + 1) %>" styleId="<%= "f_" + rowIdx.intValue() %>" disabled="<%= propertyDisabled.booleanValue() %>"
+			indexed="true" name="propertyItem" property="value" />
+				<logic:equal name="propertyItem" property="definition.propertyClass.supportsReplacementVariablesInValues" value="true">
+					<input:variables includeRequest="true" includeUserAttributes="true" inputId="<%= "f_" + String.valueOf(rowIdx.intValue()) %>"/>
+				</logic:equal>
+			</td>
+		</tr>					
+	</logic:equal>
+	<logic:equal value="9" name="propertyItem" property="type">
+		<tr class="formMultiSelect">
+			<td class="label">	
+				<tiles:insert page="/WEB-INF/jsp/content/properties/propertyLabel.jspf"
+					flush="false">
+					<tiles:put name="propertyItem" beanName="propertyItem"/>
+				</tiles:insert>
+			</td>
+			<td class="value">
+				<input:multiSelectListBox tabindex="<%= String.valueOf(rowIdx.intValue() + 1) %>" sourceTitleKey="<%= propertyItem.getName() + ".sourceTitle" %>" targetTitleKey="<%= propertyItem.getName() + ".targetTitle" %>" addKey="<%= propertyItem.getName() + ".add" %>" removeKey="<%= propertyItem.getName() + ".remove" %>" bundle="<%= propertyItem.getMessageResourcesKey() %>" styleClass="multiSelect" modelName="propertyItem" modelProperty="listDataSourceModel" indexed="true" name="propertyItem" property="value"/>
+			</td>
+		</tr>
+	</logic:equal>
+</logic:iterate>

@@ -1,0 +1,41 @@
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+
+<div id="page_roleInformation">
+	<bean:define id="principal" name="principalInformationForm" property="principal" type="com.adito.policyframework.Principal"/>
+	<core:form method="post" action="/accountInformation.do">	
+			<html:hidden property="referer"/>
+			<html:hidden property="actionTarget"/>
+			<html:hidden property="_charset_"/>		
+			<div>	
+				<h3><bean:message key="principalInformation.group" bundle="security"/></h3>
+				<div class="common">	
+					<table class="dialog_form_table" id="form">
+						<tbody>
+							<tr class="formText">
+								<td class="label">
+									<bean:message key="principalInformation.principalName" bundle="security"/>:
+								</td>
+								<td class="value">	
+		                			<bean:write name="principal" property="principalName"/>
+								</td>
+							</tr>
+							<tr class="formText">
+								<td class="label">
+									<bean:message key="principalInformation.realm" bundle="security"/>:
+								</td>
+								<td class="value">	
+		                			<bean:write name="principal" property="realm.resourceName"/>
+								</td>
+							</tr>
+			
+						</tbody>
+					</table>
+				</div>
+			</div>			
+	</core:form>
+</div>

@@ -1,0 +1,135 @@
+<%@ page import="com.adito.security.Constants" %>
+<%@ page import="com.adito.policyframework.PolicyConstants" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/table" prefix="table" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+<%@ taglib uri="/server/taglibs/security" prefix="security" %>
+
+<div id="page_messageQueue">
+	<tiles:useAttribute name="actionLink" scope="request" classname="java.lang.String"/> 
+	<div id="table">
+		<core:form method="post" action="/messageQueue.do">
+			<html:hidden name="messageQueueForm" property="_charset_"/> 
+			<html:hidden name="messageQueueForm" property="actionTarget"/>
+			<html:hidden name="messageQueueForm" property="selectedSink"/>
+			<html:hidden name="messageQueueForm" property="pager.startRow"/>
+			<html:hidden name="messageQueueForm" property="pager.sortName"/>
+			<html:hidden name="messageQueueForm" property="pager.sortReverse"/>
+			<html:hidden name="messageQueueForm" property="pager.pageSize"/>
+			<security:permission resourceType="<%= PolicyConstants.MESSAGE_QUEUE_RESOURCE_TYPE_ID %>" permissionList="<%= String.valueOf(PolicyConstants.PERM_CONTROL_ID) %>">
+				<div id="messageSinks" class="titled_dialog_content">
+					<table>
+						<thead>
+							<tr>
+								<td>
+									Delivery Systems - Click button to enable / disable 
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<table>
+										<logic:iterate name="messageQueueForm" property="messageSinks" type="com.adito.setup.MessageSinkItem" id="messageSinkItem">					
+											<tr>
+												<td class="action">
+													<logic:equal name="messageSinkItem" property="enabled" value="true">
+														<html:submit onclick="<%= "setActionTarget('disable'); document.forms[0].selectedSink.value = '" + messageSinkItem.getSink().getName() + "'; return true" %>" styleClass="ok">
+															<bean:message key="<%= messageSinkItem.getSink().getShortNameKey() %>" bundle="<%= messageSinkItem.getSink().getBundle() %>"/>
+														</html:submit>
+													</logic:equal>
+													<logic:equal name="messageSinkItem" property="enabled" value="false">
+														<html:submit onclick="<%= "setActionTarget('enable'); document.forms[0].selectedSink.value = '" + messageSinkItem.getSink().getName() + "'; return true" %>" styleClass="cancel">
+															<bean:message key="<%= messageSinkItem.getSink().getShortNameKey() %>" bundle="<%= messageSinkItem.getSink().getBundle() %>"/>
+														</html:submit>
+													</logic:equal>
+												</td>
+												<td class="description">
+													<bean:message key="<%= messageSinkItem.getSink().getDescriptionKey() %>" bundle="<%= messageSinkItem.getSink().getBundle() %>"/>
+												</td>
+											</tr>
+										</logic:iterate>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</security:permission>
+			<security:permission resourceType="<%= PolicyConstants.MESSAGE_QUEUE_RESOURCE_TYPE_ID %>" permissionList="<%= String.valueOf(PolicyConstants.PERM_VIEW_ID) %>">
+				<table class="resource_table">
+				    <thead>
+				        <tr>
+							<td class="subject">
+								<table:columnHeader page="" pagerName="messageQueueForm" pagerProperty="pager" columnIndex="0" styleClass="columnHeader"><bean:message key="messageQueue.messages.subject" bundle="setup"/></table:columnHeader>
+							</td>
+							<td class="urgent">
+								<table:columnHeader page="" pagerName="messageQueueForm" pagerProperty="pager" columnIndex="1" styleClass="columnHeader"><bean:message key="messageQueue.messages.urgent" bundle="setup"/></table:columnHeader>
+							</td>
+							<td class="attempts">
+								<table:columnHeader page="" pagerName="messageQueueForm" pagerProperty="pager" columnIndex="2" styleClass="columnHeader"><bean:message key="messageQueue.messages.attempts" bundle="setup"/></table:columnHeader>
+							</td>
+							<td class="lastAttempt">
+								<table:columnHeader page="" pagerName="messageQueueForm" pagerProperty="pager" columnIndex="3" styleClass="columnHeader"><bean:message key="messageQueue.messages.lastAttempt" bundle="setup"/></table:columnHeader>
+							</td>
+						</tr>
+					</thead>
+				    <tbody>				    	
+						<logic:equal name="messageQueueForm" property="model.empty" value="true">				    	
+								<tr class="lowlight">           
+									<td class="tableMessage" colspan="4">
+										<bean:message key="messageQueue.noMessages" bundle="setup"/>
+									</td>
+								</tr>
+						</logic:equal>
+						<logic:notEqual name="messageQueueForm" property="model.empty" value="true">				    	
+					   	<% 	boolean highlight = false; %>
+							<logic:iterate id="messageQueueItem" indexId="i" name="messageQueueForm" property="pager.pageItems" type="com.adito.setup.MessageTableItem">							
+								<tr 
+      								onmouseover="<%= "this.className = 'selected';" %>"
+      								onmouseout="<%= "this.className = '" + ( highlight ? "highlight" : "lowlight" ) + "';" %>" class="<%= highlight ? "highlight" : "lowlight" %>">                 
+									<td class="subject">
+										<input:toolTip width="400" borderWidth="0" padding="0" onclick="<%= messageQueueItem.getOnClick() %>" href="<%= messageQueueItem.getLink() %>" contentLocation="<%= "/messageQueueInformation.do?messageId=" + messageQueueItem.getId()  %>"  value="<%= messageQueueItem.getMessage().getSubject() %>">
+											<bean:write name="messageQueueItem" property="message.subject"/>
+										</input:toolTip>
+									</td>
+									<td class="urgent">
+										<logic:equal name="messageQueueItem" property="message.urgent" value="true">
+											<bean:message key="messageQueue.messages.urgent.yes" bundle="setup"/>
+										</logic:equal>
+										<logic:equal name="messageQueueItem" property="message.urgent" value="false">
+											<bean:message key="messageQueue.messages.urgent.no" bundle="setup"/>
+										</logic:equal>
+									</td>
+									<td class="attempts">
+										<bean:write name="messageQueueItem" property="attempts"/>
+									</td>
+									<td class="lastAttempt">
+										<bean:write name="messageQueueItem" property="lastAttempt"/>
+									</td>
+								</tr>
+								<%	highlight = !highlight; %>
+							</logic:iterate>
+						</logic:notEqual>
+					</tbody>				
+					<tfoot>			
+						<tr>
+							<td colspan="4">
+								<div class="pager_navigation">
+									<table:navigation selectedStyleClass="pagerSelected" pagerName="messageQueueForm" pagerProperty="pager" styleClass="pagerEnabled" disabledStyleClass="pagerDisabled"/>
+								</div>
+								<div class="pager_pages">
+									<table:pageSize pagerName="messageQueueForm" pagerProperty="pager" styleClass="pagerEnabled"/>
+								</div.
+							</td>
+						</tr>
+					</tfoot>
+				</table>	
+			</security:permission>
+		</core:form>
+	</div>
+</div>

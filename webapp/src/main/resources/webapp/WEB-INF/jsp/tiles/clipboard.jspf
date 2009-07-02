@@ -1,0 +1,17 @@
+<%@ page import="com.adito.security.Constants" %>
+<%@ page import="com.adito.vfs.clipboard.Clipboard" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+
+<input:frame titleKey="clipboard.title" bundle="navigation" styleClass="component_messageBox" styleId="component_clipboard">
+	<bean:message key="clipboard.summary" bundle="navigation" arg0="<%= String.valueOf(((Clipboard)session.getAttribute(Constants.CLIPBOARD)).getContent().size()) %>"/>
+	<div class="messages">
+		<logic:iterate name="clipboard" property="content" id="clipboardContent" type="com.adito.vfs.clipboard.ClipboardContent">
+			<div class="text">
+				<bean:write name="clipboardContent"/>
+			</div>
+		</logic:iterate>
+	</div>
+</input:frame>	

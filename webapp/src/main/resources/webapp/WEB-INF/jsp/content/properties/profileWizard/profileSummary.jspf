@@ -1,0 +1,47 @@
+<%@ page import="com.adito.install.forms.InstallationSummaryForm" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+
+
+<div id="wizardSummary">
+	<bean:define id="profileSummaryForm" name="profileSummaryForm" type="com.adito.properties.wizards.forms.ProfileSummaryForm"/>
+	<table border="0" cellspacing="0" border="0">
+		<tr class="formBlock">
+			<td class="label" colspan="2">
+				<bean:message key="profileWizard.profileSummary.resource" bundle="properties"/>
+			</td>
+		</tr>
+		<tr class="formLabel">			
+			<td class="label">
+				<bean:message key="profileWizard.profileSummary.resource.name" bundle="properties"/>
+			</td>
+			<td class="value">
+				<bean:write name="profileSummaryForm" property="resourceName"/>
+			</td>
+		</tr>
+		<tr class="formBlock">
+			<td class="label" colspan="2">
+				<bean:message key="profileWizard.profileSummary.selectedPolicies" bundle="properties"/>
+			</td>
+		</tr>
+		<tr class="formLabel">		
+			<logic:empty name="profileSummaryForm" property="selectedPolicies">
+				<td class="value" colspan="2">
+					<bean:message key="profileWizard.profileSummary.selectedPolicies.none" bundle="properties"/>
+				</td>
+			</logic:empty>
+			<logic:notEmpty name="profileSummaryForm" property="selectedPolicies">
+				<td class="label">
+					<bean:message key="profileWizard.profileSummary.selectedPolicies.names" bundle="properties"/>
+				</td>
+				<td class="value">
+					<logic:iterate name="profileSummaryForm" property="selectedPolicies" id="policy">
+						<bean:write name="policy"/><br/>
+					</logic:iterate>
+				</td>
+			</logic:notEmpty>
+		</tr>
+	</table>
+</div>

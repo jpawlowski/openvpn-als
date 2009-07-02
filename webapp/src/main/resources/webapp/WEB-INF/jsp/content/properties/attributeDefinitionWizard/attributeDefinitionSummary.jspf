@@ -1,0 +1,80 @@
+<%@ page import="com.adito.install.forms.InstallationSummaryForm"%>
+<jsp:directive.page import="com.adito.boot.PropertyDefinition"/>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="/server/taglibs/core" prefix="core"%>
+
+
+<div id="wizardSummary">
+	<bean:define id="attributeDefinitionSummaryForm" name="attributeDefinitionSummaryForm" type="com.adito.properties.attributes.wizards.forms.AttributeDefinitionSummaryForm" />
+	<table border="0" cellspacing="0" border="0">
+		<tr class="formBlock">
+			<td class="label" colspan="2">
+				<bean:message key="attributeDefinitionWizard.attributeDefinitionSummary.details" bundle="properties" />
+			</td>
+		</tr>
+		<tr class="formLabel">
+			<td class="label">
+				<bean:message key="attributeDefinitionWizard.attributeDefinitionSummary.name" bundle="properties" />
+			</td>
+			<td class="value">
+				<bean:write name="attributeDefinitionSummaryForm" property="name" />
+			</td>
+		</tr>
+		<tr class="formLabel">
+			<td class="label">
+				<bean:message key="attributeDefinitionWizard.attributeDefinitionSummary.class" bundle="properties" />
+			</td>
+			<td class="value">
+				<bean:message key="<%= "propertyClass." + attributeDefinitionSummaryForm.getAttributeClass().getName() + ".name" %>" 
+					bundle="<%= attributeDefinitionSummaryForm.getAttributeClass().getMessageResourcesKey() %>"/>
+			</td>
+		</tr>
+		<tr class="formBlock">
+			<td class="label" colspan="2">
+				<bean:message key="attributeDefinitionWizard.attributeDefinitionSummary.options" bundle="properties" />
+			</td>
+		</tr>
+		<tr class="formLabel">
+			<td class="label">
+				<bean:message key="attributeDefinitionWizard.attributeDefinitionSummary.type" bundle="properties" />
+			</td>
+			<td class="value">
+				<bean:message bundle="properties" key="<%= "propertyDefinition.type." + attributeDefinitionSummaryForm.getType() %>" />			
+			</td>
+		</tr>
+		<tr class="formLabel">
+			<td class="label">
+				<bean:message key="attributeDefinitionWizard.attributeDefinitionSummary.label" bundle="properties" />
+			</td>
+			<td class="value">
+				<bean:write name="attributeDefinitionSummaryForm" property="label" />
+			</td>
+		</tr>
+		<tr class="formLabel">
+			<td class="label">
+				<bean:message key="attributeDefinitionWizard.attributeDefinitionSummary.category" bundle="properties" />
+			</td>
+			<td class="value">
+				<bean:write name="attributeDefinitionSummaryForm" property="category" />
+			</td>
+		</tr>
+		<tr class="formLabel">
+			<td class="label">
+				<bean:message key="attributeDefinitionWizard.attributeDefinitionSummary.weight" bundle="properties" />
+			</td>
+			<td class="value">
+				<bean:write format="0" name="attributeDefinitionSummaryForm" property="weight" />
+			</td>
+		</tr>
+		<tr class="formLabel">
+			<td class="label">
+				<bean:message key="attributeDefinitionWizard.attributeDefinitionSummary.visibility" bundle="properties" />
+			</td>
+			<td class="value">
+				<bean:message bundle="properties" key="<%= "propertyDefinition.visibility." + attributeDefinitionSummaryForm.getVisibility() %>" />			
+			</td>
+		</tr>		
+	</table>
+</div>

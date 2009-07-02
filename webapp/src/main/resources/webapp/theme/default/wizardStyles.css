@@ -1,0 +1,384 @@
+/*
+
+   This is the correct place for customising styles for wizard
+   pages
+
+*/
+
+/* General wizard styles */
+
+div#wizardSummary table {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div#component_wizardPage #body table {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: left;
+}
+
+div#wizardSummary .formBlock .label {
+	font-weight: bold;
+	font-size: 120%;
+	padding-bottom: 8px;
+	padding-top: 8px;
+}
+
+div#wizardSummary .formLabel {
+	vertical-align: top;
+}
+
+div#wizardFinish .statusWarning {
+	background-image: url(images/warning.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	text-align: left;
+	margin: 2px 2px 2px 2px;
+	padding: 0px 0px 0px 20px;
+}
+
+div#wizardFinish table {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div#wizardFinish .statusOk {
+	background-image: url(images/ok.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	text-align: left;
+	margin: 2px 2px 2px 2px;
+	padding: 0px 0px 0px 20px;
+}
+
+div#wizardFinish .statusError {
+	background-image: url(images/error.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	text-align: left;
+	margin: 2px 2px 2px 2px;
+	padding: 0px 0px 0px 20px;
+}
+
+div#wizardFinish tfoot .formBlock td {
+	padding-top: 8px;
+	padding-bottom: 8px;
+	text-align: center;
+}
+
+/* -- Individual wizard page styles -- */
+
+/* Installation Wizard */
+
+div#wizard_installWizard {
+	min-height: 32em;
+}
+
+div#wizardPage_selectCertificateSource tr.formBlock {
+	display: block;
+	padding-left: 32px;
+	padding-right: 32px;
+}
+
+div#wizardPage_selectCertificateSource td.label {
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+div#wizardPage_selectCertificateSource td.value .valueLabel {
+	font-weight: bold;
+}
+
+div#wizardPage_selectCertificateSource td.value input {
+	vertical-align: middle;
+	margin-right: 16px;
+}
+
+div#wizardPage_createNewCertificate #wizardPage table {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div#wizardPage_importExistingCertificate #wizardPage table {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div#wizardPage_selectUserDatabase tr.formBlock {
+	display: block;
+	padding-left: 32px;
+	padding-right: 32px;
+}
+
+div#wizardPage_selectUserDatabase td.label {
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+div#wizardPage_selectUserDatabase td.value .valueLabel {
+	font-weight: bold;
+}
+
+div#wizardPage_selectUserDatabase td.value input {
+	vertical-align: middle;
+	margin-right: 16px;
+}
+
+div#wizardPage_configureSuperUser #wizardPage table {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+div#wizardPage_configureUserDatabase .tabSet {
+}
+
+div#wizardPage_configureUserDatabase .tabContent {
+  	background-color: #cbcbcb;
+	border-color: #dcdcdc;
+  	padding: 12px;
+}
+
+div#wizardPage_configureUserDatabase .tabHeadings .selectedTab a:link, div#wizardPage_configureUserDatabase .tabHeadings .selectedTab a:visited {
+  	background-color: #cbcbcb;
+}
+
+div#wizardPage_configureUserDatabase #propertyItems table {
+	table-layout: fixed;
+	overflow: hidden;
+}
+
+div#wizardPage_configureUserDatabase #propertyItems td.label {
+	width: 30%;
+}
+
+div#wizardPage_configureUserDatabase #propertyItems td.value {
+	width: 70%;
+}
+
+div#wizardPage_webServer td.label {
+	width: 25%;	
+}
+
+div#wizardPage_webServer td.value {
+	width: 75%;	
+}
+
+div#wizardPage_configureProxies .options {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+div#wizardPage_configureProxies .toggles {
+	padding-top: 1em;
+	padding-bottom: 1em;
+	text-align: left;
+	width: 100%;
+}
+
+div#wizardPage_configureProxies .details {
+	margin-left: 1em;
+	width: 100%;
+}
+
+div#wizardPage_configureProxies td.label {
+	width: 20%;
+}
+
+div#wizardPage_configureProxies td.value {
+	width: 80%;
+}
+
+div#wizardPage_configureProxies tr.formMultiEntry td {
+	vertical-align: top;
+}
+
+
+div#wizardPage_installXtra #wizardPage table {
+	margin-left: 5em;
+	margin-right: 5em;
+}
+
+div#wizardPage_installXtra #wizardPage .formCheckbox .value {
+	padding-top: 8px;
+	text-align: center;
+}
+
+div#wizardPage_installExtensions #wizardPage table {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div#wizardPage_installExtensions #wizardPage td {
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+div#wizardPage_install #installWizardPage table {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* General resource creation */
+
+table.resourceDetails {
+	width: 100%;
+	padding: 0px 8px 0px 8px;
+	table-layout: fixed;
+}
+
+table.resourceDetails td.label {
+	width: 25%;
+}
+
+table.resourceDetails td.value {
+	width: 75%;
+}
+
+table.resourceDetails textarea {
+	width: 100%;
+}
+
+/* Profile Creation */
+
+div#wizard_profileWizard {
+	min-height: 24em;
+}
+
+div#wizardPage_profileDetails .formTextArea textarea {
+	height: 10em;
+}
+
+div#wizardPage_profilePolicySelection select {
+	height: 14em;
+}
+
+/* Policy Creation */
+
+div#wizard_policyWizard {
+	min-height: 24em;
+}
+
+div#wizard_policyWizard .formTextArea textarea {
+	height: 10em;
+}
+
+div#wizardPage_policyNesting select {
+	height: 14em;
+}
+
+/* Resource Permission Wizard */
+
+
+div#wizard_accessRightsWizard {
+	min-height: 25em;
+}
+
+div#wizardPage_accessRightsDetails .formTextArea textarea {
+	height: 10em;
+}
+
+div#wizardPage_accessRightsPermissions table.permissions {
+	width: 100%;
+	table-layout: fixed;
+}
+
+div#wizardPage_accessRightsPermissions #availablePermissions {
+	width: 100%;
+}
+
+div#wizardPage_accessRightsPermissions #selectedPermissions {
+	width: 100%;
+}
+
+div#wizardPage_accessRightsPermissions .label {
+	width: 30%;
+}
+
+div#wizardPage_accessRightsPermissions .value {
+	width: 50%;
+}
+
+div#wizardPage_accessRightsPermissions .action {
+	text-align: center;
+	width: 30%;
+}
+
+div#wizardPage_accessRightsPermissions .formSelect {
+	vertical-align: top;
+}
+
+div#wizardPage_accessRightsPermissions .formSelect .action input {
+	width: 80%;
+}
+
+div#wizardPage_accessRightsDelegation #onward_delegation {
+	width: 100%;
+	margin: 24px 24px 16px 24px;
+	text-align: left;
+}
+
+/* Key Store Import */
+
+div#wizard_keyStoreImportWizard {
+	min-height: 24em;
+}
+
+div#wizardPage_keyStoreImportType tr.formRadio {
+	display: block;
+	padding-left: 32px;
+	padding-right: 32px;
+}
+
+div#wizardPage_keyStoreImportType td.label {
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+div#wizardPage_keyStoreImportType td.value .valueLabel {
+	font-weight: bold;
+}
+
+div#wizardPage_keyStoreImportType td.value input {
+	vertical-align: middle;
+	margin-right: 16px;
+}
+
+div#wizardPage_keyStoreImportFile div.importTypeTitle {	
+	padding-top: 1px;
+	font-size: small;
+	text-align: left;
+	padding-bottom: 3em;
+}
+
+div#wizardPage_keyStoreImportFile tr.formText input {
+	width: 25em;
+}
+
+/* Create authentication scheme wizard */
+
+div#wizard_authwizard {
+	height: 24em;
+	min-height: 24em;
+}
+
+div#wizard_authwizard .formTextArea textarea {
+	height: 10em;
+}
+
+div#wizardPage_athenticationSchemeSelection select,  div#wizardPage_athenticationSchemePolicySelection select {
+	height: 14em;
+}
+
+
+/* Attribute Definition Create */
+
+div#wizard_attributeDefinitionWizard {	
+	height: 32em;
+}
+
+div#wizard_attributeDefinitionWizard .formTextArea textarea {
+	height: 16em;
+}

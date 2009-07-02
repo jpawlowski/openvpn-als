@@ -1,0 +1,229 @@
+/*
+
+   WARNING - Please Do not change these styles lightly. They affect a *lot*.
+   It may be more approriate for you to overide your individual page styles
+   in pageStyles.css and wizardStyles.ss
+
+*/
+
+/* Form types. Most forms elements arranged are arrange [label] [value]. Each
+   form type is split up into two further blocks, label and value */
+   
+.formBlock .label, .formBlock .value, .formText .label, .formText .value,    
+.formInteger .label, .formInteger .value, .formCheckbox .label, .formCheckbox .value,    
+.formRadio .label, .formRadio .value, .formList .label, .formList .value,    
+.formPassword .label, .formPassword .value, .formMultiEntry .label, .formMultiEntry .value,    
+.formTextArea .label, .formTextArea .value, .formTime .label, .formTime .value,    
+.formMultiSelect .label, .formMultiSelect .value, .formFile .label, .formFile .value,
+.formLabel label, .formLabel.value, .formSelect .label, .formSelect .value, 
+.formCombo .label, .formCombo .value{
+	padding-bottom: 2px;
+	padding-top: 2px;
+}
+   
+.formBlock {
+	
+}
+
+.formText {
+	
+}
+
+.formInteger {
+	
+}
+
+.formCheckbox {	
+	vertical-align: middle;
+}
+
+.formRadio {
+	vertical-align: top;	
+}
+
+.formRadio td.label {
+	vertical-align: top;	
+}
+
+.formList {	
+	vertical-align: top;
+}
+
+.formPassword {
+	
+}
+
+.formMultiEntry {
+	vertical-align: top;
+}
+
+.formMultiEntry td.label {
+	padding-top: 1.5em;
+}
+
+.formTextArea td {
+	vertical-align: top;
+}
+
+.formTime {
+	
+}
+
+.formMultiSelect {
+	padding-top: 1em;
+	vertical-align: top;
+}
+
+.formMultiSelect td.label {
+	padding-top: 1.5em;
+}
+
+.formFile {
+	vertical-align: top;
+}
+
+.formTitle {
+	font-size: 1em;
+	color: white;
+	text-align: left;
+}
+
+.formLabel {	
+}
+
+.formSelect {	
+}
+
+.formCombo {	
+}
+
+/* Multi Select  */
+
+
+.multiSelect table {	
+	width: 100%;
+	table-layout: fixed;
+}
+
+.multiSelect table td {	
+	text-align: center;
+	min-width: 0px;
+}
+
+.multiSelect tr {
+	vertical-align: top;
+}
+
+.multiSelect tr.header td {
+	text-decoration: underline;
+}
+
+.multiSelect td.source {
+}
+
+.multiSelect td.target {
+}
+
+.multiSelect td.actions {
+	width: 8em;
+}
+
+.multiSelect tr.header td.actions {
+	vertical-align: top;
+}
+
+.multiSelect tr.body td.source {
+	text-align: left;
+}
+
+.multiSelect tr.body td.target {
+	text-align: right;
+}
+
+.multiSelect td.source select {
+	width: 97%;
+	border: 1px solid #dcdcdc;
+}
+
+.multiSelect td.target select {
+	width: 97%;
+	border: 1px solid #dcdcdc;
+}
+
+.multiSelect td.actions input {
+	width: 100%;
+}
+
+/* Multi Entry */
+
+.multiEntry  {	
+	width: 100%;
+}
+
+.multiEntry table {	
+	table-layout: fixed;
+	width: 100%;
+}
+
+.multiEntry table td {	
+	text-align: center;
+	min-width: 0px;
+}
+
+.multiEntry tr {
+	vertical-align: top;
+}
+
+.multiEntry .header .entry {
+	text-decoration: underline;
+	width: 50%;
+}
+
+.multiEntry .header .target {
+	text-decoration: underline;
+	width: 50%;
+}
+
+.multiEntry .header .actions {
+	vertical-align: top;
+	width: 8em;
+}
+
+.multiEntry .body .entry {
+	vertical-align: top;
+	text-align: left;
+}
+
+.multiEntry .body .target {
+	vertical-align: top;
+	text-align: right;
+}
+
+.multiEntry .body .actions {
+	text-align: center;
+	vertical-align: top;
+}
+
+.multiEntry .entry input.noButtons {
+	width: 94%;
+}
+
+.multiEntry .entry input.oneButton {
+	width: 72%;
+}
+
+.multiEntry .entry input.twoButtons {
+	width: 62%;
+}
+
+.multiEntry .body .target {
+	padding-left: 1em;
+}
+
+.multiEntry .body .target select {
+	width: 95%;
+}
+
+.multiEntry .body .actions input {
+	width: 100%;
+}

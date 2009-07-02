@@ -1,0 +1,124 @@
+<%@ page import="com.adito.policyframework.forms.PolicyForm" %>
+<%@ page import="com.adito.policyframework.PolicyConstants" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/tabs" prefix="tabs" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+<%@ taglib uri="http://ajaxtags.org/tags/ajax" prefix="ajax" %> 
+
+<div id="page_policy" class="tabbedForm">
+	<tiles:useAttribute name="updateAction" scope="request" classname="java.lang.String"/> 
+	<% boolean disabled = ((PolicyForm)session.getAttribute("policyForm")).getEditing() &&
+		((PolicyForm)session.getAttribute("policyForm")).getResource().getResourceName().equals(PolicyConstants.EVERYONE_POLICY_NAME); %>
+	<core:form method="post" action="<%= updateAction %>">	
+		<html:hidden property="referer"/>
+		<html:hidden property="actionTarget"/>
+		<html:hidden property="_charset_"/>			
+		<bean:define id="policyForm" name="policyForm" type="com.adito.policyframework.forms.PolicyForm"></bean:define>
+		<tabs:tabSet name="policyForm" bundle="policyframework" resourcePrefix="editPolicy.tab">
+			<tabs:tabHeadings/>
+			<tabs:tab tabName="details">
+				<table class="dialog_form_table">
+					<tbody>
+						<tr class="formText">
+							<td class="label">
+								<div class="required">
+									<bean:message key="editPolicy.policyName" bundle="policyframework"/>
+								</div>
+							</td>
+							<td class="value">	
+			                	<html:text tabindex="1" disabled="<%= policyForm.isAssignOnly() %>" property="resourceName"/>		                            
+							</td>
+						</tr>
+						<tr class="formTextArea">
+							<td class="label">
+								<div class="required">
+									<bean:message key="editPolicy.policyDescription" bundle="policyframework"/>
+								</div>
+							</td>
+							<td class="value">		                          
+								<html:textarea tabindex="2" disabled="<%= policyForm.isAssignOnly() %>" property="resourceDescription"/>
+							</td>
+						</tr> 
+					</tbody>
+				</table>		
+			</tabs:tab>		
+			<tabs:tab tabName="principals">		
+				<input:multiEntryListBox 
+					disabled="<%= disabled %>"
+					tabindex="1" 
+					entryTitleKey="editPolicy.accountEntry.title" 
+					targetTitleKey="editPolicy.accounts.title" 
+					addKey="editPolicy.addPrincipal" 
+					removeKey="editPolicy.removePrincipal" 
+					bundle="policyframework" 
+					styleClass="multiEntry" 
+					rows="7"
+				    indicator="accountIndicator"
+					entryName="account"
+					entryStyleClass="form-autocomplete"
+					name="policyForm" 
+					property="selectedAccounts"/>							
+				<input:multiEntryListBox 
+					disabled="<%= disabled %>"
+					tabindex="2" 
+					entryTitleKey="editPolicy.roleEntry.title" 
+					targetTitleKey="editPolicy.roles.title" 
+					addKey="editPolicy.addPrincipal" 
+					removeKey="editPolicy.removePrincipal" 
+					bundle="policyframework"
+					rows="7"
+					entryName="role" 
+					styleClass="multiEntry" 
+				    indicator="roleIndicator"
+					entryStyleClass="form-autocomplete"
+					name="policyForm" 
+					property="selectedRoles"/>
+				<ajax:autocomplete source="entryValue_selectedAccounts"
+				                   target="entryValue_selectedAccounts"
+				                   baseUrl="${contextPath}/ajaxListAccounts.do"
+				                   className="autocomplete"
+				   				   parser="new ResponseXmlParser()"
+				                   parameters="account={entryValue_selectedAccounts}"
+				                   indicator="accountIndicator"
+				                   minimumCharacters="1"/>                   
+				<ajax:autocomplete source="entryValue_selectedRoles"
+				                   target="entryValue_selectedRoles"
+				                   baseUrl="${contextPath}/ajaxListRoles.do"
+				                   className="autocomplete"
+				                   parameters="role={entryValue_selectedRoles}"
+				   				   parser="new ResponseXmlParser()"
+				                   indicator="roleIndicator"
+				                   minimumCharacters="1"/>
+			</tabs:tab>	
+			<logic:iterate indexId="categoryIdx" name="policyForm" property="categoryIds" id="category" type="java.lang.String">							
+				<tabs:tab tabName="<%= category %>">
+					<table class="dialog_form_table">
+						<tbody>							
+							<logic:iterate id="attributeValueItem" name="policyForm" property="attributeValueItems"
+										type="com.adito.properties.attributes.AttributeValueItem" indexId="idx">
+								<logic:equal name="attributeValueItem" property="categoryId" value="<%= category %>">									
+									<tiles:insert page="/WEB-INF/jsp/content/properties/attributeValue.jspf" flush="false">
+										<tiles:put name="items" beanName="policyForm" beanProperty="attributeValueItems"/>
+										<tiles:put name="rowIdx" value="<%= idx %>"/>
+									</tiles:insert>
+								</logic:equal>			
+							</logic:iterate>
+						</tbody>
+					</table>		
+				</tabs:tab>
+			</logic:iterate>			
+		</tabs:tabSet>												
+		<div class="button_bar">
+			<div class="formButton">
+				<html:submit styleClass="save" onclick="setActionTarget('commit'); return true"><bean:message key="editPolicy.commit" bundle="policyframework"/></html:submit>
+			</div>
+			<div class="formButton">
+				<html:submit styleClass="cancel" onclick="setActionTarget('cancel'); return true"><bean:message key="editPolicy.cancel" bundle="policyframework"/></html:submit>
+			</div>
+		</div>
+	</core:form>
+</div>

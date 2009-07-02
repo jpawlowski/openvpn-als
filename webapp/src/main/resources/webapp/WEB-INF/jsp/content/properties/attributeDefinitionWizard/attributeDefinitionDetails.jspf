@@ -1,0 +1,41 @@
+
+<jsp:directive.page import="com.adito.properties.attributes.AttributesPropertyClass"/>
+<jsp:directive.page import="com.adito.boot.PropertyClassManager"/><%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+
+<table class="resourceDetails">
+	<tr class="formText">
+		<td class="label">
+			<div class="required">
+				<bean:message key="attributeDefinitionWizard.attributeDefinitionDetails.name" bundle="properties" />
+			</div>
+		</td>
+		<td class="value">
+			<html:text property="name" size="20" />
+		</td>
+	</tr>
+	<tr class="formTextArea">
+		<td class="label">
+			<div class="required">
+				<bean:message key="attributeDefinitionWizard.attributeDefinitionDetails.description" bundle="properties" />
+			</div>
+		</td>
+		<td class="value">
+			<html:textarea property="description" />
+		</td>
+	</tr>
+	<tr class="formCombo">
+		<td class="label">
+			<bean:message key="attributeDefinitionWizard.attributeDefinitionDetails.class" bundle="properties" />
+		</td>
+		<td class="value">
+			<html:select property="attributeClass">
+				<logic:iterate type="java.lang.String" id="attributeClassName" name="attributeDefinitionDetailsForm" property="attributeClasses">
+					<% AttributesPropertyClass attributeClass = (AttributesPropertyClass)PropertyClassManager.getInstance().getPropertyClass(attributeClassName); %>
+					<html:option key="<%= "propertyClass." + attributeClassName + ".name" %>" bundle="<%= attributeClass.getMessageResourcesKey() %>" value="<%= attributeClassName %>"/>
+				</logic:iterate>
+			</html:select>
+		</td>
+	</tr>
+</table>

@@ -1,0 +1,157 @@
+<%@ page import="com.adito.core.CoreUtil" %>
+<%@ page import="com.adito.boot.Util" %>
+<%@ page import="com.adito.policyframework.PolicyConstants" %>
+<jsp:directive.page import="com.adito.policyframework.AccessRights"/>
+<jsp:directive.page import="com.adito.policyframework.forms.AbstractWizardPolicySelectionForm"/>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/tabs" prefix="tabs" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+<%@ taglib uri="http://ajaxtags.org/tags/ajax" prefix="ajax" %> 
+
+<div id="page_accessRights" class="tabbedForm">
+	<tiles:useAttribute name="updateAction" scope="request" classname="java.lang.String"/> 
+	<core:form method="post" action="<%= updateAction %>">	
+		<html:hidden property="referer"/>
+		<html:hidden property="actionTarget"/>
+		<html:hidden property="selectedTab"/>
+		<html:hidden property="_charset_"/>			
+		<bean:define id="accessRightsForm" name="accessRightsForm" type="com.adito.policyframework.forms.AccessRightsForm"></bean:define>
+		<tabs:tabSet name="accessRightsForm" bundle="policyframework" resourcePrefix="editAccessRights.tab">
+			<tabs:tabHeadings/>
+			<tabs:tab tabName="details">
+				<table class="dialog_form_table" border="0" cellpadding="0" cellspacing="0">
+					<tbody>
+						<tr class="formText">
+							<td class="label">
+								<bean:message key="editAccessRights.accessRightsType" bundle="policyframework" />
+							</td>
+							<td class="value">
+								<input:toolTip width="400" 
+									key="<%= "editAccessRights.accessRightsType." + ((AccessRights)accessRightsForm.getResource()).getAccessRightsClass() + ".description" %>" bundle="policyframework">  
+									<bean:message key="<%= "editAccessRights.accessRightsType." + ((AccessRights)accessRightsForm.getResource()).getAccessRightsClass() + ".name" %>" bundle="policyframework"/>
+								</input:toolTip>
+							</td>
+						</tr>	
+						<tr class="formText">
+							<td class="label">							
+								<div class="required">
+									<bean:message key="editAccessRights.resourceName" bundle="policyframework"/>
+								</div>
+							</td>
+							<td class="value">	
+		                		<html:text disabled="<%= accessRightsForm.isAssignOnly() %>" tabindex="1" property="resourceName"/>		                            
+							</td>
+						</tr>
+						<tr class="formTextArea">
+							<td class="label">
+								<div class="required">
+									<bean:message key="editAccessRights.resourceDescription" bundle="policyframework"/>
+								</div>
+							</td>
+							<td class="value">	
+								<html:textarea disabled="<%= accessRightsForm.isAssignOnly() %>" tabindex="2" property="resourceDescription"/>
+							</td>
+						</tr> 
+					</tbody>
+				</table>		
+			</tabs:tab>				
+			<tabs:tab tabName="permissions">		
+				<logic:equal value="false" name="accessRightsForm" property="readOnly">
+					<input:multiSelectListBox 
+						tabindex="1" 
+						rows="14"
+						sourceTitleKey="editAccessRights.availableAccessRights.title" 
+						targetTitleKey="editAccessRights.selectedAccessRights.title" 
+						addKey="editAccessRights.permissions.addSelected" 
+						addAllKey="editAccessRights.permissions.addAll" 
+						removeKey="editAccessRights.permissions.removeSelected" 
+						removeAllKey="editAccessRights.permissions.removeAll" 
+						bundle="policyframework" 
+						styleClass="multiSelect" 
+						modelName="accessRightsForm" 
+						modelProperty="accessRightsModel" 
+						name="accessRightsForm" 
+						property="selectedAccessRights"/>														
+				</logic:equal>
+				<logic:equal value="true" name="accessRightsForm" property="readOnly">
+					<input:multiSelectListBox 
+						disabled="true"
+						tabindex="1" 
+						rows="14"
+						sourceTitleKey="editAccessRights.availableAccessRights.title" 
+						targetTitleKey="editAccessRights.selectedAccessRights.title" 
+						addKey="editAccessRights.permissions.addSelected" 
+						addAllKey="editAccessRights.permissions.addAll" 
+						removeKey="editAccessRights.permissions.removeSelected" 
+						removeAllKey="editAccessRights.permissions.removeAll" 
+						bundle="policyframework" 
+						styleClass="multiSelect" 
+						modelName="accessRightsForm" 
+						modelProperty="accessRightsModel" 
+						name="accessRightsForm" 
+						property="selectedAccessRights"/>														
+				</logic:equal>
+			</tabs:tab>				
+			<tabs:tab tabName="policies">								
+				<logic:equal value="false" name="accessRightsForm" property="readOnly">
+					<input:multiSelectPoliciesListBox 
+						tabindex="1" 
+						rows="14"
+						sourceTitleKey="editAccessRights.availablePolicies.title" 
+						targetTitleKey="editAccessRights.selectedPolicies.title" 
+						addKey="editAccessRights.addPolicy" 
+						removeKey="editAccessRights.removePolicy" 
+						configureKey="editAccessRights.configurePolicies" 
+						configureOnClick="window.location = '/configurePolicies.do?referer=/editAccessRights.do';" 
+						bundle="policyframework" 
+						styleClass="multiSelect" 
+						modelName="accessRightsForm" 
+						modelProperty="policyModel" 
+						name="accessRightsForm" 
+						property="selectedPolicies"
+						showPersonalPoliciesKey="policySelection.showPersonalPolicies.title"
+						showPersonalPolicies="<%= accessRightsForm. isShowPersonalPolicies() %>"/>												
+				</logic:equal>
+				<logic:equal value="true" name="accessRightsForm" property="readOnly">
+					<input:multiSelectPoliciesListBox 
+						disabled="true"
+						tabindex="1" 
+						rows="14"
+						sourceTitleKey="editAccessRights.availablePolicies.title" 
+						targetTitleKey="editAccessRights.selectedPolicies.title" 
+						addKey="editAccessRights.addPolicy" 
+						removeKey="editAccessRights.removePolicy" 
+						configureKey="editAccessRights.configurePolicies" 
+						configureOnClick="window.location = '/configurePolicies.do?referer=/editAccessRights.do';" 
+						bundle="policyframework" 
+						styleClass="multiSelect" 
+						modelName="accessRightsForm" 
+						modelProperty="policyModel" 
+						name="accessRightsForm" 
+						property="selectedPolicies"
+						showPersonalPoliciesKey="policySelection.showPersonalPolicies.title"
+						showPersonalPolicies="<%= accessRightsForm.isShowPersonalPolicies() %>"/>													
+				</logic:equal>
+			</tabs:tab>	
+		</tabs:tabSet>												
+		<div class="button_bar">
+			<logic:equal value="false" name="accessRightsForm" property="readOnly">										
+				<div class="formButton">
+					<html:submit styleClass="save" onclick="setActionTarget('commit')"><bean:message key="editAccessRights.commit" bundle="policyframework"/></html:submit>
+				</div>
+				<div class="formButton">
+					<html:submit styleClass="cancel" onclick="setActionTarget('cancel')"><bean:message key="editAccessRights.cancel" bundle="policyframework"/></html:submit>
+				</div>
+			</logic:equal>
+			<logic:equal value="true" name="accessRightsForm" property="readOnly">										
+				<div class="formButton">
+					<html:submit styleClass="close" onclick="setActionTarget('cancel')"><bean:message key="editAccessRights.close" bundle="policyframework"/></html:submit>
+				</div>
+			</logic:equal>
+		</div>
+	</core:form>
+</div>

@@ -1,0 +1,78 @@
+
+<jsp:directive.page import="com.adito.boot.SystemProperties"/><%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<jsp:directive.page import="com.adito.boot.Util"/>
+
+<div id="page_about">
+	<div class="titled_dialog_content">
+		<table class="titled_dialog_table">
+			<thead>
+				<tr>
+					<td>                   
+						<bean:message key="about.dialogTitle" bundle="navigation" />				
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>							
+						<table class="dialog_form_table">
+							<tr>
+								<td>
+									<bean:message key="about.name" bundle="navigation" arg0="<%= com.adito.boot.ContextHolder.getContext().getVersion().toString() %>"/>
+								</td>
+							</tr> 
+							<tr>
+								<td>
+									<a class="externalLink" onclick="javascript:myRef = window.open('http://localhost','external_win','left=20,top=20,width=620,height=500,toolbar=1,resizable=1,menubar=1,scrollbars=1,location=1');myRef.focus(); return false" href="http://localhost">http://localhost
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<% if (Util.isNullOrTrimmedBlank(SystemProperties.get("adito.about.trademark", ""))) { %>
+										<bean:message key="about.trademark" bundle="navigation"/>
+									<% } else {%>
+										<%= SystemProperties.get("adito.about.trademark")%>
+									<% } %>
+									<br/>
+									<% if (Util.isNullOrTrimmedBlank(SystemProperties.get("adito.about.copyright", ""))) { %>
+										<bean:message key="about.copyright" bundle="navigation"/>
+									<% } else {%>
+										<%= SystemProperties.get("adito.about.copyright")%>
+									<% } %>
+								</td>	
+							</tr>
+							<tr>
+								<td>
+									<bean:message key="about.apache" bundle="navigation"/>
+									<br/>
+									<br/>
+									<bean:message key="about.hsqldb1" bundle="navigation"/>
+									<br/>
+									<br/>
+									<bean:message key="about.hsqldb2" bundle="navigation"/>
+									<br/>
+									<br/>
+									<bean:message key="about.icons" bundle="navigation"/>
+									<br/>
+									<br/>
+								</td>	
+							</tr>
+							<tr>
+								<td>            
+									<input class="close" onclick="history.back() ; return false" type="button" value="<bean:message key='about.close' bundle='navigation'/>"/>
+								</td>
+							</tr>               
+						</table>
+						<br/>
+						<div class="aboutImages">
+							<a href="http://struts.apache.org/"><img src="/images/struts.jpg"/></a>&nbsp;
+							<a href="http://jetty.mortbay.org/"><img src="/images/jetty.jpg"/></a>&nbsp;
+							<a href="http://www.hsqldb.org/"><img src="/images/hsqldb.jpg"/></a>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

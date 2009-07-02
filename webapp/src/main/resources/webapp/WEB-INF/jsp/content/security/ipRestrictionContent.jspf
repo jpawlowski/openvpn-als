@@ -1,0 +1,62 @@
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="/server/taglibs/table" prefix="table" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+
+<div id="page_ip_restriction">
+	<core:form method="post" action="/createIpRestriction.do">
+		<div class="dialog_content">
+			<html:hidden property="actionTarget" />
+			<html:hidden property="referer" />
+			<html:hidden property="_charset_"/>	
+			<table class="dialog_form_table">
+				<tbody>
+					<tr class="formText">
+						<td class="label">
+							<div class="required">
+								<bean:message key="ipRestrictions.ipAddress" bundle="security" />
+							</div>
+						</td>
+						<td class="value">
+							<div>
+								<logic:equal name="ipRestrictionForm" property="addressEnabled" value="true">
+									<html:text property="restriction.address" size="40"/>
+								</logic:equal>
+								<logic:notEqual name="ipRestrictionForm" property="addressEnabled" value="true">
+									<html:text disabled="true" property="restriction.address" size="40"/>
+								</logic:notEqual>
+							</div>
+						</td>
+					</tr>	
+					<tr class="formBlock">	
+						<td class="value" colspan="2">
+							<html:radio property="type" value="deny"/>
+							<bean:message key="ipRestrictions.denyAccess" bundle="security" />
+							<br/>
+							<html:radio property="type" value="allow"/>
+							<bean:message key="ipRestrictions.allowAccess" bundle="security" />
+						</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="2">
+							<div class="button_bar">
+								<div class="button_bar">
+									<div class="formButton">
+										<html:submit styleClass="save" onclick="setActionTarget('commit'); return true"><bean:message key="createIpRestriction.submit" bundle="security"/></html:submit>
+									</div>
+									<div class="formButton">
+										<html:submit styleClass="cancel" onclick="setActionTarget('cancel'); return true"><bean:message key="createIpRestriction.cancel" bundle="security"/></html:submit>
+									</div>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</core:form>
+</div>

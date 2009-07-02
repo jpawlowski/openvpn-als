@@ -1,0 +1,88 @@
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="/server/taglibs/security" prefix="security" %>
+<%@ taglib uri="/server/taglibs/table" prefix="table" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+
+
+<div id="page_ip_restrictions" />
+	<core:form method="post" action="/showAvailableRestrictions.do">
+		<html:hidden property="actionTarget"/>
+		<div class="filtered_resources">
+			<table class="resource_table">
+				<thead>
+					<tr>
+						<td class="address">
+							<table:columnHeader pagerName="restrictionsForm" action="/showAvailableRestrictions.do" pagerProperty="pager" columnIndex="0" styleClass="columnHeader">
+								<bean:message key="ipRestrictions.ipaddress" bundle="security" />
+							</table:columnHeader>
+						</td>
+						<td class="type">
+							<table:columnHeader pagerName="restrictionsForm" action="/showAvailableRestrictions.do" pagerProperty="pager" columnIndex="1" styleClass="columnHeader">
+								<bean:message key="ipRestrictions.access" bundle="security" />
+							</table:columnHeader>
+						</td>
+				  		<td class="action">
+				  			<bean:message key="ipRestrictions.action" bundle="security"/>
+				  		</td>
+					</tr>
+				</thead>
+				<tbody>
+					<% boolean flag = true; %>
+					<logic:equal name="restrictionsForm" property="model.empty" value="true">
+						<tr class="<%= flag ? "highlight" : "lowlight" %>">
+					  		<td class="tableMessage" colspan="3">		   
+							  	<bean:message key="ipRestrictions.noRestrictions" bundle="security"/>
+							</td>
+						</tr>
+					</logic:equal>
+					<logic:equal name="restrictionsForm" property="model.empty" value="false">													
+						<logic:equal name="restrictionsForm" property="pager.empty" value="true">						
+							<tr class="<%= flag ? "highlight" : "lowlight" %>">
+						  		<td class="tableMessage" colspan="4">		   
+								  	<bean:message key="ipRestrictions.noMatch" bundle="security"/>
+								</td>
+							</tr>
+						</logic:equal>
+						<logic:equal name="restrictionsForm" property="pager.empty" value="false">
+							<logic:iterate id="restriction" name="restrictionsForm"	property="pager.pageItems"	type="com.adito.security.IpRestrictionItem">
+								<tr class="<%= flag ? "entryHighlight" : "entryLowlight" %>">
+									<td class="entryCell" align="center">
+										<bean:write name="restriction" property="ipRestriction.address" />
+									</td>
+									<td class="entryCell" align="center">
+										<bean:write name="restriction" property="ipRestriction.type" />
+									</td>
+									<td class="actions">
+								   		<tiles:insert flush="false" attribute="actionLink">
+											<tiles:put name="actionName" value="remove"/>
+											<tiles:put name="bundle" value="security"/>
+											<tiles:put name="nameKey" value="action.deleteIPRestrictionRule.name"/>
+											<tiles:put name="descriptionKey" value="action.deleteIPRestrictionRule.description"/>
+											<tiles:put name="actionPath" value="<%= "/showAvailableRestrictions.do?actionTarget=delete&ipaddress=" + restriction.getIpRestriction().getID() %>"/>
+										</tiles:insert>
+									</td>
+								</tr>
+								<% flag = !flag; %>
+							</logic:iterate>
+						</logic:equal>
+					</logic:equal>
+				</tbody>
+				<tfoot>			
+					<tr>
+						<td colspan="3">
+							<div class="pager_navigation">
+								<table:navigation selectedStyleClass="pagerSelected" pagerName="restrictionsForm" pagerProperty="pager" styleClass="pagerEnabled" disabledStyleClass="pagerDisabled"/>
+							</div>
+							<div class="pager_pages">
+								<table:pageSize pagerName="restrictionsForm" pagerProperty="pager" styleClass="pagerEnabled"/>
+							</div.
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</core:form>
+</div>

@@ -1,0 +1,96 @@
+<%@ page import="java.util.Iterator" %>
+<%@ page import="com.adito.core.PanelManager" %>
+<%@ page import="com.adito.core.Panel" %>
+<jsp:directive.page import="com.adito.core.CoreUtil"/>
+<jsp:directive.page import="com.adito.input.tags.FrameTag"/>
+<jsp:directive.page import="com.adito.language.LanguagePackManager"/>
+<jsp:directive.page import="java.util.Locale"/>
+<jsp:directive.page import="org.apache.struts.Globals"/>
+<jsp:directive.page import="com.adito.language.Language"/>
+<jsp:directive.page import="java.util.List"/>
+<jsp:directive.page import="com.adito.properties.PropertyProfile"/>
+<jsp:directive.page import="com.adito.security.Constants"/>
+<jsp:directive.page import="com.adito.core.DefaultPanel"/>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="/server/taglibs/input" prefix="input" %>
+<%@ taglib uri="/server/taglibs/navigation" prefix="navigation" %>
+<%@ taglib uri="/server/taglibs/core" prefix="core" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+							
+<input:frame titleKey="messages.panelOptions" styleClass="component_messageBox" panelId="panelOptions">	
+
+	<%
+	Locale l = (Locale)request.getSession().getAttribute(Globals.LOCALE_KEY);
+	l = l == null ? Locale.getDefault() : l;
+	%>
+
+	<core:checkPropertyEquals propertyValue="true" propertyName="ui.allowLanguageSelection" regExp="false">
+		<div class="language">
+			<bean:message key="panelOptions.language" bundle="navigation"/><br/>
+			<select id="languageSelector" onchange="<%= "self.location = '/selectLanguage.do?referer=' + window.location.pathname + '&locale=' + document.getElementById('languageSelector').value" %>" name="selectedLanguage">
+			<%
+			for(Iterator i = LanguagePackManager.getInstance().languages(true); i.hasNext(); ) {
+				Language lang = (Language)i.next();
+			%>
+				<option <%= lang.isLocale(l) ? "selected " : "" %>value="<%= lang.getCode() %>"><%= lang.getDescription()  %></option>
+			<%
+			}
+			 %>
+			</select>
+		</div>	
+	</core:checkPropertyEquals>
+ 	<% 	List profiles = (List)session.getAttribute(Constants.PROFILES);
+ 		if(profiles != null) { 
+ 	%>
+	<navigation:inUserConsole>
+		<div class="profile">
+			<bean:message key="panelOptions.profile" bundle="navigation"/><br/>
+			<select id="profileSelector" onchange="<%= "self.location = '/selectPropertyProfile.do?referer=' + window.location.pathname + '&selectedPropertyProfile=' + document.getElementById('profileSelector').value" %>" name="selectedProfile">
+				 	<% 	PropertyProfile selected = (PropertyProfile)session.getAttribute(Constants.SELECTED_PROFILE);
+				 		if(selected == null) {
+				 			selected = (PropertyProfile)profiles.get(0);
+				 		}
+				  		if(profiles != null) {
+				  			for(Iterator i = profiles.iterator(); i.hasNext(); ) { 
+				  				PropertyProfile profile = (PropertyProfile)i.next(); %>
+						 				<option value="<%= profile.getResourceId() %>"" <%= profile.getResourceId() == selected.getResourceId() ? " selected=\"selected\"" : "" %>><%= profile.getResourceName()%></option>
+					<%		}
+						}  %>
+			</select>
+		</div>
+	</navigation:inUserConsole>
+	<%	} %>	
+	
+	<core:checkPropertyEquals propertyValue="true" propertyName="ui.allowLanguageSelection" regExp="false">
+		<hr/>
+	</core:checkPropertyEquals>
+	<navigation:inUserConsole>
+		<hr/>
+	</navigation:inUserConsole>
+	<ul>
+	<% 
+	for(Iterator i = PanelManager.getInstance().getPanels(-1, request, response, DefaultPanel.MAIN_LAYOUT).iterator(); i.hasNext(); ) {
+		Panel p = (Panel)i.next(); 
+		if(p.isCloseable() && !p.getId().equals("panelOptions") && p.getPlacement() != Panel.STATUS_TAB) {
+			String frameState = CoreUtil.getCookieValue("frame_component_" + p.getId(), request, "normal");			
+	%>
+		<li>			
+			<% if(frameState.equals(FrameTag.FRAME_CLOSED)) { %>
+				<input id="<%= "component_" + p.getId() + "_toggle" %>" onclick="<%= "frameToggle('component_" + p.getId()+ "')" %>" type="checkbox"/>																			
+                <input:toolTip key="<%="panel." + p.getId() + ".description" %>" bundle="<%= p.getBundle() %>" href="<%= "javascript: frameToggle('component_" + p.getId() + "')" %>">
+					<bean:message key="<%="panel." + p.getId() + ".title" %>" bundle="<%= p.getBundle() %>"/>
+				</input:toolTip>
+				
+			<% } else { %>
+				<input id="<%= "component_" + p.getId() + "_toggle" %>" checked="checked" onclick="<%= "frameToggle('component_" + p.getId() + "')" %>" type="checkbox"/>
+                <input:toolTip key="<%="panel." + p.getId() + ".description" %>" bundle="<%= p.getBundle() %>" href="<%= "javascript: frameToggle('component_" + p.getId() + "')" %>">
+					<bean:message key="<%="panel." + p.getId() + ".title" %>" bundle="<%= p.getBundle() %>"/>
+				</input:toolTip>
+			<% } %>
+		</li>
+	<% 
+		}
+	}
+	%>
+	</ul>
+</input:frame>

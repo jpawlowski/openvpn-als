@@ -1,0 +1,12 @@
+<jsp:directive.page import="com.adito.properties.PropertyItem"/>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+ 		       
+<tiles:useAttribute name="propertyItem" classname="com.adito.properties.PropertyItem"/> 
+<a href="#"	onclick="javascript: this.blur(); windowRef = window.open('/help.do?source=property&propertyClass=<%= propertyItem.getDefinition().getPropertyClass().getName() %>&name=<%= propertyItem.getName() %>','help_win','left=20,top=20,width=400,height=480,toolbar=0,resizable=1,menubar=0,scrollbars=1'); windowRef.focus(); return false"
+	href="#">
+	<div class="helpIndicator">
+		<%= propertyItem.getLabel() %>
+	</div>
+</a>

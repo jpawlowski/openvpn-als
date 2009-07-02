@@ -1,0 +1,137 @@
+<%@ page import="com.adito.security.WebDAVAuthenticationModule" %>
+<%@ page import="com.adito.security.Constants"%>
+<%@ page import="com.adito.navigation.WrappedFavoriteItem" %>
+<%@ page import="com.adito.navigation.AbstractFavoriteItem" %>
+<%@ page import="com.adito.policyframework.PolicyConstants" %>
+<jsp:directive.page import="com.adito.boot.Util"/>
+<jsp:directive.page import="com.adito.policyframework.forms.AbstractResourcesForm"/>
+
+
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="/server/taglibs/core" prefix="core"%>
+<%@ taglib uri="/server/taglibs/table" prefix="table"%>
+<%@ taglib uri="/server/taglibs/input" prefix="input"%>
+
+<tiles:useAttribute name="actionLink" scope="request" classname="java.lang.String"/> 
+
+<div id="page_favorites">  
+	<core:form onsubmit="setActionTarget('filter')" method="post" action="/showFavorites.do">		
+		<html:hidden property="selectedItem" />
+		<html:hidden property="actionTarget" />
+		<html:hidden property="selectedView" />
+		
+		<div class="dialog_content">
+			<tiles:insert flush="false" page="/WEB-INF/jsp/tiles/filterAndView.jspf">		
+				<tiles:put name="actionLink" beanName="actionLink" type="java.lange.String"/>
+			</tiles:insert>
+		</div>
+		
+		<div class="filtered_resources">	
+								
+			<logic:equal name="favoritesForm" property="selectedView" value="<%= AbstractResourcesForm.LIST_VIEW %>">		
+				<table class="resource_table">
+					<thead>
+						<tr>
+							<td class="name">
+								<table:columnHeader page="" pagerName="favoritesForm" pagerProperty="pager" columnIndex="0" styleClass="columnHeader">							
+									<bean:message key="favorites.name" bundle="navigation"/>
+								</table:columnHeader>
+							</td>
+							<td class="actions">
+								<bean:message key="favorites.actions" bundle="navigation" />
+							</td>
+						</tr>
+					</thead>
+					<tbody>
+						<%boolean highlight = true;%>				
+						<logic:equal name="favoritesForm" property="model.empty" value="true">						
+							<tr 
+		      					onmouseover="<%= "this.className = 'selected';" %>"
+		      					onmouseout="<%= "this.className = '" + ( highlight ? "highlight" : "lowlight" ) + "';" %>" class="<%= highlight ? "highlight" : "lowlight" %>">           
+						  		<td class="tableMessage" colspan="2">		   
+									<bean:message key="favorites.noFavorites.text" bundle="navigation"/>
+								</td>
+							</tr>
+						</logic:equal>
+						<logic:iterate name="favoritesForm" property="pager.pageItems" id="wrappedFavoriteItem" type="com.adito.navigation.WrappedFavoriteItem" indexId="i">
+							<tr 
+		      					onmouseover="<%= "this.className = 'selected';" %>"
+		      					onmouseout="<%= "this.className = '" + ( highlight ? "highlight" : "lowlight" ) + "';" %>" class="<%= highlight ? "highlight" : "lowlight" %>">           
+								<td class="name">
+									<a onclick="<%= wrappedFavoriteItem.getFavoriteItem().getOnClick(-1, request) %>" href="<%= wrappedFavoriteItem.getFavoriteItem().getFavoriteLink(-1, request) %>" value="<%= wrappedFavoriteItem.getFavoriteItem().getResource().getResourceDescription() %>">
+										<img border="0" align="absmiddle" src="<%= wrappedFavoriteItem.getFavoriteItem().getSmallIconPath(request) %>"/>
+									</a>																	
+									<input:toolTip onclick="<%= wrappedFavoriteItem.getFavoriteItem().getOnClick(-1, request) %>" 
+												href="<%= wrappedFavoriteItem.getFavoriteItem().getFavoriteLink(-1, request) %>" 
+												contentLocation="<%= "/resourceInformation.do?resourceId=" + wrappedFavoriteItem.getFavoriteItem().getResource().getResourceId() + "&resourceType=" +  wrappedFavoriteItem.getFavoriteItem().getResource().getResourceType().getResourceTypeId() %>" 
+												width="400" borderWidth="0" padding="0">
+										<bean:write name="wrappedFavoriteItem" property="favoriteItem.resource.resourceName" />
+									</input:toolTip>
+								</td>
+								<td class="actions">
+									<tiles:insert flush="false" page="/WEB-INF/jsp/tiles/tableItemActionBar.jspf">		
+										<tiles:put name="pager" beanName="favoritesForm" beanProperty="pager"/>
+										<tiles:put name="rowIndex" beanName="i"/>
+										<tiles:put name="policyLaunching" value="true"/>
+									</tiles:insert>							
+								</td>
+							</tr>
+							<%highlight = !highlight;%>
+						</logic:iterate>
+					</tbody>			
+					<tfoot>			
+						<tr>
+							<td colspan="2">
+								<div class="pager_navigation">
+									<table:navigation selectedStyleClass="pagerSelected" pagerName="favoritesForm" pagerProperty="pager" styleClass="pagerEnabled" disabledStyleClass="pagerDisabled"/>
+								</div>
+								<div class="pager_pages">
+									<table:pageSize pagerName="favoritesForm" pagerProperty="pager" styleClass="pagerEnabled"/>
+								</div>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</logic:equal>
+			<logic:equal name="favoritesForm" property="selectedView" value="<%= AbstractResourcesForm.ICONS_VIEW %>">		
+				<div class="icons">
+					<ul>
+						<logic:iterate name="favoritesForm" property="pager.pageItems" id="wrappedFavoriteItem" type="com.adito.navigation.WrappedFavoriteItem" indexId="i">
+							<li>
+								<div class="icon" onclick="new Effect.Highlight(this);">
+									<div class="image">									
+										<input:toolTip onclick="<%= wrappedFavoriteItem.getFavoriteItem().getOnClick(-1, request) %>" href="<%= wrappedFavoriteItem.getFavoriteItem().getFavoriteLink(-1, request) %>"
+												contentLocation="<%= "/resourceInformation.do?resourceId=" + wrappedFavoriteItem.getFavoriteItem().getResource().getResourceId() + "&resourceType=" + wrappedFavoriteItem.getFavoriteItem().getResource().getResourceType().getResourceTypeId() %>" width="400" borderWidth="0" padding="0" onclick="<%= wrappedFavoriteItem.getFavoriteItem().getOnClick(-1, request) %>" href="<%= wrappedFavoriteItem.getFavoriteItem().getFavoriteLink(-1, request) %>" value="<%= wrappedFavoriteItem.getFavoriteItem().getResource().getResourceDescription() %>">
+											<img border="0" align="absmiddle" src="<%= wrappedFavoriteItem.getFavoriteItem().getLargeIconPath(request) %>"/>
+										</input:toolTip>							
+									</div>
+									<div class="text">
+										<input:toolTip contentLocation="<%= "/resourceInformation.do?resourceId=" + wrappedFavoriteItem.getFavoriteItem().getResource().getResourceId() + "&resourceType=" + wrappedFavoriteItem.getFavoriteItem().getResource().getResourceType().getResourceTypeId() %>" width="400" borderWidth="0" padding="0" onclick="<%= wrappedFavoriteItem.getFavoriteItem().getOnClick(-1, request) %>" href="<%= wrappedFavoriteItem.getFavoriteItem().getFavoriteLink(-1, request) %>" value="<%= wrappedFavoriteItem.getFavoriteItem().getResource().getResourceDescription() %>">
+											<bean:write name="wrappedFavoriteItem" property="favoriteItem.resource.resourceName" />
+										</input:toolTip>
+									</div>
+									<div class="other">
+									<% 
+									String ai = wrappedFavoriteItem.getFavoriteItem().getLargeIconAdditionalIcon(request);
+									if(!ai.equals("")) { %>
+										<img src="<%= wrappedFavoriteItem.getFavoriteItem().getLargeIconAdditionalIcon(request) %>"/>
+									<% } %>
+									</div>
+								</div>								
+							</li>
+						</logic:iterate>						
+					</ul>
+				</div>
+				<div class="pager_navigation">
+					<table:navigation selectedStyleClass="pagerSelected" pagerName="favoritesForm" pagerProperty="pager" styleClass="pagerEnabled" disabledStyleClass="pagerDisabled"/>
+				</div>
+				<div class="pager_pages">
+					<table:pageSize pagerName="favoritesForm" pagerProperty="pager" styleClass="pagerEnabled"/>
+				</div>
+			</logic:equal>
+		</div>
+	</core:form>
+</div>

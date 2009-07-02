@@ -1,0 +1,37 @@
+<%@ page import="com.adito.navigation.forms.FileDownloadForm"%>
+<jsp:directive.page import="com.adito.core.CoreUtil"/>
+<jsp:directive.page import="com.adito.boot.Util"/>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+
+<script language="JavaScript">
+function setPopupBlocked() {
+	popupBlocked = true;
+	$('redirectMessage').hide();
+	$('popupBlockedMessage').show();
+}
+</script>
+<bean:define name="redirectForm" property="forwardTo" id="forwardTo" type="java.lang.String"/>
+<bean:define name="redirectForm" property="folder" id="folder" type="java.lang.String"/>
+<bean:define name="redirectForm" property="target" id="target" type="java.lang.String"/>
+<div id="page_redirect">
+	<div id="redirectMessage" class="dialog_content">
+		<div class="mediumProgressIndicator">
+			<bean:message key="redirect.link" bundle="navigation" arg0="javascript: doRedirect();"/>
+		</div>
+	</div>
+	<div id="popupBlockedMessage" class="dialog_content" style="display: none">
+		<div>
+			Your browser blocked the automatic popup. Please enable popups for this site
+			then <a href="javascript: window.location.reload();">refresh</a> to continue.
+		</div>
+	</div>
+</div>
+<div id="oDAV" class="httpFolder"/>
+<% if(!Util.isNullOrTrimmedBlank(folder)) { %>
+	<script language="JavaScript">
+		<!--	
+		/* Launch a web folder if required */		
+			oDAV.navigateFrame('<%= folder %>', '<%= target == null ? "_self" : target %>');
+		// -->    
+    </script>
+<% } %> 
