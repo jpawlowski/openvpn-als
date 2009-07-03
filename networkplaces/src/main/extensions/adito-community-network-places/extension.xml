@@ -1,0 +1,135 @@
+<bundle version="1.0.18" requiredHostVersion="0.9.0"
+	id="adito-community-network-places"
+	name="Adito Network Places" license="GPL"
+	productURL="http://localhost" order="300">
+	<description>
+		This extension adds the 'Network Places' feature to
+		Adito. Network places allow an administrator to create
+		shortcuts to paths within the Adito VFS system.
+	</description>
+
+	<!-- The install task tries to convert any network places that are in the old format  -->
+	<install when="activate">
+		<custom>
+			com.adito.networkplaces.NetworkPlaceInstall
+		</custom>
+	</install>
+
+	<extension type="plugin"
+		extension="adito-community-network-places"
+		name="Adito Network Places">
+		<description>
+			This extension adds the 'Network Places' feature to
+			Adito. Network places allow an administrator to
+			create shortcuts to paths within the Adito VFS
+			system.
+		</description>
+		<plugin name="adito-community-network-places"
+			class="com.adito.networkplaces.NetworkPlacePlugin">
+			<classpath>
+				private/adito-community-network-places.jar
+			</classpath>
+			<resources>webapp</resources>
+		</plugin>
+		<propertyDefinitions>
+			<resourceAttributes>
+				<category id="2" bundle="networkPlaces"/>
+				<definition type="3" name="ftp.mode" typeMeta="passive,active"
+					category="2" defaultValue="passive" sortOrder="10" validation=""
+					messageResourcesKey="networkPlaces"/>
+				<definition type="7" name="ftp.idleTimeout" typeMeta="s"
+					category="2" defaultValue="0" sortOrder="20"
+					messageResourcesKey="networkPlaces"
+					validation="com.adito.input.validators.TimeCounterValidator(minValue=0,maxValue=86400)"/>
+				<definition type="3" name="ftp.hostType" typeMeta="automatic,enterpriseUnix,NT,OS2,OS400,Unix,VMS,VMSVersioning"
+					category="2" defaultValue="automatic" sortOrder="30" validation=""
+					messageResourcesKey="networkPlaces"/>
+			</resourceAttributes>
+			<systemConfig>
+				<category id="20" parent="1020" bundle="networkPlaces"
+					image="categories/network-places.gif" />
+				<category id="40" parent="1030" bundle="networkPlaces"
+					image="categories/cifs.gif" />
+
+				<definition type="2"
+					name="fileBrowsing.auth.tryCurrentUser" typeMeta="" category="20"
+					defaultValue="true" sortOrder="70" validation=""
+					messageResourcesKey="networkPlaces" />
+				<definition type="2" name="fileBrowsing.auth.tryGuest"
+					typeMeta="" category="20" defaultValue="true" sortOrder="80"
+					validation="" messageResourcesKey="networkPlaces" />
+				<definition type="0" name="jcifs.netbios.wins"
+					typeMeta="" category="40" defaultValue="" sortOrder="40"
+					validation="" messageResourcesKey="networkPlaces"
+					restartRequired="true" />
+				<definition type="0" name="jcifs.netbios.hostname"
+					typeMeta="" category="40" defaultValue="" sortOrder="50"
+					validation="" messageResourcesKey="networkPlaces"
+					restartRequired="true" />
+				<definition type="0" name="jcifs.netbios.scope"
+					typeMeta="" category="40" defaultValue="" sortOrder="60"
+					validation="" messageResourcesKey="networkPlaces"
+					restartRequired="true" />
+				<definition type="0" name="jcifs.netbios.laddr"
+					typeMeta="" category="40" defaultValue="" sortOrder="70"
+					validation="" messageResourcesKey="networkPlaces"
+					restartRequired="true" />
+				<definition type="0" name="jcifs.netbios.baddr"
+					typeMeta="" category="40" defaultValue="" sortOrder="80"
+					validation="" messageResourcesKey="networkPlaces"
+					restartRequired="true" />
+				<definition type="0" name="jcifs.netbios.lmhosts"
+					typeMeta="" category="40" defaultValue="" sortOrder="90"
+					validation="" messageResourcesKey="networkPlaces"
+					restartRequired="true" />
+				<definition type="7" name="jcifs.netbios.soTimeout"
+					typeMeta="s" category="40" defaultValue="5000" sortOrder="100"
+					messageResourcesKey="networkPlaces"
+					restartRequired="true" 
+					validation="com.adito.input.validators.TimeCounterValidator(minValue=0,maxValue=120)"/>
+				<definition type="1" name="jcifs.netbios.retryCount"
+					typeMeta="" category="40" defaultValue="2" sortOrder="110"
+					validation="com.adito.input.validators.IntegerValidator"
+					messageResourcesKey="networkPlaces" restartRequired="true" />
+				<definition type="7" name="jcifs.netbios.retryTimeout"
+					typeMeta="s" category="40" defaultValue="3000" sortOrder="120"
+					messageResourcesKey="networkPlaces"
+					restartRequired="true" 
+					validation="com.adito.input.validators.TimeCounterValidator(minValue=0,maxValue=120)"/>
+				<definition type="0" name="jcifs.smb.client.laddr"
+					typeMeta="" category="40" defaultValue="" sortOrder="130"
+					validation="" messageResourcesKey="networkPlaces"
+					restartRequired="true" />
+				<definition type="2"
+					name="jcifs.smb.client.disablePlainTextPasswords" typeMeta=""
+					category="40" defaultValue="true" sortOrder="140" validation=""
+					messageResourcesKey="networkPlaces" restartRequired="true" />
+				<definition type="7"
+					name="jcifs.smb.client.responseTimeout" typeMeta="s" category="40"
+					defaultValue="30000" sortOrder="150"
+					messageResourcesKey="networkPlaces" restartRequired="true" 
+					validation="com.adito.input.validators.TimeCounterValidator(minValue=15,maxValue=300)"/>
+				<definition type="7" name="jcifs.smb.client.soTimeout"
+					typeMeta="s" category="40" defaultValue="35000" sortOrder="150"
+					messageResourcesKey="networkPlaces"
+					restartRequired="true" 
+					validation="com.adito.input.validators.TimeCounterValidator(minValue=20,maxValue=360)"/>
+				<definition type="0" name="jcifs.resolveOrder"
+					typeMeta="" category="40" defaultValue="LMHOSTS,WINS,BCAST,DNS"
+					sortOrder="160" validation="" messageResourcesKey="networkPlaces"
+					restartRequired="true" />
+				<definition type="0" name="cifs.guestUser" typeMeta=""
+					category="40" defaultValue="GUEST" sortOrder="190" validation=""
+					messageResourcesKey="networkPlaces" restartRequired="true" />
+				<definition type="4" name="cifs.guestPassword"
+					typeMeta="" category="40" defaultValue="" sortOrder="200"
+					validation="" messageResourcesKey="networkPlaces"
+					restartRequired="true" />
+				<definition type="2"
+					name="ui.allowOpenWebFolderInFirefox" typeMeta="" category="30"
+					defaultValue="false" sortOrder="100" validation=""
+					messageResourcesKey="networkPlaces" restartRequired="true" />
+			</systemConfig>
+		</propertyDefinitions>
+	</extension>
+</bundle>

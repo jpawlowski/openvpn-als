@@ -1,0 +1,131 @@
+
+<jsp:directive.page import="com.adito.vfs.VFSProviderManager"/>
+<jsp:directive.page import="com.adito.vfs.VFSProvider"/>
+<jsp:directive.page import="com.adito.networkplaces.NetworkPlaceVFSProvider"/><%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="/server/taglibs/table" prefix="table"%>
+<%@ taglib uri="/server/taglibs/input" prefix="input"%>
+<%@ page import="java.util.Iterator" %>
+<%@ page import="com.adito.networkplaces.wizards.forms.NetworkPlaceDetailsForm" %>
+
+<bean:define id="networkPlaceDetailsForm" name="networkPlaceDetailsForm" type="com.adito.networkplaces.wizards.forms.NetworkPlaceDetailsForm"></bean:define>
+<table class="resourceDetails">
+	<tr class="formText">
+		<td class="label">
+				<bean:message key="networkPlaceWizard.networkPlaceDetails.scheme" bundle="networkPlaces" />
+		</td>
+		<td class="value">
+			<html:select name="networkPlaceDetailsForm" property="scheme" onchange="window.location = '/networkPlaceDetails.do?actionTarget=changeScheme&scheme=' + this.options[this.selectedIndex].value;">
+				<html:option key="<%= "vfs.provider.automatic.name" %>" value="automatic" bundle="networkPlaces"/>
+				<% 	
+				for(Iterator ite = VFSProviderManager.getInstance().getProviders().iterator(); ite.hasNext(); ) {
+					VFSProvider provider = (VFSProvider)ite.next();
+					if(provider instanceof NetworkPlaceVFSProvider) {
+					
+				%>
+					<html:option key="<%= "vfs.provider." + provider.getScheme() + ".name" %>" value="<%= provider.getScheme() %>" bundle="<%= provider.getBundle() %>"/>
+				<%
+					}
+				}
+				%>
+			</html:select>
+		</td>
+	</tr>	
+	<logic:notEqual name="networkPlaceDetailsForm" property="provider.hostRequirement" value="<%= String.valueOf(VFSProvider.ELEMENT_NOT_APPLICABLE) %>">
+		<tr class="formText">
+			<td class="label">
+				<div <% if (networkPlaceDetailsForm.getProvider().getHostRequirement() == VFSProvider.ELEMENT_REQUIRED) { %>class="required"<% } %>>
+					<bean:message key="networkPlaceWizard.networkPlaceDetails.host" bundle="networkPlaces" />
+				</div>
+			</td>
+			<td class="value">
+				<html:text styleId="host" styleClass="threeQuartersWidth" property="host"/>								
+				<input:variables inputId="host"/>
+			</td>
+		</tr>
+	</logic:notEqual>
+	<logic:notEqual name="networkPlaceDetailsForm" property="provider.portRequirement" value="<%= String.valueOf(VFSProvider.ELEMENT_NOT_APPLICABLE) %>">
+		<tr>
+			<td class="label">
+				<div <% if (networkPlaceDetailsForm.getProvider().getPortRequirement() == VFSProvider.ELEMENT_REQUIRED) { %>class="required"<% } %>>
+					<bean:message key="networkPlaceWizard.networkPlaceDetails.port" bundle="networkPlaces" />
+				</div>
+			</td>
+			<td class="value">
+				<html:text styleId="host" styleId="port" styleClass="" property="port"/>
+			</td>
+		</tr>
+	</logic:notEqual>
+	<logic:notEqual name="networkPlaceDetailsForm" property="provider.pathRequirement" value="<%= String.valueOf(VFSProvider.ELEMENT_NOT_APPLICABLE) %>">
+		<tr>
+			<td class="label">
+				<div <% if (networkPlaceDetailsForm.getProvider().getPathRequirement() == VFSProvider.ELEMENT_REQUIRED) { %>class="required"<% } %>>
+					<bean:message key="networkPlaceWizard.networkPlaceDetails.path" bundle="networkPlaces" />
+				</div>
+			</td>
+			<td class="value">
+				<html:text styleId="path"  styleClass="threeQuartersWidth"  property="path"/>								
+				<input:variables inputId="path"/>
+			</td>
+		</tr>
+	</logic:notEqual>
+	<logic:notEqual name="networkPlaceDetailsForm" property="provider.userInfoRequirement" value="<%= String.valueOf(VFSProvider.ELEMENT_NOT_APPLICABLE) %>">
+		<tr class="formText">
+			<td class="label">
+				<div <% if (networkPlaceDetailsForm.getProvider().getUserInfoRequirement() == VFSProvider.ELEMENT_REQUIRED) { %>class="required"<% } %>>
+					<bean:message key="networkPlaceWizard.networkPlaceDetails.username" bundle="networkPlaces" />
+				</div>
+			</td>
+			<td class="value">
+				<html:text styleId="username" styleClass="" property="username"/>								
+				<input:variables inputId="username"/>
+			</td>
+		</tr>
+		<tr class="formText">
+			<td class="label">
+				<div>
+					<bean:message key="networkPlaceWizard.networkPlaceDetails.password" bundle="networkPlaces" />
+				</div>
+			</td>
+			<td class="value">
+				<html:password styleId="password" styleClass="" property="password"/>								
+				<input:variables inputId="password"/>
+			</td>
+		</tr>
+	</logic:notEqual>
+	<logic:notEqual name="networkPlaceDetailsForm" property="provider.hiddenFilesSupported" value="false">
+		<tr class="formText">
+			<td class="label">
+				<bean:message key="networkPlaceWizard.networkPlaceDetails.showHidden" bundle="networkPlaces" />
+			</td>
+			<td class="value">
+				<html:checkbox name="networkPlaceDetailsForm" property="showHidden" />
+			</td>
+		</tr>
+	</logic:notEqual>
+	<tr class="formText">
+		<td class="label">
+			<bean:message key="networkPlaceWizard.networkPlaceDetails.readOnly" bundle="networkPlaces" />
+		</td>
+		<td class="value">
+			<html:checkbox name="networkPlaceDetailsForm" property="readOnly" />
+		</td>
+	</tr>
+	<tr class="formText">
+		<td class="label">
+			<bean:message key="networkPlaceWizard.networkPlaceDetails.allowRecursive" bundle="networkPlaces" />
+		</td>
+		<td class="value">
+			<html:checkbox name="networkPlaceDetailsForm" property="allowRecursive" />
+		</td>
+	</tr>
+	<tr class="formText">
+		<td class="label">
+			<bean:message key="networkPlaceWizard.networkPlaceDetails.noDelete" bundle="networkPlaces" />
+		</td>
+		<td class="value">
+			<html:checkbox name="networkPlaceDetailsForm" property="noDelete" />
+		</td>
+	</tr>
+</table>

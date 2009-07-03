@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<!-- Network places forms -->
+		<form-bean name="showNetworkPlacesForm"
+			type="com.adito.networkplaces.forms.ShowNetworkPlacesForm">
+		</form-bean>
+		<form-bean name="networkPlaceForm"
+			type="com.adito.networkplaces.forms.NetworkPlaceForm">
+		</form-bean>
+
+		<!-- VFS forms -->
+		<form-bean name="fileSystemForm"
+			type="com.adito.networkplaces.forms.FileSystemForm">
+		</form-bean>
+		
+		<!--  Network Place Wizard -->
+		
+		<form-bean name="defaultNetworkPlaceDetailsForm" type="com.adito.networkplaces.wizards.forms.DefaultNetworkPlaceDetailsForm"></form-bean>
+		<form-bean name="networkPlaceDetailsForm" type="com.adito.networkplaces.wizards.forms.NetworkPlaceDetailsForm"></form-bean>
+		<form-bean name="networkPlacePolicySelectionForm" type="com.adito.networkplaces.wizards.forms.NetworkPlacePolicySelectionForm"></form-bean>
+		<form-bean name="networkPlacePersonalPolicyForm" type="com.adito.networkplaces.wizards.forms.NetworkPlacePersonalPolicyForm"></form-bean>
+		<form-bean name="networkPlaceSummaryForm" type="com.adito.networkplaces.wizards.forms.NetworkPlaceSummaryForm"></form-bean>
+		<form-bean name="networkPlaceFinishForm" type="com.adito.networkplaces.wizards.forms.NetworkPlaceFinishForm"></form-bean>
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+	
+
+		<!-- Network Places -->
+
+		<action path="/launchNetworkPlace"
+			type="com.adito.networkplaces.actions.LaunchNetworkPlaceAction" />
+
+		<action path="/showUserNetworkPlaces"
+			type="com.adito.networkplaces.actions.ShowNetworkPlacesDispatchAction"
+			name="showNetworkPlacesForm" parameter="actionTarget" scope="session"
+			input=".site.NetworkPlaces">
+			<forward name="display" path=".site.UserNetworkPlaces" />
+			<forward name="edit" path="/editUserNetworkPlace.do" />
+			<forward name="confirmRemove" path="/removeUserNetworkPlace.do" />
+			<forward name="create" path="/networkPlaceDetails.do"
+				redirect="true" />
+			<forward name="refresh" path="/showUserNetworkPlaces.do"
+				redirect="true" />
+		</action>
+
+		<action path="/showNetworkPlaces"
+			type="com.adito.networkplaces.actions.ShowNetworkPlacesDispatchAction"
+			name="showNetworkPlacesForm" parameter="actionTarget" scope="session"
+			input=".site.NetworkPlaces">
+			<forward name="display" path=".site.NetworkPlaces" />
+			<forward name="edit" path="/editNetworkPlace.do" />
+			<forward name="clone" path="/editNetworkPlace.do" />
+			<forward name="confirmRemove" path="/removeNetworkPlace.do" />
+			<forward name="create" path="/networkPlaceDetails.do"
+				redirect="true" />
+			<forward name="refresh" path="/showNetworkPlaces.do"
+				redirect="true" />
+		</action>
+
+		<action path="/removeNetworkPlace" name="confirmForm"
+			parameter="question,true,networkPlaces,removeNetworkPlace,yes=/showNetworkPlaces.do?actionTarget=remove,no="
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<action path="/removeUserNetworkPlace" name="confirmForm"
+			parameter="question,true,networkPlaces,removeNetworkPlace,yes=/showUserNetworkPlaces.do?actionTarget=remove,no="
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<action path="/editNetworkPlace" name="networkPlaceForm"
+			scope="session" validate="true" parameter="actionTarget"
+			input=".site.EditNetworkPlace"
+			type="com.adito.networkplaces.actions.ShowNetworkPlaceAction">
+			<forward name="display" path=".site.EditNetworkPlace" />
+			<forward name="done"
+				path="/showNetworkPlaces.do?actionTarget=unspecified"/>
+		</action>
+
+		<action path="/editUserNetworkPlace" name="networkPlaceForm"
+			scope="session" validate="true" parameter="actionTarget"
+			input=".site.UserEditNetworkPlace"
+			type="com.adito.networkplaces.actions.ShowNetworkPlaceAction">
+			<forward name="display" path=".site.UserEditNetworkPlace" />
+			<forward name="done"
+				path="/showUserNetworkPlaces.do?actionTarget=unspecified"/>
+		</action>
+
+		<!-- VFS Actions  -->
+
+
+		<!--  NOTE - All file system actions must be REQUEST scope
+		      as there may be many file system views open at any one time -->
+
+		<action  scope="request" path="/fileSystem"
+			type="com.adito.networkplaces.actions.FileSystemViewDispatchAction"
+			name="fileSystemForm" parameter="actionTarget" 
+			input=".site.FileSystem" validate="true">
+			<forward name="display" path=".site.FileSystem" redirect="true" />
+			<forward name="list" path="/fileSystem.do?actionTarget=list" />
+			<forward name="pasteOverwriteFile" path="/pasteOverwriteFile.do" />
+			<forward name="pasteOverwriteFiles" path="/pasteOverwriteFiles.do" />
+			<forward name="deleteFiles" path="/deleteFiles.do" />
+			<forward name="deleteFile" path="/deleteFile.do" />
+			<forward name="upload" path="/showPopupUpload.do" />
+			<forward name="showFileDownload" path="/popupFileDownload.do" />
+			<forward name="showMkDir" path=".site.FileSystemCreateFolder" />
+			<forward name="showRenameFile" path=".site.FileSystemRenameFile" />
+		</action>
+
+		<action path="/updateFiles"
+			type="com.adito.slide.actions.UpdateFilesAction"
+			scope="request" />
+
+		<action path="/pasteOverwriteFile" name="confirmForm"
+			parameter="question,true,networkPlaces,pasteOverwrite,yes=/fileSystem.do?actionTarget=pasteOverwriteFile,no="
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.PopupConfirm" />
+		</action>
+
+		<action path="/pasteOverwriteFiles" name="confirmForm"
+			parameter="question,true,networkPlaces,pasteOverwrite,yes=/fileSystem.do?actionTarget=pasteOverwriteFiles,no="
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.PopupConfirm" />
+		</action>
+		
+		<action path="/deleteFile" name="confirmForm"
+			parameter="question,true,networkPlaces,deleteFile,yes=/fileSystem.do?actionTarget=deleteFile,no="
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.PopupConfirm" />
+		</action>
+
+		<action path="/deleteFiles" name="confirmForm"
+			parameter="question,true,networkPlaces,deleteFiles,yes=/fileSystem.do?actionTarget=delete,no="
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.PopupConfirm" />
+		</action>
+
+		<!--  Network Place Wizard -->
+		
+		<action path="/defaultNetworkPlaceDetails" 
+				name="defaultNetworkPlaceDetailsForm" 
+				scope="session" 
+				type="com.adito.networkplaces.wizards.actions.DefaultNetworkPlaceDetailsAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.NetworkPlaceWizardPage">				
+			<forward name="finish" path="/networkPlaceFinish.do" redirect="true"/>
+			<forward name="display" path=".site.NetworkPlaceWizardPage" />
+			<forward name="next" path="/networkPlaceDetails.do" redirect="true"/>
+		</action>
+		<action path="/networkPlaceDetails" 
+				name="networkPlaceDetailsForm" 
+				scope="session" 
+				type="com.adito.networkplaces.wizards.actions.NetworkPlaceDetailsAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.NetworkPlaceWizardPage">				
+			<forward name="finish" path="/networkPlaceFinish.do" redirect="true"/>
+			<forward name="display" path=".site.NetworkPlaceWizardPage" />
+			<forward name="refresh" path="/networkPlaceDetails.do" redirect="true" />
+			<forward name="previous" path="/defaultNetworkPlaceDetails.do"  redirect="true"/>
+			<forward name="next" path="/networkPlacePolicySelection.do" redirect="true"/>
+			<forward name="nextPersonal" path="/networkPlacePersonalPolicy.do" redirect="true"/>
+		</action>
+		<action path="/networkPlacePolicySelection" 
+				name="networkPlacePolicySelectionForm" 
+				scope="session" 
+				type="com.adito.networkplaces.wizards.actions.NetworkPlacePolicySelectionAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.NetworkPlaceWizardPage">				
+			<forward name="display" path=".site.NetworkPlaceWizardPage" />
+			<forward name="previous" path="/networkPlaceDetails.do"  redirect="true"/>
+			<forward name="next" path="/networkPlaceSummary.do"  redirect="true"/>
+		</action>
+		<action path="/networkPlacePersonalPolicy" 
+				name="networkPlacePersonalPolicyForm" 
+				scope="session" 
+				type="com.adito.networkplaces.wizards.actions.NetworkPlacePersonalPolicyAction"
+				parameter="actionTarget" 
+				validate="false" 
+				input=".site.NetworkPlaceWizardPage">				
+			<forward name="display" path=".site.NetworkPlaceWizardPage" />
+			<forward name="previous" path="/networkPlaceDetails.do"  redirect="true"/>
+			<forward name="next" path="/networkPlaceSummary.do"  redirect="true"/>
+		</action>
+		<action path="/networkPlaceSummary" 
+				name="networkPlaceSummaryForm" 
+				scope="session" 
+				type="com.adito.networkplaces.wizards.actions.NetworkPlaceSummaryAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.NetworkPlaceWizardPage">				
+			<forward name="display" path=".site.NetworkPlaceWizardPage" />
+			<forward name="previous" path="/networkPlacePolicySelection.do" redirect="true" />
+			<forward name="previousPersonal" path="/networkPlacePersonalPolicy.do" redirect="true" />
+		</action>
+		<action path="/networkPlaceFinish" 
+				name="networkPlaceFinishForm" 
+				scope="session" 
+				type="com.adito.networkplaces.wizards.actions.NetworkPlaceFinishAction"
+				parameter="actionTarget" 
+				validate="true" 
+				input=".site.NetworkPlaceWizardPage">
+			<forward name="display" path=".site.NetworkPlaceWizardPage" />
+			<forward name="rerun" path="/networkPlaceDetails.do" redirect="true"/>
+		</action>
+	</action-mappings>
+	<!-- ================================ Message Definitions -->
+	<message-resources parameter="com.adito.networkplaces.ApplicationResources" key="networkPlaces" />
+
+</struts-config>

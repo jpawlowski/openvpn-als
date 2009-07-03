@@ -1,0 +1,85 @@
+
+<jsp:directive.page import="com.adito.core.CoreUtil"/>
+<jsp:directive.page import="com.adito.boot.Util"/>
+<jsp:directive.page import="com.adito.networkplaces.NetworkPlacePlugin"/><%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<jsp:directive.page import="com.adito.vfs.webdav.DAVUtilities"/>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+
+<tiles:useAttribute name="resource" scope="request" classname="com.adito.networkplaces.NetworkPlace"/> 
+<bean:define id="themePath"><core:themePath/></bean:define>
+<div class="resourceInformationDetails">
+	<table class="dialog_form_table" id="form">
+		<tbody>
+			<tr class="formText">
+				<td class="label">
+					<bean:message key="networkPlaceInformation.uri" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>"/>
+				</td>
+				<td class="value">	
+					<bean:write name="resource" property="path"/>
+				</td> 
+			</tr>
+			<tr class="formText">
+				<td class="label">
+					WebDAV URL
+				</td>
+				<td class="value">	
+					<%= request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/fs/" + resource.getScheme() + "/" + DAVUtilities.encodePath(resource.getResourceName()) %>
+				</td> 
+			</tr>
+			<tr class="formText">
+				<td class="label">
+					<bean:message key="networkPlaceInformation.showHidden" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>"/>
+				</td>
+				<td class="value">	
+					<logic:equal name="resource" property="showHidden" value="true">
+						<bean:message key="networkPlaceInformation.yes" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>"/>
+					</logic:equal>
+					<logic:equal name="resource" property="showHidden" value="false">
+						<bean:message key="networkPlaceInformation.no" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>"/>
+					</logic:equal>
+				</td>
+			</tr>
+			<tr class="formText">
+				<td class="label">
+					<bean:message key="networkPlaceInformation.readOnly" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>"/>
+				</td>
+				<td class="value">	
+					<logic:equal name="resource" property="readOnly" value="true">
+						<bean:message key="networkPlaceInformation.yes" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>"/>
+					</logic:equal>
+					<logic:equal name="resource" property="readOnly" value="false">
+						<bean:message key="networkPlaceInformation.no" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>"/>
+					</logic:equal>
+				</td>
+			</tr>
+			<tr class="formText">
+				<td class="label">
+					<bean:message key="networkPlaceInformation.allowRecursive" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>"/>
+				</td>
+				<td class="value">	
+					<logic:equal name="resource" property="allowRecursive" value="true">
+						<bean:message key="networkPlaceInformation.yes" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>"/>
+					</logic:equal>
+					<logic:equal name="resource" property="allowRecursive" value="false">
+						<bean:message key="networkPlaceInformation.no" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>"/>
+					</logic:equal>
+				</td>
+			</tr>
+			<tr class="formText">
+				<td class="label">
+					<bean:message key="networkPlaceInformation.noDelete" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>"/>
+				</td>
+				<td class="value">	
+					<%-- These are reversed to prevent a double negative --%>
+					<logic:equal name="resource" property="noDelete" value="true">
+						<bean:message key="networkPlaceInformation.no" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>"/>
+					</logic:equal>
+					<logic:equal name="resource" property="noDelete" value="false">
+						<bean:message key="networkPlaceInformation.yes" bundle="<%= NetworkPlacePlugin.MESSAGE_RESOURCES_KEY %>"/>
+					</logic:equal>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
