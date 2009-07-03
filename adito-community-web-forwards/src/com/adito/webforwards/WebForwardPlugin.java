@@ -79,6 +79,12 @@ public class WebForwardPlugin extends DefaultPlugin {
 	 */
 	public static final String MESSAGE_RESOURCES_KEY = "webForwards";
 
+	 /**
+     * Handler
+     */
+    public static final ReverseProxyMethodHandler REVERSE_PROXY_HANDLER = new ReverseProxyMethodHandler();
+
+    public static final ReplacementProxyMethodHandler REPLACEMENT_PROXY_HANDLER =new ReplacementProxyMethodHandler();
 	/**
 	 * Constructor.
 	 */
@@ -227,8 +233,8 @@ public class WebForwardPlugin extends DefaultPlugin {
 		// if (!ContextHolder.getContext().isSetupMode()) {
 		if (!false) {
 		// end change
-			ContextHolder.getContext().registerRequestHandler(new ReverseProxyMethodHandler());
-			ContextHolder.getContext().registerRequestHandler(new ReplacementProxyMethodHandler());
+			ContextHolder.getContext().registerRequestHandler(REVERSE_PROXY_HANDLER);
+			ContextHolder.getContext().registerRequestHandler(REPLACEMENT_PROXY_HANDLER);
 		}
 		DefaultAgentManager.getInstance().registerService(WebForwardService.class);
 	}
@@ -254,8 +260,8 @@ public class WebForwardPlugin extends DefaultPlugin {
 		// if (ContextHolder.getContext().isSetupMode()) {
 		if (false) {
 		// end change
-			ContextHolder.getContext().deregisterRequestHandler(new ReverseProxyMethodHandler());
-			ContextHolder.getContext().deregisterRequestHandler(new ReplacementProxyMethodHandler());
+			ContextHolder.getContext().deregisterRequestHandler(REVERSE_PROXY_HANDLER);
+			ContextHolder.getContext().deregisterRequestHandler(REPLACEMENT_PROXY_HANDLER);
 		}
 	}
 
