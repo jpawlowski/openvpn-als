@@ -17,7 +17,7 @@
  *  License along with this program; if not, write to the Free Software
  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
-			
+
 package com.adito.networkplaces.store.webdav;
 
 import java.io.IOException;
@@ -35,6 +35,7 @@ import com.adito.vfs.utils.URI;
 import com.adito.vfs.webdav.DAVAuthenticationRequiredException;
 import com.adito.vfs.webdav.DAVUtilities;
 
+
 public class WebDAVMount extends AbstractNetworkPlaceMount {
 
     final static Log log = LogFactory.getLog(WebDAVMount.class);
@@ -50,7 +51,8 @@ public class WebDAVMount extends AbstractNetworkPlaceMount {
                 uri.setUserinfo(DAVUtilities.encodeURIUserInfo(credentials.getUsername() + (credentials.getPassword() != null ? ":" + new String(credentials.getPassword()) : "")));
             }
             uri.setPath(uri.getPath() + (uri.getPath().endsWith("/") ? "" : "/") + DAVUtilities.encodePath(path));
-            FileObject fileObject = this.getStore().getRepository().getFileSystemManager().resolveFile(uri.toString());
+
+			FileObject fileObject = this.getStore().getRepository().getFileSystemManager().resolveFile(uri.toString());
             return fileObject;
         } catch (FileSystemException fse) {
             if (fse.getCode().equals("vfs.provider.ftp/connect.error")) {
