@@ -66,9 +66,8 @@ xml, property etc. files have to be converted, too. For this reason there is a B
 
 == Basic techniques ==
 
-- Merge changes from trunk to maven2, module by module. This is necessary because the directory structure 
-of some modules in maven2 has been changed.
-- Merge changes from maven2 to nonembedded, module by module.
+- Merge changes from trunk to nonembedded, module by module. There are only a few changes to the actual code
+  in maven2 branch, so we can merge them manually later.
 - Copy other stuff (e.g. pom.xml) from the module in maven2 branch to nonembedded
 - Add/activate the newly mavenized module in nonembedded's main pom.xml
 - Try building and fix any dependency problems that may arise (unlikely) 

@@ -11,13 +11,13 @@
         <version>0.9.2</version>
     </parent>
 
-    <artifactId>module-name-here</artifactId>
-    <name>module-name-here</name>
+    <artifactId>activedirectory</artifactId>
+    <name>activedirectory</name>
 
     <packaging>jar</packaging>
 
     <description>
-	Module description here
+	Adito Active Directory authentication module
     </description>
 
     <profiles>
