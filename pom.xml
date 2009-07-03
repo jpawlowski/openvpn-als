@@ -127,8 +127,8 @@
 	<module>maverick-multiplex</module>
 	<module>maverick-crypto</module>
 	<module>webapp</module>
-	<!--
 	<module>unix</module>
+	<!--
 	<module>activedirectory</module>
 	<module>applications</module>
 	<module>webforwards</module>
@@ -141,34 +141,24 @@
     
     <repositories>
 
-	<!-- maven-plugin-war is required for an exploded war target. It's available from
-	     apache's maven2 repository, but some of the plugins there, including the war
-	     plugin are arranged against the maven2 standard. Hence the maven2 fails to
-	     download them. Placing the war plugin to our own maven2 repository proved
-	     not to be trivial. Therefore it's best to skip the whole exploded war thing
-	     until a way to handle the non-standard repository layout is found. The key
-	     is probably tweaking the <layout></layout> in <repository> somehow.
-	
-		-mattock
-	
+	<!--
         <repository>
             <id>Apache maven2 repository</id>
             <name>Apache maven2 repository</name>
             <url>https://repository.apache.org/content/repositories/releases/</url>
             <layout>legacy</layout>
         </repository>
-        
 	-->
 
 	<repository>
-		<id>central</id>
-		<name>Maven Repository Switchboard</name>
-		<layout>default</layout>
-		<url>http://repo1.maven.org/maven2</url>
-		<snapshots>
-			<enabled>false</enabled>
-		</snapshots>
-		</repository>
+	   <id>central</id>
+	   <name>Maven Repository Switchboard</name>
+	   <layout>default</layout>
+	   <url>http://repo1.maven.org/maven2</url>
+	   <snapshots>
+		<enabled>false</enabled>
+	   </snapshots>
+	</repository>
 
 	<repository>
             <id>maven2-repository.dev.java.net</id>

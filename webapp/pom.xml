@@ -55,17 +55,21 @@
 		     for more information. Also see
 
 			http://maven.apache.org/plugins/maven-war-plugin/exploded.html
+		-->
 
 
 		<plugin>
-			<groupId>org.apache.maven</groupId>
+			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-war-plugin</artifactId>
 			<version>2.1-beta-1</version> 
-			<goals>
-				<goal>exploded</goal>
-			</goals>
+			<executions>
+				<execution>
+					<goals>
+						<goal>exploded</goal>
+					</goals>
+				</execution>
+			</executions>
 		</plugin>
-		-->
 
 		<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
