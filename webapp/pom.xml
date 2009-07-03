@@ -50,6 +50,22 @@
 			</executions>
 		</plugin>
 
+		<!-- An exploded WAR would have worked better for us, but for various
+		     reasons using it proved to be overly difficult. See main pom.xml
+		     for more information. Also see
+
+			http://maven.apache.org/plugins/maven-war-plugin/exploded.html
+
+
+		<plugin>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-war-plugin</artifactId>
+			<version>2.1-beta-1</version> 
+			<goals>
+				<goal>exploded</goal>
+			</goals>
+		</plugin>
+		-->
 
 		<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
