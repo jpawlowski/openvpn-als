@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<!--  SSL Tunnel Forms -->
+		<form-bean name="tunnelsForm"
+			type="com.adito.tunnels.forms.TunnelsForm">
+		</form-bean>
+		<form-bean name="tunnelForm"
+			type="com.adito.tunnels.forms.TunnelForm">
+		</form-bean>
+
+		<!--  SSL Tunnel Wizard Forms -->
+		<form-bean name="defaultTunnelDetailsForm"
+			type="com.adito.tunnels.wizards.forms.DefaultTunnelDetailsForm">
+		</form-bean>
+		<form-bean name="tunnelDetailsForm"
+			type="com.adito.tunnels.wizards.forms.TunnelDetailsForm">
+		</form-bean>
+		<form-bean name="tunnelPolicySelectionForm"
+			type="com.adito.tunnels.wizards.forms.TunnelPolicySelectionForm">
+		</form-bean>
+		<form-bean name="tunnelPersonalPolicyForm"
+			type="com.adito.tunnels.wizards.forms.TunnelPersonalPolicyForm">
+		</form-bean>
+		<form-bean name="tunnelSummaryForm"
+			type="com.adito.tunnels.wizards.forms.TunnelSummaryForm">
+		</form-bean>
+		<form-bean name="tunnelFinishForm"
+			type="com.adito.tunnels.wizards.forms.TunnelFinishForm">
+		</form-bean>
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+
+		<!--  SSl Tunnel Actions -->
+		<action path="/showTunnels"
+			type="com.adito.tunnels.actions.ShowTunnelsAction"
+			name="tunnelsForm" parameter="actionTarget" scope="session">
+			<forward name="display" path=".site.Tunnels" />
+			<forward name="edit" path="/editTunnel.do" />
+			<forward name="clone" path="/editTunnel.do" />
+			<forward name="confirmRemove" path="/removeTunnel.do" />
+			<forward name="refresh" path="/showTunnels.do"
+				redirect="true" />
+		</action>
+
+		<action path="/showUserTunnels"
+			type="com.adito.tunnels.actions.ShowTunnelsAction"
+			name="tunnelsForm" parameter="actionTarget" scope="session">
+			<forward name="display" path=".site.UserTunnels" />
+			<forward name="edit" path="/editUserTunnel.do" />
+			<forward name="confirmRemove" path="/removeUserTunnel.do" />
+			<forward name="refresh" path="/showUserTunnels.do"
+				redirect="true" />
+		</action>
+
+		<action path="/removeTunnel" name="confirmForm"
+			parameter="question,true,tunnels,removeTunnel,yes=/showTunnels.do?actionTarget=remove,no=/showTunnels.do?actionTarget=unspecified"
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+		
+		<action path="/removeUserTunnel" name="confirmForm"
+			parameter="question,true,tunnels,removeTunnel,yes=/showUserTunnels.do?actionTarget=remove,no=/showUserTunnels.do?actionTarget=unspecified"
+			scope="request"
+			type="com.adito.navigation.actions.ConfirmAction">
+			<forward name="success" path=".site.Confirm" />
+		</action>
+
+		<action path="/editTunnel" name="tunnelForm" scope="session"
+			validate="true" parameter="actionTarget" input=".site.EditTunnel"
+			type="com.adito.tunnels.actions.EditTunnelAction">
+			<forward name="display" path=".site.EditTunnel" />
+			<forward name="done" path="/showTunnels.do?actionTarget=unspecified"
+				redirect="false" />
+		</action>
+		
+		<action path="/editUserTunnel" name="tunnelForm" scope="session"
+			validate="true" parameter="actionTarget" input=".site.UserEditTunnel"
+			type="com.adito.tunnels.actions.EditTunnelAction">
+			<forward name="display" path=".site.UserEditTunnel" />
+			<forward name="done" path="/showUserTunnels.do?actionTarget=unspecified"
+				redirect="false" />
+		</action>
+
+		<action path="/launchTunnel"
+			type="com.adito.tunnels.actions.LaunchTunnelAction" />
+
+		<action path="/startTunnel"
+			type="com.adito.tunnels.actions.StartTunnelAction" />
+
+
+		<!--  SSl Tunnel Wizard Actions -->
+		<action path="/defaultTunnelDetails"
+			name="defaultTunnelDetailsForm" scope="session"
+			type="com.adito.tunnels.wizards.actions.DefaultTunnelDetailsAction"
+			parameter="actionTarget" validate="true"
+			input=".site.TunnelWizardPage">
+			<forward name="finish" path="/tunnelFinish.do"
+				redirect="true" />
+			<forward name="display" path=".site.TunnelWizardPage" />
+			<forward name="next" path="/tunnelDetails.do"
+				redirect="true" />
+		</action>
+		<action path="/tunnelDetails" name="tunnelDetailsForm"
+			scope="session"
+			type="com.adito.tunnels.wizards.actions.TunnelDetailsAction"
+			parameter="actionTarget" validate="true"
+			input=".site.TunnelWizardPage">
+			<forward name="finish" path="/tunnelFinish.do"
+				redirect="true" />
+			<forward name="display" path=".site.TunnelWizardPage" />
+			<forward name="previous" path="/defaultTunnelDetails.do"
+				redirect="true" />
+			<forward name="next" path="/tunnelPolicySelection.do"
+				redirect="true" />
+			<forward name="nextPersonal" path="/tunnelPersonalPolicy.do"
+				redirect="true" />
+		</action>
+		<action path="/tunnelPolicySelection"
+			name="tunnelPolicySelectionForm" scope="session"
+			type="com.adito.tunnels.wizards.actions.TunnelPolicySelectionAction"
+			parameter="actionTarget" validate="true"
+			input=".site.TunnelWizardPage">
+			<forward name="display" path=".site.TunnelWizardPage" />
+			<forward name="previous" path="/tunnelDetails.do"
+				redirect="true" />
+			<forward name="next" path="/tunnelSummary.do"
+				redirect="true" />
+		</action>
+		
+		<action path="/tunnelPersonalPolicy"
+			name="tunnelPersonalPolicyForm" scope="session"
+			type="com.adito.tunnels.wizards.actions.TunnelPersonalPolicyAction"
+			parameter="actionTarget" validate="true"
+			input=".site.TunnelWizardPage">
+			<forward name="display" path=".site.TunnelWizardPage" />
+			<forward name="previous" path="/tunnelDetails.do"
+				redirect="true" />
+			<forward name="next" path="/tunnelSummary.do"
+				redirect="true" />
+		</action>
+		<action path="/tunnelSummary" name="tunnelSummaryForm"
+			scope="session"
+			type="com.adito.tunnels.wizards.actions.TunnelSummaryAction"
+			parameter="actionTarget" validate="true"
+			input=".site.TunnelWizardPage">
+			<forward name="display" path=".site.TunnelWizardPage" />
+			<forward name="previousPersonal" path="/tunnelPersonalPolicy.do"
+				redirect="true" />
+			<forward name="previous" path="/tunnelPolicySelection.do"
+				redirect="true" />
+		</action>
+		<action path="/tunnelFinish" name="tunnelFinishForm"
+			scope="session"
+			type="com.adito.tunnels.wizards.actions.TunnelFinishAction"
+			parameter="actionTarget" validate="true"
+			input=".site.TunnelWizardPage">
+			<forward name="display" path=".site.TunnelWizardPage" />
+			<forward name="rerun" path="/tunnelDetails.do"
+				redirect="true" />
+		</action>
+	</action-mappings>
+	<!-- ================================ Message Definitions -->
+	<message-resources
+		parameter="com.adito.tunnels.ApplicationResources"
+		key="tunnels" />
+</struts-config>
