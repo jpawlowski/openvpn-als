@@ -29,7 +29,7 @@
     </profiles>
 
     <!-- This plugin configuration is necessary because the extensions (e.g. unix, applications)
-	 look for a server-*.jar from the local Maven2 repository, but the WAR packaging does not
+	 look for a webapp-*.jar from the local Maven2 repository, but the WAR packaging does not
 	 create one. The solution was combined from those found from here:
 
 	 http://communitygrids.blogspot.com/2007/11/maven-making-war-and-jar-at-same-time.html -->
@@ -50,9 +50,8 @@
 			</executions>
 		</plugin>
 
-		<!-- An exploded WAR would have worked better for us, but for various
-		     reasons using it proved to be overly difficult. See main pom.xml
-		     for more information. Also see
+		<!-- Exploded WAR works best for us until OpenVPN ALS is a standard
+		     web application
 
 			http://maven.apache.org/plugins/maven-war-plugin/exploded.html
 		-->

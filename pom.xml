@@ -128,13 +128,11 @@
 	<module>maverick-crypto</module>
 	<module>webapp</module>
 	<module>unix</module>
-	<!--
 	<module>activedirectory</module>
 	<module>applications</module>
 	<module>webforwards</module>
 	<module>tunnels</module>
 	<module>networkplaces</module>
-	-->
 	<!--<module>console</module-->
 	<!--<module>agent</module-->
     </modules>
