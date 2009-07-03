@@ -39,4 +39,8 @@
       </dependency>
     </dependencies>
 
+	<build>
+		<finalName>networkplaces</finalName>
+	</build>
+
 </project>

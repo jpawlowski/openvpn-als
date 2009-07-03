@@ -35,6 +35,12 @@
 	 http://communitygrids.blogspot.com/2007/11/maven-making-war-and-jar-at-same-time.html -->
 
     <build>
+
+	<!-- Fails, possibly due to the exploded war thingy
+	<finalName>maverick-crypto</finalName>
+	-->
+
+
 	<plugins>
 		<plugin>
 			<groupId>org.apache.maven.plugins</groupId>

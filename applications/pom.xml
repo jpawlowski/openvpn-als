@@ -30,4 +30,10 @@
           <version>${project.version}</version>
       </dependency>
     </dependencies>
+
+	<build>
+		<finalName>applications</finalName>
+	</build>
+
+
 </project>
