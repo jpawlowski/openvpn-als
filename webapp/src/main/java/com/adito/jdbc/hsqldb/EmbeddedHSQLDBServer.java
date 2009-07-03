@@ -34,7 +34,7 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.hsqldb.HsqlProperties;
+import org.hsqldb.persist.HsqlProperties;
 import org.hsqldb.Server;
 import org.hsqldb.ServerConstants;
 
