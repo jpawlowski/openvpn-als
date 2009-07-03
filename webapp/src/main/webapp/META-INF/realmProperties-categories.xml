@@ -1,0 +1,15 @@
+<!--                           ***************
+                               * Information *
+                               ***************
+When adding / removing new categories, remember to also add the message resources
+in adito/src/com/adito/properties/ApplicationResources.properties.
+
+Images are relative to the theme image directory
+-->
+
+<categories>
+	<category id="65" bundle="properties" image="categories/authentication.gif">
+		<category id="60" bundle="properties" image="categories/security.gif"/>
+	</category>
+	<category id="1030" bundle="properties" image="categories/windows.gif"/>
+</categories>

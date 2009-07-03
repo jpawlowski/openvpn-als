@@ -1,0 +1,59 @@
+<definitions>
+
+	<definition type="3" name="security.userDatabase"
+		typeMeta="!com.adito.security.UserDatabaseListDataSource"
+		category="60" defaultValue="builtIn"  sortOrder="5"
+		validation="" messageResourcesKey="properties" 
+		hidden="true" restartRequired="true"/>
+	<definition type="5" name="security.administrators" typeMeta="25x5"
+		category="60" defaultValue="Administrators!admin" 
+		sortOrder="100" validation="" messageResourcesKey="properties" hidden="true" 
+		restartRequired="true"/>
+			
+	<!--  Password options -->
+
+	<definition type="0" name="security.password.pattern" typeMeta=""
+		category="60" defaultValue=".{5,}"  sortOrder="40"
+		validation="" messageResourcesKey="properties" />
+	<definition type="6" name="security.password.pattern.description"
+		typeMeta="30x5" category="60"
+		defaultValue="Password must be at least five characters in length"
+		 sortOrder="50" validation=""
+		messageResourcesKey="properties" />
+	<definition type="1"
+		name="security.password.daysBeforeExpiryWarning" typeMeta=""
+		category="60" defaultValue="21"  sortOrder="60"
+		validation="com.adito.input.validators.IntegerValidator"
+		messageResourcesKey="properties" />
+	<definition type="1" name="security.password.daysBeforeExpiry"
+		typeMeta="" category="60" defaultValue="28" 
+		sortOrder="70"
+		validation="com.adito.input.validators.IntegerValidator"
+		messageResourcesKey="properties" />
+	
+	<definition type="1" name="security.maxLogonAttemptsBeforeLock"
+		typeMeta="" category="60" defaultValue="3" 
+		sortOrder="10"
+		validation="com.adito.input.validators.IntegerValidator"
+		messageResourcesKey="properties" />
+	<definition type="1" name="security.maxLocksBeforeDisable"
+		typeMeta="" category="60" defaultValue="3" 
+		sortOrder="20"
+		validation="com.adito.input.validators.IntegerValidator"
+		messageResourcesKey="properties" />
+	<definition type="1" name="security.lockDuration" typeMeta=""
+		category="60" defaultValue="300"  sortOrder="30"
+		validation="com.adito.input.validators.IntegerValidator"
+		messageResourcesKey="properties" />
+
+
+	<!--  Session options -->
+	<definition type="3" name="security.multipleSessions"
+		typeMeta="0,1,2" category="61" defaultValue="0" 
+		sortOrder="100" validation="" messageResourcesKey="properties" />	
+	<definition type="2" name="security.checkRemoteAddress"
+		typeMeta="" category="61" defaultValue="true" 
+		sortOrder="101" validation="" messageResourcesKey="properties" />	
+		
+		
+</definitions>

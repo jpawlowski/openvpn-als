@@ -15,6 +15,7 @@ output.
 Changelog:
 
    1st June 2009: maverick-* modules converted to maven2
+   3rd July 2009: webapp and some extensions converted (partially) to maven2
 
 ==Installing and running Adito in "nonembedded"==
 
