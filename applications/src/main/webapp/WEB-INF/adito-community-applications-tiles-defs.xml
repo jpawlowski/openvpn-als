@@ -1,0 +1,51 @@
+<!DOCTYPE tiles-definitions PUBLIC 
+	"-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" 
+	"webapp/WEB-INF/tiles-config_1_1.dtd"> 
+
+<tiles-definitions>	
+
+	<definition name=".site.ApplicationShortcutWizardPage" extends=".site.Layout">
+		<put name="resourcePrefix" value="applicationShortcutWizard" />
+		<put name="resourceBundle" value="applications" />
+		<put name="content" value="/WEB-INF/jsp/tiles/wizardPage.jspf" />
+		<put name="infoImage" value="newApplicationShortcut.gif" />
+		<put name="rssFeed" value="applicationsWizard"/>
+	</definition>
+	
+	<definition name=".site.ApplicationShortcuts" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/applications/applicationShortcutsContent.jspf" />
+		<put name="resourcePrefix" value="applicationShortcuts" />
+		<put name="resourceBundle" value="applications" />
+		<put name="menuItem" value="applicationShortcuts" />
+		<put name="infoImage" value="applicationShortcuts.gif" />
+		<put name="rssFeed" value="applications"/>
+	</definition>
+
+	<definition name=".site.UserApplicationShortcuts" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/applications/userApplicationShortcutsContent.jspf" />
+		<put name="resourcePrefix" value="userApplicationShortcuts" />
+		<put name="resourceBundle" value="applications" />
+		<put name="menuItem" value="userApplicationShortcuts" />
+		<put name="infoImage" value="applicationShortcuts.gif" />
+	</definition>
+	
+	<definition name=".site.EditApplicationShortcut" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/applications/applicationShortcutContent.jspf" />
+		<put name="resourcePrefix" value="editApplicationShortcut" />
+		<put name="resourceBundle" value="applications" />
+		<put name="menuItem" value="" />
+		<put name="infoImage" value="editApplicationShortcut.gif" />
+		<put name="rssFeed" value="editApplication"/>
+	</definition>
+
+	<definition name=".site.UserEditApplicationShortcut" extends=".site.Layout">
+		<put name="content" value="/WEB-INF/jsp/content/applications/userApplicationShortcutContent.jspf"/>
+		<put name="resourcePrefix" value="editApplicationShortcut"/>
+		<put name="resourceBundle" value="applications"/>
+		<put name="menuItem" value=""/>
+		<put name="infoImage" value="editApplicationShortcut.gif"/>
+		<put name="rssFeed" value="editApplication"/>
+	</definition>
+	
+</tiles-definitions>
+
