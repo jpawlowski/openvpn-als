@@ -28,6 +28,12 @@ Then run ant to build the rest of the modules and create the deployable Adito "b
 
   cd $ADITO_HOME/adito
   ant install
+  cp -r deploy/* $JETTY_HOME/webapps/adito/
+
+Next you need to create a Jetty virtual host. For instructions, take a look here:
+
+* https://sourceforge.net/pm/task.php?func=detailtask&project_task_id=153892&group_id=228294&group_project_id=57945
+
 
 To clean up, do 
 
