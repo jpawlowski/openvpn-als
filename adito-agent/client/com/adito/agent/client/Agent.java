@@ -1561,23 +1561,39 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 					: ticket, ticket == null);
 		} catch (SSLIOException ex) {
 			// #ifdef DEBUG
-			log.info("An unexpected error has occured.", ex.getRealException()); //$NON-NLS-1$
-			log.info("Agent must now exit"); //$NON-NLS-1$
+			log.info("An unexpected SSL IO error has occured.", ex.getRealException()); //$NON-NLS-1$
+			log.info("Agent will now exit."); //$NON-NLS-1$
 			// #endif
 			gui.showDisconnected();
-			gui.error(Messages.getString("VPNClient.close"), null, //$NON-NLS-1$  
+			if (getConfiguration().isDisplayInformationPopups()) {
+				gui.error(Messages.getString("VPNClient.close"), null, //$NON-NLS-1$  
 					Messages.getString("VPNClient.error"), //$NON-NLS-1$ 
 					Messages.getString("VPNClient.failedToConnect"), ex); //$NON-NLS-1$
+			} else {
+				try {
+					// Show Disconnected State for 1 second before losing it (if no pop-up)
+					Thread.sleep(1000);
+				} catch(InterruptedException slp) { }
+			}
+			gui.dispose();
 			System.exit(4);
 		} catch (IOException ex) {
 			// #ifdef DEBUG
-			log.info("An unexpected error has occured.", ex); //$NON-NLS-1$
-			log.info("Agent must now exit"); //$NON-NLS-1$
+			log.info("An unexpected IO error has occured.", ex); //$NON-NLS-1$
+			log.info("Agent will now exit."); //$NON-NLS-1$
 			// #endif
-			gui.error(Messages.getString("VPNClient.close"), null, //$NON-NLS-1$
+			gui.showDisconnected();
+			if (getConfiguration().isDisplayInformationPopups()) {
+				gui.error(Messages.getString("VPNClient.close"), null, //$NON-NLS-1$
 					Messages.getString("VPNClient.error"), //$NON-NLS-1$ 
 					Messages.getString("VPNClient.failedToConnect"), ex); //$NON-NLS-1$
-			gui.showDisconnected();
+			} else {
+				try {
+					// Show Disconnected State for 1 second before losing it (if no pop-up)
+					Thread.sleep(1000);
+				} catch(InterruptedException slp) { }
+			}
+			gui.dispose();
 			System.exit(4);
 		} catch (Throwable t) {
 			gui.error(Messages.getString("VPNClient.close"), null, //$NON-NLS-1$
