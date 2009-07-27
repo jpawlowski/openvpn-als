@@ -23,10 +23,11 @@
 		<!--  TODO make use of the new 'arch' attribute in all appropriate conditions -->
 	
 		<files>
+			<!--  Matthias Jansen, No longer needed as of SWT >= 3.3
 			<file jre="+1.3" os="Linux">libswt-gtk-3235.so</file>
 			<file jre="+1.3" os="Linux">libswt-pi-gtk-3235.so</file>
 			<file jre="+1.3" os="Windows" arch="!AMD64">swt-win32-3235.dll</file>						
-			
+			-->
 			<!-- 
 			<file jre="+1.5" os="MAC OS X">libswt-carbon-3235.jnilib</file>			
 			<file jre="+1.5" os="MAC OS X">libswt-pi-carbon-3235.jnilib</file>
@@ -85,7 +86,10 @@
 					<if jre="+1.3">
 						<jar os="Windows" arch="!AMD64">swt-win32.jar</jar>
 						<jar os="Windows" arch="!AMD64">agent-swt-en.jar</jar>
-						<jar os="Linux">swt-linux.jar</jar>
+						<jar os="Windows" arch="AMD64">swt-win64.jar</jar>
+						<jar os="Windows" arch="AMD64">agent-swt-en.jar</jar>
+						<jar os="Linux" arch="!AMD64">swt-linux.jar</jar>
+						<jar os="Linux" arch="AMD64">swt-linux64.jar</jar>
 						<jar os="Linux">agent-swt-en.jar</jar>
 						<!-- 
 						<jar os="MAC OS X">swt-macosx.jar</jar>
@@ -101,8 +105,8 @@
 						<jar>ui.jar</jar>
 						<if jre="+1.3">
 							<jar os="Windows" arch="!AMD64">agent-swt.jar</jar>
-							<jar os="Windows" arch="AMD64">agent-awt.jar</jar>							
-							<jar os="Windows" arch="AMD64">agent-awt-en.jar</jar>		
+							<jar os="Windows" arch="AMD64">agent-swt.jar</jar>							
+							<jar os="Windows" arch="AMD64">agent-swt-en.jar</jar>		
 							<jar os="Linux">agent-swt.jar</jar>
 							<jar os="MAC OS X">agent-awt.jar</jar>
 							<jar os="MAC OS X">agent-awt-en.jar</jar>
@@ -136,7 +140,10 @@
 					<if jre="+1.3">
 						<jar os="Windows" arch="!AMD64">swt-win32.jar</jar>
 						<jar os="Windows" arch="!AMD64">agent-swt-en.jar</jar>
-						<jar os="Linux">swt-linux.jar</jar>
+						<jar os="Windows" arch="AMD64">swt-win64.jar</jar>
+						<jar os="Windows" arch="AMD64">agent-swt-en.jar</jar>
+						<jar os="Linux" arch="!AMD64">swt-linux.jar</jar>
+						<jar os="Linux" arch="AMD64">swt-linux64.jar</jar>
 						<jar os="Linux">agent-swt-en.jar</jar>
 						<!-- 
 						<jar os="MAC OS X">swt-macosx.jar</jar>
