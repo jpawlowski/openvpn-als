@@ -136,8 +136,8 @@
 	<!-- Networkplaces module fails because commons-vfs 1.0 (from maven2 repos)
 	     does not support WebDAV. A working commons-vfs is in the root of 
 	     nonembedded
-	<module>networkplaces</module>
 	-->
+	<module>networkplaces</module>
 	<!--<module>console</module-->
 	<!--<module>agent</module-->
     </modules>
