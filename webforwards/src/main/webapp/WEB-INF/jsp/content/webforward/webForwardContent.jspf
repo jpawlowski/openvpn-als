@@ -1,0 +1,5 @@
+<%@ taglib uri="/server/taglibs/core" prefix="core"%>
+
+<core:form action="/editWebForward.do" focus="resourceName">
+	<%@ include file="/WEB-INF/jsp/content/webforward/webForwardForm.jspf" %>
+</core:form>

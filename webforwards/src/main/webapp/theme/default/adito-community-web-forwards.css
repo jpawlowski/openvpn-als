@@ -1,0 +1,80 @@
+/* Web Forward */
+div#page_webForward {
+	width: 42em;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+div#page_webForward .dialog_form_table .formTextArea textarea {
+	height: 24em;
+}
+
+div#page_webForward .dialog_form_table td.label {
+	width: 25%;
+}
+
+div#page_webForward .dialog_form_table td.value {
+	width: 75%;
+}
+
+div#page_webForward #tab_panel_attributes td.label {
+	width: 30%;
+}
+
+div#page_webForward #tab_panel_attributes td.value {
+	width: 70%;
+}
+
+div#page_webForward #tab_panel_attributes tr.formCheckbox td.value {
+	text-align: left;
+}
+
+div#page_webForward .tabPanel .tabContent {
+	height: 30em;
+}
+
+div#page_webForward .multiSelect select {
+	height: 27em;
+}
+
+div#page_webForward .formPathArea textarea {
+	width: 100%;
+	height: 5em;
+}
+
+div#page_webForward .dialog_form_table tr.formMultiEntry td {
+	vertical-align: top;
+}
+
+/* Web Forward Creation */
+
+div#wizard_webForwardWizard {	
+	min-height: 26em;
+	height: 26em;
+}
+
+div#wizard_webForwardWizard div#web_forward_type {
+	text-align: left;
+	border: none;
+	font-size: medium;
+	font-style: italic;
+	padding-bottom: 8px;
+}
+
+div#wizard_webForwardWizard .formTextArea textarea {
+	height: 13em;
+}
+
+div#wizardPage_webForwardPolicySelection select {
+	height: 17em;
+}
+
+div#wizard_webForwardWizard .formPathArea textarea {
+	width: 100%;
+	height: 5em;
+}
+
+div#wizard_webForwardWizard .formEditableList select {
+	width: 25%;
+}
