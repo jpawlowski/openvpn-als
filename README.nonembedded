@@ -7,15 +7,19 @@ mvn -Dmaven.test.skip=true clean install
 
 ==Status of the migration==
 
-Current (29th May 2009) this is the master plan. Firstly "nonembedded" will eventually become the new 
-trunk. Modules in "nonembedded" will be converted to maven2 one-by-one. Ant build should be kept 
-functional at all times. This means that ant's build.xml files need to be adapted to utilize maven's 
-output.
- 
+Current (28th July 2009) all code has been converted to maven2. The "ant" build is still required after 
+building the maverick-classes. This will soon change as maven modules will be modified to produce the
+same output as ant does, one module at a time. The ant build will be kept intact at all times. The 
+Agent's ant build does some applet signing, which may prove to be difficult to reproduce "the maven
+way". Some ant "deploy" script will be necessary for quite a while due to OpenVPN ALS's funky extension
+system.
+
 Changelog:
 
-   1st June 2009: maverick-* modules converted to maven2
-   3rd July 2009: webapp and some extensions converted (partially) to maven2
+   1st June 2009:  maverick-* modules converted to maven2
+   3rd July 2009:  webapp and some extensions converted (partially) to maven2
+   28th July 2009: the rest of the modules, including those created after the fork
+		   (clientcerts,pam,ldap,radius) now converted to maven2
 
 ==Installing and running Adito in "nonembedded"==
 
@@ -40,20 +44,6 @@ To clean up, do
   ant clean
   mvn clean
 
-
-== Build order ==
-
-Check the build order from branches/maven2/pom.xml. In a nutshell, due to dependencies modules have 
-to be mavenized in the following order:
-
-* maverick-*
-* webapp
-* extensions (tunnels, agent, webforwards, etc.)
-
-Most of the directories contain ant build stuff. It's best if old ant directories are renamed as 
-they are migrated to Maven2. This should reduce unnecessary confusion. Many extensions depend on
-the Agent at runtime, but not during compilation.
-
 == Modules not available from public Maven2 repositories ==
 
 There are some jars that Adito requires which are not yet in public Maven repositories. These
@@ -71,14 +61,6 @@ xml, property etc. files have to be converted, too. For this reason there is a B
 (tools/convert_variables.sh) that can help in the conversion process.
 
 == Basic techniques ==
-
-- Merge changes from trunk to nonembedded, module by module. There are only a few changes to the actual code
-  in maven2 branch, so we can merge them manually later.
-- Copy other stuff (e.g. pom.xml) from the module in maven2 branch to nonembedded
-- Add/activate the newly mavenized module in nonembedded's main pom.xml
-- Try building and fix any dependency problems that may arise (unlikely) 
-- modify the ant build.xml scripts and build.properties so that ant finds it's dependencies from the 
-correct places
 
 You can use the jar's and zip-files in the "comparison" directory to see if output Maven creates is 
 correct. The directory contains fully functional JAR's and ZIP-files created by the original "ant" build 
@@ -98,7 +80,7 @@ is to call "ant" to build the actual extension ZIP-file.
 
 == Mavenizing the Adito Agent ==
 
-Adito Agent is not mavenized yet (18th Feb 2009). In "trunk", Agent is built from several components:
+Agent is comprised of several components:
 
 adito-agent
 adito-agent-awt
@@ -114,19 +96,11 @@ agent-keystore.p12
 certificate.properties
 - File that specifies the Agent's keystore password. It's used to sign the Agent Java applet.
 
+There's also a file, "cabpass.exe" which apparently does something on win32 clients. This is most
+likely something created by 3sp, as google yields only a few SSL-Explorer -related hits. 
+
 == Misc notes ==
 
 Adito originally contained a patched version of Apache commons vfs. The patches themselves are available
 in directory adito-commons-vfs/patches and are _probably_ the only modifications to the original
 commons-vfs code. To reduce unnecessary work and confusion Mavenized Adito now uses standard commons-vfs.
-
----
-
-It is possible to convert Adito into a standard Java web application. Currently Maven creates a WAR
-out of Adito's server component. The format of a WAR archive is documented here:
-
-http://java.sun.com/j2ee/tutorial/1_3-fcs/doc/WebComponents3.html
-
-Adito is being converted into a standard webapp in branches/nonembedded. Code from the nonembedded branch
-will eventually be merged with this Maven2 branch. Current server WAR produced by Adito does not run on
-anything, but that's not an issue for now.
