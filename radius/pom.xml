@@ -29,6 +29,31 @@
           <artifactId>webapp</artifactId>
           <version>${project.version}</version>
       </dependency>
+
+
+      <!-- This module depends on an old version
+	   of JRADIUS. The new module (http://coova.org)
+	   uses different namespace (net.jradius). Versions
+	   of both are available from
+
+		http://repo.opennms.org/maven2
+
+	   The older version from OpenNMS repos does not
+	   work, though, so we have Rob's (the coder's)
+	   JRADIUS versions available from our own (pcdog)
+	   maven2 repository.
+      -->
+	   
+      <dependency>
+	  <groupId>net.sf.jradius</groupId>
+	  <artifactId>jradius</artifactId>
+	  <version>0.9-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+	  <groupId>net.sf.jradius</groupId>
+	  <artifactId>jradius-dictionary</artifactId>
+	  <version>0.9-SNAPSHOT</version>
+      </dependency>
     </dependencies>
 
 <build>

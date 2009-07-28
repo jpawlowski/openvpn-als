@@ -204,6 +204,18 @@
             <url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
         </repository>
 
+	<!-- Newest versions of JRADIUS are available at least in
+	     OpenNMS repositories but the "radius" plugin does not
+	     compile with them. So we have functional RADIUS jar's
+	     in our own (pcdog) repository.
+
+        <repository>
+            <id>repo.opennms.org</id>
+            <name>OpenNMS Maven2 repository</name>
+	    <url>http://repo.opennms.org/maven2</url>
+        </repository>
+	-->
+
 	<!-- A few Adito components are not available in any public Maven2
 	     repository. This custom repository contains all the Adito-specific
 	     stuff. -->

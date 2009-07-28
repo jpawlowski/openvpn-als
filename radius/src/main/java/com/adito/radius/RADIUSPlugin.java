@@ -1,4 +1,4 @@
-package com.adito.community.radius;
+package com.adito.radius;
 
 import com.adito.extensions.ExtensionException;
 import com.adito.extensions.types.DefaultPlugin;

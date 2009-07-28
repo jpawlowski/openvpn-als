@@ -1,4 +1,4 @@
-package com.adito.community.radius;
+package com.adito.radius;
 
 import com.adito.security.AuthenticationScheme;
 import com.adito.security.Credentials;
