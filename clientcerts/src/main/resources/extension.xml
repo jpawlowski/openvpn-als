@@ -1,0 +1,31 @@
+<bundle version="0.9.0" 
+	requiredHostVersion="0.9.0"
+	id="clientcerts"
+	name="Adito Client Certs" 
+	license="GPL"
+	productURL="http://www.jansen-systems.de"
+	order="60"
+	startOnSetupMode="false">
+	<description>
+		This extension provides support for client certificate authentication.
+	</description>
+
+	<extension type="plugin"
+		extension="clientcerts"
+		name="Adito Client Certs">
+		<description>
+			This extension adds the Client Certificate feature to Adito.
+		</description>
+
+		<plugin name="clientcerts"
+			class="com.adito.clientcerts.ClientCertsPlugin">
+			<classpath>
+				private/clientcerts.jar
+			</classpath>
+			<resources>webapp</resources>
+		</plugin>
+
+		<propertyDefinitions>
+		</propertyDefinitions>
+	</extension>
+</bundle>

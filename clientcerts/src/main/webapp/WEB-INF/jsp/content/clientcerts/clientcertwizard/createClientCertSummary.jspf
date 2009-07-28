@@ -1,0 +1,56 @@
+<%@ page import="com.adito.clientcerts.wizards.forms.CreateClientCertSummaryForm" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+
+<bean:define id="createClientCertSummaryForm" name="createClientCertSummaryForm" type="com.adito.clientcerts.wizards.forms.CreateClientCertSummaryForm"/>
+<table border="0" cellpadding="0" cellspacing="0">
+	<tr class="formText">
+		<td class="label">
+			<bean:message key="clientCerts.createNewCertificate.hostname" bundle="clientCerts"/>
+		</td>
+		<td class="value">
+			<bean:write name="createClientCertSummaryForm" property="hostname"/>
+		</td>
+	</tr>
+	<tr class="formText">
+		<td class="label">
+			<bean:message key="clientCerts.createNewCertificate.organisationalUnit" bundle="clientCerts"/>
+		</td>
+		<td class="value">
+			<bean:write name="createClientCertSummaryForm" property="organisationalUnit"/>
+		</td>
+	</tr>
+	<tr class="formText">
+		<td class="label">
+			<bean:message key="clientCerts.createNewCertificate.company" bundle="clientCerts"/>
+		</td>
+		<td class="value">
+			<bean:write name="createClientCertSummaryForm" property="company"/>
+		</td>
+	</tr>
+	<tr class="formText">
+		<td class="label">
+			<bean:message key="clientCerts.createNewCertificate.city" bundle="clientCerts"/>
+		</td>
+		<td class="value">
+			<bean:write name="createClientCertSummaryForm" property="city"/>
+		</td>
+	</tr>
+	<tr class="formText">
+		<td class="label">
+			<bean:message key="clientCerts.createNewCertificate.state" bundle="clientCerts"/>
+		</td>
+		<td class="value">
+			<bean:write name="createClientCertSummaryForm" property="state"/>
+		</td>
+	</tr>
+	<tr class="formText">
+		<td class="label">
+			<bean:message key="clientCerts.createNewCertificate.countryCode" bundle="clientCerts"/>
+		</td>
+		<td class="value">
+			<bean:write name="createClientCertSummaryForm" property="countryCode"/>
+		</td>
+	</tr>
+</table>

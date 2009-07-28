@@ -129,6 +129,16 @@
 	<module>webapp</module>
 	<module>unix</module>
 	<module>activedirectory</module>
+
+	<!-- Clientcerts module fails to build because
+	     it depends on com.adito.boot
+
+	<module>clientcerts</module>
+
+	-->
+	<module>ldap</module>
+	<module>radius</module>
+	<module>pam</module>
 	<module>applications</module>
 	<module>webforwards</module>
 	<module>tunnels</module>

@@ -1,0 +1,1 @@
+This module fails to build in nonembedded because it depends on com.adito.boot.

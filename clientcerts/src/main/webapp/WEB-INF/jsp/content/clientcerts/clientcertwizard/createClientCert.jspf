@@ -1,0 +1,55 @@
+<%@ page import="com.adito.clientcerts.wizards.forms.CreateClientCertDetailForm" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+
+<table border="0" cellpadding="0" cellspacing="0">
+	<tr class="formText">
+		<td class="label">
+			<div class="required"><bean:message key="clientCerts.createNewCertificate.hostname" bundle="clientCerts"/></div>
+		</td>
+		<td class="value">
+			<html:text property="hostname" size="30" readonly="true"/>
+		</td>
+	</tr>
+	<tr class="formText">
+		<td class="label">
+			<div class="required"><bean:message key="clientCerts.createNewCertificate.organisationalUnit" bundle="clientCerts"/></div>
+		</td>
+		<td class="value">
+			<html:text property="organisationalUnit" size="20"/>
+		</td>
+	</tr>
+	<tr class="formText">
+		<td class="label">
+			<div class="required"><bean:message key="clientCerts.createNewCertificate.company" bundle="clientCerts"/></div>
+		</td>
+		<td class="value">
+			<html:text property="company" size="30"/>
+		</td>
+	</tr>
+	<tr class="formText">
+		<td class="label">
+			<div class="required"><bean:message key="clientCerts.createNewCertificate.city" bundle="clientCerts"/></div>
+		</td>
+		<td class="value">
+			<html:text property="city" size="30"/>
+		</td>
+	</tr>
+	<tr class="formText">
+		<td class="label">
+			<div class="required"><bean:message key="clientCerts.createNewCertificate.state" bundle="clientCerts"/></div>
+		</td>
+		<td class="value">
+			<html:text property="state" size="20"/>
+		</td>
+	</tr>
+	<tr class="formText">
+		<td class="label">
+			<div class="required"><bean:message key="clientCerts.createNewCertificate.countryCode" bundle="clientCerts"/></div>
+		</td>
+		<td class="value">
+			<html:text property="countryCode" size="5" maxlength="3"/>
+		</td>
+	</tr>
+</table>

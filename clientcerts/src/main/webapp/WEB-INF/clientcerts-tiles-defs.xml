@@ -1,0 +1,17 @@
+<!DOCTYPE tiles-definitions PUBLIC 
+	"-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" 
+	"webapp/WEB-INF/tiles-config_1_1.dtd"> 
+
+<tiles-definitions>	
+	
+	<!--  Client Cert Creation Wizard --> 
+	<definition name=".site.ClientCertWizardPage" extends=".site.Layout">
+		<put name="resourcePrefix" value="clientCertWizard" />
+		<put name="resourceBundle" value="clientCerts" />
+		<put name="content" value="/WEB-INF/jsp/tiles/wizardPage.jspf" />
+		<!-- <put name="infoImage" value="webForwardAdd.gif" /> -->
+		<!-- <put name="rssFeed" value="clientCertWizard"/> -->
+	</definition>
+
+</tiles-definitions>
+
