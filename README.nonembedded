@@ -32,12 +32,31 @@ Then run ant to build the rest of the modules and create the deployable Adito "b
 
   cd $ADITO_HOME/adito
   ant install
+  mkdir $JETTY_HOME/webapps/adito
   cp -r deploy/* $JETTY_HOME/webapps/adito/
 
-Next you need to create a Jetty virtual host. For instructions, take a look here:
+Next you need to create a Jetty virtual host. Add this to $JETTY_HOME/webapps/adito/WEB-INF/web.xml:
 
-* https://sourceforge.net/pm/task.php?func=detailtask&project_task_id=153892&group_id=228294&group_project_id=57945
+ <New class="org.mortbay.jetty.webapp.WebAppContext">
+  <Arg><Ref id="Contexts"/></Arg>
+  <Arg><SystemProperty name="jetty.home"/>/webapps/adito</Arg>
+  <Arg>/</Arg>
+  <Set name="defaultsDescriptor"><SystemProperty name="jetty.home" default="."/>/etc/webdefault.xml</Set>
+  <Set name="VirtualHosts">
+   <Array type="java.lang.String">
+    <Item>localhost</Item>
+   </Array>
+  </Set>
+ </New>
 
+Then you can start the Jetty web server:
+
+ cd $JETTY_HOME
+ java -jar start.jar
+
+And navigate to ALS login page:
+
+ http://localhost:8080/adito
 
 To clean up, do 
 
