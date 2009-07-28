@@ -132,14 +132,13 @@
 	<module>applications</module>
 	<module>webforwards</module>
 	<module>tunnels</module>
-
-	<!-- Networkplaces module fails because commons-vfs 1.0 (from maven2 repos)
-	     does not support WebDAV. A working commons-vfs is in the root of 
-	     nonembedded
-	-->
 	<module>networkplaces</module>
-	<!--<module>console</module-->
-	<!--<module>agent</module-->
+	<module>ui</module>
+	<module>agent</module>
+	<!--
+	<module>agent-swt</module>
+	<module>agent-awt</module>
+	-->
     </modules>
     
     <repositories>
