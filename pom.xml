@@ -135,10 +135,8 @@
 	<module>networkplaces</module>
 	<module>ui</module>
 	<module>agent</module>
-	<!--
-	<module>agent-swt</module>
 	<module>agent-awt</module>
-	-->
+	<module>agent-swt</module>
     </modules>
     
     <repositories>
