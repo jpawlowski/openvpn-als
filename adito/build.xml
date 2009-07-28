@@ -98,8 +98,6 @@
 
 	<!-- NOTE These should not be here, they place a ciruclar dependency on the following community extensions. -->
 
-	<property name="adito-commons-vfs.home" value="../adito-commons-vfs" />
-	<property name="adito-commons-vfs.classes" value="../adito-commons-vfs/build/classes" />
 	<property name="adito-community-tunnels.home" value="../adito-community-tunnels" />
 	<property name="adito-community-applications.home" value="../adito-community-applications" />
 	<property name="adito-community-web-forwards.home" value="../adito-community-web-forwards" />
@@ -613,7 +611,6 @@
 				<pathelement path="${dir.maverick-multiplex.classes}" />
 				<pathelement path="${dir.maverick-util.classes}" />
 				-->
-				<pathelement path="${adito-commons-vfs.classes}" />
 				<fileset dir="${build.webapp.lib}">
 					<include name="*.jar" />
 				</fileset>
@@ -725,9 +722,6 @@
 		<delete dir="${dist.dir}" />
 	</target>
 
-	<!-- Dist server dependencies, TODO remove from svn adito-commons-vfs.jar under 
-	webapp/WEB-INF/lib/ and rebuild this jar from project adito-commons-vfs
-	  -->
 	<target name="dist-dependencies">
 		<!-- Build mavenized, hence disabled
 		<ant inheritall="false" dir="${dir.maverick-util}" target="dist">
@@ -741,9 +735,6 @@
 			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
 		<ant inheritall="false" dir="${dir.maverick-multiplex}" target="dist">
-			<property name="build.compiler" value="${build.compiler}" />
-		</ant>
-		<ant inheritall="false" dir="${adito-commons-vfs.home}" target="compile">
 			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
 		-->
@@ -781,9 +772,6 @@
 			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
 		<ant inheritall="false" dir="${dir.maverick-multiplex}" target="dist">
-			<property name="build.compiler" value="${build.compiler}" />
-		</ant>
-		<ant inheritall="false" dir="${adito-commons-vfs.home}" target="dist">
 			<property name="build.compiler" value="${build.compiler}" />
 		</ant>
 		-->
