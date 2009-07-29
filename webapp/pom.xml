@@ -36,11 +36,6 @@
 
     <build>
 
-	<!-- Fails, possibly due to the exploded war thingy
-	<finalName>maverick-crypto</finalName>
-	-->
-
-
 	<plugins>
 		<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
@@ -74,6 +69,18 @@
 					</goals>
 				</execution>
 			</executions>
+
+			<!-- Suggested for JSP precompiling (jspc-maven-plugin). Seems
+			     to work without, though. For more info, take a look here:
+
+				http://mojo.codehaus.org/jspc-maven-plugin/usage.html
+			-->
+			<!--
+			<configuration>
+				<webXml>${basedir}/target/jspweb.xml</webXml>
+			</configuration>
+			-->
+
 		</plugin>
 
 		<plugin>
@@ -92,6 +99,18 @@
 						<version>${project.version}</version>
 						<file>${project.build.directory}/${project.artifactId}-${project.version}.jar</file>
 					</configuration>
+				</execution>
+			</executions>
+		</plugin>
+		<plugin>
+			<groupId>org.codehaus.mojo</groupId>
+			<artifactId>jspc-maven-plugin</artifactId>
+			<executions>
+				<execution>
+					<id>jspc</id>
+					<goals>
+						<goal>compile</goal>
+					</goals>
 				</execution>
 			</executions>
 		</plugin>
