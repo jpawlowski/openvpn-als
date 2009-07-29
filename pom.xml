@@ -156,7 +156,6 @@
             <id>Apache maven2 repository</id>
             <name>Apache maven2 repository</name>
             <url>https://repository.apache.org/content/repositories/releases/</url>
-            <layout>legacy</layout>
         </repository>
 	-->
 
