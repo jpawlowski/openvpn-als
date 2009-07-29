@@ -35,11 +35,34 @@
 
 	<finalName>unix</finalName>
 
-  <plugins>
-    <plugin>
-      <artifactId>maven-assembly-plugin</artifactId>
-    </plugin>
-  </plugins>
+	<!-- WAR packaging works, kind of, but includes all the libraries required by the webapp
+	     proper. It also requires some (fake) web.xml to run. The only viable option seems
+	     to be the Assembly plugin -->
+
+	<plugins>
+
+	<!-- 
+                <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>2.1-beta-1</version>
+                        <executions>
+                                <execution>
+                                        <goals>
+                                                <goal>exploded</goal>
+                                        </goals>
+                                </execution>
+                        </executions>
+
+			<configuration>
+				<webXml>/tmp/jspweb.xml</webXml>
+                        </configuration>
+		</plugin>
+	-->
+
+
+	</plugins>
+
 </build>
 
 </project>

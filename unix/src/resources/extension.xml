@@ -1,0 +1,31 @@
+<bundle version="1.0.5" 
+	requiredHostVersion="0.9.0"
+	id="adito-community-unix"
+	name="Adito UNIX" 
+	license="GPL"
+	productURL="http://localhost"
+	order="60"
+	startOnSetupMode="true">
+	<description>
+		This extension contains a user database that supports UNIX.
+	</description>
+
+	<extension type="plugin"
+		extension="adito-community-unix"
+		name="Adito Community UNIX">
+		<description>
+			This extension adds the 'UNIX user database' feature to Adito.
+		</description>
+
+		<plugin name="adito-community-unix"
+			class="com.adito.community.unix.UNIXCommunityPlugin">
+			<classpath>
+				private/adito-community-unix.jar
+			</classpath>
+			<resources>webapp</resources>
+		</plugin>
+
+		<propertyDefinitions>
+		</propertyDefinitions>
+	</extension>
+</bundle>
