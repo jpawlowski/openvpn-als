@@ -327,10 +327,15 @@
 	</dependency>
 
 	<dependency>
+		<groupId>bouncycastle</groupId>
+		<artifactId>bcprov-jdk15</artifactId>
+		<version>133</version>
+		<!-- 
 		<groupId>org.bouncycastle</groupId>
 		<artifactId>bcprov-jdk12</artifactId>
 		<version>130</version>
 		<scope>test</scope>
+		-->
 	</dependency>
 
 
