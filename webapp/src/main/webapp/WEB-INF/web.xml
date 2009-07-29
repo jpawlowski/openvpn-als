@@ -540,6 +540,8 @@
 		<taglib-location>/WEB-INF/input.tld</taglib-location>
 	</taglib>
 
+	<!-- FIXME: webapp depends on the webforwards extension even though it
+	     should not -->
 	<taglib>
 		<taglib-uri>/server/taglibs/webforwards</taglib-uri>
 		<taglib-location>/WEB-INF/webforwards.tld</taglib-location>
