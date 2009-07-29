@@ -20,6 +20,11 @@
 	<property name="dir.deploy.tmp" value="${dir.deploy}/WEB-INF/tmp" />
 	<property name="dir.deploy.logs" value="${dir.deploy}/WEB-INF/logs" />
 	<property name="dir.deploy.lib" value="${dir.deploy}/WEB-INF/lib" />
+	<property name="dir.deploy2" value="deploy2" />
+	<property name="dir.deploy2.conf" value="${dir.deploy2}/WEB-INF/conf" />
+	<property name="dir.deploy2.tmp" value="${dir.deploy2}/WEB-INF/tmp" />
+	<property name="dir.deploy2.logs" value="${dir.deploy2}/WEB-INF/logs" />
+	<property name="dir.deploy2.lib" value="${dir.deploy2}/WEB-INF/lib" />
 	<property name="build.serverlib" value="lib" />
 	<property name="build.doc" value="${dir.build}/doc" />
 	<property name="build.webapp.lib" value="webapp/WEB-INF/lib" />
@@ -514,8 +519,46 @@
 	</target>
 
 
+	<!-- Compile everything for distribute adito in nonembedded way-->
+	<target name="install-webapp" description="Deploys the web application" depends="clean-deploy2,deploy-community-extensions">
+
+		<!-- Copy the webapp dir to deploy dir-->
+		<mkdir dir="${dir.deploy2}" />
+		<copy todir="${dir.deploy2}" >
+			<fileset dir="${dir.webapp}">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+
+		<mkdir dir="${dir.deploy2}/WEB-INF/classes" />
+		<copy todir="${dir.deploy2}/WEB-INF/classes" >
+			<fileset dir="${dir.build}">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+
+		<!-- Just in case?-->
+		<mkdir dir="${dir.deploy2.tmp}" />
+		<mkdir dir="${dir.deploy2.logs}" />
+
+		<!-- Copy all the files created by ant install phase in trunk. Eventually we should get rid of those. -->
+
+		<copy todir="${dir.deploy2}/WEB-INF">
+			<fileset dir="${dir.pseudo-install}">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+
+	</target>
+
+
 	<target name="clean-deploy" description="Cleans the deployment">
 		<delete dir="${dir.deploy}" />
+	</target>
+
+
+	<target name="clean-deploy2" description="Cleans the deployment">
+		<delete dir="${dir.deploy2}" />
 	</target>
 
 
@@ -862,6 +905,7 @@ ${jsp.servlets.text}
 		<delete dir="${dir.tmp}" />
 		<delete dir="${dist.dir}" />
 		<delete dir="${dir.deploy}" />
+		<delete dir="${dir.deploy2}" />
 		<antcall target="clean-reports" />
 		<antcall target="clean-dependencies" />
 	</target>
