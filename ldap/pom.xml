@@ -37,15 +37,38 @@
       </dependency>
     </dependencies>
 
+
 <build>
+	<finalName>${project.name}</finalName>
 
-	<finalName>ldap</finalName>
+	<plugins>
+		<plugin>
+			<artifactId>maven-assembly-plugin</artifactId>
+			<dependencies>
+				<dependency>
+					<groupId>com.adito</groupId>
+					<artifactId>extension-assembly-descriptor</artifactId>
+					<version>1.0-SNAPSHOT</version>
+				</dependency>
+			</dependencies>
 
-  <plugins>
-    <plugin>
-      <artifactId>maven-assembly-plugin</artifactId>
-    </plugin>
-  </plugins>
+			<configuration>
+				<descriptors>
+					<descriptor>extension-assembly-descriptor.xml</descriptor>
+				</descriptors>
+			</configuration>
+			
+			<executions>
+				<execution>
+					<id>make-assembly</id>
+					<phase>package</phase>
+					<goals>
+						<goal>single</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+	</plugins>
 </build>
 
 </project>
