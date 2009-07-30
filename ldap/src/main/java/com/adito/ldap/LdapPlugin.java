@@ -29,13 +29,13 @@ import org.jdom.Element;
 /**
  * Adds a Ldap <i>User Database</i> to Adito.
  */
-public class LdapCommunityPlugin extends DefaultPlugin {
+public class LdapPlugin extends DefaultPlugin {
 
 
     /**
      * Constructor.
      */
-    public LdapCommunityPlugin() {
+    public LdapPlugin() {
         super(null, false);
     }
 

@@ -35,7 +35,7 @@ public class NetworkPlacesTests extends AbstractTestPolicyEnabledResource<Networ
 
     @BeforeClass
     public static void oneTimeSetUp() throws Exception {
-        setUp("adito-community-network-places");
+        setUp("networkplaces");
     }
 
     @Override

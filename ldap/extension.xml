@@ -1,7 +1,7 @@
 
 <bundle version="1.0.17" 
 	requiredHostVersion="0.9.0"
-	id="adito-community-ldap"
+	id="ldap"
 	name="Adito LDAP"
 	license="GPL"
 	productURL="http://localhost"
@@ -17,17 +17,17 @@
 	</install>
 
 	<extension type="plugin"
-		extension="adito-community-ldap"
-		name="Adito Community LDAP">
+		extension="ldap"
+		name="Adito LDAP authentication">
 		<description>
 			This extension adds the 'Ldap user database'
 			feature to Adito.
 		</description>
 
-		<plugin name="adito-community-ldap"
-			class="com.adito.ldap.LdapCommunityPlugin">
+		<plugin name="ldap"
+			class="com.adito.ldap.LdapPlugin">
 			<classpath>
-				private/adito-community-ldap.jar
+				private/ldap.jar
 			</classpath>
 			<resources>webapp</resources>
 		</plugin>

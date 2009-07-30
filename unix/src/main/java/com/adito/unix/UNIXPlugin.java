@@ -33,13 +33,13 @@ import com.adito.extensions.types.DefaultPlugin;
 import com.adito.extensions.types.PluginDefinition;
 import com.adito.security.UserDatabaseDefinition;
 
-public class UNIXCommunityPlugin extends DefaultPlugin {
-    private static final Log LOG = LogFactory.getLog(UNIXCommunityPlugin.class);
+public class UNIXPlugin extends DefaultPlugin {
+    private static final Log LOG = LogFactory.getLog(UNIXPlugin.class);
 
     /**
      * Constructor.
      */
-    public UNIXCommunityPlugin() {
+    public UNIXPlugin() {
         super(null, false);
     }
 
@@ -57,7 +57,7 @@ public class UNIXCommunityPlugin extends DefaultPlugin {
             UserDatabaseManager.getInstance().registerDatabase(definition);
         } else {
             if (LOG.isDebugEnabled()) {
-                LOG.debug("Unable to register UnixCommunityPlugin, /etc/passwd was not available.");
+                LOG.debug("Unable to register UnixPlugin, /etc/passwd was not available.");
             }
         }
     }

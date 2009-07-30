@@ -105,7 +105,7 @@ public class NetworkPlacePlugin extends DefaultPlugin {
 	/**
 	 * Extension bundle ID
 	 */
-	public static final String BUNDLE_ID = "adito-community-network-places";
+	public static final String BUNDLE_ID = "networkplaces";
 
 	final static Log log = LogFactory.getLog(NetworkPlacePlugin.class);
 
@@ -118,7 +118,7 @@ public class NetworkPlacePlugin extends DefaultPlugin {
 	 * Constructor.
 	 */
 	public NetworkPlacePlugin() {
-		super("/WEB-INF/adito-community-network-places-tiles-defs.xml", true);
+		super("/WEB-INF/networkplaces-tiles-defs.xml", true);
 	}
 
 	/*

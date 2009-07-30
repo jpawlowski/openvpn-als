@@ -1,5 +1,5 @@
 <bundle version="1.0.18" requiredHostVersion="0.9.0"
-	id="adito-community-network-places"
+	id="networkplaces"
 	name="Adito Network Places" license="GPL"
 	productURL="http://localhost" order="300">
 	<description>
@@ -16,7 +16,7 @@
 	</install>
 
 	<extension type="plugin"
-		extension="adito-community-network-places"
+		extension="networkplaces"
 		name="Adito Network Places">
 		<description>
 			This extension adds the 'Network Places' feature to
@@ -24,10 +24,10 @@
 			create shortcuts to paths within the Adito VFS
 			system.
 		</description>
-		<plugin name="adito-community-network-places"
+		<plugin name="networkplaces"
 			class="com.adito.networkplaces.NetworkPlacePlugin">
 			<classpath>
-				private/adito-community-network-places.jar
+				private/networkplaces.jar
 			</classpath>
 			<resources>webapp</resources>
 		</plugin>
@@ -47,7 +47,7 @@
 			</resourceAttributes>
 			<systemConfig>
 				<category id="20" parent="1020" bundle="networkPlaces"
-					image="categories/network-places.gif" />
+					image="categories/networkplaces.gif" />
 				<category id="40" parent="1030" bundle="networkPlaces"
 					image="categories/cifs.gif" />
 
