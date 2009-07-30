@@ -113,7 +113,7 @@ public class ExtensionStore {
 	/**
 	 * The extension bundle id for the Agent.
 	 */
-	public static final String AGENT_EXTENSION_BUNDLE_ID = "adito-agent";
+	public static final String AGENT_EXTENSION_BUNDLE_ID = "agent";
 
 	/**
 	 * Preferences node for storing current extension version and other

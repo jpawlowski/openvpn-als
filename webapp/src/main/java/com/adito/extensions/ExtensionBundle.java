@@ -1,5 +1,5 @@
 
-				/*
+/*
  *  Adito
  *
  *  Copyright (C) 2003-2006 3SP LTD. All Rights Reserved
@@ -698,8 +698,8 @@ public class ExtensionBundle extends ArrayList<ExtensionDescriptor> implements C
 				name = desc.getName();
 				description = desc.getDescription();
 				order = 99999;
-				dependencyNames = Arrays.asList(new String[] { "adito-community-applications",
-					"adito-community-tunnels" });
+				dependencyNames = Arrays.asList(new String[] { "applications",
+					"tunnels" });
 				add(desc);
 			} else {
 				throw new ExtensionException(ExtensionException.FAILED_TO_PROCESS_DESCRIPTOR,

@@ -33,12 +33,12 @@ import com.adito.security.UserDatabaseDefinition;
  * Then the method registers PAMUserDatabase to Adito UserDatabaseManager or throws an exception if PAM configuration could not be reached. 
  * 
  */
-public class PAMCommunityPlugin extends DefaultPlugin {
+public class PAMPlugin extends DefaultPlugin {
 	
 	/**
 	 * Default Constructor
 	 */
-	public PAMCommunityPlugin() {
+	public PAMPlugin() {
 		super(null, false);
 
 	}

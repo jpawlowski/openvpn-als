@@ -28,14 +28,14 @@
 				document.writeln('<embed ' +
 				    'type="application/x-java-applet;version=1.5" \
 			        CODE="com.adito.agent.client.launcher.AgentLauncher" \
-			        ARCHIVE="/fs/apps/adito-agent/launcher.jar,/fs/apps/adito-agent/launcher-en.jar" \
+			        ARCHIVE="/fs/apps/agent/launcher.jar,/fs/apps/agent/launcher-en.jar" \
 			        NAME="AgentLauncher" \
 			        WIDTH="250" \
 			        HEIGHT="64" \
 			        ALIGN="middle" \
 			        VSPACE="0" \
 			        HSPACE="0" \
-			        cabbase="/fs/apps/adito-agent/launcher.cab" \
+			        cabbase="/fs/apps/agent/launcher.cab" \
 			        ticket="<%= ticket %>" \
 			        autoStart="true" \
 			        returnTo="<%= returnTo %> " \
@@ -54,15 +54,15 @@
 		   	}
 		    else {
 		    	var t = '<applet CODE="com.adito.agent.client.launcher.AgentLauncher" ';
-		    	t += ' CODEBASE="/fs/apps/adito-agent" ';
+		    	t += ' CODEBASE="/fs/apps/agent" ';
 		    	t += ' ARCHIVE="launcher.jar,launcher-en.jar"';
 		    	t += ' WIDTH="250" HEIGHT="64" NAME="AgentLauncher" ALIGN="middle" VSPACE="0" HSPACE="0">';
 		    	t += '<param name="CODE" value="com.adito.agent.client.launcher.AgentLauncher"/>';
-			    t += '<param name="ARCHIVE" value="/fs/apps/adito-agent/launcher.jar,/fs/apps/adito-agent/launcher-en.jar"/>';
+			    t += '<param name="ARCHIVE" value="/fs/apps/agent/launcher.jar,/fs/apps/agent/launcher-en.jar"/>';
 			    t += '<param name="NAME" value="AgentLauncher"/>';
 			    t += '<param name="type" value="application/x-java-applet;version=1.5"/>';
 			    t += '<param name="scriptable" value="false"/>';
-			    t += '<param name="cabbase" value="/fs/apps/adito-agent/launcher.cab"/>';
+			    t += '<param name="cabbase" value="/fs/apps/agent/launcher.cab"/>';
 			    t += '<param name="ticket" value="<%= ticket %>"/>';
 			    t += '<param name="autoStart" value="true"/>';
 			    t += '<param name="returnTo" value="<%= returnTo %> "/>';

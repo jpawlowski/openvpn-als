@@ -63,7 +63,7 @@ public class LaunchAgentAction extends AbstractLaunchViaAppletAction {
 							LogonControllerFactory.getInstance().getUser(request),
 							PolicyConstants.AGENT_RESOURCE_TYPE);
 		}
-		return ExtensionStore.getInstance().getExtensionDescriptor("adito-agent");
+		return ExtensionStore.getInstance().getExtensionDescriptor("agent");
 	}
 
 	/*
