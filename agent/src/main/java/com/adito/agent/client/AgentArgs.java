@@ -37,7 +37,7 @@ public class AgentArgs {
     private String pluginProxyURL;
     private String userAgent;
     private String extensionClasses;
-    private String extensionId = "adito-agent";
+    private String extensionId = "agent";
     private String localeName = Locale.getDefault().toString();
     private AgentConfiguration agentConfiguration;
     private boolean disableNewSSLEngine;

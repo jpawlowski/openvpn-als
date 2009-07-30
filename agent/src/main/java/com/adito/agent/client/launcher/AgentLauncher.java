@@ -81,7 +81,7 @@ public class AgentLauncher extends Applet implements ApplicationLauncherEvents {
 
     // New properties
     String appName = null;
-    String extensionId = "adito-agent"; //$NON-NLS-1$
+    String extensionId = "agent"; //$NON-NLS-1$
     boolean isAgent = true;
     String launcherImage = "/images/launcher-agent.gif"; //$NON-NLS-1$
     String localeName = "en"; //$NON-NLS-1$

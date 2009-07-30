@@ -32,12 +32,12 @@ import com.adito.security.UserDatabaseDefinition;
 /**
  * Adds a Microsoft Active Directory <i>User Database</i> to Adito.
  */
-public class ActiveDirectoryCommunityPlugin extends DefaultPlugin {
+public class ActiveDirectoryPlugin extends DefaultPlugin {
 
 	/**
 	 * Constructor.
 	 */
-	public ActiveDirectoryCommunityPlugin() {
+	public ActiveDirectoryPlugin() {
 		super(null, false);
 	}
 
