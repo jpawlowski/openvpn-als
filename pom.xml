@@ -121,28 +121,35 @@
 
     <modules>
 
-	<!-- Enable modules as conversion proceeds -->
+
+	<!-- Infrastructure modules -->
 	<module>maverick-util</module>
 	<module>maverick-ssl</module>
 	<module>maverick-multiplex</module>
 	<module>maverick-crypto</module>
+
+	<!-- The actual webapp -->
 	<module>webapp</module>
+
+	<!-- Authentication extensions -->
 	<module>unix</module>
 	<module>activedirectory</module>
-
-	<!-- Clientcerts module fails to build because
-	     it depends on com.adito.boot
-
-	<module>clientcerts</module>
-
-	-->
 	<module>ldap</module>
 	<module>radius</module>
 	<module>pam</module>
+
+	<!-- Clientcerts module fails to build because
+	     it depends on com.adito.boot
+	<module>clientcerts</module>
+	-->
+
+	<!-- Other extensions -->
 	<module>applications</module>
 	<module>webforwards</module>
 	<module>tunnels</module>
 	<module>networkplaces</module>
+
+	<!-- Agent extension -->
 	<module>ui</module>
 	<module>agent</module>
 	<module>agent-awt</module>
