@@ -60,9 +60,34 @@
 		</plugin>
 	-->
 
+		<!-- We need to assemble an old-style SSL-Explorer/Adito compatible
+		     extension package until we have less kludgy extension management -->
 
+		<plugin>
+			<artifactId>maven-assembly-plugin</artifactId>
+			<configuration>
+
+			<!-- We need to use a custom descriptor -->
+			<!--
+				<descriptorRefs>
+					<descriptorRef>bin</descriptorRef>
+				</descriptorRefs>
+			-->
+				<descriptors>
+					<descriptor>src/main/assembly/src.xml</descriptor>
+				</descriptors>
+		
+			</configuration>
+			<executions>
+				<execution>
+					<id>make-assembly</id>
+					<phase>package</phase>
+					<goals>
+						<goal>single</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
 	</plugins>
-
 </build>
-
 </project>
