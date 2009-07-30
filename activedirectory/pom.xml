@@ -48,10 +48,10 @@
 				</dependency>
 			</dependencies>
 
-			<configuration>
 			<!-- We need to use a custom descriptor. The default "bin" descriptor
 			     has too simplistic predefined behavior. -->
 
+			<configuration>
 				<descriptors>
 					<descriptor>extension-assembly-descriptor.xml</descriptor>
 				</descriptors>
