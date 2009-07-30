@@ -90,7 +90,7 @@ public class ApplicationsPlugin extends DefaultPlugin implements CoreListener {
 	/**
 	 * Extension bundle ID
 	 */
-	public static final String BUNDLE_ID = "adito-community-applications";
+	public static final String BUNDLE_ID = "applications";
 
 	final static Log log = LogFactory.getLog(ApplicationsPlugin.class);
 
@@ -103,7 +103,7 @@ public class ApplicationsPlugin extends DefaultPlugin implements CoreListener {
 	 * Constructor.
 	 */
 	public ApplicationsPlugin() {
-		super("/WEB-INF/adito-community-applications-tiles-defs.xml", true);
+		super("/WEB-INF/applications-tiles-defs.xml", true);
 	}
 
 	/* (non-Javadoc)

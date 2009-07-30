@@ -39,7 +39,7 @@ public class ApplicationShortcutsTests extends AbstractTestPolicyEnabledResource
 
     @BeforeClass
     public static void oneTimeSetUp() throws Exception {
-        setUp("adito-agent,adito-community-applications,adito-community-tunnels");
+        setUp("agent,applications,tunnels");
     }
 
     @Override
