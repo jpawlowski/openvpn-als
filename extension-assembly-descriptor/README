@@ -1,0 +1,8 @@
+We need to use this custom assembly descriptor because the default "bin"
+descriptor has too simplistic predefined behavior. The purpose of the
+descriptor is to build an old-style SSL-Explorer/Adito extension bundle
+until a more streamlined solution is ready.
+
+Copy the pom-fragment.xml to each extension's pom.xml to make use of this
+shared assembly. It ties the assembly creation to the standard maven2
+lifecycle.
