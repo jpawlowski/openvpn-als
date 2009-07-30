@@ -35,31 +35,7 @@
 
 	<finalName>unix</finalName>
 
-	<!-- WAR packaging works, kind of, but includes all the libraries required by the webapp
-	     proper. It also requires some (fake) web.xml to run. The only viable option seems
-	     to be the Assembly plugin -->
-
 	<plugins>
-
-	<!-- 
-                <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-war-plugin</artifactId>
-                        <version>2.1-beta-1</version>
-                        <executions>
-                                <execution>
-                                        <goals>
-                                                <goal>exploded</goal>
-                                        </goals>
-                                </execution>
-                        </executions>
-
-			<configuration>
-				<webXml>/tmp/jspweb.xml</webXml>
-                        </configuration>
-		</plugin>
-	-->
-
 		<!-- We need to assemble an old-style SSL-Explorer/Adito compatible
 		     extension package until we have less kludgy extension management -->
 
@@ -67,17 +43,14 @@
 			<artifactId>maven-assembly-plugin</artifactId>
 			<configuration>
 
-			<!-- We need to use a custom descriptor -->
-			<!--
-				<descriptorRefs>
-					<descriptorRef>bin</descriptorRef>
-				</descriptorRefs>
-			-->
+			<!-- We need to use a custom descriptor. The default "bin" descriptor
+			     has too simplistic predefined behavior. -->
 				<descriptors>
 					<descriptor>src/main/assembly/src.xml</descriptor>
 				</descriptors>
-		
 			</configuration>
+			
+			<!-- We want to create the assembly during standard maven2 lifecycle -->
 			<executions>
 				<execution>
 					<id>make-assembly</id>

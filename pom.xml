@@ -151,13 +151,13 @@
     
     <repositories>
 
-	<!--
+	<!-- Sandboxed Apache Commons VFS components are required by networkplaces module -->
+
         <repository>
             <id>Apache maven2 repository</id>
             <name>Apache maven2 repository</name>
-            <url>https://repository.apache.org/content/repositories/releases/</url>
+            <url>https://repository.apache.org/content/repositories/snapshots/</url>
         </repository>
-	-->
 
 	<repository>
 	   <id>central</id>
@@ -217,7 +217,9 @@
 
 	<!-- A few Adito components are not available in any public Maven2
 	     repository. This custom repository contains all the Adito-specific
-	     stuff. -->
+	     stuff, such as apache-commons-cache, a specific version of JRADIUS
+	     and snapshot versions of apache-commons-vfs required by
+	     networkplaces extension -->
 
         <repository>
             <id>adito.pcdog.ch</id>
@@ -343,24 +345,12 @@
 
     <pluginManagement>
       <plugins>
-        <plugin>
-          <artifactId>maven-assembly-plugin</artifactId>
-          <version>2.2-beta-2</version>
-          <executions>
-            <execution>
-              <id>create-project-bundle</id>
-              <phase>package</phase>
-              <goals>
-                <goal>single</goal>
-              </goals>
-              <configuration>
-                <descriptorRefs>
-                  <descriptorRef>project</descriptorRef>
-                </descriptorRefs>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
+
+	<!-- We can't define maven-assembly-plugin in this main pom.xml because
+	     we it would force us to create valid descriptors for every module,
+	     whereas we only need assemblies for the extensions (e.g. unix or
+	     networkplaces). Also, the requirements for the assembly vary
+	     according to module name (webapp vs. maverick-* vs. extensions). -->
       </plugins>
     </pluginManagement>
 
