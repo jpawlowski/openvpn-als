@@ -121,6 +121,13 @@
 
     <modules>
 
+	<!-- Shared extension assembly descriptor:
+	
+	http://maven.apache.org/plugins/maven-assembly-plugin/examples/sharing-descriptors.html 
+	
+	-->
+
+	<module>extension-assembly-descriptor</module>
 
 	<!-- Infrastructure modules -->
 	<module>maverick-util</module>

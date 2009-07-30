@@ -1,7 +1,0 @@
-<project>
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.adito</groupId>
-  <artifactId>extension-assembly-descriptor</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <name>Shared assembly descriptor for ALS extension bundles</name>
-</project>

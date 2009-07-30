@@ -35,9 +35,6 @@
 	<finalName>activedirectory</finalName>
 
 	<plugins>
-		<!-- We need to assemble an old-style SSL-Explorer/Adito compatible
-		     extension package until we have less kludgy extension management -->
-
 		<plugin>
 			<artifactId>maven-assembly-plugin</artifactId>
 			<dependencies>
@@ -48,16 +45,12 @@
 				</dependency>
 			</dependencies>
 
-			<!-- We need to use a custom descriptor. The default "bin" descriptor
-			     has too simplistic predefined behavior. -->
-
 			<configuration>
 				<descriptors>
 					<descriptor>extension-assembly-descriptor.xml</descriptor>
 				</descriptors>
 			</configuration>
-			
-			<!-- We want to create the assembly during standard maven2 lifecycle -->
+
 			<executions>
 				<execution>
 					<id>make-assembly</id>

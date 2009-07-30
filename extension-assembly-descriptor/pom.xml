@@ -1,0 +1,60 @@
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.adito</groupId>
+	<artifactId>extension-assembly-descriptor</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<name>Shared assembly descriptor for ALS extension bundles</name>
+</project>
+
+<!--
+	We need to use a custom assembly descriptor. The default "bin" descriptor
+	has too simplistic predefined behavior. We also wish to tie the assembly
+	creation to the maven2 lifecycle.
+
+	Copy this to each extension's <plugin> section to make use of this
+	shared assembly. The purpose of the descriptor is to build an old-style
+	SSL-Explorer/Adito extension bundle until a more streamlined solution
+	is ready.
+-->
+
+<!--
+
+<build>
+	<finalName>${project.name}</finalName>
+
+	<plugins>
+		<plugin>
+			<artifactId>maven-assembly-plugin</artifactId>
+			<dependencies>
+				<dependency>
+					<groupId>com.adito</groupId>
+					<artifactId>extension-assembly-descriptor</artifactId>
+					<version>1.0-SNAPSHOT</version>
+				</dependency>
+			</dependencies>
+
+			<configuration>
+				<descriptors>
+					<descriptor>extension-assembly-descriptor.xml</descriptor>
+				</descriptors>
+			</configuration>
+			
+			<executions>
+				<execution>
+					<id>make-assembly</id>
+					<phase>package</phase>
+					<goals>
+						<goal>single</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+	</plugins>
+</build>
+
+
+-->
+
+
+
+
