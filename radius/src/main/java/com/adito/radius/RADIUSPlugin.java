@@ -11,16 +11,16 @@ import org.apache.commons.logging.LogFactory;
 public class RADIUSPlugin extends DefaultPlugin
 {
 	static final Log log = LogFactory.getLog(RADIUSPlugin.class);
-	public static final String BUNDLE_ID = "adito-community-RADIUS";
+	public static final String BUNDLE_ID = "radius";
 	public static final String MESSAGE_RESOURCES_KEY = "radius";
-	public static final String LICENSE_NAME = "adito RADIUS Authentication";
+	public static final String LICENSE_NAME = "RADIUS Authentication";
 	@SuppressWarnings("unchecked")
 	public static final ResourceType RADIUS_AUTH_RESOURCE_TYPE = new DefaultResourceType(7654, "radius", "personal");
 
 	//RADIUSPlugin Constructor
 	public RADIUSPlugin()
 	{
-		super("/WEB-INF/adito-community-RADIUS-tiles-defs.xml", true);
+		super("/WEB-INF/radius-tiles-defs.xml", true);
 	}
 
 	//Activate RADIUS Plugin
