@@ -4,12 +4,5 @@
           "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
           "struts-config_1_1.dtd">
 <struts-config>
-  <!-- FIXME: check if these empty tags are required an if not, remove them -->
-  <form-beans>
-  </form-beans>
-  <global-exceptions />
-  <global-forwards />
-  <action-mappings>
-  </action-mappings>
   <message-resources parameter="com.adito.radius.ApplicationResources" key="radius" />
 </struts-config>

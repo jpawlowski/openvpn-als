@@ -69,7 +69,7 @@ public class TunnelPlugin extends DefaultPlugin {
     /**
      * Extension bundle ID
      */
-    public static final String BUNDLE_ID = "adito-community-tunnels";
+    public static final String BUNDLE_ID = "tunnels";
 
     final static Log log = LogFactory.getLog(TunnelPlugin.class);
 
@@ -82,7 +82,7 @@ public class TunnelPlugin extends DefaultPlugin {
      * Constructor.
      */
     public TunnelPlugin() {
-        super("/WEB-INF/adito-community-tunnels-tiles-defs.xml", true);
+        super("/WEB-INF/tunnels-tiles-defs.xml", true);
     }
 
     /* (non-Javadoc)

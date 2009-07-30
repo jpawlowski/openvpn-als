@@ -36,7 +36,7 @@ public class TunnelsTests extends AbstractTestPolicyEnabledResource<Tunnel> {
 
     @BeforeClass
     public static void oneTimeSetUp() throws Exception {
-        setUp("adito-agent,adito-community-tunnels");
+        setUp("agent,tunnels");
     }
 
     @Override
