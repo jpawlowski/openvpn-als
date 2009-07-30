@@ -1,8 +1,8 @@
-The directory contained a JSP page, radiusAuth.jspf, which seemed to create the login page for RADIUS users.
-However, this JSP page was directly taken from SSL-Explorer's proprietary sslexplorer-enterprise-RADIUS
-extension. Using the JSP file would have violated Barracuda Network's (formerly 3sp) copyright and put the
-project at an unnecessary risk. Other files were either taken from the old sslexplorer-community-RADIUS plugin
-or otherwise safe to use.
+The webapp/WEB-INF/jsp directory contained a JSP page, radiusAuth.jspf, which created the login page for
+RADIUS users. However, this JSP page was directly taken from SSL-Explorer's proprietary
+sslexplorer-enterprise-RADIUS extension. Using the JSP file would have violated Barracuda Network's
+(formerly 3sp) copyright and put the project at an unnecessary risk. Other files were either taken from
+the old sslexplorer-community-RADIUS plugin or otherwise safe to use.
 
-Regardless, the current RADIUS authentication module is unusable due to missing login JSP page. Otherwise it
+So the current RADIUS authentication module is unusable due to missing login JSP page. Otherwise it
 _should_ work properly. 
