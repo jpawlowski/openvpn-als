@@ -8,7 +8,7 @@ for i in activedirectory agent agent-awt agent-swt applications clientcerts ldap
 	echo "Checking $i"
 	echo
 
-	for PATTERN in adito-agent adito-agent-awt adito-agent-swt adito-commons-vfs adito-community-activedirectory adito-community-applications adito-community-network-places adito-community-pam adito-community-tunnels adito-community-unix adito-community-web-forwards; do
+	for PATTERN in web-forwards network-places adito-agent adito-agent-awt adito-agent-swt adito-commons-vfs adito-community-activedirectory adito-community-applications adito-community-network-places adito-community-pam adito-community-tunnels adito-community-unix adito-community-web-forwards; do
 		find $i -iname "*$PATTERN*"|grep -v ".svn"
 		grep -ri $PATTERN $i/*|grep -v ".svn"
 	done
