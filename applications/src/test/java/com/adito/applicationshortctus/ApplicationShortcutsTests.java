@@ -18,7 +18,7 @@
  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 			
-package com.adito.applicationshortctus;
+package com.adito.applicationshortcuts;
 
 import java.util.Calendar;
 import java.util.Collections;
