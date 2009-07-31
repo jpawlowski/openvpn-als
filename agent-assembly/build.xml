@@ -40,11 +40,12 @@
 
 	<target name="setup-client">
 
+		<!-- Remove traces of old runs -->
 		<delete>
 			<fileset dir="${build.extension.output}"/>
 		</delete>
 
-
+		<!-- Copy assorted stuff to temporary extension directory -->
 		<copy todir="${build.extension.output}">
 			<fileset dir="ant/client">
 				<include name="**/*.gif"/>
