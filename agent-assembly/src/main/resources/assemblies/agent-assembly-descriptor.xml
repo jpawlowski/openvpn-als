@@ -1,0 +1,23 @@
+<assembly>
+	<id>extension</id>
+	<formats>
+		<format>zip</format>
+	</formats>
+
+	<!-- We need to remove the module name, as it would be "agent-assembly" instead of
+	     "agent". We can't create this assembly in "agent" module either, as some agent
+	     components are still missing at that point -->
+
+	<includeBaseDirectory>false</includeBaseDirectory>
+
+	<files>
+		<file>
+			<source>../agent/target/agent.jar</source>
+			<outputDirectory>agent</outputDirectory>
+		</file>
+
+		<file>
+			<source>extension.xml</source>
+		</file>
+	</files>
+</assembly>
