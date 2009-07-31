@@ -4,32 +4,23 @@
 	<!-- IMPORTANT: Several obsolete things have been removed during
 			mavenization:
 
+			* All Java compilation (handled by maven2)
+			* All tests (handled by maven2)
 			* Building support for MS Java
 			* Building CAB version of the launcher
 			* Codeswitcher
 			* (Separate) debug version of the client.
 	-->
 
-	<!-- FIXME: These properties are still pointing to wrong places -->
+	<!-- All non-source directories have been put under "ant" directory
+	     for convenience -->
 
-	<property file="build.properties"/>
-
-	<property name="build.dir" value="build" />
-	<property name="build.extension.output" value="${build.dir}/output"/>
-	<property name="build.tmp" value="${build.dir}/tmp"/>
+	<property name="build.dir" value="ant/build" />
 	<property name="build.dist" value="${build.dir}/dist"/>
-	<property name="build.docs" value="${build.dir}/docs"/>
 	<property name="build.extension" value="${build.dir}/extension" />
+	<property name="build.extension.output" value="${build.dir}/output"/>
 	<property name="build.release" value="${build.dir}/release" />
-	
-	<!-- Agent specific properties 
-	   
-	   Some of these properties only come into play when you wish to 
-	   build on a  Windows platform for MS JVM clients (Java 1) . -->
-	<property name="agent.build.target" value="1.1"/>
-	<property name="agent.build.source" value="1.2"/>
-	<property name="agent.build.debug" value="true" />
-        
+	        
 	<!-- Dependencies -->
 		
 	<property name="maverick-ssl.home" value="../maverick-ssl"/>
@@ -37,117 +28,60 @@
 	<property name="maverick-util.home" value="../maverick-util"/>
 	<property name="maverick-multiplex.home" value="../maverick-multiplex"/>
 	<property name="ui.home" value="../ui"/>
-	<property name="build-tools.home" value="../build-tools"/>
-	<property name="commons-logging-java1.home" value="../commons-logging-java1"/>
-	<property name="certificate.home" value="../certificate"/>
-	<property name="private-build-tools.home" value="${basedir}/../private-build-tools"/>
-	<property name="adito-agent-swt.home" value="../adito-agent-swt"/>
-	<property name="adito-agent-awt.home" value="../adito-agent-awt"/>
+	<property name="certificate.home" value="ant/certificate"/>
+	<property name="agent-swt.home" value="../agent-swt"/>
+	<property name="agent-awt.home" value="../agent-awt"/>
 	<property file="${certificate.home}/certificate.properties"/>
 
-	<!-- Use so the build can be sucessful without using the MS JVM -->
-	<property name="antcontrib.lib" value="${build-tools.home}/ant/ant-contrib.jar"/>
-
-	<!-- Unit test properties -->
-	<property name="adito.home" value="../adito"/>
-	<property name="build.test.output" value="${build.dir}/test" />
-	<property name="build.test" value="test" />
-	<property name="build.reports" value="${build.dir}/reports"/>
-
-	<target name="testaus" description="test">
-		<echo message="Works!"/>
-	</target>
-
-
-	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
-		<classpath>
-			<pathelement location="${antcontrib.lib}" />
-		</classpath>
-	</taskdef>
-
-	<path id="adito-agent.classpath">
-		<fileset dir="lib">
-			<include name="*.jar"/>
-		</fileset>
-		<fileset dir="${maverick-ssl.home}/target">
-			<include name="*.jar"/>
-		</fileset>
-	</path>
+	<!-- Convenience paths -->
 	
+	<property name="src" value="src/main/java"/>
+	<property name="resources" value="src/main/resources"/>
+
 	<target name="setup-client">
 
 		<delete>
-			<fileset dir="${build.tmp}"/>
 			<fileset dir="${build.extension.output}"/>
 		</delete>
 
-		<copy todir="${build.tmp}">
-			<fileset dir="${maverick-crypto.home}/src/main/java"/>
-			<fileset dir="${maverick-util.home}/src/main/java"/>
-			<fileset dir="${maverick-multiplex.home}/src/main/java"/>
-			<fileset dir="${ui.home}/src">
-				<include name="com/sshtools/**/*.java"/>
-				<include name="com/sshtools/**/*.properties"/>
-				<exclude name="com/sshtools/ui/swing/**/*"/>
-			</fileset>
-			<fileset dir="${adito-agent-swt.home}/src"/>
-			<fileset dir="${adito-agent-awt.home}/src"/>
-			<fileset dir="./common"/>
-			<fileset dir="./client"/>
-		</copy>
 
 		<copy todir="${build.extension.output}">
-			<fileset dir="./client">
+			<fileset dir="ant/client">
 				<include name="**/*.gif"/>
 				<include name="**/*.png"/>
 				<include name="**/*.properties"/>
 				<include name="**/*.ico"/>
 			</fileset>
-			<fileset dir="./common">
+			<fileset dir="ant/common">
 				<include name="**/*.properties"/>
 			</fileset>
 			<fileset dir="${ui.home}/src">
 				<include name="**/*.properties"/>
 				<exclude name="com/sshtools/ui/swing/**/*.properties"/>
 			</fileset>
-			<fileset dir="${adito-agent-swt.home}/src">
+			<fileset dir="${agent-swt.home}/src">
 				<include name="**/*.properties"/>
 			</fileset>
-			<fileset dir="${adito-agent-awt.home}/src">
+			<fileset dir="${agent-awt.home}/src">
 				<include name="**/*.properties"/>
 			</fileset>
 		</copy>
 		
 		<xmlproperty file="extensions/adito-agent/extension.xml"/>
+
+		<!-- FIXME: build.tmp does not exist anymore
 		<replace file="${build.tmp}/com/adito/agent/client/Agent.java" 
 				token="999.999.999" value="${bundle(version)}"/>
-		
+		-->
+
 	</target>
 
 	<target name="setup-launcher">
 
 		<delete>
-			<fileset dir="${build.tmp}"/>
 			<fileset dir="${build.extension.output}"/>
 		</delete>
 
-		<copy todir="${build.tmp}">
-			<fileset dir="./common"/>
-			<fileset dir="./launcher"/>
-			<fileset dir="${ui.home}/src">
-				<include name="com/sshtools/ui/awt/UIUtil.java"/>
-				<include name="com/sshtools/ui/awt/ImageCanvas.java"/>
-				<include name="com/sshtools/ui/awt/Messages.java"/>
-				<include name="com/sshtools/ui/awt/MultilineLabel.java"/>
-				<include name="com/sshtools/ui/awt/options/Messages.java"/>
-				<include name="com/sshtools/ui/awt/options/OptionDialog.java"/>
-				<include name="com/sshtools/ui/awt/options/Option.java"/>
-				<include name="com/sshtools/ui/awt/options/OptionCallback.java"/>
-				<include name="com/sshtools/ui/awt/ApplicationResources.properties"/>
-				<include name="com/sshtools/ui/awt/options/ApplicationResources.properties"/>
-			</fileset>
-		</copy>
-		
 		<copy todir="${build.extension.output}">
 			<fileset dir="./launcher">
 				<include name="**/*.gif"/>
@@ -176,20 +110,6 @@
 		<!-- Build the RELEASE version of the client -->
 		<antcall target="setup-client"/>
 
-		<!-- Need to do both for the moment until -->
-		<replace dir="${build.tmp}"
-                 token="/* DEBUG */"
-                 value="// DEBUG  ">
-			<include name="**/*.java"/>
-		</replace>
-
-		<javac debug="${agent.build.debug}" source="${agent.build.source}" 
-			target="${agent.build.target}" destdir="${build.extension.output}" 
-			excludes="**/swt/**/*.java"
-			srcdir="${build.tmp}" includes="**/*.java">
-			<classpath refid="adito-agent.classpath"/>
-		</javac>
-
 		<jar jarfile="${build.dist}/agent.jar" basedir="${build.extension.output}">
 			<include name="com/maverick/multiplex/**/*.class"/>
 			<include name="com/adito/agent/client/**/*.class"/>
@@ -201,7 +121,7 @@
 				<include name="com/maverick/multiplex/**/*.class"/>
 				<include name="com/adito/agent/client/gui/awt/**/*.class"/>
 			</fileset>
-			<fileset dir="${adito-agent-awt.home}/src">
+			<fileset dir="${agent-awt.home}/src">
 				<include name="images/**/*.gif" />
 			</fileset>
 		</jar>		
@@ -234,25 +154,13 @@
 			</fileset>
 		</copy>
 		
-		<javac debug="${agent.build.debug}" source="${agent.build.source}" 
-			target="${agent.build.target}" destdir="${build.extension.output}" 
-			includes="**/swt/**/*.java"
-			srcdir="${build.tmp}">
-			<classpath>
-				<fileset dir="${adito-agent-swt.home}/lib/win32">
-					<include name="*.jar"/>
-				</fileset>					
-			</classpath>
-			<classpath refid="adito-agent.classpath"/>
-		</javac>
-		
 		<jar jarfile="${build.dist}/agent-swt.jar">
 			<fileset dir="${build.extension.output}"> 
 				<include name="com/adito/agent/client/gui/swt/**/*.class"/>
 				<include name="images/*.png" />
 				<include name="images/tray-*.gif" />
 			</fileset>
-			<fileset dir="${adito-agent-swt.home}/src">
+			<fileset dir="${agent-swt.home}/src">
 				<include name="images/**/*.gif" />
 				<include name="images/**/*.png" />
 			</fileset>
@@ -264,10 +172,6 @@
 		<!-- Build the DEBUG version of the client -->
 		
 		<antcall target="setup-client"/>	
-
-		<javac excludes="**/swt/**/*.java" debug="true" source="${agent.build.source}" target="${agent.build.target}" destdir="${build.extension.output}" srcdir="${build.tmp}" includes="**/*.java">
-			<classpath refid="adito-agent.classpath"/>
-		</javac>
 
 		<jar jarfile="${build.dist}/agent-debug.jar" basedir="${build.extension.output}">
 			<include name="org/apache/commons/logging/**/*.class"/>
@@ -281,7 +185,7 @@
 				<include name="com/maverick/multiplex/**/*.class"/>
 				<include name="com/adito/agent/client/gui/awt/**/*.class"/>
 			</fileset>
-			<fileset dir="${adito-agent-awt.home}/src">
+			<fileset dir="${agent-awt.home}/src">
 				<include name="images/**/*.gif" />
 			</fileset>
 		</jar>		
@@ -296,25 +200,13 @@
 			<include name="com/sshtools/util/**/*.class"/>
 		</jar>
 		
-		<javac debug="${agent.build.debug}" source="${agent.build.source}" 
-			target="${agent.build.target}" destdir="${build.extension.output}" 
-			includes="**/swt/**/*.java"
-			srcdir="${build.tmp}">
-			<classpath>
-				<fileset dir="${adito-agent-swt.home}/lib/win32">
-					<include name="*.jar"/>
-				</fileset>	
-			</classpath>
-			<classpath refid="adito-agent.classpath"/>
-		</javac>		
-		
 		<jar jarfile="${build.dist}/agent-swt-debug.jar" basedir="${build.extension.output}">
 			<fileset dir="${build.extension.output}"> 
 				<include name="com/adito/agent/client/gui/swt/**/*.class"/>
 				<include name="images/*.png" />
 				<include name="images/tray-*.gif" />
 			</fileset>
-			<fileset dir="${adito-agent-swt.home}/src">
+			<fileset dir="${agent-swt.home}/src">
 				<include name="images/**/*.gif" />
 				<include name="images/**/*.png" />
 			</fileset>
@@ -344,21 +236,21 @@
 	    	<fileset dir="${build.dist}">
 	            <include name="launcher*.jar" />
 	        </fileset>
-	        <fileset dir="${adito-agent-swt.home}/lib/linux">
+	        <fileset dir="${agent-swt.home}/lib/linux">
 	            <include name="*.so" />
 	        </fileset>
-	        <fileset dir="${adito-agent-swt.home}/lib/macosx">
+	        <fileset dir="${agent-swt.home}/lib/macosx">
 	            <include name="*.jnilib" />
 	        </fileset>
-	        <fileset dir="${adito-agent-swt.home}/lib/win32">
+	        <fileset dir="${agent-swt.home}/lib/win32">
 	            <include name="*.dll" />
 	        </fileset>
 	    </copy>
-		<copy file="${adito-agent-swt.home}/lib/linux/swt.jar"
+		<copy file="${agent-swt.home}/lib/linux/swt.jar"
 			tofile="${build.extension}/swt-linux.jar"/>
-		<copy file="${adito-agent-swt.home}/lib/win32/swt.jar"
+		<copy file="${agent-swt.home}/lib/win32/swt.jar"
 			tofile="${build.extension}/swt-win32.jar"/>
-		<copy file="${adito-agent-swt.home}/lib/macosx/swt.jar"
+		<copy file="${agent-swt.home}/lib/macosx/swt.jar"
 			tofile="${build.extension}/swt-macosx.jar"/>
 
 	</target>
@@ -387,7 +279,6 @@
 			<fileset dir="${build.extension.output}"/>
 			<fileset dir="${build.release}"/>
 			<fileset dir="${build.extension}"/>
-			<fileset dir="${build.tmp}"/>
 			<fileset dir="${build.dist}"/>
 			<fileset dir="${build.test.output}" />
 		</delete>
