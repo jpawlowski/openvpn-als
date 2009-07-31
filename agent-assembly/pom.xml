@@ -3,12 +3,42 @@
 	<groupId>com.adito</groupId>
 	<artifactId>agent-assembly</artifactId>
 	<version>1.0-SNAPSHOT</version>
-	<name>Assembly descriptor for ALS Agent</name>
 
 <build>
-	<finalName>${project.name}</finalName>
+	<finalName>agent</finalName>
 
 	<plugins>
+
+	<!-- The Agent assembly process is very complex. It takes bits and pieces from here and
+	     there and assigns them to JAR's. It also includes JAR signing. So for now
+	     we've just adapt the original build.xml to maven2 output and use "antrun" to
+	     call it from within maven2. We could create a very complex maven2 assembly, but
+	     it would provide little benefit over ant in scenario this complex.
+	-->
+
+
+	<plugin>
+        	<artifactId>maven-antrun-plugin</artifactId>
+        	<executions>
+			<execution>
+				<phase>package</phase>
+				<configuration>
+					<tasks>
+						<!-- Here we embed our ant script - or more
+						     correctly - calls to build.xml -->
+						<ant target="testaus"/>
+					</tasks>
+				</configuration>
+				<goals>
+					<goal>run</goal>
+				</goals>
+			</execution>
+		</executions>
+	</plugin>
+
+
+	<!-- Assembly creation is disabled - we'll use ant instead
+
 		<plugin>
 			<artifactId>maven-assembly-plugin</artifactId>
 
@@ -28,6 +58,10 @@
 				</execution>
 			</executions>
 		</plugin>
+
+	-->
+
+
 	</plugins>
 </build>
 

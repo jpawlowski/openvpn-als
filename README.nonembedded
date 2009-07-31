@@ -164,7 +164,5 @@ Adito originally contained a patched version of Apache commons vfs. The patches 
 in directory adito-commons-vfs/patches and are _probably_ the only modifications to the original
 commons-vfs code. To reduce unnecessary work and confusion Mavenized Adito now uses standard commons-vfs.
 
-At the end of the migration, remember to verify that there are no instances of "community" in any directories
-or in the source code. Also check that all properties files are available in the extension bundles. In addition,
-verify that there are no references to old module names (e.g. adito-agent). Check network-places -> networkplaces,
-too.
+As an client-side piece of code the Agent needs so libs (e.g. log4j), so dependencies have to be declared 
+as well as have the correct scope.

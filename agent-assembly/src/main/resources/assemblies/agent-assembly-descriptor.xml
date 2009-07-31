@@ -10,14 +10,31 @@
 
 	<includeBaseDirectory>false</includeBaseDirectory>
 
+
+	<fileSets>
+		<fileSet>
+			<directory>agent</directory>
+		</fileSet>
+	</fileSets>
+
 	<files>
 		<file>
 			<source>../agent/target/agent.jar</source>
 			<outputDirectory>agent</outputDirectory>
 		</file>
+		<file>
+			<source>../agent-awt/target/agent-awt.jar</source>
+			<outputDirectory>agent</outputDirectory>
+		</file>
+		<file>
+			<source>../agent-swt/target/agent-swt.jar</source>
+			<outputDirectory>agent</outputDirectory>
+		</file>
 
 		<file>
-			<source>extension.xml</source>
+			<source>../ui/target/ui.jar</source>
+			<outputDirectory>agent</outputDirectory>
 		</file>
+
 	</files>
 </assembly>
