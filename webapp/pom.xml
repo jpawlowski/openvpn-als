@@ -123,11 +123,15 @@
 		<groupId>jetty</groupId>
 		<artifactId>jasper-compiler</artifactId>
 		<version>4.2.20RC0</version>
+		<!-- Running ALS fails if this is included -->
+		<scope>provided</scope>
 	</dependency>
 	<dependency>
 		<groupId>tomcat</groupId>
 		<artifactId>jasper-runtime</artifactId>
 		<version>5.5.23</version>
+		<!-- Running ALS fails if this is included -->
+		<scope>provided</scope>
 	</dependency>
 	<dependency>
 		<groupId>tanukisoft</groupId>
