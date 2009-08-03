@@ -12,7 +12,7 @@
     </parent>
 
     <artifactId>maverick-multiplex</artifactId>
-		<name>maverick-multiplex</name>
+    <name>maverick-multiplex</name>
 
     <packaging>jar</packaging>
 
