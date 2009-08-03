@@ -26,7 +26,7 @@
 					<tasks>
 						<!-- Here we embed our ant script - or more
 						     correctly - calls to build.xml -->
-						<ant target="testaus"/>
+						<ant target="assemble"/>
 					</tasks>
 				</configuration>
 				<goals>
