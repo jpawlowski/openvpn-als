@@ -59,7 +59,7 @@ Then run ant to build the rest of the modules and create the deployable Adito "b
   mkdir $JETTY_HOME/webapps/adito
   cp -r deploy/* $JETTY_HOME/webapps/adito/
 
-Next you need to create a Jetty virtual host. Add this to $JETTY_HOME/webapps/adito/WEB-INF/web.xml:
+Next you need to create a Jetty virtual host. Add this to $JETTY_HOME/etc/jetty.xml:
 
  <New class="org.mortbay.jetty.webapp.WebAppContext">
   <Arg><Ref id="Contexts"/></Arg>
@@ -81,6 +81,8 @@ Then you can start the Jetty web server:
 And navigate to ALS login page:
 
  http://localhost:8080/adito
+
+The default admin username is "root" and password is "root1".
 
 To clean up, do 
 
