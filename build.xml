@@ -101,6 +101,22 @@
 
 	</target>
 
+	<!-- This target is meant for legacy ant output, not for cleaning up after mvn install -->
+        <target name="clean" description="Removes compiled files">
+                <ant dir="adito" target="clean"/>
+                <ant dir="adito-community-activedirectory" target="clean"/>
+                <ant dir="adito-community-applications" target="clean"/>
+                <ant dir="adito-community-network-places" target="clean"/>
+                <ant dir="adito-community-pam" target="clean"/>
+                <ant dir="adito-community-tunnels" target="clean"/>
+                <ant dir="adito-community-unix" target="clean"/>
+                <ant dir="adito-community-web-forwards" target="clean"/>
+                <ant dir="maverick-crypto" target="clean"/>
+                <ant dir="maverick-multiplex" target="clean"/>
+                <ant dir="maverick-ssl" target="clean"/>
+                <ant dir="maverick-util" target="clean"/>
+                <ant dir="adito-agent" target="clean"/>
+        </target>
 
 </project>
 
