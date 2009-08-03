@@ -14,52 +14,36 @@ Agent's ant build does some applet signing, which may prove to be difficult to r
 way". Some ant "deploy" script will be necessary for quite a while due to OpenVPN ALS's funky extension
 system.
 
+For historic reasons modules have long names and are being converted to shorter names thusly:
+
+ adito-community-applications -> applications
+ adito-agent -> agent
+ 
+In some rare cases this affects the Maven src/main/java directory structure. All references in the java, 
+xml, property etc. files have to be converted, too. For this reason there is a Bash script 
+(tools/convert_variables.sh) that can help in the conversion process.
+
 Changelog:
 
    1st June 2009:  maverick-* modules converted to maven2
    3rd July 2009:  webapp and some extensions converted (partially) to maven2
    28th July 2009: the rest of the modules, including those created after the fork
 		   (clientcerts,pam,ldap,radius) now converted to maven2
-   29th July 2009: 
+   31st July 2009: everything except the agent is completely mavenized and namespace change is complete
 
-==Runtime dependencies==
 
-There are a few differences between ant's output and maven's output in WEB-INF/lib. 
-Many of the libs in ant's output are leftovers from earlier times (=no 
-references in source code):
+==How the maven2 build works==
 
-- adito-jcifs.jar
-- ehcache-1.0.jar
-- commons-codec-1.3.jar
-- commons-compress-20040530.jar
-- commons-dbcp-1.2.1.jar
-- commons-transaction-1.0rc1.jar
-- geronimo-jta.jar
-- jakarta-oro.jar
-- jaxen-core.jar
-- jaxen-jdom.jar
-- tm-extractors-0.4.jar
-- xml-im-exporter1.1.jar
+You can check the build order from main pom.xml. Because ALS's old extension management system was tied 
+to Jetty-specific methods (addResourceBase()) the build is somewhat more complex than that of a typical 
+webapp:
 
-Some are actually missing and there are references to them in source code. But still 
-the build does not fail:
-
-- saxpath.jar
-
-A few seem to be extra:
-
-- avalon-framework-4.1.3.jar
-- jasper-compiler-4.2.20RC0.jar
-- jasper-runtime-5.5.23.jar
-- jericho-html-1.5-dev1.jar
-- jsp-api-2.1.jar
-- jstl-1.0.6.jar
-- log4j-1.2.12.jar
-- logkit-1.0.1.jar
-- nanoxml-2.2.3.jar
-- oro-2.0.7.jar
-- xalan-2.5.1.jar
-- xml-apis-1.0.b2.jar
+- Build general-purpose modules (maverick-*)
+- Build the webapp (webapp)
+- Build and assemble the extensions (e.g. unix, networkplaces, pam...)
+- Build the agent components (agent, agent-awt, agent-swt, ui)
+- Assemble the agent (in stub module "agent-assembly") with maven + antrun plugin
+- Assemble all of this into a functional webapp directory for deployment
 
 ==Installing and running Adito in "nonembedded"==
 
@@ -103,39 +87,49 @@ To clean up, do
   ant clean
   mvn clean
 
+==Runtime dependencies==
+
+There are a few differences between ant's output and maven's output in WEB-INF/lib. 
+Many of the libs in ant's output are leftovers from earlier times (=no 
+references in source code):
+
+- adito-jcifs.jar
+- ehcache-1.0.jar
+- commons-codec-1.3.jar
+- commons-compress-20040530.jar
+- commons-dbcp-1.2.1.jar
+- commons-transaction-1.0rc1.jar
+- geronimo-jta.jar
+- jakarta-oro.jar
+- jaxen-core.jar
+- jaxen-jdom.jar
+- tm-extractors-0.4.jar
+- xml-im-exporter1.1.jar
+
+Some are actually missing and there are references to them in source code. But still 
+the build does not fail:
+
+- saxpath.jar
+
+A few seem to be extra:
+
+- avalon-framework-4.1.3.jar
+- jasper-compiler-4.2.20RC0.jar
+- jasper-runtime-5.5.23.jar
+- jericho-html-1.5-dev1.jar
+- jsp-api-2.1.jar
+- jstl-1.0.6.jar
+- log4j-1.2.12.jar
+- logkit-1.0.1.jar
+- nanoxml-2.2.3.jar
+- oro-2.0.7.jar
+- xalan-2.5.1.jar
+- xml-apis-1.0.b2.jar
+
 == Modules not available from public Maven2 repositories ==
 
 There are some jars that Adito requires which are not yet in public Maven repositories. These
 modules are currently hosted in a custom Maven2 repository (http://adito.pcdog.ch/maven2).
-
-== New module names ==
-
-For historic reasons modules have long names and are being converted to shorter names thusly:
-
- adito-community-applications -> applications
- adito-agent -> agent
- 
-In some rare cases this affects the Maven src/main/java directory structure. All references in the java, 
-xml, property etc. files have to be converted, too. For this reason there is a Bash script 
-(tools/convert_variables.sh) that can help in the conversion process.
-
-== Basic techniques ==
-
-You can use the jar's and zip-files in the "comparison" directory to see if output Maven creates is 
-correct. The directory contains fully functional JAR's and ZIP-files created by the original "ant" build 
-process.
-
-To peek inside a JAR, you can use
-
- jar tf filename.jar
-
-For ZIP-files you can (on Linux) use
-
- zipinfo filename.zip
-
-If contents of the Ant/Maven JAR/ZIP differs a lot, you've probably got a problem. Note that we probably
-have to use the Assembly plugin to create a fully functional, runnable version of Adito. Another option
-is to call "ant" to build the actual extension ZIP-file.
 
 == Mavenizing the Adito Agent ==
 
@@ -163,6 +157,3 @@ likely something created by 3sp, as google yields only a few SSL-Explorer -relat
 Adito originally contained a patched version of Apache commons vfs. The patches themselves are available
 in directory adito-commons-vfs/patches and are _probably_ the only modifications to the original
 commons-vfs code. To reduce unnecessary work and confusion Mavenized Adito now uses standard commons-vfs.
-
-As an client-side piece of code the Agent needs so libs (e.g. log4j), so dependencies have to be declared 
-as well as have the correct scope.
