@@ -23,21 +23,23 @@
     <profiles>
     </profiles>
 
-    <dependencies>
-      <dependency>
-          <groupId>com.adito</groupId>
-          <artifactId>webapp</artifactId>
-          <version>${project.version}</version>
-      </dependency>
-      <dependency>
-          <groupId>com.sshtools</groupId>
-          <artifactId>ui</artifactId>
-          <version>${project.version}</version>
-      </dependency>
-    </dependencies>
+	<dependencies>
+		<dependency>
+			<groupId>com.adito</groupId>
+			<artifactId>webapp</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sshtools</groupId>
+			<artifactId>ui</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<finalName>agent</finalName>
 	</build>
+
 
 </project>
