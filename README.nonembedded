@@ -43,7 +43,7 @@ webapp:
 - Build and assemble the extensions (e.g. unix, networkplaces, pam...)
 - Build the agent components (agent, agent-awt, agent-swt, ui)
 - Assemble the agent (in stub module "agent-assembly") with maven + antrun plugin
-- Assemble all of this into a functional webapp directory for deployment
+- Assemble all of this into a functional webapp directory for deployment (with ant in nonembedded/build.xml)
 
 ==Installing and running Adito in "nonembedded"==
 
@@ -113,7 +113,7 @@ the build does not fail:
 
 - saxpath.jar
 
-A few seem to be extra:
+A few seem to be extra in maven2 build:
 
 - avalon-framework-4.1.3.jar
 - jasper-compiler-4.2.20RC0.jar
