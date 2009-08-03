@@ -25,12 +25,12 @@ xml, property etc. files have to be converted, too. For this reason there is a B
 
 Changelog:
 
-   1st June 2009:  maverick-* modules converted to maven2
-   3rd July 2009:  webapp and some extensions converted (partially) to maven2
-   28th July 2009: the rest of the modules, including those created after the fork
-		   (clientcerts,pam,ldap,radius) now converted to maven2
-   31st July 2009: everything except the agent is completely mavenized and namespace change is complete
-
+   1st June 2009:   maverick-* modules converted to maven2
+   3rd July 2009:   webapp and some extensions converted (partially) to maven2
+   28th July 2009:  the rest of the modules, including those created after the fork
+		    (clientcerts,pam,ldap,radius) now converted to maven2
+   31st July 2009:  everything except the agent is completely mavenized and namespace change is complete
+   3rd August 2009: mavenized version of Adito runs with the exception of agent and networkplaces module
 
 ==How the maven2 build works==
 
