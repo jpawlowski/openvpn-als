@@ -200,6 +200,43 @@
 
 
 
+		<!--===========================-->
+		<!-- Assemble launcher-en.jar -->
+		<!--===========================-->
+
+		<mkdir dir="${build.dir}/launcher-en"/>
+
+		<copy todir="${build.dir}/launcher-en">
+			<fileset dir="${agent.home}/${resources}">
+				<include name="com/adito/agent/client/launcher/**"/>			
+				<include name="com/adito/agent/client/util/**"/>			
+			</fileset>
+			<fileset dir="${ui.home}/${resources}">
+				<include name="com/sshtools/ui/awt/options/**"/>
+				<include name="com/sshtools/ui/awt/*.properties"/>
+			</fileset>
+		</copy>
+
+		<jar jarfile="${build.dir}/launcher-en.jar" basedir="${build.dir}/launcher-en">
+			<include name="**/*"/>
+		</jar>
+
+		<signjar jar="${build.dir}/launcher-en.jar"
+			alias="${certificate.alias}"
+			keystore="${certificate.home}/${certificate.keystore}"
+			storetype="${certificate.storetype}"
+			storepass="${certificate.password}"/>
+
+
+
+
+
+
+
+
+
+
+
 
 	</target>
 	
