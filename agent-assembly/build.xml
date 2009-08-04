@@ -17,32 +17,35 @@
 			process once the mavenized Agent runs
 	-->
 
-	<!-- All non-source directories have been put under "ant" directory
-	     for convenience -->
 
+	<!-- A temporary directory for the ant assembly process -->
 	<property name="build.dir" value="target/ant-build" />
-	<property name="build.extension" value="ant/extension" />
-	        
+
+	<!-- Misc stuff required by the extension or the build process -->
+	<property name="ant.dir" value="ant" />
+
 	<!-- Dependencies -->
-		
 	<property name="maverick-ssl.home" value="../maverick-ssl"/>
 	<property name="maverick-crypto.home" value="../maverick-crypto"/>
 	<property name="maverick-util.home" value="../maverick-util"/>
 	<property name="maverick-multiplex.home" value="../maverick-multiplex"/>
-	<property name="ui.home" value="../ui"/>
-	<property name="certificate.home" value="ant/certificate"/>
+
+	<!-- Agent modules -->
 	<property name="agent.home" value="../agent"/>	
 	<property name="agent-swt.home" value="../agent-swt"/>
 	<property name="agent-awt.home" value="../agent-awt"/>
+	<property name="ui.home" value="../ui"/>
+
+	<!-- Java applet (launcher*.jar) signing -->
+	<property name="certificate.home" value="${ant.dir}/certificate"/>
 	<property file="${certificate.home}/certificate.properties"/>
 
 	<!-- Convenience paths -->
-	
 	<property name="src" value="src/main/java"/>
 	<property name="resources" value="src/main/resources"/>
 	<property name="classes" value="target/classes"/>
 
-	<target name="assemble">
+	<target name="assemble" depends="clean">
 
 		<!--====================-->
 		<!-- Assemble agent.jar -->
@@ -162,6 +165,42 @@
 		</jar>
 
 
+		<!--=======================-->
+		<!-- Assemble launcher.jar -->
+		<!--=======================-->
+
+		<mkdir dir="${build.dir}/launcher"/>
+
+		<copy todir="${build.dir}/launcher">
+			<fileset dir="${agent.home}/${classes}">
+				<include name="com/adito/agent/client/launcher/**"/>			
+				<include name="com/adito/agent/client/util/**"/>			
+			</fileset>
+			<fileset dir="${ui.home}/${classes}">
+				<include name="com/sshtools/ui/awt/options/**"/>
+				<!-- Why only these classes were included? -->			
+				<include name="com/sshtools/ui/awt/ImageCanvas.class"/>			
+				<include name="com/sshtools/ui/awt/Messages.class"/>			
+				<include name="com/sshtools/ui/awt/MultilineLabel.class"/>			
+				<include name="com/sshtools/ui/awt/UIUtil.class"/>			
+			</fileset>
+		</copy>
+
+		<jar jarfile="${build.dir}/launcher.jar" basedir="${build.dir}/launcher">
+			<include name="**/*"/>
+		</jar>
+
+		<!-- We need to sign this Java applet -->
+
+		<signjar jar="${build.dir}/launcher.jar"
+			alias="${certificate.alias}"
+			keystore="${certificate.home}/${certificate.keystore}"
+			storetype="${certificate.storetype}"
+			storepass="${certificate.password}"/>
+
+
+
+
 	</target>
 	
 	<target name="clean">
@@ -171,223 +210,24 @@
 
 <!-- EVERYTHING BELOW THIS LINE IS OBSOLETE AND USED ONLY FOR REFERENCE PURPOSES -->
 
+<!-- Agent Java version was changed prior to the ant build:
 
-	<target name="babababa">
-		<!-- Copy assorted stuff to temporary extension directory -->
-		<copy todir="${build.extension.output}">
-			<fileset dir="../agent/${resources}">
-				<include name="**/*.gif"/>
-				<include name="**/*.png"/>
-				include name="**/*.properties"/>
-				<include name="**/*.ico"/>
-			</fileset>
-			<fileset dir="${ui.home}/${resources}">
-				<include name="**/*.properties"/>
-				<exclude name="com/sshtools/ui/swing/**/*.properties"/>
-			</fileset>
-			<fileset dir="${agent-swt.home}/${resources}">
-				<include name="**/*.properties"/>
-			</fileset>
-			<fileset dir="${agent-awt.home}/${resources}">
-				<include name="**/*.properties"/>
-			</fileset>
-		</copy>
-		
-		<xmlproperty file="ant/extensions/agent/extension.xml"/>
+	<replace file="${build.tmp}/com/adito/agent/client/Agent.java" 
+		token="999.999.999" value="${bundle(version)}"/>
 
-		<!-- FIXME: build.tmp does not exist anymore
-		<replace file="${build.tmp}/com/adito/agent/client/Agent.java" 
-				token="999.999.999" value="${bundle(version)}"/>
-		-->
+-->
 
-	</target>
 
-	<target name="setup-launcher">
-
-		<delete>
-			<fileset dir="${build.extension.output}"/>
-		</delete>
-
-		<copy todir="${build.extension.output}">
-			<fileset dir="../agent/${resources}">
-				<!-- FIXME: some images are still missing from "agent" module! -->
-				<include name="**/*.gif"/>
-				<include name="**/*.properties"/>
-			</fileset>
-			<fileset dir="${ui.home}/${src}">
-				<include name="com/sshtools/ui/awt/ApplicationResources.properties"/>
-				<include name="com/sshtools/ui/awt/options/ApplicationResources.properties"/>
-			</fileset>
-		</copy>
-
-	</target>
-
-	<target name="build" depends="clean">
-
-		<mkdir dir="${build.dist}"/>
-		
-		<!-- Build the RELEASE version of the client -->
-		<antcall target="setup-client"/>
-
-		<!-- Generate Agent.jar. Maven2 already creates this, but these jars are
-		     funky and require special treatment -->
-
-		<jar jarfile="${build.dist}/agent.jar" basedir="${build.extension.output}">
-			<include name="com/maverick/multiplex/**/*.class"/>
-			<include name="com/adito/agent/client/**/*.class"/>
-			<exclude name="com/adito/agent/client/gui/awt/**/*"/>
-		</jar>					
-
-		<jar jarfile="${build.dist}/agent-awt.jar">
-			<fileset dir="${build.extension.output}"> 
-				<include name="com/maverick/multiplex/**/*.class"/>
-				<include name="com/adito/agent/client/gui/awt/**/*.class"/>
-			</fileset>
-			<fileset dir="${agent-awt.home}/${src}">
-				<include name="images/**/*.gif" />
-			</fileset>
-		</jar>		
-
-		<jar jarfile="${build.dist}/agent-awt-en.jar" basedir="${build.extension.output}">
-			<include name="com/adito/agent/client/gui/awt/**/*.properties"/>
-		</jar>
-		
-		<jar jarfile="${build.dist}/agent-en.jar" basedir="${build.extension.output}">
-			<include name="**/*.properties" />
-		</jar>
-
-		<jar jarfile="${build.dist}/maverick-crypto.jar" basedir="${build.extension.output}">
-			<include name="com/maverick/crypto/**/*.class"/>
-		</jar>
-
-		<jar jarfile="${build.dist}/maverick-util.jar" basedir="${build.extension.output}">
-			<include name="com/maverick/util/**/*.class"/>
-		</jar>
-
-		<jar jarfile="${build.dist}/ui.jar" basedir="${build.extension.output}">
-			<include name="com/sshtools/ui/**/*.class"/>
-			<include name="com/sshtools/ui/**/*.properties"/>
-			<include name="com/sshtools/util/**/*.class"/>
-		</jar>
-		
-		<copy todir="${build.dist}">
-			<fileset dir="${maverick-ssl.home}/target">
-			   <include name="*.jar"/>
-			</fileset>
-		</copy>
-		
-		<jar jarfile="${build.dist}/agent-swt.jar">
-			<fileset dir="${build.extension.output}"> 
-				<include name="com/adito/agent/client/gui/swt/**/*.class"/>
-				<include name="images/*.png" />
-				<include name="images/tray-*.gif" />
-			</fileset>
-			<fileset dir="${agent-swt.home}/${src}">
-				<include name="images/**/*.gif" />
-				<include name="images/**/*.png" />
-			</fileset>
-		</jar>		
-		<jar jarfile="${build.dist}/agent-swt-en.jar" basedir="${build.extension.output}">
-			<include name="com/adito/agent/client/gui/swt/**/*.properties"/>
-		</jar>		
-		
-		<!-- Build the DEBUG version of the client -->
-		
-		<antcall target="setup-client"/>	
-
-		<jar jarfile="${build.dist}/agent-debug.jar" basedir="${build.extension.output}">
-			<include name="org/apache/commons/logging/**/*.class"/>
-			<include name="com/maverick/multiplex/**/*.class"/>
-			<include name="com/adito/agent/client/**/*.class"/>
-			<exclude name="com/adito/agent/client/gui/awt/**/*"/>
-		</jar>
-		
-		<jar jarfile="${build.dist}/agent-awt-debug.jar" basedir="${build.extension.output}">
-			<fileset dir="${build.extension.output}"> 
-				<include name="com/maverick/multiplex/**/*.class"/>
-				<include name="com/adito/agent/client/gui/awt/**/*.class"/>
-			</fileset>
-			<fileset dir="${agent-awt.home}/${src}">
-				<include name="images/**/*.gif" />
-			</fileset>
-		</jar>		
-
-		<jar jarfile="${build.dist}/maverick-util.jar" basedir="${build.extension.output}">
-			<include name="com/maverick/util/**/*.class"/>
-		</jar>
-
-		<jar jarfile="${build.dist}/ui-debug.jar" basedir="${build.extension.output}">
-			<include name="com/sshtools/ui/**/*.class"/>
-			<include name="com/sshtools/ui/**/*.properties"/>
-			<include name="com/sshtools/util/**/*.class"/>
-		</jar>
-		
-		<jar jarfile="${build.dist}/agent-swt-debug.jar" basedir="${build.extension.output}">
-			<fileset dir="${build.extension.output}"> 
-				<include name="com/adito/agent/client/gui/swt/**/*.class"/>
-				<include name="images/*.png" />
-				<include name="images/tray-*.gif" />
-			</fileset>
-			<fileset dir="${agent-swt.home}/${src}">
-				<include name="images/**/*.gif" />
-				<include name="images/**/*.png" />
-			</fileset>
-		</jar>	
-		
-		<!-- Build the extension structure -->
-
-		<mkdir dir="${build.extension}"/>
-		<copy todir="${build.extension}">
-			<fileset dir="extensions/${ant.project.name}">
-				<include name="**/*"/>
-				<exclude name="**/CVS/**/*"/>
-			</fileset>
-		</copy>
-
-	    <copy todir="${build.extension}">
-	        <fileset dir="lib">
-	            <include name="*.jar" />
-	            <include name="*.dll" />
-	        </fileset>
-	        <fileset dir="${build.dist}">
-	            <include name="*.jar" />
-	        </fileset>
-			<fileset dir="${maverick-ssl.home}/target">
-				<include name="*.jar"/>
-			</fileset>
-	    	<fileset dir="${build.dist}">
-	            <include name="launcher*.jar" />
-	        </fileset>
-	        <fileset dir="${agent-swt.home}/lib/linux">
-	            <include name="*.so" />
-	        </fileset>
-	        <fileset dir="${agent-swt.home}/lib/macosx">
-	            <include name="*.jnilib" />
-	        </fileset>
-	        <fileset dir="${agent-swt.home}/lib/win32">
-	            <include name="*.dll" />
-	        </fileset>
-	    </copy>
-		<copy file="${agent-swt.home}/lib/linux/swt.jar"
-			tofile="${build.extension}/swt-linux.jar"/>
-		<copy file="${agent-swt.home}/lib/win32/swt.jar"
-			tofile="${build.extension}/swt-win32.jar"/>
-		<copy file="${agent-swt.home}/lib/macosx/swt.jar"
-			tofile="${build.extension}/swt-macosx.jar"/>
-
-	</target>
+<!-- Checksum the archive
 
 	<target name="release" depends="build">
 	
-		<!-- Create the archive -->
 		<mkdir dir="${build.release}"/>
 		<zip destfile="${build.release}/${ant.project.name}.zip">
 			<zipfileset dir="${build.extension}" prefix="${ant.project.name}">
 				<include name="**/*"/>
 			</zipfileset>
-		</zip>
 		
-		<!-- Generate checksums -->
 		<checksum>
 			<fileset dir="${build.release}">
 				<include name="*.zip"/>
@@ -395,4 +235,8 @@
 		</checksum>
 	</target>
 	
+-->
+
+<!-- Signing the applets is done with signJar, see trunk -->
+
 </project>
