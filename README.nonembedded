@@ -1,27 +1,9 @@
-*** NOTE ***
-
-Most unit tests don't work yet. In fact the build may fail if they're used. To skip them, use 
--Dmaven.test.skip=true:
-
-mvn -Dmaven.test.skip=true clean install 
 
 ==Status of the migration==
 
-Current (28th July 2009) all code has been converted to maven2. The "ant" build is still required after 
-building the maverick-classes. This will soon change as maven modules will be modified to produce the
-same output as ant does, one module at a time. The ant build will be kept intact at all times. The 
-Agent's ant build does some applet signing, which may prove to be difficult to reproduce "the maven
-way". Some ant "deploy" script will be necessary for quite a while due to OpenVPN ALS's funky extension
-system.
-
-For historic reasons modules have long names and are being converted to shorter names thusly:
-
- adito-community-applications -> applications
- adito-agent -> agent
- 
-In some rare cases this affects the Maven src/main/java directory structure. All references in the java, 
-xml, property etc. files have to be converted, too. For this reason there is a Bash script 
-(tools/convert_variables.sh) that can help in the conversion process.
+Current (4th August 2009) the build process has been completely mavenized. Ant is still used
+for assembling the Agent but all of this happens behind the hood. On code level everything
+expect forwarding requests to Agent works.
 
 Changelog:
 
@@ -31,6 +13,7 @@ Changelog:
 		    (clientcerts,pam,ldap,radius) now converted to maven2
    31st July 2009:  everything except the agent is completely mavenized and namespace change is complete
    3rd August 2009: mavenized version of Adito runs with the exception of agent and networkplaces module
+   4th August 2009: all modules mavenized and a deploy script available
 
 ==How the maven2 build works==
 
@@ -43,21 +26,33 @@ webapp:
 - Build and assemble the extensions (e.g. unix, networkplaces, pam...)
 - Build the agent components (agent, agent-awt, agent-swt, ui)
 - Assemble the agent (in stub module "agent-assembly") with maven + antrun plugin
-- Assemble all of this into a functional webapp directory for deployment (with ant in nonembedded/build.xml)
+- Assemble all of this into a functional webapp directory for deployment (with "ant deploy"
+  in $ADITO_HOME/build.xml)
 
 ==Installing and running Adito in "nonembedded"==
+
+NOTE: most unit tests don't work yet. In fact the build fails if they're used. If you follow these
+instructions closely, you'll be just fine.
+
+For the build to work you need the following:
+
+* JDK 1.5+ (e.g. from Sun)
+* Maven2 (http://maven.apache.org)
+* Ant (http://ant.apache.org)
 
 First build the modules that have been mavenized:
 
   cd $ADITO_HOME
-  mvn install
+  mvn -Dmaven.test.skip=true clean install 
 
-Then run ant to build the rest of the modules and create the deployable Adito "bundle":
+After this you must create a deployable version of ALS with
 
-  cd $ADITO_HOME/adito
-  ant install
-  mkdir $JETTY_HOME/webapps/adito
-  cp -r deploy/* $JETTY_HOME/webapps/adito/
+  ant deploy
+
+To deploy ALS on Jetty (6.1.x):
+
+  cd $ADITO_HOME/target
+  cp -r adito $JETTY_HOME/webapps/
 
 Next you need to create a Jetty virtual host. Add this to $JETTY_HOME/etc/jetty.xml:
 
@@ -82,14 +77,63 @@ And navigate to ALS login page:
 
  http://localhost:8080/adito
 
-The default admin username is "root" and password is "root1".
+The default admin username is "admin" and password is "admin123".
 
 To clean up, do 
 
-  ant clean
   mvn clean
 
-==Runtime dependencies==
+
+==Differences between "nonembedded" and old (3sp-style) "trunk"==
+
+===Architectural changes===
+
+The original (3sp) code was built around embedded components, foremost
+the outdated embedded Jetty web server / servlet container (5.x).
+Several code-level ties to the embedded Jetty made updating,
+maintaining and deploying the software overly difficult. The embedded
+HSQLDB database made non-standard deployment scenarios (e.g.
+load-balancing) very hard. The matters were made worse by a really
+complex build system based on Apache Ant, which was also used for
+launching the application with or without the Java service wrapper.
+The wrapper was a constant source of problems, probably mostly due it's
+the shaky integration with "ant". 3sp solved the deployment issue by
+creating neat installers that hid the complexities deployment from the
+user. They had solid reasons for making SSL-Explorer (later Adito /
+OpenVPN ALS) a tightly integrated package, but none of these reasons
+apply for a community-based open source project. Ease of deployment and
+development are much higher priority now.
+
+This first version of OpenVPN ALS is considerably different from
+SSL-Explorer in many regards. The code is now runnable on an external
+servlet container or application server, even though only Jetty 6.1.x
+has been tested. All code-level ties to embedded Jetty have been removed.
+The embedded HSQLDB database is still there, but it will soon be
+replaced with an external one. The build system has been overhauled
+completely with the complete migration to Maven2. This makes installing,
+developing, updating and packaging ALS _much_ easier than previously.
+Java service wrapper has been removed, but it's of course possible to
+use it by configuring it manually.
+
+Support for various obsolete stuff (e.g. MS JVM 1.1) has been removed
+from the build process. Especially the Agent has been simplified -
+see "agent-assembly/build.xml". SSL-Explorer/Adito originally contained
+a patched version of Apache Commons VFS. The patches themselves are
+available in $OLDTRUNK/adito-commons-vfs/patches and are _probably_ the
+only modifications to the original commons-vfs code. To reduce unnecessary
+work and confusion Mavenized Adito now uses standard commons-vfs. To be
+exact, this change was made earlier in "trunk" and pushed to "nonembedded"
+later.
+
+For historic reasons modules had long names and they have been converted
+to shorter names thusly:
+
+ adito-community-applications -> applications
+ adito-agent -> agent
+ 
+In some rare cases this affects the Maven src/main/java directory tree.
+
+===Runtime dependencies===
 
 There are a few differences between ant's output and maven's output in WEB-INF/lib. 
 Many of the libs in ant's output are leftovers from earlier times (=no 
@@ -128,34 +172,8 @@ A few seem to be extra in maven2 build:
 - xalan-2.5.1.jar
 - xml-apis-1.0.b2.jar
 
-== Modules not available from public Maven2 repositories ==
+==Modules not available from public Maven2 repositories==
 
 There are some jars that Adito requires which are not yet in public Maven repositories. These
 modules are currently hosted in a custom Maven2 repository (http://adito.pcdog.ch/maven2).
 
-== Mavenizing the Adito Agent ==
-
-Agent is comprised of several components:
-
-adito-agent
-adito-agent-awt
-adito-agent-swt
-ui
-
-The Agent also needs a SSL-certificate for proper operation. The files required for
-the Agent's SSL certificate are these:
-
-agent-keystore.p12
-- the certificate container, created with Java keytool (see "Installing Adito..." in Wiki)
-
-certificate.properties
-- File that specifies the Agent's keystore password. It's used to sign the Agent Java applet.
-
-There's also a file, "cabpass.exe" which apparently does something on win32 clients. This is most
-likely something created by 3sp, as google yields only a few SSL-Explorer -related hits. 
-
-== Misc notes ==
-
-Adito originally contained a patched version of Apache commons vfs. The patches themselves are available
-in directory adito-commons-vfs/patches and are _probably_ the only modifications to the original
-commons-vfs code. To reduce unnecessary work and confusion Mavenized Adito now uses standard commons-vfs.
