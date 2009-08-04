@@ -52,7 +52,7 @@
 						<jar>agent.jar</jar>
 						<jar>ui.jar</jar>
 						<jar>agent-swt.jar</jar>
-						<jar agent-swt-en.jar</jar>
+						<jar>agent-swt-en.jar</jar>
 
 						<!-- Architecture-specific JAR's -->
 						<jar os="Linux" arch="!AMD64">swt-linux.jar</jar>
@@ -75,7 +75,7 @@
 						<jar>agent.jar</jar>
 						<jar>ui.jar</jar>
 						<jar>agent-swt.jar</jar>
-						<jar agent-swt-en.jar</jar>
+						<jar>agent-swt-en.jar</jar>
 
 						<!-- Architecture-specific JAR's -->
 						<jar os="Linux" arch="!AMD64">swt-linux.jar</jar>
