@@ -44,6 +44,7 @@
 	<property name="src" value="src/main/java"/>
 	<property name="resources" value="src/main/resources"/>
 	<property name="classes" value="target/classes"/>
+	<property name="dependencies" value="target/dependency"/>
 
 	<target name="assemble" depends="clean">
 
@@ -228,9 +229,54 @@
 			storepass="${certificate.password}"/>
 
 
+		<!--========================-->
+		<!-- Assemble swt-linux.jar -->
+		<!--========================-->
 
 
+		<!-- The only difference between swt-linux, swt-macosx and swt-win32
+		     seems to be a handful of files in org.eclipse.swt.internal. To
+		     reduce complexity we include all files in that namespace, used
+		     or not. In addition, the extension package contains some
+		     native libraries for each platform -->
+ 
+		<mkdir dir="${build.dir}/swt-all"/>
 
+		<copy todir="${build.dir}/swt-all">
+			<fileset dir="${agent-swt.home}/${dependencies}">
+				<include name="org/eclipse/swt/**"/>			
+			</fileset>
+		</copy>		
+
+		<jar jarfile="${build.dir}/swt-linux.jar" basedir="${build.dir}/swt-all">
+			<include name="**/*"/>
+		</jar>					
+		<jar jarfile="${build.dir}/swt-macosx.jar" basedir="${build.dir}/swt-all">
+			<include name="**/*"/>
+		</jar>					
+		<jar jarfile="${build.dir}/swt-win32.jar" basedir="${build.dir}/swt-all">
+			<include name="**/*"/>
+		</jar>					
+
+		
+
+		<!--=================-->
+		<!-- Assemble ui.jar -->
+		<!--=================-->
+
+		<mkdir dir="${build.dir}/ui"/>
+
+		<copy todir="${build.dir}/ui">
+			<fileset dir="${ui.home}/${classes}">
+				<include name="com/sshtools/ui/*.class"/>			
+				<include name="com/sshtools/ui/awt/**"/>			
+				<include name="com/sshtools/util/**"/>			
+			</fileset>
+		</copy>		
+
+		<jar jarfile="${build.dir}/ui.jar" basedir="${build.dir}/ui">
+			<include name="**/*"/>
+		</jar>					
 
 
 
