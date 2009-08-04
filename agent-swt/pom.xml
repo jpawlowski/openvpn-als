@@ -41,6 +41,7 @@
 		<groupId>org.eclipse.swt.carbon</groupId>
 		<artifactId>macosx</artifactId>
 		<version>3.3.0-v3346</version>
+		<scope>compile,runtime</scope>
 	</dependency>
 
 	<dependency>
@@ -64,6 +65,22 @@
 
 	<build>
 		<finalName>agent-swt</finalName>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>unpack-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>unpack-dependencies</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 
 </project>
