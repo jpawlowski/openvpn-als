@@ -1,20 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="agent" default="assemble" basedir=".">
 
-	<!-- IMPORTANT: Several obsolete things have been removed during
-			mavenization:
+	<!-- IMPORTANT: Several obsolete things have been removed from
+			this build.xml, compared to 3sp's build.xml:
 
 			* All Java compilation (handled by maven2)
 			* All tests (handled by maven2)
-			* Building support for MS Java
+			* Building support for obsolete MS Java (1.1)
 			* Building CAB version of the launcher
 			* Codeswitcher
-			* (Separate) debug version of the client.
+			* Separate OS-specific swt libraries (e.g. swt-linux)
+			  where the difference are minor.
+			* Separate debug versions of the Agent. By default
+			  maven2 includes debugging information in the class
+			  files:
+			  
+                          http://maven.apache.org/plugins/
+				maven-compiler-plugin/compile-mojo.html
 
 			Ant is being used because of the overly complex
 			and non-standard nature of the Agent build/assembly
-			process. We should definitely try to simplify the
-			process once the mavenized Agent runs
+			process. All of this could probably be duplicated
+			using a very complex maven2 assembly descriptor, but
+			it would probably be less readable for no good reason.
+			We should definitely try to simplify this process once
+			the mavenized Agent works properly.
+
+			Apart from the things listed above this build.xml
+			creates an Agent extension with almost identical
+			contents as the original 3sp ant build. It pulls
+			the files from various sources in various agent
+			modules (agent, agent-awt, agent-swt, ui,
+			agent-assembly). All of the sources used by this
+			Agent assembly process are in standard maven2 locations
+			with the exception of agent-assembly/src/main/ant-build,
+			which contains static files needed by the extension.
+			
+			The JAR files _may_ contain unnecessary stuff
+			(e.g. maverick-multiplex classes) that were present
+			in 3sp's Agent also.
 	-->
 
 
@@ -22,7 +46,7 @@
 	<property name="build.dir" value="target/ant-build" />
 
 	<!-- Misc stuff required by the extension or the build process -->
-	<property name="ant.dir" value="ant" />
+	<property name="ant.dir" value="src/main/ant-build" />
 
 	<!-- Dependencies -->
 	<property name="maverick-ssl.home" value="../maverick-ssl"/>
@@ -45,8 +69,11 @@
 	<property name="resources" value="src/main/resources"/>
 	<property name="classes" value="target/classes"/>
 	<property name="dependencies" value="target/dependency"/>
+	<property name="target" value="target"/>
 
-	<target name="assemble" depends="clean">
+
+
+	<target name="create-jars" description="Creates JAR files required by the Agent">
 
 		<!--====================-->
 		<!-- Assemble agent.jar -->
@@ -258,7 +285,6 @@
 			<include name="**/*"/>
 		</jar>					
 
-		
 
 		<!--=================-->
 		<!-- Assemble ui.jar -->
@@ -277,11 +303,45 @@
 		<jar jarfile="${build.dir}/ui.jar" basedir="${build.dir}/ui">
 			<include name="**/*"/>
 		</jar>					
+	</target>
 
 
 
 
+	<target name="assemble" depends="clean,create-jars" description="Creates the Agent extension ZIP">
 
+                <mkdir dir="${build.dir}/agent-extension"/>
+                <zip destfile="${build.dir}/agent-extension.zip">
+
+			<!-- extension.xml, images etc. needed by the Agent extension -->
+                        <zipfileset dir="${ant.dir}/extension" prefix="agent">
+                                <include name="**/*"/>
+                        </zipfileset>
+
+			<!-- JAR's we created previously -->
+                        <zipfileset dir="${build.dir}" prefix="agent">
+                                <include name="*.jar"/>
+                        </zipfileset>
+
+			<!-- Native libraries. FIXME: these _may_ not be necessary anymore with SWT 3.3+ -->
+                        <zipfileset dir="${agent-swt.home}/${dependencies}" prefix="agent">
+                                <include name="*.so"/>
+                                <include name="*.dll"/>
+                                <include name="*.jnilib"/>
+                        </zipfileset>
+
+			<!-- Maverick JAR's -->
+                        <zipfileset dir="${maverick-util.home}/${target}" prefix="agent">
+                                <include name="maverick-util.jar"/>
+                        </zipfileset>
+                        <zipfileset dir="${maverick-crypto.home}/${target}" prefix="agent">
+                                <include name="maverick-crypto.jar"/>
+                        </zipfileset>
+                        <zipfileset dir="${maverick-ssl.home}/${target}" prefix="agent">
+                                <include name="maverick-ssl.jar"/>
+                        </zipfileset>
+
+                </zip>
 
 
 	</target>
@@ -289,6 +349,28 @@
 	<target name="clean">
 		<delete dir="${build.dir}"/>
 	</target>
+
+</project>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!-- EVERYTHING BELOW THIS LINE IS OBSOLETE AND USED ONLY FOR REFERENCE PURPOSES -->
@@ -301,7 +383,7 @@
 -->
 
 
-<!-- Checksum the archive
+<!-- Checksum the archive. The point being what?
 
 	<target name="release" depends="build">
 	
@@ -319,7 +401,3 @@
 	</target>
 	
 -->
-
-<!-- Signing the applets is done with signJar, see trunk -->
-
-</project>

@@ -13,8 +13,10 @@
 			This java application to provide
 			application launching and socket tunneling operations.
 		</description>
-	
-	
+
+                <!-- NOTE: During mavenization the separate debug versions of Agent JAR's were removed.
+                           If this becomes a problem, it's relatively trivial to fix. -->
+		
 		<parameter type="2" name="debug" default="false"
 			value="${property:client.debug}" />
 	
@@ -23,139 +25,70 @@
 		<!--  TODO make use of the new 'arch' attribute in all appropriate conditions -->
 	
 		<files>
-			<!--  Matthias Jansen, No longer needed as of SWT >= 3.3
-			<file jre="+1.3" os="Linux">libswt-gtk-3235.so</file>
-			<file jre="+1.3" os="Linux">libswt-pi-gtk-3235.so</file>
-			<file jre="+1.3" os="Windows" arch="!AMD64">swt-win32-3235.dll</file>						
-			-->
-			<!-- 
-			<file jre="+1.5" os="MAC OS X">libswt-carbon-3235.jnilib</file>			
-			<file jre="+1.5" os="MAC OS X">libswt-pi-carbon-3235.jnilib</file>
-			 -->
-	
 			<file>log4j.properties</file>
-	        <file os="Windows">key.exe</file>
+		        <file os="Windows">key.exe</file>
 		</files>
-	
-		<defaultAgent jre="1.1">
+
+		<defaultAgent>
 			<classpath>
 			
 				<!-- AWT JAVA -->
 				<if string="${property:client.agent.type}" value="awt">			
-					<if parameter="debug" value="false">
-						<jar>agent.jar</jar>
-						<jar shared="true">maverick-ssl.jar</jar>
-						<jar>ui.jar</jar>
-						<jar shared="true">maverick-util.jar</jar>
-						<jar>agent.jar</jar>
-						<jar>agent-awt.jar</jar>
-					</if>
-					<if parameter="debug" value="true">
-						<jar>agent-debug.jar</jar>
-						<jar>ui-debug.jar</jar>
-						<jar shared="true">commons-logging-java1.1.jar</jar>
-						<jar shared="true">maverick-ssl.jar</jar>							
-						<jar>agent-awt-debug.jar</jar>
-						<jar shared="true">maverick-util.jar</jar>
-					</if>
+					<jar>agent.jar</jar>
+					<jar shared="true">maverick-ssl.jar</jar>
+					<jar>ui.jar</jar>
+					<jar shared="true">maverick-util.jar</jar>
+					<jar>agent.jar</jar>
+					<jar>agent-awt.jar</jar>
 				</if>
+
 				<!-- SWT JAVA -->
 				<if string="${property:client.agent.type}" value="swt">			
-					<if parameter="debug" value="false">
+						<!-- Shared JAR's -->
+						<jar shared="true">maverick-ssl.jar</jar>
+						<jar shared="true">maverick-util.jar</jar>
+
+						<!-- Generic JAR's -->
 						<jar>agent.jar</jar>
-						<jar shared="true">maverick-ssl.jar</jar>
 						<jar>ui.jar</jar>
-						<if jre="+1.3">
-							<jar os="Windows" arch="!AMD64">agent-swt.jar</jar>
-							<jar os="Linux">agent-swt.jar</jar>
-						</if>
-						<jar shared="true">maverick-util.jar</jar>
-					</if>
-					<if parameter="debug" value="true">
-						<jar>agent-debug.jar</jar>
-						<jar>ui-debug.jar</jar>
-						<jar shared="true">commons-logging-java1.1.jar</jar>
-						<jar shared="true">maverick-ssl.jar</jar>
-						<if jre="+1.3">
-							<jar os="Windows" arch="!AMD64">agent-swt-debug.jar</jar>
-							<jar os="Linux">agent-swt-debug.jar</jar>
-							<!-- TODO provide an easy way to say which jar to use if no os match -->
-						</if>
-						<jar shared="true">maverick-util.jar</jar>
-					</if>
-					<if jre="+1.3">
-						<jar os="Windows" arch="!AMD64">swt-win32.jar</jar>
-						<jar os="Windows" arch="!AMD64">agent-swt-en.jar</jar>
-						<jar os="Windows" arch="AMD64">swt-win64.jar</jar>
-						<jar os="Windows" arch="AMD64">agent-swt-en.jar</jar>
+						<jar>agent-swt.jar</jar>
+						<jar agent-swt-en.jar</jar>
+
+						<!-- Architecture-specific JAR's -->
 						<jar os="Linux" arch="!AMD64">swt-linux.jar</jar>
-						<jar os="Linux" arch="AMD64">swt-linux64.jar</jar>
-						<jar os="Linux">agent-swt-en.jar</jar>
-						<!-- 
+						<jar os="Windows" arch="!AMD64">swt-win32.jar</jar>
 						<jar os="MAC OS X">swt-macosx.jar</jar>
-						 -->
-					</if>
+
+						<!-- 64-bit JAR's not yet available -->
+						<jar os="Windows" arch="AMD64">swt-win64.jar</jar>
+						<jar os="Linux" arch="AMD64">swt-linux64.jar</jar>
 				</if>
 			
 				<!-- AUTO SELECT -->
+				<!-- FIXME: could this be just a conditional in above block? -->
 				<if string="${property:client.agent.type}" value="auto">			
-					<if parameter="debug" value="false">
+						<!-- Shared JAR's -->
+						<jar shared="true">maverick-ssl.jar</jar>
+						<jar shared="true">maverick-util.jar</jar>
+
+						<!-- Generic JAR's -->
 						<jar>agent.jar</jar>
-						<jar shared="true">maverick-ssl.jar</jar>
 						<jar>ui.jar</jar>
-						<if jre="+1.3">
-							<jar os="Windows" arch="!AMD64">agent-swt.jar</jar>
-							<jar os="Windows" arch="AMD64">agent-swt.jar</jar>							
-							<jar os="Windows" arch="AMD64">agent-swt-en.jar</jar>		
-							<jar os="Linux">agent-swt.jar</jar>
-							<jar os="MAC OS X">agent-awt.jar</jar>
-							<jar os="MAC OS X">agent-awt-en.jar</jar>
-						</if>
-						<if jre="-1.3">
-							<jar>agent-awt.jar</jar>
-							<jar>agent-awt-en.jar</jar>
-						</if>
-						<jar shared="true">maverick-util.jar</jar>
-					</if>
-					<if parameter="debug" value="true">
-						<jar>agent-debug.jar</jar>
-						<jar>ui-debug.jar</jar>
-						<jar shared="true">commons-logging-java1.1.jar</jar>
-						<jar shared="true">maverick-ssl.jar</jar>
-						<if jre="+1.3">
-							<jar os="Windows" arch="!AMD64">agent-swt-debug.jar</jar>
-							<jar os="Windows" arch="AMD64">agent-awt-debug.jar</jar>							
-							<jar os="Windows" arch="AMD64">agent-awt-en.jar</jar>	
-							<jar os="Linux">agent-swt-debug.jar</jar>
-							<jar os="MAC OS X">agent-awt-debug.jar</jar>
-							<jar os="MAC OS X">agent-awt-en.jar</jar>
-							<!-- TODO provide an easy way to say which jar to use if no os match -->
-						</if>
-						<if jre="-1.3">
-							<jar>agent-awt-debug.jar</jar>
-							<jar>agent-awt-en.jar</jar>
-						</if>
-						<jar shared="true">maverick-util.jar</jar>
-					</if>
-					<if jre="+1.3">
-						<jar os="Windows" arch="!AMD64">swt-win32.jar</jar>
-						<jar os="Windows" arch="!AMD64">agent-swt-en.jar</jar>
-						<jar os="Windows" arch="AMD64">swt-win64.jar</jar>
-						<jar os="Windows" arch="AMD64">agent-swt-en.jar</jar>
+						<jar>agent-swt.jar</jar>
+						<jar agent-swt-en.jar</jar>
+
+						<!-- Architecture-specific JAR's -->
 						<jar os="Linux" arch="!AMD64">swt-linux.jar</jar>
-						<jar os="Linux" arch="AMD64">swt-linux64.jar</jar>
-						<jar os="Linux">agent-swt-en.jar</jar>
-						<!-- 
+						<jar os="Windows" arch="!AMD64">swt-win32.jar</jar>
 						<jar os="MAC OS X">swt-macosx.jar</jar>
-						 -->
-					</if>
+
+						<!-- 64-bit JAR's not yet available -->
+						<jar os="Windows" arch="AMD64">swt-win64.jar</jar>
+						<jar os="Linux" arch="AMD64">swt-linux64.jar</jar>
 				</if>
-	
-				<jar shared="true">maverick-crypto.jar</jar>
-				<jar shared="true">log4j-java1.1.jar</jar>
-				<jar shared="true">commons-logging-java1.1.jar</jar>
-				<jar>agent-en.jar</jar>
 			</classpath>
+
+
 	
 			<main class="com.adito.agent.client.Agent">
 				<jvm os="Windows">java.library.path=${client:installDir}</jvm>
