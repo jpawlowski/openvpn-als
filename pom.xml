@@ -161,6 +161,8 @@
 	<module>agent</module>
 	<module>agent-awt</module>
 	<module>agent-swt</module>
+	<module>agent-assembly</module>
+
     </modules>
     
     <repositories>

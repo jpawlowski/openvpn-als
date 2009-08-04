@@ -20,6 +20,7 @@
 	<property name="unix.home" value="unix" />
 	<property name="activedirectory.home" value="activedirectory" />
 	<property name="agent.home" value="agent" />
+	<property name="agent-assembly.home" value="agent-assembly" />
 
 
 	<target name="install" description="Tells to use Maven instead.">
@@ -46,7 +47,7 @@
 		<!--<copy file="${networkplaces.home}/target/networkplaces-extension.zip" todir="${dir.deploy.conf}/repository/archives" />-->
 		<copy file="${unix.home}/target/unix-extension.zip" todir="${dir.deploy.conf}/repository/archives" />
 		<copy file="${activedirectory.home}/target/activedirectory-extension.zip" todir="${dir.deploy.conf}/repository/archives" />
-		<copy file="${agent.home}/target/agent-extension.zip" todir="${dir.deploy.conf}/repository/archives" />
+		<copy file="${agent-assembly.home}/target/ant-build/agent-extension.zip" todir="${dir.deploy.conf}/repository/archives" />
 		
 		<mkdir dir="${dir.deploy.tmp}/extensions" />
 		
@@ -57,7 +58,7 @@
 		<!--<unzip src="${networkplaces.home}/target/networkplaces-extension.zip" dest="${dir.deploy.tmp}/extensions" />-->
 		<unzip src="${unix.home}/target/unix-extension.zip" dest="${dir.deploy.tmp}/extensions" />
 		<unzip src="${activedirectory.home}/target/activedirectory-extension.zip" dest="${dir.deploy.tmp}/extensions" />
-		<unzip src="${agent.home}/target/agent-extension.zip" dest="${dir.deploy.tmp}/extensions" />
+		<unzip src="${agent-assembly.home}/target/ant-build/agent-extension.zip" dest="${dir.deploy.tmp}/extensions" />
 		
 		<!-- Merge the extensions' webapp dirs into the main webapp one -->
 		<copy todir="${dir.deploy}">
