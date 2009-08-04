@@ -334,6 +334,9 @@
                         <zipfileset dir="${maverick-util.home}/${target}" prefix="agent">
                                 <include name="maverick-util.jar"/>
                         </zipfileset>
+
+			<!-- FIXME: maverick-crypto is not referenced to in the extension.xml so
+			     it's probably unnecessary -->
                         <zipfileset dir="${maverick-crypto.home}/${target}" prefix="agent">
                                 <include name="maverick-crypto.jar"/>
                         </zipfileset>
