@@ -1,2 +1,0 @@
-The "extensions" directory is not part of standard maven2 directory structure. It's only used in building the Adito extension ZIP's,
-which are not used in "nonembedded".
