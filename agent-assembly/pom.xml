@@ -3,7 +3,7 @@
 	<groupId>com.adito</groupId>
 	<artifactId>agent-assembly</artifactId>
 	<version>1.0-SNAPSHOT</version>
-
+	<name>Agent extension assembler</name>
 <build>
 	<finalName>agent</finalName>
 
