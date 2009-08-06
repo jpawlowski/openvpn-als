@@ -26,8 +26,8 @@ webapp:
 - Build and assemble the extensions (e.g. unix, networkplaces, pam...)
 - Build the agent components (agent, agent-awt, agent-swt, ui)
 - Assemble the agent (in stub module "agent-assembly") with maven + antrun plugin
-- Assemble all of this into a functional webapp directory for deployment (with "ant deploy"
-  in $ADITO_HOME/build.xml)
+- Assemble all of this into a functional webapp directory for deployment
+ (in stub module "als-assembly") with maven + antrun plugin
 
 ==Installing and running Adito in "nonembedded"==
 
