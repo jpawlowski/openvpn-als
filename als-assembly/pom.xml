@@ -1,0 +1,35 @@
+<!-- The purpose of this module is to run "ant deploy" that creates a deployable
+     version of ALS to ../target/adito -->
+
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.adito</groupId>
+	<artifactId>als-assembly</artifactId>
+	<version>1.0-SNAPSHOT</version>
+
+<build>
+	<finalName>als</finalName>
+
+	<plugins>
+	<plugin>
+        	<artifactId>maven-antrun-plugin</artifactId>
+        	<executions>
+			<execution>
+				<phase>package</phase>
+				<configuration>
+					<tasks>
+						<!-- Here we embed our ant script - or more
+						     correctly - calls to build.xml -->
+						<ant target="assemble"/>
+					</tasks>
+				</configuration>
+				<goals>
+					<goal>run</goal>
+				</goals>
+			</execution>
+		</executions>
+	</plugin>
+	</plugins>
+</build>
+
+</project>

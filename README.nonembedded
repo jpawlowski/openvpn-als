@@ -45,11 +45,7 @@ First build the modules that have been mavenized:
   cd $ADITO_HOME
   mvn -Dmaven.test.skip=true clean install 
 
-After this you must create a deployable version of ALS with
-
-  ant deploy
-
-To deploy ALS on Jetty (6.1.x):
+To deploy ALS on Jetty (6.1.x) copy the target/adito directory to webapps directory:
 
   cd $ADITO_HOME/target
   cp -r adito $JETTY_HOME/webapps/
@@ -82,7 +78,6 @@ The default admin username is "admin" and password is "admin123".
 To clean up, do 
 
   mvn clean
-
 
 ==Differences between "nonembedded" and old (3sp-style) "trunk"==
 

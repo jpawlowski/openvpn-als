@@ -156,12 +156,17 @@
 	<module>tunnels</module>
 	<module>networkplaces</module>
 
-	<!-- Agent extension -->
+	<!-- Agent modules -->
 	<module>ui</module>
 	<module>agent</module>
 	<module>agent-awt</module>
 	<module>agent-swt</module>
+
+	<!-- Assemble the Agent extension -->
 	<module>agent-assembly</module>
+
+	<!-- Assemble a deployable version of ALS  -->
+	<module>als-assembly</module>
 
     </modules>
     

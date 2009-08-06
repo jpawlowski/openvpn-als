@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="adito" default="install">
+<project name="adito" default="assemble">
 
 	<!-- The base webapp directory. -->
-	<property name="dir.webapp" value="webapp/target/webapp-0.9.2-SNAPSHOT" />
+	<property name="dir.webapp" value="../webapp/target/webapp-0.9.2-SNAPSHOT" />
 
 	<!-- The deployment directories. -->
-	<property name="dir.deploy" value="target/adito" />
+	<property name="dir.target" value="../target" />
+	<property name="dir.deploy" value="../target/adito" />
 	<property name="dir.deploy.conf" value="${dir.deploy}/WEB-INF/conf" />
 	<property name="dir.deploy.tmp" value="${dir.deploy}/WEB-INF/tmp" />
 	<property name="dir.deploy.logs" value="${dir.deploy}/WEB-INF/logs" />
@@ -13,14 +14,14 @@
 
 
 	<!-- Directories where from the extensions can be found. -->
-	<property name="tunnels.home" value="tunnels" />
-	<property name="applications.home" value="applications" />
-	<property name="webforwards.home" value="webforwards" />
-	<property name="networkplaces.home" value="networkplaces" />
-	<property name="unix.home" value="unix" />
-	<property name="activedirectory.home" value="activedirectory" />
-	<property name="agent.home" value="agent" />
-	<property name="agent-assembly.home" value="agent-assembly" />
+	<property name="tunnels.home" value="../tunnels" />
+	<property name="applications.home" value="../applications" />
+	<property name="webforwards.home" value="../webforwards" />
+	<property name="networkplaces.home" value="../networkplaces" />
+	<property name="unix.home" value="../unix" />
+	<property name="activedirectory.home" value="../activedirectory" />
+	<property name="agent.home" value="../agent" />
+	<property name="agent-assembly.home" value="../agent-assembly" />
 
 
 	<target name="install" description="Tells to use Maven instead.">
@@ -30,7 +31,7 @@
 	</target>
 
 
-	<target name="deploy" description="Deploys the web application extensions">
+	<target name="assemble" description="Assembles the web application and the extensions" depends="clean">
 
 		<!-- Copy the webapp base -->
 		<mkdir dir="${dir.deploy}" />
@@ -102,21 +103,25 @@
 
 	</target>
 
+	<target name="clean" description="Removes the target directory">
+		<delete dir="${dir.target}" />
+	</target>
+
 	<!-- This target is meant for legacy ant output, not for cleaning up after mvn install -->
-        <target name="clean" description="Removes compiled files">
-                <ant dir="adito" target="clean"/>
-                <ant dir="adito-community-activedirectory" target="clean"/>
-                <ant dir="adito-community-applications" target="clean"/>
-                <ant dir="adito-community-network-places" target="clean"/>
-                <ant dir="adito-community-pam" target="clean"/>
-                <ant dir="adito-community-tunnels" target="clean"/>
-                <ant dir="adito-community-unix" target="clean"/>
-                <ant dir="adito-community-web-forwards" target="clean"/>
-                <ant dir="maverick-crypto" target="clean"/>
-                <ant dir="maverick-multiplex" target="clean"/>
-                <ant dir="maverick-ssl" target="clean"/>
-                <ant dir="maverick-util" target="clean"/>
-                <ant dir="adito-agent" target="clean"/>
+        <target name="clean-old" description="Removes compiled files">
+                <ant dir="../adito" target="clean"/>
+                <ant dir="../adito-community-activedirectory" target="clean"/>
+                <ant dir="../adito-community-applications" target="clean"/>
+                <ant dir="../adito-community-network-places" target="clean"/>
+                <ant dir="../adito-community-pam" target="clean"/>
+                <ant dir="../adito-community-tunnels" target="clean"/>
+                <ant dir="../adito-community-unix" target="clean"/>
+                <ant dir="../adito-community-web-forwards" target="clean"/>
+                <ant dir="../maverick-crypto" target="clean"/>
+                <ant dir="../maverick-multiplex" target="clean"/>
+                <ant dir="../maverick-ssl" target="clean"/>
+                <ant dir="../maverick-util" target="clean"/>
+                <ant dir="../adito-agent" target="clean"/>
         </target>
 
 </project>

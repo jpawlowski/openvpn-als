@@ -85,7 +85,7 @@ import com.adito.agent.client.webforwards.WebForwardManager;
 public class Agent implements RequestHandler, MultiplexedConnectionListener {
 	
 	/*
-	 * Replaced by build
+	 * Should be replaced during build with correct version
 	 */
 	public final static String AGENT_VERSION = "999.999.999";
 

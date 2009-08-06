@@ -310,7 +310,6 @@
 
 	<target name="assemble" depends="clean,create-jars" description="Creates the Agent extension ZIP">
 
-                <mkdir dir="${build.dir}/agent-extension"/>
                 <zip destfile="${build.dir}/agent-extension.zip">
 
 			<!-- extension.xml, images etc. needed by the Agent extension -->
@@ -340,6 +339,7 @@
                         <zipfileset dir="${maverick-crypto.home}/${target}" prefix="agent">
                                 <include name="maverick-crypto.jar"/>
                         </zipfileset>
+
                         <zipfileset dir="${maverick-ssl.home}/${target}" prefix="agent">
                                 <include name="maverick-ssl.jar"/>
                         </zipfileset>
