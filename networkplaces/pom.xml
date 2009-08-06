@@ -31,10 +31,26 @@
 		<version>${project.version}</version>
 	</dependency>
 
+	<!-- Although networkplaces module depends on
+	     commons-vfs-* and jcifs, the dependencies
+	     have to be defined in "webapp" module -
+	     otherwise they don't end up in the lib
+	     directory and can't be found -->
+
+
+	<!--
 	<dependency>
 		<groupId>org.samba.jcifs</groupId>
 		<artifactId>jcifs</artifactId>
 		<version>1.2.19</version>
+	</dependency>
+	-->
+	<!-- 
+
+	<dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-vfs</artifactId>
+		<version>2.0-SNAPSHOT</version>
 	</dependency>
 
 	<dependency>
@@ -42,6 +58,9 @@
 		<artifactId>commons-vfs-sandbox</artifactId>
 		<version>2.0-SNAPSHOT</version>
 	</dependency>
+
+	-->
+
 
     </dependencies>
 

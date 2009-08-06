@@ -238,10 +238,7 @@
 
 	<!-- A few Adito components are not available in any public Maven2
 	     repository. This custom repository contains all the Adito-specific
-	     stuff, such as apache-commons-cache, a specific version of JRADIUS
-	     and snapshot versions of apache-commons-vfs required by
-	     networkplaces extension -->
-
+	     stuff, such as a specific version of JRADIUS -->
         <repository>
             <id>adito.pcdog.ch</id>
             <name>Adito Maven2 repository</name>

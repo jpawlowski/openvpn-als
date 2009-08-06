@@ -45,7 +45,7 @@
 		<copy file="${tunnels.home}/target/tunnels-extension.zip" todir="${dir.deploy.conf}/repository/archives" />
 		<copy file="${applications.home}/target/applications-extension.zip" todir="${dir.deploy.conf}/repository/archives" />
 		<copy file="${webforwards.home}/target/webforwards-extension.zip" todir="${dir.deploy.conf}/repository/archives" />
-		<!--<copy file="${networkplaces.home}/target/networkplaces-extension.zip" todir="${dir.deploy.conf}/repository/archives" />-->
+		<copy file="${networkplaces.home}/target/networkplaces-extension.zip" todir="${dir.deploy.conf}/repository/archives" />
 		<copy file="${unix.home}/target/unix-extension.zip" todir="${dir.deploy.conf}/repository/archives" />
 		<copy file="${activedirectory.home}/target/activedirectory-extension.zip" todir="${dir.deploy.conf}/repository/archives" />
 		<copy file="${agent-assembly.home}/target/ant-build/agent-extension.zip" todir="${dir.deploy.conf}/repository/archives" />
@@ -56,7 +56,7 @@
 		<unzip src="${tunnels.home}/target/tunnels-extension.zip" dest="${dir.deploy.tmp}/extensions" />
 		<unzip src="${applications.home}/target/applications-extension.zip" dest="${dir.deploy.tmp}/extensions" />
 		<unzip src="${webforwards.home}/target/webforwards-extension.zip" dest="${dir.deploy.tmp}/extensions" />
-		<!--<unzip src="${networkplaces.home}/target/networkplaces-extension.zip" dest="${dir.deploy.tmp}/extensions" />-->
+		<unzip src="${networkplaces.home}/target/networkplaces-extension.zip" dest="${dir.deploy.tmp}/extensions" />
 		<unzip src="${unix.home}/target/unix-extension.zip" dest="${dir.deploy.tmp}/extensions" />
 		<unzip src="${activedirectory.home}/target/activedirectory-extension.zip" dest="${dir.deploy.tmp}/extensions" />
 		<unzip src="${agent-assembly.home}/target/ant-build/agent-extension.zip" dest="${dir.deploy.tmp}/extensions" />
@@ -72,11 +72,11 @@
 				<include name="**/*" />
 			</fileset>
 		</copy>
-		<!--<copy todir="${dir.deploy}">
+		<copy todir="${dir.deploy}">
 			<fileset dir="${dir.deploy.tmp}/extensions/networkplaces/webapp">
 				<include name="**/*" />
 			</fileset>
-		</copy>-->
+		</copy>
 		<copy todir="${dir.deploy}">
 			<fileset dir="${dir.deploy.tmp}/extensions/tunnels/webapp">
 				<include name="**/*" />
@@ -96,7 +96,7 @@
 		<!-- Copy the extension jar files into the webapp lib directory -->
 		<copy file="${dir.deploy.tmp}/extensions/activedirectory/private/activedirectory.jar" todir="${dir.deploy.lib}" />
 		<copy file="${dir.deploy.tmp}/extensions/applications/private/applications.jar" todir="${dir.deploy.lib}" />
-		<!--<copy file="${dir.deploy.tmp}/extensions/networkplaces/private/networkplaces.jar" todir="${dir.deploy.lib}" />-->
+		<copy file="${dir.deploy.tmp}/extensions/networkplaces/private/networkplaces.jar" todir="${dir.deploy.lib}" />
 		<copy file="${dir.deploy.tmp}/extensions/tunnels/private/tunnels.jar" todir="${dir.deploy.lib}" />
 		<copy file="${dir.deploy.tmp}/extensions/unix/private/unix.jar" todir="${dir.deploy.lib}" />
 		<copy file="${dir.deploy.tmp}/extensions/webforwards/private/webforwards.jar" todir="${dir.deploy.lib}" />

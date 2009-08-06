@@ -36,7 +36,6 @@ import org.apache.commons.vfs.provider.tar.TgzFileProvider;
 import org.apache.commons.vfs.provider.temp.TemporaryFileProvider;
 import org.apache.commons.vfs.provider.zip.ZipFileProvider;
 import org.apache.commons.vfs.provider.sftp.SftpFileProvider;
-//for webdav support
 import  org.apache.commons.vfs.provider.webdav.WebdavFileProvider;
 import  com.adito.networkplaces.store.webdav.WebDAVProvider;
 
@@ -317,14 +316,7 @@ public class NetworkPlacePlugin extends DefaultPlugin {
 	void initFileSystems() throws FileSystemException {
 		VFSProviderManager mgr = VFSProviderManager.getInstance();
 
-		// Intialise the additional commons vfs providers
-
-		/*
-		((StandardFileSystemManager)VFS.getManager()).addProvider("webdav", new WebdavFileProvider());
-		*/
-		//
-
-		//NOTE: This Code for Old Apache Commons VFS
+		//FIXME: This code was for old Adito Commons VFS and should be removed when things stabilize
 		/*
 		((StandardFileSystemManager)VFS.getManager()).addProvider("jar", new JarFileProvider());
 		((StandardFileSystemManager)VFS.getManager()).addProvider("zip", new ZipFileProvider());
@@ -336,7 +328,7 @@ public class NetworkPlacePlugin extends DefaultPlugin {
 		((StandardFileSystemManager)VFS.getManager()).addProvider(new String[] { "bzip2", "bz2" }, new Bzip2FileProvider());
 		*/
 
-		//NOTE: This Code for Apache Commons VFS
+		//NOTE: This code is for Apache Commons VFS
 		StandardFileSystemManager sfsm = new StandardFileSystemManager();
 		sfsm.addProvider("jar", new JarFileProvider());
 		sfsm.addProvider("zip", new ZipFileProvider());
@@ -346,26 +338,16 @@ public class NetworkPlacePlugin extends DefaultPlugin {
 		sfsm.addProvider("gz", new GzipFileProvider());
 		sfsm.addProvider("tmp", new TemporaryFileProvider());
 		sfsm.addProvider(new String[] { "bzip2", "bz2" }, new Bzip2FileProvider());
-		sfsm.addProvider("sftp", new SftpFileProvider());//for missing sftp file provider
-
-		sfsm.addProvider("webdav", new WebdavFileProvider()); //For WebDAv provide added
+		sfsm.addProvider("sftp", new SftpFileProvider());
+		sfsm.addProvider("webdav", new WebdavFileProvider());
 
 		mgr.registerProvider(new FileProvider());
 		mgr.registerProvider(new FTPProvider());
-		mgr.registerProvider(new SFTPProvider());//For SFTP Drive Mapping
+		mgr.registerProvider(new SFTPProvider());
 		mgr.registerProvider(new CIFSProvider());
 		mgr.registerProvider(new JarProvider());
 		mgr.registerProvider(new ZipProvider());
-		mgr.registerProvider(new WebDAVProvider()); //For WebDAv Drive Mapping
-
-		/*
-		Don't seem to work as expected.
-
-        mgr.registerProvider(new TarProvider());
 		mgr.registerProvider(new WebDAVProvider());
-		mgr.registerProvider(new TgzProvider());
-		mgr.registerProvider(new Tbz2Provider());
-		*/
 	}
 
 	void initUploadHandler() {

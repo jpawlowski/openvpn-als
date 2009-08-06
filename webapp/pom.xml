@@ -123,14 +123,14 @@
 		<groupId>jetty</groupId>
 		<artifactId>jasper-compiler</artifactId>
 		<version>4.2.20RC0</version>
-		<!-- Running ALS fails if this is included -->
+		<!-- Running ALS fails if this is present at runtime -->
 		<scope>provided</scope>
 	</dependency>
 	<dependency>
 		<groupId>tomcat</groupId>
 		<artifactId>jasper-runtime</artifactId>
 		<version>5.5.23</version>
-		<!-- Running ALS fails if this is included -->
+		<!-- Running ALS fails if this is present at runtime -->
 		<scope>provided</scope>
 	</dependency>
 	<dependency>
@@ -149,15 +149,39 @@
 		<version>1.1</version>
 	</dependency>
 
-	<!-- Adito contains a slightly patched version of commons-vfs
-	     but we'll try the vanilla version first to see what happens.
-	     Version 20050307052300 did not allow compiling due to a
-	     missing interface. -->
+	<!-- Although the actual webapp does not require
+	     the following modules, the networkplaces module
+	     expects them to be at webapp/WEB-INF/lib.
+
+	     We need a recent version of commons-vfs to
+	     have support for all providers (e.g. webdav)
+	     the ALS networkplaces module supports
+	-->
+
 
 	<dependency>
-		<groupId>commons-vfs</groupId>
+		<groupId>org.apache.commons</groupId>
 		<artifactId>commons-vfs</artifactId>
-		<version>1.0</version>
+		<version>2.0-SNAPSHOT</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-vfs-sandbox</artifactId>
+		<version>2.0-SNAPSHOT</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.samba.jcifs</groupId>
+		<artifactId>jcifs</artifactId>
+		<version>1.2.19</version>
+	</dependency>
+
+	<dependency>
+		<groupId>com.jcraft</groupId>
+		<artifactId>jsch</artifactId>
+		<version>0.1.41</version>
+		<scope>runtime</scope>
 	</dependency>
 
 	<!-- At least Tomcat spits out errors if servlet-jsp
