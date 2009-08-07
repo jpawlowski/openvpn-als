@@ -29,6 +29,9 @@
 				private/jradius-dictionary.jar
 			</classpath>
 			<classpath>
+				private/jradius.jar
+			</classpath>
+			<classpath>
 				private/commons-chain-1.0.jar
 			</classpath>
 			<classpath>

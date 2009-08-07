@@ -1,0 +1,6 @@
+This RADIUS module has static libraries in "private" directory. If the dependencies are ever updated through pom.xml and an API change
+occurs, the extension will fail to work. The static libraries in "private" should be replaced with libraries fetched using
+maven-dependency-plugin. See "agent-assembly" module for an example.
+
+Also, the jradius and jradius-dictionary dependencies are of unknown, old version. The later versions available from public repositories
+do not work (=compile fails). The code should be upgraded to make use of the newest jradius API.
