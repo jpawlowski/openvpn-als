@@ -18,11 +18,15 @@
 	<property name="applications.home" value="../applications" />
 	<property name="webforwards.home" value="../webforwards" />
 	<property name="networkplaces.home" value="../networkplaces" />
-	<property name="unix.home" value="../unix" />
-	<property name="activedirectory.home" value="../activedirectory" />
 	<property name="agent.home" value="../agent" />
 	<property name="agent-assembly.home" value="../agent-assembly" />
 
+	<!-- Authentication modules -->
+	<property name="unix.home" value="../unix" />
+	<property name="pam.home" value="../pam" />
+	<property name="ldap.home" value="../ldap" />
+	<property name="radius.home" value="../radius" />
+	<property name="activedirectory.home" value="../activedirectory" />
 
 	<target name="install" description="Tells to use Maven instead.">
 		
@@ -47,6 +51,9 @@
 		<copy file="${webforwards.home}/target/webforwards-extension.zip" todir="${dir.deploy.conf}/repository/archives" />
 		<copy file="${networkplaces.home}/target/networkplaces-extension.zip" todir="${dir.deploy.conf}/repository/archives" />
 		<copy file="${unix.home}/target/unix-extension.zip" todir="${dir.deploy.conf}/repository/archives" />
+		<copy file="${pam.home}/target/pam-extension.zip" todir="${dir.deploy.conf}/repository/archives" />
+		<copy file="${ldap.home}/target/ldap-extension.zip" todir="${dir.deploy.conf}/repository/archives" />
+		<copy file="${radius.home}/target/radius-extension.zip" todir="${dir.deploy.conf}/repository/archives" />
 		<copy file="${activedirectory.home}/target/activedirectory-extension.zip" todir="${dir.deploy.conf}/repository/archives" />
 		<copy file="${agent-assembly.home}/target/ant-build/agent-extension.zip" todir="${dir.deploy.conf}/repository/archives" />
 		
@@ -58,6 +65,9 @@
 		<unzip src="${webforwards.home}/target/webforwards-extension.zip" dest="${dir.deploy.tmp}/extensions" />
 		<unzip src="${networkplaces.home}/target/networkplaces-extension.zip" dest="${dir.deploy.tmp}/extensions" />
 		<unzip src="${unix.home}/target/unix-extension.zip" dest="${dir.deploy.tmp}/extensions" />
+		<unzip src="${pam.home}/target/pam-extension.zip" dest="${dir.deploy.tmp}/extensions" />
+		<unzip src="${ldap.home}/target/ldap-extension.zip" dest="${dir.deploy.tmp}/extensions" />
+		<unzip src="${radius.home}/target/radius-extension.zip" dest="${dir.deploy.tmp}/extensions" />
 		<unzip src="${activedirectory.home}/target/activedirectory-extension.zip" dest="${dir.deploy.tmp}/extensions" />
 		<unzip src="${agent-assembly.home}/target/ant-build/agent-extension.zip" dest="${dir.deploy.tmp}/extensions" />
 		
@@ -88,6 +98,21 @@
 			</fileset>
 		</copy>
 		<copy todir="${dir.deploy}">
+			<fileset dir="${dir.deploy.tmp}/extensions/pam/webapp">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+		<copy todir="${dir.deploy}">
+			<fileset dir="${dir.deploy.tmp}/extensions/ldap/webapp">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+		<copy todir="${dir.deploy}">
+			<fileset dir="${dir.deploy.tmp}/extensions/radius/webapp">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+		<copy todir="${dir.deploy}">
 			<fileset dir="${dir.deploy.tmp}/extensions/webforwards/webapp">
 				<include name="**/*" />
 			</fileset>
@@ -99,6 +124,9 @@
 		<copy file="${dir.deploy.tmp}/extensions/networkplaces/private/networkplaces.jar" todir="${dir.deploy.lib}" />
 		<copy file="${dir.deploy.tmp}/extensions/tunnels/private/tunnels.jar" todir="${dir.deploy.lib}" />
 		<copy file="${dir.deploy.tmp}/extensions/unix/private/unix.jar" todir="${dir.deploy.lib}" />
+		<copy file="${dir.deploy.tmp}/extensions/pam/private/pam.jar" todir="${dir.deploy.lib}" />
+		<copy file="${dir.deploy.tmp}/extensions/ldap/private/ldap.jar" todir="${dir.deploy.lib}" />
+		<copy file="${dir.deploy.tmp}/extensions/radius/private/radius.jar" todir="${dir.deploy.lib}" />
 		<copy file="${dir.deploy.tmp}/extensions/webforwards/private/webforwards.jar" todir="${dir.deploy.lib}" />
 
 	</target>
