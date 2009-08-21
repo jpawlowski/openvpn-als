@@ -2,7 +2,7 @@
 	requiredHostVersion="0.9.0" 
 	id="radius" 
 	name="RADIUS authentication" 
-	license="GPL" 
+	license="GPLv2" 
 	productURL="http://localhost"  
 	order="11300" 
 	startOnSetupMode="true">
