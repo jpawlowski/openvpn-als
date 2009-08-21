@@ -1,8 +1,26 @@
-The webapp/WEB-INF/jsp directory contained a JSP page, radiusAuth.jspf, which created the login page for
-RADIUS users. However, this JSP page was directly taken from SSL-Explorer's proprietary
-sslexplorer-enterprise-RADIUS extension. Using the JSP file would have violated Barracuda Network's
-(formerly 3sp) copyright and put the project at an unnecessary risk. Other files were either taken from
-the old sslexplorer-community-RADIUS plugin or otherwise safe to use.
+BUILDING RADIUS AUTHENTICATION PLUGIN
 
-So the current RADIUS authentication module is unusable due to missing login JSP page. Otherwise it
-_should_ work properly. 
+See ../README.nonembedded for generic instructions on how to build entire
+"nonembedded" branch. RADIUS plugin will be built along with the other 
+modules. 
+
+Note - the required radiusAuth.jspf file is not yet (21st Aug 2009) in 
+the SVN, but it's getting there.
+
+INSTALLATION
+
+This is how you install the RADIUS authentication module:
+
+- stop adito
+- drop the radius/target/radius-extension.zip to
+  $ADITO_HOME/conf/repository/archives
+- start adito
+- login as admin
+- create a new authentication scheme and attach RADIUS module to it
+- put the RADIUS-enabled authentication scheme to the top of the list 
+  (should you want that)
+- edit RADIUS settings under "System Configuration -> RADIUS" (and possibly
+  restart)
+
+You might be able to just upload the radius-extension.zip using 
+Extension Manager without stopping and starting Adito.
