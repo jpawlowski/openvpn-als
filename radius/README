@@ -24,3 +24,16 @@ This is how you install the RADIUS authentication module:
 
 You might be able to just upload the radius-extension.zip using 
 Extension Manager without stopping and starting Adito.
+
+CREDITS
+
+Some parts taken from the original open-source SSL-Explorer RADIUS 
+extension
+
+Module written by Avantage (http://www.avantage.nl/home.html)
+
+Build system and finishing touches done by Tietoteema Oy 
+(http://www.tietoteema.fi)
+
+Thanks go to Trisec GmbH (http://www.trisec.de) for sponsoring the final 
+development efforts
