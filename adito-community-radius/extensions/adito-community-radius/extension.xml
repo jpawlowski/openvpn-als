@@ -1,0 +1,117 @@
+<bundle version="1.0.14" 
+	requiredHostVersion="0.9.0" 
+	id="adito-community-radius" 
+	name="Adito RADIUS" 
+	license="GPLv2" 
+	productURL="http://localhost"  
+	order="11300" 
+	startOnSetupMode="true">
+	<description>
+    		This extension bundle adds a RADIUS Authentication Module.
+	</description>    
+
+    <extension type="plugin" 
+	extension="adito-community-radius" 
+	name="Adito Community RADIUS">
+    	<description>
+		Avantage RADIUS authentication
+	</description>
+
+	<plugin name="adito-community-radius" 
+		class="com.adito.radius.RADIUSPlugin">
+			<classpath>
+				private/adito-community-radius.jar
+			</classpath>
+			<classpath>
+				private/gnu-crypto.jar
+			</classpath>
+			<classpath>
+				private/jradius-dictionary.jar
+			</classpath>
+			<classpath>
+				private/jradius.jar
+			</classpath>
+			<classpath>
+				private/commons-chain-1.0.jar
+			</classpath>
+			<classpath>
+				private/commons-configuration-1.1.jar
+			</classpath>
+			<classpath>
+				private/java-getopt-1.0.10.jar
+			</classpath>
+			<classpath>
+				private/ipdr.jar
+			</classpath>
+			<resources>webapp</resources>	
+		</plugin>
+		
+		<propertyDefinitions>
+
+			<realmProperties>
+				<category id="200" bundle="radius"
+					image="categories/radius.gif" parent="65" />
+		
+				<definition type="0"
+					name="radius.serverHostName" typeMeta="" category="200"
+					defaultValue="localhost" sortOrder="10" 
+					validation="com.adito.input.validators.NonBlankStringValidator"
+					messageResourcesKey="radius" />	
+									
+				<definition type="1"
+					name="radius.authenticationPort" typeMeta="" category="200"
+					defaultValue="1812" sortOrder="20"
+					validation="com.adito.input.validators.IntegerValidator"
+					messageResourcesKey="radius" />
+
+				<definition type="1"
+					name="radius.accountingPort" typeMeta="" category="200"
+					defaultValue="1813" sortOrder="30"
+					validation="com.adito.input.validators.IntegerValidator"
+					messageResourcesKey="radius" />
+
+				<definition type="4"
+					name="radius.sharedSecret" typeMeta=""
+					category="200" defaultValue="" sortOrder="40" validation=""
+					messageResourcesKey="radius" />
+
+				<definition type="3"
+					name="radius.authenticationMethod"
+					typeMeta="chap,pap,mschap,mschapv2" category="200" defaultValue="chap"
+					sortOrder="50"
+					validation=""
+					messageResourcesKey="radius" />
+					
+				<definition type="1"
+					name="radius.timeOut" typeMeta="" category="200"
+					defaultValue="30" sortOrder="60"
+					validation="com.adito.input.validators.IntegerValidator"
+					messageResourcesKey="radius" />
+
+				<definition type="1"
+					name="radius.retries" typeMeta="" category="200"
+					defaultValue="2" sortOrder="70"
+					validation="com.adito.input.validators.IntegerValidator"
+					messageResourcesKey="radius" />
+					
+				<definition type="5"
+					name="radius.attributes" typeMeta="" category="200"
+					defaultValue="User-Name = %USERNAME%!User-Password = %PASSWORD%" sortOrder="80" validation=""
+					messageResourcesKey="radius" />
+					
+				<definition type="3"
+					name="radius.usernameCase"
+					typeMeta="none,upper,lower" category="200" defaultValue="none"
+					sortOrder="90"
+					validation=""
+					messageResourcesKey="radius" />
+															
+				<definition type="2"
+					name="radius.expectChallenge" typeMeta=""
+					category="200" defaultValue="false" sortOrder="100" validation=""
+					messageResourcesKey="radius" />
+					
+			</realmProperties>
+		</propertyDefinitions>
+	</extension>
+</bundle>
