@@ -209,7 +209,7 @@ public class CustomJsseListener extends JsseListener {
             tm.init(ks);
 
             tma = new TrustManager[tm.getTrustManagers().length + 1];
-            for(int i=0;i<tm.getTrustManagers().length-1;i++) {
+            for(int i=0;i<tm.getTrustManagers().length;i++) {
                 tma[i] = tm.getTrustManagers()[i];
             }
             tma[tma.length-1] = trustManager;
