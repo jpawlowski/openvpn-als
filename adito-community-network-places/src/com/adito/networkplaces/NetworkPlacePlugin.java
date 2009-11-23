@@ -29,6 +29,7 @@ import org.apache.commons.vfs.VFS;
 import org.apache.commons.vfs.impl.StandardFileSystemManager;
 import org.apache.commons.vfs.provider.bzip2.Bzip2FileProvider;
 import org.apache.commons.vfs.provider.gzip.GzipFileProvider;
+import org.apache.commons.vfs.provider.smb.SmbFileProvider;
 import org.apache.commons.vfs.provider.jar.JarFileProvider;
 import org.apache.commons.vfs.provider.tar.TarFileProvider;
 import org.apache.commons.vfs.provider.tar.Tbz2FileProvider;
@@ -346,17 +347,17 @@ public class NetworkPlacePlugin extends DefaultPlugin {
 		sfsm.addProvider("gz", new GzipFileProvider());
 		sfsm.addProvider("tmp", new TemporaryFileProvider());
 		sfsm.addProvider(new String[] { "bzip2", "bz2" }, new Bzip2FileProvider());
-		sfsm.addProvider("sftp", new SftpFileProvider());//for missing sftp file provider
-
-		sfsm.addProvider("webdav", new WebdavFileProvider()); //For WebDAv provide added
+		sfsm.addProvider("sftp", new SftpFileProvider());
+		sfsm.addProvider("cifs", new SmbFileProvider());
+		sfsm.addProvider("webdav", new WebdavFileProvider());
 
 		mgr.registerProvider(new FileProvider());
 		mgr.registerProvider(new FTPProvider());
-		mgr.registerProvider(new SFTPProvider());//For SFTP Drive Mapping
+		mgr.registerProvider(new SFTPProvider());
 		mgr.registerProvider(new CIFSProvider());
 		mgr.registerProvider(new JarProvider());
 		mgr.registerProvider(new ZipProvider());
-		mgr.registerProvider(new WebDAVProvider()); //For WebDAv Drive Mapping
+		mgr.registerProvider(new WebDAVProvider());
 
 		/*
 		Don't seem to work as expected.
