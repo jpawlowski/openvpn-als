@@ -49,11 +49,14 @@ public class AgentRequestHandler implements RequestHandler {
 
 		if(request.getPath().startsWith("/agent")) {
 			
+            // Determine the Agent type (e.g. interactive, debug...)
 			String type = (String) request.getParameters().get("agentType");
 
 			if(type!=null) {
 				
-				
+				/* Authenticate the user against webapp (server) component. The User
+                   class is an interface containing user-specific variables such
+                   as home directory. See com.adito.security.User for more information. */
 				User user = AgentManager.getInstance().authenticate(type, request);
 				
 				if(user == null) {

@@ -198,6 +198,7 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 			.getLog(Agent.class);
 	// #endif
 
+    /** Set the HTTP User Agent string */
 	static {
 		HttpClient.setUserAgent("Agent"); //$NON-NLS-1$
 	}

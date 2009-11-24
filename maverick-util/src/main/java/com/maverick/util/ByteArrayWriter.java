@@ -28,7 +28,12 @@ import java.math.BigInteger;
 /**
  *
  * <p>Utility class to write common parameter types to a byte array.</p>
+ * <p><b>Note</b>: this class and all classes depending on can only communicate to other Java applications.
+ * This is because Java-specific streaming classes, ByteArrayInputStream and ByteArrayOutputStream, are being
+ * used. For more information, take a look here: http://java.sun.com/j2se/1.4.2/docs/api/</p>
+ * 
  * @author Lee David Painter
+ * @author Samuli Seppänen
  */
 public class ByteArrayWriter
     extends ByteArrayOutputStream {

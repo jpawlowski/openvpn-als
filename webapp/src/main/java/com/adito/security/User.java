@@ -26,8 +26,11 @@ import com.adito.policyframework.Principal;
 
 /**
  * @author Lee David Painter
+ * @author Samuli Seppänen
  * 
- * The attributes of a user who has logged into the system.
+ * The attributes of a user who has logged into the system. This interface
+ * is implemented by com.adito.security.DefaultUser, which in turn is
+ * extended by the real User classes, e.g. com.adito.ldap.LdapUser.
  */
 public interface User extends Principal, Comparable {
 

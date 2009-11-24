@@ -33,8 +33,7 @@ public abstract class AbstractResourceManager {
 	// #endif
 
 	// 	Protected instance variables
-	
-	protected Agent agent;
+		protected Agent agent;
 
 	public AbstractResourceManager(Agent agent) {
 		this.agent = agent;
@@ -45,6 +44,7 @@ public abstract class AbstractResourceManager {
 	}
 
 	public void getResources(int resourceType, String menu) {
+        // FIXME: remove dependencies on Java-specific Writer classes in ByteArrayWriter
 		try {
 			ByteArrayWriter baw = new ByteArrayWriter();
 			baw.writeInt(resourceType);
