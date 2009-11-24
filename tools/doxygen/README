@@ -4,5 +4,5 @@ from this directory:
 doxygen
 
 If you want to customize the output, edit the doxygen configuration file (Doxyfile) as you will. You also need to have graphviz
-installed or doxygen can't create any diagrams (which are very useful).
+installed or doxygen can't create any diagrams (which are very useful). The resulting html files are under target/html
 
