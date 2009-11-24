@@ -1,8 +1,0 @@
-<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
-<%@ taglib uri="/server/taglibs/core" prefix="core"%>
-
-<div id="page_webForwards">
-	<core:form  onsubmit="setActionTarget('filter')" method="post" action="/showWebForwards.do" focus="filterText">
-		<%@ include file="/WEB-INF/jsp/content/webforward/webForwardsForm.jspf" %>
-	</core:form>
-</div>

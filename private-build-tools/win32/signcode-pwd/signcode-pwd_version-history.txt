@@ -1,7 +1,0 @@
-signcode-pwd Version History
-
-1.02
-Fixed bug, when signcode was directly called from a build step in VS 2003 (Error: Could not create monitoring process)
-
-1.01
-First RTW
