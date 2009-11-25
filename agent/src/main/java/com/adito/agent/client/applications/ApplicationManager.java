@@ -16,6 +16,11 @@ import com.adito.agent.client.Agent;
 import com.adito.agent.client.Messages;
 import com.adito.agent.client.util.TunnelConfiguration;
 
+/**
+ * This class handles launching Adito/ALS applications (e.g. rdesktop),
+ * regardless of whether the requests have been initiated by the client or the server.
+ * 
+ */
 public class ApplicationManager extends AbstractResourceManager implements RequestHandler {
 
 	public static final String LAUNCH_APPLICATION_REQUEST = "launchApplication";
@@ -64,6 +69,12 @@ public class ApplicationManager extends AbstractResourceManager implements Reque
 		}
 	}
 
+    /**
+     * Process a "generic" request. Currently only one action is supported, namely
+     * "launch application"
+     * 
+     * @return  true or false, depending on whether request processing succeeded or not
+     */
 	public boolean processRequest(Request request, MultiplexedConnection con) {
 
 		if (request.getRequestName().equals(LAUNCH_APPLICATION_REQUEST)) {
@@ -83,6 +94,17 @@ public class ApplicationManager extends AbstractResourceManager implements Reque
 	public void postReply(MultiplexedConnection connection) {		
 	}
 
+    /**
+     * Launch an application. If the application as launched from the server-side, then
+     * not much needs to be done. If application is initiated by the client, we parse
+     * application parameters (name, descriptor, etc.) from the Request, then call
+     * launchApplication() method.
+     *
+     * @param   request The request containing application parameters
+     *
+     * @return  whether launch request processing succeeded or failed
+     */
+    
 	boolean processLaunchRequest(Request request) throws IOException {
 
 		if(request.getRequestData()==null)

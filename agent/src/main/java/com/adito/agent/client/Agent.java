@@ -218,7 +218,9 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 	}
 
 	/**
-	 * Get the application manager for this agent.
+	 * Get the application manager for this agent. Application manager is responsible for
+     * launching applications (e.g. rdesktop). Launch requests can be initiated by the
+     * client (Agent) or the server (using WebUI).
 	 * 
 	 * @return application manager
 	 */

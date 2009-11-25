@@ -27,8 +27,7 @@ import com.adito.boot.RequestHandlerRequest;
 import com.adito.boot.SystemProperties;
 import com.adito.security.User;
 
-/**
- */
+/** This class manages (creates and removes) remote Agent instances */
 public class AgentManager {
     private static final AgentManager instance = new AgentManager();
     private Map<String, AgentCallback> types = new HashMap<String, AgentCallback>();
