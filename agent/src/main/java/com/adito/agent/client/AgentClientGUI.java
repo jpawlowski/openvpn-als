@@ -27,7 +27,7 @@ import com.maverick.http.HttpAuthenticator;
  * In order to be able to control the <i>Agent</i>, a <i>GUI</i> must be
  * available. The actual implementation of the GUI may vary from platform to
  * platform. For example, on Windows the <i>SystemTrayGUI</i> is used which
- * adds new actions to the tray area. Currently, all ofther platforms use the
+ * adds new actions to the tray area. Currently, all other platforms use the
  * <i>BasicFrameGUI</i>
  */
 public interface AgentClientGUI extends AuthenticationPrompt {
@@ -222,11 +222,13 @@ public interface AgentClientGUI extends AuthenticationPrompt {
 	public void addMenuSeperator(final String parentName);
 	
 	/**
-	 * Open the system browser, optionally to the specified path. The
+	 * <p>Open the system browser, optionally to the specified path. The
 	 * protocol, host and port elements of the URL will automatically
 	 * be created and prepend to any supplied path. If path is <code>null</code>
 	 * then the browser will just be opened and pointed to the Adito
-	 * index page.
+	 * index page.</p>
+     *
+     *
 	 * 
 	 * @param path path
 	 */

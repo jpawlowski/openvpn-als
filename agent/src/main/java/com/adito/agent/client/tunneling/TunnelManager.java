@@ -87,8 +87,15 @@ public class TunnelManager extends AbstractResourceManager implements RequestHan
 	protected Hashtable activeLocalTunnels = new Hashtable();
 
 	/**
-	 * Constructor.
-	 * 
+	 * This constructors calls the constructor of it's parent, AbstractResourceManager,
+     * which wraps an Agent instance into a protected instance variable. After this it
+     * registers the RequestHandlers into a hashtable contained in an instance
+     * of MultiplexedConnection (in maverick-multiplex package). The RequestHandlers
+     * (START_LOCAL_TUNNEL, STOP_LOCAL_TUNNEL, etc.) are later referred to by name
+     * (a string). When a request is intercepted by a registered RequestHandler, it's
+     * name (=command name) is parsed from the message and something useful gets done
+     * on the client (Agent) end.
+     *
 	 * @param agent
 	 */
 	public TunnelManager(Agent agent) {
@@ -108,7 +115,12 @@ public class TunnelManager extends AbstractResourceManager implements RequestHan
 	}
 
 	/*
-	 * (non-Javadoc)
+	 * <p>This method encapsulates a command (SETUP_AND_LAUNCH_TUNNEL) and a resource ID
+     * into a Request which is sent to the server. The resource ID is encoded into a
+     * byte array using ByteArrayWriter. If the request reaches the server properly,
+     * processLaunchRequest method is called.</p>
+     *
+     * @param   resourceId
 	 * 
 	 * @see com.adito.agent.client.AbstractResourceManager#launchResource(int)
 	 */
@@ -164,7 +176,7 @@ public class TunnelManager extends AbstractResourceManager implements RequestHan
 	}
 
 	/*
-	 * (non-Javadoc)
+	 * This method is called from launchResource method. It processes a request sent  
 	 * 
 	 * @see com.maverick.multiplex.RequestHandler#processRequest(com.maverick.multiplex.Request,
 	 *      com.maverick.multiplex.MultiplexedConnection)
@@ -178,6 +190,7 @@ public class TunnelManager extends AbstractResourceManager implements RequestHan
 		} else if (request.getRequestName().equals(STOP_LOCAL_TUNNEL)) {
 			stopLocalTunnel(request);
 			return true;
+        // List active local tunnels 
 		} else if (request.getRequestName().equals(ACTIVE_LOCAL_TUNNELS)) {
 
 			try {
@@ -300,7 +313,11 @@ public class TunnelManager extends AbstractResourceManager implements RequestHan
 	}
 
 	/**
-	 * Start a local tunnel given its configuration.
+	 * Start a local tunnel given its configuration. The local server socket is handled
+     * by LocalTunnelServer instance, which is responsible for creating a new Thread
+     * which listens to connection from localhost or an other IP depending on tunnel
+     * configuration. Each thread listens on a preconfigured port (if launching a SSL tunnel)
+     * or on a random port (if launching is triggered by an application).
 	 * 
 	 * @param conf configuration
 	 * @return tunnel
@@ -308,11 +325,14 @@ public class TunnelManager extends AbstractResourceManager implements RequestHan
 	 */
 	public LocalTunnelServer startLocalTunnel(TunnelConfiguration conf) throws IOException {
 
+        // Check that the tunnel is indeed of type LOCAL_TUNNEL (0).
 		if (conf.getType() != TunnelConfiguration.LOCAL_TUNNEL)
 			throw new IOException("Invalid tunnel type " + conf.getType()); //$NON-NLS-1$
 
+        // Create a new local tunnel listener
 		LocalTunnelServer listener = new LocalTunnelServer(agent, agent.getTXIOListener(), agent.getRXIOListener(), conf);
 		listener.addListener(this);
+        // Launch the listener thread
 		listener.start();
 		return listener;
 	}
@@ -329,7 +349,7 @@ public class TunnelManager extends AbstractResourceManager implements RequestHan
 
 	/*
 	 * (non-Javadoc)
-	 * 
+     *
 	 * @see com.adito.agent.client.tunneling.LocalForwardingServerListener#activeTunnelDataTransferred(com.adito.agent.client.tunneling.LocalForwardingServer,
 	 *      com.adito.agent.client.tunneling.ActiveTunnel, byte[], int,
 	 *      boolean)
@@ -464,9 +484,12 @@ public class TunnelManager extends AbstractResourceManager implements RequestHan
 		return temporaryTunnelId--;
 	}
 
+    /** Process a launch request. Currently the only processed request is launching a
+      * tunnel
+      */
 	void processLaunchRequest(Request request) throws IOException {
 		/*
-		 * If there is no returned request data, then the launched tunnnel was
+		 * If there is no returned request data, then the launched tunnel was
 		 * remote and we do not need to do any more
 		 */
 		if (request.getRequestData() == null) {

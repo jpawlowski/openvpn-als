@@ -445,6 +445,7 @@ public class MultiplexedConnection implements RequestHandler {
     	return sendRequest(request, wantReply, 0);
     }
     
+    /** This method sends a request to the server */
     public boolean sendRequest(Request request, boolean wantReply, int timeoutMs) throws IOException {
 
     	//#ifdef DEBUG
@@ -697,6 +698,11 @@ public class MultiplexedConnection implements RequestHandler {
         }
     }
 
+    /** This method sends a message encapsulated into a Packet instance to the server.
+      * It sends the message to the server through a socket connection using DataOutputStream
+      *
+      * @param  msg the Packet containing the encoded message
+      */
     protected void sendMessage(Packet msg) throws IOException {
         
         // #ifdef DEBUG
@@ -710,7 +716,7 @@ public class MultiplexedConnection implements RequestHandler {
 
         msg.prepare();
         
-        // log.info("Writing " + msg.size() + " bytes of socket data");
+        // Write the message to the DataOutputStream
         out.write(msg.array(), 0, msg.size());
         out.flush();
 

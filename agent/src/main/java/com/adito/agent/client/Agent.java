@@ -181,16 +181,23 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 
 	MultiplexedConnection con = null;
 
+    /** The HTTP connection between Agent and server */
 	HttpConnection httpConnection = null;
 
+    /** Command for requesting shutdown of the Agent */
 	public static final String SHUTDOWN_REQUEST = "shutdown";
 
+    /** Command for opening an URL, apparently used in conjunction with tunneled
+        web forwards */
 	public static final String OPEN_URL_REQUEST = "openURL";
 
+    /** FIXME: Figure out what this is all about */
 	public static final String MESSAGE_REQUEST = "agentMessage";
 
+    /** FIXME: Figure out what this is all about */
 	public static final String UPDATE_RESOURCES_REQUEST = "updateResources";
 
+    /** FIXME: Figure out what this is all about */
 	public static final String SYNCHRONIZED_REQUEST = "synchronized";
     
     // #ifdef DEBUG
@@ -198,7 +205,7 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 			.getLog(Agent.class);
 	// #endif
 
-    /** Set the HTTP User Agent string */
+    /** Set the HTTP User Agent string for the HTTP connection between the Agent and server */
 	static {
 		HttpClient.setUserAgent("Agent"); //$NON-NLS-1$
 	}
@@ -229,16 +236,19 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 	}
 
 	/**
-	 * Get the tunnel manager for this agent
+	 * Get the tunnel manager for this agent. Tunnel manager is responsible for
+     * launching and stopping SSL tunnels.
 	 * 
-	 * @return tunnel mananger
+	 * @return the tunnel manager instance for this Agent 
 	 */
 	public TunnelManager getTunnelManager() {
 		return tunnelManager;
 	}
 
 	/**
-	 * Get the network place manager for this agent
+	 * Get the network place manager for this agent. NetworkPlaceManager is
+     * responsible for opening a NetworkPlace in a browser window when at it
+     * in the Agent GUI.
 	 * 
 	 * @return network place manager
 	 */
@@ -267,6 +277,10 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 		return AGENT_VERSION;
 	}
 
+    /** Return the connection between the Agent and the server
+      *
+      * @return the connection between the Agent and the server
+      */
 	public MultiplexedConnection getConnection() {
 		return con;
 	}
@@ -413,7 +427,12 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 	}
 
 	/**
-	 * Constructor preventing direct instantiation.
+	 * Constructor preventing direct instantiation. The AgentConfiguration instance
+     * contains all Agent parameters that profile-specific (e.g. timeout values). The
+     * GUI (swt, awt, none) is also launched here.
+     *
+     * FIXME: this contains lots of unnecessary OS detection related to obsolete Win95/98/ME
+     * OS'es.
 	 */
 	public Agent(AgentConfiguration agentConfiguration) {
 		this.agentConfiguration = agentConfiguration;

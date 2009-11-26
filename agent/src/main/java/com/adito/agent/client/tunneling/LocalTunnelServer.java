@@ -55,6 +55,8 @@ import com.adito.agent.client.util.TunnelConfiguration;
  * Invoked the {@link #start()} method. The listener may be stopped at
  * any time using the {@link #stop()} method.
  * <p>
+ * Each listener is naturally implemented as a separate Thread
+ * <p> 
  * NOTE UDP tunneling does not currently work.
  */
 public class LocalTunnelServer implements LocalTunnelConnectionEventListener {

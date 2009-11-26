@@ -28,7 +28,10 @@ import com.adito.agent.client.util.Utils;
 
 
 /**
- * Holds various configuration options for the <i>Agent</i>.
+ * This class holds various configuration options for the <i>Agent</i>.
+ * Each Agent instance is constructed with an instance of AgentConfiguration
+ * as a parameter. These parameters are read from the profile selected
+ * by the user during login.
  */
 public class AgentConfiguration {
 	

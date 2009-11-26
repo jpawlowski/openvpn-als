@@ -5,15 +5,8 @@ import java.io.IOException;
 import com.maverick.util.ByteArrayWriter;
 
 /**
- * <p>Title: </p>
+ * This class is used for encapsulating messages sent by the Agent to the server.  
  *
- * <p>Description: </p>
- *
- * <p>Copyright: Copyright (c) 2005</p>
- *
- * <p>Company: </p>
- *
- * @author not attributable
  */
 public class Packet extends ByteArrayWriter {
 
