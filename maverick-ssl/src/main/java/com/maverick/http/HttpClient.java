@@ -243,6 +243,7 @@ public class HttpClient {
         this.preferedAuthentication = scheme;
     }
 
+    /** Set the credentials for this HttpClient instance. */
     public void setCredentials(PasswordCredentials credentials) {
         this.credentials = credentials;
         credentialsFailed = false;

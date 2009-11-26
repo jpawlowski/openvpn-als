@@ -21,8 +21,9 @@
 package com.maverick.http;
 
 /**
+ * This class is a simple container for username + password combination
  * 
- * @author Lee David Painter <a href="mailto:lee@localhost">&lt;lee@localhost&gt;</a>
+ * @author Lee David Painter
  */
 public class PasswordCredentials {
 

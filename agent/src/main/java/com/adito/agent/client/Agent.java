@@ -177,11 +177,11 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 
 	private KeepAliveThread keepAlive;
 
-	// Statics
-
+	// The multiplexed connection between Agent and server 
 	MultiplexedConnection con = null;
 
-    /** The HTTP connection between Agent and server */
+    /** The HTTP connection between Agent and server. Apparently used
+        in the Drive mapping extension */
 	HttpConnection httpConnection = null;
 
     /** Command for requesting shutdown of the Agent */
@@ -286,7 +286,7 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 	}
 
 	/**
-	 * Get the hostname of the Adito proxy
+	 * Get the hostname of the Adito proxy (=server?)
 	 * 
 	 * @return hostname
 	 */
@@ -299,7 +299,7 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 	}
 
 	/**
-	 * Get the port of the Adito proxy
+	 * Get the port of the Adito proxy (=server?)
 	 * 
 	 * @return port
 	 */
@@ -320,6 +320,7 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 		return username;
 	}
 
+    /** Switch to disconnected state and optionally shutdown the Agent */
 	public void onConnectionClose() {
 		currentState = STATE_DISCONNECTED;
 		if (getConfiguration().isSystemExitOnDisconnect()) {
@@ -329,6 +330,7 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 		}
 	}
 
+    /** Switch to connected state */
 	public void onConnectionOpen() {
 		currentState = STATE_CONNECTED;
 	}
@@ -377,7 +379,8 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 
 	/**
 	 * Get the {@link HttpClient} that is being used by this VPN client for
-	 * communication with Adito.
+	 * communication with Adito. This is/was _apparently_ used by the Drive mapping
+     * extension.
 	 * 
 	 * @return http client
 	 */
@@ -549,7 +552,7 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 	}
 
 	/**
-	 * Get the object the stores various configuration options
+	 * Get the AgentConfiguration object which stores various Agent configuration options
 	 * 
 	 * @return configuration
 	 */
@@ -557,15 +560,19 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 		return agentConfiguration;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/* This method creates a new MultiplexedConnection for Agent<->server interaction and
+     * initializes a new AgentChannelFactory object. By default no remote channels are 
+     * opened, but the AgentChannelFactory.createChannel is used to add connection
+     * listeners to the RemoteTunnelChannel prior to connecting. According to original (3sp)
+     * comments this was used by clients using the Agent API prior to connecting.
+     *
+     * This method also initializes the GUI and sets up HTTPS support using maverick-ssl
+     *
 	 * @see com.adito.vpn.base.AbstractVPNClient#init(java.lang.String,
 	 *      int, java.lang.String, java.lang.String)
 	 */
 	public void init() throws SecurityException, IOException {
 
-        // Create connection object now so users of API can add connection listeners before connecting
 	    con = new MultiplexedConnection(new AgentChannelFactory(
                 this));
         
@@ -597,6 +604,13 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 		}
 	}
 
+    /** Connect to the server with given parameters. This creates new a TunnelInactivityMonitor
+      * thread and a KeepAliveThread. First one monitors the activity of SSL tunnels and closes
+      * them if they've been inactive for too long. The second apparently keeps the Agent alive
+      * by sending keepAlive requests to the server. 
+      *
+      */
+
 	public void connect(String aditoHostname, int aditoPort,
 			boolean isSecure, String username, String ticket, boolean ticketIsPassword)
 			throws IOException, HttpException,
@@ -610,6 +624,7 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 		this.ticketIsPassword = ticketIsPassword;
 		this.isSecure = isSecure;
 
+        // Start tunnel inactivity monitor and agent keepalive threads
 		inactivityMonitor = new TunnelInactivityMonitor(this);
 		keepAlive = new KeepAliveThread();
 
@@ -854,6 +869,10 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 		}
 	}
 
+
+    /**  
+      *
+      */
 	private void connectAgent() throws IOException, HttpException,
 			UnsupportedAuthenticationException,
 			AuthenticationCancelledException {
@@ -868,12 +887,17 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
             
 			for (int i = 0; i < 3; i++) {
 
+                // Get the HTTP connection to the server
 	            HttpClient client = getHttpClient();
-	            if (doPreemptive) {
+
+                /* Check if ticket is used as a password. This depends on the parameters
+                   given earlier to the connect() method. */   
+  	            if (doPreemptive) {
 	                client.setCredentials(new PasswordCredentials(username,
 	                        ticket));
 	                client.setPreferredAuthentication("Basic");
 	            } 
+                // Ticket was not the password, set credentials to null.
 	            else {
 	                client.setCredentials(null);
 	            }
@@ -883,6 +907,7 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 				log.info("Server is " + (isSecure ? "https://" : "http://") + getAditoHost() //$NON-NLS-1$
 						+ ":" + getAditoPort()); //$NON-NLS-1$
 				// #endif
+
 				GetMethod post = new GetMethod("/agent"); //$NON-NLS-1$
 
 	            client.setPreemtiveAuthentication(doPreemptive);
@@ -935,7 +960,7 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 					 * Initialize the managers. Tunnels are no longer recorded
 					 * here unless they are active. This simplifies the agent by
 					 * making it respond to start and stop requests from the new
-					 * persistent connection with Adito.
+					 * persistent connection with server.
 					 */
 					tunnelManager = new TunnelManager(this);
 					applicationManager = new ApplicationManager(this);
@@ -1989,6 +2014,14 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 		}
 	}
 
+    /** Create a new thread that keeps the Agent running until timeout value
+      * is exceeded. This is accomplished by sending keepAlive Requests
+      * to the server through the instance of MultiPlexedConnection at regular
+      * intervals. If keepAlive requests fail to reach the server, show information
+      * popup in the GUI and shutdown the Agent.
+      *
+      * FIXME: parts of the interrupt handling code are copy-and-paste, needs cleanup
+      */
 	class KeepAliveThread extends Thread {
 
 		boolean running = true;
@@ -2010,6 +2043,8 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 						break;
 					}
 	
+                    /* Send the keepAlive request to the server through the MultiPlexedConnection
+                       instance */ 
 					try {
 						con.sendRequest(keepAlive, true, getConfiguration()
 								.getKeepAliveTimeout());
@@ -2017,11 +2052,15 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 						//#ifdef DEBUG
 						log.error("Keepalive packet timed out!! Agent connection is no longer operational", ex);
 						//#endif
+
+                        // Popup an information box (if enabled) at the client end  
 						if (getConfiguration().isDisplayInformationPopups()) {
 							getGUI().popup(
 								null,
 								Messages.getString("VPNClient.keepalive.timeout"), Messages.getString("VPNClient.title"), "popup-error", -1); //$NON-NLS-1$  //$NON-NLS-2$
 						}
+
+                        // Sleep for a while and then shutdown the Agent
 						try {
 							Thread.sleep(10000);
 						} catch (InterruptedException e) {

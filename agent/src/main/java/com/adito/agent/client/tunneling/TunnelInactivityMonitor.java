@@ -27,7 +27,7 @@ import com.adito.agent.client.Agent;
 
 /**
  * Monitors all active tunnels for inactivity, closing them when a certain
- * number of milliseconds have elapsed without any date travelling over them.
+ * number of milliseconds have elapsed without any data travelling over them.
  * <p>
  * This monitor must be started after the VPN client has been connected and will
  * automatically stop when the client disconnects.
@@ -50,11 +50,18 @@ public class TunnelInactivityMonitor extends Thread {
 	public TunnelInactivityMonitor(Agent vpnClient) {
 		this.vpnClient = vpnClient;
 		setDaemon(true);
-
 	}
 
 	/*
-	 * (non-Javadoc)
+	 * This thread monitors the inactivity of tunnels. It does this by getting a list (HashTable)
+     * of active tunnels from the Agent's TunnelManager and comparing each tunnel's recent activity
+     * against configured timeout value periodically. Tunnel activity statistics are
+     * stored in instances of LocalTunnelServer, which are created whenever a new tunnel is
+     * created. S.c. "temporary single connect tunnels" and "remote tunnels" are handled slightly
+     * differently from "temporary tunnels" used by tunneled webforwards.
+     *
+     * FIXME: This thread is pretty hard to read due to large number of nested if/then and
+     *        try/catch segments. Needs some cleanup.
 	 * 
 	 * @see java.lang.Thread#run()
 	 */
@@ -75,7 +82,7 @@ public class TunnelInactivityMonitor extends Thread {
 				log.info("Checking for tunnel inactivity"); //$NON-NLS-1$
 				// #endif
 
-				// Hack to allow MSJVM access to the protected member
+                // Get a HastTable containing active (local) tunnels
 				Hashtable activeListeners = vpnClient.getTunnelManager().getActiveLocalTunnels();
 
 				synchronized (activeListeners) {
@@ -84,10 +91,12 @@ public class TunnelInactivityMonitor extends Thread {
 						Integer id = (Integer) e.nextElement();
 						LocalTunnelServer l = (LocalTunnelServer) activeListeners.get(id);
 						try {
+                            // Check if a tunnel is listening
 							if (l.isListening()) {
 								// Temporary single connect tunnels and
 								// permanent tunnels
 								if (vpnClient.getConfiguration().getTunnelInactivity() != 0 && l.getTunnel().isPermanent()) {
+                                    // Check if we should stop the tunnel due to inactivity
 									if (now > (l.getDataLastTransferredTime() + vpnClient.getConfiguration().getTunnelInactivity())) {
 										// #ifdef DEBUG
 										log.info("Permanent tunnel " +  id + " is out of date, closing."); //$NON-NLS-1$

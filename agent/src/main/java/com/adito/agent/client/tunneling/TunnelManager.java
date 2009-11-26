@@ -176,7 +176,7 @@ public class TunnelManager extends AbstractResourceManager implements RequestHan
 	}
 
 	/*
-	 * This method is called from launchResource method. It processes a request sent  
+	 * This method is called from launchResource method. 
 	 * 
 	 * @see com.maverick.multiplex.RequestHandler#processRequest(com.maverick.multiplex.Request,
 	 *      com.maverick.multiplex.MultiplexedConnection)
@@ -426,7 +426,8 @@ public class TunnelManager extends AbstractResourceManager implements RequestHan
 	}
 
 	/*
-	 * (non-Javadoc)
+	 * This method adds a new (local) tunnel to the HashTable containing currently active
+     * tunnels. It also informs the user that a tunnel has been opened via Agent GUI.
 	 * 
 	 * @see com.adito.agent.client.tunneling.LocalForwardingServerListener#localForwardingServerStarted(com.adito.agent.client.tunneling.LocalForwardingServer)
 	 */

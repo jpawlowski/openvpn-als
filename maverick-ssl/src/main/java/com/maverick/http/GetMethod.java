@@ -27,7 +27,7 @@ import com.maverick.util.URLUTF8Encoder;
 
 /**
  * 
- * @author Lee David Painter <a href="mailto:lee@localhost">&lt;lee@localhost&gt;</a>
+ * @author Lee David Painter
  */
 public class GetMethod extends HttpMethod {
 

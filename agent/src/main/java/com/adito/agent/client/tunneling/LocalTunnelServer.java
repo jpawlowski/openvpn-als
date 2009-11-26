@@ -173,7 +173,8 @@ public class LocalTunnelServer implements LocalTunnelConnectionEventListener {
 
     /**
      * Get the time (in MS since Jan. 1 1970) data was last transferred over
-     * this listener.
+     * this listener. This is used by TunnelInactivityMonitor threads to determine
+     * if the tunnel should be closed or not.
      * 
      * @return time (in MS since Jan. 1 1970) data was last transferred over
      * this listener.
