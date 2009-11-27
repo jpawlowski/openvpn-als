@@ -180,8 +180,8 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 	// The multiplexed connection between Agent and server 
 	MultiplexedConnection con = null;
 
-    /** The HTTP connection between Agent and server. Apparently used
-        in the Drive mapping extension */
+    /** The HTTP connection between Agent and server. Used
+        in the Drive mapping extension? */
 	HttpConnection httpConnection = null;
 
     /** Command for requesting shutdown of the Agent */
@@ -299,7 +299,7 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 	}
 
 	/**
-	 * Get the port of the Adito proxy (=server?)
+	 * Get the port of the Adito server
 	 * 
 	 * @return port
 	 */
@@ -378,9 +378,8 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 	}
 
 	/**
-	 * Get the {@link HttpClient} that is being used by this VPN client for
-	 * communication with Adito. This is/was _apparently_ used by the Drive mapping
-     * extension.
+	 * Create and return a new {@link HttpClient} instance that is being used by this
+     * VPN client for HTTP communication with the server. 
 	 * 
 	 * @return http client
 	 */
@@ -607,10 +606,11 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
     /** Connect to the server with given parameters. This creates new a TunnelInactivityMonitor
       * thread and a KeepAliveThread. First one monitors the activity of SSL tunnels and closes
       * them if they've been inactive for too long. The second apparently keeps the Agent alive
-      * by sending keepAlive requests to the server. 
+      * by sending keepAlive requests to the server.
       *
+      * @param  aditoHostName   hostname of the server
+      * @param  aditoPort   port the server is listening on
       */
-
 	public void connect(String aditoHostname, int aditoPort,
 			boolean isSecure, String username, String ticket, boolean ticketIsPassword)
 			throws IOException, HttpException,
@@ -630,6 +630,8 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 
 		gui.showTxRx();
 
+        /* Connect to the server. This involves a number of steps described in
+           Javadocs of connectAgent() method */
 		connectAgent();
 
 		// Start the Tx/Rx monitor so we have some animated icons
@@ -639,8 +641,10 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 		gui.showIdle();
 		updateInformation();
 
+        /* Start a Thread monitoring inactivity */
 		inactivityMonitor.start();
 
+        /* Start a Thread sending keepalive packets to the server */
 		if (getConfiguration().getKeepAlivePeriod() > 0)
 			keepAlive.start();
 
@@ -657,6 +661,11 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 
 	}
 
+    /** This method is responsible for processing requests sent by the server
+      * through the multiplexed connection. Currently supported requests are
+      * SHUTDOWN, (DISPLAY) MESSAGE, UPDATE RESOURCES (e.g. tunnel list),
+      * OPEN URL (used in tunneled webforwards).
+      */
 	public boolean processRequest(Request request, MultiplexedConnection con) {
 
 		if (request.getRequestName().equals(SHUTDOWN_REQUEST)) {
@@ -870,7 +879,18 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 	}
 
 
-    /**  
+    /** This method is responsible for authenticating the Agent with the server.
+      * First credentials (if available) are setup. Then a connection to the
+      * server is initiated. If credentials are not provided, this method is
+      * capable of showing the user a pop-up authentication dialog using an Agent
+      * GUI. If all goes well (server responds 200 OK), the following happens:
+      *
+      * - new multiplexed connection listener is created
+      * - Agent-specific request handlers are registered to the listener
+      * - raw input- and outputstreams are initialized
+      * - a synchronization request is sent to the server
+      * - server versions is detected from server response
+      * - various Agent-specific managers (e.g. TunnelManager) are initialized 
       *
       */
 	private void connectAgent() throws IOException, HttpException,
@@ -887,7 +907,7 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
             
 			for (int i = 0; i < 3; i++) {
 
-                // Get the HTTP connection to the server
+                // Create a new HttpClient used to communicate with the server using HTTP
 	            HttpClient client = getHttpClient();
 
                 /* Check if ticket is used as a password. This depends on the parameters
@@ -908,8 +928,10 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 						+ ":" + getAditoPort()); //$NON-NLS-1$
 				// #endif
 
+                /* Create an instance of HTTP GET method with the given URL */
 				GetMethod post = new GetMethod("/agent"); //$NON-NLS-1$
 
+                /* Set various parameters for the GET method. */
 	            client.setPreemtiveAuthentication(doPreemptive);
 				if (!doPreemptive && ticket != null) {
 					post.setParameter("ticket", ticket); //$NON-NLS-1$
@@ -919,8 +941,13 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 						"agentType", getConfiguration().getAgentType()); //$NON-NLS-1$ //$NON-NLS-2$
 				post.setParameter("locale", Locale.getDefault().toString()); //$NON-NLS-1$
 
+                /* Send the request to the server using the HttpClient and save the server's
+                   response for later use. */
 				response = client.execute(post);
 
+                /* Server informs that a redirection is needed:
+                   http://en.wikipedia.org/wiki/HTTP_302
+                 */
 				if (response.getStatus() == 302) {
 					// Reset the client
 					this.client = null;
@@ -930,28 +957,37 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 					if (url.getPort() > 0)
 						aditoPort = url.getPort();
 					continue;
+
+                /* Server gives an OK response:
+                   http://en.wikipedia.org/wiki/HTTP_200#2xx_Success
+                 */
 				} else if (response.getStatus() == 200) {
+                    // Add a new MultiPlexedListener to this MultiplexedConnection
 					con.addListener(this);
-					httpConnection = response.getConnection(); // Preserve the
-					// connection
+                    // Preserve the connection
+					httpConnection = response.getConnection();
+
+                    // Register Agent-specific request handlers to this connection 
 					con.registerRequestHandler(MESSAGE_REQUEST, this);
 					con.registerRequestHandler(SHUTDOWN_REQUEST, this);
 					con.registerRequestHandler(OPEN_URL_REQUEST, this);
 					con.registerRequestHandler(UPDATE_RESOURCES_REQUEST, this);
 
-					// Start the protocol
-
+					/* Start the protocol. This involves opening input and output
+                       streams and possibly launching a new Thread. */  
 					con.startProtocol(
 							response.getConnection().getInputStream(), response
 									.getConnection().getOutputStream(), true);
 
-					// Synchronize and read back server information
+					/* Send a synchronization request to the server */
 					Request syncRequest = new Request(SYNCHRONIZED_REQUEST);
 					con.sendRequest(syncRequest, true);
 					if (syncRequest.getRequestData() == null)
 						throw new IOException(
 								"Server failed to return version data");
 
+                    /* Read back information sent by the server. Currently this
+                       seems to include only the server version number. */
 					ByteArrayReader reader = new ByteArrayReader(syncRequest
 							.getRequestData());
 					serverVersion = reader.readString();
@@ -968,6 +1004,16 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 					networkPlaceManager = new NetworkPlaceManager(this);
 					updateResources(-1);
 					return;
+
+                /* Authentication has either failed or credentials have not been
+                   provided:
+
+                   http://en.wikipedia.org/wiki/HTTP_200#4xx_Client_Error
+
+                   When this happens we read the the valid authentication method
+                   from the server response and popup an authentication dialog
+                   for the user.
+                 */
 				} else if (response.getStatus() == 401) {
 					authenticator = HttpAuthenticatorFactory
 							.createAuthenticator(
@@ -983,6 +1029,12 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 							throw new AuthenticationCancelledException();
 						}
 					}
+
+                /* The Agent is not allowed to connect and nothing can be done:
+
+                   http://en.wikipedia.org/wiki/HTTP_200#4xx_Client_Error
+
+                 */
 				} else if(response.getStatus() == 403) {
 				    if(doPreemptive || ticket != null) {
 				        doPreemptive = false;

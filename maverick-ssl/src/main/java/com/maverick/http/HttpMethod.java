@@ -26,8 +26,13 @@ import java.util.Hashtable;
 import java.util.Vector;
 
 /**
- * 
- * @author Lee David Painter <a href="mailto:lee@localhost">&lt;lee@localhost&gt;</a>
+ * This class is an abstraction of various HTTP methods, such
+ * as POST, GET, PROPFIND etc. It is extended by a number of
+ * other maverick classes in this directory.
+ *
+ * http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
+ *
+ * @author Lee David Painter
  */
 public abstract class HttpMethod {
 
@@ -36,6 +41,7 @@ public abstract class HttpMethod {
     private Hashtable parameters = new Hashtable();
     private Vector parameterNames = new Vector(); 
 
+    /** Constructor */
     public HttpMethod(String name, String uri) {
         this.uri = uri;
         this.name = name;

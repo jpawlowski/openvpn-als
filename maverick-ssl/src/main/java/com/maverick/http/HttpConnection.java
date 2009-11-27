@@ -35,7 +35,7 @@ import com.maverick.ssl.SSLTransportFactory;
 
 /**
  * 
- * @author Lee David Painter <a href="mailto:lee@localhost">&lt;lee@localhost&gt;</a>
+ * @author Lee David Painter
  */
 public class HttpConnection {
 
@@ -294,6 +294,9 @@ public class HttpConnection {
         return authenticator;
     }
 
+    /** This class extends raw input streams provided by Java and thus should not
+      * be Java-specific
+      */
     class HttpConnectionInputStream extends BufferedInputStream {
 
         HttpConnectionInputStream(InputStream in, int len) {
@@ -316,6 +319,9 @@ public class HttpConnection {
         }
     }
 
+    /** This class extends raw output streams provided by Java and thus should not
+      * not be Java-specific
+      */
     class HttpConnectionOutputStream extends OutputStream {
 
         public void close() throws IOException {

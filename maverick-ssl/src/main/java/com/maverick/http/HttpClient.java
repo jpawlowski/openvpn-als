@@ -30,8 +30,25 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 /**
+ * This class represents a HTTP client used by the Agent. It uses HttpConnectionManager
+ * to manage multiple simultaneous HTTP connections. Each HttpClient is tied to a specific
+ * target server. When HttpClient is used by the Agent, this target server is the Adito/ALS
+ * server. Several authentication methods, e.g. BASIC and NTLM are supported. Proxy support
+ * is also included.
+ *
+ * This HTTP client also has support for WebDAV:
  * 
- * @author Lee David Painter <a href="mailto:lee@localhost">&lt;lee@localhost&gt;</a>
+ * http://www.webdav.org/specs/rfc2518.html
+ * 
+ * WebDAV support was apparently used by the Agent to support the proprietary (Windows)
+ * Drive Mapping extension which is described in detail here:
+ *
+ * http://sourceforge.net/apps/trac/openvpn-als/wiki/drive_mapping_extension  
+ *  
+ * This class is used by the Agent but also by reverseproxy and replacement proxy
+ * webforwards.
+ * 
+ * @author Lee David Painter
  */
 public class HttpClient {
 
@@ -82,6 +99,7 @@ public class HttpClient {
 
     // #endif
 
+    /** Constructor */
     public HttpClient(String hostname, int port, boolean isSecure) {
         this.hostname = hostname;
         this.port = port;
@@ -253,6 +271,14 @@ public class HttpClient {
         connections.closeConnections();
     }
 
+    /** 
+      *
+      *
+      *
+      *
+      *
+      *
+      */
     synchronized void prepareRequest(HttpRequest request, HttpMethod method, HttpConnection con) throws IOException, HttpException,
                     UnsupportedAuthenticationException, AuthenticationCancelledException {
 
@@ -311,8 +337,18 @@ public class HttpClient {
 
     }
 
-    HttpResponse execute(HttpRequest request, HttpMethod method, HttpConnection con) throws IOException, HttpException,
-                    UnsupportedAuthenticationException, AuthenticationCancelledException {
+    /** <p>Execute a HTTP method</p>
+      *
+      * <p>FIXME: Why are these execute methods chained? Why not only provide this final
+      * one which all others end up calling anyways?</p>
+      *
+      * @param  request HTTP request object to use
+      * @param  method  method type (e.g. GetMethod, PostMethod)
+      * @param  con HTTP connection object to use
+      *
+      * @return http response
+      */    
+    HttpResponse execute(HttpRequest request, HttpMethod method, HttpConnection con) throws IOException, HttpException, UnsupportedAuthenticationException, AuthenticationCancelledException {
 
         prepareRequest(request, method, con);
 
@@ -322,6 +358,7 @@ public class HttpClient {
 
         return processResponse(request, method, con, method.execute(request, con));
     }
+
 
     HttpConnection executeAsync(HttpRequest request, AsyncHttpMethod method, HttpConnection con) throws IOException, HttpException,
                     UnsupportedAuthenticationException, AuthenticationCancelledException {
@@ -477,6 +514,12 @@ public class HttpClient {
         }
     }
 
+    /** Execute a HTTP method
+      *
+      * @param  method  method type (e.g. GetMethod, PostMethod)
+      *
+      * @return http response
+      */
     public HttpResponse execute(HttpMethod method) throws UnknownHostException, IOException, HttpException,
                     UnsupportedAuthenticationException, AuthenticationCancelledException {
         // #ifdef DEBUG
@@ -497,12 +540,20 @@ public class HttpClient {
         }
         throw new EOFException(Messages.getString("HttpClient.couldNotConnect")); //$NON-NLS-1$
     }
-    
+
+    /** Execute a HTTP method
+      *
+      * @param  method  method type (e.g. GetMethod, PostMethod)
+      * @param  con HTTP connection object to use
+      *
+      * @return http response
+      */    
     public HttpResponse execute(HttpMethod method, HttpConnection con) throws UnknownHostException, IOException, HttpException,
     UnsupportedAuthenticationException, AuthenticationCancelledException {
     	return execute(new HttpRequest(), method, con);
     }
 
+    
     public HttpConnection executeAsync(AsyncHttpMethod method) throws UnknownHostException, IOException, HttpException,
                     UnsupportedAuthenticationException, AuthenticationCancelledException {
         return executeAsync(method, connections.getConnection());

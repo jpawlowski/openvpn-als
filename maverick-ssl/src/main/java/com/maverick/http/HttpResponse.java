@@ -31,7 +31,7 @@ import java.util.StringTokenizer;
 
 /**
  * 
- * @author Lee David Painter <a href="mailto:lee@localhost">&lt;lee@localhost&gt;</a>
+ * @author Lee David Painter
  */
 public class HttpResponse extends HttpHeader {
 

@@ -26,7 +26,10 @@ import java.util.Vector;
 import com.maverick.util.URLUTF8Encoder;
 
 /**
- * 
+ * This class is a representation of HTTP GET method:
+ *
+ * http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods
+ *
  * @author Lee David Painter
  */
 public class GetMethod extends HttpMethod {
@@ -40,6 +43,7 @@ public class GetMethod extends HttpMethod {
         super("GET", uri); //$NON-NLS-1$
     }
 
+    /** Constructor calls the constructor of HttpMethod */
     public GetMethod(String name, String uri) {
         super(name, uri);
     }

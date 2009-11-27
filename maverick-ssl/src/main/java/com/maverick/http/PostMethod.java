@@ -26,8 +26,11 @@ import java.util.Enumeration;
 import java.util.Vector;
 
 /**
- * 
- * @author Lee David Painter <a href="mailto:lee@localhost">&lt;lee@localhost&gt;</a>
+ * This class is a representation of HTTP GET method:
+ *
+ * http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods
+ *
+ * @author Lee David Painter
  */
 public class PostMethod extends HttpMethod {
 

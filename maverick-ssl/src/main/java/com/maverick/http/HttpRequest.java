@@ -24,7 +24,7 @@ import java.io.IOException;
 
 /**
  * 
- * @author Lee David Painter <a href="mailto:lee@localhost">&lt;lee@localhost&gt;</a>
+ * @author Lee David Painter
  */
 public class HttpRequest extends HttpHeader {
 

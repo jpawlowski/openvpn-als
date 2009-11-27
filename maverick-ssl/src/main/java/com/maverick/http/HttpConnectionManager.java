@@ -30,8 +30,8 @@ import java.util.Vector;
  * 
  * Manages a pool of {@link HttpConnection} objects for an {@link HttpClient}.
  * 
- * @author Lee David Painter <a href="mailto: lee@localhost">&lt;lee@localhost&gt;</a>
- * @author Brett Smith <a href="mailto: brett@localhost">&lt;brett@localhost&gt;</a>
+ * @author Lee David Painter
+ * @author Brett Smith
  */
 public class HttpConnectionManager {
 
@@ -60,8 +60,7 @@ public class HttpConnectionManager {
      * @throws IOException
      * @throws UnknownHostException
      */
-    public synchronized HttpConnection getConnection() throws IOException, UnknownHostException, HttpException,
-                    UnsupportedAuthenticationException, AuthenticationCancelledException {
+    public synchronized HttpConnection getConnection() throws IOException, UnknownHostException, HttpException, UnsupportedAuthenticationException, AuthenticationCancelledException {
 
         HttpConnection con;
 

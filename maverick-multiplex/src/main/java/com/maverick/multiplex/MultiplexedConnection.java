@@ -95,6 +95,7 @@ public class MultiplexedConnection implements RequestHandler {
     	this.factory = factory;
     }
 
+    /** Open input and output streams for communication */
     public void startProtocol(InputStream _in, OutputStream _out, boolean threaded) {
         setStreams(_in, _out);
         running = true;
