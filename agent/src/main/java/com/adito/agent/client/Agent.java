@@ -606,7 +606,8 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
     /** Connect to the server with given parameters. This creates new a TunnelInactivityMonitor
       * thread and a KeepAliveThread. First one monitors the activity of SSL tunnels and closes
       * them if they've been inactive for too long. The second apparently keeps the Agent alive
-      * by sending keepAlive requests to the server.
+      * by sending keepAlive requests to the server. There's also some GUI-related code included
+      * in here.
       *
       * @param  aditoHostName   hostname of the server
       * @param  aditoPort   port the server is listening on
@@ -664,7 +665,8 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
     /** This method is responsible for processing requests sent by the server
       * through the multiplexed connection. Currently supported requests are
       * SHUTDOWN, (DISPLAY) MESSAGE, UPDATE RESOURCES (e.g. tunnel list),
-      * OPEN URL (used in tunneled webforwards).
+      * OPEN URL (used in tunneled webforwards). Each of these commands is
+      * executed in a separata method.
       */
 	public boolean processRequest(Request request, MultiplexedConnection con) {
 
@@ -707,6 +709,12 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 	public void postReply(MultiplexedConnection connection) {
 	}
 
+    /** Display a message (sent by the server) in the Agent GUI. This done by
+     *  reading the Request object received through the multiplexed connection,
+     *  reading the actual message into a String and then displaying it. 
+     *
+     * @param   request request which contains the message to be displayed
+     */
 	private void displayMessage(Request request) {
 
 		try {
@@ -736,6 +744,16 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 
 	}
 
+    /** This method is used by tunneled webforwards (in webforwards module). It launches
+      * a temporary tunnel to be used by the webforward, but is _not_ responsible for
+      * launching the client's browser.
+      *
+      * @param  link    URL of the internal webserver
+      * @param  launchId    ID of launch session (bound to each tunnel)     
+      * @param  request the Request object containing the openURL request
+      *
+      * @return whether opening the URL succeeded
+      */
 	private boolean openURL(String link, String launchId, Request request) {
 
 		// #ifdef DEBUG
@@ -757,6 +775,7 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 					TunnelConfiguration.TCP_TUNNEL, null, 0, linkPort,
 					linkHost, false, false, linkHost + ":" + linkPort, launchId);
 
+            // Start a new Thread to provide tunneling through this port 
 			LocalTunnelServer listener = getTunnelManager().startLocalTunnel(t);
 
 			// #ifdef DEBUG
@@ -828,7 +847,6 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 	}
 
 	/*
-	 * (non-Javadoc)
 	 * 
 	 * @see com.adito.vpn.base.AbstractVPNClient#getTXIOListener()
 	 */
@@ -844,8 +862,7 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 	 * Get the full URL to use for a redirect given the path. The appropriate
 	 * hostname and port will automatically be added.
 	 * 
-	 * @param path
-	 *            path
+	 * @param path URL
 	 * @return full URL including appropriate host and port
 	 */
 	protected String getRedirectUrl(String path) {
@@ -857,6 +874,13 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 		}
 	}
 
+    /** This method is responsible for launching s.c. Agent Extensions. These extensions
+      * are Java classes that implement the AgentExtension interface. No Agent Extensions
+      * exist currently, but they were written at least for the proprietary "Drive Mapping"
+      * extension.
+      *  
+      * @param  extensionClasses    list of comma-separated AgentExtension classes to load
+      */
 	protected void startExtensions(String extensionClasses) {
 		StringTokenizer classes = new StringTokenizer(extensionClasses, ","); //$NON-NLS-1$
 		while (classes.hasMoreTokens()) {
@@ -1072,6 +1096,7 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
         return con != null && con.isRunning();
     }
 
+    /** Disconnect the Agent */
 	public void disconnect() {
 		if (isConnected()) {
 			disconnectAgent();
@@ -1079,18 +1104,16 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 	}
 
 	/**
-	 * Shutdown the Agent.
-	 * 
-	 * @param deregister
-	 *            deregister the agent
-	 * @param threadDeRegister
-	 *            deregister in a thread
+	 * Shutdown the Agent. This involves shutting down Agent extensions (if any), removing
+     * temporary client files and finally shutting down the JVM running the Agent. The user
+     * is informed about shutdown using the Agent GUI.
 	 */
 	public void startShutdownProcedure() {
 		// #ifdef DEBUG
 		log.info("Starting agent shutdown procedure."); //$NON-NLS-1$
 		// #endif
 
+        /* Tell the user Agent is shutting down */
 		if (getConfiguration().isDisplayInformationPopups()) {
 			getGUI()
 					.popup(
@@ -1098,6 +1121,7 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 							Messages.getString("VPNClient.shutdown.popupText"), Messages.getString("VPNClient.title"), "popup-agent", -1); //$NON-NLS-1$  //$NON-NLS-2$
 		}
 
+        /* Shutdown Agent extensions */
 		AgentExtension ext;
 		for (Enumeration e = extensions.elements(); e.hasMoreElements();) {
 			ext = (AgentExtension) e.nextElement();
@@ -1110,8 +1134,12 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 
 		getGUI().showDisconnected();
 
+        /* Delete all files. What those files actually are is a little vague. See
+           agent/client/utils/FileCleaner.java. */
 		FileCleaner.deleteAllFiles();
 		
+        /* Cleanup the Agent if supported by the client OS. This means running an
+           ad-hoc script to cleanup user's home directory. */
 		if (getConfiguration().isCleanOnExit()) {
 			if (Utils.isSupportedPlatform("Windows")) {
 				cleanupWindowsAgent();
@@ -1126,8 +1154,10 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 			}
 		}
 
+        /* Shutdown the JVM after a set period of time */
 		if (getConfiguration().isSystemExitOnDisconnect()) {
 			scheduleExit();
+        /* Or just get rid of the GUI */
 		} else {
 			gui.dispose();
 		}
@@ -1378,7 +1408,8 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 	}
 
 	/**
-	 * Entry point.
+	 * Entry point to the Agent code. First command-line parameters are parsed
+     * and then Agent extensions (if any) are loaded.
 	 * 
 	 * @param args arguments
 	 */
@@ -1388,15 +1419,19 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 			org.apache.log4j.BasicConfigurator.configure();
 			// #endif
 
+            // Parse the command-line parameters
             AgentArgs agentArgs = Agent.initArgs(args);
-            
+
+            // Create a new Agent with given parameters
             Agent agent = Agent.initAgent(agentArgs);
             
             if (agentArgs.isDisableNewSSLEngine())
                 SSLTransportFactory.setTransportImpl(SSLTransportImpl.class);
 
+            // Initialize the Agent using the given command-line parameters
 			agent.initMain(agentArgs.getHostname(), agentArgs.getPort(), agentArgs.isSecure(), agentArgs.getUsername(), agentArgs.getPassword(), agentArgs.getTicket());
 
+            // Start given Agent extensions, if any 
 			if (agentArgs.getExtensionClasses() != null)
 				agent.startExtensions(agentArgs.getExtensionClasses());
 		} catch (Throwable t) {
@@ -1413,6 +1448,16 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 		}
 	}
     
+    /** This method converts command-line parameters into a more easily usable AgentArgs
+      * object.
+      *  
+      * FIXME: The parsing of command-line arguments seems rather hacky and should be
+      *        replaced with something that's in wide use. 
+      *
+      * @param  args    the original list of parameters given on the command-line
+      *
+      * @return an object containing Agent configuration parsed from command-line arguments
+      */
     protected static AgentArgs initArgs(String[] args) throws Throwable {
         int shutdown = -1;
         int webforwardInactivity = 300000;
@@ -1564,6 +1609,12 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
         return agentArgs;
     }
     
+    /** Initialize the Agent using the given AgentArgs object. This object is created
+      * by the initArgs() method from Agent's command-line parameters.
+      *
+      * @param  agentArgs   the AgentArgs object created earlier in initArgs
+      * @return a new Agent instance with given arguments
+      */
     protected static Agent initAgent(AgentArgs agentArgs) throws Throwable {
         Agent agent = new Agent(agentArgs.getAgentConfiguration());
 
@@ -1577,6 +1628,7 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
                 + System.getProperty("java.version"));
         System.out.println("OS version " + System.getProperty("os.name"));
 
+        // Setup Agent logging
         // #ifdef DEBUG
         if (agentArgs.getLogProperties() != null) {
             File f = new File(agentArgs.getLogProperties());
@@ -1606,10 +1658,12 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
         }
         // #endif
 
+        // Setup Agent proxy, if any
         agent.setupProxy(agentArgs.getLocalProxyURL(), agentArgs.getUserAgent(), agentArgs.getPluginProxyURL());
 
         if (agentArgs.getBrowserCommand() != null && !agentArgs.getBrowserCommand().equals("")) { //$NON-NLS-1$
 
+            // Setup the browser
             // #ifdef DEBUG
             log.info("Setting browser to " + agentArgs.getBrowserCommand()); //$NON-NLS-1$
             // #endif
@@ -1619,6 +1673,7 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
         return agent;
     }
 	
+    /** Check if client OS is 64-bit and Windows */
 	private static boolean isWindows64() {
 
 	    String prop = System.getProperty("os.name");
@@ -1640,10 +1695,17 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 	    return false;		
 	}
 	
+    /** Check if client OS is Windows Vista */
 	private static boolean isWindowsVista() {
 		return System.getProperty("os.name").startsWith("Windows Vista");
 	}
     
+    /** Initialize the Agent. This method does not do anything concrete by itself.
+      * The real work is done by another initMain method called from this method.   
+      *
+      * @param  agent   The Agent object
+      * @param  agentArgs   object containing Agent arguments 
+      */
     public static void initMain(Agent agent, AgentArgs agentArgs) {
         if (null != agent && null != agentArgs) {
         	agent.initMain(agentArgs.getHostname(), agentArgs.getPort(), agentArgs.isSecure(), agentArgs.getUsername(), agentArgs.getPassword(), agentArgs.getTicket());
@@ -1652,12 +1714,21 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
         }
     }
 
+    /** Initialize the Agent. This includes two basic steps:
+      *  - creating a new MultiplexedConnection to the server using init()
+      *  - connecting to the server using connect()
+      */
 	protected void initMain(String hostname, int port, boolean isSecure, String username, String password,
 			String ticket) {
 		try {
+            // Create a new MultiplexedConnection to the server
 			init();
+            
+            /* Connect to the server. This includes things like authentication and
+               creating connection listeners. */
 			connect(hostname, port, isSecure, username, ticket == null ? password
 					: ticket, ticket == null);
+
 		} catch (SSLIOException ex) {
 			// #ifdef DEBUG
 			log.info("An unexpected error has occured.", ex.getRealException()); //$NON-NLS-1$
@@ -1822,7 +1893,16 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 	}
 	
 
-
+    /** This method is called during Agent shutdown. It cleans up the user's
+      * home directory for unnecessary temporary files left behind by Agent.
+      * 
+      * This is the Windows version of cleanup method and it does some rather
+      * nasty hacks. First, it creates a script and launch files from scratch
+      * and then adds files to delete (from server configuration). Then it
+      * outputs script and launch files to the client computer and runs the
+      * launch file using cmd.exe (as a native process). Two Threads are also
+      * implemented: these capture the output of cmd.exe (output and errors).
+      */
 	private void cleanupWindowsAgent() {
 
 		// #ifdef DEBUG
@@ -1884,8 +1964,10 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 			out.write(launchScript.getBytes());
 			out.close();
 
+            // Run the launch file using cmd.exe (as a native process)
 			final Process proc = Runtime.getRuntime().exec(cmds);
 
+            /* This thread captures output from cmd.exe */
 			Thread t1 = new Thread(new Runnable() {
 				public void run() {
 					try {
@@ -1896,6 +1978,8 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 					}
 				}
 			}, "CleanupAgentInput");
+
+            /* This thread captures the error stream from cmd.exe */
 			Thread t2 = new Thread(new Runnable() {
 				public void run() {
 					try {
@@ -1923,6 +2007,7 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 		Thread t = new Thread("ScheduledExit") {
 			public void run() {
 				try {
+                    // Sleep for a configured period of time
 					Thread.sleep(getConfiguration().getShutdownPeriod());
 				} catch (InterruptedException ex) {
 				}
@@ -1930,29 +2015,39 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 				// #ifdef DEBUG
 				log.info("Exiting JVM."); //$NON-NLS-1$
 				// #endif
+
+                // We've now waited enough, it's time to exit 
 				System.exit(0);
 			}
 		};
 		t.start();
 	}
 
+    /** Set the Agent to DISCONNECTED state */
 	private void disconnected() {
 		currentState = STATE_DISCONNECTED;
 		getGUI().showDisconnected();
 	}
 
+    /** Disconnect the Agent. This means shutting it down. */
 	private void disconnectAgent() {
 
 		// #ifdef DEBUG
 		log.info("Disconnecting Agent"); //$NON-NLS-1$
 		// #endif
-		// Disconnect the multiplexed protocol
+		// Shutdown the keepalive thread
         keepAlive.stopThread();
 		con.disconnect("The agent is shutting down");
 		// This is a backup to ensure that the socket is released.
 		httpConnection.close();
 	}
 
+    /** This method is called during Agent shutdown. It cleans up the user's
+      * home directory for unnecessary temporary files left behind by Agent.
+      * 
+      * This is the Linux version of cleanup method and does essentially the
+      * same things as the Windows version.
+      */
 	private void cleanupLinuxAgent() {
 
 		// #ifdef DEBUG
@@ -2041,6 +2136,11 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 		}
 	}
 	
+    /** Update the Agent resources of given type. Resources can be applications, tunnels,
+      * webforwards or networkplaces.
+      *
+      * @param  resourceTypeId  resource type to update, -1 to update all resources
+      */
 	protected void updateResources(int resourceTypeId) {		
 		if (getConfiguration().isGetResources()) {
 			/* TODO we should consider moving the services into the appropriate extension instead

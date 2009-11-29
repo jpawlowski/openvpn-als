@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 import java.util.Enumeration;
 import java.util.Vector;
 
+/** This util class removes files given to it as parameters */
 public class FileCleaner {
 
 	protected static Vector filesToRemove = new Vector();
