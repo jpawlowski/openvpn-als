@@ -52,7 +52,7 @@ import com.adito.tunnels.itemactions.SwitchOffAction;
 import com.adito.tunnels.itemactions.SwitchOnAction;
 
 /**
- * Plugin implementation thats the <i>Network Places</i> feature.
+ * Plugin implementation thats the <i>Tunnels</i> feature.
  */
 public class TunnelPlugin extends DefaultPlugin {
 
@@ -74,7 +74,7 @@ public class TunnelPlugin extends DefaultPlugin {
     final static Log log = LogFactory.getLog(TunnelPlugin.class);
 
     /**
-     * Message resources key (resource bundle id)
+     * Message resources key (resource bundle id). Used for i18n.
      */
     public static final String MESSAGE_RESOURCES_KEY = "tunnels";
 

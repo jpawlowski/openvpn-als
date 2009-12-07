@@ -379,6 +379,15 @@ public class MultiplexedConnection implements RequestHandler {
     	handleRequest(wantReply, new Request(requestName, data));
     }
 
+    /** This method handles Requests, e.g. ones sent by the Agent (client) to the server.
+      * First it parses the Request name and check that a RequestHandler capable of
+      * processing that type of request is registered. If the sender requests a reply,
+      * then one (success/failure) is sent.
+      *
+      * @param  wantReply   whether the Request originator wants a reply
+      * @param  request     the Request object sent by the originator
+      *
+      */
     protected void handleRequest(boolean wantReply, Request request) throws IOException {
         boolean success;
         if(requestHandlers.containsKey(request.getRequestName())) {
@@ -699,8 +708,9 @@ public class MultiplexedConnection implements RequestHandler {
         }
     }
 
-    /** This method sends a message encapsulated into a Packet instance to the server.
-      * It sends the message to the server through a socket connection using DataOutputStream
+    /** This method sends a message encapsulated into a Packet instance from Agent to server
+      * or vice versa. The message is sent through a socket connection using DataOutputStream
+      * and read by the other end using a DataInputStream.
       *
       * @param  msg the Packet containing the encoded message
       */

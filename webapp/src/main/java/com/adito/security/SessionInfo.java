@@ -62,8 +62,6 @@ public class SessionInfo implements CoreListener {
     private static List davUserAgents = null;
     private static Context context = ContextHolder.getContext();
 
-    /* Logon type */
-
     /**
      * Originated from the user interface
      */

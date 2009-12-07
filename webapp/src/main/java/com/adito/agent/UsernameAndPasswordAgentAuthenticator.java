@@ -40,8 +40,15 @@ public class UsernameAndPasswordAgentAuthenticator implements AgentAuthenticator
     private static final String AUTHORIZATION_FIELD = "Authorization";
     private static final String BASIC_METHOD = "basic";
 
-    /*
-     * (non-Javadoc)
+    /* This method parses an authentication Request from Agent for credentials. It then
+     * passes the credentials to another authenticate() method which verifies them from an
+     * user database.
+     *
+     * @param   request the request containing Agent's credentials
+     *
+     * @return  If authentication was successful a User object is returned. Otherwise return
+     *          null.
+     * 
      * @see com.adito.agent.AgentAuthenticator#authenticate(com.adito.boot.RequestHandlerRequest)
      */
     public User authenticate(RequestHandlerRequest request) {
@@ -52,20 +59,33 @@ public class UsernameAndPasswordAgentAuthenticator implements AgentAuthenticator
         return null;
     }
 
-    // expected format is Realm/Username:Password or Username:Password
+    /** This method authenticates an Agent instance by parsing given String.
+      * Expected input format is Realm/Username:Password or
+      * Username:Password. After parsing the credentials from input
+      * the user is authenticated against the user database (e.g. PAM, LDAP).
+      *
+      * @param  authorization   The String object which contains the credentials from the Agent
+      *
+      * @return If authentication was successful a User object is returned. Otherwise return
+      *         null.    
+      */
     private static User authenticate(String authorization) {
+        
+        // Get the authentication method        
         String method = getBefore(authorization, " ");
         if (BASIC_METHOD.equalsIgnoreCase(method)) {
             if (logger.isDebugEnabled()) {
                 logger.debug("Using BASIC authentication");
             }
 
+            // Get the credentials method        
             String credentials = new String(Base64.decode(getAfter(authorization, " ")));
             String realmAndUsername = getBefore(credentials, ":");
             String realmName = getBefore(realmAndUsername, "/");
             String username = realmName == null ? realmAndUsername : getAfter(realmAndUsername, "/");
             String password = getAfter(credentials, ":");
 
+            // Try to authenticate the Agent's user from the UserDataBase (e.g. PAM, LDAP)
             try {
                 UserDatabase userDatabase = getUserDatabase(realmName);
                 if (userDatabase.checkPassword(username, password)) {
@@ -80,17 +100,29 @@ public class UsernameAndPasswordAgentAuthenticator implements AgentAuthenticator
         return null;
     }
 
+    /** Return the UserDatabase in use in this Realm.
+      *
+      * @param  realmName   realm name
+      *
+      * @return the user database being used in this Realm 
+      */
     private static UserDatabase getUserDatabase(String realmName) throws Exception {
         String realRealmName = realmName == null ? UserDatabaseManager.DEFAULT_REALM_NAME : realmName;
         Realm realm = UserDatabaseManager.getInstance().getRealm(realRealmName);
         return UserDatabaseManager.getInstance().getUserDatabase(realm);   
     }
     
+    /** This auxiliary method is used to extract credentials from Agent authentication
+      * Strings.
+      */
     private static String getBefore(String value, String toFind) {
         int indexOf = value.indexOf(toFind);
         return indexOf == -1 ? null : value.substring(0, indexOf);
     }
 
+    /** This auxiliary method is used to extract credentials from Agent authentication
+      * Strings.
+      */
     private static String getAfter(String value, String toFind) {
         int indexOf = value.indexOf(toFind);
         return indexOf == -1 ? null : value.substring(indexOf + 1);

@@ -55,7 +55,7 @@ public interface Tunnel extends Resource {
     public String getTransport();
 
     /**
-     * Get the user that this tunnel is attached to, or an empty styring if this
+     * Get the user that this tunnel is attached to, or an empty string if this
      * is a global tunnel to be configured for all users.
      * 
      * @return user id

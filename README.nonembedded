@@ -170,5 +170,5 @@ A few seem to be extra in maven2 build:
 ==Modules not available from public Maven2 repositories==
 
 There are some jars that Adito requires which are not yet in public Maven repositories. These
-modules are currently hosted in a custom Maven2 repository (http://adito.pcdog.ch/maven2).
+modules are currently hosted in a custom Maven2 repository (http://users.utu.fi/sjsepp/maven2).
 

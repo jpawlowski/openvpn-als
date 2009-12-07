@@ -240,9 +240,9 @@
 	     repository. This custom repository contains all the Adito-specific
 	     stuff, such as a specific version of JRADIUS -->
         <repository>
-            <id>adito.pcdog.ch</id>
+            <id>sjsepp</id>
             <name>Adito Maven2 repository</name>
-            <url>http://adito.pcdog.ch/maven2</url>
+            <url>http://users.utu.fi/sjsepp/maven2</url>
         </repository>
 
 

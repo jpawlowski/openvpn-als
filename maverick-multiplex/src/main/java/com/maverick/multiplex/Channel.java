@@ -1,9 +1,3 @@
-/*
- * Created on 08-May-2005
- *
- * TODO To change the template for this generated file go to
- * Window - Preferences - Java - Code Style - Code Templates
- */
 package com.maverick.multiplex;
 
 import java.io.EOFException;
@@ -13,12 +7,10 @@ import java.io.OutputStream;
 import java.util.Enumeration;
 import java.util.Vector;
 
-/**
+/** This class is the key class in server-side implementation of SSL tunnels.
  * 
+ *  
  * @author lee
- * 
- * TODO To change the template for this generated type comment go to Window -
- * Preferences - Java - Code Style - Code Templates
  */
 public abstract class Channel {
 
@@ -43,6 +35,7 @@ public abstract class Channel {
     //#ifdef DEBUG
     org.apache.commons.logging.Log log = org.apache.commons.logging.LogFactory.getLog(Channel.class);
     //#endif
+
     MessageObserver stickyMessages = new MessageObserver() {
         public boolean wantsNotification(Message msg) {
             switch (msg.getMessageId()) {
@@ -154,8 +147,13 @@ public abstract class Channel {
         return sendChannelRequest(request, wantReply, 0);
     }
 
+    /** This method sends a channel request message. This involves wrapping the message
+      * into a Packet and sending it out using a DataOutputStream. 
+      *
+      */
     public synchronized boolean sendChannelRequest(Request request, boolean wantReply, int timeoutMs) throws IOException {
 
+        // Encapsulate the message into a Packet
         Packet msg = new Packet();
         msg.write(MultiplexedConnection.MSG_CHANNEL_REQUEST);
         msg.writeInt(channelid);
@@ -163,6 +161,7 @@ public abstract class Channel {
         msg.writeBoolean(wantReply);
         msg.writeBinaryString(request.getRequestData());
 
+        // Send the message to the DataOutputStream
         connection.sendMessage(msg);
 
         if (wantReply) {

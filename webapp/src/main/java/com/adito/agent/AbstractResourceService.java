@@ -35,7 +35,11 @@ import com.adito.policyframework.ResourceType;
 
 /**
  * Abstract {@link AgentService} implementation for dealing with 
- * the Adito resources.
+ * the Adito resources. This class is extended by other Agent-provided
+ * services such as WebForwardService, TunnelingService,
+ * NetworkPlaceService and ApplicationService. Each of these services
+ * are provided in separate extension modules (webforwards, tunnels,
+ * networkplaces and applications).
  * 
  * @author brett
  */

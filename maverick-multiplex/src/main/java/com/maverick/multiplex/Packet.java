@@ -5,8 +5,7 @@ import java.io.IOException;
 import com.maverick.util.ByteArrayWriter;
 
 /**
- * This class is used for encapsulating messages sent by the Agent to the server.  
- *
+ * This class is used for encapsulating messages sent between Agent and server.
  */
 public class Packet extends ByteArrayWriter {
 

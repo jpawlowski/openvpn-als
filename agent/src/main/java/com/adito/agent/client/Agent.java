@@ -77,8 +77,8 @@ import com.adito.agent.client.webforwards.WebForwardManager;
 
 /**
  * Concrete implementation of an {@link AbstractVPNClient} that runs as
- * standalone applicaiton launched from the Adito web interface (via the
- * <i>Laumcher</i> applet.
+ * standalone application launched from the Adito web interface (via the
+ * <i>Launcher</i> applet.
  * <p>
  * See package description for more information.
  */

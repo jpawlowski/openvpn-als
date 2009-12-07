@@ -25,9 +25,17 @@ import com.adito.properties.impl.systemconfig.SystemConfigKey;
 import com.adito.security.SessionInfo;
 
 /**
- * Extension of {@link MultiplexedConnection} that is used as the
+ * <p>Extension of {@link MultiplexedConnection} that is used as the
  * server side controller of all agent connections. I.e. there will
- * be one instance of this class for every single active agent.
+ * be one instance of this class for every single active agent. This
+ * class is responsible for communicating with the client-side
+ * implementation of the Agent, e.g. responding when client wishes
+ * to do something.</p>
+ *
+ * <p><b>NOTE:</b> This class provided the control channel to the
+ * Agent for, say, updating resources. It <b>does not</b> provide
+ * SSL tunnel feature - this is the responsibility of the "tunnels"
+ * extension.  
  */
 public class AgentTunnel extends MultiplexedConnection implements
 		RequestHandlerTunnel, TimeoutCallback {
@@ -80,15 +88,16 @@ public class AgentTunnel extends MultiplexedConnection implements
 
 	/**
 	 * Constructor for agent tunnels that may or may not be associated with a UI
-	 * session
+	 * session. This constructor register a few RequestHandlers which receive
+     * Requests from the Agent wishing to do something. For example, synchronize
+     * with the server. 
 	 * 
-	 * @param id
-	 *            agent ID
-	 * @param session
+	 * @param   id    agent ID
+	 * @param   session
 	 *            UI session the tunnel is associated with or <code>null</code>
 	 *            if if not associated with a user session
-	 * @param type agent type
-	 * @param factory channel factory
+	 * @param   typeagent   type
+	 * @param   factory channel factory
 	 */
 	public AgentTunnel(String id, SessionInfo session, String type,
 			ChannelFactory factory) {
@@ -119,6 +128,10 @@ public class AgentTunnel extends MultiplexedConnection implements
 		return session;
 	}
 	
+    /**
+      * This method is responsible for handling requests originating from Agent instances.
+      * Most of the hard work is done in MultiplexedConnection.java.
+      */
 	@Override
     protected void handleRequest(boolean wantReply, Request request) throws IOException {
         super.handleRequest(wantReply, request);
@@ -127,6 +140,10 @@ public class AgentTunnel extends MultiplexedConnection implements
         }
     }
 
+    /**
+      * This method is responsible for handling requests originating from Agent instances.
+      * Most of the hard work is done in MultiplexedConnection.java.
+      */
     @Override
     protected void handleChannelMessage(Message msg, Channel channel) throws IOException {
         super.handleChannelMessage(msg, channel);

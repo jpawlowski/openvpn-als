@@ -1,5 +1,4 @@
-
-				/*
+/*
  *  Adito
  *
  *  Copyright (C) 2003-2006 3SP LTD. All Rights Reserved
@@ -68,7 +67,6 @@ import com.adito.tunnels.agent.RemoteTunnelManagerFactory;
  * @author brett
  */
 public class TunnelingService extends AbstractResourceService implements RequestHandler {
-
 
 	static Log log = LogFactory.getLog(TunnelingService.class);
 
