@@ -666,7 +666,7 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
       * through the multiplexed connection. Currently supported requests are
       * SHUTDOWN, (DISPLAY) MESSAGE, UPDATE RESOURCES (e.g. tunnel list),
       * OPEN URL (used in tunneled webforwards). Each of these commands is
-      * executed in a separata method.
+      * executed in a separate method.
       */
 	public boolean processRequest(Request request, MultiplexedConnection con) {
 
