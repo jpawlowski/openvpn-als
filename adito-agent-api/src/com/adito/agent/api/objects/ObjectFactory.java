@@ -21,4 +21,8 @@ public class ObjectFactory {
     public TunnelList createTunnelList() {
 	return new TunnelList();
     }
+
+    public TunnelStart createTunnelStart() {
+	return new TunnelStart();
+    }
 }

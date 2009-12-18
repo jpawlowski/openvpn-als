@@ -5,7 +5,6 @@
 
 package com.adito.agent.api.server;
 
-import com.adito.agent.api.server.resources.ShutdownResource;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -34,7 +33,7 @@ public class APIApplication extends Application {
         Router router = new Router(getContext());
 
         // Defines only one route
-        router.attachDefault(ShutdownResource.class);
+        // router.attachDefault(ShutdownResource.class);
 
         return router;
     }

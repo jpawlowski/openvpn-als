@@ -5,14 +5,13 @@
 
 package com.adito.agent.api.server.resources.restlets;
 
-import com.adito.agent.api.objects.Shutdown;
 import com.adito.agent.api.objects.TunnelList;
 import com.adito.agent.api.server.APIApplication;
+import com.adito.agent.api.server.APICommandsListener;
 import java.io.IOException;
 import java.io.OutputStream;
 import javax.xml.bind.JAXBException;
 import javax.xml.namespace.QName;
-import org.restlet.Restlet;
 import org.restlet.data.MediaType;
 import org.restlet.data.Request;
 import org.restlet.data.Response;
@@ -23,8 +22,12 @@ import org.restlet.resource.XmlRepresentation;
  *
  * @author Matthias Jansen / Jansen-Systems
  */
-public class TunnelListRestlet extends Restlet {
+public class TunnelListRestlet extends BaseRestlet {
 
+    public TunnelListRestlet(APICommandsListener l) {
+	super(l);
+    }
+    
     @Override
     public void handle(Request request, Response response) {
 	// super.handle(request, response);
@@ -42,11 +45,7 @@ public class TunnelListRestlet extends Restlet {
 	    @Override
 	    public void write(OutputStream out) throws IOException {
 		// throw new UnsupportedOperationException("Not supported yet.");
-		TunnelList t = new TunnelList();
-		// TODO: get the real list
-		t.getTunnels().add("Tunnel 1");
-		t.getTunnels().add("Tunnel 2");
-		t.getTunnels().add("Tunnel 3");
+		TunnelList t = apiCommandListener.getTunnelList();
 		try {
 		    APIApplication.getInstance().getMarshaller().marshal(t, out);
 		} catch (JAXBException ex) {
