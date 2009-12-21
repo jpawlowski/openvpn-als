@@ -173,16 +173,6 @@
     
     <repositories>
 
-	<!-- RESTLET repository is needed for REST support in the Agent -->
-
-	<!--
-        <repository>
-            <id>RESTLET maven2 repository</id>
-            <name>RESTLET maven2 repository</name>
-            <url>http://maven.restlet.org</url>
-        </repository>
-	-->
-
 	<!-- Sandboxed Apache Commons VFS components are required by networkplaces module -->
 
         <repository>
