@@ -138,7 +138,7 @@ public class RADIUSAuthenticationModule
             System.err.println((new StringBuilder()).append("Unsupported authentication protocol ").append(c).toString());
             return false;
         }
-        RadiusResponse radiusresponse;
+        RadiusResponse radiusresponse=null;
         if(h.isDebugEnabled())
             h.debug((new StringBuilder()).append("Sending:\n").append(accessrequest.toString()).toString());
         radiusresponse = b(radiusclient, (AccessRequest)accessrequest, radiusauthenticator, b, !"true".equalsIgnoreCase(e.getParameter("hasChallenges")));
@@ -170,6 +170,7 @@ public class RADIUSAuthenticationModule
     private RadiusResponse b(RadiusClient radiusclient, AccessRequest accessrequest, RadiusAuthenticator radiusauthenticator, int i1, boolean flag)
         throws RadiusException, UnknownAttributeException
     {
+        RadiusResponse radiusresponse=null;
         if(radiusauthenticator == null)
             radiusauthenticator = new PAPAuthenticator();
         if(flag)
@@ -177,7 +178,16 @@ public class RADIUSAuthenticationModule
             radiusauthenticator.setupRequest(radiusclient, accessrequest);
             radiusauthenticator.processRequest(accessrequest);
         }
-        return radiusclient.sendReceive(accessrequest, radiusclient.getRemoteInetAddress(), radiusclient.getAuthPort(), i1);
+        try 
+        {
+            radiusresponse = radiusclient.sendReceive(accessrequest, radiusclient.getRemoteInetAddress(), radiusclient.getAuthPort(), i1);
+        }
+        catch (Throwable throwable)
+        {
+            if(h.isErrorEnabled())
+                h.error("Server error.", throwable);
+        }
+        return radiusresponse;
     }
 
     private boolean b(String s)
