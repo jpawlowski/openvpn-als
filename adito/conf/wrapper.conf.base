@@ -77,7 +77,7 @@ wrapper.java.additional.1=-Dorg.mortbay.http.Version.paranoid=true
 # if you launch server using wrapper, you change your password.
 # you stop server, and start-using-java with different file.encoding, you cannot login. 
 # It cause some problems if encoding are different.
-wrapper.java.additional.2=-Dfile.encoding=UTF-8
+#wrapper.java.additional.2=-Dfile.encoding=UTF-8
 
 # Initial Java Heap Size (in MB)
 wrapper.java.initmemory=64
