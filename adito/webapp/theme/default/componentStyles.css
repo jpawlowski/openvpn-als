@@ -116,7 +116,8 @@ div#component_pageHeader {
 	padding: 0px 0px 0px 0px;
 	background-image: url(images/banner.gif);
 	background-repeat: no-repeat;
-	background-color: black;
+/*	background-color: black;*/
+	background-color: white;
 	color: white;
 	vertical-align: middle;
 }
