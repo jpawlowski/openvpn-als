@@ -35,6 +35,7 @@ public class AgentArgs {
     private String browserCommand;
     private String localProxyURL;
     private String pluginProxyURL;
+    private String reverseProxyURL;
     private String userAgent;
     private String extensionClasses;
     private String extensionId = "adito-agent";
@@ -72,6 +73,12 @@ public class AgentArgs {
     }
     public void setLocalProxyURL(String localProxyURL) {
         this.localProxyURL = localProxyURL;
+    }
+    public String getReverseProxyURL() {
+        return reverseProxyURL;
+    }
+    public void setReverseProxyURL(String reverseProxyURL) {
+        this.reverseProxyURL = reverseProxyURL;
     }
     public String getLogProperties() {
         return logProperties;

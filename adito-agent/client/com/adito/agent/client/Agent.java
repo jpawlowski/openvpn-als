@@ -40,6 +40,7 @@ import java.util.Vector;
 
 import com.maverick.http.AuthenticationCancelledException;
 import com.maverick.http.AuthenticationPrompt;
+import com.maverick.http.ConnectMethod;
 import com.maverick.http.GetMethod;
 import com.maverick.http.HttpAuthenticator;
 import com.maverick.http.HttpAuthenticatorFactory;
@@ -107,6 +108,9 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 	/** The hostname of the local HTTPS proxy server * */
 	protected URI localProxyURL;
 
+	/** The hostname of the reverse HTTPS proxy server * */
+	protected URI reverseProxyURL;
+
 	/** We store all the available proxy information here * */
 	protected static Hashtable proxiesIE = new Hashtable();
 
@@ -127,7 +131,11 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 
 	protected String defaultProxyHost;
 
+	protected String defaultReverseProxyHost;
+
 	protected int defaultProxyPort = 80;
+
+	protected int defaultReverseProxyPort = 80;
 
 	protected PasswordCredentials defaultProxyCredentials;
 
@@ -140,6 +148,8 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
     protected AuthenticationPrompt defaultAuthenticationPrompt;
 
 	protected int defaultProxyType = HttpClient.PROXY_HTTP;
+
+	protected int defaultReverseProxyType = HttpClient.PROXY_HTTP;
 
 	protected ApplicationManager applicationManager;
 
@@ -212,6 +222,20 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 	public void setLocalProxyURL(String localProxyURL)
 			throws URI.MalformedURIException {
 		this.localProxyURL = new URI(localProxyURL);
+
+		// FIXME What about HttpsURLConnection?
+	}
+
+	/**
+	 * Set the URL of the reverse HTTPS proxy server to use for all outgoing connections
+	 * 
+	 * @param reverseProxyURL
+	 *            reverse proxy URL
+	 * @throws URI.MalformedURIException
+	 */
+	public void setReverseProxyURL(String reverseProxyURL)
+			throws URI.MalformedURIException {
+		this.reverseProxyURL = new URI(reverseProxyURL);
 
 		// FIXME What about HttpsURLConnection?
 	}
@@ -356,6 +380,16 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 			setDefaultProxyAuthenticationPrompt(gui);
 		}
 
+		// Configure reverse proxy support
+		if (reverseProxyURL != null && !reverseProxyURL.equals("")) { //$NON-NLS-1$
+			// #ifdef DEBUG
+			log.info("Configuring HTTP reverse proxy to " + obfuscateURL(reverseProxyURL.toString()));
+			// #endif
+			int port = reverseProxyURL.getPort();
+			setDefaultReverseProxyType(reverseProxyURL.getScheme().equals("https") ? HttpClient.PROXY_HTTPS : HttpClient.PROXY_HTTP); //$NON-NLS-1$
+			setDefaultReverseProxyHost(reverseProxyURL.getHost());
+			setDefaultReverseProxyPort(port == -1 ? 80 : port);
+		}
 	}
 
 	/**
@@ -403,6 +437,14 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 				client
 						.setProxyPreferedAuthentication("AUTO".equalsIgnoreCase(defaultProxyPreferredAuthentication) ? null //$NON-NLS-1$
 								: defaultProxyPreferredAuthentication);
+			}
+			if (defaultReverseProxyHost != null && !defaultReverseProxyHost.equals("")) { //$NON-NLS-1$
+				// #ifdef DEBUG
+				log.info("Configuring reverse proxy for HttpClient instance"); //$NON-NLS-1$
+				// #endif
+				client.setReverseProxyHost(defaultReverseProxyHost);
+				client.setReverseProxyPort(defaultReverseProxyPort);
+				client.setReverseProxyType(defaultReverseProxyType);
 			}
 		}
 
@@ -1077,6 +1119,27 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 	}
 
 	/**
+	 * Get the default hostname for the reverse proxy server to use. Use
+	 * <code>null</code> for no proxy server (the default).
+	 * 
+	 * @return reverse proxy hostname or <code>null</code> for no proxy
+	 */
+	public String getDefaultReverseProxyHost() {
+		return defaultReverseProxyHost;
+	}
+
+	/**
+	 * Set the default hostname for the reverse proxy server to use. Use
+	 * <code>null</code> for no proxy server (the default).
+	 * 
+	 * @param defaultReverseProxyHost
+	 *            reverse proxy hostname or <code>null</code> for no proxy
+	 */
+	public void setDefaultReverseProxyHost(String defaultReverseProxyHost) {
+		this.defaultReverseProxyHost = defaultReverseProxyHost;
+	}
+
+	/**
 	 * Set the default proxy port. By default this is <i>80</i>.
 	 * 
 	 * CHECK Why 80? IIS?
@@ -1097,6 +1160,29 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 	 */
 	public void setDefaultProxyPort(int defaultProxyPort) {
 		this.defaultProxyPort = defaultProxyPort;
+	}
+
+	/**
+	 * Set the default reverse proxy port. By default this is <i>80</i>.
+	 * 
+	 * CHECK Why 80? IIS?
+	 * 
+	 * @return default reverse proxy port number
+	 */
+	public int getDefaultReverseProxyPort() {
+		return defaultReverseProxyPort;
+	}
+
+	/**
+	 * Set the default reverse proxy port. By default this is <i>80</i>.
+	 * 
+	 * CHECK Why 80? IIS?
+	 * 
+	 * @param defaultReverseProxyPort
+	 *            default reverse proxy port number
+	 */
+	public void setDefaultReverseProxyPort(int defaultReverseProxyPort) {
+		this.defaultReverseProxyPort = defaultReverseProxyPort;
 	}
 
 	/**
@@ -1122,6 +1208,31 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 	 */
 	public void setDefaultProxyType(int defaultProxyType) {
 		this.defaultProxyType = defaultProxyType;
+	}
+
+	/**
+	 * Get the default reverse proxy type. This may be one of
+	 * {@link HttpClient#PROXY_HTTP}, {@link HttpClient#PROXY_HTTPS} or
+	 * {@link HttpClient#PROXY_NONE}. By default this is
+	 * {@link HttpClient#PROXY_HTTP}.
+	 * 
+	 * @return default reverse proxy type
+	 */
+	public int getDefaultReverseProxyType() {
+		return defaultReverseProxyType;
+	}
+
+	/**
+	 * Set the default reverse proxy type. This may be one of
+	 * {@link HttpClient#PROXY_HTTP}, {@link HttpClient#PROXY_HTTPS} or
+	 * {@link HttpClient#PROXY_NONE}. By default this is
+	 * {@link HttpClient#PROXY_HTTP}.
+	 * 
+	 * @param defaultReverseProxyType
+	 *            default reverse proxy type
+	 */
+	public void setDefaultReverseProxyType(int defaultReverseProxyType) {
+		this.defaultReverseProxyType = defaultReverseProxyType;
 	}
 
 	/**
@@ -1335,6 +1446,8 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
                 agentArgs.setPassword(getCommandLineValue(args[i]));
             } else if (args[i].startsWith("localProxyURL")) { //$NON-NLS-1$
                 agentArgs.setLocalProxyURL(getCommandLineValue(args[i]));
+            } else if (args[i].startsWith("reverseProxyURL")) { //$NON-NLS-1$
+                agentArgs.setReverseProxyURL(getCommandLineValue(args[i]));
             } else if (args[i].startsWith("pluginProxyURL")) { //$NON-NLS-1$
                 agentArgs.setPluginProxyURL(getCommandLineValue(args[i]));
             } else if (args[i].startsWith("ticket")) { //$NON-NLS-1$
@@ -1507,7 +1620,7 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
         }
         // #endif
 
-        agent.setupProxy(agentArgs.getLocalProxyURL(), agentArgs.getUserAgent(), agentArgs.getPluginProxyURL());
+        agent.setupProxy(agentArgs.getLocalProxyURL(), agentArgs.getUserAgent(), agentArgs.getPluginProxyURL(), agentArgs.getReverseProxyURL());
 
         if (agentArgs.getBrowserCommand() != null && !agentArgs.getBrowserCommand().equals("")) { //$NON-NLS-1$
 
@@ -1608,7 +1721,7 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 	}
 
 	public void setupProxy(String localProxyURL, String userAgent,
-			String pluginProxyURL) throws MalformedURIException {
+			String pluginProxyURL, String reverseProxyURL) throws MalformedURIException {
 		if (localProxyURL != null
 				&& !localProxyURL.equals("") && !localProxyURL.startsWith("browser://")) { //$NON-NLS-1$ //$NON-NLS-2$
 			// Use the user supplied proxy settings
@@ -1736,6 +1849,15 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 				}
 			}
 		}
+                if (reverseProxyURL != null && !reverseProxyURL.equals("") ) { //$NON-NLS-1$ //$NON-NLS-2$
+                        // Use the user supplied reverse proxy settings
+
+                        // #ifdef DEBUG
+                        log.info("Setting user specified reverse proxy URL to " + obfuscateURL(reverseProxyURL)); //$NON-NLS-1$
+                        // #endif
+                        setReverseProxyURL(reverseProxyURL);
+		}
+
 	}
 	
 
@@ -1992,7 +2114,6 @@ public class Agent implements RequestHandler, MultiplexedConnectionListener {
 		public void run() {
 
 			long period = getConfiguration().getKeepAlivePeriod();
-
 			if(period > 0) {
 				while (running && con.isRunning()) {
 					try {

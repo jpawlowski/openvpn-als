@@ -761,6 +761,35 @@ public class CoreUtil {
     }
 
     /**
+     * Get the reverse proxy URL to use for a user.
+     * 
+     * @param user user
+     * @param propertyProfile property profile ID (0 for default / global)
+     * @return String
+     * @throws Exception
+     */
+    public static String getReverseProxyURL(User user, int propertyProfile) throws Exception {
+        String type = Property.getProperty(new ProfilePropertyKey(propertyProfile, user.getPrincipalName(), "clientReverseProxy.type", user.getRealm().getResourceId()));
+        if (type.equals("http") || type.equals("https")) {
+            String hostname = Property.getProperty(new ProfilePropertyKey(propertyProfile, user.getPrincipalName(), "clientReverseProxy.hostname", user.getRealm().getResourceId()));
+            if (!hostname.equals("")) {
+                StringBuffer url = new StringBuffer();
+                url.append(type);
+                url.append("://");
+                
+                url.append(hostname);
+                int port = Property.getPropertyInt(new ProfilePropertyKey(propertyProfile, user.getPrincipalName(), "clientReverseProxy.port", user.getRealm().getResourceId()));
+                if (port != 0) {
+                    url.append(":");
+                    url.append(port);
+                }
+                return url.toString();
+            }
+        } 
+        return null;
+    }
+
+    /**
      * @param action
      * @param mapping
      * @param form

@@ -99,6 +99,13 @@
 	</tag>
 
 	<tag>
+		<name>clientReverseProxyURL</name>
+		<tagclass>com.adito.core.tags.ClientReverseProxyURLTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<info>Insert the value to use for the VPN client reverse proxy URL</info>
+	</tag>
+
+	<tag>
 		<name>themePath</name>
 		<tagclass>com.adito.core.tags.ThemePathTag</tagclass>
 		<bodycontent>JSP</bodycontent>

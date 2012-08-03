@@ -44,6 +44,7 @@
 			        dir="<core:getProperty userProfile="true" propertyName="client.cacheDirectory"/>" \
 			        timeout="<core:getProperty userProfile="true" propertyName="client.registration.synchronization.timeout"/>" \
 			        proxyURL="<core:clientProxyURL/>" \
+			        reverseProxyURL="<core:clientReverseProxyURL/>" \
 					extensionId="<%= ed.getId() %>" \
 					userAgent="<%= request.getHeader("User-Agent") %>" \
 					launcherImage="<%= ed.getApplicationBundle().getId() +"/" + ed.getLargeIcon() %>" \
@@ -71,6 +72,7 @@
 			    t += '<param name="dir" value="<core:getProperty userProfile="true" propertyName="client.cacheDirectory"/>"/>';
 			    t += '<param name="timeout" value="<core:getProperty userProfile="true" propertyName="client.registration.synchronization.timeout"/>"/>';
 			    t += '<param name="proxyURL" value="<core:clientProxyURL/>"/>';
+			    t += '<param name="reverseProxyURL" value="<core:clientReverseProxyURL/>"/>';
 			    t += '<param name="monitor" value="true"/>';
 			    t += '<param name="extensionId" value="<%= ed.getId() %>"/>';
 			    t += '<param name="userAgent" value="<%= request.getHeader("User-Agent") %>"/>';

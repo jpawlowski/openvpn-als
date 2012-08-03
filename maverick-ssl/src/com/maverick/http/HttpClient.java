@@ -72,6 +72,10 @@ public class HttpClient {
     int proxyPort = -1;
     int proxyType = PROXY_NONE;
 
+    String reverseProxyHost;
+    int reverseProxyPort = -1;
+    int reverseProxyType = PROXY_NONE;
+
     PasswordCredentials proxyCredentials;
     AuthenticationPrompt proxyAuthenticationPrompt;
     String proxyPreferedAuthentication = HttpAuthenticatorFactory.BASIC;
@@ -153,6 +157,13 @@ public class HttpClient {
             return true;
     }
 
+    public boolean isReverseProxyConfigured() {
+        if (reverseProxyType == PROXY_NONE)
+            return false;
+        else
+            return true;
+    }
+
     public static boolean isNonProxiedHost(String host) {
         String nonProxiedHosts = System.getProperty("com.maverick.ssl.https.HTTPProxyNonProxyHosts"); //$NON-NLS-1$
         if (nonProxiedHosts == null || nonProxiedHosts.equals("")) { //$NON-NLS-1$
@@ -217,6 +228,21 @@ public class HttpClient {
             throw new IllegalArgumentException(MessageFormat.format(Messages.getString("HttpClient.notValidProxyType"), new Object[] { new Integer(proxyType) })); //$NON-NLS-1$
         }
         this.proxyType = proxyType;
+    }
+
+    public void setReverseProxyHost(String reverseProxyHost) {
+        this.reverseProxyHost = reverseProxyHost;
+    }
+
+    public void setReverseProxyPort(int reverseProxyPort) {
+        this.reverseProxyPort = reverseProxyPort;
+    }
+
+    public void setReverseProxyType(int reverseProxyType) {
+        if (reverseProxyType > PROXY_HTTPS || reverseProxyType < PROXY_NONE) {
+            throw new IllegalArgumentException(MessageFormat.format(Messages.getString("HttpClient.notValidProxyType"), new Object[] { new Integer(reverseProxyType) })); //$NON-NLS-1$
+        }
+        this.reverseProxyType = reverseProxyType;
     }
 
     public void setProxyCredentials(PasswordCredentials proxyCredentials) {

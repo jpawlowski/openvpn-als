@@ -268,6 +268,7 @@ public class VariablesTag extends BaseFieldTag {
             addVariable("session:email", null, buf, pageContext, bundle, locale, inputId);
             addVariable("session:fullname", null, buf, pageContext, bundle, locale, inputId);
             addVariable("session:clientProxyURL", null, buf, pageContext, bundle, locale, inputId);
+            addVariable("session:clientReverseProxyURL", null, buf, pageContext, bundle, locale, inputId);
         }
 
         if (includeRequest) {

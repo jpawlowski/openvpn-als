@@ -82,6 +82,10 @@ public class SessionInfoReplacer extends AbstractReplacementVariableReplacer {
                 String proxyURL = CoreUtil.getProxyURL(sessionInfo.getUser(),
                     CoreUtil.getCurrentPropertyProfileId(sessionInfo.getHttpSession()));
                 return proxyURL == null ? "" : proxyURL;
+            } else if (key.equals("clientReverseProxyURL")) {
+                String reverseProxyURL = CoreUtil.getReverseProxyURL(sessionInfo.getUser(),
+                    CoreUtil.getCurrentPropertyProfileId(sessionInfo.getHttpSession()));
+                return reverseProxyURL == null ? "" : reverseProxyURL;
             } else if (key.equals("password")) {
                 /**
                  * LDP - This is broken, I'm guessing that the VPN

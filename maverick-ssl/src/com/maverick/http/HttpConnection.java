@@ -107,9 +107,25 @@ public class HttpConnection {
             // when to start streaming across forwarded sockets that may or may not
             // require an SSL transport.
             this.socket.pushTransport(client.isSecure ? SSLTransportFactory.newInstance() : null);
-            
-        } else {
 
+            // Send HTTP CONNECT if reverse proxy configured
+            if (client.isReverseProxyConfigured()) {
+                in = new HttpConnectionInputStream(this.socket.getInputStream(), 32768);
+                out = new HttpConnectionOutputStream();
+
+                isClosed = false;
+                canReuse = true;
+
+                ConnectMethod proxyConnect = new ConnectMethod(client.reverseProxyHost, client.reverseProxyPort, client.isSecure);
+                HttpResponse response = client.execute(proxyConnect,this);
+
+                if (response.getStatus() == 200) {
+                    this.socket = response.getConnection().socket;
+                }
+                else 
+                    throw new IOException(MessageFormat.format(Messages.getString("HttpConnection.invalidHttpStatusCode"), new Object[] { new Integer(response.getStatus()) })); //$NON-NLS-1$
+            } 
+        } else {
             synchronized (client) {
                 switch (client.proxyType) {
                     case HttpClient.PROXY_HTTP:
@@ -131,7 +147,27 @@ public class HttpConnection {
                             socket = response.getConnection().socket;
                         } else
                             throw new IOException(MessageFormat.format(Messages.getString("HttpConnection.invalidHttpStatusCode"), new Object[] { new Integer(response.getStatus()) })); //$NON-NLS-1$
-                        break;
+
+			// Send HTTP CONNECT if reverse proxy configured
+			if (client.isReverseProxyConfigured()) {
+				in = new HttpConnectionInputStream(socket.getInputStream(), 32768);
+				out = new HttpConnectionOutputStream();
+
+				isClosed = false;
+				canReuse = true;
+
+				proxyConnect = new ConnectMethod(client.reverseProxyHost, client.reverseProxyPort, client.isSecure);
+				// Execute and retreive the direct socket
+				response = client.proxyClient.execute(proxyConnect,this);
+
+				if (response.getStatus() == 200) {
+					socket = response.getConnection().socket;
+				}  
+				else
+					throw new IOException(MessageFormat.format(Messages.getString("HttpConnection.invalidHttpStatusCode"), new Object[] { new Integer(response.getStatus()) })); //$NON-NLS-1$
+			}
+                      break;
+
                     default:
                         throw new IllegalArgumentException(MessageFormat.format(Messages.getString("HttpConnection.invalidProxyType"), new Object[] { new Integer(client.proxyType) })); //$NON-NLS-1$
                 }

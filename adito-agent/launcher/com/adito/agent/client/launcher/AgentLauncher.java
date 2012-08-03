@@ -71,6 +71,7 @@ public class AgentLauncher extends Applet implements ApplicationLauncherEvents {
     String cacheDirectory;
     Button launch;
     String localProxyURL;
+    String reverseProxyURL;
     ProcessMonitor processMonitor;
     long totalNumBytes;
     String userAgent;
@@ -244,6 +245,7 @@ public class AgentLauncher extends Applet implements ApplicationLauncherEvents {
             System.out.println(MessageFormat.format(Messages.getString("VPNLauncher.sysout.userAgent"), new Object[] {  userAgent } )); //$NON-NLS-1$
 
             localProxyURL = getParameter("proxyURL", ""); //$NON-NLS-1$ //$NON-NLS-2$
+            reverseProxyURL = getParameter("reverseProxyURL", ""); //$NON-NLS-1$ //$NON-NLS-2$
             String pluginProxyURL = ""; //$NON-NLS-1$
 
             if (localProxyURL.toLowerCase().startsWith("browser://")) { //$NON-NLS-1$
@@ -346,6 +348,7 @@ public class AgentLauncher extends Applet implements ApplicationLauncherEvents {
 
                         System.out.println(MessageFormat.format(Messages.getString("VPNLauncher.sysout.settingLocalProxy"), new Object[] { localProxyURL } ) ); //$NON-NLS-1$
                         launcher.setLocalProxyURL(localProxyURL);
+			launcher.setReverseProxyURL(reverseProxyURL);
                         launcher.prepare();
                         System.out.println(Messages.getString("VPNLauncher.sysout.preparedLauncher")); //$NON-NLS-1$
 

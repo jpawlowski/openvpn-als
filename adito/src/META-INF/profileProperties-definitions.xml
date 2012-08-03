@@ -74,6 +74,18 @@
 		typeMeta="AUTO,BASIC,NTLM" category="15" defaultValue="AUTO"
 		visibility="1" sortOrder="60" validation=""
 		messageResourcesKey="properties" />
+
+	<definition type="3" name="clientReverseProxy.type"
+		typeMeta="none,http,https" category="16"
+		defaultValue="none" visibility="1" sortOrder="10" validation=""
+		messageResourcesKey="properties" />
+	<definition type="0" name="clientReverseProxy.hostname" typeMeta=""
+		category="16" defaultValue="" visibility="1" sortOrder="20"
+		validation="" messageResourcesKey="properties" />
+	<definition type="1" name="clientReverseProxy.port" typeMeta=""
+		category="16" defaultValue="3128" visibility="1" sortOrder="30"
+		validation="com.adito.input.validators.IntegerValidator"
+		messageResourcesKey="properties" />
 		
 	<!-- UI -->
 	<definition type="2" name="ui.toolTips" typeMeta="" category="30"

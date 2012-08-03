@@ -15,5 +15,6 @@ Images are relative to the theme image directory
 	<category id="810" bundle="properties" image="categories/vpn-client.gif">
 		<category id="10" bundle="properties" image="categories/vpn-client-configuration.gif"/>
 		<category id="15" bundle="properties" image="categories/vpn-client-proxy.gif"/>
+		<category id="16" bundle="properties" image="categories/vpn-client-proxy.gif"/>
 	</category>		
 </categories>

@@ -81,6 +81,7 @@ public abstract class AbstractApplicationLauncher {
     private Hashtable descriptorParams = new Hashtable();
     private boolean debug = false;
     private String localProxyURL;
+    private String reverseProxyURL;
     private ApplicationType type;
     private Hashtable replacements = new Hashtable();
     private Vector transformations = new Vector();
@@ -119,6 +120,16 @@ public abstract class AbstractApplicationLauncher {
      */
     public void setLocalProxyURL(String localProxyURL) {
         this.localProxyURL = localProxyURL;
+    }
+
+    /**
+     * Set the URL of the reverse proxy server (if required). This is used when
+     * replacing variables in the extension descriptor.
+     * 
+     * @param reverseProxyURL reverse proxy URL
+     */
+    public void setReverseProxyURL(String reverseProxyURL) {
+        this.reverseProxyURL = reverseProxyURL;
     }
 
     /**
@@ -806,6 +817,7 @@ public abstract class AbstractApplicationLauncher {
      * host<br/> <code>${adito:port}</code> - Adito port<br/>
      * <code>${adito:protocol}</code> - Protocol (http / https)<br/>
      * <code>${adito:localProxyURL}</code> - Local proxy server URL<br/>
+     * <code>${adito:reverseProxyURL}</code> - Reverse proxy server URL<br/>
      * <code>${tunnel:XXXXX.hostname}</code> - Named tunnel hostname<br/>
      * <code>${tunnel:XXXXX.port}</code> - Named tunnel port<br/>
      * 
@@ -819,6 +831,7 @@ public abstract class AbstractApplicationLauncher {
         str = replaceAllTokens(str, "${adito:port}", applicationStorePort == -1 ? "" : String.valueOf(applicationStorePort)); //$NON-NLS-1$ //$NON-NLS-2$
         str = replaceAllTokens(str, "${adito:protocol}", applicationStoreProtocol == null ? "" : applicationStoreProtocol); //$NON-NLS-1$ //$NON-NLS-2$
         str = replaceAllTokens(str, "${client:localProxyURL}", localProxyURL == null ? "" : localProxyURL); //$NON-NLS-1$ //$NON-NLS-2$
+        str = replaceAllTokens(str, "${client:reverseProxyURL}", reverseProxyURL == null ? "" : reverseProxyURL); //$NON-NLS-1$ //$NON-NLS-2$
         for (Enumeration e = descriptorParams.keys(); e.hasMoreElements();) {
             String key = (String) e.nextElement();
             String val = (String) descriptorParams.get(key);

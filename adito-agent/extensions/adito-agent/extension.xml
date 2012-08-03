@@ -164,6 +164,7 @@
 				<arg>host=${request:hostHeader}</arg>
 				<arg>protocol=${request:protocol}</arg>
 				<arg>localProxyURL=${client:localProxyURL}</arg>
+				<arg>reverseProxyURL=${client:reverseProxyURL}</arg>
 				<arg>username=${session:username}</arg>
 				<arg>ticket=${request:param.ticket}</arg>
 				<arg>shutdown=${property:client.shutdown.wait}</arg>
